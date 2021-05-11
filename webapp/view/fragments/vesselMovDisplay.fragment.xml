@@ -120,7 +120,7 @@
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
-							<blockcolor:BlockBlueT1 id="bbt1"/>
+							<blockcolor:BlockBlueT1/>
 						</blocks>
 					</ObjectPageSubSection>
 				</subSections>
@@ -129,7 +129,7 @@
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
-							<blockcolor:BlockBlueT2 id="bbt2"/>
+							<blockcolor:BlockBlueT2/>
 						</blocks>
 					</ObjectPageSubSection>
 				</subSections>
@@ -138,25 +138,43 @@
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
-							<blockcolor:BlockBlueT3 id="bbt3"/>
+							<blockcolor:BlockBlueT3/>
 						</blocks>
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>
-			<ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" title="{i18n>Portclearence}">
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
-							<blockcolor:BlockBlueT4 id="bbt4"/>
+							<blockcolor:BlockBlueT4/>
 						</blocks>
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>
-			<ObjectPageSection titleUppercase="false" title="Section 5">
+			<ObjectPageSection titleUppercase="false" title="{i18n>UnBerting}">
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
-							<blockcolor:BlockBlueT5 id="bbt5"/>
+							<blockcolor:BlockBlueT5/>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" title="{i18n>Leaving}">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+							<blockcolor:T6Leaving/>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" title="{i18n>Shifting}">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+							<blockcolor:T7Shifting/>
 						</blocks>
 					</ObjectPageSubSection>
 				</subSections>
@@ -166,112 +184,6 @@
 	<!--<VBox id="vesMovDispId" class="card">-->
 	<!--	<IconTabBar expandable="false" class="sapUiResponsiveContentPadding">-->
 	<!--		<items>-->
-	<!--			<IconTabFilter text="{i18n>Portclearence}" key="people">-->
-	<!--				<f:SimpleForm singleContainerFullSize="false" class="form">-->
-	<!--					<f:content>-->
-	<!--						<core:Title text="{i18n>BasicDetails}"/>-->
-	<!--						<Label text="{i18n>Captain}"/>-->
-	<!--						<Text text="{vesMovModel>/PC_Captain}" class="sapUiTinyMarginTop"/>-->
-	<!--						<Label text="{i18n>DepartureDate}"/>-->
-	<!--						<Text-->
-	<!--							text="{ path: 'vesMovModel>/PC_DepartureDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"-->
-	<!--							wrapping="false" class="sapUiTinyMarginTop"/>-->
-	<!--						<Label text="{i18n>LockedAccountingDep}"/>-->
-	<!--						<Text text="{vesMovModel>/PC_LockAccCB}" class="sapUiTinyMarginTop"/>-->
-	<!--						<Label text="{i18n>LockedTrafficDep}"/>-->
-	<!--						<Text text="{vesMovModel>/PC_LockTrafficCB}" class="sapUiTinyMarginTop"/>-->
-	<!--						<Label text="{i18n>LockedHarbourmaster}"/>-->
-	<!--						<Text text="{vesMovModel>/PC_LockHmCb}" class="sapUiTinyMarginTop"/>-->
-	<!--<core:Title text=""/>-->
-	<!--<Label text="Next Port"/>-->
-	<!--<Text text=" {vesMovModel>/ZExpectedArrivalTime}"/>-->
-	<!--<Label text="Clearance No"/>-->
-	<!--<Text text="{vesMovModel>/ZExpectedDepartureTime}"/>-->
-	<!--					</f:content>-->
-	<!--				</f:SimpleForm>-->
-	<!--			</IconTabFilter>-->
-	<!--			<IconTabFilter text="{i18n>UnBerting}" key="people">-->
-	<!--				<f:SimpleForm singleContainerFullSize="false" class="form">-->
-	<!--					<f:content>-->
-	<!--						<core:Title text="{i18n>BasicDetails}"/>-->
-	<!--						<Label text="{i18n>UnBerthingDate}"/>-->
-	<!--						<Text-->
-	<!--							text="{ path: 'vesMovModel>/UBerth_Date', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"-->
-	<!--							wrapping="false" class="sapUiTinyMarginTop"/>-->
-	<!--						<Label text="{i18n>BerthNo}"/>-->
-	<!--						<Text text="{vesMovModel>/UBerth_BerthNumber}" class="sapUiTinyMarginTop"/>-->
-	<!--<Label text="M/Boat"/>-->
-	<!--<Text text="{vesMovModel>/UBerth_M_Boat}" class="sapUiTinyMarginTop"/>-->
-	<!--<Label text="Berth Detention"/>-->
-	<!--<Text text="{vesMovModel>/UBerth_BerthDetention}" class="sapUiTinyMarginTop"/>-->
-	<!--						<core:Title text=""/>-->
-	<!--						<Label text="{i18n>BerthTime}"/>-->
-	<!--						<Text text="{vesMovModel>/UBerth_Time}" class="sapUiTinyMarginTop"/>-->
-	<!--<Label text="Fender"/>-->
-	<!--<Text text="{vesMovModel>/UBerth_Fender}" class="sapUiTinyMarginTop"/>-->
-	<!--						<Label text="{i18n>BerthRemark}"/>-->
-	<!--						<Text text="{vesMovModel>/UBerth_BerthRemark}" class="sapUiTinyMarginTop"/>-->
-	<!--						<core:Title text="{i18n>PilotDetails}"/>-->
-	<!--						<Label text="{i18n>Pilot}"/>-->
-	<!--						<Text text="{vesMovModel>/UBerth_Pilot}" class="sapUiTinyMarginTop"/>-->
-	<!--<Label text="Pilot Cutter "/>-->
-	<!--<Text text="{vesMovModel>/UBerth_PilotCutter}" class="sapUiTinyMarginTop"/>-->
-	<!--<Label text="Pilot Detention "/>-->
-	<!--<Text text="{vesMovModel>/UBerth_PilotDetention}" class="sapUiTinyMarginTop"/>-->
-	<!--						<Label text="{i18n>Remark} "/>-->
-	<!--						<Text text="{vesMovModel>/UBerth_PilotRemark}" class="sapUiTinyMarginTop"/>-->
-	<!--						<core:Title text="{i18n>TugDetails}"/>-->
-	<!--						<Label text="{i18n>Name}"/>-->
-	<!--						<Text text="{vesMovModel>/UBerth_TugName}" class="sapUiTinyMarginTop"/>-->
-	<!--						<Label text="{i18n>NoTugs}"/>-->
-	<!--						<Text text="{vesMovModel>/UBerth_NumberofTugs}" class="sapUiTinyMarginTop"/>-->
-	<!--<Label text="Tug Detention"/>-->
-	<!--<Text text="{vesMovModel>/UBerth_TugDetention}" class="sapUiTinyMarginTop"/>-->
-	<!--						<Label text="{i18n>Remark}"/>-->
-	<!--						<Text text="{vesMovModel>/UBerth_TugRemark}" class="sapUiTinyMarginTop"/>-->
-	<!--						<Label text="{i18n>StartTime}"/>-->
-	<!--						<Text-->
-	<!--							text="{ path: 'vesMovModel>/Unberth_stime', type: 'sap.ui.model.type.DateTime', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"-->
-	<!--							wrapping="false" class="sapUiTinyMarginTop"/>-->
-	<!--						<Label text="{i18n>EndTime}"/>-->
-	<!--						<Text-->
-	<!--							text="{ path: 'vesMovModel>/Unberth_etime', type: 'sap.ui.model.type.DateTime', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"-->
-	<!--							wrapping="false" class="sapUiTinyMarginTop"/>-->
-	<!--<Label text="Start Date &amp; Time"/>-->
-	<!--<Text text="{vesMovModel>/ZNextPort}"/>-->
-	<!--<Label text="End Date &amp; Time"/>-->
-	<!--<Text text="{vesMovModel>/ZNextPort}"/>-->
-	<!--<core:Title text="Other Charge Details"/>-->
-	<!--<Label text="Dead Vessel "/>-->
-	<!--<Text text="{vesMovModel>/UBerth_DeadVesselCB}"/>-->
-	<!--<Label text="Pilot Delay"/>-->
-	<!--<Text text="{vesMovModel>/UBerth_PiotDelayCB}"/>-->
-	<!--<Label text="Pilot Used"/>-->
-	<!--<Text text="{vesMovModel>/UBerth_PilotUsedCB}"/>-->
-	<!--<Label text="Tug Delay"/>-->
-	<!--<Text text="{vesMovModel>/UBerth_TugDelayCB}"/>-->
-	<!--<Label text="Tug Used"/>-->
-	<!--<Text text="{vesMovModel>/UBerth_TugUsedCB}"/>-->
-	<!--<Label text="Mooring Used"/>-->
-	<!--<Text text="{vesMovModel>/UBerth_MooringUsedCB}"/>-->
-	<!--					</f:content>-->
-	<!--				</f:SimpleForm>-->
-	<!--			</IconTabFilter>-->
-	<!--			<IconTabFilter text="{i18n>Leaving}" key="people">-->
-	<!--				<f:SimpleForm singleContainerFullSize="false" class="form">-->
-	<!--					<f:content>-->
-	<!--						<core:Title text="{i18n>BasicDetails}"/>-->
-	<!--						<Label text="{i18n>LeavingDate} "/>-->
-	<!--						<Text-->
-	<!--							text="{ path: 'vesMovModel>/LeavingDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"-->
-	<!--							wrapping="false" class="sapUiTinyMarginTop"/>-->
-	<!--						<Label text="{i18n>BerthNo}"/>-->
-	<!--						<Text text="{vesMovModel>/LeavingBerthNo}" class="sapUiTinyMarginTop"/>-->
-	<!--						<Label text="{i18n>LeavingTime}"/>-->
-	<!--						<Text text="{vesMovModel>/LeavingTime}" class="sapUiTinyMarginTop"/>-->
-	<!--					</f:content>-->
-	<!--				</f:SimpleForm>-->
-	<!--			</IconTabFilter>-->
 	<!--			<IconTabFilter text="{i18n>Shifting}" key="shifting">-->
 	<!--				<t:Table rows="{vesMovModel>/LogsheetToShifting/results}" selectionMode="None" visibleRowCount="10" ariaLabelledBy="title" class="table">-->
 	<!--					<t:extension>-->

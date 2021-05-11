@@ -1,7 +1,30 @@
-<mvc:View
-		xmlns:mvc="sap.ui.core.mvc"
-		xmlns:html="http://www.w3.org/1999/xhtml">
-	<html:div style="height:auto;min-height:4em; background-color: #A9EAFF ;line-height: 4em;">
-		Single Subsections are promoted to section.
-	</html:div>
+<mvc:View xmlns:m="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core">
+	<m:FlexBox wrap="Wrap">
+		<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+			<m:VBox>
+				<m:Text class="title sapUiTinyMarginBottom" text="{i18n>BasicDetails}"/>
+				<m:HBox class="sapUiTinyMarginBottom">
+					<m:Label text="{i18n>Captain}" class="sapUiSmallMarginEnd"/>
+					<m:Text text="{vesMovModel>/PC_Captain}"/>
+				</m:HBox>
+				<m:HBox class="sapUiTinyMarginBottom">
+					<m:Label text="{i18n>DepartureDate}" class="sapUiSmallMarginEnd"/>
+					<m:Text text="{ path: 'vesMovModel>/PC_DepartureDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"
+								wrapping="false"/>
+				</m:HBox>
+				<m:HBox class="sapUiTinyMarginBottom">
+					<m:Label text="{i18n>LockedAccountingDep}" class="sapUiSmallMarginEnd"/>
+					<m:Text text="{vesMovModel>/PC_LockAccCB}"/>
+				</m:HBox>
+				<m:HBox class="sapUiTinyMarginBottom">
+					<m:Label text="{i18n>LockedTrafficDep}" class="sapUiSmallMarginEnd"/>
+					<m:Text text="{vesMovModel>/PC_LockTrafficCB}"/>
+				</m:HBox>
+				<m:HBox>
+					<m:Label text="{i18n>LockedHarbourmaster}" class="sapUiSmallMarginEnd"/>
+					<m:Text text="{vesMovModel>/PC_LockHmCb}"/>
+				</m:HBox>
+			</m:VBox>
+		</layout:VerticalLayout>
+	</m:FlexBox>
 </mvc:View>

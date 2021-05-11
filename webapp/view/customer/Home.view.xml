@@ -1,0 +1,15 @@
+<mvc:View controllerName="com.demo.sharjahPort.controller.customer.Home" xmlns:mvc="sap.ui.core.mvc" xmlns:tnt="sap.tnt"
+	xmlns:l="sap.ui.layout" xmlns="sap.m" displayBlock="true" xmlns:core="sap.ui.core" xmlns:html="http://www.w3.org/1999/xhtml"
+	class="sapUiSizeCompact">
+	<tnt:SideNavigation class="sideNavigation" id="sideNavigation" itemSelect="onNavSelect" selectedKey="dashboard">
+		<tnt:NavigationList class="mainNav">
+			<tnt:NavigationListItem/>
+			<tnt:NavigationListItem text="Dashboard" id="dashFal" icon="sap-icon://home" key=""/>
+			<tnt:NavigationListItem text="Dashboard" id="AgnetdashId" visible="false" icon="sap-icon://home" key="dashboardAgent"/>
+			<tnt:NavigationListItem text="Dashboard" id="dashId" visible="false" icon="sap-icon://home" key="dashboard"/>
+			<tnt:NavigationListItem text="Dashboard" id="harbDashId" visible="false" icon="sap-icon://home" key="dashboardHarbour"/>
+			<tnt:NavigationListItem text="ETA Orders" icon="sap-icon://customize" key="products"/>
+			<tnt:NavigationListItem text="ETA Logs" icon="sap-icon://sys-help" key="orders"/>
+		</tnt:NavigationList>
+	</tnt:SideNavigation>
+</mvc:View>

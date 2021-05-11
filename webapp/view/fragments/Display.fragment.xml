@@ -1,0 +1,100 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<VBox class="sapUiSmallMargin" id="etaDisp">
+		<Breadcrumbs currentLocationText="{etaDetailsModel>/ZETANumber}">
+			<Link id="dashboard" press="onHomePress" text="Home"/>
+			<Link id="products" press="onNavToPress" text="ETA List"/>
+		</Breadcrumbs>
+		<VBox class="card">
+			<IconTabBar id="idIconTabBarNoIcons" expandable="false" expanded="{device>/isNoPhone}" class="etaDetailsTab sapUiResponsiveContentPadding tab">
+				<items>
+					<IconTabFilter text="{i18n>VesselDetails}" key="info">
+						<f:SimpleForm id="SimpleFormDisplay480_Trial" editable="false" layout="ResponsiveGridLayout" labelSpanXL="4"
+							labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0"
+							columnsXL="3" columnsL="2" columnsM="2" singleContainerFullSize="false">
+							<f:content>
+								<core:Title text=""/>
+								<Label text="ETA"/>
+								<Text text="{etaDetailsModel>/ZETANumber}"/>
+								<Label text="{i18n>VesselName}"/>
+								<Text text="{etaDetailsModel>/ZVesselName}"/>
+								<Label text="{i18n>AgentName}"/>
+								<Text text="{etaDetailsModel>/ZAgentName}"/>
+								<Label text="{i18n>Linecode}"/>
+								<Text text="{etaDetailsModel>/ZLineCode}"/>
+								<Label text="{i18n>Vesselnature}"/>
+								<Text text="{etaDetailsModel>/ZVesselNature}"/>
+								<!--<Label text="Voyage no"/>-->
+								<!--<Text text="{etaDetailsModel>/ZVoyageNumber}"/>-->
+								<Label text="{i18n>Purposeofvisit}"/>
+								<Text text="{etaDetailsModel>/ZPurposeOfVisit}"/>
+								<Label text="{i18n>Status}"/>
+								<ObjectStatus active="true" inverted="true" text="{etaDetailsModel>/ZStatus}"
+									state="{= ${etaDetailsModel>/ZStatus} === 'NEW' ? 'Information' : 'Warning' }"/>
+								<!--<Label text="Custom ref no"/>-->
+								<!--<Text text="{etaDetailsModel>/ZCustomsReferenceNumber}"/>-->
+								<Label text="{i18n>Generalremark}"/>
+								<Text text="{etaDetailsModel>/ZGeneralRemark}"/>
+								<core:Title text=""/>
+								<Label text="{i18n>Port}"/>
+								<Text text="{etaDetailsModel>/ZPortName}"/>
+								<Label text="{i18n>Callsign}"/>
+								<Text text="{etaDetailsModel>/ZCallSign}"/>
+								<Label text="{i18n>Agentcode}"/>
+								<Text text="{etaDetailsModel>/ZAgentCode}"/>
+								<Label text="{i18n>GRT}"/>
+								<Text text="{etaDetailsModel>/ZGRT}"/>
+								<Label text="{i18n>VoyageNature}"/>
+								<Text text="{etaDetailsModel>/ZVoyageNature}"/>
+								<Label text="{i18n>PreferredBerth}"/>
+								<Text text="{etaDetailsModel>/ZPreferedBerth}"/>
+								<!--<Label text="Voyage Type"/>-->
+								<!--<Text text="{etaDetailsModel>/ZVoyageType}"/>-->
+								<Label text="{i18n>IMOnumber}"/>
+								<Text text="{etaDetailsModel>/ZIMONumber}"/>
+							</f:content>
+						</f:SimpleForm>
+					</IconTabFilter>
+					<IconTabFilter text="{i18n>ETAPorDetails}" key="attachments">
+						<f:SimpleForm singleContainerFullSize="false">
+							<f:content>
+								<Label text="{i18n>ExpectedArrival}"/>
+								<Text
+										text="{ path: 'etaDetailsModel>/ZExpectedArrivalDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} } at {etaDetailsModel>/ZExpectedArrivalTime}"
+										wrapping="false" class="dateDispA"/>
+								<Label text="{i18n>ExpectedDeparture}"/>
+								<Text
+										text="{ path: 'etaDetailsModel>/ZExpectedDepartureDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} } at {etaDetailsModel>/ZExpectedDepartureTime}"
+										wrapping="false" class="dateDispD"/>
+								<Label text="{i18n>LastPort}"/>
+								<Text text="{etaDetailsModel>/ZLastPort}"/>
+								<Label text="{i18n>NextPort}"/>
+								<Text text="{etaDetailsModel>/ZNextPort}"/>
+								<Label text="{i18n>ArrivalDraft}"/>
+								<Text text="{etaDetailsModel>/ZArrivalDraft}"/>
+							</f:content>
+						</f:SimpleForm>
+					</IconTabFilter>
+					<IconTabFilter text="{i18n>DischargeDetails}" key="attachments">
+						<f:SimpleForm singleContainerFullSize="false">
+							<f:content>
+								<Label text="{i18n>cargoDis}"/>
+								<Text text="{etaDetailsModel>/ZCargoDischarge}"/>
+								<Label text="{i18n>NoContainer}"/>
+								<Text text="{etaDetailsModel>/ZContainerCountDischarge}"/>
+								<Label text="{i18n>CargoWeight}"/>
+								<Text text="{etaDetailsModel>/ZCargoWeightDischarge} Tonnes (TEU)"/>
+								<Label text="{i18n>CargoLoaded}"/>
+								<Text text="{etaDetailsModel>/ZCargoLoaded}"/>
+								<Label text="{i18n>NoContainer}"/>
+								<Text text="{etaDetailsModel>/ZContainerCountLoading}"/>
+								<Label text="{i18n>CargoWeight}"/>
+								<Text text="{etaDetailsModel>/ZCargoWeightLoading} Tonnes (TEU)"/>
+								<Label text="{i18n>RejectRemark}"/>
+								<Text text="{etaDetailsModel>/ZRejectRemark}"/></f:content>
+						</f:SimpleForm>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</VBox>
+	</VBox>
+</core:FragmentDefinition>

@@ -1,0 +1,15 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Bar class="headerBar">
+		<contentLeft>
+			<Image src="images/image.png" width="8rem" height="2.7rem" class="logo-cls"/>
+		</contentLeft>
+		<contentMiddle></contentMiddle>
+		<contentRight>
+			<core:Icon color="#333" class="sapUiTinyMarginEnd" size="1rem" src="sap-icon://search" press="onPress" ariaLabelledBy="actionButtonLabel"/>
+			<core:Icon color="#da1f1f" class="sapUiTinyMarginEnd" size="1rem" src="sap-icon://log" press="handleLogOut"
+				ariaLabelledBy="actionButtonLabel"/>
+			<core:Icon color="#333" class="sapUiTinyMarginEnd" size="1rem" src="sap-icon://bell" press="onPress" ariaLabelledBy="actionButtonLabel"/>
+			<Button text="{loginModel>/name}" icon="sap-icon://customer" class="userIcn"/>
+		</contentRight>
+	</Bar>
+</core:FragmentDefinition>

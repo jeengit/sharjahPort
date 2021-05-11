@@ -1,0 +1,385 @@
+<core:FragmentDefinition xmlns:blockcolor="com.demo.sharjahPort.SharedBlocks" xmlns:t="sap.ui.table" xmlns="sap.uxap" xmlns:m="sap.m"
+	xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core">
+	<ObjectPageLayout upperCaseAnchorBar="false" id="vesMovDispId" class="objLayoutClass">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<breadcrumbs>
+					<m:Breadcrumbs currentLocationText="{vesMovModel>/LogSheetNo}">
+						<m:Link id="dashboard" press="onHomePress" text="Home"/>
+						<m:Link id="orders" press="onNavToPress" text="ETA Logs"/>
+					</m:Breadcrumbs>
+				</breadcrumbs>
+				<expandedHeading>
+					<m:HBox>
+						<m:Title text="{vesMovModel>/VesselName}" wrapping="true"/>
+						<m:ObjectMarker type="Favorite" class="sapUiTinyMarginBegin"/>
+					</m:HBox>
+				</expandedHeading>
+				<snappedHeading>
+					<m:FlexBox fitContainer="true" alignItems="Center">
+						<m:Avatar src="./test-resources/sap/uxap/images/imageID_275314.png" class="sapUiTinyMarginEnd"/>
+						<m:Title text="{vesMovModel>/VesselName}" wrapping="true"/>
+					</m:FlexBox>
+				</snappedHeading>
+				<expandedContent>
+					<m:Text text="Vessel Details"/>
+				</expandedContent>
+				<snappedContent>
+					<m:Text text="Vessel Details"/>
+				</snappedContent>
+				<snappedTitleOnMobile>
+					<m:Title text="Header Title On Phone"/>
+				</snappedTitleOnMobile>
+				<!--<actions>-->
+				<!--	<m:OverflowToolbarButton icon="sap-icon://edit" text="edit header" type="Emphasized" tooltip="edit"/>-->
+				<!--	<m:OverflowToolbarButton icon="sap-icon://pull-down" text="show section" type="Emphasized" tooltip="pull-down"/>-->
+				<!--	<m:OverflowToolbarButton icon="sap-icon://show" text="show state" tooltip="show"/>-->
+				<!--	<m:Button text="Toggle Footer" press="toggleFooter"/>-->
+				<!--</actions>-->
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+		<headerContent>
+			<m:FlexBox wrap="Wrap">
+				<m:Avatar class="sapUiSmallMarginEnd" src="./test-resources/sap/uxap/images/imageID_275314.png" displaySize="L"/>
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>ETARefNo}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{vesMovModel>/CustomsReferenceNumber}"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>Port}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{vesMovModel>/PortNo}"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>VRN}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{vesMovModel>/VRN}"/>
+						</m:HBox>
+					</m:VBox>
+				</layout:VerticalLayout>
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>Agentcode}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{vesMovModel>/AgentCode}"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>Voyageno}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{vesMovModel>/Voyageno}"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>ETA}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{ path: 'vesMovModel>/ETA', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"
+								wrapping="false"/>
+						</m:HBox>
+					</m:VBox>
+				</layout:VerticalLayout>
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>IMOnumber}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{vesMovModel>/IMONo}"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>ArrivalDate}" class="sapUiSmallMarginEnd"/>
+							<m:Text
+								text="{ path: 'vesMovModel>/ArrivalDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"
+								wrapping="false"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>Callsign}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{vesMovModel>/Callsign}"/>
+						</m:HBox>
+					</m:VBox>
+				</layout:VerticalLayout>
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>ETD}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{ path: 'vesMovModel>/ETD', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"
+								wrapping="false"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>Partiallyinvoiced}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{vesMovModel>/PartiallyInvoice}"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>Countryname}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{vesMovModel>/Countryname}"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>LastPort}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{vesMovModel>/LastPort}"/>
+						</m:HBox>
+					</m:VBox>
+				</layout:VerticalLayout>
+			</m:FlexBox>
+		</headerContent>
+		<sections>
+			<ObjectPageSection titleUppercase="false" title="{i18n>Arrival}">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+							<blockcolor:BlockBlueT1 id="bbt1"/>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" title="{i18n>Anchorage}">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+							<blockcolor:BlockBlueT2 id="bbt2"/>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" title="{i18n>Berthing}">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+							<blockcolor:BlockBlueT3 id="bbt3"/>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection>
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+							<blockcolor:BlockBlueT4 id="bbt4"/>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" title="Section 5">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+							<blockcolor:BlockBlueT5 id="bbt5"/>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+	</ObjectPageLayout>
+	<!--<VBox id="vesMovDispId" class="card">-->
+	<!--	<IconTabBar expandable="false" class="sapUiResponsiveContentPadding">-->
+	<!--		<items>-->
+	<!--			<IconTabFilter text="{i18n>Portclearence}" key="people">-->
+	<!--				<f:SimpleForm singleContainerFullSize="false" class="form">-->
+	<!--					<f:content>-->
+	<!--						<core:Title text="{i18n>BasicDetails}"/>-->
+	<!--						<Label text="{i18n>Captain}"/>-->
+	<!--						<Text text="{vesMovModel>/PC_Captain}" class="sapUiTinyMarginTop"/>-->
+	<!--						<Label text="{i18n>DepartureDate}"/>-->
+	<!--						<Text-->
+	<!--							text="{ path: 'vesMovModel>/PC_DepartureDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"-->
+	<!--							wrapping="false" class="sapUiTinyMarginTop"/>-->
+	<!--						<Label text="{i18n>LockedAccountingDep}"/>-->
+	<!--						<Text text="{vesMovModel>/PC_LockAccCB}" class="sapUiTinyMarginTop"/>-->
+	<!--						<Label text="{i18n>LockedTrafficDep}"/>-->
+	<!--						<Text text="{vesMovModel>/PC_LockTrafficCB}" class="sapUiTinyMarginTop"/>-->
+	<!--						<Label text="{i18n>LockedHarbourmaster}"/>-->
+	<!--						<Text text="{vesMovModel>/PC_LockHmCb}" class="sapUiTinyMarginTop"/>-->
+	<!--<core:Title text=""/>-->
+	<!--<Label text="Next Port"/>-->
+	<!--<Text text=" {vesMovModel>/ZExpectedArrivalTime}"/>-->
+	<!--<Label text="Clearance No"/>-->
+	<!--<Text text="{vesMovModel>/ZExpectedDepartureTime}"/>-->
+	<!--					</f:content>-->
+	<!--				</f:SimpleForm>-->
+	<!--			</IconTabFilter>-->
+	<!--			<IconTabFilter text="{i18n>UnBerting}" key="people">-->
+	<!--				<f:SimpleForm singleContainerFullSize="false" class="form">-->
+	<!--					<f:content>-->
+	<!--						<core:Title text="{i18n>BasicDetails}"/>-->
+	<!--						<Label text="{i18n>UnBerthingDate}"/>-->
+	<!--						<Text-->
+	<!--							text="{ path: 'vesMovModel>/UBerth_Date', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"-->
+	<!--							wrapping="false" class="sapUiTinyMarginTop"/>-->
+	<!--						<Label text="{i18n>BerthNo}"/>-->
+	<!--						<Text text="{vesMovModel>/UBerth_BerthNumber}" class="sapUiTinyMarginTop"/>-->
+	<!--<Label text="M/Boat"/>-->
+	<!--<Text text="{vesMovModel>/UBerth_M_Boat}" class="sapUiTinyMarginTop"/>-->
+	<!--<Label text="Berth Detention"/>-->
+	<!--<Text text="{vesMovModel>/UBerth_BerthDetention}" class="sapUiTinyMarginTop"/>-->
+	<!--						<core:Title text=""/>-->
+	<!--						<Label text="{i18n>BerthTime}"/>-->
+	<!--						<Text text="{vesMovModel>/UBerth_Time}" class="sapUiTinyMarginTop"/>-->
+	<!--<Label text="Fender"/>-->
+	<!--<Text text="{vesMovModel>/UBerth_Fender}" class="sapUiTinyMarginTop"/>-->
+	<!--						<Label text="{i18n>BerthRemark}"/>-->
+	<!--						<Text text="{vesMovModel>/UBerth_BerthRemark}" class="sapUiTinyMarginTop"/>-->
+	<!--						<core:Title text="{i18n>PilotDetails}"/>-->
+	<!--						<Label text="{i18n>Pilot}"/>-->
+	<!--						<Text text="{vesMovModel>/UBerth_Pilot}" class="sapUiTinyMarginTop"/>-->
+	<!--<Label text="Pilot Cutter "/>-->
+	<!--<Text text="{vesMovModel>/UBerth_PilotCutter}" class="sapUiTinyMarginTop"/>-->
+	<!--<Label text="Pilot Detention "/>-->
+	<!--<Text text="{vesMovModel>/UBerth_PilotDetention}" class="sapUiTinyMarginTop"/>-->
+	<!--						<Label text="{i18n>Remark} "/>-->
+	<!--						<Text text="{vesMovModel>/UBerth_PilotRemark}" class="sapUiTinyMarginTop"/>-->
+	<!--						<core:Title text="{i18n>TugDetails}"/>-->
+	<!--						<Label text="{i18n>Name}"/>-->
+	<!--						<Text text="{vesMovModel>/UBerth_TugName}" class="sapUiTinyMarginTop"/>-->
+	<!--						<Label text="{i18n>NoTugs}"/>-->
+	<!--						<Text text="{vesMovModel>/UBerth_NumberofTugs}" class="sapUiTinyMarginTop"/>-->
+	<!--<Label text="Tug Detention"/>-->
+	<!--<Text text="{vesMovModel>/UBerth_TugDetention}" class="sapUiTinyMarginTop"/>-->
+	<!--						<Label text="{i18n>Remark}"/>-->
+	<!--						<Text text="{vesMovModel>/UBerth_TugRemark}" class="sapUiTinyMarginTop"/>-->
+	<!--						<Label text="{i18n>StartTime}"/>-->
+	<!--						<Text-->
+	<!--							text="{ path: 'vesMovModel>/Unberth_stime', type: 'sap.ui.model.type.DateTime', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"-->
+	<!--							wrapping="false" class="sapUiTinyMarginTop"/>-->
+	<!--						<Label text="{i18n>EndTime}"/>-->
+	<!--						<Text-->
+	<!--							text="{ path: 'vesMovModel>/Unberth_etime', type: 'sap.ui.model.type.DateTime', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"-->
+	<!--							wrapping="false" class="sapUiTinyMarginTop"/>-->
+	<!--<Label text="Start Date &amp; Time"/>-->
+	<!--<Text text="{vesMovModel>/ZNextPort}"/>-->
+	<!--<Label text="End Date &amp; Time"/>-->
+	<!--<Text text="{vesMovModel>/ZNextPort}"/>-->
+	<!--<core:Title text="Other Charge Details"/>-->
+	<!--<Label text="Dead Vessel "/>-->
+	<!--<Text text="{vesMovModel>/UBerth_DeadVesselCB}"/>-->
+	<!--<Label text="Pilot Delay"/>-->
+	<!--<Text text="{vesMovModel>/UBerth_PiotDelayCB}"/>-->
+	<!--<Label text="Pilot Used"/>-->
+	<!--<Text text="{vesMovModel>/UBerth_PilotUsedCB}"/>-->
+	<!--<Label text="Tug Delay"/>-->
+	<!--<Text text="{vesMovModel>/UBerth_TugDelayCB}"/>-->
+	<!--<Label text="Tug Used"/>-->
+	<!--<Text text="{vesMovModel>/UBerth_TugUsedCB}"/>-->
+	<!--<Label text="Mooring Used"/>-->
+	<!--<Text text="{vesMovModel>/UBerth_MooringUsedCB}"/>-->
+	<!--					</f:content>-->
+	<!--				</f:SimpleForm>-->
+	<!--			</IconTabFilter>-->
+	<!--			<IconTabFilter text="{i18n>Leaving}" key="people">-->
+	<!--				<f:SimpleForm singleContainerFullSize="false" class="form">-->
+	<!--					<f:content>-->
+	<!--						<core:Title text="{i18n>BasicDetails}"/>-->
+	<!--						<Label text="{i18n>LeavingDate} "/>-->
+	<!--						<Text-->
+	<!--							text="{ path: 'vesMovModel>/LeavingDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"-->
+	<!--							wrapping="false" class="sapUiTinyMarginTop"/>-->
+	<!--						<Label text="{i18n>BerthNo}"/>-->
+	<!--						<Text text="{vesMovModel>/LeavingBerthNo}" class="sapUiTinyMarginTop"/>-->
+	<!--						<Label text="{i18n>LeavingTime}"/>-->
+	<!--						<Text text="{vesMovModel>/LeavingTime}" class="sapUiTinyMarginTop"/>-->
+	<!--					</f:content>-->
+	<!--				</f:SimpleForm>-->
+	<!--			</IconTabFilter>-->
+	<!--			<IconTabFilter text="{i18n>Shifting}" key="shifting">-->
+	<!--				<t:Table rows="{vesMovModel>/LogsheetToShifting/results}" selectionMode="None" visibleRowCount="10" ariaLabelledBy="title" class="table">-->
+	<!--					<t:extension>-->
+	<!--						<OverflowToolbar style="Clear">-->
+	<!--							<Title text="{i18n>ShiftingTable}"/>-->
+	<!--							<ToolbarSpacer/>-->
+	<!--						</OverflowToolbar>-->
+	<!--					</t:extension>-->
+	<!--					<t:columns>-->
+	<!--						<t:Column width="12rem" sortProperty="ETANo">-->
+	<!--							<Label wrapping="false" text="{i18n>Shiftingcal}"/>-->
+	<!--							<t:template>-->
+	<!--								<Text-->
+	<!--									text="{ path: 'vesMovModel>/Shift_FromDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"-->
+	<!--									wrapping="false"/>-->
+	<!--							</t:template>-->
+	<!--						</t:Column>-->
+	<!--						<t:Column width="10rem" sortProperty="PortName">-->
+	<!--							<Label text="{i18n>FromTime}"/>-->
+	<!--							<t:template>-->
+	<!--								<Text text="{vesMovModel>Shift_FromTime}"/>-->
+	<!--<Text text="{vesMovModel>Shift_FromTime}"/>-->
+	<!--							</t:template>-->
+	<!--						</t:Column>-->
+	<!--						<t:Column width="12rem">-->
+	<!--							<Label text="{i18n>ShiftingtoDate}"/>-->
+	<!--							<t:template>-->
+	<!--								<Text-->
+	<!--									text="{ path: 'vesMovModel>/Shift_ToDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"-->
+	<!--									wrapping="false"/>-->
+	<!--							</t:template>-->
+	<!--						</t:Column>-->
+	<!--						<t:Column width="10rem">-->
+	<!--							<Label text="{i18n>ToTime}"/>-->
+	<!--							<t:template>-->
+	<!--								<Text text="{vesMovModel>Shift_ToTime}"/>-->
+	<!--							</t:template>-->
+	<!--						</t:Column>-->
+	<!--						<t:Column width="10rem">-->
+	<!--							<Label text="{i18n>FromBerth(DD)}"/>-->
+	<!--							<t:template>-->
+	<!--								<Text text="{vesMovModel>Shift_FromBerthNumber}"/>-->
+	<!--							</t:template>-->
+	<!--						</t:Column>-->
+	<!--						<t:Column width="10rem">-->
+	<!--							<Label text="{i18n>Deadvessel}"/>-->
+	<!--							<t:template>-->
+	<!--								<Text text="{vesMovModel>Shift_DeadVessel}"/>-->
+	<!--							</t:template>-->
+	<!--						</t:Column>-->
+	<!--						<t:Column width="10rem">-->
+	<!--							<Label text="{i18n>Tughused}"/>-->
+	<!--							<t:template>-->
+	<!--								<Text text="{vesMovModel>Shift_NumberofTugs}"/>-->
+	<!--							</t:template>-->
+	<!--						</t:Column>-->
+	<!--<t:Column width="10rem">-->
+	<!--	<Label text="Pilot Detention (TEXT)"/>-->
+	<!--	<t:template>-->
+	<!--		<Text text="{vesMovModel>Shift_PilotDetention}"/>-->
+	<!--	</t:template>-->
+	<!--</t:Column>-->
+	<!--						<t:Column width="10rem">-->
+	<!--							<Label text="{i18n>P/Cutter}"/>-->
+	<!--							<t:template>-->
+	<!--								<Text text="{vesMovModel>Shift_PilotCutter}"/>-->
+	<!--							</t:template>-->
+	<!--						</t:Column>-->
+	<!--						<t:Column width="10rem">-->
+	<!--							<Label text="{i18n>Pilot}"/>-->
+	<!--							<t:template>-->
+	<!--								<Text text="{vesMovModel>Shift_PilotName}"/>-->
+	<!--							</t:template>-->
+	<!--						</t:Column>-->
+	<!--						<t:Column width="10rem">-->
+	<!--							<Label text="{i18n>PilotRem}"/>-->
+	<!--							<t:template>-->
+	<!--								<Text text="{vesMovModel>Shift_PilotRemark}"/>-->
+	<!--							</t:template>-->
+	<!--						</t:Column>-->
+	<!--						<t:Column width="10rem">-->
+	<!--							<Label text="{i18n>Mooring}"/>-->
+	<!--							<t:template>-->
+	<!--								<Text text="{vesMovModel>Shift_MooringUsed}"/>-->
+	<!--							</t:template>-->
+	<!--						</t:Column>-->
+	<!--						<t:Column width="10rem">-->
+	<!--							<Label text="{i18n>MBoat}"/>-->
+	<!--							<t:template>-->
+	<!--								<Text text="{vesMovModel>Shift_M_Boat}"/>-->
+	<!--							</t:template>-->
+	<!--						</t:Column>-->
+	<!--						<t:Column width="10rem">-->
+	<!--							<Label text="{i18n>Fender}"/>-->
+	<!--							<t:template>-->
+	<!--								<Text text="{vesMovModel>Shift_Fender}"/>-->
+	<!--							</t:template>-->
+	<!--						</t:Column>-->
+	<!--						<t:Column width="10rem">-->
+	<!--							<Label text="{i18n>ShiftReason}"/>-->
+	<!--							<t:template>-->
+	<!--								<Text text="{vesMovModel>Shift_Reasons}"/>-->
+	<!--							</t:template>-->
+	<!--						</t:Column>-->
+	<!--					</t:columns>-->
+	<!--				</t:Table>-->
+	<!--			</IconTabFilter>-->
+	<!--		</items>-->
+	<!--	</IconTabBar>-->
+	<!--</VBox>-->
+</core:FragmentDefinition>

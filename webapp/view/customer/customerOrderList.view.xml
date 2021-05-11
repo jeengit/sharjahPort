@@ -1,0 +1,43 @@
+<mvc:View controllerName="com.demo.sharjahPort.controller.customer.customerOrderList"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m" displayBlock="true"
+    xmlns:core="sap.ui.core"
+    xmlns:t="sap.ui.table"
+    xmlns:u="sap.ui.unified"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:html="http://www.w3.org/1999/xhtml">
+    <Page showNavButton="true" showHeader="true" class="initialPage">
+        <customHeader>
+            <core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.TopNav" type="XML"/>
+        </customHeader>
+        <content>
+            <l:Grid class="sapUiContentPadding sapUiSmallMarginTopBottom" defaultSpan="L12 M12 S12">
+                <l:content>
+                    <FlexBox alignItems="Center" justifyContent="Center">
+                        <Label text="View Orders" design="Bold" wrapping="true"/>
+                    </FlexBox>
+                    <List mode="None" items="{path: 'orderListModel>/results'}">
+                        <CustomListItem class="sapUiSmallMarginBottom" type="Active" press="onDetailPress" id="orderStatus">
+                            <HBox class="sapUiSmallMargin">
+                                <core:Icon size="2rem" src="sap-icon://attachment-photo" class="sapUiSmallMarginEnd"/>
+                                <FlexBox width="100%">
+                                    <VBox width="50%">
+                                        <Text text="{orderListModel>name}"/>
+                                        <Label text="{orderListModel>id}"/>
+                                    </VBox>
+                                    <VBox width="50%" justifyContent="Bottom" alignItems="End">
+                                        <Text text="Quantity:{orderListModel>quantity}"/>
+                                    </VBox>
+                                </FlexBox>
+                            </HBox>
+                        </CustomListItem>
+                    </List>
+                    <!-- <FlexBox justifyContent="Center" alignItems="Center" width="100%">
+                        <Button press="onNavToPress" text="Proceed" width="100%"/>
+                    </FlexBox> -->
+                </l:content>
+            </l:Grid>
+        </content>
+    </Page>
+</mvc:View>

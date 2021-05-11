@@ -1,0 +1,150 @@
+<mvc:View controllerName="com.demo.sharjahPort.controller.customer.logList" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" displayBlock="true"
+	xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:u="sap.ui.unified" xmlns:l="sap.ui.layout" xmlns:tnt="sap.tnt"
+	xmlns:f="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page showHeader="true" class="sapUiResponsiveContentPadding">
+		<customHeader>
+			<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.TopNav" type="XML"/>
+		</customHeader>
+		<content>
+			<l:Grid class="sapUiContentPadding sapUiSmallMarginTopBottom" defaultSpan="L12 M12 S12">
+				<l:content>
+					<Breadcrumbs currentLocationText="Log Sheet">
+						<Link id="dashboard" press="onHomePress" text="Home"/>
+					</Breadcrumbs>
+					<!--<HBox>-->
+					<!--	<Text text="Log Table ({etaListModel>/results/length})" class="heading"/>-->
+					<!--</HBox>-->
+					<t:Table id="table" rows="{etaListModel>/results}" selectionMode="None" visibleRowCount="10" ariaLabelledBy="title" class="card tableCard">
+						<t:extension>
+							<OverflowToolbar style="Clear">
+								<Title id="title" text="{i18n>LogSheet} ({etaListModel>/results/length})"/>
+								<ToolbarSpacer/>
+								<core:Icon src="sap-icon://sorting-ranking" tooltip="{i18n>sort}" press="sortCategoriesAndName"/>
+								<core:Icon src="sap-icon://sort" tooltip="{i18n>SortCategories}" press="sortCategories"/>
+								<core:Icon src="sap-icon://decline" tooltip="{i18n>Clearallsortings}" press="clearAllSortings"/>
+							</OverflowToolbar>
+						</t:extension>
+						<t:columns>
+							<t:Column sortProperty="LogNumber">
+								<Label text="{i18n>LogNumber}"/>
+								<t:template>
+									<Link press="onETADetailsPress" text="{etaListModel>LogNumber}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column sortProperty="PortCode" id="categories">
+								<Label text="{i18n>PortName}"/>
+								<t:template>
+									<Text text="{etaListModel>Portcode}"/>
+								</t:template>
+							</t:Column>
+							<t:Column>
+								<Label text="{i18n>Status}"/>
+								<t:template>
+									<!--						<ObjectStatus active="true" inverted="true" text="{etaListModel>Status}"-->
+									<!--						state="{= ${etaListModel>Status} === 'NEW' ? 'Information' : ${etaListModel>Status} === 'APPROVED' ? 'Success' : 'Warning' }"/>-->
+									<!--<Text text="{etaListModel>Status}" wrapping="false"/>-->
+									<tnt:InfoLabel class="sapUiTinyMarginTop" text="{etaListModel>Status}" displayOnly="true"
+										colorScheme="{= ${etaListModel>Status} === 'NEW' ? 8 : 3 }"/>
+								</t:template>
+							</t:Column>
+							<t:Column>
+								<Label text="{i18n>AgentName}"/>
+								<t:template>
+									<Text text="{etaListModel>AgentName}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column>
+								<Label text="{i18n>VesselName}"/>
+								<t:template>
+									<Text text="{etaListModel>VesselName}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column>
+								<Label text="{i18n>CustomsRefNo}"/>
+								<t:template>
+									<Text text="{etaListModel>IMONumber}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column>
+								<Label text="{i18n>ETA}"/>
+								<t:template>
+									<HBox>
+										<!--<core:Icon color="#8c8a8a" src="sap-icon://calendar" tooltip="Expected Arrival Date"/>-->
+										<Text
+											text="{ path: 'etaListModel>etaDateTime', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"
+											wrapping="false" class=" dateDisp"/>
+									</HBox>
+								</t:template>
+							</t:Column>
+							<t:Column>
+								<Label text="{i18n>ETD}"/>
+								<t:template>
+									<HBox>
+										<Text text="{ path: 'etaListModel>etdDateTime', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}} }"
+											wrapping="false" class="dateDisp"/>
+									</HBox>
+								</t:template>
+							</t:Column>
+						</t:columns>
+					</t:Table>
+					<!--	</l:content>-->
+					<!--</l:Grid>-->
+					<!--		<Table id="ProductsTable" class=" tablclass log-status" mode="MultiSelect" visibleRowCount="10" items="{path: 'etaListModel>/results'}">-->
+					<!--			<headerToolbar>-->
+					<!--				<OverflowToolbar>-->
+					<!--<Title text="ETA Table ({etaListModel>/results/length})" class="sapUiSmallMarginBottom " />-->
+					<!--					<ToolbarSpacer/>-->
+					<!--					<Button type="Emphasized" icon="sap-icon://sorting-ranking" tooltip="Sort ascending across Categories and Name"-->
+					<!--						press="sortCategoriesAndName"/>-->
+					<!--					<Button type="Emphasized" icon="sap-icon://sort" tooltip="Sort Categories in addition to current sorting" press="sortCategories"/>-->
+					<!--					<Button type="Reject" icon="sap-icon://decline" tooltip="Clear all sortings" press="clearAllSortings"/>-->
+					<!--				</OverflowToolbar>-->
+					<!--			</headerToolbar>-->
+					<!--			<infoToolbar>-->
+					<!--				<OverflowToolbar id="vsdFilterBar" visible="false">-->
+					<!--					<Text id="vsdFilterLabel"/>-->
+					<!--				</OverflowToolbar>-->
+					<!--			</infoToolbar>-->
+					<!--			<columns class="colTitleTxt">-->
+					<!--				<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Log Number" class="colTitleTxt"/></Column>-->
+					<!--				<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Port Name"/></Column>-->
+					<!--<Column minScreenWidth="Tablet" demandPopin="true"  hAlign="Center"><Text text="Agent ID" /></Column>-->
+					<!--				<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Agent Name"/></Column>-->
+					<!--				<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Vessel Name"/></Column>-->
+					<!--<Column minScreenWidth="Tablet" demandPopin="true"  hAlign="Center"><Text text="Customer Ref No" /></Column>-->
+					<!--				<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Status"/></Column>-->
+					<!--				<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="ETA"/></Column>-->
+					<!--				<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="ETD"/></Column>-->
+					<!--			</columns>-->
+					<!--			<items>-->
+					<!--				<ColumnListItem>-->
+					<!--					<cells>-->
+					<!--						<Link press="onETADetailsPress" text="{etaListModel>LogNumber}" wrapping="false"/>-->
+					<!--						<Text text="{etaListModel>PortCode}"/>-->
+					<!--<Text text="{etaListModel>AgentCode}" wrapping="false"/>-->
+					<!--						<Text text="{etaListModel>AgentName}" wrapping="false"/>-->
+					<!--						<Text text="{etaListModel>VesselName}" wrapping="false"/>-->
+					<!--<Text text="{etaListModel>IMONumber}" wrapping="false"/>-->
+					<!--						<ObjectStatus active="true" inverted="true" text="{etaListModel>Status}"-->
+					<!--							state="{= ${etaListModel>Status} === 'NEW' ? 'Information' : 'Warning' }"/>-->
+					<!--						<HBox>-->
+					<!--							<core:Icon color="#8c8a8a" src="sap-icon://calendar" tooltip="Expected Arrival Date"/>-->
+					<!--							<Text-->
+					<!--								text="{ path: 'etaListModel>etaDateTime', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"-->
+					<!--								wrapping="false" class="sapUiTinyMarginBegin dateDispA"/>-->
+					<!--						</HBox>-->
+					<!--						<HBox>-->
+					<!--							<core:Icon color="#8c8a8a" src="sap-icon://calendar" tooltip="Expected Departure Date"/>-->
+					<!--							<Text-->
+					<!--								text="{ path: 'etaListModel>etdDateTime', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"-->
+					<!--								wrapping="false" class="sapUiTinyMarginBegin dateDispD"/>-->
+					<!--						</HBox>-->
+					<!--					</cells>-->
+					<!--				</ColumnListItem>-->
+					<!--			</items>-->
+					<!--		</Table>-->
+				</l:content>
+			</l:Grid>
+		</content>
+	</Page>
+</mvc:View>

@@ -1,0 +1,195 @@
+<mvc:View controllerName="com.demo.sharjahPort.controller.customer.customerDashboard1" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	displayBlock="true" xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:u="sap.ui.unified" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page showHeader="true" class="sapUiResponsiveContentPadding harbourBoard">
+		<customHeader>
+			<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.TopNav" type="XML"/>
+		</customHeader>
+		<content>
+			<VBox class="section">
+				<Title text="{i18n>dashboard}" class="heading"/>
+				<html:div class="card">
+					<l:Grid class="sapUiSmallMarginTopBottom custTile" defaultSpan="L2 M2 S12">
+						<l:content>
+							<GenericTile ariaLabel="NEW/ETA" press="handleListPress" class="tileLayout" header="{i18n>etaReq}" subheader="{i18n>subReq}">
+								<TileContent unit="" footer="{DashboardCountModel>/0/EtaRequest}">
+									<!--<ImageContent src="sap-icon://complete" />-->
+								</TileContent>
+							</GenericTile>
+							<GenericTile ariaLabel="APPROVED/ETA" class="tileLayout" press="handleListPress" header="{i18n>etaTile}" subheader="{i18n>subApprvd}">
+								<TileContent unit="" footer="{DashboardCountModel>/0/EtaApproved}">
+									<!--<ImageContent src="sap-icon://product" />-->
+								</TileContent>
+							</GenericTile>
+							<GenericTile ariaLabel="PENDING/LOG" class="tileLayout" press="handleListPress" header="{i18n>logPending}" subheader="{i18n>subInProg}">
+								<TileContent unit="" footer="{DashboardCountModel>/0/LogsheetPending}">
+									<!--<ImageContent src="sap-icon://complete" />-->
+								</TileContent>
+							</GenericTile>
+							<GenericTile ariaLabel="CLOSED/LOG" class="tileLayout" press="handleListPress" header="{i18n>logclosed}" subheader="{i18n>agentPay}">
+								<TileContent unit="" footer="{DashboardCountModel>/0/LogsheetClosed}">
+									<!--<ImageContent src="sap-icon://product" />-->
+								</TileContent>
+							</GenericTile>
+							<GenericTile class="tileLayout" header="{i18n>serReq}" subheader="{i18n>subServ}">
+								<TileContent unit="" footer="{DashboardCountModel>/0/ServiceRequest}">
+									<!--<ImageContent src="sap-icon://complete" />-->
+								</TileContent>
+							</GenericTile>
+							<GenericTile  class="tileLayout" header="{i18n>serApprov}" subheader="{i18n>subServ}">
+								<TileContent unit="" footer="{DashboardCountModel>/0/ServiceApproved}">
+									<!--<ImageContent src="sap-icon://complete" />-->
+								</TileContent>
+							</GenericTile>
+						</l:content>
+					</l:Grid>
+				</html:div>
+			</VBox>
+			<!--<FlexBox class="section tabs" width="100%">-->
+			<!--	<HBox class="harbourList" width="20%">-->
+			<!--		<List headerText="ETA" mode="None"-->
+			<!--			items="{path: 'berthModel>/results',filters:[{path:'status',operator:'EQ',value1:'ETA'}]}">-->
+			<!--			<CustomListItem>-->
+			<!--				<FlexBox alignItems="Center">-->
+			<!--					<HBox justifyContent="Center" class="boxLeft" width="25%"><Text text="{berthModel>count}"/></HBox>-->
+			<!--					<HBox direction="Column" width="65%" class="sapUiTinyMargin">-->
+			<!--						<Text class="title" text="{berthModel>title}"/>-->
+			<!--						<Label class="desc" text="{berthModel>desc}"/>-->
+			<!--					</HBox>-->
+			<!--					<HBox class="sapUiTinyMarginEnd" justifyContent="End" width="10%"><core:Icon src="sap-icon://circle-task-2" color="{= ${berthModel>status} === 'completed' ? 'green' : 'red' }"/></HBox>-->
+			<!--				</FlexBox>-->
+			<!--			</CustomListItem>-->
+			<!--		</List>-->
+			<!--	</HBox>-->
+			<!--	<HBox class="harbourList" width="20%">-->
+			<!--		<List headerText="ANCHORAGE" mode="None"-->
+			<!--			items="{path: 'berthModel>/results',filters:[{path:'status',operator:'EQ',value1:'anchorage'}]}">-->
+			<!--			<CustomListItem>-->
+			<!--				<FlexBox alignItems="Center">-->
+			<!--					<HBox justifyContent="Center" class="boxLeft" width="25%"><Text text="{berthModel>count}"/></HBox>-->
+			<!--					<HBox direction="Column" width="65%" class="sapUiTinyMargin">-->
+			<!--						<Text class="title" text="{berthModel>title}"/>-->
+			<!--						<Label class="desc" text="{berthModel>desc}"/>-->
+			<!--					</HBox>-->
+			<!--					<HBox class="sapUiTinyMarginEnd" justifyContent="End" width="10%"><core:Icon src="sap-icon://circle-task-2" color="{= ${berthModel>status} === 'completed' ? 'green' : 'red' }"/></HBox>-->
+			<!--				</FlexBox>-->
+			<!--			</CustomListItem>-->
+			<!--		</List>-->
+			<!--	</HBox>-->
+			<!--	<HBox class="harbourList" width="20%">-->
+			<!--		<List headerText="PILOT &amp; TUG" mode="None"-->
+			<!--			items="{path: 'berthModel>/results',filters:[{path:'status',operator:'EQ',value1:'pilotTug'}]}">-->
+			<!--			<CustomListItem>-->
+			<!--				<FlexBox alignItems="Center">-->
+			<!--					<HBox justifyContent="Center" class="boxLeft" width="25%"><Text text="{berthModel>count}"/></HBox>-->
+			<!--					<HBox direction="Column" width="65%" class="sapUiTinyMargin">-->
+			<!--						<Text class="title" text="{berthModel>title}"/>-->
+			<!--						<Label class="desc" text="{berthModel>desc}"/>-->
+			<!--					</HBox>-->
+			<!--					<HBox class="sapUiTinyMarginEnd" justifyContent="End" width="10%"><core:Icon src="sap-icon://circle-task-2" color="{= ${berthModel>status} === 'completed' ? 'green' : 'red' }"/></HBox>-->
+			<!--				</FlexBox>-->
+			<!--			</CustomListItem>-->
+			<!--		</List>-->
+			<!--	</HBox>-->
+			<!--	<HBox class="harbourList" width="20%">-->
+			<!--		<List headerText="BERTHING" mode="None"-->
+			<!--			items="{path: 'berthModel>/results',filters:[{path:'status',operator:'EQ',value1:'berthing'}]}">-->
+			<!--			<CustomListItem>-->
+			<!--				<FlexBox alignItems="Center">-->
+			<!--					<HBox justifyContent="Center" class="boxLeft" width="25%"><Text text="{berthModel>count}"/></HBox>-->
+			<!--					<HBox direction="Column" width="65%" class="sapUiTinyMargin">-->
+			<!--						<Text class="title" text="{berthModel>title}"/>-->
+			<!--						<Label class="desc" text="{berthModel>desc}"/>-->
+			<!--					</HBox>-->
+			<!--					<HBox class="sapUiTinyMarginEnd" justifyContent="End" width="10%"><core:Icon src="sap-icon://circle-task-2" color="{= ${berthModel>status} === 'completed' ? 'green' : 'red' }"/></HBox>-->
+			<!--				</FlexBox>-->
+			<!--			</CustomListItem>-->
+			<!--		</List>-->
+			<!--	</HBox>-->
+			<!--	<HBox class="harbourList" width="20%">-->
+			<!--		<List headerText="DEPARTURE" mode="None"-->
+			<!--			items="{path: 'berthModel>/results',filters:[{path:'status',operator:'EQ',value1:'departure'}]}">-->
+			<!--			<CustomListItem>-->
+			<!--				<FlexBox alignItems="Center">-->
+			<!--					<HBox justifyContent="Center" class="boxLeft" width="25%"><Text text="{berthModel>count}"/></HBox>-->
+			<!--					<HBox direction="Column" width="65%" class="sapUiTinyMargin">-->
+			<!--						<Text class="title" text="{berthModel>title}"/>-->
+			<!--						<Label class="desc" text="{berthModel>desc}"/>-->
+			<!--					</HBox>-->
+			<!--					<HBox class="sapUiTinyMarginEnd" justifyContent="End" width="10%"><core:Icon src="sap-icon://circle-task-2" color="{= ${berthModel>status} === 'completed' ? 'green' : 'red' }"/></HBox>-->
+			<!--				</FlexBox>-->
+			<!--			</CustomListItem>-->
+			<!--		</List>-->
+			<!--	</HBox>-->
+			<!--</FlexBox>-->
+			<!--<VBox class="section sapUiSmallMarginTopBottom">-->
+			<!--	<FlexBox width="100%">-->
+			<!--		<HBox width="20%">-->
+			<!--			<FlexBox width="100%" class="sapUiSmallMarginEnd card tableCard">-->
+			<!--				<Title class="sapUiSmallMarginTopBottom" text="VESSELS"/>-->
+			<!--				</FlexBox>-->
+			<!--		</HBox>-->
+			<!--		<HBox width="20%">-->
+			<!--		<FlexBox width="100%" class="sapUiSmallMarginEnd card tableCard">-->
+			<!--				<Title text="BERTH AVAILABILITY"/>-->
+			<!--				</FlexBox>-->
+			<!--			</HBox>-->
+			<!--		<HBox width="25%">-->
+			<!--			<t:Table class="sapUiSmallMarginEnd card tableCard" rows="{pilotTugTable>/results}" selectionMode="None" visibleRowCount="3" paste="onPaste"-->
+			<!--				ariaLabelledBy="title">-->
+			<!--				<t:extension>-->
+			<!--					<OverflowToolbar style="Clear">-->
+			<!--						<Title text="PILOT &amp; TUGS"/>-->
+			<!--					</OverflowToolbar>-->
+			<!--				</t:extension>-->
+			<!--				<t:columns>-->
+			<!--					<t:Column>-->
+			<!--						<Label text="Vessel"/>-->
+			<!--						<t:template>-->
+			<!--							<Text text="{pilotTugTable>vessel}" wrapping="false"/>-->
+			<!--						</t:template>-->
+			<!--					</t:Column>-->
+			<!--					<t:Column>-->
+			<!--						<Label text="Status"/>-->
+			<!--						<t:template>-->
+			<!--							<Text text="{pilotTugTable>status}" wrapping="false"/>-->
+			<!--						</t:template>-->
+			<!--					</t:Column>-->
+			<!--				</t:columns>-->
+			<!--			</t:Table>-->
+			<!--		</HBox>-->
+			<!--		<HBox width="35%">-->
+			<!--			<t:Table class="card tableCard" rows="{pendReqTable>/results}" selectionMode="None" visibleRowCount="3" paste="onPaste"-->
+			<!--				ariaLabelledBy="title">-->
+			<!--				<t:extension>-->
+			<!--					<OverflowToolbar style="Clear">-->
+			<!--						<Title text="PENDING REQUESTS"/>-->
+			<!--					</OverflowToolbar>-->
+			<!--				</t:extension>-->
+			<!--				<t:columns>-->
+			<!--					<t:Column>-->
+			<!--						<Label text="Vessel"/>-->
+			<!--						<t:template>-->
+			<!--							<Text text="{pendReqTable>vessel}" wrapping="false"/>-->
+			<!--						</t:template>-->
+			<!--					</t:Column>-->
+			<!--					<t:Column>-->
+			<!--						<Label text="Agent"/>-->
+			<!--						<t:template>-->
+			<!--							<Text text="{pendReqTable>agent}" wrapping="false"/>-->
+			<!--						</t:template>-->
+			<!--					</t:Column>-->
+			<!--					<t:Column>-->
+			<!--						<Label text="Request Type"/>-->
+			<!--						<t:template>-->
+			<!--							<Text text="{pendReqTable>status}" wrapping="false"/>-->
+			<!--						</t:template>-->
+			<!--					</t:Column>-->
+			<!--				</t:columns>-->
+			<!--			</t:Table>-->
+			<!--		</HBox>-->
+			<!--	</FlexBox>-->
+			<!--</VBox>-->
+		</content>
+	</Page>
+</mvc:View>

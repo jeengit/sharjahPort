@@ -1,0 +1,69 @@
+<mvc:View xmlns:m="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core">
+	<m:FlexBox wrap="Wrap">
+		<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+			<m:Text class="title sapUiTinyMarginBottom" text="{i18n>BasicDetails}"/>
+			<m:VBox>
+				<m:HBox class="sapUiTinyMarginBottom">
+					<m:Label text="{i18n>AnchorageDate}" class="sapUiSmallMarginEnd"/>
+					<m:Text
+						text="{ path: 'vesMovModel>/Anch_Date', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"
+						wrapping="false"/>
+				</m:HBox>
+				<m:HBox class="sapUiTinyMarginBottom">
+					<m:Label text="{i18n>BerthNo}" class="sapUiSmallMarginEnd"/>
+					<m:Text text="{vesMovModel>/Anch_BerthNumber}"/>
+				</m:HBox>
+				<m:HBox class="sapUiTinyMarginBottom">
+					<m:Label text="{i18n>AnchorageTime}" class="sapUiSmallMarginEnd"/>
+					<m:Text text="{vesMovModel>/Anch_Time}"/>
+				</m:HBox>
+				<m:HBox>
+					<m:Label text="{i18n>BerthRemark}" class="sapUiSmallMarginEnd"/>
+					<m:Text text="{vesMovModel>/Anch_BerthRemark}"/>
+				</m:HBox>
+			</m:VBox>
+		</layout:VerticalLayout>
+		<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+			<m:Text class="title sapUiTinyMarginBottom" text="{i18n>PilotDetails}"/>
+			<m:VBox>
+				<m:HBox class="sapUiTinyMarginBottom">
+					<m:Label text="{i18n>Pilot}" class="sapUiSmallMarginEnd"/>
+					<m:Text text="{vesMovModel>/Anch_PilotName}"/>
+				</m:HBox>
+				<m:HBox>
+					<m:Label text="{i18n>Remark}" class="sapUiSmallMarginEnd"/>
+					<m:Text text="{vesMovModel>/Anch_PilotRemark}"/>
+				</m:HBox>
+			</m:VBox>
+		</layout:VerticalLayout>
+		<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+				<m:Text class="title sapUiTinyMarginBottom" text="{i18n>TugDetails}"/>
+			<m:VBox>
+				<m:HBox class="sapUiTinyMarginBottom">
+					<m:Label text="{i18n>Name}" class="sapUiSmallMarginEnd"/>
+					<m:Text text="{vesMovModel>/Anch_TugName}"/>
+				</m:HBox>
+				<m:HBox class="sapUiTinyMarginBottom">
+					<m:Label text="{i18n>NoTugs}" class="sapUiSmallMarginEnd"/>
+					<m:Text text="{vesMovModel>/Anch_NumberofTugs}"/>
+				</m:HBox>
+				<m:HBox class="sapUiTinyMarginBottom">
+					<m:Label text="{i18n>Remark}" class="sapUiSmallMarginEnd"/>
+					<m:Text text="{vesMovModel>/Anch_TugRemark}"/>
+				</m:HBox>
+				<m:HBox class="sapUiTinyMarginBottom">
+					<m:Label text="{i18n>StartTime}" class="sapUiSmallMarginEnd"/>
+					<m:Text
+						text="{ path: 'vesMovModel>/Anch_stime', type: 'sap.ui.model.type.DateTime', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"
+						wrapping="false"/>
+				</m:HBox>
+				<m:HBox>
+					<m:Label text="{i18n>EndTime}" class="sapUiSmallMarginEnd"/>
+					<m:Text
+						text="{ path: 'vesMovModel>/Anch_etime', type: 'sap.ui.model.type.DateTime', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"
+						wrapping="false"/>
+				</m:HBox>
+			</m:VBox>
+		</layout:VerticalLayout>
+	</m:FlexBox>
+</mvc:View>

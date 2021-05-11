@@ -1,0 +1,33 @@
+<mvc:View controllerName="com.demo.sharjahPort.controller.customer.LogsheetDetails" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	displayBlock="true" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page id="page" showHeader="true" class="sapUiResponsiveContentPadding">
+		<customHeader>
+			<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.TopNav" type="XML"/>
+		</customHeader>
+		<content>
+			<!--	<Breadcrumbs currentLocationText="{vesMovModel>/LogSheetNo}">-->
+			<!--		<Link id="dashboard" press="onHomePress" text="Home"/>-->
+			<!--		<Link id="orders" press="onNavToPress" text="ETA Logs"/>-->
+			<!--	</Breadcrumbs>-->
+				<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.vesselMovChange" type="XML"/>
+				<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.vesselMovDisplay" type="XML"/>
+		</content>
+		<footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button id="approveBtn" type="Accept" text="Approve" press="handleChangePress" visible="false">
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+				</Button>
+				<Button id="cancelBtn" type="Reject" text="Cancel" visible="false" press="handleChangePress">
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+				</Button>
+				<Button id="saveBtn" type="Emphasized" text="Save" visible="false" press="handleChangePress">
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+				</Button>
+				<Button id="editBtn" type="Emphasized" text="Edit" press="handleChangePress">
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+				</Button>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</mvc:View>

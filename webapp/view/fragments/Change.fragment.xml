@@ -1,0 +1,147 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<VBox class="sapUiSmallMargin" id="etaChange">
+		<!--<Breadcrumbs currentLocationText="{etaDetailsModel>/ETANumber}">-->
+		<!--	<Link id="dashboard" press="onHomePress" text="Home"/>-->
+		<!--	<Link id="products" press="onNavToPress" text="ETA List"/>-->
+		<!--</Breadcrumbs>-->
+		<VBox class="card tabs">
+			<IconTabBar id="idIconTabBarNoIcons1" expandable="false" expanded="{device>/isNoPhone}"
+				class="etaDetailsTab sapUiResponsiveContentPadding tab">
+				<items>
+					<IconTabFilter text="{i18n>VesselDetails}" key="info">
+						<f:SimpleForm id="SimpleFormDisplay480_Trial1" editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+							labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
+							singleContainerFullSize="false">
+							<f:content>
+								<core:Title text=""/>
+								<Label text="{i18n>Agentcode}"/>
+								<Input editable="false" value="{agentModel>/results/0/ImAgentCode}" id="AgentCode" placeholder="Agent code"/>
+								<Label text="{i18n>AgentName}"/>
+								<Input editable="false" id="agentName" value="{agentModel>/results/0/AgentNmae}"/>
+								<!--<Label text="VRN"/>-->
+								<!--<Input value="{etaDetailsModel>/VRN}"/>-->
+								<Label text="{i18n>VesselName}"/>
+								<Input id="vesselId" editable="false" value="{etaDetailsModel>/VesselName}"/>
+								<Label text="{i18n>Linecode}"/>
+								<Input id="lineId" editable="false" value="{etaDetailsModel>/LineCode}"/>
+								<Label text="{i18n>Vesselnature}"/>
+								<ComboBox placeholder="{i18n>select}" selectedKey="{etaDetailsModel>/VesselNature}" width="100%" items="">
+									<core:Item key="CARGO" text="CARGO"/>
+									<core:Item key="OTHERS" text="OTHERS"/>
+									<core:Item key="PASSENGER" text="PASSENGER"/>
+								</ComboBox>
+								<!--<Label text="Voyage no"/>-->
+								<!--<Input value="{etaDetailsModel>/VoyageNo}"/>-->
+								<Label text="{i18n>Purposeofvisit}"/>
+								<ComboBox placeholder="{i18n>select}" selectedKey="{etaDetailsModel>/VisitPurpose}" width="100%" items="">
+									<core:Item key="LOADING" text="LOADING"/>
+									<core:Item key="UNLOADING" text="UNLOADING"/>
+									<core:Item key="BOTH" text="BOTH"/>
+									<core:Item key="REFUEL" text="REFUEL"/>
+								</ComboBox>
+								<!--<Label text="Custom ref no"/>-->
+								<!--<Input value="{etaDetailsModel>/CustomsRefNo}"/>-->
+								<Label text="{i18n>Generalremark}"/>
+								<Input value="{etaDetailsModel>/GenRemark}"/>
+								<core:Title text=""/>
+								<Label text="{i18n>Port}"/>
+								<ComboBox placeholder="{i18n>select}" selectedKey="{etaDetailsModel>/Port}" items="{path: 'portListModel>/results'}">
+									<core:Item key="{portListModel>PortName}" text="{portListModel>PortName}"/>
+								</ComboBox>
+								<Label text="{i18n>Callsign}"/>
+								<ComboBox placeholder="{i18n>select}" selectedKey="{etaDetailsModel>/CallSign}" items="{path: 'agentVesselModel>/results'}" change="handleAgentPress">
+									<core:Item key="{agentVesselModel>CallSign}" text="{agentVesselModel>CallSign}"/>
+								</ComboBox>
+								<Label text="{i18n>GRT}"/>
+								<Input id="grtId" editable="false" value="{etaDetailsModel>/GRT}"/>
+								<Label text="{i18n>VoyageNature}"/>
+								<ComboBox selectedKey="{etaDetailsModel>/VoyageNature}" width="100%" items="" placeholder="{i18n>select}">
+									<core:Item key="CARGO" text="CARGO"/>
+									<core:Item key="OTHERS" text="OTHERS"/>
+									<core:Item key="PASSENGER" text="PASSENGER"/>
+								</ComboBox>
+								<Label text="{i18n>PreferredBerth}"/>
+								<ComboBox selectedKey="{etaDetailsModel>/PreferedBerth}" width="100%" items="{path: 'vesMovBertModel>/results'}" placeholder="{i18n>select}">
+									<core:Item key="{vesMovBertModel>BerthNumber}" text="{vesMovBertModel>BerthNumber}"/>
+								</ComboBox>
+								<!--<Label text="Voyage Type"/>-->
+								<!--<Input value="{etaDetailsModel>/VoyageType}"/>-->
+								<Label text="{i18n>IMOnumber}"/>
+								<Input id="imoId" editable="false" value="{etaDetailsModel>/ImoNo}"/>
+							</f:content>
+						</f:SimpleForm>
+					</IconTabFilter>
+					<IconTabFilter text="{i18n>ETAPorDetails}" key="attachments">
+						<f:SimpleForm singleContainerFullSize="false">
+							<f:content>
+								<core:Title text=""/>
+								<Label text="{i18n>ExpectedArrival}"/>
+								<DatePicker id="depDateArrival" value="{etaDetailsModel>/ExpArrivalDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+								<Label text="{i18n>ExpectedDeparture}"/>
+								<DatePicker name="depDateArrival" change="handleChangeSelect" editable="true" value="{etaDetailsModel>/ExpDepartureDate}"
+									valueFormat="yyyyMMdd" displayFormat="long"/>
+								<Label text="{i18n>ExpectedArrivalTime}"/>
+								<TimePicker id="depTimeArrival" editable="true" value="{etaDetailsModel>/ExpArrivalTime}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss"
+									placeholder="{i18n>ExpectedArrivalTime}"/>
+								<Label text="{i18n>ExpectedDepartureTime}"/>
+								<TimePicker name="depTimeArrival" change="handleChangeSelect" editable="true" value="{etaDetailsModel>/ExpDepartureTime}"
+									valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" placeholder="{i18n>ExpectedDepartureTime}"/>
+								<core:Title text=""/>
+								<Label text="{i18n>LastPort}"/>
+								<!--<Input value="{etaDetailsModel>/LastPort}"/>-->
+									<ComboBox placeholder="{i18n>select}" selectedKey="{etaDetailsModel>/LastPort}" width="100%" items="">
+									<core:Item key="DUBAI" text="DUBAI"/>
+									<core:Item key="MUMBAI" text="MUMBAI"/>
+									<core:Item key="SHANGHAI" text="SHANGHAI"/>
+									<core:Item key="SINGAPORE" text="SINGAPORE"/>
+								</ComboBox>
+								<Label text="{i18n>NextPort}"/>
+								<!--<Input value="{etaDetailsModel>/NextPort}"/>-->
+									<ComboBox placeholder="{i18n>select}" selectedKey="{etaDetailsModel>/NextPort}" width="100%" items="">
+									<core:Item key="DUBAI" text="DUBAI"/>
+									<core:Item key="MUMBAI" text="MUMBAI"/>
+									<core:Item key="SHANGHAI" text="SHANGHAI"/>
+									<core:Item key="SINGAPORE" text="SINGAPORE"/>
+								</ComboBox>
+								<Label text="{i18n>ArrivalDraft}"/>
+								<Input value="{etaDetailsModel>/ArrivalDraft}"/>
+							</f:content>
+						</f:SimpleForm>
+					</IconTabFilter>
+					<IconTabFilter text="{i18n>DischargeDetails}" key="attachments">
+						<f:SimpleForm singleContainerFullSize="false">
+							<f:content>
+								<core:Title text=""/>
+								<Label text="{i18n>cargoDis}"/>
+								<ComboBox selectedKey="{etaDetailsModel>/CargoDischarge}" width="100%" items="" placeholder="{i18n>select}">
+									<core:Item key="Ro-ro" text="Ro-ro"/>
+									<core:Item key="Breakbulk" text="Breakbulk"/>
+									<core:Item key="Dry bulk" text="Dry bulk"/>
+									<core:Item key="Liquid bulk" text="Liquid bulk"/>
+									<core:Item key="Container" text="Container"/>
+								</ComboBox>
+								<Label text="{i18n>NoContainer}"/>
+								<Input value="{etaDetailsModel>/NoOfContainerD}"/>
+								<Label text="{i18n>CargoWeight}"/>
+								<Input value="{etaDetailsModel>/CargoWeightD}"/>
+								<core:Title text=""/>
+								<Label text="{i18n>CargoLoaded}"/>
+								<ComboBox selectedKey="{etaDetailsModel>/CargoLoaded}" width="100%" items="" placeholder="{i18n>select}">
+									<core:Item key="Ro-ro" text="Ro-ro"/>
+									<core:Item key="Breakbulk" text="Breakbulk"/>
+									<core:Item key="Dry bulk" text="Dry bulk"/>
+									<core:Item key="Liquid bulk" text="Liquid bulk"/>
+									<core:Item key="Container" text="Container"/>
+								</ComboBox>
+								<Label text="{i18n>NoContainer}"/>
+								<Input value="{etaDetailsModel>/NoOfContainerL}"/>
+								<Label text="{i18n>CargoWeight}"/>
+								<Input value="{etaDetailsModel>/CargoWeightL}"/>
+								</f:content>
+						</f:SimpleForm>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</VBox>
+	</VBox>
+</core:FragmentDefinition>

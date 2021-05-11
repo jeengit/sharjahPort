@@ -1,0 +1,9 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Popover showHeader="false" class="sapUiResponsivePadding--header sapUiResponsivePadding--footer" placement="Bottom" initialFocus="email">
+		<footer>
+			<FlexBox alignItems="Center" justifyContent="Center">
+				<Link class="sapUiTinyMarginTopBottom" width="100%" text="Logout" press="handleLogOut"/>
+			</FlexBox>
+		</footer>
+	</Popover>
+</core:FragmentDefinition>

@@ -1,0 +1,33 @@
+<mvc:View xmlns:m="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:layout="sap.ui.layout">
+	<m:FlexBox wrap="Wrap">
+		<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+			<m:Text class="title sapUiTinyMarginBottom" text="{i18n>BasicDetails}"/>
+			<m:VBox>
+				<m:HBox class="sapUiTinyMarginBottom">
+					<m:Label text="{i18n>ExpectedArrivalDate}" class="sapUiSmallMarginEnd"/>
+					<m:Text
+						text="{ path: 'vesMovModel>/ExpectedArrivalDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"
+						wrapping="false"/>
+				</m:HBox>
+				<m:HBox>
+					<m:Label text="{i18n>ExpectedDepartureDate}" class="sapUiSmallMarginEnd"/>
+					<m:Text
+						text="{ path: 'vesMovModel>/ExpectedDepartureDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"
+						wrapping="false"/>
+				</m:HBox>
+			</m:VBox>
+		</layout:VerticalLayout>
+		<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+			<m:VBox>
+				<m:HBox class="sapUiSmallMarginTop">
+					<m:Label text="{i18n>ExpectedArrivalTime}" class="sapUiSmallMarginEnd sapUiTinyMarginTop"/>
+					<m:Text text="{vesMovModel>/ExpectedArrivalTime}" class="sapUiTinyMarginTop"/>
+				</m:HBox>
+				<m:HBox class="sapUiTinyMarginTop">
+					<m:Label text="{i18n>ExpectedDepartureTime}" class="sapUiSmallMarginEnd"/>
+					<m:Text text="{vesMovModel>/ExpectedDepartureTime}" class=""/>
+				</m:HBox>
+			</m:VBox>
+		</layout:VerticalLayout>
+	</m:FlexBox>
+</mvc:View>

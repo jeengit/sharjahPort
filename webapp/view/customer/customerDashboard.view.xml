@@ -1,0 +1,157 @@
+<mvc:View controllerName="com.demo.sharjahPort.controller.customer.customerDashboard" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	displayBlock="true" xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:u="sap.ui.unified" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page showHeader="true" class="sapUiResponsiveContentPadding">
+		<customHeader>
+			<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.TopNav" type="XML"/>
+		</customHeader>
+		<content>
+			<VBox class="section">
+				<Title text="Dashboard" class="heading"/>
+				<html:div class="card">
+					<l:Grid class="sapUiSmallMarginTopBottom custTile" defaultSpan="L2 M2 S12">
+						<l:content>
+							<GenericTile ariaLabel="APPROVED/ETA" press="handleListPress" class="tileLayout" header="{i18n>etaTile}" subheader="{i18n>subApprvd}">
+								<TileContent unit="" footer="{DashboardCountModel>/0/EtaApproved}">
+									<!--<ImageContent src="sap-icon://complete" />-->
+								</TileContent>
+							</GenericTile>
+							<GenericTile ariaLabel="NEW/ETA" press="handleListPress" class="tileLayout" header="{i18n>etaReq}" subheader="{i18n>subReq}">
+								<TileContent unit="" footer="{DashboardCountModel>/0/EtaRequest}">
+									<!--<ImageContent src="sap-icon://product" />-->
+								</TileContent>
+							</GenericTile>
+							<GenericTile ariaLabel="PENDING/LOG" press="handleListPress" class="tileLayout" header="{i18n>logPending}" subheader="{i18n>subInProg}">
+								<TileContent unit="" footer="{DashboardCountModel>/0/LogsheetPending}">
+									<!--<ImageContent src="sap-icon://complete" />-->
+								</TileContent>
+							</GenericTile>
+							<GenericTile ariaLabel="CLOSED/LOG" press="handleListPress" class="tileLayout" header="{i18n>logclosed}" subheader="{i18n>agentPay}">
+								<TileContent unit="" footer="{DashboardCountModel>/0/LogsheetClosed}">
+									<!--<ImageContent src="sap-icon://product" />-->
+								</TileContent>
+							</GenericTile>
+							<GenericTile  class="tileLayout" header="{i18n>PortClearance}" subheader="{i18n>subPcReq}">
+								<TileContent unit="" footer="{DashboardCountModel>/0/PortClearance}">
+									<!--<ImageContent src="sap-icon://complete" />-->
+								</TileContent>
+							</GenericTile>
+						</l:content>
+					</l:Grid>
+				</html:div>
+			</VBox>
+			<VBox class="section">
+				<html:div>
+					<IconTabBar select="handleTabPress" expandable="false" class="tabs">
+						<items>
+							<IconTabFilter text="{i18n>bertOver}" key="info">
+								<List class="cardList" headerText="{i18n>bertOver}" mode="None" items="{path: 'berthModel>/results'}">
+									<CustomListItem>
+										<FlexBox alignItems="Center">
+											<HBox justifyContent="Center" class="boxLeft" width="20%"><Text text="{berthModel>count}"/></HBox>
+											<HBox direction="Column" width="70%" class="sapUiTinyMargin">
+												<Text class="title" text="{berthModel>title}"/>
+												<Label class="desc" text="{berthModel>desc}"/>
+											</HBox>
+											<HBox class="sapUiTinyMarginEnd" justifyContent="End" width="10%"><core:Icon src="sap-icon://circle-task-2" color="{= ${berthModel>status} === 'completed' ? 'green' : 'red' }"/></HBox>
+										</FlexBox>
+									</CustomListItem>
+								</List>
+							</IconTabFilter>
+						<IconTabFilter text="{i18n>mapView}" key="map">
+								<FlexBox width="100%" height="390px">
+									<HBox width="100%" height="390px" id="map_canvas" fitContainer="true" justifyContent="Center" alignItems="Center" />
+								</FlexBox>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</html:div>
+			</VBox>
+			<!--<VBox class="section">-->
+			<!--<FlexBox width="100%">-->
+			<!--<HBox width="20%">-->
+			<!--<t:Table class="sapUiSmallMarginEnd card tableCard" rows="{etaTable>/results}" selectionMode="None" visibleRowCount="3" paste="onPaste" ariaLabelledBy="title">-->
+			<!--		<t:extension>-->
+			<!--			<OverflowToolbar style="Clear">-->
+			<!--				<Title text="ETA"/>-->
+			<!--			</OverflowToolbar>-->
+			<!--		</t:extension>-->
+			<!--		<t:columns>-->
+			<!--			<t:Column width="9rem">-->
+			<!--				<Label text="Ship"/>-->
+			<!--				<t:template>-->
+			<!--					<Text text="{etaTable>ship}" wrapping="false"/>-->
+			<!--				</t:template>-->
+			<!--			</t:Column>-->
+			<!--			<t:Column>-->
+			<!--				<Label text="Time"/>-->
+			<!--				<t:template>-->
+			<!--					<Text text="{etaTable>time}" wrapping="false"/>-->
+			<!--				</t:template>-->
+			<!--			</t:Column>-->
+			<!--		</t:columns>-->
+			<!--	</t:Table>-->
+			<!--</HBox>-->
+			<!--<HBox width="40%">-->
+			<!--	<t:Table class="sapUiSmallMarginEnd card tableCard" rows="{anchorTable>/results}" selectionMode="None" visibleRowCount="3" paste="onPaste" ariaLabelledBy="title">-->
+			<!--		<t:extension>-->
+			<!--			<OverflowToolbar style="Clear">-->
+			<!--				<Title text="ANCHORAGE"/>-->
+			<!--			</OverflowToolbar>-->
+			<!--		</t:extension>-->
+			<!--		<t:columns>-->
+			<!--			<t:Column>-->
+			<!--				<Label text="Vessel"/>-->
+			<!--				<t:template>-->
+			<!--					<Text text="{anchorTable>ship}" wrapping="false"/>-->
+			<!--				</t:template>-->
+			<!--			</t:Column>-->
+			<!--			<t:Column>-->
+			<!--				<Label text="Agent"/>-->
+			<!--				<t:template>-->
+			<!--					<Text text="{anchorTable>agent}" wrapping="false"/>-->
+			<!--				</t:template>-->
+			<!--			</t:Column>-->
+			<!--			<t:Column>-->
+			<!--				<Label text="Status"/>-->
+			<!--				<t:template>-->
+			<!--					<Text text="{anchorTable>status}" wrapping="false"/>-->
+			<!--				</t:template>-->
+			<!--			</t:Column>-->
+			<!--		</t:columns>-->
+			<!--	</t:Table>-->
+			<!--	</HBox>-->
+			<!--	<HBox width="40%">-->
+			<!--	<t:Table class="card tableCard" rows="{harbourTable>/results}" selectionMode="None" visibleRowCount="3" paste="onPaste" ariaLabelledBy="title">-->
+			<!--		<t:extension>-->
+			<!--			<OverflowToolbar style="Clear">-->
+			<!--				<Title text="HARBOUR MASTER"/>-->
+			<!--			</OverflowToolbar>-->
+			<!--		</t:extension>-->
+			<!--		<t:columns>-->
+			<!--			<t:Column>-->
+			<!--				<Label text="Vessel"/>-->
+			<!--				<t:template>-->
+			<!--					<Text text="{harbourTable>ship}" wrapping="false"/>-->
+			<!--				</t:template>-->
+			<!--			</t:Column>-->
+			<!--			<t:Column>-->
+			<!--				<Label text="Berth Allotted"/>-->
+			<!--				<t:template>-->
+			<!--					<Text text="{harbourTable>berth}" wrapping="false"/>-->
+			<!--				</t:template>-->
+			<!--			</t:Column>-->
+			<!--			<t:Column>-->
+			<!--				<Label text="Instructions"/>-->
+			<!--				<t:template>-->
+			<!--					<Text text="{harbourTable>status}" wrapping="false"/>-->
+			<!--				</t:template>-->
+			<!--			</t:Column>-->
+			<!--		</t:columns>-->
+			<!--	</t:Table>-->
+			<!--	</HBox>-->
+			<!--</FlexBox>-->
+			<!--</VBox>-->
+		</content>
+	</Page>
+</mvc:View>

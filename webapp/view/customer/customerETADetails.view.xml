@@ -1,0 +1,32 @@
+<mvc:View controllerName="com.demo.sharjahPort.controller.customer.customerETADetails"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m" displayBlock="true"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:html="http://www.w3.org/1999/xhtml">
+    <Page id="page" showHeader="true" class="sapUiResponsiveContentPadding">
+        <customHeader>
+            <core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.TopNav" type="XML"/>
+        </customHeader>
+        <content>
+        	<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.Display" type="XML"/>
+        		<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.Change" type="XML"/>
+        </content>
+        <footer>
+			<OverflowToolbar id="otbFooter">
+				<ToolbarSpacer/>
+				<Button press="handleAcceptRejectPress" type="Accept" visible="{=  ${loginModel>/uRole} ===  'HARBOR_MASTER' &amp;&amp; ${etaDetailsModel>/ZStatus} !== 'APPROVED' ? true : false }" text="{i18n>Approve}">
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow" /></layoutData>
+				</Button>
+				<Button press="handleAcceptRejectPress" type="Reject" visible="{= ${loginModel>/uRole} ===  'HARBOR_MASTER' &amp;&amp; ${etaDetailsModel>/ZStatus} !== 'APPROVED' ? true : false }" text="{i18n>Reject}">
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow" /></layoutData>
+				</Button>
+					<Button press="handleCreateETAForAgent" type="Emphasized" visible="{= ${loginModel>/uRole} === 'AGENT' &amp;&amp; ${etaDetailsModel>/Status} === '' ? true : false }"  text="{i18n>CreateETA}">
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow" /></layoutData>
+				</Button>
+				<Button type="Emphasized" tooltip="Log Sheet" visible="{= ${loginModel>/uRole} !== 'AGENT'  &amp;&amp; ${etaDetailsModel>/ZStatus} === 'APPROVED' ? true : false }" press="gotoLog" text="{i18n>CreateLogSheet}">
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow" /></layoutData>
+				</Button></OverflowToolbar>
+		</footer>
+    </Page>
+</mvc:View>

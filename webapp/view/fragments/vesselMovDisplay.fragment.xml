@@ -1,4 +1,4 @@
-<core:FragmentDefinition xmlns:blockcolor="com.demo.sharjahPort.SharedBlocks" xmlns:t="sap.ui.table" xmlns="sap.uxap" xmlns:m="sap.m"
+<core:FragmentDefinition xmlns:blockcolor="com.demo.sharjahPort.view.fragments.logDetails" xmlns:t="sap.ui.table" xmlns="sap.uxap" xmlns:m="sap.m"
 	xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core">
 	<ObjectPageLayout upperCaseAnchorBar="false" id="vesMovDispId" class="objLayoutClass">
 		<headerTitle>
@@ -120,7 +120,7 @@
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
-							<blockcolor:BlockBlueT1/>
+							<blockcolor:T1Arrival/>
 						</blocks>
 					</ObjectPageSubSection>
 				</subSections>
@@ -129,7 +129,7 @@
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
-							<blockcolor:BlockBlueT2/>
+							<blockcolor:T2Anchorage/>
 						</blocks>
 					</ObjectPageSubSection>
 				</subSections>
@@ -138,7 +138,7 @@
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
-							<blockcolor:BlockBlueT3/>
+							<blockcolor:T3Berthing/>
 						</blocks>
 					</ObjectPageSubSection>
 				</subSections>
@@ -147,7 +147,7 @@
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
-							<blockcolor:BlockBlueT4/>
+							<blockcolor:T4PortClear/>
 						</blocks>
 					</ObjectPageSubSection>
 				</subSections>
@@ -156,7 +156,7 @@
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
-							<blockcolor:BlockBlueT5/>
+							<blockcolor:T5Unberthing/>
 						</blocks>
 					</ObjectPageSubSection>
 				</subSections>

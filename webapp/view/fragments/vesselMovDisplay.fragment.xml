@@ -17,7 +17,7 @@
 				</expandedHeading>
 				<snappedHeading>
 					<m:FlexBox fitContainer="true" alignItems="Center">
-						<m:Avatar src="./test-resources/sap/uxap/images/imageID_275314.png" class="sapUiTinyMarginEnd"/>
+						<m:Avatar color="#CEA95B" src="sap-icon://shipping-status" class="sapUiTinyMarginEnd"/>
 						<m:Title text="{vesMovModel>/VesselName}" wrapping="true"/>
 					</m:FlexBox>
 				</snappedHeading>
@@ -40,7 +40,7 @@
 		</headerTitle>
 		<headerContent>
 			<m:FlexBox wrap="Wrap">
-				<m:Avatar class="sapUiSmallMarginEnd" src="./test-resources/sap/uxap/images/imageID_275314.png" displaySize="L"/>
+				<m:Avatar class="sapUiSmallMarginEnd" color="#CEA95B" src="sap-icon://shipping-status" displaySize="L"/>
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 						<m:HBox class="sapUiTinyMarginBottom">

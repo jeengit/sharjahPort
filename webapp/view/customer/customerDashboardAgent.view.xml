@@ -36,7 +36,7 @@
 									<!--<ImageContent src="sap-icon://complete" />-->
 								</TileContent>
 							</GenericTile>
-							<GenericTile class="tileLayout" header="Service request" subheader="{i18n>subServ}>
+							<GenericTile class="tileLayout" header="Service request" subheader="{i18n>subServ}">
 								<TileContent unit="" footer="20">
 									<!--<ImageContent src="sap-icon://complete" />-->
 								</TileContent>

@@ -306,3 +306,6 @@ html.sap-desktop .sapMBtn:focus>.sapMFocusable{
 .objLayoutClass .sapUxAPObjectPageScroll {
 	background:#fff;
 }
+.no-margin{
+	margin:0!important;
+}

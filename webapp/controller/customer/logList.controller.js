@@ -36,6 +36,7 @@ sap.ui.define([
 					// getDialog.close();
 				}
 			});
+			this.adjustTableRowsCount();
 		},
 		onETADetailsPress: function (evt) {
 			sap.ui.core.BusyIndicator.show();
@@ -44,6 +45,20 @@ sap.ui.define([
 			this.getRouter().navTo("orderStatus", {
 				sPath: encodeURIComponent(sPath),
 				id: id
+			});
+		},
+		onAfterRendering: function () {
+			var that = this;
+			$(window).resize(function () {
+				that.adjustTableRowsCount();
+			});
+		},
+		adjustTableRowsCount: function(){
+			var that = this;
+			var pageId = this.getView().byId("pageId").getId();
+			var rows = Math.floor(($("#" + pageId).height() - 200) / 32);
+			jQuery.sap.delayedCall(0, this, function () {
+				that.byId("etaTable").setVisibleRowCount(rows);
 			});
 		}
 	});

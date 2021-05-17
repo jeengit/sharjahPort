@@ -309,3 +309,30 @@ html.sap-desktop .sapMBtn:focus>.sapMFocusable{
 .no-margin{
 	margin:0!important;
 }
+.objLayoutClass{
+	box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+	border-radius: .25rem;
+}
+.editMode .sapMInput{
+	display:block;
+}
+.detailspage .sapMPageFooter{
+	top: 80px;
+    right: 45px;
+    width: auto;
+    bottom: auto;
+    left: auto;
+}
+.detailspage .sapMIBar-CTX.sapMFooter-CTX{
+	border:none!important;
+	background: none!important;
+}
+.detailspage.sapMPageWithFooter>section{
+	bottom: 0;
+}
+.detailspage .sapMPageFooter .sapMBtnInner{
+	height: 1.5rem;
+}
+.detailspage .sapMPageFooter .sapMBtnContent {
+    line-height: 1.5;
+}

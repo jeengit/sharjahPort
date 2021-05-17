@@ -1,5 +1,4 @@
-<core:FragmentDefinition xmlns:t="sap.ui.table" xmlns="sap.uxap"
-	xmlns:m="sap.m" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core">
+<core:FragmentDefinition xmlns:t="sap.ui.table" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core">
 	<ObjectPageLayout upperCaseAnchorBar="false" id="vesMovDispId" class="objLayoutClass">
 		<headerTitle>
 			<ObjectPageDynamicHeaderTitle>
@@ -450,12 +449,15 @@
 						<blocks>
 							<m:VBox>
 								<t:Table rows="{vesMovModel>/LogsheetToShifting/results}" selectionMode="None"
-									visibleRowCount="{vesMovModel>/LogsheetToShifting/results/length}" ariaLabelledBy="title">
+									id="shifTableDisplay" ariaLabelledBy="title">
 									<!--<t:extension>-->
-									<!--	<m:OverflowToolbar style="Clear">-->
-									<!--		<m:Title text="{i18n>ShiftingTable}"/>-->
-									<!--		<m:ToolbarSpacer/>-->
-									<!--	</m:OverflowToolbar>-->
+									<!--	<OverflowToolbar style="Clear">-->
+									<!--		<Title text="{i18n>ShiftingTable}"/>-->
+									<!--		<ToolbarSpacer/>-->
+									<!--		<Button type="Emphasized" icon="sap-icon://delete" tooltip="Remove" press="addNewRowPress"/>-->
+									<!--		<Button press="addNewRowPress" type="Accept" icon="sap-icon://add" tooltip="Add"/>-->
+									<!--		<Button type="Emphasized" icon="sap-icon://save" tooltip="Save" press="clearAllSortings" visible="false"/>-->
+									<!--	</OverflowToolbar>-->
 									<!--</t:extension>-->
 									<t:columns>
 										<t:Column width="12rem" sortProperty="ETANo">

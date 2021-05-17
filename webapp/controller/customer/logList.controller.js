@@ -58,7 +58,8 @@ sap.ui.define([
 			var pageId = this.getView().byId("pageId").getId();
 			var rows = Math.floor(($("#" + pageId).height() - 200) / 32);
 			jQuery.sap.delayedCall(0, this, function () {
-				that.byId("etaTable").setVisibleRowCount(rows);
+				that.byId("shifTableDisplay").setVisibleRowCount(rows);
+				that.byId("shifTableChange").setVisibleRowCount(rows);
 			});
 		}
 	});

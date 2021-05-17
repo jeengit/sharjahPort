@@ -55,6 +55,7 @@ sap.ui.define([
 			this.handleServiceGET(that, oModel,"PilotListSet","vesMovpilotModel");
 			this.handleServiceGET(that, oModel,"BerthListSet","vesMovBertModel");
 			this.handleServiceGET(that, oModel,"MBoatListSet","mBoatModel");
+			this.adjustTableRowsCount();
 		},
 		handleServiceGET: function(that, oModel, entitySet, modelName) {
 				oModel.read("/" + entitySet, {
@@ -278,9 +279,23 @@ sap.ui.define([
 				this.getView().byId("cancelBtn").setVisible(false);
 				this.getView().byId("saveBtn").setVisible(false);
 				this.getView().byId("editBtn").setVisible(true);
-				if (text === "Approve") this.onApprove();
-				if (text === "Save") this.onSave();
+				if (text === "Approve") {this.onApprove();}
+				if (text === "Save") {this.onSave();}
 			}
+		},
+		onAfterRendering: function () {
+			var that = this;
+			$(window).resize(function () {
+				that.adjustTableRowsCount();
+			});
+		},
+		adjustTableRowsCount: function(){
+			var that = this;
+			var pageId = this.getView().byId("detailspage").getId();
+			var rows = Math.floor(($("#" + pageId).height() - 200) / 32);
+			jQuery.sap.delayedCall(0, this, function () {
+				that.byId("etaTable").setVisibleRowCount(rows);
+			});
 		}
 	});
 

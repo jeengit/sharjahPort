@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns:t="sap.ui.table" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core"
-	xmlns:f="sap.ui.layout.form">
+>
 	<ObjectPageLayout upperCaseAnchorBar="false" id="etaChange" class="objLayoutClass">
 		<!--<VBox class="sapUiSmallMargin" id="etaChange">-->
 		<!--<Breadcrumbs currentLocationText="{etaDetailsModel>/ETANumber}">-->
@@ -203,12 +203,12 @@
 												<m:Label text="{i18n>NextPort}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<ComboBox placeholder="{i18n>select}" selectedKey="{etaDetailsModel>/NextPort}" width="100%" items="">
+												<m:ComboBox placeholder="{i18n>select}" selectedKey="{etaDetailsModel>/NextPort}" width="100%" items="">
 													<core:Item key="DUBAI" text="DUBAI"/>
 													<core:Item key="MUMBAI" text="MUMBAI"/>
 													<core:Item key="SHANGHAI" text="SHANGHAI"/>
 													<core:Item key="SINGAPORE" text="SINGAPORE"/>
-												</ComboBox>
+												</m:ComboBox>
 											</m:HBox>
 										</m:HBox>
 										<m:HBox alignItems="Center">

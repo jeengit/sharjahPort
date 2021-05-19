@@ -11,17 +11,17 @@
 				<html:div class="card">
 					<l:Grid class="sapUiSmallMarginTopBottom custTile" defaultSpan="L2 M2 S12">
 						<l:content>
-							<GenericTile ariaLabel="APPROVED/ETA" press="handleListPress" class="tileLayout" header="{i18n>etaTile}" subheader="{i18n>subApprvd}">
+							<GenericTile ariaLabel="APPROVED/ETA" press="onNavToPress" class="tileLayout" header="{i18n>etaTile}" subheader="{i18n>subApprvd}">
 								<TileContent unit="" footer="{DashboardCountModel>/0/EtaApproved}">
 									<!--<ImageContent src="sap-icon://complete" />-->
 								</TileContent>
 							</GenericTile>
-							<GenericTile ariaLabel="NEW/ETA" press="handleListPress" class="tileLayout" header="{i18n>etaReq}" subheader="{i18n>subReq}">
+							<GenericTile ariaLabel="NEW/ETA" press="onNavToPress" class="tileLayout" header="{i18n>etaReq}" subheader="{i18n>subReq}">
 								<TileContent unit="" footer="{DashboardCountModel>/0/EtaRequested}">
 									<!--<ImageContent src="sap-icon://product" />-->
 								</TileContent>
 							</GenericTile>
-							<GenericTile ariaLabel="REJECTED/LOG" press="handleListPress" class="tileLayout" header="{i18n>etaRej}" subheader="{i18n>agentPay}">
+							<GenericTile ariaLabel="REJECTED/LOG" press="onNavToPress" class="tileLayout" header="{i18n>etaRej}" subheader="{i18n>agentPay}">
 								<TileContent unit="" footer="{DashboardCountModel>/0/EtaRejected}">
 									<!--<ImageContent src="sap-icon://product" />-->
 								</TileContent>

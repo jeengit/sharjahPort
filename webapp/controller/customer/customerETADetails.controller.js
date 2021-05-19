@@ -27,6 +27,7 @@ sap.ui.define([
 			var odata = {
 				id: oEvent.getParameter("arguments").id
 			};
+			console.log("jj");
 			var pageId = this.getView().getId();
 			var that = this;
 			if (odata.id === "createETA") {
@@ -93,15 +94,10 @@ sap.ui.define([
 						sap.ui.core.BusyIndicator.hide();
 					}
 				});
-				// var agentnum = that.getView().byId(pageId +"--AgentCode").getValue();
-				// console.log(agentnum);
-				// //var agentCode = agentnum.replace(/^0+/, '');
-				// oModel.read("/AgentVesselListSet", {
-				// 	urlParameters: {
-				// 		"$filter": "ImAgentId eq '" + agentnum + "'"
-				// 	},
+				
+				// oModel.read("/PortListSet", {
 				// 	success: function (data) {
-				// 		that.getView().setModel(new JSONModel(data), "agentVesselModel");
+				// 		that.getView().setModel(new JSONModel(data), "portListModel");
 				// 		sap.ui.core.BusyIndicator.hide();
 				// 	},
 				// 	error: function (oResponse) {
@@ -109,26 +105,16 @@ sap.ui.define([
 				// 		sap.ui.core.BusyIndicator.hide();
 				// 	}
 				// });
-				oModel.read("/PortListSet", {
-					success: function (data) {
-						that.getView().setModel(new JSONModel(data), "portListModel");
-						sap.ui.core.BusyIndicator.hide();
-					},
-					error: function (oResponse) {
-						alert("Error...");
-						sap.ui.core.BusyIndicator.hide();
-					}
-				});
-				oModel.read("/BerthListSet", {
-					success: function (data) {
-						that.getView().setModel(new JSONModel(data), "vesMovBertModel");
-						sap.ui.core.BusyIndicator.hide();
-					},
-					error: function (oResponse) {
-						alert("Error...");
-						sap.ui.core.BusyIndicator.hide();
-					}
-				});
+				// oModel.read("/BerthListSet", {
+				// 	success: function (data) {
+				// 		that.getView().setModel(new JSONModel(data), "vesMovBertModel");
+				// 		sap.ui.core.BusyIndicator.hide();
+				// 	},
+				// 	error: function (oResponse) {
+				// 		alert("Error...");
+				// 		sap.ui.core.BusyIndicator.hide();
+				// 	}
+				// });
 
 			} else {
 				this.getView().byId(pageId + "--etaDisp").setVisible(true);
@@ -146,6 +132,21 @@ sap.ui.define([
 					}
 				});
 			}
+			sap.ui.core.BusyIndicator.hide();
+				// this.handleServiceGET(that, oModel,"TugListSet","vesMovTugModel");
+			this.handleServiceGET(that, oModel,"PilotListSet","vesMovpilotModel");
+			this.handleServiceGET(that, oModel,"BerthListSet","vesMovBertModel");
+			// this.handleServiceGET(that, oModel,"MBoatListSet","mBoatModel");
+		},
+				handleServiceGET: function(that, oModel, entitySet, modelName) {
+				oModel.read("/" + entitySet, {
+					success: function(data) {
+						that.getView().setModel(new JSONModel(data), modelName);
+					},
+					error: function(oResponse) {
+						sap.m.MessageToast.show(oResponse.statusText);
+					}
+				});
 			sap.ui.core.BusyIndicator.hide();
 		},
 		handleAgentPress: function (oEvent) {

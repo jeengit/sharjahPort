@@ -1,152 +1,235 @@
-<core:FragmentDefinition xmlns:t="sap.ui.table" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core"
->
-	<ObjectPageLayout upperCaseAnchorBar="false" id="etaChange" class="objLayoutClass">
+<core:FragmentDefinition xmlns:t="sap.ui.table" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core">
+	<!--<ObjectPageLayout upperCaseAnchorBar="false" id="" class="objLayoutClass">-->
+			<ObjectPageLayout visible="false" upperCaseAnchorBar="false" id="etaChange" class="objLayoutClass editMode">
+
 		<!--<VBox class="sapUiSmallMargin" id="etaChange">-->
 		<!--<Breadcrumbs currentLocationText="{etaDetailsModel>/ETANumber}">-->
 		<!--	<Link id="dashboard" press="onHomePress" text="Home"/>-->
 		<!--	<Link id="products" press="onNavToPress" text="ETA List"/>-->
 		<!--</Breadcrumbs>-->
-		
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<breadcrumbs>
+					<m:Breadcrumbs currentLocationText="{etaDetailsModel>/ZETANumber}">
+						<m:Link id="dashboard1" press="onHomePress" text="Home"/>
+						<m:Link id="products1" press="onNavToPress" text="ETA List"/>
+					</m:Breadcrumbs>
+				</breadcrumbs>
+				<expandedHeading>
+					<m:HBox>
+						<m:Title text="Create ETA" wrapping="true"/>
+						<m:ObjectMarker type="Flagged" class="sapUiTinyMarginBegin"/>
+					</m:HBox>
+				</expandedHeading>
+				<snappedHeading>
+					<m:FlexBox fitContainer="true" alignItems="Center">
+						<m:Avatar backgroundColor="Accent9" src="sap-icon://shipping-status" class="sapUiTinyMarginEnd"/>
+							<m:Title text="Create ETA" wrapping="true"/>
+						<!--<m:Title text="ETA Details" wrapping="true"/>-->
+					</m:FlexBox>
+				</snappedHeading>
+				<expandedContent>
+					<!--<m:Text text="ETA Details"/>-->
+				</expandedContent>
+				<snappedContent>
+					<!--<m:Text text="ETA Details"/>-->
+				</snappedContent>
+				<snappedTitleOnMobile>
+					<m:Title text="Header Title On Phone"/>
+				</snappedTitleOnMobile>
+				<!--<actions>-->
+				<!--	<m:OverflowToolbarButton icon="sap-icon://edit" text="edit header" type="Emphasized" tooltip="edit"/>-->
+				<!--	<m:OverflowToolbarButton icon="sap-icon://pull-down" text="show section" type="Emphasized" tooltip="pull-down"/>-->
+				<!--	<m:OverflowToolbarButton icon="sap-icon://show" text="show state" tooltip="show"/>-->
+				<!--	<m:Button text="Toggle Footer" press="toggleFooter"/>-->
+				<!--</actions>-->
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+		<headerContent>
+			<m:FlexBox wrap="Wrap">
+				<m:Avatar class="sapUiSmallMarginEnd" backgroundColor="Accent9" src="sap-icon://shipping-status" displaySize="L"/>
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+						<m:HBox alignItems="Center">
+							<m:HBox width="40%">
+								<m:Label text="{i18n>Agentcode}"/>
+							</m:HBox>
+							<m:HBox width="60%">
+								<m:Input editable="false" value="{agentModel>/results/0/ImAgentCode}" id="AgentCode" placeholder="Agent code"/>
+							</m:HBox>
+						</m:HBox>
+						<m:HBox alignItems="Center">
+							<m:HBox width="40%">
+								<m:Label text="{i18n>AgentName}"/>
+							</m:HBox>
+							<m:HBox width="60%">
+								<m:Input editable="false" id="agentName" value="{agentModel>/results/0/AgentNmae}"/>
+							</m:HBox>
+						</m:HBox>
+						<m:HBox alignItems="Center">
+							<m:HBox width="40%">
+								<m:Label text="{i18n>VesselName}"/>
+							</m:HBox>
+							<m:HBox width="60%">
+								<m:Input id="vesselId" editable="false" value="{etaDetailsModel>/VesselName}"/>
+							</m:HBox>
+						</m:HBox>
+						<m:HBox alignItems="Center">
+							<m:HBox width="40%">
+								<m:Label text="{i18n>Linecode}"/>
+							</m:HBox>
+							<m:HBox width="60%">
+								<m:Input id="lineId" editable="false" value="{etaDetailsModel>/LineCode}"/>
+							</m:HBox>
+						</m:HBox>
+					</m:VBox>
+				</layout:VerticalLayout>
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:VBox class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+						<m:HBox alignItems="Center">
+							<m:HBox width="40%">
+								<m:Label text="{i18n>Vesselnature}"/>
+							</m:HBox>
+							<m:HBox width="60%">
+								<m:ComboBox placeholder="{i18n>select}" selectedKey="{etaDetailsModel>/VesselNature}" width="100%" items="">
+									<core:Item key="CARGO" text="CARGO"/>
+									<core:Item key="OTHERS" text="OTHERS"/>
+									<core:Item key="PASSENGER" text="PASSENGER"/>
+								</m:ComboBox>
+							</m:HBox>
+						</m:HBox>
+						<m:HBox alignItems="Center">
+							<m:HBox width="40%">
+								<m:Label text="{i18n>Purposeofvisit}"/>
+							</m:HBox>
+							<m:HBox width="60%">
+								<m:ComboBox placeholder="{i18n>select}" selectedKey="{etaDetailsModel>/VisitPurpose}" width="100%" items="">
+									<core:Item key="LOADING" text="LOADING"/>
+									<core:Item key="UNLOADING" text="UNLOADING"/>
+									<core:Item key="BOTH" text="BOTH"/>
+									<core:Item key="REFUEL" text="REFUEL"/>
+								</m:ComboBox>
+							</m:HBox>
+						</m:HBox>
+						<m:HBox alignItems="Center">
+							<!--<Label text="Custom ref no"/>-->
+							<!--<Input value="{etaDetailsModel>/CustomsRefNo}"/>-->
+							<m:HBox width="40%">
+								<m:Label text="{i18n>Generalremark}"/>
+							</m:HBox>
+							<m:HBox width="60%">
+								<m:Input value="{etaDetailsModel>/GenRemark}"/>
+							</m:HBox>
+						</m:HBox>
+						<m:HBox alignItems="Center">
+							<m:HBox width="40%">
+								<m:Label text="{i18n>Port}"/>
+							</m:HBox>
+							<m:HBox width="60%">
+								<m:ComboBox placeholder="{i18n>select}" selectedKey="{etaDetailsModel>/Port}" items="{path: 'portListModel>/results'}">
+									<core:Item key="{portListModel>PortName}" text="{portListModel>PortName}"/>
+								</m:ComboBox>
+							</m:HBox>
+						</m:HBox>
+					</m:VBox>
+				</layout:VerticalLayout>
+								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:VBox class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+						<m:HBox alignItems="Center">
+							<m:HBox width="40%">
+								<m:Label text="{i18n>Callsign}"/>
+							</m:HBox>
+							<m:HBox width="60%">
+								<m:ComboBox placeholder="{i18n>select}" selectedKey="{etaDetailsModel>/CallSign}" items="{path: 'agentVesselModel>/results'}"
+									change="handleAgentPress">
+									<core:Item key="{agentVesselModel>CallSign}" text="{agentVesselModel>CallSign}"/>
+								</m:ComboBox>
+							</m:HBox>
+						</m:HBox>
+					<m:HBox alignItems="Center">
+							<m:HBox width="40%">
+								<m:Label text="{i18n>GRT}"/>
+							</m:HBox>
+							<m:HBox width="60%">
+								<m:Input id="grtId" editable="false" value="{etaDetailsModel>/GRT}"/>
+							</m:HBox>
+						</m:HBox>
+						<m:HBox alignItems="Center">
+							<m:HBox width="40%">
+								<m:Label text="{i18n>VoyageNature}"/>
+							</m:HBox>
+							<m:HBox width="60%">
+								<m:ComboBox selectedKey="{etaDetailsModel>/VoyageNature}" width="100%" items="" placeholder="{i18n>select}">
+									<core:Item key="CARGO" text="CARGO"/>
+									<core:Item key="OTHERS" text="OTHERS"/>
+									<core:Item key="PASSENGER" text="PASSENGER"/>
+								</m:ComboBox>
+							</m:HBox>
+						</m:HBox>
+						<m:HBox alignItems="Center">
+							<m:HBox width="40%">
+								<m:Label text="{i18n>PreferredBerth}"/>
+							</m:HBox>
+							<m:HBox width="60%">
+								<m:ComboBox selectedKey="{etaDetailsModel>/PreferedBerth}" width="100%" items="{path: 'vesMovBertModel>/results'}"
+									placeholder="{i18n>select}">
+									<core:Item key="{vesMovBertModel>BerthNumber}" text="{vesMovBertModel>BerthNumber}"/>
+								</m:ComboBox>
+								<!--<m:Input id="imoId" editable="false" value="{etaDetailsModel>/ImoNo}"/>-->
+							</m:HBox>
+						</m:HBox>
+					</m:VBox>
+				</layout:VerticalLayout>
+				<!--<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">-->
+				<!--	<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">-->
+				<!--		<m:HBox alignItems="Center">-->
+				<!--			<m:HBox width="40%">-->
+				<!--				<m:Label text="{i18n>Callsign}"/>-->
+				<!--			</m:HBox>-->
+				<!--			<m:HBox width="60%">-->
+				<!--				<m:ComboBox placeholder="{i18n>select}" selectedKey="{etaDetailsModel>/CallSign}" items="{path: 'agentVesselModel>/results'}"-->
+				<!--					change="handleAgentPress">-->
+				<!--					<core:Item key="{agentVesselModel>CallSign}" text="{agentVesselModel>CallSign}"/>-->
+				<!--				</m:ComboBox>-->
+				<!--			</m:HBox>-->
+				<!--		</m:HBox>-->
+				<!--		<m:HBox alignItems="Center">-->
+				<!--			<m:HBox width="40%">-->
+				<!--				<m:Label text="{i18n>GRT}"/>-->
+				<!--			</m:HBox>-->
+				<!--			<m:HBox width="60%">-->
+				<!--				<m:Input id="grtId" editable="false" value="{etaDetailsModel>/GRT}"/>-->
+				<!--			</m:HBox>-->
+				<!--		</m:HBox>-->
+				<!--		<m:HBox alignItems="Center">-->
+				<!--			<m:HBox width="40%">-->
+				<!--				<m:Label text="{i18n>VoyageNature}"/>-->
+				<!--			</m:HBox>-->
+				<!--			<m:HBox width="60%">-->
+				<!--				<m:ComboBox selectedKey="{etaDetailsModel>/VoyageNature}" width="100%" items="" placeholder="{i18n>select}">-->
+				<!--					<core:Item key="CARGO" text="CARGO"/>-->
+				<!--					<core:Item key="OTHERS" text="OTHERS"/>-->
+				<!--					<core:Item key="PASSENGER" text="PASSENGER"/>-->
+				<!--				</m:ComboBox>-->
+				<!--			</m:HBox>-->
+				<!--		</m:HBox>-->
+				<!--		<m:HBox alignItems="Center">-->
+				<!--			<m:HBox width="40%">-->
+				<!--				<m:Label text="{i18n>PreferredBerth}"/>-->
+				<!--			</m:HBox>-->
+				<!--			<m:HBox width="60%">-->
+				<!--				<m:ComboBox selectedKey="{etaDetailsModel>/PreferedBerth}" width="100%" items="{path: 'vesMovBertModel>/results'}"-->
+				<!--					placeholder="{i18n>select}">-->
+				<!--					<core:Item key="{vesMovBertModel>BerthNumber}" text="{vesMovBertModel>BerthNumber}"/>-->
+				<!--				</m:ComboBox>-->
+				<!--				<m:Input id="imoId" editable="false" value="{etaDetailsModel>/ImoNo}"/>-->
+				<!--			</m:HBox>-->
+				<!--		</m:HBox>-->
+				<!--	</m:VBox>-->
+				<!--</layout:VerticalLayout>-->
+			</m:FlexBox>
+		</headerContent>
 		<sections>
-			<ObjectPageSection titleUppercase="false" title="{i18n>VesselDetails}">
-				<subSections>
-					<ObjectPageSubSection titleUppercase="false">
-						<blocks>
-							<m:FlexBox wrap="Wrap">
-								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
-									<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>BasicDetails}"/>-->
-									<m:VBox>
-										<m:HBox alignItems="Center">
-											<m:HBox width="40%">
-												<m:Label text="{i18n>Agentcode}"/>
-											</m:HBox>
-											<m:HBox width="60%">
-												<m:Input editable="false" value="{agentModel>/results/0/ImAgentCode}" id="AgentCode" placeholder="Agent code"/>
-											</m:HBox>
-										</m:HBox>
-										<m:HBox alignItems="Center">
-											<m:HBox width="40%">
-												<m:Label text="{i18n>AgentName}"/>
-											</m:HBox>
-											<m:HBox width="60%">
-												<m:Input editable="false" id="agentName" value="{agentModel>/results/0/AgentNmae}"/>
-											</m:HBox>
-										</m:HBox>
-										<m:HBox alignItems="Center">
-											<m:HBox width="40%">
-												<m:Label text="{i18n>VesselName}"/>
-											</m:HBox>
-											<m:HBox width="60%">
-												<m:Input id="vesselId" editable="false" value="{etaDetailsModel>/VesselName}"/>
-											</m:HBox>
-										</m:HBox>
-										<m:HBox alignItems="Center">
-											<m:HBox width="40%">
-												<m:Label text="{i18n>Linecode}"/>
-											</m:HBox>
-											<m:HBox width="60%">
-												<m:Input id="lineId" editable="false" value="{etaDetailsModel>/LineCode}"/>
-											</m:HBox>
-										</m:HBox>
-										<m:HBox alignItems="Center">
-											<m:HBox width="40%">
-												<m:Label text="{i18n>Vesselnature}"/>
-											</m:HBox>
-											<m:HBox width="60%">
-												<m:ComboBox placeholder="{i18n>select}" selectedKey="{etaDetailsModel>/VesselNature}" width="100%" items="">
-													<core:Item key="CARGO" text="CARGO"/>
-													<core:Item key="OTHERS" text="OTHERS"/>
-													<core:Item key="PASSENGER" text="PASSENGER"/>
-												</m:ComboBox>
-											</m:HBox>
-										</m:HBox>
-										<m:HBox alignItems="Center">
-											<m:HBox width="40%">
-												<m:Label text="{i18n>Purposeofvisit}"/>
-											</m:HBox>
-											<m:HBox width="60%">
-												<m:ComboBox placeholder="{i18n>select}" selectedKey="{etaDetailsModel>/VisitPurpose}" width="100%" items="">
-													<core:Item key="LOADING" text="LOADING"/>
-													<core:Item key="UNLOADING" text="UNLOADING"/>
-													<core:Item key="BOTH" text="BOTH"/>
-													<core:Item key="REFUEL" text="REFUEL"/>
-												</m:ComboBox>
-											</m:HBox>
-										</m:HBox>
-										<m:HBox alignItems="Center">
-											<!--<Label text="Custom ref no"/>-->
-											<!--<Input value="{etaDetailsModel>/CustomsRefNo}"/>-->
-											<m:HBox width="40%">
-												<m:Label text="{i18n>Generalremark}"/>
-											</m:HBox>
-											<m:HBox width="60%">
-												<m:Input value="{etaDetailsModel>/GenRemark}"/>
-											</m:HBox>
-										</m:HBox>
-									</m:VBox>
-								</layout:VerticalLayout>
-								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
-									<m:VBox>
-										<m:HBox alignItems="Center">
-											<m:HBox width="40%">
-												<m:Label text="{i18n>Port}"/>
-											</m:HBox>
-											<m:HBox width="60%">
-												<m:ComboBox placeholder="{i18n>select}" selectedKey="{etaDetailsModel>/Port}" items="{path: 'portListModel>/results'}">
-													<core:Item key="{portListModel>PortName}" text="{portListModel>PortName}"/>
-												</m:ComboBox>
-											</m:HBox>
-										</m:HBox>
-										<m:HBox alignItems="Center">
-											<m:HBox width="40%">
-												<m:Label text="{i18n>Callsign}"/>
-											</m:HBox>
-											<m:HBox width="60%">
-												<m:ComboBox placeholder="{i18n>select}" selectedKey="{etaDetailsModel>/CallSign}" items="{path: 'agentVesselModel>/results'}"
-													change="handleAgentPress">
-													<core:Item key="{agentVesselModel>CallSign}" text="{agentVesselModel>CallSign}"/>
-												</m:ComboBox>
-											</m:HBox>
-										</m:HBox>
-										<m:HBox alignItems="Center">
-											<m:HBox width="40%">
-												<m:Label text="{i18n>GRT}"/>
-											</m:HBox>
-											<m:HBox width="60%">
-												<m:Input id="grtId" editable="false" value="{etaDetailsModel>/GRT}"/>
-											</m:HBox>
-										</m:HBox>
-										<m:HBox alignItems="Center">
-											<m:HBox width="40%">
-												<m:Label text="{i18n>VoyageNature}"/>
-											</m:HBox>
-											<m:HBox width="60%">
-												<m:ComboBox selectedKey="{etaDetailsModel>/VoyageNature}" width="100%" items="" placeholder="{i18n>select}">
-													<core:Item key="CARGO" text="CARGO"/>
-													<core:Item key="OTHERS" text="OTHERS"/>
-													<core:Item key="PASSENGER" text="PASSENGER"/>
-												</m:ComboBox>
-											</m:HBox>
-										</m:HBox>
-										<m:HBox alignItems="Center">
-											<m:HBox width="40%">
-												<m:Label text="{i18n>PreferredBerth}"/>
-											</m:HBox>
-											<m:HBox width="60%">
-												<m:ComboBox selectedKey="{etaDetailsModel>/PreferedBerth}" width="100%" items="{path: 'vesMovBertModel>/results'}"
-													placeholder="{i18n>select}">
-													<core:Item key="{vesMovBertModel>BerthNumber}" text="{vesMovBertModel>BerthNumber}"/>
-												</m:ComboBox>
-												<m:Input id="imoId" editable="false" value="{etaDetailsModel>/ImoNo}"/>
-											</m:HBox>
-										</m:HBox>
-									</m:VBox>
-								</layout:VerticalLayout>
-							</m:FlexBox>
-						</blocks>
-					</ObjectPageSubSection>
-				</subSections>
-			</ObjectPageSection>
 			<ObjectPageSection titleUppercase="false" title="{i18n>ETAPorDetails}">
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
@@ -156,27 +239,27 @@
 									<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>BasicDetails}"/>-->
 									<m:VBox>
 										<m:HBox alignItems="Center">
-											<m:HBox width="40%">
+											<m:HBox width="50%">
 												<m:Label text="{i18n>ExpectedArrival}"/>
 											</m:HBox>
-											<m:HBox width="60%">
+											<m:HBox width="50%">
 												<m:DatePicker id="depDateArrival" value="{etaDetailsModel>/ExpArrivalDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
 											</m:HBox>
 										</m:HBox>
 										<m:HBox alignItems="Center">
-											<m:HBox width="40%">
+											<m:HBox width="50%">
 												<m:Label text="{i18n>ExpectedDeparture}"/>
 											</m:HBox>
-											<m:HBox width="60%">
+											<m:HBox width="50%">
 												<m:DatePicker name="depDateArrival" change="handleChangeSelect" editable="true" value="{etaDetailsModel>/ExpDepartureDate}"
 													valueFormat="yyyyMMdd" displayFormat="long"/>
 											</m:HBox>
 										</m:HBox>
 										<m:HBox alignItems="Center">
-											<m:HBox width="40%">
+											<m:HBox width="50%">
 												<m:Label text="{i18n>ExpectedDepartureTime}"/>
 											</m:HBox>
-											<m:HBox width="60%">
+											<m:HBox width="50%">
 												<m:TimePicker name="depTimeArrival" change="handleChangeSelect" editable="true" value="{etaDetailsModel>/ExpDepartureTime}"
 													valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" placeholder="{i18n>ExpectedDepartureTime}"/>
 											</m:HBox>
@@ -235,10 +318,10 @@
 									<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>BasicDetails}"/>-->
 									<m:VBox>
 										<m:HBox alignItems="Center">
-											<m:HBox width="40%">
+											<m:HBox width="50%">
 												<m:Label text="{i18n>cargoDis}"/>
 											</m:HBox>
-											<m:HBox width="60%">
+											<m:HBox width="50%">
 												<m:ComboBox selectedKey="{etaDetailsModel>/CargoDischarge}" width="100%" items="" placeholder="{i18n>select}">
 													<core:Item key="Ro-ro" text="Ro-ro"/>
 													<core:Item key="Breakbulk" text="Breakbulk"/>
@@ -249,18 +332,18 @@
 											</m:HBox>
 										</m:HBox>
 										<m:HBox alignItems="Center">
-											<m:HBox width="40%">
+											<m:HBox width="50%">
 												<m:Label text="{i18n>NoContainer}"/>
 											</m:HBox>
-											<m:HBox width="60%">
+											<m:HBox width="50%">
 												<m:Input value="{etaDetailsModel>/NoOfContainerD}"/>
 											</m:HBox>
 										</m:HBox>
 										<m:HBox alignItems="Center">
-											<m:HBox width="40%">
+											<m:HBox width="50%">
 												<m:Label text="{i18n>CargoWeight}"/>
 											</m:HBox>
-											<m:HBox width="60%">
+											<m:HBox width="50%">
 												<m:Input value="{etaDetailsModel>/CargoWeightD}"/>
 											</m:HBox>
 										</m:HBox>

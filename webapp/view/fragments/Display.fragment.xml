@@ -11,22 +11,22 @@
 				</breadcrumbs>
 				<expandedHeading>
 					<m:HBox>
-						<m:Title text="ETA Details" wrapping="true"/>
+						<m:Title text="{etaDetailsModel>/ZVesselName}" wrapping="true"/>
 						<m:ObjectMarker type="Flagged" class="sapUiTinyMarginBegin"/>
 					</m:HBox>
 				</expandedHeading>
 				<snappedHeading>
 					<m:FlexBox fitContainer="true" alignItems="Center">
 						<m:Avatar backgroundColor="Accent9" src="sap-icon://shipping-status" class="sapUiTinyMarginEnd"/>
-						<m:Title text="ETA Details" wrapping="true"/>
+						<m:Title text="{etaDetailsModel>/ZVesselName}" wrapping="true"/>
 					</m:FlexBox>
 				</snappedHeading>
-				<!--<expandedContent>-->
-				<!--	<m:Text text="Vessel Details"/>-->
-				<!--</expandedContent>-->
-				<!--<snappedContent>-->
-				<!--	<m:Text text="Vessel Details"/>-->
-				<!--</snappedContent>-->
+				<expandedContent>
+					<m:Text text="ETA Details"/>
+				</expandedContent>
+				<snappedContent>
+					<m:Text text="ETA Details"/>
+				</snappedContent>
 				<snappedTitleOnMobile>
 					<m:Title text="Header Title On Phone"/>
 				</snappedTitleOnMobile>
@@ -38,88 +38,96 @@
 				<!--</actions>-->
 			</ObjectPageDynamicHeaderTitle>
 		</headerTitle>
+		<headerContent>
+			<m:FlexBox wrap="Wrap">
+				<m:Avatar class="sapUiSmallMarginEnd" backgroundColor="Accent9" src="sap-icon://shipping-status" displaySize="L"/>
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>ETA}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZETANumber}"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>VesselName}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZVesselName}"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>AgentName}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZAgentName}"/>
+						</m:HBox>
+					</m:VBox>
+				</layout:VerticalLayout>
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>Linecode}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZLineCode}"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>Vesselnature}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZVesselNature}"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>Purposeofvisit}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZPurposeOfVisit}"
+								wrapping="false"/>
+						</m:HBox>
+							<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>VoyageNature}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZVoyageNature}"
+								wrapping="false"/>
+						</m:HBox>
+					</m:VBox>
+				</layout:VerticalLayout>
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>Status}" class="sapUiSmallMarginEnd"/>
+							<m:ObjectStatus active="true" inverted="true" text="{etaDetailsModel>/ZStatus}"
+												state="{= ${etaDetailsModel>/ZStatus} === 'NEW' ? 'Information' : 'Warning' }"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>Generalremark}" class="sapUiSmallMarginEnd"/>
+							<m:Text
+								text="{etaDetailsModel>/ZGeneralRemark}"
+								wrapping="false"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>Port}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZPortName}"/>
+						</m:HBox>
+							<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>Callsign}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZCallSign}"/>
+						</m:HBox>
+					</m:VBox>
+				</layout:VerticalLayout>
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>Agentcode}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZAgentCode}"
+								wrapping="false"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>GRT}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZGRT}"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>PreferredBerth}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZPreferedBerth}"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>IMOnumber}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZIMONumber}"/>
+						</m:HBox>
+					</m:VBox>
+				</layout:VerticalLayout>
+			</m:FlexBox>
+		</headerContent>
 		<!--<VBox class="sapUiSmallMargin" id="etaDisp">-->
 		<sections>
-			<ObjectPageSection titleUppercase="false" title="{i18n>VesselDetails}">
-				<subSections>
-					<ObjectPageSubSection titleUppercase="false">
-						<blocks>
-							<m:FlexBox wrap="Wrap">
-								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
-									<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>BasicDetails}"/>-->
-									<m:VBox>
-										<m:HBox>
-											<m:Label text="{i18n>ETA}" class="sapUiSmallMarginEnd"/>
-											<m:Text text="{etaDetailsModel>/ZETANumber}"/>
-										</m:HBox>
-										<m:HBox>
-											<m:Label text="{i18n>VesselName}" class="sapUiSmallMarginEnd"/>
-											<m:Text text="{etaDetailsModel>/ZVesselName}" wrapping="false"/>
-										</m:HBox>
-										<m:HBox>
-											<m:Label text="{i18n>AgentName}" class="sapUiSmallMarginEnd"/>
-											<m:Text text="{etaDetailsModel>/ZAgentName}" wrapping="false"/>
-										</m:HBox>
-										<m:HBox>
-											<m:Label text="{i18n>Linecode}" class="sapUiSmallMarginEnd"/>
-											<m:Text text="{etaDetailsModel>/ZLineCode}" wrapping="false"/>
-										</m:HBox>
-										<m:HBox>
-											<m:Label text="{i18n>Vesselnature}" class="sapUiSmallMarginEnd"/>
-											<m:Text text="{etaDetailsModel>/ZVesselNature}" wrapping="false"/>
-										</m:HBox>
-										<m:HBox>
-											<m:Label text="{i18n>Purposeofvisit}" class="sapUiSmallMarginEnd"/>
-											<m:Text text="{etaDetailsModel>/ZPurposeOfVisit}" wrapping="false"/>
-										</m:HBox>
-										<m:HBox>
-											<m:Label text="{i18n>Status}" class="sapUiSmallMarginEnd"/>
-											<m:ObjectStatus active="true" inverted="true" text="{etaDetailsModel>/ZStatus}"
-												state="{= ${etaDetailsModel>/ZStatus} === 'NEW' ? 'Information' : 'Warning' }"/>
-										</m:HBox>
-										<m:HBox>
-											<m:Label text="{i18n>Generalremark}" class="sapUiSmallMarginEnd"/>
-											<m:Text text="{etaDetailsModel>/ZGeneralRemark}" wrapping="false"/>
-										</m:HBox>
-										<m:HBox class="sapUiTinyMarginTop">
-											<m:Label text="{i18n>VoyageNature}" class="sapUiSmallMarginEnd"/>
-											<m:Text text="{etaDetailsModel>/ZVoyageNature}" class=""/>
-										</m:HBox>
-									</m:VBox>
-								</layout:VerticalLayout>
-								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
-									<m:VBox>
-										<m:HBox class="sapUiSmallMarginTop">
-											<m:Label text="{i18n>Port}" class="sapUiSmallMarginEnd sapUiTinyMarginTop"/>
-											<m:Text text="{etaDetailsModel>/ZPortName}" class="sapUiTinyMarginTop"/>
-										</m:HBox>
-										<m:HBox class="sapUiTinyMarginTop">
-											<m:Label text="{i18n>Callsign}" class="sapUiSmallMarginEnd"/>
-											<m:Text text="{etaDetailsModel>/ZCallSign}" class=""/>
-										</m:HBox>
-										<m:HBox class="sapUiTinyMarginTop">
-											<m:Label text="{i18n>Agentcode}" class="sapUiSmallMarginEnd"/>
-											<m:Text text="{etaDetailsModel>/ZAgentCode}" class=""/>
-										</m:HBox>
-										<m:HBox class="sapUiTinyMarginTop">
-											<m:Label text="{i18n>GRT}" class="sapUiSmallMarginEnd"/>
-											<m:Text text="{etaDetailsModel>/ZGRT}" class=""/>
-										</m:HBox>
-										<m:HBox class="sapUiTinyMarginTop">
-											<m:Label text="{i18n>PreferredBerth}" class="sapUiSmallMarginEnd"/>
-											<m:Text text="{etaDetailsModel>/ZPreferedBerth}" class=""/>
-										</m:HBox>
-										<m:HBox class="sapUiTinyMarginTop">
-											<m:Label text="{i18n>IMOnumber}" class="sapUiSmallMarginEnd"/>
-											<m:Text text="{etaDetailsModel>/ZIMONumber}" class=""/>
-										</m:HBox>
-									</m:VBox>
-								</layout:VerticalLayout>
-							</m:FlexBox>
-						</blocks>
-					</ObjectPageSubSection>
-				</subSections>
-			</ObjectPageSection>
+					
 			<ObjectPageSection titleUppercase="false" title="{i18n>ETAPorDetails}">
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
@@ -134,22 +142,22 @@
 												text="{ path: 'etaDetailsModel>/ZExpectedArrivalDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} } at {etaDetailsModel>/ZExpectedArrivalTime}"
 												wrapping="false" class="dateDispA"/>
 										</m:HBox>
-										<m:HBox>
+										<m:HBox class="sapUiTinyMarginBottom">
 											<m:Label text="{i18n>ExpectedDeparture}" class="sapUiSmallMarginEnd"/>
 											<m:Text
 												text="{ path: 'etaDetailsModel>/ZExpectedDepartureDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} } at {etaDetailsModel>/ZExpectedDepartureTime}"
 												wrapping="false" class="dateDispD"/>
 										</m:HBox>
-										<m:HBox>
-											<m:Label text="{i18n>LastPort}" class="sapUiSmallMarginEnd"/>
+										<m:HBox class="sapUiTinyMarginBottom">
+											<m:Label text="{i18n>LastPort}" class="sapUiMediumMarginEnd"/>
 											<m:Text text="{etaDetailsModel>/ZLastPort}" wrapping="false"/>
 										</m:HBox>
-										<m:HBox>
-											<m:Label text="{i18n>NextPort}" class="sapUiSmallMarginEnd"/>
+										<m:HBox class="sapUiTinyMarginBottom">
+											<m:Label text="{i18n>NextPort}" class="sapUiMediumMarginEnd"/>
 											<m:Text text="{etaDetailsModel>/ZNextPort}" wrapping="false"/>
 										</m:HBox>
-										<m:HBox>
-											<m:Label text="{i18n>ArrivalDraft}" class="sapUiSmallMarginEnd"/>
+										<m:HBox class="sapUiTinyMarginBottom">
+											<m:Label text="{i18n>ArrivalDraft}" class="sapUiMediumMarginEnd"/>
 											<m:Text text="{etaDetailsModel>/ZArrivalDraft}" wrapping="false"/>
 										</m:HBox>
 									</m:VBox>
@@ -171,27 +179,27 @@
 											<m:Label text="{i18n>cargoDis}" class="sapUiSmallMarginEnd"/>
 											<m:Text text="{etaDetailsModel>/ZCargoDischarge}"/>
 										</m:HBox>
-										<m:HBox>
+										<m:HBox class="sapUiTinyMarginBottom">
 											<m:Label text="{i18n>NoContainer}" class="sapUiSmallMarginEnd"/>
 											<m:Text text="{etaDetailsModel>/ZContainerCountDischarge}"/>
 										</m:HBox>
-										<m:HBox>
+										<m:HBox class="sapUiTinyMarginBottom">
 											<m:Label text="{i18n>CargoWeight}" class="sapUiSmallMarginEnd"/>
 											<m:Text text="{etaDetailsModel>/ZCargoWeightDischarge} Tonnes (TEU)" wrapping="false"/>
 										</m:HBox>
-										<m:HBox>
+										<m:HBox class="sapUiTinyMarginBottom">
 											<m:Label text="{i18n>CargoLoaded}" class="sapUiSmallMarginEnd"/>
 											<m:Text text="{etaDetailsModel>/ZCargoLoaded}" wrapping="false"/>
 										</m:HBox>
-										<m:HBox>
+										<m:HBox class="sapUiTinyMarginBottom">
 											<m:Label text="{i18n>NoContainer}" class="sapUiSmallMarginEnd"/>
 											<m:Text text="{etaDetailsModel>/ZContainerCountLoading}" wrapping="false"/>
 										</m:HBox>
-										<m:HBox>
+										<m:HBox class="sapUiTinyMarginBottom">
 											<m:Label text="{i18n>CargoWeight}" class="sapUiSmallMarginEnd"/>
 											<m:Text text="{etaDetailsModel>/ZCargoWeightLoading} Tonnes (TEU)" wrapping="false"/>
 										</m:HBox>
-										<m:HBox>
+										<m:HBox class="sapUiTinyMarginBottom">
 											<m:Label text="{i18n>RejectRemark}"/>
 											<m:Text text="{etaDetailsModel>/ZRejectRemark}"/>
 										</m:HBox>

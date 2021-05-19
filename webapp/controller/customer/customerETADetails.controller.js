@@ -12,12 +12,8 @@ sap.ui.define([
 	return BaseController.extend("com.demo.sharjahPort.controller.customer.customerETADetails", {
 
 		onInit: function () {
-			// this._formFragments = {};
-			// this._showFormFragment("Display");
-			
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-			oRouter.getRoute("productDetails").attachPatternMatched(this._onObjectMatched, this);
-		
+			oRouter.getRoute("etaDetails").attachPatternMatched(this._onObjectMatched, this);
 		},
 		_onObjectMatched: function (oEvent) {
 			this.getUserName();
@@ -27,7 +23,6 @@ sap.ui.define([
 			var odata = {
 				id: oEvent.getParameter("arguments").id
 			};
-			console.log("jj");
 			var pageId = this.getView().getId();
 			var that = this;
 			if (odata.id === "createETA") {

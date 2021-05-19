@@ -78,11 +78,9 @@
 			}
 		},
 		"resources": {
-			"css": [
-				{
-					"uri": "css/style.css"
-				}
-			]
+			"css": [{
+				"uri": "css/style.css"
+			}]
 		},
 		"routing": {
 			"config": {
@@ -94,80 +92,77 @@
 				"controlId": "app",
 				"clearControlAggregation": false
 			},
-			"routes": [
-				{
-					"name": "dashboard",
-					"pattern": "dashboard",
-					"target": [
-						"home",
-						"dashboard"
-					]
-				},
-				{
-					"name": "products",
-					"pattern": "items={sPath}&type='ETA'",
-					"target": [
-						"home",
-						"products"
-					]
-				},
-				{
-					"name": "productDetails",
-					"pattern": "productDetails/{sPath}/{id}",
-					"target": [
-						"home",
-						"productDetails"
-					]
-				},
-				{
-					"name": "orders",
-					"pattern": "items={sPath}&type='LOG'",
-					"target": [
-						"home",
-						"orders"
-					]
-				},
-				{
-					"name": "vessel",
-					"pattern": "vessel",
-					"target": [
-						"home",
-						"vessel"
-					]
-				},
-				{
-					"name": "dashboardHarbour",
-					"pattern": "dashboardHarbour",
-					"target": [
-						"home",
-						"dashboardHarbour"
-					]
-				},
-				{
-					"name": "dashboardAgent",
-					"pattern": "dashboardAgent",
-					"target": [
-						"home",
-						"dashboardAgent"
-					]
-				},
-				{
-					"name": "dashboardManifest",
-					"pattern": "dashboardManifest",
-					"target": [
-						"home",
-						"dashboardManifest"
-					]
-				},
-				{
-					"name": "manifest",
-					"pattern": "items={sPath}&type='MANIFEST'",
-					"target": [
-						"home",
-						"manifest"
-					]
-				}
-			],
+			"routes": [{
+				"name": "dashboard",
+				"pattern": "dashboard",
+				"target": [
+					"home",
+					"dashboard"
+				]
+			}, {
+				"name": "etaList",
+				"pattern": "items={sPath}&type='ETA'",
+				"target": [
+					"home",
+					"etaList"
+				]
+			}, {
+				"name": "etaDetails",
+				"pattern": "etaDetails/{sPath}/{id}",
+				"target": [
+					"home",
+					"etaDetails"
+				]
+			}, {
+				"name": "logList",
+				"pattern": "items={sPath}&type='LOG'",
+				"target": [
+					"home",
+					"logList"
+				]
+			}, {
+				"name": "logDetails",
+				"pattern": "logDetails/{sPath}/{id}",
+				"target": [
+					"home",
+					"logDetails"
+				]
+			}, {
+				"name": "vessel",
+				"pattern": "vessel",
+				"target": [
+					"home",
+					"vessel"
+				]
+			}, {
+				"name": "dashboardHarbour",
+				"pattern": "dashboardHarbour",
+				"target": [
+					"home",
+					"dashboardHarbour"
+				]
+			}, {
+				"name": "dashboardAgent",
+				"pattern": "dashboardAgent",
+				"target": [
+					"home",
+					"dashboardAgent"
+				]
+			}, {
+				"name": "dashboardManifest",
+				"pattern": "dashboardManifest",
+				"target": [
+					"home",
+					"dashboardManifest"
+				]
+			}, {
+				"name": "manifest",
+				"pattern": "items={sPath}&type='MANIFEST'",
+				"target": [
+					"home",
+					"manifest"
+				]
+			}],
 			"targets": {
 				"home": {
 					"viewType": "XML",
@@ -192,22 +187,22 @@
 					"viewType": "XML",
 					"viewName": "customerDashboardManifest"
 				},
-				"products": {
+				"etaList": {
 					"viewType": "XML",
 					"transition": "slide",
 					"viewName": "customerETAList"
 				},
-				"productDetails": {
+				"etaDetails": {
 					"viewType": "XML",
 					"transition": "slide",
 					"viewName": "customerETADetails"
 				},
-				"orders": {
+				"logList": {
 					"viewType": "XML",
 					"transition": "slide",
 					"viewName": "logList"
 				},
-				"orderStatus": {
+				"logDetails": {
 					"viewType": "XML",
 					"transition": "slide",
 					"viewName": "LogsheetDetails"

@@ -34,7 +34,7 @@ sap.ui.define([
 			// this._formFragments = {};
 			// this._showFormFragment("vesselMov");
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-			oRouter.getRoute("orderStatus").attachPatternMatched(this._onObjectMatched, this);
+			oRouter.getRoute("logDetails").attachPatternMatched(this._onObjectMatched, this);
 		},
 		_onObjectMatched: function(oEvent) {
 			var oModel = this.getOwnerComponent().getModel("s4Model");

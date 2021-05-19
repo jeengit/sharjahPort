@@ -12,7 +12,7 @@ sap.ui.define([
 	return BaseController.extend("com.demo.sharjahPort.controller.customer.customerETAList", {
 		onInit: function () {
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-			oRouter.getRoute("products").attachPatternMatched(this._onObjectMatched, this);
+			oRouter.getRoute("etaList").attachPatternMatched(this._onObjectMatched, this);
 		},
 		_onObjectMatched: function (oEvent) {
 			var status = oEvent.getParameter("arguments").sPath;
@@ -38,7 +38,7 @@ sap.ui.define([
 			});
 		},
 		gotoCreatEta: function (evt) {
-			this.getRouter().navTo("productDetails", {
+			this.getRouter().navTo("etaDetails", {
 				sPath: "0",
 				id: "createETA"
 			});
@@ -46,7 +46,7 @@ sap.ui.define([
 		onETADetailsPress: function (evt) {
 			var sPath = evt.getSource().getBindingContext("etaListModel").getPath().split("/")[2];
 			var id = evt.getSource().getBindingContext("etaListModel").getProperty().ETANo;
-			this.getRouter().navTo("productDetails", {
+			this.getRouter().navTo("etaDetails", {
 				sPath: encodeURIComponent(sPath),
 				id: id
 			});

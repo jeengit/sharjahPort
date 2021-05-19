@@ -183,11 +183,11 @@ sap.ui.define([
 			this.getView().setModel(new JSONModel(harbourData), "harbourTable");
 			sap.ui.core.BusyIndicator.hide();
 		},
-		onNavToPress: function (oEvent) {
+		handleListPress: function (oEvent) {
 			sap.ui.core.BusyIndicator.show();
 			var status = oEvent.getSource().getAriaLabel().split("/")[0];
 			var type = oEvent.getSource().getAriaLabel().split("/")[1];
-			var route = type === "ETA" ? "products" : "orders";
+			var route = type === "ETA" ? "etaList" : "logList";
 			this.getRouter().navTo(route, {
 				sPath: status,
 				type: type

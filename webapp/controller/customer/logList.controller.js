@@ -7,7 +7,7 @@ sap.ui.define([
 
 		onInit: function () {
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-			oRouter.getRoute("orders").attachPatternMatched(this._onObjectMatched, this);
+			oRouter.getRoute("logList").attachPatternMatched(this._onObjectMatched, this);
 		},
 		_onObjectMatched: function (oEvent) {
 			var status = oEvent.getParameter("arguments").sPath;
@@ -36,7 +36,7 @@ sap.ui.define([
 			sap.ui.core.BusyIndicator.show();
 			var sPath = evt.getSource().getBindingContext("etaListModel").getPath().split("/")[2];
 			var id = evt.getSource().getBindingContext("etaListModel").getProperty().LogNumber;
-			this.getRouter().navTo("orderStatus", {
+			this.getRouter().navTo("logDetails", {
 				sPath: encodeURIComponent(sPath),
 				id: id
 			});

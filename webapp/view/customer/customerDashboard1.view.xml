@@ -36,7 +36,12 @@
 									<!--<ImageContent src="sap-icon://complete" />-->
 								</TileContent>
 							</GenericTile>
-							<GenericTile  class="tileLayout" header="{i18n>serApprov}" subheader="{i18n>subServ}">
+							<GenericTile class="tileLayout" header="{i18n>serApprov}" subheader="{i18n>subServ}">
+								<TileContent unit="" footer="{DashboardCountModel>/0/ServiceApproved}">
+									<!--<ImageContent src="sap-icon://complete" />-->
+								</TileContent>
+							</GenericTile>
+							<GenericTile ariaLabel="NA/MANIFEST" class="tileLayout" press="handleListPress" header="Manifest" subheader="{i18n>subServ}">
 								<TileContent unit="" footer="{DashboardCountModel>/0/ServiceApproved}">
 									<!--<ImageContent src="sap-icon://complete" />-->
 								</TileContent>

@@ -714,7 +714,7 @@
 									id="shifTableChange" ariaLabelledBy="title">
 									<t:extension>
 										<m:OverflowToolbar style="Clear">
-											<m:Title text="{i18n>ShiftingTable}"/>
+											<!--<m:Title text="{i18n>ShiftingTable}"/>-->
 											<m:ToolbarSpacer/>
 											<m:Button type="Emphasized" icon="sap-icon://delete" tooltip="Remove" press="addNewRowPress"/>
 											<m:Button press="addNewRowPress" type="Accept" icon="sap-icon://add" tooltip="Add"/>

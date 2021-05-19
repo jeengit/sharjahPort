@@ -336,3 +336,20 @@ html.sap-desktop .sapMBtn:focus>.sapMFocusable{
 .detailspage .sapMPageFooter .sapMBtnContent {
     line-height: 1.5;
 }
+.manifestListClass> .sapMFlexItem:first-child {
+    margin-right: 1rem;
+}
+.manifestListClass li{
+	padding:0.5rem;
+	margin: 0 0.5rem;
+}
+.manifestListClass li:hover{
+	transition: background 0.2s;
+}
+.manifestListClass ul {
+    height: calc(100vh - 9.5rem);
+    overflow:auto;
+}
+.manifestListClass .card{
+	margin-bottom:0!important;
+}

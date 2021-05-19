@@ -1,6 +1,6 @@
 <mvc:View controllerName="com.demo.sharjahPort.controller.customer.customerETAList" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
 	displayBlock="true" xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:u="sap.ui.unified" xmlns:l="sap.ui.layout"
-	xmlns:f="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:tnt="sap.tnt">
+	xmlns:tnt="sap.tnt">
 	<Page showHeader="true" class="sapUiResponsiveContentPadding">
 		<customHeader>
 			<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.TopNav" type="XML"/>
@@ -98,60 +98,6 @@
 								</t:Column>
 							</t:columns>
 						</t:Table>
-						<!--<Table id="idProductsTable" class=" tablclass log-status" mode="MultiSelect" items="{path: 'etaListModel>/results'}">-->
-						<!--	<headerToolbar>-->
-						<!--		<OverflowToolbar>-->
-						<!--<Title text="ETA Table ({etaListModel>/results/length})" class="sapUiSmallMarginBottom " />-->
-						<!--			<ToolbarSpacer/>-->
-						<!--			<Button type="Emphasized" icon="sap-icon://sorting-ranking" tooltip="Sort ascending across Categories and Name"-->
-						<!--				press="sortCategoriesAndName"/>-->
-						<!--			<Button type="Emphasized" icon="sap-icon://sort" tooltip="Sort Categories in addition to current sorting" press="sortCategories"/>-->
-						<!--			<Button type="Reject" icon="sap-icon://decline" tooltip="Clear all sortings" press="clearAllSortings"/>-->
-						<!--		</OverflowToolbar>-->
-						<!--	</headerToolbar>-->
-						<!--	<infoToolbar>-->
-						<!--		<OverflowToolbar id="vsdFilterBar" visible="false">-->
-						<!--			<Text id="vsdFilterLabel"/>-->
-						<!--		</OverflowToolbar>-->
-						<!--	</infoToolbar>-->
-						<!--	<columns class="colTitleTxt">-->
-						<!--		<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="ETA Number" class="colTitleTxt"/></Column>-->
-						<!--		<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Port Name"/></Column>-->
-						<!--		<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Agent ID"/></Column>-->
-						<!--		<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Agent Name"/></Column>-->
-						<!--		<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Vessel Name"/></Column>-->
-						<!--		<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Customer Ref No"/></Column>-->
-						<!--		<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="Status"/></Column>-->
-						<!--		<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="ETA"/></Column>-->
-						<!--		<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"><Text text="ETD"/></Column>-->
-						<!--	</columns>-->
-						<!--	<items>-->
-						<!--		<ColumnListItem>-->
-						<!--			<cells>-->
-						<!--				<Link press="onETADetailsPress" text="{etaListModel>ETANo}" wrapping="false"/>-->
-						<!--				<Text text="{etaListModel>PortName}"/>-->
-						<!--				<Text text="{etaListModel>AgentCode}" wrapping="false"/>-->
-						<!--				<Text text="{etaListModel>AgentName}" wrapping="false"/>-->
-						<!--				<Text text="{etaListModel>VesselName}" wrapping="false"/>-->
-						<!--				<Text text="{etaListModel>IMONumber}" wrapping="false"/>-->
-						<!--				<ObjectStatus active="true" inverted="true" text="{etaListModel>Status}"-->
-						<!--					state="{= ${etaListModel>Status} === 'NEW' ? 'Information' : 'Warning' }"/>-->
-						<!--				<HBox>-->
-						<!--					<core:Icon color="#8c8a8a" src="sap-icon://calendar" tooltip="Expected Arrival Date"/>-->
-						<!--					<Text-->
-						<!--						text="{ path: 'etaListModel>ExpArrivalDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"-->
-						<!--						wrapping="false" class="sapUiTinyMarginBegin dateDispA"/>-->
-						<!--				</HBox>-->
-						<!--				<HBox>-->
-						<!--					<core:Icon color="#8c8a8a" src="sap-icon://calendar" tooltip="Expected Departure Date"/>-->
-						<!--					<Text-->
-						<!--						text="{ path: 'etaListModel>ExpDepartureDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"-->
-						<!--						wrapping="false" class="sapUiTinyMarginBegin dateDispD"/>-->
-						<!--				</HBox>-->
-						<!--			</cells>-->
-						<!--		</ColumnListItem>-->
-						<!--	</items>-->
-						<!--</Table>-->
 					</l:content>
 				</l:Grid>
 			</VBox>

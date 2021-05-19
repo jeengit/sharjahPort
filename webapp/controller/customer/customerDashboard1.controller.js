@@ -18,19 +18,15 @@ sap.ui.define([
 		},
 		_onObjectMatched: function () {
 			this.getUserName();
-
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
 			var that = this;
 			oModel.read("/DashboardCount", {
-				// urlParameters: {
-				// 	"$filter": "ImPortCode eq 'MENAKALID' and ImStatus eq 'LOGCREATED'"
-				// },
 				success: function (data) {
 					that.getView().setModel(new JSONModel(data.results), "DashboardCountModel");
 				},
 				error: function (oResponse) {
-					alert("Error...");
+					sap.m.MessageToast.show(oResponse.statusText);
 					sap.ui.core.BusyIndicator.hide();
 				}
 			});
@@ -191,7 +187,7 @@ sap.ui.define([
 				sap.ui.core.BusyIndicator.show();
 				var status = oEvent.getSource().getAriaLabel().split("/")[0];
 				var type = oEvent.getSource().getAriaLabel().split("/")[1];
-				var route = type === "ETA" ? "products" : "orders";
+				var route = type === "ETA" ? "products" : type === "LOG" ? "orders" : "manifest";
 				this.getRouter().navTo(route, {
 					sPath: status,
 					type: type

@@ -21,6 +21,7 @@ sap.ui.define([
 					if (data.Role === "CONTROL_ROOM") {that.getRouter().navTo("dashboard");}
 					if (data.Role === "HARBOR_MASTER") {that.getRouter().navTo("dashboardHarbour");}
 					if (data.Role === "AGENT") {that.getRouter().navTo("dashboardAgent");}
+					if (data.Role === "") {that.getRouter().navTo("dashboardManifest");}
 					var oStore = jQuery.sap.storage(jQuery.sap.storage.Type.local);
 					oStore.put("user", data.Name);
 					oStore.put("role", data.Role);
@@ -28,7 +29,7 @@ sap.ui.define([
 					sap.ui.core.BusyIndicator.hide();
 				},
 				error: function (oResponse) {
-					sap.m.MessageToast.show("Wrong Credentials");
+					sap.m.MessageToast.show(oResponse.statusText);
 					sap.ui.core.BusyIndicator.hide();
 				}
 			});

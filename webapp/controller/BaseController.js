@@ -9,6 +9,20 @@ sap.ui.define([
 		getRouter: function () {
 			return UIComponent.getRouterFor(this);
 		},
+		getModel: function (entity,modelName){
+			var oModel = this.getOwnerComponent().getModel("s4Model");
+			oModel.setUseBatch(false);
+			var that = this;
+			oModel.read("/" + entity, {
+				success: function (data) {
+					that.getView().setModel(new JSONModel(data.results), modelName);
+				},
+				error: function (oResponse) {
+					sap.m.MessageToast.show(oResponse.statusText);
+					sap.ui.core.BusyIndicator.hide();
+				}
+			});
+		},
 		onNavToPress: function (evt) {
 			var route = evt.getParameter("id").split("--")[1];
 			this.getRouter().navTo(route);

@@ -1,7 +1,7 @@
 <mvc:View controllerName="com.demo.sharjahPort.controller.customer.logList" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" displayBlock="true"
 	xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:u="sap.ui.unified" xmlns:l="sap.ui.layout" xmlns:tnt="sap.tnt"
 	xmlns:f="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page id="pageId" showHeader="true" class="sapUiResponsiveContentPadding">
+	<Page id="logPage" showHeader="true" class="sapUiResponsiveContentPadding">
 		<customHeader>
 			<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.TopNav" type="XML"/>
 		</customHeader>
@@ -10,7 +10,7 @@
 				<Breadcrumbs currentLocationText="Log Sheet">
 					<Link id="dashboard" press="onHomePress" text="Home"/>
 				</Breadcrumbs>
-				<t:Table id="etaTable" rows="{etaListModel>/results}" selectionMode="None" ariaLabelledBy="title"
+				<t:Table id="logTable" rows="{etaListModel>/results}" selectionMode="None" ariaLabelledBy="title"
 					class="card tableCard no-margin">
 					<t:extension>
 						<OverflowToolbar style="Clear">

@@ -17,6 +17,7 @@ sap.ui.define([
 		_onObjectMatched: function (oEvent) {
 			var status = oEvent.getParameter("arguments").sPath;
 			this.getUserName();
+			this.adjustTableRowsCount();
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
 			var that = this;
@@ -48,6 +49,20 @@ sap.ui.define([
 			this.getRouter().navTo("productDetails", {
 				sPath: encodeURIComponent(sPath),
 				id: id
+			});
+		},
+		onAfterRendering: function () {
+			var that = this;
+			$(window).resize(function () {
+				that.adjustTableRowsCount();
+			});
+		},
+		adjustTableRowsCount: function(){
+			var that = this;
+			var pageId = this.getView().byId("etaPage").getId();
+			var rows = Math.floor(($("#" + pageId).height() - 200) / 32);
+			jQuery.sap.delayedCall(0, this, function () {
+				that.byId("etaTable").setVisibleRowCount(rows);
 			});
 		}
 	});

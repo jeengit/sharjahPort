@@ -125,9 +125,7 @@
 				</layout:VerticalLayout>
 			</m:FlexBox>
 		</headerContent>
-		<!--<VBox class="sapUiSmallMargin" id="etaDisp">-->
 		<sections>
-					
 			<ObjectPageSection titleUppercase="false" title="{i18n>ETAPorDetails}">
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
@@ -140,13 +138,13 @@
 											<m:Label text="{i18n>ExpectedArrival}" class="sapUiSmallMarginEnd"/>
 											<m:Text
 												text="{ path: 'etaDetailsModel>/ZExpectedArrivalDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} } at {etaDetailsModel>/ZExpectedArrivalTime}"
-												wrapping="false" class="dateDispA"/>
+												wrapping="false"/>
 										</m:HBox>
 										<m:HBox class="sapUiTinyMarginBottom">
 											<m:Label text="{i18n>ExpectedDeparture}" class="sapUiSmallMarginEnd"/>
 											<m:Text
 												text="{ path: 'etaDetailsModel>/ZExpectedDepartureDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} } at {etaDetailsModel>/ZExpectedDepartureTime}"
-												wrapping="false" class="dateDispD"/>
+												wrapping="false"/>
 										</m:HBox>
 										<m:HBox class="sapUiTinyMarginBottom">
 											<m:Label text="{i18n>LastPort}" class="sapUiMediumMarginEnd"/>
@@ -211,7 +209,5 @@
 				</subSections>
 			</ObjectPageSection>
 		</sections>
-	
-		<!--</VBox>-->
 	</ObjectPageLayout>
 </core:FragmentDefinition>

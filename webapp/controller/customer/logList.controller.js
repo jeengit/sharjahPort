@@ -1,13 +1,7 @@
 sap.ui.define([
-	"sap/ui/Device",
 	"../BaseController",
-	"sap/ui/core/mvc/Controller",
-	"sap/ui/model/Filter",
-	"sap/ui/model/FilterOperator",
-	"sap/ui/table/library",
-	"sap/m/MessageToast",
 	"sap/ui/model/json/JSONModel"
-], function (Device, BaseController, Controller, Filter, FilterOperator, library, MessageToast, JSONModel) {
+], function (BaseController,JSONModel) {
 	"use strict";
 	return BaseController.extend("com.demo.sharjahPort.controller.customer.logList", {
 
@@ -27,11 +21,11 @@ sap.ui.define([
 				},
 				success: function (data) {
 					that.getView().setModel(new JSONModel(data), "etaListModel");
-					MessageToast.show("Items loaded succesfully with status - " + status);
+					sap.m.MessageToast.show("Items loaded succesfully with status - " + status);
 					sap.ui.core.BusyIndicator.hide();
 				},
 				error: function (oResponse) {
-					MessageToast.show("Something went wrong...");
+					sap.m.MessageToast.show(oResponse.statusText);
 					sap.ui.core.BusyIndicator.hide();
 					// getDialog.close();
 				}
@@ -55,10 +49,10 @@ sap.ui.define([
 		},
 		adjustTableRowsCount: function(){
 			var that = this;
-			var pageId = this.getView().byId("pageId").getId();
+			var pageId = this.getView().byId("logPage").getId();
 			var rows = Math.floor(($("#" + pageId).height() - 200) / 32);
 			jQuery.sap.delayedCall(0, this, function () {
-				that.byId("etaTable").setVisibleRowCount(rows);
+				that.byId("logTable").setVisibleRowCount(rows);
 			});
 		}
 	});

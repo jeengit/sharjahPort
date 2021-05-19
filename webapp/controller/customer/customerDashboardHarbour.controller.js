@@ -1,35 +1,16 @@
 sap.ui.define([
 	"../BaseController",
-	"sap/ui/core/mvc/Controller",
 	"sap/ui/model/json/JSONModel"
-], function (BaseController, Controller, JSONModel) {
+], function (BaseController, JSONModel) {
 	"use strict";
-
-	return BaseController.extend("com.demo.sharjahPort.controller.customer.customerDashboard1", {
-
-		/**
-		 * Called when a controller is instantiated and its View controls (if available) are already created.
-		 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
-		 * @memberOf com.demo.sharjahPort.view.customerDashboard1
-		 */
+	return BaseController.extend("com.demo.sharjahPort.controller.customer.customerDashboardHarbour", {
 		onInit: function () {
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.getRoute("dashboardHarbour").attachPatternMatched(this._onObjectMatched, this);
 		},
 		_onObjectMatched: function () {
 			this.getUserName();
-			var oModel = this.getOwnerComponent().getModel("s4Model");
-			oModel.setUseBatch(false);
-			var that = this;
-			oModel.read("/DashboardCount", {
-				success: function (data) {
-					that.getView().setModel(new JSONModel(data.results), "DashboardCountModel");
-				},
-				error: function (oResponse) {
-					sap.m.MessageToast.show(oResponse.statusText);
-					sap.ui.core.BusyIndicator.hide();
-				}
-			});
+			this.getModel("DashboardCount","DashboardCountModel");
 			var oData = {
 				"results": [{
 					"count": 1,

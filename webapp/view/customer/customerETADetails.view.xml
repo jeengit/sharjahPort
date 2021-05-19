@@ -4,7 +4,7 @@
     xmlns:core="sap.ui.core"
     xmlns:l="sap.ui.layout"
     xmlns:html="http://www.w3.org/1999/xhtml">
-    <Page id="page" showHeader="true" class="sapUiResponsiveContentPadding">
+    <Page id="page" showHeader="true" class="sapUiResponsiveContentPadding detailspage">
         <customHeader>
             <core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.TopNav" type="XML"/>
         </customHeader>

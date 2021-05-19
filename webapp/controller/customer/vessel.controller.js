@@ -47,50 +47,10 @@ sap.ui.define([
 			}
 			var pageId = this.getView().getId();
 			this.getView().byId(pageId + "--vesMovChangeId").setVisible(true);
-			var oModel = this.getOwnerComponent().getModel("s4Model");
-			var that = this;
-			oModel.setUseBatch(false);
-			oModel.read("/TugListSet", {
-				success: function (data) {
-					that.getView().setModel(new JSONModel(data), "vesMovTugModel");
-					sap.ui.core.BusyIndicator.hide();
-				},
-				error: function (oResponse) {
-					alert("Error...");
-					sap.ui.core.BusyIndicator.hide();
-				}
-			});
-			oModel.read("/PilotListSet", {
-				success: function (data) {
-					that.getView().setModel(new JSONModel(data), "vesMovpilotModel");
-					sap.ui.core.BusyIndicator.hide();
-				},
-				error: function (oResponse) {
-					alert("Error...");
-					sap.ui.core.BusyIndicator.hide();
-				}
-			});
-			oModel.read("/BerthListSet", {
-				success: function (data) {
-					that.getView().setModel(new JSONModel(data), "vesMovBertModel");
-					sap.ui.core.BusyIndicator.hide();
-				},
-				error: function (oResponse) {
-					alert("Error...");
-					sap.ui.core.BusyIndicator.hide();
-				}
-			});
-			oModel.read("/MBoatListSet", {
-
-				success: function (data) {
-					that.getView().setModel(new JSONModel(data), "mBoatModel");
-					sap.ui.core.BusyIndicator.hide();
-				},
-				error: function (oResponse) {
-					alert("Error...");
-					sap.ui.core.BusyIndicator.hide();
-				}
-			});
+			this.getModel("TugListSet","vesMovTugModel");
+			this.getModel("PilotListSet","vesMovpilotModel");
+			this.getModel("BerthListSet","vesMovBertModel");
+			this.getModel("MBoatListSet","mBoatModel");
 		},
 		handleChangeSelect: function (evt) {
 			var preDate = this.getView().byId(evt.getSource().getName()).getDateValue();

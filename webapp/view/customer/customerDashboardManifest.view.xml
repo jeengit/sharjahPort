@@ -1,0 +1,55 @@
+<mvc:View controllerName="com.demo.sharjahPort.controller.customer.customerDashboardManifest" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	displayBlock="true" xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:u="sap.ui.unified" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page showHeader="true" class="sapUiResponsiveContentPadding">
+		<customHeader>
+			<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.TopNav" type="XML"/>
+		</customHeader>
+		<content>
+			<VBox class="section">
+				<Title text="Dashboard" class="heading"/>
+				<html:div class="card">
+					<l:Grid class="sapUiSmallMarginTopBottom custTile" defaultSpan="L2 M2 S12">
+						<l:content>
+							<GenericTile ariaLabel="NA/MANIFEST" press="handleListPress" class="tileLayout" header="Manifest - Customs" subheader="Customs Approved Manifest">
+								<TileContent unit="" footer="{DashboardCountModel>/0/Manifest}">
+									<!--<ImageContent src="sap-icon://complete" />-->
+								</TileContent>
+							</GenericTile>
+							<GenericTile ariaLabel="NEW/ETA" class="tileLayout" header="Manifest - Open" subheader="Open Manifest">
+								<TileContent unit="" footer="{DashboardCountModel>/0/OpenManifest}">
+									<!--<ImageContent src="sap-icon://product" />-->
+								</TileContent>
+							</GenericTile>
+							<GenericTile ariaLabel="REJECTED/LOG" class="tileLayout" header="Manifest - Closed" subheader="Closed Manifest">
+								<TileContent unit="" footer="{DashboardCountModel>/0/ClosedManifest}">
+									<!--<ImageContent src="sap-icon://product" />-->
+								</TileContent>
+							</GenericTile>
+							<GenericTile class="tileLayout" header="Bill of entry - Open" subheader="Bill of Entry">
+								<TileContent unit="" footer="{DashboardCountModel>/0/OpenBOE}">
+									<!--<ImageContent src="sap-icon://complete" />-->
+								</TileContent>
+							</GenericTile>
+							<GenericTile class="tileLayout" header="Bill of Entry - Closed" subheader="Bill of Entry">
+								<TileContent unit="" footer="{DashboardCountModel>/0/ClosedBOE}">
+									<!--<ImageContent src="sap-icon://complete" />-->
+								</TileContent>
+							</GenericTile>
+							<GenericTile class="tileLayout" header="Delivery - Open" subheader="Delivery">
+								<TileContent unit="" footer="{DashboardCountModel>/0/OpenDelivery}">
+									<!--<ImageContent src="sap-icon://complete" />-->
+								</TileContent>
+							</GenericTile>
+							<GenericTile class="tileLayout" header="Delivery - Closed" subheader="Delivery">
+								<TileContent unit="" footer="{DashboardCountModel>/0/ClosedDelivery}">
+									<!--<ImageContent src="sap-icon://complete" />-->
+								</TileContent>
+							</GenericTile>
+						</l:content>
+					</l:Grid>
+				</html:div>
+			</VBox>
+		</content>
+	</Page>
+</mvc:View>

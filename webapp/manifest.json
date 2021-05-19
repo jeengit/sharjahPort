@@ -96,27 +96,6 @@
 			},
 			"routes": [
 				{
-					"name": "loginC",
-					"pattern": "login",
-					"target": [
-						"loginC"
-					]
-				},
-				{
-					"name": "registerC",
-					"pattern": "CustomerReg",
-					"target": [
-						"registerC"
-					]
-				},
-				{
-					"name": "loginOTP",
-					"pattern": "login",
-					"target": [
-						"loginOTP"
-					]
-				},
-				{
 					"name": "dashboard",
 					"pattern": "dashboard",
 					"target": [
@@ -141,27 +120,11 @@
 					]
 				},
 				{
-					"name": "orderNow",
-					"pattern": "orderNow",
-					"target": [
-						"home",
-						"orderNow"
-					]
-				},
-				{
 					"name": "orders",
 					"pattern": "items={sPath}&type='LOG'",
 					"target": [
 						"home",
 						"orders"
-					]
-				},
-				{
-					"name": "orderStatus",
-					"pattern": "orderStatus/{sPath}/{id}",
-					"target": [
-						"home",
-						"orderStatus"
 					]
 				},
 				{
@@ -189,6 +152,14 @@
 					]
 				},
 				{
+					"name": "dashboardManifest",
+					"pattern": "dashboardManifest",
+					"target": [
+						"home",
+						"dashboardManifest"
+					]
+				},
+				{
 					"name": "manifest",
 					"pattern": "items={sPath}&type='MANIFEST'",
 					"target": [
@@ -204,25 +175,22 @@
 					"controlAggregation": "masterPages",
 					"viewName": "Home"
 				},
-				"loginC": {
-					"viewType": "XML",
-					"transition": "slide",
-					"viewName": "customerLogin"
-				},
-				"registerC": {
-					"viewType": "XML",
-					"transition": "slide",
-					"viewName": "customerRegistration"
-				},
-				"loginOTP": {
-					"viewType": "XML",
-					"transition": "slide",
-					"viewName": "customerLoginOTP"
-				},
 				"dashboard": {
 					"viewType": "XML",
 					"transition": "slide",
-					"viewName": "customerDashboard"
+					"viewName": "customerDashboardTower"
+				},
+				"dashboardHarbour": {
+					"viewType": "XML",
+					"viewName": "customerDashboardHarbour"
+				},
+				"dashboardAgent": {
+					"viewType": "XML",
+					"viewName": "customerDashboardAgent"
+				},
+				"dashboardManifest": {
+					"viewType": "XML",
+					"viewName": "customerDashboardManifest"
 				},
 				"products": {
 					"viewType": "XML",
@@ -233,11 +201,6 @@
 					"viewType": "XML",
 					"transition": "slide",
 					"viewName": "customerETADetails"
-				},
-				"orderNow": {
-					"viewType": "XML",
-					"transition": "slide",
-					"viewName": "customerOrderNow"
 				},
 				"orders": {
 					"viewType": "XML",
@@ -253,14 +216,6 @@
 					"viewType": "XML",
 					"transition": "slide",
 					"viewName": "vessel"
-				},
-				"dashboardHarbour": {
-					"viewType": "XML",
-					"viewName": "customerDashboard1"
-				},
-				"dashboardAgent": {
-					"viewType": "XML",
-					"viewName": "customerDashboardAgent"
 				},
 				"manifest": {
 					"viewType": "XML",

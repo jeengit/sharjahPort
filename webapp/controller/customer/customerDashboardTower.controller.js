@@ -1,37 +1,16 @@
 sap.ui.define([
-	"sap/ui/Device",
 	"../BaseController",
-	"sap/ui/core/mvc/Controller",
-	"sap/ui/model/Filter",
-	"sap/ui/model/FilterOperator",
-	"sap/ui/model/json/JSONModel",
-	"sap/m/MessageToast",
-	"sap/ui/core/BusyIndicator"
-], function (Device, BaseController, Controller, Filter, FilterOperator, JSONModel, MessageToast, BusyIndicator) {
+	"sap/ui/model/json/JSONModel"
+], function (BaseController, JSONModel) {
 	"use strict";
-	return BaseController.extend("com.demo.sharjahPort.controller.customer.customerDashboard", {
+	return BaseController.extend("com.demo.sharjahPort.controller.customer.customerDashboardTower", {
 		onInit: function () {
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.getRoute("dashboard").attachPatternMatched(this._onObjectMatched, this);
 		},
-		_onObjectMatched: function (oEvent) {
+		_onObjectMatched: function () {
 			this.getUserName();
-			var oModel = this.getOwnerComponent().getModel("s4Model");
-			oModel.setUseBatch(false);
-			var that = this;
-			oModel.read("/DashboardCount", {
-				// 	urlParameters: {
-				// 	"$filter": "ImPortCode eq 'MENAKALID' and ImStatus eq 'LOGCREATED'"
-				// },
-				success: function (data) {
-					that.getView().setModel(new JSONModel(data.results), "DashboardCountModel");
-				},
-				error: function (oResponse) {
-					alert("Error...");
-					sap.ui.core.BusyIndicator.hide();
-				}
-			});
-
+			this.getModel("DashboardCount","DashboardCountModel");
 			var oData = {
 				"results": [{
 					"count": 1,
@@ -202,7 +181,7 @@ sap.ui.define([
 				}]
 			};
 			this.getView().setModel(new JSONModel(harbourData), "harbourTable");
-			BusyIndicator.hide();
+			sap.ui.core.BusyIndicator.hide();
 		},
 		onNavToPress: function (oEvent) {
 			sap.ui.core.BusyIndicator.show();

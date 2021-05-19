@@ -12,18 +12,18 @@
 				</Breadcrumbs>
 				<FlexBox alignItems="Start" class="manifestListClass">
 					<List id="list1" class="tableCard card"
-						items="{ path: 'manifestListModel>/results',templateShareable:true, filters: {path: 'flag', operator: 'EQ', value1: 'I'} }"
+						items="{ path: 'manifestListModel>/',templateShareable:true, filters: {path: 'Import_Export', operator: 'EQ', value1: 'I'} }"
 						headerText="Manifest - Import" noDataText="{i18n>emptyNodata}">
-						<CustomListItem type="Active" press="onWorkItmDetailPress">
+						<CustomListItem type="Active" press="handelDetailPress">
 							<FlexBox alignItems="Start" justifyContent="SpaceBetween">
-								<Text text="{manifestListModel>agentName} - {manifestListModel>manifestNo}"/>
-								<tnt:InfoLabel text="{manifestListModel>status}" displayOnly="true"
-									colorScheme="{= ${manifestListModel>status} === 'NEW' ? 8 : ${manifestListModel>status} === 'IN PROGRESS' ? 3 : 5 }"/>
+								<Text text="{manifestListModel>AgentName} - {manifestListModel>ManifestNo}"/>
+								<tnt:InfoLabel visible="{= ${manifestListModel>ManifestStatus} === '' ? false : true}" text="{manifestListModel>ManifestStatus}" displayOnly="true"
+									colorScheme="{= ${manifestListModel>ManifestStatus} === 'NEW' ? 8 : ${manifestListModel>ManifestStatus} === 'IN PROGRESS' ? 3 : 5 }"/>
 							</FlexBox>
 							<FlexBox alignItems="Start" justifyContent="SpaceBetween">
-								<Text class="desc" text="{manifestListModel>vesselName}"/>
+								<Text class="desc" text="{manifestListModel>VesselName}"/>
 								<Text class="desc sapMLnk"
-									text="{ path: 'manifestListModel>creationDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}} }"
+									text="{ path: 'manifestListModel>Arrivaldate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}} }"
 									wrapping="false"/>
 							</FlexBox>
 						</CustomListItem>
@@ -37,16 +37,16 @@
 						</layoutData>
 					</List>
 					<List id="list2" class="tableCard card"
-						items="{ path: 'manifestListModel>/results',templateShareable:true, filters: {path: 'flag', operator: 'EQ', value1: 'E'} }"
+						items="{ path: 'manifestListModel>/',templateShareable:true, filters: {path: 'Import_Export', operator: 'EQ', value1: 'E'} }"
 						headerText="Manifest - Export" noDataText="{i18n>emptyNodata}">
-						<CustomListItem type="Active" press="onWorkItmDetailPress">
+						<CustomListItem type="Active" press="handelDetailPress">
 							<FlexBox alignItems="Start" justifyContent="SpaceBetween">
-								<Text text="{manifestListModel>agentName} - {manifestListModel>manifestNo}"/>
-								<tnt:InfoLabel text="{manifestListModel>status}" displayOnly="true"
-									colorScheme="{= ${manifestListModel>status} === 'NEW' ? 8 : ${manifestListModel>status} === 'IN PROGRESS' ? 3 : 5 }"/>
+								<Text text="{manifestListModel>AgentName} - {manifestListModel>ManifestNo}"/>
+								<tnt:InfoLabel visible="false" text="{manifestListModel>ManifestStatus}" displayOnly="true"
+									colorScheme="{= ${manifestListModel>ManifestStatus} === 'NEW' ? 8 : ${manifestListModel>ManifestStatus} === 'IN PROGRESS' ? 3 : 5 }"/>
 							</FlexBox>
 							<FlexBox alignItems="Start" justifyContent="SpaceBetween">
-								<Text class="desc" text="{manifestListModel>vesselName}"/>
+								<Text class="desc" text="{manifestListModel>VesselName}"/>
 								<Text class="desc sapMLnk"
 									text="{ path: 'manifestListModel>creationDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}} }"
 									wrapping="false"/>

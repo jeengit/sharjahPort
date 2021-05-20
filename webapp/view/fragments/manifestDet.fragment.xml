@@ -11,14 +11,14 @@
 				<!--</breadcrumbs>-->
 				<expandedHeading>
 					<m:HBox>
-						<m:Title text="{manDetModel>/results/0/ManifestNo}" wrapping="true"/>
+						<m:Title text="{manDetModel>/ManifestNo}" wrapping="true"/>
 						<m:ObjectMarker type="Flagged" class="sapUiTinyMarginBegin"/>
 					</m:HBox>
 				</expandedHeading>
 				<snappedHeading>
 					<m:FlexBox fitContainer="true" alignItems="Center">
 						<m:Avatar backgroundColor="Accent9" src="sap-icon://manager-insight" class="sapUiTinyMarginEnd"/>
-						<m:Title text="{manDetModel>/results/0/ManifestNo}" wrapping="true"/>
+						<m:Title text="{manDetModel>/ManifestNo}" wrapping="true"/>
 					</m:FlexBox>
 				</snappedHeading>
 				<expandedContent>
@@ -45,65 +45,62 @@
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>PortName}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{manDetModel>/results/0/PortCode}"/>
+							<m:Text text="{manDetModel>/PortCode}"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>manNo}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{manDetModel>/results/0/ManifestNo}"/>
+							<m:Text text="{manDetModel>/ManifestNo}"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>Captain}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{manDetModel>/results/0/Caption}"/>
+							<m:Text text="{manDetModel>/Caption}"/>
 						</m:HBox>
 							<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>disComDate}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{manDetModel>/results/0/DischargeCommencedDate}"/>
+							<m:Text text="{manDetModel>/DischargeCommencedDate}"/>
 						</m:HBox>
 					</m:VBox>
 				</layout:VerticalLayout>
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
-					
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>ArrivalDate}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{ path: 'manDetModel>/results/0/ArrivalDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"/>
+							<m:Text text="{ path: 'manDetModel>/ArrivalDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>crtDate}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{ path: 'manDetModel>/results/0/CreationDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"
+							<m:Text text="{ path: 'manDetModel>/CreationDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"
 								wrapping="false"/>
 						</m:HBox>
 							<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>Agentcode}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{manDetModel>/results/0/AgentCode}"
+							<m:Text text="{manDetModel>/AgentCode}"
 								wrapping="false"/>
 						</m:HBox>
 							<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>voyNo}" class="sapUiSmallMarginEnd"/>
-						<m:Text text="{manDetModel>/results/0/VoyegeNo}"/>
+						<m:Text text="{manDetModel>/VoyegeNo}"/>
 						</m:HBox>
 					</m:VBox>
 				</layout:VerticalLayout>
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
-					
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>cusManfNo}" class="sapUiSmallMarginEnd"/>
 							<m:Text
-								text="{manDetModel>/results/0/CustRefManifestNo}"
+								text="{manDetModel>/CustRefManifestNo}"
 								wrapping="false"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>AgentName}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{manDetModel>/results/0/AgentName}"/>
+							<m:Text text="{manDetModel>/AgentName}"/>
 						</m:HBox>
 							<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>VesselName}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{manDetModel>/results/0/VesselName}"/>
+							<m:Text text="{manDetModel>/VesselName}"/>
 						</m:HBox>
 					</m:VBox>
 				</layout:VerticalLayout>
-			
 			</m:FlexBox>
 		</headerContent>
 		<sections>
@@ -113,9 +110,8 @@
 						<blocks>
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
-									<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>BasicDetails}"/>-->
 									<m:VBox>
-										<t:Table rows="{manDetModel>/results/0/BillOfEntrySet/results}" selectionMode="None"
+										<t:Table rows="{manDetModel>/BillOfEntrySet/results}" selectionMode="None"
 									id="shifTableDisplay" ariaLabelledBy="title">
 									<!--<t:extension>-->
 									<!--	<OverflowToolbar style="Clear">-->

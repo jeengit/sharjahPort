@@ -242,7 +242,7 @@
 												<m:Label text="{i18n>BerthNo}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:ComboBox selectedKey="{vesMovModel>/Anch_BerthNumber}" width="100%" items="{path: 'vesMovBertModel>/results'}" placeholder="Select Berth">
+												<m:ComboBox selectedKey="{vesMovModel>/Anch_BerthNumber}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="Select Berth">
 													<core:Item key="{vesMovBertModel>BerthNumber}" text="{vesMovBertModel>BerthNumber}"/>
 												</m:ComboBox>
 											</m:HBox>
@@ -273,7 +273,7 @@
 												<m:Label text="{i18n>Pilot}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:ComboBox selectedKey="{vesMovModel>/Anch_PilotName}" items="{path: 'vesMovpilotModel>/results'}" id="anc_pilot" change="onPilotChangeFn"
+												<m:ComboBox selectedKey="{vesMovModel>/Anch_PilotName}" items="{path: 'vesMovpilotModel>/'}" id="anc_pilot" change="onPilotChangeFn"
 													placeholder="Select Pilot">
 													<core:Item key="{vesMovpilotModel>PilotName}" text="{vesMovpilotModel>PilotName}"/>
 												</m:ComboBox>
@@ -284,7 +284,7 @@
 												<m:Label text="{i18n>MBoat}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:ComboBox selectedKey="{vesMovModel>/Anch_M_Boat}" width="100%" items="{path: 'mBoatModel>/results'}" placeholder="Select M/Boat">
+												<m:ComboBox selectedKey="{vesMovModel>/Anch_M_Boat}" width="100%" items="{path: 'mBoatModel>/'}" placeholder="Select M/Boat">
 													<core:Item key="{mBoatModel>VesselName}" text="{mBoatModel>VesselName}"/>
 												</m:ComboBox>
 											</m:HBox>
@@ -307,7 +307,7 @@
 												<m:Label text="{i18n>Name}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:ComboBox selectedKey="{vesMovModel>/Anch_TugName}" width="100%" items="{path: 'vesMovTugModel>/results'}" placeholder="Select Tug">
+												<m:ComboBox selectedKey="{vesMovModel>/Anch_TugName}" width="100%" items="{path: 'vesMovTugModel>/'}" placeholder="Select Tug">
 													<core:Item key="{vesMovTugModel>VesselName}" text="{vesMovTugModel>VesselName}"/>
 												</m:ComboBox>
 											</m:HBox>
@@ -373,7 +373,7 @@
 												<m:Label text="{i18n>BerthNo}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:ComboBox selectedKey="{vesMovModel>/Berth_berthNumber}" width="100%" items="{path: 'vesMovBertModel>/results'}"
+												<m:ComboBox selectedKey="{vesMovModel>/Berth_berthNumber}" width="100%" items="{path: 'vesMovBertModel>/'}"
 													placeholder="Select Berth">
 													<core:Item key="{vesMovBertModel>BerthNumber}" text="{vesMovBertModel>BerthNumber}"/>
 												</m:ComboBox>
@@ -405,7 +405,7 @@
 												<m:Label text="{i18n>Pilot}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:ComboBox selectedKey="{vesMovModel>/Berth_Pilot}" items="{path: 'vesMovpilotModel>/results'}" placeholder="Select Pilot" id="bert_pilot">
+												<m:ComboBox selectedKey="{vesMovModel>/Berth_Pilot}" items="{path: 'vesMovpilotModel>/'}" placeholder="Select Pilot" id="bert_pilot">
 													<core:Item key="{vesMovpilotModel>PilotName}" text="{vesMovpilotModel>PilotName}"/>
 												</m:ComboBox>
 											</m:HBox>
@@ -415,7 +415,7 @@
 												<m:Label text="{i18n>MBoat}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:ComboBox selectedKey="{vesMovModel>/Berth_M_Boat}" width="100%" items="{path: 'mBoatModel>/results'}" placeholder="Select M/Boat">
+												<m:ComboBox selectedKey="{vesMovModel>/Berth_M_Boat}" width="100%" items="{path: 'mBoatModel>/'}" placeholder="Select M/Boat">
 													<core:Item key="{mBoatModel>VesselName}" text="{mBoatModel>VesselName}"/>
 												</m:ComboBox>
 											</m:HBox>
@@ -438,7 +438,7 @@
 												<m:Label text="{i18n>Name}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:ComboBox selectedKey="{vesMovModel>/Berth_TugName}" width="100%" items="{path: 'vesMovTugModel>/results'}" placeholder="Select Tug">
+												<m:ComboBox selectedKey="{vesMovModel>/Berth_TugName}" width="100%" items="{path: 'vesMovTugModel>/'}" placeholder="Select Tug">
 													<core:Item key="{vesMovTugModel>VesselName}" text="{vesMovTugModel>VesselName}"/>
 												</m:ComboBox>
 											</m:HBox>
@@ -555,7 +555,7 @@
 												<m:Label text="{i18n>BerthNo}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:ComboBox selectedKey="{vesMovModel>/UBerth_BerthNumber}" width="100%" items="{path: 'vesMovBertModel>/results'}"
+												<m:ComboBox selectedKey="{vesMovModel>/UBerth_BerthNumber}" width="100%" items="{path: 'vesMovBertModel>/'}"
 													placeholder="Select Berth">
 													<core:Item key="{vesMovBertModel>BerthNumber}" text="{vesMovBertModel>BerthNumber}"/>
 												</m:ComboBox>
@@ -587,7 +587,7 @@
 												<m:Label text="{i18n>Pilot}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:ComboBox items="{path: 'vesMovpilotModel>/results'}" selectedKey="{vesMovModel>/UBerth_Pilot}" placeholder="Select Pilot"
+												<m:ComboBox items="{path: 'vesMovpilotModel>/'}" selectedKey="{vesMovModel>/UBerth_Pilot}" placeholder="Select Pilot"
 													id="ubert_pilot" change="onPilotChangeFn">
 													<core:Item key="{vesMovpilotModel>PilotName}" text="{vesMovpilotModel>PilotName}"/>
 												</m:ComboBox>
@@ -598,7 +598,7 @@
 												<m:Label text="{i18n>MBoat}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:ComboBox selectedKey="{vesMovModel>/UBerth_M_Boat}" width="100%" items="{path: 'mBoatModel>/results'}" placeholder="Select M/Boat">
+												<m:ComboBox selectedKey="{vesMovModel>/UBerth_M_Boat}" width="100%" items="{path: 'mBoatModel>/'}" placeholder="Select M/Boat">
 													<core:Item key="{mBoatModel>VesselName}" text="{mBoatModel>VesselName}"/>
 												</m:ComboBox>
 											</m:HBox>
@@ -621,7 +621,7 @@
 												<m:Label text="{i18n>Name}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:ComboBox selectedKey="{vesMovModel>/UBerth_TugName}" width="100%" items="{path: 'vesMovTugModel>/results'}" placeholder="Select Tug">
+												<m:ComboBox selectedKey="{vesMovModel>/UBerth_TugName}" width="100%" items="{path: 'vesMovTugModel>/'}" placeholder="Select Tug">
 													<core:Item key="{vesMovTugModel>VesselName}" text="{vesMovTugModel>VesselName}"/>
 												</m:ComboBox>
 											</m:HBox>

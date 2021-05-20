@@ -6,16 +6,16 @@ sap.ui.define([
 	"sap/ui/model/FilterOperator",
 	"sap/ui/core/Fragment",
 	"sap/ui/model/json/JSONModel"
-], function (Device, BaseController, Controller, Filter, FilterOperator, Fragment, JSONModel) {
+], function(Device, BaseController, Controller, Filter, FilterOperator, Fragment, JSONModel) {
 	"use strict";
 
 	return BaseController.extend("com.demo.sharjahPort.controller.customer.customerETADetails", {
 
-		onInit: function () {
+		onInit: function() {
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.getRoute("etaDetails").attachPatternMatched(this._onObjectMatched, this);
 		},
-		_onObjectMatched: function (oEvent) {
+		_onObjectMatched: function(oEvent) {
 			this.getUserName();
 			sap.ui.core.BusyIndicator.show();
 			var oModel = this.getOwnerComponent().getModel("s4Model");
@@ -65,86 +65,54 @@ sap.ui.define([
 				this.getView().byId(pageId + "--etaChange").setVisible(true);
 				this.getView().setModel(new JSONModel(etaDetailsData), "etaDetailsModel");
 				oModel.read("/AgentSearchSet", {
-					success: function (data) {
+					success: function(data) {
 						that.getView().setModel(new JSONModel(data), "agentModel");
 						// console.log(data.results[0].ImAgentCode);      
-						if(data.results[0].ImAgentCode){
-								oModel.read("/AgentVesselListSet", {
-					urlParameters: {
-						"$filter": "ImAgentId eq '" + data.results[0].ImAgentCode + "'"
-					},
-					success: function (data1) {
-						that.getView().setModel(new JSONModel(data1), "agentVesselModel");
-						sap.ui.core.BusyIndicator.hide();
-					},
-					error: function (oResponse) {
-					
-					}
-				});
+						if (data.results[0].ImAgentCode) {
+							oModel.read("/AgentVesselListSet", {
+								urlParameters: {
+									"$filter": "ImAgentId eq '" + data.results[0].ImAgentCode + "'"
+								},
+								success: function(data1) {
+									that.getView().setModel(new JSONModel(data1), "agentVesselModel");
+									sap.ui.core.BusyIndicator.hide();
+								},
+								error: function(oResponse) {
+
+								}
+							});
 						}
 						sap.ui.core.BusyIndicator.hide();
 					},
-					error: function (oResponse) {
+					error: function(oResponse) {
 						alert("Error...");
 						sap.ui.core.BusyIndicator.hide();
 					}
 				});
-				
-				// oModel.read("/PortListSet", {
-				// 	success: function (data) {
-				// 		that.getView().setModel(new JSONModel(data), "portListModel");
-				// 		sap.ui.core.BusyIndicator.hide();
-				// 	},
-				// 	error: function (oResponse) {
-				// 		alert("Error...");
-				// 		sap.ui.core.BusyIndicator.hide();
-				// 	}
-				// });
-				// oModel.read("/BerthListSet", {
-				// 	success: function (data) {
-				// 		that.getView().setModel(new JSONModel(data), "vesMovBertModel");
-				// 		sap.ui.core.BusyIndicator.hide();
-				// 	},
-				// 	error: function (oResponse) {
-				// 		alert("Error...");
-				// 		sap.ui.core.BusyIndicator.hide();
-				// 	}
-				// });
 
 			} else {
 				this.getView().byId(pageId + "--etaDisp").setVisible(true);
 				this.getView().byId(pageId + "--etaChange").setVisible(false);
 				sap.ui.getCore().setModel(new JSONModel(odata), "etaIdModel");
 				oModel.read("/ETAdetailsSet('" + odata.id + "')", {
-					success: function (data) {
+					success: function(data) {
 						that.getView().setModel(new JSONModel(data), "etaDetailsModel");
 						sap.ui.getCore().setModel(new JSONModel(data), "etaDetailsModel");
 						sap.ui.core.BusyIndicator.hide();
 					},
-					error: function (oResponse) {
+					error: function(oResponse) {
 						alert("Error...");
 						sap.ui.core.BusyIndicator.hide();
 					}
 				});
 			}
 			sap.ui.core.BusyIndicator.hide();
-				// this.handleServiceGET(that, oModel,"TugListSet","vesMovTugModel");
-			this.handleServiceGET(that, oModel,"PilotListSet","vesMovpilotModel");
-			this.handleServiceGET(that, oModel,"BerthListSet","vesMovBertModel");
+			// this.handleServiceGET(that, oModel,"TugListSet","vesMovTugModel");
+			//this.getModel("PilotListSet", "vesMovpilotModel");
+			this.getModel("BerthListSet", "vesMovBertModel");
 			// this.handleServiceGET(that, oModel,"MBoatListSet","mBoatModel");
 		},
-				handleServiceGET: function(that, oModel, entitySet, modelName) {
-				oModel.read("/" + entitySet, {
-					success: function(data) {
-						that.getView().setModel(new JSONModel(data), modelName);
-					},
-					error: function(oResponse) {
-						sap.m.MessageToast.show(oResponse.statusText);
-					}
-				});
-			sap.ui.core.BusyIndicator.hide();
-		},
-		handleAgentPress: function (oEvent) {
+		handleAgentPress: function(oEvent) {
 			var model = oEvent.getSource().getModel("agentVesselModel");
 			var oItem = oEvent.getSource().getSelectedItem();
 			if (oItem) {
@@ -157,14 +125,14 @@ sap.ui.define([
 				this.getView().byId("grtId").setValue(obj.Grt);
 			}
 		},
-		gotoLog: function () {
+		gotoLog: function() {
 			sap.ui.core.BusyIndicator.show();
 			this.getRouter().navTo("vessel");
 			var odata = sap.ui.getCore().getModel("etaIdModel").getData();
 			odata['status'] = this.getView().getModel("etaDetailsModel").getData().ZStatus;
 			sap.ui.getCore().setModel(new JSONModel(odata), "etaIdModel");
 		},
-		handleChangeSelect: function (evt) {
+		handleChangeSelect: function(evt) {
 			var preDate = this.getView().byId(evt.getSource().getName()).getDateValue();
 			var curDate = evt.getSource().getDateValue();
 			if (preDate >= curDate) {
@@ -172,7 +140,7 @@ sap.ui.define([
 				sap.m.MessageToast.show("The input must be greater than Start/Arrival Date or Time");
 			}
 		},
-		handleCreateETAForAgent: function () {
+		handleCreateETAForAgent: function() {
 			sap.ui.core.BusyIndicator.show();
 			var oEntry = this.getView().getModel("etaDetailsModel").getData();
 			oEntry['AgentCode'] = this.getView().byId("AgentCode").getValue();
@@ -181,20 +149,20 @@ sap.ui.define([
 			oModel.setUseBatch(false);
 			var that = this;
 			oModel.create("/ETACreateSet", oEntry, {
-				success: function (data) {
+				success: function(data) {
 					sap.m.MessageToast.show("ETA No - " + data.ReturnMsg + " Created Successfully", {
 						closeOnBrowserNavigation: false
 					});
 					that.getRouter().navTo("dashboardAgent");
 					sap.ui.core.BusyIndicator.hide();
 				},
-				error: function (oResponse) {
+				error: function(oResponse) {
 					sap.m.MessageToast.show("Something went wrong");
 					sap.ui.core.BusyIndicator.hide();
 				}
 			});
 		},
-		handleAcceptRejectPress: function (evt) {
+		handleAcceptRejectPress: function(evt) {
 			sap.ui.core.BusyIndicator.show();
 			var oEntry = {
 				"ImFlag": evt.getSource().getType() === "Accept" ? "APPROVE" : "REJECT",
@@ -206,7 +174,7 @@ sap.ui.define([
 			oModel.setUseBatch(false);
 			var that = this;
 			oModel.create("/ETApproveRejectSet", oEntry, {
-				success: function (data) {
+				success: function(data) {
 					sap.m.MessageToast.show("ETA " + oEntry.ImFlag + "ED Successfully", {
 						closeOnBrowserNavigation: false
 					});
@@ -220,7 +188,7 @@ sap.ui.define([
 					}
 					sap.ui.core.BusyIndicator.hide();
 				},
-				error: function (oResponse) {
+				error: function(oResponse) {
 					sap.m.MessageToast.show("Something went wrong");
 					sap.ui.core.BusyIndicator.hide();
 				}

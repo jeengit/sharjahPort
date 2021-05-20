@@ -1,19 +1,11 @@
 sap.ui.define([
-	"sap/ui/Device",
 	"../BaseController",
-	"sap/ui/core/mvc/Controller",
-	"sap/ui/model/Filter",
-	"sap/ui/model/FilterOperator",
-	"sap/ui/core/Fragment",
-	"sap/m/MessageToast",
 	"sap/ui/model/ValidateException",
 	"sap/ui/core/Core",
 	"sap/ui/model/json/JSONModel"
-], function(Device, BaseController, Controller, Filter, FilterOperator, Fragment, MessageToast, ValidateException, Core, JSONModel) {
+], function(BaseController, ValidateException, Core, JSONModel) {
 	"use strict";
-
 	return BaseController.extend("com.demo.sharjahPort.controller.customer.LogsheetDetails", {
-
 		onInit: function() {
 			var oView = this.getView(),
 				oMM = Core.getMessageManager();
@@ -37,6 +29,13 @@ sap.ui.define([
 			oRouter.getRoute("logDetails").attachPatternMatched(this._onObjectMatched, this);
 		},
 		_onObjectMatched: function(oEvent) {
+			var pageId = this.getView().getId();
+			this.getView().byId(pageId + "--vesMovDispId").setVisible(true);
+			this.getView().byId(pageId + "--vesMovChangeId").setVisible(false);
+			this.getView().byId("approveBtn").setVisible(false);
+			this.getView().byId("cancelBtn").setVisible(false);
+			this.getView().byId("saveBtn").setVisible(false);
+			this.getView().byId("editBtn").setVisible(true);
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
 			var that = this;
@@ -51,21 +50,11 @@ sap.ui.define([
 					sap.m.MessageToast.show("Something went wrong!..");
 				}
 			});
-			this.handleServiceGET(that, oModel,"TugListSet","vesMovTugModel");
-			this.handleServiceGET(that, oModel,"PilotListSet","vesMovpilotModel");
-			this.handleServiceGET(that, oModel,"BerthListSet","vesMovBertModel");
-			this.handleServiceGET(that, oModel,"MBoatListSet","mBoatModel");
+			this.getModel("TugListSet", "vesMovTugModel");
+			this.getModel("PilotListSet", "vesMovpilotModel");
+			this.getModel("BerthListSet", "vesMovBertModel");
+			this.getModel("MBoatListSet", "mBoatModel");
 			this.adjustTableRowsCount();
-		},
-		handleServiceGET: function(that, oModel, entitySet, modelName) {
-				oModel.read("/" + entitySet, {
-					success: function(data) {
-						that.getView().setModel(new JSONModel(data), modelName);
-					},
-					error: function(oResponse) {
-						sap.m.MessageToast.show(oResponse.statusText);
-					}
-				});
 			sap.ui.core.BusyIndicator.hide();
 		},
 		handleChangeSelect: function(evt) {
@@ -77,11 +66,8 @@ sap.ui.define([
 			}
 		},
 		_validateInput: function(oInput) {
-			var sValueState = "None";
 			var bValidationError = false;
 			var oBinding = oInput.getBinding("value").getValue();
-			console.log(oBinding);
-			// console.log(oBinding.getType());
 			if (!oBinding) {
 				oInput.setValueState("Error");
 				// oInput.setValueStateText(Utils.i18n("INVALID_VALUE"));
@@ -90,43 +76,8 @@ sap.ui.define([
 				oInput.setValueState("None");
 				bValidationError = false;
 			}
-
-			// try {
-			// 	oBinding.getType().validateValue(oInput.getValue());
-			// } catch (oException) {
-			// 	sValueState = "Error";
-			// 	bValidationError = true;
-			// }
-			// console.log(sValueState);
-			// oInput.setValueState(sValueState);
-
 			return bValidationError;
 		},
-
-		// onPilotChangeFn: function (oEvent) {
-		// 	var id = oEvent.getParameter("id");
-		// 	console.log(id);
-		// 	var selctId = this.getView().byId(id).getSelectedKey();
-		// 	console.log(selctId);
-		// 	var oModel = this.getOwnerComponent().getModel("s4Model");
-		// 	oModel.setUseBatch(false);
-		// 	var that = this;
-		// 	if (selctId) {
-		// 		oModel.read("/MBoatListSet", {
-
-		// 			success: function (data) {
-		// 				that.getView().setModel(new JSONModel(data), "mBoatModel");
-		// 				sap.ui.core.BusyIndicator.hide();
-		// 			},
-		// 			error: function (oResponse) {
-		// 				alert("Error...");
-		// 				sap.ui.core.BusyIndicator.hide();
-		// 			}
-		// 		});
-		// 	} else {
-		// 		MessageToast.show("");
-		// 	}
-		// },
 		addNewRowPress: function(oEvent) {
 			var oEntry = this.getView().getModel("vesMovModel").getData();
 			var oData = {
@@ -190,7 +141,6 @@ sap.ui.define([
 			aInputs.forEach(function(oInput) {
 				bValidationError = this._validateInput(oInput) || bValidationError;
 			}, this);
-
 			if (!bValidationError) {
 				var that = this;
 				oModel.create("/LogSheetDetailsSet", oEntry, {
@@ -206,18 +156,16 @@ sap.ui.define([
 						if (uRole === "CONTROL_ROOM") {
 							that.getRouter().navTo("dashboard");
 						}
-						// that.getRouter().navTo("dashboard");
 						sap.ui.core.BusyIndicator.hide();
 					},
 					error: function(oResponse) {
-						sap.m.MessageToast.show("Something went wrong");
+						sap.m.MessageToast.show(oResponse.statusText);
 						sap.ui.core.BusyIndicator.hide();
 					}
 				});
 				sap.ui.core.BusyIndicator.hide();
-
 			} else {
-				MessageToast.show("A validation error has occurred. Complete your input first.");
+				sap.m.MessageToast.show("A validation error has occurred. Complete your input first.");
 				sap.ui.core.BusyIndicator.hide();
 
 			}
@@ -251,14 +199,14 @@ sap.ui.define([
 						sap.ui.core.BusyIndicator.hide();
 					},
 					error: function(oResponse) {
-						sap.m.MessageToast.show("Something went wrong");
+						sap.m.MessageToast.show(oResponse.statusText);
 						sap.ui.core.BusyIndicator.hide();
 					}
 				});
 				sap.ui.core.BusyIndicator.hide();
 			} else {
 				sap.ui.core.BusyIndicator.hide();
-				MessageToast.show("A validation error has occurred. Complete your input first.");
+				sap.m.MessageToast.show("A validation error has occurred. Complete your input first.");
 			}
 		},
 		handleChangePress: function(evt) {
@@ -279,21 +227,25 @@ sap.ui.define([
 				this.getView().byId("cancelBtn").setVisible(false);
 				this.getView().byId("saveBtn").setVisible(false);
 				this.getView().byId("editBtn").setVisible(true);
-				if (text === "Approve") {this.onApprove();}
-				if (text === "Save") {this.onSave();}
+				if (text === "Approve") {
+					this.onApprove();
+				}
+				if (text === "Save") {
+					this.onSave();
+				}
 			}
 		},
-		onAfterRendering: function () {
+		onAfterRendering: function() {
 			var that = this;
-			$(window).resize(function () {
+			$(window).resize(function() {
 				that.adjustTableRowsCount();
 			});
 		},
-		adjustTableRowsCount: function(){
+		adjustTableRowsCount: function() {
 			var that = this;
 			var pageId = this.getView().byId("detailspage").getId();
 			var rows = Math.floor(($("#" + pageId).height() - 200) / 52);
-			jQuery.sap.delayedCall(0, this, function () {
+			jQuery.sap.delayedCall(0, this, function() {
 				that.byId("shifTableDisplay").setVisibleRowCount(rows);
 				that.byId("shifTableChange").setVisibleRowCount(rows);
 			});

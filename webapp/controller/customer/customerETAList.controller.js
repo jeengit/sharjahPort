@@ -1,13 +1,7 @@
 sap.ui.define([
-	"sap/ui/Device",
 	"../BaseController",
-	"sap/ui/core/mvc/Controller",
-	"sap/ui/model/Filter",
-	"sap/ui/model/FilterOperator",
-	"sap/ui/table/library",
-	"sap/m/MessageToast",
 	"sap/ui/model/json/JSONModel"
-], function (Device, BaseController, Controller, Filter, FilterOperator, library, MessageToast , JSONModel) {
+], function ( BaseController, JSONModel) {
 	"use strict";
 	return BaseController.extend("com.demo.sharjahPort.controller.customer.customerETAList", {
 		onInit: function () {
@@ -27,17 +21,16 @@ sap.ui.define([
 				},
 				success: function (data) {
 					that.getView().setModel(new JSONModel(data), "etaListModel");
-					MessageToast.show("Items loaded succesfully with status - " + status);
+					sap.m.MessageToast.show("Items loaded succesfully with status - " + status);
 					sap.ui.core.BusyIndicator.hide();
 				},
 				error: function (oResponse) {
-					MessageToast.show("Something went wrong...");
+					sap.m.MessageToast.show(oResponse.statusText);
 					sap.ui.core.BusyIndicator.hide();
-					// getDialog.close();
 				}
 			});
 		},
-		gotoCreatEta: function (evt) {
+		gotoCreatEta: function () {
 			this.getRouter().navTo("etaDetails", {
 				sPath: "0",
 				id: "createETA"

@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns:t="sap.ui.table" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core">
-			<ObjectPageLayout visible="false" upperCaseAnchorBar="false" id="etaChange" class="objLayoutClass editMode">
+	<ObjectPageLayout visible="false" upperCaseAnchorBar="false" id="etaChange" class="objLayoutClass editMode">
 		<headerTitle>
 			<ObjectPageDynamicHeaderTitle>
 				<breadcrumbs>
@@ -17,7 +17,7 @@
 				<snappedHeading>
 					<m:FlexBox fitContainer="true" alignItems="Center">
 						<m:Avatar backgroundColor="Accent9" src="sap-icon://shipping-status" class="sapUiTinyMarginEnd"/>
-							<m:Title text="Create ETA" wrapping="true"/>
+						<m:Title text="Create ETA" wrapping="true"/>
 					</m:FlexBox>
 				</snappedHeading>
 				<expandedContent>
@@ -125,7 +125,7 @@
 						</m:HBox>
 					</m:VBox>
 				</layout:VerticalLayout>
-								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
 					<m:VBox class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
 						<m:HBox alignItems="Center">
 							<m:HBox width="40%">
@@ -138,7 +138,7 @@
 								</m:ComboBox>
 							</m:HBox>
 						</m:HBox>
-					<m:HBox alignItems="Center">
+						<m:HBox alignItems="Center">
 							<m:HBox width="40%">
 								<m:Label text="{i18n>GRT}"/>
 							</m:HBox>
@@ -163,8 +163,7 @@
 								<m:Label text="{i18n>PreferredBerth}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:ComboBox selectedKey="{etaDetailsModel>/PreferedBerth}" width="100%" items="{path: 'vesMovBertModel>/results'}"
-									placeholder="{i18n>select}">
+								<m:ComboBox selectedKey="{etaDetailsModel>/PreferedBerth}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="{i18n>select}">
 									<core:Item key="{vesMovBertModel>BerthNumber}" text="{vesMovBertModel>BerthNumber}"/>
 								</m:ComboBox>
 								<!--<m:Input id="imoId" editable="false" value="{etaDetailsModel>/ImoNo}"/>-->

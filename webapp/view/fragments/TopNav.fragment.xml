@@ -6,10 +6,14 @@
 		<contentMiddle></contentMiddle>
 		<contentRight>
 			<core:Icon color="#333" class="sapUiTinyMarginEnd" size="1rem" src="sap-icon://search" press="onPress" ariaLabelledBy="actionButtonLabel"/>
-			<core:Icon color="#da1f1f" class="sapUiTinyMarginEnd" size="1rem" src="sap-icon://log" press="handleLogOut"
-				ariaLabelledBy="actionButtonLabel"/>
 			<core:Icon color="#333" class="sapUiTinyMarginEnd" size="1rem" src="sap-icon://bell" press="onPress" ariaLabelledBy="actionButtonLabel"/>
-			<Button text="{loginModel>/name}" icon="sap-icon://customer" class="userIcn"/>
+			<MenuButton menuPosition="CenterBottom" text="{loginModel>/name}">
+			<menu>
+				<Menu>
+					<MenuItem text="Logout" icon="sap-icon://log" press="handleLogOut" />
+				</Menu>
+			</menu>
+		</MenuButton>
 		</contentRight>
 	</Bar>
 </core:FragmentDefinition>

@@ -124,9 +124,9 @@
 									<!--</t:extension>-->
 									<t:columns>
 										<t:Column sortProperty="ETANo">
-											<m:Label wrapping="false" text="{i18n>consNo}"/>
+											<m:Label wrapping="false" text="{i18n>B/ENo}"/>
 											<t:template>
-													<m:Text text="{manDetModel>ConsignmentNo}"/>
+													<m:Link text="{manDetModel>BENo}" press="handlePress"/>
 											</t:template>
 										</t:Column>
 										<t:Column  sortProperty="PortName">
@@ -136,10 +136,9 @@
 											</t:template>
 										</t:Column>
 										<t:Column>
-											<m:Label text="{i18n>B/Enumber}"/>
+											<m:Label text="{i18n>consNo}"/>
 											<t:template>
-												<m:Text
-													text="{manDetModel>/BENo}"	wrapping="false"/>
+												<m:Text text="{manDetModel>ConsigneeCode}" wrapping="false"/>
 											</t:template>
 										</t:Column>
 										<t:Column>

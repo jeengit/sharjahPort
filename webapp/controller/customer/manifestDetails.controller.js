@@ -28,7 +28,7 @@ sap.ui.define([
 					"$filter": "ManifestNo eq '" + oEvent.getParameter("arguments").id + "'",
 					"$expand": "BillOfEntrySet/CommoditiesInDetailsSet"
 				},
-				success: function(data) {
+				success: function(data) {console.log(data);
 					that.getView().setModel(new JSONModel(data.results['0']), "manDetModel");
 				},
 				error: function(oResponse) {

@@ -29,7 +29,7 @@ sap.ui.define([
 			this.getView().byId(pageId + "--manifestDisp").setVisible(true);
 			oModel.read("/ManifestDetailsSet", {
 				urlParameters: {
-					"$filter": "ManifestNo eq '" + oEvent.getParameter("arguments").id + "' and ImFlag eq 'CUSTOMS'",
+					"$filter": "ManifestNo eq '" + oEvent.getParameter("arguments").id + "'",
 					"$expand": "BillOfEntrySet/CommoditiesInDetailsSet"
 				},
 				success: function(data) {

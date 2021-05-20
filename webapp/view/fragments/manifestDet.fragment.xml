@@ -11,14 +11,14 @@
 				<!--</breadcrumbs>-->
 				<expandedHeading>
 					<m:HBox>
-						<m:Title text="{manDetModel>/ZVesselName}" wrapping="true"/>
+						<m:Title text="{manDetModel>/results/0/ManifestNo}" wrapping="true"/>
 						<m:ObjectMarker type="Flagged" class="sapUiTinyMarginBegin"/>
 					</m:HBox>
 				</expandedHeading>
 				<snappedHeading>
 					<m:FlexBox fitContainer="true" alignItems="Center">
 						<m:Avatar backgroundColor="Accent9" src="sap-icon://manager-insight" class="sapUiTinyMarginEnd"/>
-						<m:Title text="{etaDetailsModel>/ZVesselName}" wrapping="true"/>
+						<m:Title text="{manDetModel>/results/0/ManifestNo}" wrapping="true"/>
 					</m:FlexBox>
 				</snappedHeading>
 				<expandedContent>
@@ -45,19 +45,19 @@
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>PortName}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{etaDetailsModel>/ZETANumber}"/>
+							<m:Text text="{manDetModel>/results/0/PortCode}"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>manNo}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{etaDetailsModel>/ZVesselName}"/>
+							<m:Text text="{manDetModel>/results/0/ManifestNo}"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>Captain}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{etaDetailsModel>/ZAgentName}"/>
+							<m:Text text="{manDetModel>/results/0/Caption}"/>
 						</m:HBox>
 							<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>disComDate}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{etaDetailsModel>/ZLineCode}"/>
+							<m:Text text="{manDetModel>/results/0/DischargeCommencedDate}"/>
 						</m:HBox>
 					</m:VBox>
 				</layout:VerticalLayout>
@@ -66,22 +66,21 @@
 					
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>ArrivalDate}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{etaDetailsModel>/ZVesselNature}"/>
+							<m:Text text="{ path: 'manDetModel>/results/0/ArrivalDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>crtDate}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{etaDetailsModel>/ZPurposeOfVisit}"
+							<m:Text text="{ path: 'manDetModel>/results/0/CreationDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"
 								wrapping="false"/>
 						</m:HBox>
 							<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>Agentcode}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{etaDetailsModel>/ZVoyageNature}"
+							<m:Text text="{manDetModel>/results/0/AgentCode}"
 								wrapping="false"/>
 						</m:HBox>
 							<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>voyNo}" class="sapUiSmallMarginEnd"/>
-							<m:ObjectStatus active="true" inverted="true" text="{etaDetailsModel>/ZStatus}"
-												state="{= ${etaDetailsModel>/ZStatus} === 'NEW' ? 'Information' : 'Warning' }"/>
+						<m:Text text="{manDetModel>/results/0/VoyegeNo}"/>
 						</m:HBox>
 					</m:VBox>
 				</layout:VerticalLayout>
@@ -91,16 +90,16 @@
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>cusManfNo}" class="sapUiSmallMarginEnd"/>
 							<m:Text
-								text="{etaDetailsModel>/ZGeneralRemark}"
+								text="{manDetModel>/results/0/CustRefManifestNo}"
 								wrapping="false"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>AgentName}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{etaDetailsModel>/ZPortName}"/>
+							<m:Text text="{manDetModel>/results/0/AgentName}"/>
 						</m:HBox>
 							<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>VesselName}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{etaDetailsModel>/ZCallSign}"/>
+							<m:Text text="{manDetModel>/results/0/VesselName}"/>
 						</m:HBox>
 					</m:VBox>
 				</layout:VerticalLayout>
@@ -116,7 +115,7 @@
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>BasicDetails}"/>-->
 									<m:VBox>
-										<t:Table rows="{vesMovModel>/LogsheetToShifting/results}" selectionMode="None"
+										<t:Table rows="{manDetModel>/results/0/BillOfEntrySet/results}" selectionMode="None"
 									id="shifTableDisplay" ariaLabelledBy="title">
 									<!--<t:extension>-->
 									<!--	<OverflowToolbar style="Clear">-->
@@ -131,43 +130,39 @@
 										<t:Column width="12rem" sortProperty="ETANo">
 											<m:Label wrapping="false" text="{i18n>consNo}"/>
 											<t:template>
-												<m:Text
-													text="{ path: 'vesMovModel>/Shift_FromDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"
-													wrapping="false"/>
+													<m:Text text="{vesMovModel>ConsignmentNo}"/>
 											</t:template>
 										</t:Column>
 										<t:Column width="10rem" sortProperty="PortName">
 											<m:Label text="{i18n>B/LNo}"/>
 											<t:template>
-												<m:Text text="{vesMovModel>Shift_FromTime}"/>
-												<m:Text text="{vesMovModel>Shift_FromTime}"/>
+													<m:Text text="{vesMovModel>BilNo}"/>
 											</t:template>
 										</t:Column>
 										<t:Column width="12rem">
 											<m:Label text="{i18n>B/Enumber}"/>
 											<t:template>
 												<m:Text
-													text="{ path: 'vesMovModel>/Shift_ToDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"
-													wrapping="false"/>
+													text="{vesMovModel>/BENo}"	wrapping="false"/>
 											</t:template>
 										</t:Column>
 										<t:Column width="10rem">
 											<m:Label text="{i18n>receiptno}"/>
 											<t:template>
-												<m:Text text="{vesMovModel>Shift_ToTime}"/>
+												<m:Text text="{vesMovModel>RecieptNo}"/>
 											</t:template>
 										</t:Column>
 										<t:Column width="10rem">
 											<m:Label text="{i18n>Cargocategory}"/>
 											<t:template>
-												<m:Text text="{vesMovModel>Shift_FromBerthNumber}"/>
+												<m:Text text="{vesMovModel>CargoCategory}"/>
 											</t:template>
 										</t:Column>
 									
 										<t:Column width="10rem">
 											<m:Label text="{i18n>Status}"/>
 											<t:template>
-												<m:Text text="{vesMovModel>Shift_NumberofTugs}"/>
+												<m:Text text="{vesMovModel>Status}"/>
 											</t:template>
 										</t:Column>
 									</t:columns>

@@ -123,42 +123,42 @@
 									<!--	</OverflowToolbar>-->
 									<!--</t:extension>-->
 									<t:columns>
-										<t:Column width="12rem" sortProperty="ETANo">
+										<t:Column sortProperty="ETANo">
 											<m:Label wrapping="false" text="{i18n>consNo}"/>
 											<t:template>
-													<m:Text text="{vesMovModel>ConsignmentNo}"/>
+													<m:Text text="{manDetModel>ConsignmentNo}"/>
 											</t:template>
 										</t:Column>
-										<t:Column width="10rem" sortProperty="PortName">
+										<t:Column  sortProperty="PortName">
 											<m:Label text="{i18n>B/LNo}"/>
 											<t:template>
-													<m:Text text="{vesMovModel>BilNo}"/>
+													<m:Text text="{manDetModel>BilNo}"/>
 											</t:template>
 										</t:Column>
-										<t:Column width="12rem">
+										<t:Column>
 											<m:Label text="{i18n>B/Enumber}"/>
 											<t:template>
 												<m:Text
-													text="{vesMovModel>/BENo}"	wrapping="false"/>
+													text="{manDetModel>/BENo}"	wrapping="false"/>
 											</t:template>
 										</t:Column>
-										<t:Column width="10rem">
+										<t:Column>
 											<m:Label text="{i18n>receiptno}"/>
 											<t:template>
-												<m:Text text="{vesMovModel>RecieptNo}"/>
+												<m:Text text="{manDetModel>RecieptNo}"/>
 											</t:template>
 										</t:Column>
-										<t:Column width="10rem">
+										<t:Column>
 											<m:Label text="{i18n>Cargocategory}"/>
 											<t:template>
-												<m:Text text="{vesMovModel>CargoCategory}"/>
+												<m:Text text="{manDetModel>CargoCategory}"/>
 											</t:template>
 										</t:Column>
 									
-										<t:Column width="10rem">
+										<t:Column>
 											<m:Label text="{i18n>Status}"/>
 											<t:template>
-												<m:Text text="{vesMovModel>Status}"/>
+												<m:Text text="{manDetModel>Status}"/>
 											</t:template>
 										</t:Column>
 									</t:columns>

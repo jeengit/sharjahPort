@@ -22,6 +22,14 @@ sap.ui.define([
 			that.getView().setModel(new JSONModel(count), "countListModel");
 			sap.ui.core.BusyIndicator.hide();
 			}, 2000);
+		},
+		handelDetailPress: function(evt){
+			var sPath = evt.getSource().getBindingContext("manifestListModel").getPath().split("/")[2];
+			var id = evt.getSource().getBindingContext("manifestListModel").getProperty().ManifestNo;
+			this.getRouter().navTo("manifestDetails", {
+				sPath: encodeURIComponent(sPath),
+				id: id
+			});
 		}
 	});
 });

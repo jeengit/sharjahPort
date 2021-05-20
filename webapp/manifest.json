@@ -162,6 +162,13 @@
 					"home",
 					"manifest"
 				]
+			}, {
+				"name": "manifestDetails",
+				"pattern": "manifestDetails/{sPath}/{id}",
+				"target": [
+					"home",
+					"manifestDetails"
+				]
 			}],
 			"targets": {
 				"home": {
@@ -215,6 +222,11 @@
 				"manifest": {
 					"viewType": "XML",
 					"viewName": "manifestList"
+				},
+					"manifestDetails": {
+					"viewType": "XML",
+					"viewName": "manifestDetails"
+					
 				}
 			}
 		}

@@ -26,6 +26,7 @@ sap.ui.define([
 		handelDetailPress: function(evt){
 			var sPath = evt.getSource().getBindingContext("manifestListModel").getPath().split("/")[2];
 			var id = evt.getSource().getBindingContext("manifestListModel").getProperty().ManifestNo;
+				sap.ui.core.BusyIndicator.show();
 			this.getRouter().navTo("manifestDetails", {
 				sPath: encodeURIComponent(sPath),
 				id: id

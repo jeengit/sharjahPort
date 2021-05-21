@@ -29,13 +29,16 @@ sap.ui.define([
 					"$expand": "BillOfEntrySet/CommoditiesInDetailsSet"
 				},
 				success: function(data) {console.log(data);
-					that.getView().setModel(new JSONModel(data.results['0']), "manDetModel");
+					that.getView().setModel(new JSONModel(data.results['0']),"BOEDetailsModel");
 				},
 				error: function(oResponse) {
 					sap.m.MessageToast.show(oResponse.statusText);
 				}
 			});
 			sap.ui.core.BusyIndicator.hide();
+		},
+		handelListPress : function(){
+			
 		}
 	});
 });

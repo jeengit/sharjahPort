@@ -16,7 +16,9 @@
 						headerText="Manifest - Import" noDataText="{i18n>emptyNodata}">
 						<CustomListItem type="Active" press="handelDetailPress">
 							<FlexBox alignItems="Start" justifyContent="SpaceBetween">
+								<HBox><core:Icon color="#CEA95B" class="sapUiTinyMarginEnd" size="1rem" src="sap-icon://activities"/>
 								<Text text="{manifestListModel>AgentName} - {manifestListModel>ManifestNo}"/>
+								</HBox>
 								<tnt:InfoLabel visible="{= ${manifestListModel>ManifestStatus} === '' ? false : true}" text="{manifestListModel>ManifestStatus}" displayOnly="true"
 									colorScheme="{= ${manifestListModel>ManifestStatus} === 'NEW' ? 8 : ${manifestListModel>ManifestStatus} === 'IN PROGRESS' ? 3 : 5 }"/>
 							</FlexBox>

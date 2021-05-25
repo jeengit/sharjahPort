@@ -86,6 +86,9 @@ sap.ui.define([
 				this.getView().byId("editBtn").setVisible(true);
 				this.getView().byId("cancelBtn").setVisible(false);
 				this.getView().byId("saveBtn").setVisible(false);
+				if(id === "saveBtn"){
+					this.onCreate();
+				}
 			}
 			if (this.getView().byId("manifestDispId").getVisible() === true) {
 				for (var i in this.getView().byId("dispDetails").getItems()) {

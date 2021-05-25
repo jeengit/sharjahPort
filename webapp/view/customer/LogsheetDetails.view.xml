@@ -5,10 +5,6 @@
 			<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.TopNav" type="XML"/>
 		</customHeader>
 		<content>
-			<!--	<Breadcrumbs currentLocationText="{vesMovModel>/LogSheetNo}">-->
-			<!--		<Link id="dashboard" press="onHomePress" text="Home"/>-->
-			<!--		<Link id="orders" press="onNavToPress" text="ETA Logs"/>-->
-			<!--	</Breadcrumbs>-->
 				<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.vesselMovChange" type="XML"/>
 				<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.vesselMovDisplay" type="XML"/>
 		</content>

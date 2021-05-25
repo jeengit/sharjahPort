@@ -29,12 +29,6 @@
 				<snappedTitleOnMobile>
 					<m:Title text="Header Title On Phone"/>
 				</snappedTitleOnMobile>
-				<!--<actions>-->
-				<!--	<m:OverflowToolbarButton icon="sap-icon://edit" text="edit header" type="Emphasized" tooltip="edit"/>-->
-				<!--	<m:OverflowToolbarButton icon="sap-icon://pull-down" text="show section" type="Emphasized" tooltip="pull-down"/>-->
-				<!--	<m:OverflowToolbarButton icon="sap-icon://show" text="show state" tooltip="show"/>-->
-				<!--	<m:Button text="Toggle Footer" press="toggleFooter"/>-->
-				<!--</actions>-->
 			</ObjectPageDynamicHeaderTitle>
 		</headerTitle>
 		<headerContent>

@@ -1,0 +1,302 @@
+<core:FragmentDefinition xmlns:t="sap.ui.table" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core"
+	xmlns:tnt="sap.tnt">
+	<ObjectPageLayout upperCaseAnchorBar="false" id="manifestChangeId" class="objLayoutClass">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<breadcrumbs>
+					<m:Breadcrumbs currentLocationText="{BOEDetailsModel>/VesselName}">
+						<m:Link press="onHomePress" text="Home"/>
+						<m:Link press="onNavToPress" text="Manifest List"/>
+					</m:Breadcrumbs>
+				</breadcrumbs>
+				<expandedHeading>
+					<m:HBox>
+						<m:Title text="{BOEDetailsModel>/VesselName} - {BOEDetailsModel>/ManifestNo}" wrapping="true"/>
+						<m:ObjectMarker type="Flagged" class="sapUiTinyMarginBegin"/>
+					</m:HBox>
+				</expandedHeading>
+				<snappedHeading>
+					<m:FlexBox fitContainer="true" alignItems="Center">
+						<m:Avatar backgroundColor="Accent9" src="sap-icon://manager-insight" class="sapUiTinyMarginEnd"/>
+						<m:Title text="{BOEDetailsModel>/VesselName} - {BOEDetailsModel>/ManifestNo}" wrapping="true"/>
+					</m:FlexBox>
+				</snappedHeading>
+				<expandedContent>
+					<m:Text text="Manifest Details"/>
+				</expandedContent>
+				<snappedContent>
+					<m:Text text="Manifest Details"/>
+				</snappedContent>
+				<snappedTitleOnMobile>
+					<m:Title text="Header Title On Phone"/>
+				</snappedTitleOnMobile>
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+		<headerContent>
+			<m:FlexBox wrap="Wrap">
+				<m:Avatar class="sapUiSmallMarginEnd" backgroundColor="Accent9" src="sap-icon://manager-insight" displaySize="L"/>
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+							<m:HBox width="40%">
+							<m:Label text="{i18n>PortName}"/>
+							</m:HBox>
+							<m:HBox width="60%">
+							<m:Input value="{BOEDetailsModel>/PortCode}"/>
+							</m:HBox>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+							<m:HBox width="40%">
+							<m:Label text="{i18n>manNo}" class="sapUiSmallMarginEnd"/>
+							</m:HBox>
+							<m:HBox width="60%">
+							<m:Input value="{BOEDetailsModel>/ManifestNo}"/>
+							</m:HBox>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+							<m:HBox width="40%">
+							<m:Label text="{i18n>Captain}" class="sapUiSmallMarginEnd"/>
+							</m:HBox>
+							<m:HBox width="60%">
+							<m:Input value="{BOEDetailsModel>/Caption}"/>
+							</m:HBox>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+							<m:HBox width="40%">
+							<m:Label text="{i18n>disComDate}" class="sapUiSmallMarginEnd"/>
+							</m:HBox>
+							<m:HBox width="60%">
+							<m:DatePicker value="{BOEDetailsModel>/DischargeCommencedDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+							</m:HBox>
+						</m:HBox>
+					</m:VBox>
+				</layout:VerticalLayout>
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+							<m:HBox width="40%">
+							<m:Label text="{i18n>ArrivalDate}"/>
+							</m:HBox>
+							<m:HBox width="60%">
+							<m:DatePicker value="{BOEDetailsModel>/ArrivalDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+							</m:HBox>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+							<m:HBox width="40%">
+							<m:Label text="{i18n>crtDate}"/>
+							</m:HBox>
+							<m:HBox width="60%">
+							<m:DatePicker value="{BOEDetailsModel>/CreationDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+							</m:HBox>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+							<m:HBox width="40%">
+							<m:Label text="{i18n>Agentcode}"/>
+							</m:HBox>
+							<m:HBox width="60%">
+							<m:Input value="{BOEDetailsModel>/AgentCode}" wrapping="false"/>
+							</m:HBox>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+							<m:HBox width="40%">
+							<m:Label text="{i18n>voyNo}"/>
+							</m:HBox>
+							<m:HBox width="60%">
+							<m:Input value="{BOEDetailsModel>/VoyegeNo}"/>
+							</m:HBox>
+						</m:HBox>
+					</m:VBox>
+				</layout:VerticalLayout>
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+							<m:HBox width="40%">
+							<m:Label text="{i18n>cusManfNo}"/>
+							</m:HBox>
+							<m:HBox width="60%">
+							<m:Input value="{BOEDetailsModel>/CustRefManifestNo}" wrapping="false"/>
+							</m:HBox>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+							<m:HBox width="40%">
+							<m:Label text="{i18n>AgentName}"/>
+							</m:HBox>
+							<m:HBox width="60%">
+							<m:Input value="{BOEDetailsModel>/AgentName}"/>
+							</m:HBox>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+							<m:HBox width="40%">
+							<m:Label text="{i18n>VesselName}"/>
+							</m:HBox>
+							<m:HBox width="60%">
+							<m:Input value="{BOEDetailsModel>/VesselName}"/>
+							</m:HBox>
+						</m:HBox>
+					</m:VBox>
+				</layout:VerticalLayout>
+			</m:FlexBox>
+		</headerContent>
+		<sections>
+			<ObjectPageSection titleUppercase="false" showTitle="false" title="{i18n>billEntry}">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+							<m:FlexBox width="100%" class="manifestListClass boeDetailsClass">
+								<m:HBox width="30%" class="boeMaster">
+									<m:List id="changeList" class="tableCard card"
+										items="{BOEDetailsModel>/BillOfEntrySet/results}" headerText="Manifest - Import"
+										noDataText="{i18n>emptyNodata}">
+										<m:CustomListItem type="Active" press="handelListPress">
+											<m:FlexBox alignItems="Start" justifyContent="SpaceBetween">
+												<m:HBox><core:Icon color="#CEA95B" class="sapUiTinyMarginEnd" size="1rem" src="sap-icon://activities"/>
+													<m:Text text="{BOEDetailsModel>BENo} - {BOEDetailsModel>ConsigneeCode}"/>
+												</m:HBox>
+												<tnt:InfoLabel visible="{= ${BOEDetailsModel>Status} === '' ? false : true}" text="{BOEDetailsModel>Status}" displayOnly="true"
+													colorScheme="{= ${BOEDetailsModel>Status} === 'OPEN' ? 8 : ${BOEDetailsModel>Status} === 'IN PROGRESS' ? 3 : 5 }"/>
+											</m:FlexBox>
+											<m:FlexBox alignItems="Start" justifyContent="SpaceBetween">
+												<m:Text class="desc" text="{BOEDetailsModel>CargoCategory}"/>
+												<m:Text class="desc sapMLnk"
+													text="{ path: 'BOEDetailsModel>Arrivaldate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}} }"
+													wrapping="false"/>
+											</m:FlexBox>
+										</m:CustomListItem>
+										<m:headerToolbar>
+											<m:Toolbar>
+												<m:Title text="Bill of Entry" level="H1"/>
+											</m:Toolbar>
+										</m:headerToolbar>
+										<m:layoutData>
+											<m:FlexItemData growFactor="1"/>
+										</m:layoutData>
+									</m:List>
+								</m:HBox>
+								<m:HBox width="70%" class="boeDetails">
+									<m:FlexBox wrap="Wrap" width="100%">
+										<m:List id="changeDetails" class="tableCard card" items="{path : 'BOEDetailsModel>/BillOfEntrySet/results'}">
+											<m:items>
+												<m:CustomListItem visible="false" class="sapUiSmallMarginTop">
+													<m:content>
+														<layout:VerticalLayout>
+															<m:VBox class="sapUiSmallMarginBottom sapUiSmallMarginEnd">
+																<m:HBox class="sapUiTinyMarginBottom">
+																	<m:Label text="{i18n>cusManfNo}" class="sapUiSmallMarginEnd"/>
+																	<m:Text text="{BOEDetailsModel>ManifestNo}" wrapping="false"/>
+																</m:HBox>
+																<m:HBox class="sapUiTinyMarginBottom">
+																	<m:Label text="Bill" class="sapUiSmallMarginEnd"/>
+																	<m:Text text="{BOEDetailsModel>BilNo}"/>
+																</m:HBox>
+																<m:HBox class="sapUiTinyMarginBottom">
+																	<m:Label text="Bill of Entry" class="sapUiSmallMarginEnd"/>
+																	<m:Text text="{BOEDetailsModel>BENo}"/>
+																</m:HBox>
+															</m:VBox>
+														</layout:VerticalLayout>
+														<layout:VerticalLayout>
+															<m:VBox class="sapUiSmallMarginBottom sapUiSmallMarginEnd">
+																<m:HBox class="sapUiTinyMarginBottom">
+																	<m:Label text="Consignee Code" class="sapUiSmallMarginEnd"/>
+																	<m:Text text="{BOEDetailsModel>ConsigneeCode}" wrapping="false"/>
+																</m:HBox>
+																<m:HBox class="sapUiTinyMarginBottom">
+																	<m:Label text="Cargo Category" class="sapUiSmallMarginEnd"/>
+																	<m:Text text="{BOEDetailsModel>CargoCategory}"/>
+																</m:HBox>
+																<m:HBox class="sapUiTinyMarginBottom">
+																	<m:Label text="Shipper Phone" class="sapUiSmallMarginEnd"/>
+																	<m:Text text="{BOEDetailsModel>ShipperPhone}"/>
+																</m:HBox>
+															</m:VBox>
+														</layout:VerticalLayout>
+														<layout:VerticalLayout>
+															<m:VBox class="sapUiSmallMarginBottom">
+																<m:HBox class="sapUiTinyMarginBottom">
+																	<m:Label text="Consignee Name" class="sapUiSmallMarginEnd"/>
+																	<m:Text text="{BOEDetailsModel>ConsigneeName}" wrapping="false"/>
+																</m:HBox>
+																<m:HBox class="sapUiTinyMarginBottom">
+																	<m:Label text="Consignee Phone" class="sapUiSmallMarginEnd"/>
+																	<m:Text text="{BOEDetailsModel>ConsigneePhone}"/>
+																</m:HBox>
+																<m:HBox class="sapUiTinyMarginBottom">
+																	<m:Label text="Notifier Phone" class="sapUiSmallMarginEnd"/>
+																	<m:Text text="{BOEDetailsModel>NotifierPhone}"/>
+																</m:HBox>
+															</m:VBox>
+														</layout:VerticalLayout>
+														<t:Table visible="{= ${BOEDetailsModel>CommoditiesInDetailsSet/results/length} === 0 ? false:true}" visibleRowCount="6" rows="{BOEDetailsModel>CommoditiesInDetailsSet/results}" selectionMode="None" ariaLabelledBy="title">
+															<t:columns>
+																<t:Column visible="{= ${BOEDetailsModel>ManifestNo} !== '' ? true : false}" width="130px" sortProperty="ManifestNo">
+																	<m:Label wrapping="false" text="Manifest"/>
+																	<t:template>
+																		<m:Text text="{BOEDetailsModel>ManifestNo}" />
+																	</t:template>
+																</t:Column>
+																<t:Column>
+																	<m:Label text="UOM"/>
+																	<t:template>
+																		<m:Text text="{BOEDetailsModel>UOM}"/>
+																	</t:template>
+																</t:Column>
+																<t:Column width="130px">
+																	<m:Label text="Package Type &amp; No"/>
+																	<t:template>
+																		<m:Text text="{BOEDetailsModel>PackageType} - {BOEDetailsModel>NoOfPackages}"/>
+																	</t:template>
+																</t:Column>
+																<t:Column>
+																	<m:Label text="Sub Type"/>
+																	<t:template>
+																		<m:Text text="{BOEDetailsModel>SubType}"/>
+																	</t:template>
+																</t:Column>
+																<t:Column>
+																	<m:Label text="GrossWt"/>
+																	<t:template>
+																		<m:Text text="{BOEDetailsModel>GrossWt}"/>
+																	</t:template>
+																</t:Column>
+																<t:Column>
+																	<m:Label text="CBM"/>
+																	<t:template>
+																		<m:Text text="{BOEDetailsModel>CBM}"/>
+																	</t:template>
+																</t:Column>
+																<t:Column>
+																	<m:Label text="Charge / Ton"/>
+																	<t:template>
+																		<m:Text text="{BOEDetailsModel>ChargePerTon}"/>
+																	</t:template>
+																</t:Column>
+																<t:Column>
+																	<m:Label text="Net Weight"/>
+																	<t:template>
+																		<m:Text text="{BOEDetailsModel>NetWt}"/>
+																	</t:template>
+																</t:Column>
+															</t:columns>
+														</t:Table>
+													</m:content>
+												</m:CustomListItem>
+											</m:items>
+											<m:headerToolbar>
+												<m:Toolbar>
+													<m:Title text="Details" level="H1"/>
+												</m:Toolbar>
+											</m:headerToolbar>
+											<m:layoutData>
+												<m:FlexItemData growFactor="1"/>
+											</m:layoutData>
+										</m:List>
+									</m:FlexBox>
+								</m:HBox>
+							</m:FlexBox>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+	</ObjectPageLayout>
+</core:FragmentDefinition>

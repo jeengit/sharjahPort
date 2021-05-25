@@ -5,15 +5,17 @@
 			<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.TopNav" type="XML"/>
 		</customHeader>
 		<content>
-			<!--	<Breadcrumbs currentLocationText="{vesMovModel>/LogSheetNo}">-->
-			<!--		<Link id="dashboard" press="onHomePress" text="Home"/>-->
-			<!--		<Link id="orders" press="onNavToPress" text="ETA Logs"/>-->
-			<!--	</Breadcrumbs>-->
-				<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.manifestDet" type="XML"/>
-				<!--<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.vesselMovDisplay" type="XML"/>-->
+				<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.manifestDisplay" type="XML"/>
+				<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.manifestChange" type="XML"/>
 		</content>
 		<footer>
-		
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button id="createBtn" type="Accept" text="Create" visible="false" press="handleCreatePress"/>
+				<Button id="cancelBtn" type="Reject" text="Cancel" visible="false" press="handleCreatePress"/>
+				<Button id="saveBtn" type="Emphasized" text="Save" visible="false" press="handleCreatePress"/>
+				<Button id="editBtn" type="Emphasized" text="Edit" visible="false" press="handleCreatePress"/>
+			</OverflowToolbar>
 		</footer>
 	</Page>
 </mvc:View>

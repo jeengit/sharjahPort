@@ -9,10 +9,10 @@ sap.ui.define([
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.getRoute("manifest").attachPatternMatched(this._onObjectMatched, this);
 		},
-		_onObjectMatched: function() {
-			//var status = oEvent.getParameter("arguments").sPath;
+		_onObjectMatched: function(oEvent) {
+			var status = oEvent.getParameter("arguments").sPath;
 			this.getUserName();
-			this.getModel("ManifestListSet","manifestListModel");
+			this.getModel("ManifestListSet","manifestListModel",status);
 			var that = this;
 			setTimeout(function(){
 				var count = {
@@ -24,12 +24,14 @@ sap.ui.define([
 			}, 2000);
 		},
 		handelDetailPress: function(evt){
-			var sPath = evt.getSource().getBindingContext("manifestListModel").getPath().split("/")[2];
-			var id = evt.getSource().getBindingContext("manifestListModel").getProperty().ManifestNo;
-				sap.ui.core.BusyIndicator.show();
+			var sPath = evt.getSource().getBindingContext("manifestListModel").getPath().split("/")[1];
+			var id = evt.getSource().getBindingContext("manifestListModel").getProperty().CustomsRefManifestNo;
+			var status = evt.getSource().getBindingContext("manifestListModel").getProperty().ManifestStatus;
+			sap.ui.core.BusyIndicator.show();
 			this.getRouter().navTo("manifestDetails", {
 				sPath: encodeURIComponent(sPath),
-				id: id
+				id: id,
+				status:status
 			});
 		}
 	});

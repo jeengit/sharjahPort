@@ -164,7 +164,7 @@
 				]
 			}, {
 				"name": "manifestDetails",
-				"pattern": "manifestDetails/{sPath}/{id}",
+				"pattern": "manifestDetails/{sPath}/{id}/{status}",
 				"target": [
 					"home",
 					"manifestDetails"

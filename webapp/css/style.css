@@ -353,3 +353,12 @@ html.sap-desktop .sapMBtn:focus>.sapMFocusable{
 .manifestListClass .card{
 	margin-bottom:0!important;
 }
+.boeDetailsClass.manifestListClass ul{
+	height: calc(100vh - 15rem);
+}
+.manifestListClass.boeDetailsClass .boeDetails li{
+	border:none;
+}
+/*.manifestListClass li[tabindex="0"]{*/
+/*	background:#eee;*/
+/*}*/

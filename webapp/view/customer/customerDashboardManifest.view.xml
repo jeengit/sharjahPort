@@ -11,37 +11,37 @@
 				<html:div class="card">
 					<l:Grid class="sapUiSmallMarginTopBottom custTile" defaultSpan="L2 M2 S12">
 						<l:content>
-							<GenericTile ariaLabel="NA/MANIFEST" press="handleListPress" class="tileLayout" header="Manifest - Customs" subheader="Customs Approved Manifest">
+							<GenericTile ariaLabel="CUSTOMS/MANIFEST" press="handleListPress" class="tileLayout" header="Manifest - Customs" subheader="Customs Approved Manifest">
 								<TileContent unit="" footer="{DashboardCountModel>/0/Manifest}">
 									<!--<ImageContent src="sap-icon://complete" />-->
 								</TileContent>
 							</GenericTile>
-							<GenericTile ariaLabel="NEW/ETA" class="tileLayout" header="Manifest - Open" subheader="Open Manifest">
+							<GenericTile ariaLabel="OPEN/MANIFEST" press="handleListPress" class="tileLayout" header="Manifest - Open" subheader="Open Manifest">
 								<TileContent unit="" footer="{DashboardCountModel>/0/OpenManifest}">
 									<!--<ImageContent src="sap-icon://product" />-->
 								</TileContent>
 							</GenericTile>
-							<GenericTile ariaLabel="REJECTED/LOG" class="tileLayout" header="Manifest - Closed" subheader="Closed Manifest">
+							<GenericTile ariaLabel="CLOSED/MANIFEST" press="handleListPress" class="tileLayout" header="Manifest - Closed" subheader="Closed Manifest">
 								<TileContent unit="" footer="{DashboardCountModel>/0/ClosedManifest}">
 									<!--<ImageContent src="sap-icon://product" />-->
 								</TileContent>
 							</GenericTile>
-							<GenericTile class="tileLayout" header="Bill of entry - Open" subheader="Bill of Entry">
+							<GenericTile ariaLabel="OPEN/BOE" class="tileLayout" header="Bill of entry - Open" subheader="Bill of Entry">
 								<TileContent unit="" footer="{DashboardCountModel>/0/OpenBOE}">
 									<!--<ImageContent src="sap-icon://complete" />-->
 								</TileContent>
 							</GenericTile>
-							<GenericTile class="tileLayout" header="Bill of Entry - Closed" subheader="Bill of Entry">
+							<GenericTile ariaLabel="CLOSED/BOE" class="tileLayout" header="Bill of Entry - Closed" subheader="Bill of Entry">
 								<TileContent unit="" footer="{DashboardCountModel>/0/ClosedBOE}">
 									<!--<ImageContent src="sap-icon://complete" />-->
 								</TileContent>
 							</GenericTile>
-							<GenericTile class="tileLayout" header="Delivery - Open" subheader="Delivery">
+							<GenericTile ariaLabel="OPEN/DELIVERY" class="tileLayout" header="Delivery - Open" subheader="Delivery">
 								<TileContent unit="" footer="{DashboardCountModel>/0/OpenDelivery}">
 									<!--<ImageContent src="sap-icon://complete" />-->
 								</TileContent>
 							</GenericTile>
-							<GenericTile class="tileLayout" header="Delivery - Closed" subheader="Delivery">
+							<GenericTile ariaLabel="CLOSED/DELIVERY" class="tileLayout" header="Delivery - Closed" subheader="Delivery">
 								<TileContent unit="" footer="{DashboardCountModel>/0/ClosedDelivery}">
 									<!--<ImageContent src="sap-icon://complete" />-->
 								</TileContent>

@@ -14,7 +14,7 @@
 				<Button id="createBtn" type="Accept" text="Create" visible="false" press="handleCreatePress"/>
 				<Button id="cancelBtn" type="Reject" text="Cancel" visible="false" press="handleCreatePress"/>
 				<Button id="saveBtn" type="Emphasized" text="Save" visible="false" press="handleCreatePress"/>
-				<Button id="editBtn" type="Emphasized" text="Edit" visible="false" press="handleCreatePress"/>
+				<!--<Button id="editBtn" type="Emphasized" text="Edit" visible="false" press="handleCreatePress"/>-->
 			</OverflowToolbar>
 		</footer>
 	</Page>

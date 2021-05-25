@@ -101,6 +101,24 @@ sap.ui.define([
 				}
 				this.getView().byId("changeDetails").getItems()[0].setVisible(true);
 			}
+		},
+		onCreate:function(){
+			var oEntry  = this.getView().getModel("BOEDetailsModel").getData();
+			sap.ui.core.BusyIndicator.show();
+			var oModel = this.getOwnerComponent().getModel("s4Model");
+			oModel.setUseBatch(false);
+			var that = this;
+				oModel.create("/ManifestDetailsSet", oEntry, {
+					success: function(data) {
+						sap.m.MessageToast.show("Created Successfully..");
+							that.getRouter().navTo("dashboardManifest");
+						sap.ui.core.BusyIndicator.hide();
+					},
+					error: function(oResponse) {
+						sap.m.MessageToast.show(oResponse.statusText);
+						sap.ui.core.BusyIndicator.hide();
+					}
+				});
 		}
 	});
 });

@@ -1,0 +1,583 @@
+<core:FragmentDefinition xmlns:t="sap.ui.table" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core">
+	<ObjectPageLayout upperCaseAnchorBar="false" id="etaDisp" class="objLayoutClass">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<breadcrumbs>
+					<m:Breadcrumbs currentLocationText="{etaDetailsModel>/ZETANumber}">
+						<m:Link id="dashboard" press="onHomePress" text="Home"/>
+						<m:Link id="products" press="onNavToPress" text="ETA List"/>
+					</m:Breadcrumbs>
+				</breadcrumbs>
+				<expandedHeading>
+					<m:HBox>
+						<m:Title text="{etaDetailsModel>/ZVesselName}" wrapping="true"/>
+						<m:ObjectMarker type="Flagged" class="sapUiTinyMarginBegin"/>
+					</m:HBox>
+				</expandedHeading>
+				<snappedHeading>
+					<m:FlexBox fitContainer="true" alignItems="Center">
+						<m:Avatar backgroundColor="Accent9" src="sap-icon://shipping-status" class="sapUiTinyMarginEnd"/>
+						<m:Title text="{etaDetailsModel>/ZVesselName}" wrapping="true"/>
+					</m:FlexBox>
+				</snappedHeading>
+				<expandedContent>
+					<m:Text text="Delivery Details"/>
+				</expandedContent>
+				<snappedContent>
+					<m:Text text="Delivery Details"/>
+				</snappedContent>
+				<snappedTitleOnMobile>
+					<m:Title text="Header Title On Phone"/>
+				</snappedTitleOnMobile>
+				<!--<actions>-->
+				<!--	<m:OverflowToolbarButton icon="sap-icon://edit" text="edit header" type="Emphasized" tooltip="edit"/>-->
+				<!--	<m:OverflowToolbarButton icon="sap-icon://pull-down" text="show section" type="Emphasized" tooltip="pull-down"/>-->
+				<!--	<m:OverflowToolbarButton icon="sap-icon://show" text="show state" tooltip="show"/>-->
+				<!--	<m:Button text="Toggle Footer" press="toggleFooter"/>-->
+				<!--</actions>-->
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+		<headerContent>
+			<m:FlexBox wrap="Wrap">
+				<m:Avatar class="sapUiSmallMarginEnd" backgroundColor="Accent9" src="sap-icon://shipping-status" displaySize="L"/>
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>PortName}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZETANumber}"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>B/Enumber}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZVesselName}"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="B/L No" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZAgentName}"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>manNo}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZAgentName}"/>
+						</m:HBox>
+					</m:VBox>
+				</layout:VerticalLayout>
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>ArrivalDate}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZLineCode}"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="B/E date" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZVesselNature}"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>b/ldate}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZPurposeOfVisit}" wrapping="false"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>crtDate}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZVoyageNature}" wrapping="false"/>
+						</m:HBox>
+					</m:VBox>
+				</layout:VerticalLayout>
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>Voyageno}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZVoyageNature}" wrapping="false"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>ConsigneeCode}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZGeneralRemark}" wrapping="false"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>AgentName}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZPortName}"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>VesselName}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZCallSign}"/>
+						</m:HBox>
+					</m:VBox>
+				</layout:VerticalLayout>
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>delDoc}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZAgentName}"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>Agentcode}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZAgentCode}" wrapping="false"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>portDis}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZGRT}"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>portOrg}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZPreferedBerth}"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>docNo}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZPreferedBerth}"/>
+						</m:HBox>
+					</m:VBox>
+				</layout:VerticalLayout>
+			</m:FlexBox>
+		</headerContent>
+		<sections>
+			<ObjectPageSection titleUppercase="false" title="{i18n>cargDet}">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+							<m:FlexBox wrap="Wrap">
+								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+									<m:VBox>
+										<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+											<m:HBox width="50%">
+												<m:Label text="{i18n>Markno}"/>
+											</m:HBox>
+											<m:HBox width="50%">
+												<m:Input value="{vesMovModel>/Berth_Garbage}"/>
+											</m:HBox>
+										</m:HBox>
+										<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+											<m:HBox width="50%">
+												<m:Label text="{i18n>Cargocategory}"/>
+											</m:HBox>
+											<m:HBox width="50%">
+												<m:ComboBox selectedKey="{vesMovModel>/Berth_berthNumber}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="Select Berth">
+													<core:Item key="{vesMovBertModel>BerthNumber}" text="{vesMovBertModel>BerthNumber}"/>
+												</m:ComboBox>
+											</m:HBox>
+										</m:HBox>
+										<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+											<m:HBox width="50%">
+												<m:Label text="{i18n>dirDel}"/>
+											</m:HBox>
+											<m:HBox width="50%">
+												<m:ComboBox selectedKey="{vesMovModel>/Berth_berthNumber}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="Select Berth">
+													<core:Item key="{vesMovBertModel>BerthNumber}" text="{vesMovBertModel>BerthNumber}"/>
+												</m:ComboBox>
+											</m:HBox>
+										</m:HBox>
+									</m:VBox>
+								</layout:VerticalLayout>
+								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+									<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>consignDet}"/>-->
+									<m:VBox>
+										<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+											<m:HBox width="50%">
+												<m:Label text="{i18n>transcargo}"/>
+											</m:HBox>
+											<m:HBox width="50%">
+												<m:ComboBox selectedKey="{vesMovModel>/Berth_berthNumber}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="Select Berth">
+													<core:Item key="{vesMovBertModel>BerthNumber}" text="{vesMovBertModel>BerthNumber}"/>
+												</m:ComboBox>
+											</m:HBox>
+										</m:HBox>
+										<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+											<m:HBox width="50%">
+												<m:Label text="{i18n>palletized}"/>
+											</m:HBox>
+											<m:HBox width="50%">
+												<m:ComboBox selectedKey="{vesMovModel>/Berth_berthNumber}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="Select Berth">
+													<core:Item key="{vesMovBertModel>BerthNumber}" text="{vesMovBertModel>BerthNumber}"/>
+												</m:ComboBox>
+											</m:HBox>
+										</m:HBox>
+										<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+											<m:HBox width="50%">
+												<m:Label text="{i18n>Generalremark}"/>
+											</m:HBox>
+											<m:HBox width="50%">
+												<m:Input value="{vesMovModel>/Berth_Garbage}"/>
+											</m:HBox>
+										</m:HBox>
+									</m:VBox>
+								</layout:VerticalLayout>
+									<m:VBox>
+								<t:Table rows="{vesMovModel>/LogsheetToShifting/results}" selectionMode="None" id="cargoTableChange" ariaLabelledBy="title">
+									<t:extension>
+										<m:OverflowToolbar style="Clear">
+											<!--<m:Title text="{i18n>ShiftingTable}"/>-->
+											<m:ToolbarSpacer/>
+											<!--<m:Button type="Emphasized" icon="sap-icon://delete" tooltip="Remove" press="addNewRowPress"/>-->
+											<!--<m:Button press="addNewRowPress" type="Accept" icon="sap-icon://add" tooltip="Add"/>-->
+											<!--<m:Button type="Emphasized" icon="sap-icon://save" tooltip="Save" press="clearAllSortings" visible="false"/>-->
+										</m:OverflowToolbar>
+									</t:extension>
+									<t:columns>
+										<t:Column  sortProperty="ETANo">
+											<m:Label wrapping="false" text="{i18n>Commodities}"/>
+											<t:template>
+												<m:DatePicker value="{vesMovModel>Charge}" valueFormat="yyyyMMdd" displayFormat="long"/>
+											</t:template>
+										</t:Column>
+										<t:Column  sortProperty="PortName">
+											<m:Label text="{i18n>Markno}"/>
+											<t:template>
+												<m:TimePicker value="{vesMovModel>Description}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" placeholder="From"/>
+											</t:template>
+										</t:Column>
+										<t:Column>
+											<m:Label text="UOM"/>
+											<t:template>
+												<m:DatePicker value="{vesMovModel>Shift_ToDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+											</t:template>
+										</t:Column>
+										<t:Column>
+											<m:Label text="{i18n>NoOfpackages}"/>
+											<t:template>
+												<m:TimePicker placeholder="To Time" value="{vesMovModel>Shift_ToTime}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss"/>
+											</t:template>
+										</t:Column>
+										<t:Column>
+											<m:Label text="{i18n>Subtype}"/>
+											<t:template>
+												<m:Input value="{vesMovModel>Shift_FromBerthNumber}"/>
+											</t:template>
+										</t:Column>
+											<t:Column>
+											<m:Label text="{i18n>Grosswt}"/>
+											<t:template>
+												<m:Input value="{vesMovModel>Shift_FromBerthNumber}"/>
+											</t:template>
+										</t:Column>
+											<t:Column>
+											<m:Label text="{i18n>ConsigneeAddress}"/>
+											<t:template>
+												<m:Input value="{vesMovModel>Shift_FromBerthNumber}"/>
+											</t:template>
+										</t:Column>
+											<t:Column>
+											<m:Label text="{i18n>ChargeTon}"/>
+											<t:template>
+												<m:Input value="{vesMovModel>Shift_FromBerthNumber}"/>
+											</t:template>
+										</t:Column>
+											<t:Column>
+											<m:Label text="{i18n>NetWt}"/>
+											<t:template>
+												<m:Input value="{vesMovModel>Shift_FromBerthNumber}"/>
+											</t:template>
+										</t:Column>
+									</t:columns>
+								</t:Table>
+								</m:VBox>
+							</m:FlexBox>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" title="{i18n>custDet}">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+							<m:FlexBox wrap="Wrap">
+								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+									<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>shipperDet}"/>-->
+									<m:VBox>
+										<m:HBox class="" alignItems="Center">
+											<m:HBox width="40%">
+												<m:Label text="{i18n>billtype}"/>
+											</m:HBox>
+											<m:HBox width="60%">
+												<m:ComboBox selectedKey="{vesMovModel>/Berth_berthNumber}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="Select">
+													<core:Item key="{vesMovBertModel>BerthNumber}" text="{vesMovBertModel>BerthNumber}"/>
+												</m:ComboBox>
+											</m:HBox>
+										</m:HBox>
+									
+										<m:HBox alignItems="Center">
+											<m:HBox width="40%">
+												<m:Label text="{i18n>ExcepCode}"/>
+											</m:HBox>
+											<m:HBox width="60%">
+												<m:Input value="{vesMovModel>/Anch_PilotRemark}"/>
+											</m:HBox>
+										</m:HBox>
+										<m:HBox  alignItems="Center">
+											<m:HBox width="40%">
+												<m:Label text="{i18n>dstination}"/>
+											</m:HBox>
+											<m:HBox width="60%">
+												<m:Input value="{vesMovModel>/Anch_PilotRemark}"/>
+											</m:HBox>
+										</m:HBox>
+										<m:HBox  alignItems="Center">
+											<m:HBox width="40%">
+												<m:Label text="{i18n>corgin}"/>
+											</m:HBox>
+											<m:HBox width="60%">
+												<m:ComboBox selectedKey="{vesMovModel>/Berth_berthNumber}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="Select Berth">
+													<core:Item key="{vesMovBertModel>BerthNumber}" text="{vesMovBertModel>BerthNumber}"/>
+												</m:ComboBox>
+											</m:HBox>
+										</m:HBox>
+										<m:HBox class="" alignItems="Center">
+											<m:HBox width="40%">
+												<m:Label text="{i18n>billno}"/>
+											</m:HBox>
+											<m:HBox width="60%">
+												<m:Input value="{vesMovModel>/Anch_PilotRemark}"/>
+											</m:HBox>
+										</m:HBox>
+									</m:VBox>
+								</layout:VerticalLayout>
+								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+									<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>consignDet}"/>-->
+									<m:VBox>
+										<m:HBox  alignItems="Center">
+											<m:HBox width="40%">
+												<m:Label text="{i18n>paymod}"/>
+											</m:HBox>
+											<m:HBox width="60%">
+												<m:ComboBox selectedKey="{vesMovModel>/Berth_berthNumber}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="Select">
+													<core:Item key="{vesMovBertModel>BerthNumber}" text="{vesMovBertModel>BerthNumber}"/>
+												</m:ComboBox>
+											</m:HBox>
+										</m:HBox>
+										<m:HBox alignItems="Center">
+											<m:HBox width="40%">
+												<m:Label text="{i18n>impcode}"/>
+											</m:HBox>
+											<m:HBox width="60%">
+												<m:Input value="{vesMovModel>/Anch_PilotRemark}"/>
+											</m:HBox>
+										</m:HBox>
+										<m:HBox  alignItems="Center">
+											<m:HBox width="40%">
+												<m:Label text="{i18n>r/no}"/>
+											</m:HBox>
+											<m:HBox width="60%">
+												<m:Input value="{vesMovModel>/Anch_PilotRemark}"/>
+											</m:HBox>
+										</m:HBox>
+										<m:HBox  alignItems="Center">
+											<m:HBox width="40%">
+												<m:Label text="{i18n>dutyAmn}"/>
+											</m:HBox>
+											<m:HBox width="60%">
+												<m:Input value="{vesMovModel>/Anch_PilotRemark}"/>
+											</m:HBox>
+										</m:HBox>
+										<m:HBox  alignItems="Center">
+											<m:HBox width="40%">
+												<m:Label text="{i18n>billD}"/>
+											</m:HBox>
+											<m:HBox width="60%">
+												<m:DatePicker id="depDateArrival" value="{etaDetailsModel>/ExpArrivalDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+											</m:HBox>
+										</m:HBox>
+									</m:VBox>
+								</layout:VerticalLayout>
+								
+								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+									<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>consignDet}"/>-->
+									<m:VBox>
+										<m:HBox  alignItems="Center">
+											<m:HBox width="40%">
+												<m:Label text="{i18n>tranDet}"/>
+											</m:HBox>
+											<m:HBox width="60%">
+												<m:Input value="{vesMovModel>/Anch_PilotRemark}"/>
+											</m:HBox>
+										</m:HBox>
+										<m:HBox alignItems="Center">
+											<m:HBox width="40%">
+												<m:Label text="{i18n>Agentcode}"/>
+											</m:HBox>
+											<m:HBox width="60%">
+												<m:Input value="{vesMovModel>/Anch_PilotRemark}"/>
+											</m:HBox>
+										</m:HBox>
+										<m:HBox  alignItems="Center">
+											<m:HBox width="40%">
+												<m:Label text="{i18n>AgentName}"/>
+											</m:HBox>
+											<m:HBox width="60%">
+												<m:Input value="{vesMovModel>/Anch_PilotRemark}"/>
+											</m:HBox>
+										</m:HBox>
+										<m:HBox  alignItems="Center">
+											<m:HBox width="40%">
+												<m:Label text="{i18n>CustomsRefNo}"/>
+											</m:HBox>
+											<m:HBox width="60%">
+												<m:Input value="{vesMovModel>/Anch_PilotRemark}"/>
+											</m:HBox>
+										</m:HBox>
+									</m:VBox>
+									
+								</layout:VerticalLayout>
+							</m:FlexBox>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" title="{i18n>storChrg}">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+							<m:FlexBox wrap="Wrap">
+								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+									<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>BasicDetails}"/>-->
+									<m:VBox>
+										<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+											<m:HBox width="50%">
+												<m:Label text="{i18n>DichComp}"/>
+											</m:HBox>
+											<m:HBox width="50%">
+												<m:DatePicker value="{vesMovModel>Shift_FromDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+											</m:HBox>
+										</m:HBox>
+										<m:HBox alignItems="Center">
+											<m:HBox width="50%">
+												<m:Label text="{i18n>storeUp}"/>
+											</m:HBox>
+											<m:HBox width="50%">
+													<m:DatePicker value="{vesMovModel>Shift_FromDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+											</m:HBox>
+										</m:HBox>
+											<m:HBox alignItems="Center">
+											<m:HBox width="50%">
+												<m:Label text="{i18n>freedays}"/>
+											</m:HBox>
+											<m:HBox width="50%">
+												<m:Input value="{vesMovModel>/Anch_PilotRemark}"/>
+											</m:HBox>
+										</m:HBox>
+									</m:VBox>
+								
+									</layout:VerticalLayout>
+										<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+												<m:VBox>
+										<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+											<m:HBox width="50%">
+												<m:Label text="{i18n>porthand}"/>
+											</m:HBox>
+											<m:HBox width="50%">
+												<m:Input value="{vesMovModel>/Anch_PilotRemark}"/>
+											</m:HBox>
+										</m:HBox>
+										<m:HBox alignItems="Center">
+											<m:HBox width="50%">
+												<m:Label text="{i18n>Lastfree}"/>
+											</m:HBox>
+											<m:HBox width="50%">
+												<m:DatePicker value="{vesMovModel>Shift_FromDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+											</m:HBox>
+										</m:HBox>
+										
+									</m:VBox>
+								</layout:VerticalLayout>
+							</m:FlexBox>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" title="{i18n>cargDet}">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+							<m:VBox>
+								<t:Table rows="{vesMovModel>/LogsheetToShifting/results}" selectionMode="None" id="shifTableChange" ariaLabelledBy="title">
+									<t:extension>
+										<m:OverflowToolbar style="Clear">
+											<!--<m:Title text="{i18n>ShiftingTable}"/>-->
+											<m:ToolbarSpacer/>
+											<!--<m:Button type="Emphasized" icon="sap-icon://delete" tooltip="Remove" press="addNewRowPress"/>-->
+											<!--<m:Button press="addNewRowPress" type="Accept" icon="sap-icon://add" tooltip="Add"/>-->
+											<!--<m:Button type="Emphasized" icon="sap-icon://save" tooltip="Save" press="clearAllSortings" visible="false"/>-->
+										</m:OverflowToolbar>
+									</t:extension>
+									<t:columns>
+										<t:Column  sortProperty="ETANo">
+											<m:Label wrapping="false" text="{i18n>Charge}"/>
+											<t:template>
+												<m:DatePicker value="{vesMovModel>Charge}" valueFormat="yyyyMMdd" displayFormat="long"/>
+											</t:template>
+										</t:Column>
+										<t:Column  sortProperty="PortName">
+											<m:Label text="{i18n>Description}"/>
+											<t:template>
+												<m:TimePicker value="{vesMovModel>Description}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" placeholder="From"/>
+											</t:template>
+										</t:Column>
+										<t:Column>
+											<m:Label text="{i18n>rate}"/>
+											<t:template>
+												<m:DatePicker value="{vesMovModel>Shift_ToDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+											</t:template>
+										</t:Column>
+										<t:Column>
+											<m:Label text="{i18n>quantity}"/>
+											<t:template>
+												<m:TimePicker placeholder="To Time" value="{vesMovModel>Shift_ToTime}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss"/>
+											</t:template>
+										</t:Column>
+										<t:Column>
+											<m:Label text="{i18n>Amount}"/>
+											<t:template>
+												<m:Input value="{vesMovModel>Shift_FromBerthNumber}"/>
+											</t:template>
+										</t:Column>
+									
+									</t:columns>
+								</t:Table>
+									<m:FlexBox wrap="Wrap">
+								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+									<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>BasicDetails}"/>-->
+									<m:VBox>
+										<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+											<m:HBox width="50%">
+												<m:Label text="{i18n>storCharge}"/>
+											</m:HBox>
+											<m:HBox width="50%">
+												<m:DatePicker value="{vesMovModel>Shift_FromDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+											</m:HBox>
+										</m:HBox>
+										<m:HBox alignItems="Center">
+											<m:HBox width="50%">
+												<m:Label text="{i18n>Othertotalcharge}"/>
+											</m:HBox>
+											<m:HBox width="50%">
+													<m:DatePicker value="{vesMovModel>Shift_FromDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+											</m:HBox>
+										</m:HBox>
+										
+									</m:VBox>
+								
+									</layout:VerticalLayout>
+										<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+												<m:VBox>
+										<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+											<m:HBox width="50%">
+												<m:Label text="{i18n>Netcharge}"/>
+											</m:HBox>
+											<m:HBox width="50%">
+												<m:Input value="{vesMovModel>/Anch_PilotRemark}"/>
+											</m:HBox>
+										</m:HBox>
+										<m:HBox alignItems="Center">
+											<m:HBox width="50%">
+												<m:Label text="{i18n>Specialinstruction}"/>
+											</m:HBox>
+											<m:HBox width="50%">
+												<m:DatePicker value="{vesMovModel>Shift_FromDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+											</m:HBox>
+										</m:HBox>
+										
+									</m:VBox>
+								</layout:VerticalLayout>
+							</m:FlexBox>
+							</m:VBox>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+	</ObjectPageLayout>
+</core:FragmentDefinition>

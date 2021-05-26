@@ -243,8 +243,14 @@
 											<m:headerToolbar>
 												<m:Toolbar>
 													<m:Title text="Details" level="H1"/>
+															<m:ToolbarSpacer/>
+												<m:Button type="Accept" id="delCrtBtn" visible="false" text="Create Delivery" press="deliveryCreatePress"/>
 												</m:Toolbar>
 											</m:headerToolbar>
+											<!--<m:OverflowToolbar>-->
+											<!--	<m:ToolbarSpacer/>-->
+											<!--	<m:Button type="Accept" text="Create" press="handleCreatePress"/>-->
+											<!--</m:OverflowToolbar>-->
 											<m:layoutData>
 												<m:FlexItemData growFactor="1"/>
 											</m:layoutData>

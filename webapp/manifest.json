@@ -169,6 +169,15 @@
 					"home",
 					"manifestDetails"
 				]
+			},
+			
+			 {
+				"name": "deliveryDetails",
+				"pattern": "deliveryDetails",
+				"target": [
+					"home",
+					"deliveryDetails"
+				]
 			}],
 			"targets": {
 				"home": {
@@ -226,6 +235,11 @@
 					"manifestDetails": {
 					"viewType": "XML",
 					"viewName": "manifestDetails"
+					
+				},
+		 "deliveryDetails": {
+					"viewType": "XML",
+					"viewName": "deliveryDetails"
 					
 				}
 			}

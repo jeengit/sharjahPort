@@ -37,12 +37,14 @@ sap.ui.define([
 					that.getView().byId("dispDetails").getItems()[0].setVisible(true);
 					if (status === 'CUST_APPROVED' || status === 'MAN_CREATED') {
 						that.getView().byId("createBtn").setVisible(true);
-						that.getView().byId("editBtn").setVisible(false);
+						that.getView().byId("delCrtBtn").setVisible(false);
+						// that.getView().byId("editBtn").setVisible(false);
 						that.getView().byId("saveBtn").setVisible(false);
 						that.getView().byId("cancelBtn").setVisible(false);
 					} else {
 						that.getView().byId("createBtn").setVisible(false);
-						that.getView().byId("editBtn").setVisible(true);
+						that.getView().byId("delCrtBtn").setVisible(true);
+						// that.getView().byId("editBtn").setVisible(true);
 						that.getView().byId("saveBtn").setVisible(false);
 						that.getView().byId("cancelBtn").setVisible(false);
 					}
@@ -52,6 +54,9 @@ sap.ui.define([
 				}
 			});
 			sap.ui.core.BusyIndicator.hide();
+		},
+		deliveryCreatePress:function(){
+				this.getRouter().navTo("deliveryDetails");
 		},
 		handelListPress: function(evt) {
 			var sPath = evt.getSource().getBindingContext("BOEDetailsModel").getPath().split("/")[3];
@@ -86,7 +91,7 @@ sap.ui.define([
 				this.getView().byId("editBtn").setVisible(true);
 				this.getView().byId("cancelBtn").setVisible(false);
 				this.getView().byId("saveBtn").setVisible(false);
-				if(id === "saveBtn"){
+				if (id === "saveBtn") {
 					this.onCreate();
 				}
 			}
@@ -102,23 +107,23 @@ sap.ui.define([
 				this.getView().byId("changeDetails").getItems()[0].setVisible(true);
 			}
 		},
-		onCreate:function(){
-			var oEntry  = this.getView().getModel("BOEDetailsModel").getData();
+		onCreate: function() {
+			var oEntry = this.getView().getModel("BOEDetailsModel").getData();
 			sap.ui.core.BusyIndicator.show();
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
 			var that = this;
-				oModel.create("/ManifestDetailsSet", oEntry, {
-					success: function(data) {
-						sap.m.MessageToast.show("Created Successfully..");
-							that.getRouter().navTo("dashboardManifest");
-						sap.ui.core.BusyIndicator.hide();
-					},
-					error: function(oResponse) {
-						sap.m.MessageToast.show(oResponse.statusText);
-						sap.ui.core.BusyIndicator.hide();
-					}
-				});
+			oModel.create("/ManifestDetailsSet", oEntry, {
+				success: function(data) {
+					sap.m.MessageToast.show("Created Successfully..");
+					that.getRouter().navTo("dashboardManifest");
+					sap.ui.core.BusyIndicator.hide();
+				},
+				error: function(oResponse) {
+					sap.m.MessageToast.show(oResponse.statusText);
+					sap.ui.core.BusyIndicator.hide();
+				}
+			});
 		}
 	});
 });

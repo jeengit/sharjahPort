@@ -29,6 +29,9 @@ sap.ui.define([
 				},
 				success: function(data) {
 					that.getView().setModel(new JSONModel(data.results['0']), "BOEDetailsModel");
+				// sap.ui.getCore().setModel(new JSONModel(data.results['0']), "BOEDetailsModel");
+				// sap.ui.getCore().setModel(new JSONModel({}), "odataNotUrlModel");
+					// console.log(that.getView().byId("dispList").setSelected("dispList-0"));
 					that.getView().byId(pageId + "--manifestChangeId").setVisible(false);
 					that.getView().byId(pageId + "--manifestDispId").setVisible(true);
 					for (var j in that.getView().byId("dispDetails").getItems()) {
@@ -55,8 +58,16 @@ sap.ui.define([
 			});
 			sap.ui.core.BusyIndicator.hide();
 		},
-		deliveryCreatePress:function(){
+		deliveryCreatePress:function(evt){
 				this.getRouter().navTo("deliveryDetails");
+				// console.log(sap.ui.getCore().getModel("odataNotUrlModel").getData() );
+				// console.log(this.getView().byId("dispDetails").getProperties());
+				// if(sap.ui.getCore().getModel("odataNotUrlModel").getData() !== null){
+				// 	console.log("jjj");
+				// }else{
+				// 	console.log((sap.ui.getCore().getModel( "BOEDetailsModel").getData()));
+				// }
+				
 		},
 		handelListPress: function(evt) {
 			var sPath = evt.getSource().getBindingContext("BOEDetailsModel").getPath().split("/")[3];
@@ -71,6 +82,16 @@ sap.ui.define([
 				}
 				this.getView().byId("changeDetails").getItems()[sPath].setVisible(true);
 			}
+			
+			
+			var sPath = evt.getSource().getBindingContext("BOEDetailsModel").getPath();
+			var model = this.getView().getModel("BOEDetailsModel");
+				var obj = model.getProperty(sPath);
+				var oModel = new sap.ui.model.json.JSONModel();
+			sap.ui.getCore().setModel(oModel, "odataNotUrlModel");
+				console.log(sPath);
+				console.log(obj);
+		
 		},
 		handleCreatePress: function(evt) {
 			//var oEntry  = this.getView().getModel("BOEDetailsModel").getData();

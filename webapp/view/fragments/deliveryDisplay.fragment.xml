@@ -147,7 +147,7 @@
 												<m:Label text="{i18n>Cargocategory}"/>
 											</m:HBox>
 											<m:HBox width="50%">
-												<m:ComboBox selectedKey="{vesMovModel>/Berth_berthNumber}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="Select Berth">
+												<m:ComboBox selectedKey="{vesMovModel>/Berth_berthNumber}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="Select">
 													<core:Item key="{vesMovBertModel>BerthNumber}" text="{vesMovBertModel>BerthNumber}"/>
 												</m:ComboBox>
 											</m:HBox>
@@ -284,7 +284,7 @@
 												<m:Label text="{i18n>billtype}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:ComboBox selectedKey="{vesMovModel>/Berth_berthNumber}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="Select">
+												<m:ComboBox selectedKey="{vesMovModel>/Berth_berthNumber}" items="{path: 'vesMovBertModel>/'}" placeholder="Select">
 													<core:Item key="{vesMovBertModel>BerthNumber}" text="{vesMovBertModel>BerthNumber}"/>
 												</m:ComboBox>
 											</m:HBox>
@@ -311,7 +311,7 @@
 												<m:Label text="{i18n>corgin}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:ComboBox selectedKey="{vesMovModel>/Berth_berthNumber}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="Select Berth">
+												<m:ComboBox selectedKey="{vesMovModel>/Berth_berthNumber}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="Select">
 													<core:Item key="{vesMovBertModel>BerthNumber}" text="{vesMovBertModel>BerthNumber}"/>
 												</m:ComboBox>
 											</m:HBox>

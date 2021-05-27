@@ -13,28 +13,14 @@ sap.ui.define([
 
 		onInit: function() {
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-			oRouter.getRoute("manifestDetails").attachPatternMatched(this._onObjectMatched, this);
+			oRouter.getRoute("deliveryDetails").attachPatternMatched(this._onObjectMatched, this);
 		},
 		_onObjectMatched: function(oEvent) {
 			this.getUserName();
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
-			var pageId = this.getView().getId();
-			var status = oEvent.getParameter("arguments").status;
-			var that = this;
-			oModel.read("/ManifestDetailsSet", {
-				urlParameters: {
-					"$filter": "ManifestNo eq '" + oEvent.getParameter("arguments").id + "' and ImFlag eq 'CUSTOMS'",
-					"$expand": "BillOfEntrySet/CommoditiesInDetailsSet"
-				},
-				success: function(data) {
-					that.getView().setModel(new JSONModel(data.results['0']), "BOEDetailsModel");
-				
-				},
-				error: function(oResponse) {
-					sap.m.MessageToast.show(oResponse.statusText);
-				}
-			});
+console.log(sap.ui.getCore().getModel( "odataNotUrlModel"));
+		
 			sap.ui.core.BusyIndicator.hide();
 		},
 	

@@ -104,7 +104,7 @@
 							<m:FlexBox width="100%" class="manifestListClass boeDetailsClass">
 								<m:HBox width="30%" class="boeMaster">
 									<m:List id="dispList" class="tableCard card" items="{BOEDetailsModel>/BillOfEntrySet/results}" headerText="Manifest - Import"
-										noDataText="{i18n>emptyNodata}">
+										noDataText="{i18n>emptyNodata}" mode="SingleSelect">
 										<m:CustomListItem type="Active" press="handelListPress">
 											<m:FlexBox alignItems="Start" justifyContent="SpaceBetween">
 												<m:HBox><core:Icon color="#CEA95B" class="sapUiTinyMarginEnd" size="1rem" src="sap-icon://activities"/>

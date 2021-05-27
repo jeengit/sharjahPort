@@ -29,15 +29,14 @@ sap.ui.define([
 				},
 				success: function(data) {
 					that.getView().setModel(new JSONModel(data.results['0']), "BOEDetailsModel");
-				// sap.ui.getCore().setModel(new JSONModel(data.results['0']), "BOEDetailsModel");
-				// sap.ui.getCore().setModel(new JSONModel({}), "odataNotUrlModel");
-					// console.log(that.getView().byId("dispList").setSelected("dispList-0"));
 					that.getView().byId(pageId + "--manifestChangeId").setVisible(false);
 					that.getView().byId(pageId + "--manifestDispId").setVisible(true);
 					for (var j in that.getView().byId("dispDetails").getItems()) {
 						that.getView().byId("dispDetails").getItems()[j].setVisible(false);
 					}
 					that.getView().byId("dispDetails").getItems()[0].setVisible(true);
+					var selItm = that.getView().byId("dispList").getItems()[0];
+					that.getView().byId("dispList").setSelectedItem(selItm,true);
 					if (status === 'CUST_APPROVED' || status === 'MAN_CREATED') {
 						that.getView().byId("createBtn").setVisible(true);
 						that.getView().byId("delCrtBtn").setVisible(false);
@@ -71,6 +70,8 @@ sap.ui.define([
 		},
 		handelListPress: function(evt) {
 			var sPath = evt.getSource().getBindingContext("BOEDetailsModel").getPath().split("/")[3];
+			var selItm = this.getView().byId("dispList").getItems()[sPath];
+			this.getView().byId("dispList").setSelectedItem(selItm,true);
 			if (this.getView().byId("manifestDispId").getVisible() === true) {
 				for (var i in this.getView().byId("dispDetails").getItems()) {
 					this.getView().byId("dispDetails").getItems()[i].setVisible(false);

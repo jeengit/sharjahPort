@@ -359,6 +359,9 @@ html.sap-desktop .sapMBtn:focus>.sapMFocusable{
 .manifestListClass.boeDetailsClass .boeDetails li{
 	border:none;
 }
-/*.manifestListClass li[tabindex="0"]{*/
-/*	background:#eee;*/
-/*}*/
+.boeMaster .sapMLIBSelectS{
+    display: none;
+}
+.boeMaster .sapMLIB.sapMLIBSelected{
+	border-bottom:none;
+}

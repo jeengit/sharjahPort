@@ -157,7 +157,7 @@
 				]
 			}, {
 				"name": "manifest",
-				"pattern": "items={sPath}&type='MANIFEST'",
+				"pattern": "items={sPath}&type='{type}'",
 				"target": [
 					"home",
 					"manifest"
@@ -169,14 +169,19 @@
 					"home",
 					"manifestDetails"
 				]
-			},
-			
-			 {
+			}, {
 				"name": "deliveryDetails",
 				"pattern": "deliveryDetails",
 				"target": [
 					"home",
 					"deliveryDetails"
+				]
+			},{
+				"name": "tallySheetClerk",
+				"pattern": "tally-sheet-clerk",
+				"target": [
+					"home",
+					"tallySheetClerk"
 				]
 			}],
 			"targets": {
@@ -232,15 +237,18 @@
 					"viewType": "XML",
 					"viewName": "manifestList"
 				},
-					"manifestDetails": {
+				"manifestDetails": {
 					"viewType": "XML",
 					"viewName": "manifestDetails"
-					
+
 				},
-		 "deliveryDetails": {
+				"deliveryDetails": {
 					"viewType": "XML",
 					"viewName": "deliveryDetails"
-					
+				},
+				"tallySheetClerk": {
+					"viewType": "XML",
+					"viewName": "tallySheetClerk"
 				}
 			}
 		}

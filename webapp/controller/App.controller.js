@@ -25,7 +25,7 @@ sap.ui.define([
 					var oStore = jQuery.sap.storage(jQuery.sap.storage.Type.local);
 					oStore.put("user", data.Name);
 					oStore.put("role", data.Role);
-					sap.m.MessageToast.show("You are Logged in as" + " " + data.Role);
+					sap.m.MessageToast.show("You are Logged in as" + " " + data.Role + " Role");
 					sap.ui.core.BusyIndicator.hide();
 				},
 				error: function (oResponse) {

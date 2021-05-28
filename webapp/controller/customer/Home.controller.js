@@ -4,6 +4,7 @@ sap.ui.define([
 	"use strict";
 	return BaseController.extend("com.demo.sharjahPort.controller.customer.Home", {
 		onInit: function() {
+			this.getUserName();
 		}
 	});
 

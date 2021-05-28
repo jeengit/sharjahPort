@@ -11,6 +11,7 @@ sap.ui.define([
 		},
 		_onObjectMatched: function(oEvent) {
 			var status = oEvent.getParameter("arguments").sPath;
+			var type = oEvent.getParameter("arguments").type;
 			this.getUserName();
 			this.getModel("ManifestListSet","manifestListModel",status);
 			var that = this;
@@ -20,8 +21,9 @@ sap.ui.define([
 				"countE":that.getView().byId("list2").getItems().length
 			};
 			that.getView().setModel(new JSONModel(count), "countListModel");
-			sap.ui.core.BusyIndicator.hide();
 			}, 2000);
+			sap.ui.getCore().setModel(new JSONModel({"status":status,"type":type}), "navModel");
+			sap.ui.core.BusyIndicator.hide();
 		},
 		handelDetailPress: function(evt){
 			var sPath = evt.getSource().getBindingContext("manifestListModel").getPath().split("/")[1];

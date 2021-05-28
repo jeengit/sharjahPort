@@ -48,26 +48,16 @@ sap.ui.define([
 			this.getRouter().navTo("dashboard");
 		},
 		onNavSelect: function(evt) {
-			this.getRouter().navTo(evt.getSource().getSelectedKey());
-			var pageId = this.getView().getId();
-			sap.ui.getCore().byId(pageId + "--dashFal").setVisible(false);
-			var oStore = jQuery.sap.storage(jQuery.sap.storage.Type.local);
-			var uRole = oStore.get("role");
-			if (uRole === "HARBOR_MASTER") {
-				sap.ui.getCore().byId(pageId + "--dashId").setVisible(false);
-				sap.ui.getCore().byId(pageId + "--harbDashId").setVisible(true);
-				sap.ui.getCore().byId(pageId + "--AgnetdashId").setVisible(false);
+			var selKey = evt.getSource().getSelectedKey().split("/");
+			if (selKey.length > 1) {
+				this.getRouter().navTo(selKey[1].toLowerCase(), {
+					sPath: selKey[0],
+					type: selKey[1]
+				});
+			} else {
+				this.getRouter().navTo(evt.getSource().getSelectedKey());
 			}
-			if (uRole === "CONTROL_ROOM") {
-				sap.ui.getCore().byId(pageId + "--harbDashId").setVisible(false);
-				sap.ui.getCore().byId(pageId + "--dashId").setVisible(true);
-				sap.ui.getCore().byId(pageId + "--AgnetdashId").setVisible(false);
-			}
-			if (uRole === "AGENT") {
-				sap.ui.getCore().byId(pageId + "--harbDashId").setVisible(false);
-				sap.ui.getCore().byId(pageId + "--dashId").setVisible(false);
-				sap.ui.getCore().byId(pageId + "--AgnetdashId").setVisible(true);
-			}
+			this.getView().byId("sideNavigation").setSelectedKey(evt.getSource().getSelectedKey());
 		},
 		onHomePress: function(evt) {
 			var oStore = jQuery.sap.storage(jQuery.sap.storage.Type.local);

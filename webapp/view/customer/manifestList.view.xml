@@ -8,7 +8,7 @@
 		<content>
 			<VBox class="sapUiContentPadding">
 				<Breadcrumbs currentLocationText="Manifest List">
-					<Link id="dashboard" press="onHomePress" text="Home"/>
+					<Link href="#dashboardManifest" text="Home"/>
 				</Breadcrumbs>
 				<FlexBox width="100%" class="manifestListClass">
 					<VBox width="50%">

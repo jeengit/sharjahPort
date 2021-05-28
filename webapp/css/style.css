@@ -330,10 +330,10 @@ html.sap-desktop .sapMBtn:focus>.sapMFocusable{
 .detailspage.sapMPageWithFooter>section{
 	bottom: 0;
 }
-.detailspage .sapMPageFooter .sapMBtnInner{
+.detailspage .sapMPageFooter .sapMBtnInner ,.btn-sm .sapMBtnInner{
 	height: 1.5rem;
 }
-.detailspage .sapMPageFooter .sapMBtnContent {
+.detailspage .sapMPageFooter .sapMBtnContent ,.btn-sm .sapMBtnContent {
     line-height: 1.5;
 }
 .manifestListClass> .sapMFlexItem:first-child {

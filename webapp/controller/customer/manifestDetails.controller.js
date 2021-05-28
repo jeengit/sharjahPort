@@ -66,7 +66,15 @@ sap.ui.define([
 				// }else{
 				// 	console.log((sap.ui.getCore().getModel( "BOEDetailsModel").getData()));
 				// }
-				
+			var selectId = this.getView().byId("dispList").getSelectedItem().getBindingContext("BOEDetailsModel");
+				var sPath = selectId.getPath();
+			var model = this.getView().getModel("BOEDetailsModel");
+				var obj = model.getProperty(sPath);
+				var oModel = new sap.ui.model.json.JSONModel(obj);
+			sap.ui.getCore().setModel(oModel, "ManifBOEModel");
+				// console.log(sPath);
+				// console.log(obj);
+			
 		},
 		handelListPress: function(evt) {
 			var sPath = evt.getSource().getBindingContext("BOEDetailsModel").getPath().split("/")[3];
@@ -85,13 +93,7 @@ sap.ui.define([
 			}
 			
 			
-			var sPath = evt.getSource().getBindingContext("BOEDetailsModel").getPath();
-			var model = this.getView().getModel("BOEDetailsModel");
-				var obj = model.getProperty(sPath);
-				var oModel = new sap.ui.model.json.JSONModel();
-			sap.ui.getCore().setModel(oModel, "odataNotUrlModel");
-				console.log(sPath);
-				console.log(obj);
+		
 		
 		},
 		handleCreatePress: function(evt) {

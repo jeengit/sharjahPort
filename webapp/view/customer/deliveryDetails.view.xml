@@ -12,8 +12,8 @@
 			<OverflowToolbar>
 				<ToolbarSpacer/>
 				<Button id="createBtn" type="Accept" text="Create Bill"  press="handleCreatePress"/>
-				<Button id="cancelBtn" type="Reject" text="Cancel" visible="false" press="handleCreatePress"/>
-				<Button id="saveBtn" type="Emphasized" text="Save"  press="handleCreatePress"/>
+				<!--<Button id="cancelBtn" type="Reject" text="Cancel" visible="false" press="handleCreatePress"/>-->
+				<Button id="saveBtn" type="Emphasized" text="Save"  press="deliveryCreatePress"/>
 				<!--<Button id="editBtn" type="Emphasized" text="Edit" visible="false" press="handleCreatePress"/>-->
 			</OverflowToolbar>
 		</footer>

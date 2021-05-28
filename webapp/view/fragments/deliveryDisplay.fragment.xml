@@ -44,19 +44,19 @@
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>PortName}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{etaDetailsModel>/ZETANumber}"/>
+							<m:Text text="{manifstModel>/PortName}"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>B/Enumber}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{etaDetailsModel>/ZVesselName}"/>
+							<m:Text text="{delCrtModel>/BOE}"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="B/L No" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{etaDetailsModel>/ZAgentName}"/>
+							<m:Text text="{delCrtModel>/BLNo}"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>manNo}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{etaDetailsModel>/ZAgentName}"/>
+							<m:Text text="{delCrtModel>/ManifestNo}"/>
 						</m:HBox>
 					</m:VBox>
 				</layout:VerticalLayout>
@@ -64,19 +64,19 @@
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>ArrivalDate}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{etaDetailsModel>/ZLineCode}"/>
+							<m:Text text="{delCrtModel>/ArrivalDate}"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="B/E date" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{etaDetailsModel>/ZVesselNature}"/>
+							<m:Text text="{delCrtModel>/BOEdate}"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>b/ldate}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{etaDetailsModel>/ZPurposeOfVisit}" wrapping="false"/>
+							<m:Text text="{delCrtModel>/BLDate}" wrapping="false"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>crtDate}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{etaDetailsModel>/ZVoyageNature}" wrapping="false"/>
+							<m:Text text="{delCrtModel>/CaretedDate}" wrapping="false"/>
 						</m:HBox>
 					</m:VBox>
 				</layout:VerticalLayout>
@@ -84,19 +84,19 @@
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>Voyageno}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{etaDetailsModel>/ZVoyageNature}" wrapping="false"/>
+							<m:Text text="{delCrtModel>/VoyegeNo}" wrapping="false"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>ConsigneeCode}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{etaDetailsModel>/ZGeneralRemark}" wrapping="false"/>
+							<m:Text text="{delCrtModel>/ConsigneeCode}" wrapping="false"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>AgentName}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{etaDetailsModel>/ZPortName}"/>
+							<m:Text text="{delCrtModel>/AgentName}"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>VesselName}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{etaDetailsModel>/ZCallSign}"/>
+							<m:Text text="{delCrtModel>/vesselName}"/>
 						</m:HBox>
 					</m:VBox>
 				</layout:VerticalLayout>
@@ -104,23 +104,23 @@
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>delDoc}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{etaDetailsModel>/ZAgentName}"/>
+							<m:Text text="{delCrtModel>/DocNo}"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>Agentcode}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{etaDetailsModel>/ZAgentCode}" wrapping="false"/>
+							<m:Text text="{delCrtModel>/AgentCode}" wrapping="false"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>portDis}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{etaDetailsModel>/ZGRT}"/>
+							<m:Text text="{delCrtModel>/PortOfDischarge}"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>portOrg}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{etaDetailsModel>/ZPreferedBerth}"/>
+							<m:Text text="{delCrtModel>/PortOfShipment}"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>docNo}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{etaDetailsModel>/ZPreferedBerth}"/>
+							<m:Text text="{delCrtModel>/ZPreferedBerth}"/>
 						</m:HBox>
 					</m:VBox>
 				</layout:VerticalLayout>
@@ -139,16 +139,17 @@
 												<m:Label text="{i18n>Markno}"/>
 											</m:HBox>
 											<m:HBox width="50%">
-												<m:Input value="{vesMovModel>/Berth_Garbage}"/>
+												<m:Input value="{delCrtModel>/MarksAndNo}"/>
 											</m:HBox>
 										</m:HBox>
 										<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+											
 											<m:HBox width="50%">
 												<m:Label text="{i18n>Cargocategory}"/>
 											</m:HBox>
 											<m:HBox width="50%">
-												<m:ComboBox selectedKey="{vesMovModel>/Berth_berthNumber}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="Select">
-													<core:Item key="{vesMovBertModel>BerthNumber}" text="{vesMovBertModel>BerthNumber}"/>
+												<m:ComboBox selectedKey="{delCrtModel>/CargoCategory}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="Select">
+													<core:Item key="{vesMovBertModel>CargoCategory}" text="{vesMovBertModel>CargoCategory}"/>
 												</m:ComboBox>
 											</m:HBox>
 										</m:HBox>
@@ -157,7 +158,7 @@
 												<m:Label text="{i18n>dirDel}"/>
 											</m:HBox>
 											<m:HBox width="50%">
-												<m:ComboBox selectedKey="{vesMovModel>/Berth_berthNumber}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="Select Berth">
+												<m:ComboBox selectedKey="{delCrtModel>/Berth_berthNumber}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="Select Berth">
 													<core:Item key="{vesMovBertModel>BerthNumber}" text="{vesMovBertModel>BerthNumber}"/>
 												</m:ComboBox>
 											</m:HBox>
@@ -172,8 +173,8 @@
 												<m:Label text="{i18n>transcargo}"/>
 											</m:HBox>
 											<m:HBox width="50%">
-												<m:ComboBox selectedKey="{vesMovModel>/Berth_berthNumber}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="Select Berth">
-													<core:Item key="{vesMovBertModel>BerthNumber}" text="{vesMovBertModel>BerthNumber}"/>
+												<m:ComboBox selectedKey="{delCrtModel>/TransitDetails}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="Select Berth">
+													<core:Item key="{vesMovBdelCrtModelertModel>BerthNumber}" text="{vesMovBertModel>BerthNumber}"/>
 												</m:ComboBox>
 											</m:HBox>
 										</m:HBox>
@@ -182,7 +183,7 @@
 												<m:Label text="{i18n>palletized}"/>
 											</m:HBox>
 											<m:HBox width="50%">
-												<m:ComboBox selectedKey="{vesMovModel>/Berth_berthNumber}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="Select Berth">
+												<m:ComboBox selectedKey="{delCrtModel>/Berth_berthNumber}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="Select Berth">
 													<core:Item key="{vesMovBertModel>BerthNumber}" text="{vesMovBertModel>BerthNumber}"/>
 												</m:ComboBox>
 											</m:HBox>
@@ -192,13 +193,13 @@
 												<m:Label text="{i18n>Generalremark}"/>
 											</m:HBox>
 											<m:HBox width="50%">
-												<m:Input value="{vesMovModel>/Berth_Garbage}"/>
+												<m:Input value="{delCrtModel>/GeneralRemark}"/>
 											</m:HBox>
 										</m:HBox>
 									</m:VBox>
 								</layout:VerticalLayout>
 									<m:VBox>
-								<t:Table rows="{vesMovModel>/LogsheetToShifting/results}" selectionMode="None" id="cargoTableChange" ariaLabelledBy="title">
+								<t:Table rows="{delCrtModel>/DeliveryDetailsToCommodities/results}" selectionMode="None" id="cargoTableChange" ariaLabelledBy="title">
 									<t:extension>
 										<m:OverflowToolbar style="Clear">
 											<!--<m:Title text="{i18n>ShiftingTable}"/>-->
@@ -212,55 +213,55 @@
 										<t:Column  sortProperty="ETANo">
 											<m:Label wrapping="false" text="{i18n>Commodities}"/>
 											<t:template>
-												<m:DatePicker value="{vesMovModel>Charge}" valueFormat="yyyyMMdd" displayFormat="long"/>
+												<m:Input value="{delCrtModel>Commodities}" />
 											</t:template>
 										</t:Column>
 										<t:Column  sortProperty="PortName">
 											<m:Label text="{i18n>Markno}"/>
 											<t:template>
-												<m:TimePicker value="{vesMovModel>Description}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" placeholder="From"/>
+													<m:Input value="{delCrtModel>MarkAndNumbers}"/>
 											</t:template>
 										</t:Column>
 										<t:Column>
 											<m:Label text="UOM"/>
 											<t:template>
-												<m:DatePicker value="{vesMovModel>Shift_ToDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+													<m:Input value="{delCrtModel>UOM}"/>
 											</t:template>
 										</t:Column>
 										<t:Column>
 											<m:Label text="{i18n>NoOfpackages}"/>
 											<t:template>
-												<m:TimePicker placeholder="To Time" value="{vesMovModel>Shift_ToTime}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss"/>
+													<m:Input value="{delCrtModel>NoOfPackages}"/>
 											</t:template>
 										</t:Column>
 										<t:Column>
 											<m:Label text="{i18n>Subtype}"/>
 											<t:template>
-												<m:Input value="{vesMovModel>Shift_FromBerthNumber}"/>
+												<m:Input value="{delCrtModel>SubType}"/>
 											</t:template>
 										</t:Column>
 											<t:Column>
 											<m:Label text="{i18n>Grosswt}"/>
 											<t:template>
-												<m:Input value="{vesMovModel>Shift_FromBerthNumber}"/>
+												<m:Input value="{delCrtModel>GrossWt}"/>
 											</t:template>
 										</t:Column>
 											<t:Column>
 											<m:Label text="{i18n>ConsigneeAddress}"/>
 											<t:template>
-												<m:Input value="{vesMovModel>Shift_FromBerthNumber}"/>
+												<m:Input value="{delCrtModel>ConsigneeCode}"/>
 											</t:template>
 										</t:Column>
 											<t:Column>
 											<m:Label text="{i18n>ChargeTon}"/>
 											<t:template>
-												<m:Input value="{vesMovModel>Shift_FromBerthNumber}"/>
+												<m:Input value="{delCrtModel>ChargePerTon}"/>
 											</t:template>
 										</t:Column>
 											<t:Column>
 											<m:Label text="{i18n>NetWt}"/>
 											<t:template>
-												<m:Input value="{vesMovModel>Shift_FromBerthNumber}"/>
+												<m:Input value="{delCrtModel>NetWt}"/>
 											</t:template>
 										</t:Column>
 									</t:columns>
@@ -284,7 +285,7 @@
 												<m:Label text="{i18n>billtype}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:ComboBox selectedKey="{vesMovModel>/Berth_berthNumber}" items="{path: 'vesMovBertModel>/'}" placeholder="Select">
+												<m:ComboBox selectedKey="{delCrtModel>/BillType}" items="{path: 'vesMovBertModel>/'}" placeholder="Select">
 													<core:Item key="{vesMovBertModel>BerthNumber}" text="{vesMovBertModel>BerthNumber}"/>
 												</m:ComboBox>
 											</m:HBox>
@@ -295,7 +296,7 @@
 												<m:Label text="{i18n>ExcepCode}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:Input value="{vesMovModel>/Anch_PilotRemark}"/>
+												<m:Input value="{delCrtModel>/ExceptionCode}"/>
 											</m:HBox>
 										</m:HBox>
 										<m:HBox  alignItems="Center">
@@ -303,7 +304,7 @@
 												<m:Label text="{i18n>dstination}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:Input value="{vesMovModel>/Anch_PilotRemark}"/>
+												<m:Input value="{delCrtModel>/Destination}"/>
 											</m:HBox>
 										</m:HBox>
 										<m:HBox  alignItems="Center">
@@ -311,7 +312,7 @@
 												<m:Label text="{i18n>corgin}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:ComboBox selectedKey="{vesMovModel>/Berth_berthNumber}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="Select">
+												<m:ComboBox selectedKey="{delCrtModel>/Country}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="Select">
 													<core:Item key="{vesMovBertModel>BerthNumber}" text="{vesMovBertModel>BerthNumber}"/>
 												</m:ComboBox>
 											</m:HBox>
@@ -321,7 +322,7 @@
 												<m:Label text="{i18n>billno}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:Input value="{vesMovModel>/Anch_PilotRemark}"/>
+												<m:Input value="{delCrtModel>/BillNo}"/>
 											</m:HBox>
 										</m:HBox>
 									</m:VBox>
@@ -334,7 +335,7 @@
 												<m:Label text="{i18n>paymod}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:ComboBox selectedKey="{vesMovModel>/Berth_berthNumber}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="Select">
+												<m:ComboBox selectedKey="{delCrtModel>/PaymentMode}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="Select">
 													<core:Item key="{vesMovBertModel>BerthNumber}" text="{vesMovBertModel>BerthNumber}"/>
 												</m:ComboBox>
 											</m:HBox>
@@ -344,7 +345,7 @@
 												<m:Label text="{i18n>impcode}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:Input value="{vesMovModel>/Anch_PilotRemark}"/>
+												<m:Input value="{delCrtModel>/ImportedCode}"/>
 											</m:HBox>
 										</m:HBox>
 										<m:HBox  alignItems="Center">
@@ -352,7 +353,7 @@
 												<m:Label text="{i18n>r/no}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:Input value="{vesMovModel>/Anch_PilotRemark}"/>
+												<m:Input value="{delCrtModel>/RNo}"/>
 											</m:HBox>
 										</m:HBox>
 										<m:HBox  alignItems="Center">
@@ -360,7 +361,7 @@
 												<m:Label text="{i18n>dutyAmn}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:Input value="{vesMovModel>/Anch_PilotRemark}"/>
+												<m:Input value="{delCrtModel>/DutyAmount}"/>
 											</m:HBox>
 										</m:HBox>
 										<m:HBox  alignItems="Center">
@@ -368,7 +369,7 @@
 												<m:Label text="{i18n>billD}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:DatePicker id="depDateArrival" value="{etaDetailsModel>/ExpArrivalDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+												<m:DatePicker id="depDateArrival" value="{delCrtModel>/BillDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
 											</m:HBox>
 										</m:HBox>
 									</m:VBox>
@@ -382,7 +383,7 @@
 												<m:Label text="{i18n>tranDet}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:Input value="{vesMovModel>/Anch_PilotRemark}"/>
+												<m:Input value="{delCrtModel>/TransitDetails}"/>
 											</m:HBox>
 										</m:HBox>
 										<m:HBox alignItems="Center">
@@ -390,7 +391,7 @@
 												<m:Label text="{i18n>Agentcode}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:Input value="{vesMovModel>/Anch_PilotRemark}"/>
+												<m:Input value="{delCrtModel>/AgentCode}"/>
 											</m:HBox>
 										</m:HBox>
 										<m:HBox  alignItems="Center">
@@ -398,7 +399,7 @@
 												<m:Label text="{i18n>AgentName}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:Input value="{vesMovModel>/Anch_PilotRemark}"/>
+												<m:Input value="{delCrtModel>/AgentName}"/>
 											</m:HBox>
 										</m:HBox>
 										<m:HBox  alignItems="Center">
@@ -406,7 +407,7 @@
 												<m:Label text="{i18n>CustomsRefNo}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:Input value="{vesMovModel>/Anch_PilotRemark}"/>
+												<m:Input value="{delCrtModel>/CustomRefNo}"/>
 											</m:HBox>
 										</m:HBox>
 									</m:VBox>
@@ -430,7 +431,7 @@
 												<m:Label text="{i18n>DichComp}"/>
 											</m:HBox>
 											<m:HBox width="50%">
-												<m:DatePicker value="{vesMovModel>Shift_FromDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+												<m:DatePicker value="{delCrtModel>DisCompleteDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
 											</m:HBox>
 										</m:HBox>
 										<m:HBox alignItems="Center">
@@ -438,7 +439,7 @@
 												<m:Label text="{i18n>storeUp}"/>
 											</m:HBox>
 											<m:HBox width="50%">
-													<m:DatePicker value="{vesMovModel>Shift_FromDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+													<m:DatePicker value="{delCrtModel>StorageUpto}" valueFormat="yyyyMMdd" displayFormat="long"/>
 											</m:HBox>
 										</m:HBox>
 											<m:HBox alignItems="Center">
@@ -446,7 +447,7 @@
 												<m:Label text="{i18n>freedays}"/>
 											</m:HBox>
 											<m:HBox width="50%">
-												<m:Input value="{vesMovModel>/Anch_PilotRemark}"/>
+												<m:Input value="{delCrtModel>/FreeDays}"/>
 											</m:HBox>
 										</m:HBox>
 									</m:VBox>
@@ -459,7 +460,7 @@
 												<m:Label text="{i18n>porthand}"/>
 											</m:HBox>
 											<m:HBox width="50%">
-												<m:Input value="{vesMovModel>/Anch_PilotRemark}"/>
+												<m:Input value="{delCrtModel>/PortHandlingCharge}"/>
 											</m:HBox>
 										</m:HBox>
 										<m:HBox alignItems="Center">
@@ -467,7 +468,7 @@
 												<m:Label text="{i18n>Lastfree}"/>
 											</m:HBox>
 											<m:HBox width="50%">
-												<m:DatePicker value="{vesMovModel>Shift_FromDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+												<m:DatePicker value="{delCrtModel>LastFreeDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
 											</m:HBox>
 										</m:HBox>
 										
@@ -483,7 +484,7 @@
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
 							<m:VBox>
-								<t:Table rows="{vesMovModel>/LogsheetToShifting/results}" selectionMode="None" id="shifTableChange" ariaLabelledBy="title">
+								<t:Table rows="{delCrtModel>DeliveryDetailsToDeliverCharge/results}" selectionMode="None" id="shifTableChange" ariaLabelledBy="title">
 									<t:extension>
 										<m:OverflowToolbar style="Clear">
 											<!--<m:Title text="{i18n>ShiftingTable}"/>-->
@@ -497,31 +498,31 @@
 										<t:Column  sortProperty="ETANo">
 											<m:Label wrapping="false" text="{i18n>Charge}"/>
 											<t:template>
-												<m:DatePicker value="{vesMovModel>Charge}" valueFormat="yyyyMMdd" displayFormat="long"/>
+												<m:DatePicker value="{delCrtModel>Charges}" valueFormat="yyyyMMdd" displayFormat="long"/>
 											</t:template>
 										</t:Column>
 										<t:Column  sortProperty="PortName">
 											<m:Label text="{i18n>Description}"/>
 											<t:template>
-												<m:TimePicker value="{vesMovModel>Description}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" placeholder="From"/>
+												<m:TimePicker value="{delCrtModel>Description}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" placeholder="From"/>
 											</t:template>
 										</t:Column>
 										<t:Column>
 											<m:Label text="{i18n>rate}"/>
 											<t:template>
-												<m:DatePicker value="{vesMovModel>Shift_ToDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+												<m:DatePicker value="{delCrtModel>Rate}" valueFormat="yyyyMMdd" displayFormat="long"/>
 											</t:template>
 										</t:Column>
 										<t:Column>
 											<m:Label text="{i18n>quantity}"/>
 											<t:template>
-												<m:TimePicker placeholder="To Time" value="{vesMovModel>Shift_ToTime}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss"/>
+												<m:TimePicker placeholder="To Time" value="{delCrtModel>Quantity}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss"/>
 											</t:template>
 										</t:Column>
 										<t:Column>
 											<m:Label text="{i18n>Amount}"/>
 											<t:template>
-												<m:Input value="{vesMovModel>Shift_FromBerthNumber}"/>
+												<m:Input value="{delCrtModel>Amount}"/>
 											</t:template>
 										</t:Column>
 									
@@ -536,7 +537,7 @@
 												<m:Label text="{i18n>storCharge}"/>
 											</m:HBox>
 											<m:HBox width="50%">
-												<m:DatePicker value="{vesMovModel>Shift_FromDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+												<m:DatePicker value="{delCrtModel>StorageCharge}" valueFormat="yyyyMMdd" displayFormat="long"/>
 											</m:HBox>
 										</m:HBox>
 										<m:HBox alignItems="Center">
@@ -544,7 +545,7 @@
 												<m:Label text="{i18n>Othertotalcharge}"/>
 											</m:HBox>
 											<m:HBox width="50%">
-													<m:DatePicker value="{vesMovModel>Shift_FromDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+													<m:DatePicker value="{delCrtModel>OtherTotalCharge}" valueFormat="yyyyMMdd" displayFormat="long"/>
 											</m:HBox>
 										</m:HBox>
 										
@@ -558,7 +559,7 @@
 												<m:Label text="{i18n>Netcharge}"/>
 											</m:HBox>
 											<m:HBox width="50%">
-												<m:Input value="{vesMovModel>/Anch_PilotRemark}"/>
+												<m:Input value="{delCrtModel>/NetCharge}"/>
 											</m:HBox>
 										</m:HBox>
 										<m:HBox alignItems="Center">
@@ -566,7 +567,7 @@
 												<m:Label text="{i18n>Specialinstruction}"/>
 											</m:HBox>
 											<m:HBox width="50%">
-												<m:DatePicker value="{vesMovModel>Shift_FromDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+												<m:DatePicker value="{delCrtModel>SpecialInstruction}" valueFormat="yyyyMMdd" displayFormat="long"/>
 											</m:HBox>
 										</m:HBox>
 										

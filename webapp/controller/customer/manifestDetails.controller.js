@@ -135,6 +135,9 @@ sap.ui.define([
 					sap.ui.core.BusyIndicator.hide();
 				}
 			});
+		},
+		handleTallySheetPress: function(){
+			this.getRouter().navTo("tallySheetClerk");
 		}
 	});
 });

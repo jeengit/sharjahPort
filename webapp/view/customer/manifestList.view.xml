@@ -11,57 +11,85 @@
 					<Link href="#dashboardManifest" text="Home"/>
 				</Breadcrumbs>
 				<FlexBox width="100%" class="manifestListClass">
-					<VBox width="50%">
-					<List id="list1" class="tableCard card"
-						items="{ path: 'manifestListModel>/',templateShareable:true, filters: {path: 'Import_Export', operator: 'EQ', value1: 'I'} }"
-						headerText="Manifest - Import" noDataText="{i18n>emptyNodata}">
-						<CustomListItem type="Active" press="handelDetailPress">
-							<FlexBox alignItems="Start" justifyContent="SpaceBetween">
-								<HBox><core:Icon color="#CEA95B" class="sapUiTinyMarginEnd" size="1rem" src="sap-icon://activities"/>
-								<Text text="{manifestListModel>AgentName} - {manifestListModel>CustomsRefManifestNo}"/>
-								</HBox>
-								<tnt:InfoLabel visible="{= ${manifestListModel>ManifestStatus} === '' ? false : true}" text="{= ${manifestListModel>ManifestStatus} === 'MAN_CREATED' ? 'Created' : 'Approved' }" displayOnly="true"
-									colorScheme="{= ${manifestListModel>ManifestStatus} === 'MAN_CREATED' ? 3 : ${manifestListModel>ManifestStatus} === 'CUST_APPROVED' ? 8 : 5 }"/>
-							</FlexBox>
-							<FlexBox alignItems="Start" justifyContent="SpaceBetween">
-								<Text class="desc" text="{manifestListModel>VesselName}"/>
-								<Text class="desc sapMLnk"
-									text="{ path: 'manifestListModel>Arrivaldate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}} }"
-									wrapping="false"/>
-							</FlexBox>
-						</CustomListItem>
-						<headerToolbar>
-							<Toolbar>
-								<Title text="Manifest - Import ({countListModel>/countI})" level="H1"/>
-							</Toolbar>
-						</headerToolbar>
-					</List>
+					<VBox width="{= ${manifestListModel>/countE} > 0 ? '50%' : '100%'}" visible="{= ${manifestListModel>/countI} > 0 ? true : false}">
+						<List id="list1" class="tableCard card"
+							items="{ path: 'manifestListModel>/',templateShareable:true, filters: {path: 'Import_Export', operator: 'EQ', value1: 'I'} }"
+							headerText="Manifest - Import" noDataText="{i18n>emptyNodata}">
+							<CustomListItem type="Active" press="handelDetailPress">
+								<FlexBox alignItems="Start" justifyContent="SpaceBetween">
+									<HBox><core:Icon color="#CEA95B" class="sapUiTinyMarginEnd" size="1rem" src="sap-icon://activities"/>
+										<Text text="{manifestListModel>AgentName} - {manifestListModel>CustomsRefManifestNo}"/>
+									</HBox>
+									<tnt:InfoLabel visible="{= ${manifestListModel>ManifestStatus} === '' ? false : true}"
+										text="{= ${manifestListModel>ManifestStatus} === 'MAN_CREATED' ? 'Created' : 'Approved' }" displayOnly="true"
+										colorScheme="{= ${manifestListModel>ManifestStatus} === 'MAN_CREATED' ? 3 : ${manifestListModel>ManifestStatus} === 'CUST_APPROVED' ? 8 : 5 }"/>
+								</FlexBox>
+								<FlexBox alignItems="Start" justifyContent="SpaceBetween">
+									<Text class="desc" text="{manifestListModel>VesselName}"/>
+									<Text class="desc sapMLnk"
+										text="{ path: 'manifestListModel>Arrivaldate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}} }"
+										wrapping="false"/>
+								</FlexBox>
+							</CustomListItem>
+							<headerToolbar>
+								<Toolbar>
+									<Title text="Manifest - {= ${manifestListModel>/0/ManifestStatus} === 'MAN_CREATED' ? 'Import' : 'Open'} ({manifestListModel>/countI})" level="H1"/>
+								</Toolbar>
+							</headerToolbar>
+						</List>
 					</VBox>
-					<VBox width="50%">
-					<List id="list2" class="tableCard card"
-						items="{ path: 'manifestListModel>/',templateShareable:true, filters: {path: 'Import_Export', operator: 'EQ', value1: 'E'} }"
-						headerText="Manifest - Export" noDataText="{i18n>emptyNodata}">
-						<CustomListItem type="Active">
-							<FlexBox alignItems="Start" justifyContent="SpaceBetween">
-								<HBox><core:Icon color="#CEA95B" class="sapUiTinyMarginEnd" size="1rem" src="sap-icon://activities"/>
-								<Text text="{manifestListModel>AgentName} - {manifestListModel>CustomsRefManifestNo}"/>
-								</HBox>
-								<tnt:InfoLabel visible="{= ${manifestListModel>ManifestStatus} === '' ? false : true}" text="{= ${manifestListModel>ManifestStatus} === 'MAN_CREATED' ? 'Created' : 'Approved' }" displayOnly="true"
-									colorScheme="{= ${manifestListModel>ManifestStatus} === 'MAN_CREATED' ? 3 : ${manifestListModel>ManifestStatus} === 'CUST_APPROVED' ? 8 : 5 }"/>
-							</FlexBox>
-							<FlexBox alignItems="Start" justifyContent="SpaceBetween">
-								<Text class="desc" text="{manifestListModel>VesselName}"/>
-								<Text class="desc sapMLnk"
-									text="{ path: 'manifestListModel>Arrivaldate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}} }"
-									wrapping="false"/>
-							</FlexBox>
-						</CustomListItem>
-						<headerToolbar>
-							<Toolbar>
-								<Title text="Manifest - Export ({countListModel>/countE})" level="H1"/>
-							</Toolbar>
-						</headerToolbar>
-					</List>
+					<VBox width="{= ${manifestListModel>/countE} > 0 ? '50%' : '100%'}" visible="{= ${manifestListModel>/countE} > 0 ? true : false}">
+						<List id="list2" class="tableCard card"
+							items="{ path: 'manifestListModel>/',templateShareable:true, filters: {path: 'Import_Export', operator: 'EQ', value1: 'E'} }"
+							headerText="Manifest - Export" noDataText="{i18n>emptyNodata}">
+							<CustomListItem type="Active">
+								<FlexBox alignItems="Start" justifyContent="SpaceBetween">
+									<HBox><core:Icon color="#CEA95B" class="sapUiTinyMarginEnd" size="1rem" src="sap-icon://activities"/>
+										<Text text="{manifestListModel>AgentName} - {manifestListModel>CustomsRefManifestNo}"/>
+									</HBox>
+									<tnt:InfoLabel visible="{= ${manifestListModel>ManifestStatus} === '' ? false : true}"
+										text="{= ${manifestListModel>ManifestStatus} === 'MAN_CREATED' ? 'Created' : 'Approved' }" displayOnly="true"
+										colorScheme="{= ${manifestListModel>ManifestStatus} === 'MAN_CREATED' ? 3 : ${manifestListModel>ManifestStatus} === 'CUST_APPROVED' ? 8 : 5 }"/>
+								</FlexBox>
+								<FlexBox alignItems="Start" justifyContent="SpaceBetween">
+									<Text class="desc" text="{manifestListModel>VesselName}"/>
+									<Text class="desc sapMLnk"
+										text="{ path: 'manifestListModel>Arrivaldate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}} }"
+										wrapping="false"/>
+								</FlexBox>
+							</CustomListItem>
+							<headerToolbar>
+								<Toolbar>
+									<Title text="Manifest - {= ${manifestListModel>/0/ManifestStatus} === 'MAN_CREATED' ? 'Export' : 'Open'} ({manifestListModel>/countE})" level="H1"/>
+								</Toolbar>
+							</headerToolbar>
+						</List>
+					</VBox>
+					<VBox width="100%" visible="{= ${deliveryListModel>/length} > 0 ? true : false}">
+						<List id="list3" class="tableCard card" items="{ path: 'deliveryListModel>/',templateShareable:true}" headerText="Delivery"
+							noDataText="{i18n>emptyNodata}">
+							<CustomListItem type="Active">
+								<FlexBox alignItems="Start" justifyContent="SpaceBetween">
+									<HBox><core:Icon color="#CEA95B" class="sapUiTinyMarginEnd" size="1rem" src="sap-icon://activities"/>
+										<Text text="{deliveryListModel>Port} - {deliveryListModel>DeliveryNo}"/>
+									</HBox>
+									<tnt:InfoLabel visible="{= ${deliveryListModel>Status} === '' ? false : true}"
+										text="{= ${deliveryListModel>Status} === 'OPEN' ? 'Open' : 'Closed' }" displayOnly="true"
+										colorScheme="{= ${deliveryListModel>Status} === 'OPEN' ? 3 : ${deliveryListModel>Status} === 'CLOSED' ? 8 : 5 }"/>
+								</FlexBox>
+								<FlexBox alignItems="Start" justifyContent="SpaceBetween">
+									<Text class="desc" text="{deliveryListModel>ConsigneeCode}"/>
+									<Text class="desc sapMLnk"
+										text="{ path: 'deliveryListModel>ArrivalDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}} }"
+										wrapping="false"/>
+								</FlexBox>
+							</CustomListItem>
+							<headerToolbar>
+								<Toolbar>
+									<Title text="Delivery ({deliveryListModel>/length})" level="H1"/>
+								</Toolbar>
+							</headerToolbar>
+						</List>
 					</VBox>
 				</FlexBox>
 			</VBox>

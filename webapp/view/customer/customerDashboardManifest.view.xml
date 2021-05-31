@@ -36,12 +36,12 @@
 									<!--<ImageContent src="sap-icon://complete" />-->
 								</TileContent>
 							</GenericTile>
-							<GenericTile ariaLabel="OPEN/DELIVERY" class="tileLayout" header="Delivery - Open" subheader="Delivery">
+							<GenericTile ariaLabel="OPEN/DELIVERY" press="handleListPress" class="tileLayout" header="Delivery - Open" subheader="Delivery">
 								<TileContent unit="" footer="{DashboardCountModel>/0/OpenDelivery}">
 									<!--<ImageContent src="sap-icon://complete" />-->
 								</TileContent>
 							</GenericTile>
-							<GenericTile ariaLabel="CLOSED/DELIVERY" class="tileLayout" header="Delivery - Closed" subheader="Delivery">
+							<GenericTile ariaLabel="CLOSED/DELIVERY" press="handleListPress" class="tileLayout" header="Delivery - Closed" subheader="Delivery">
 								<TileContent unit="" footer="{DashboardCountModel>/0/ClosedDelivery}">
 									<!--<ImageContent src="sap-icon://complete" />-->
 								</TileContent>

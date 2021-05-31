@@ -17,6 +17,7 @@ sap.ui.define([
 				oModel.read("/" + entity, {
 					success: function(data) {
 						that.getView().setModel(new JSONModel(data.results), modelName);
+						sap.ui.core.BusyIndicator.hide();
 					},
 					error: function(oResponse) {
 						sap.m.MessageToast.show(oResponse.statusText);
@@ -30,8 +31,13 @@ sap.ui.define([
 						"$filter": filterVal + " eq '" + status + "'"
 					},
 					success: function(data) {
+						var export_res = data.results.filter(res => res.Import_Export === 'E');
+						var import_res = data.results.filter(res => res.Import_Export === 'I');
+						data.results['countE'] = export_res.length;
+						data.results['countI'] = import_res.length;
 						that.getView().setModel(new JSONModel(data.results), modelName);
 						sap.m.MessageToast.show("Items loaded succesfully with status - " + status);
+						sap.ui.core.BusyIndicator.hide();
 					},
 					error: function(oResponse) {
 						sap.m.MessageToast.show(oResponse.statusText);

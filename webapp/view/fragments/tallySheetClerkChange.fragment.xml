@@ -38,7 +38,7 @@
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
-								<m:Label text="{i18n>ETARefNo}"/>
+								<m:Label text="Manifest Number"/>
 							</m:HBox>
 							<m:HBox width="60%">
 								<m:Input id="etaInp" value="{vesMovModel>/CustomsReferenceNumber}"/>
@@ -54,7 +54,7 @@
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
-								<m:Label text="{i18n>Port}"/>
+								<m:Label text="Agent Code"/>
 							</m:HBox>
 							<m:HBox width="60%">
 								<m:Input id="portInp" value="{vesMovModel>/PortNo}"/>
@@ -62,7 +62,7 @@
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
-								<m:Label text="{i18n>VRN}"/>
+								<m:Label text="Shift"/>
 							</m:HBox>
 							<m:HBox width="60%">
 								<m:Input id="vrnInp" value="{vesMovModel>/VRN}"/>
@@ -70,10 +70,18 @@
 						</m:HBox>
 						<m:HBox alignItems="Center">
 							<m:HBox width="40%">
-								<m:Label text="{i18n>Agentcode}"/>
+								<m:Label text="Hatch No"/>
 							</m:HBox>
 							<m:HBox width="60%">
 								<m:Input id="agentInp" value="{vesMovModel>/AgentCode}"/>
+							</m:HBox>
+						</m:HBox>
+						<m:HBox alignItems="Center">
+							<m:HBox width="40%">
+								<m:Label text="Time Commenced"/>
+							</m:HBox>
+							<m:HBox width="60%">
+								<m:Input value="{vesMovModel>/AgentCode}"/>
 							</m:HBox>
 						</m:HBox>
 					</m:VBox>
@@ -82,7 +90,7 @@
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
-								<m:Label text="{i18n>Voyageno}"/>
+								<m:Label text="{i18n>CustomsRefNo}"/>
 							</m:HBox>
 							<m:HBox width="60%">
 								<m:Input id="voyageInp" value="{vesMovModel>/Voyageno}"/>
@@ -90,7 +98,7 @@
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
-								<m:Label text="{i18n>ETA}"/>
+								<m:Label text="{i18n>Callsign}"/>
 							</m:HBox>
 							<m:HBox width="60%">
 								<m:DatePicker value="{vesMovModel>/ETA}" valueFormat="yyyyMMdd" displayFormat="long"/>
@@ -98,15 +106,23 @@
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
-								<m:Label text="{i18n>ETD}"/>
+								<m:Label text="{i18n>AgentName}"/>
+							</m:HBox>
+							<m:HBox width="60%">
+								<m:Input value="{vesMovModel>/IMONo}"/>
+							</m:HBox>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+							<m:HBox width="40%">
+								<m:Label text="Date"/>
 							</m:HBox>
 							<m:HBox width="60%">
 								<m:DatePicker value="{vesMovModel>/ETD}" valueFormat="yyyyMMdd" displayFormat="long"/>
 							</m:HBox>
 						</m:HBox>
-						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+						<m:HBox alignItems="Center">
 							<m:HBox width="40%">
-								<m:Label text="{i18n>IMOnumber}"/>
+								<m:Label text="Derrik/Crain"/>
 							</m:HBox>
 							<m:HBox width="60%">
 								<m:Input value="{vesMovModel>/IMONo}"/>
@@ -114,10 +130,10 @@
 						</m:HBox>
 						<m:HBox alignItems="Center">
 							<m:HBox width="40%">
-								<m:Label text="{i18n>ArrivalDate}"/>
+								<m:Label text="Time Completed"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:DatePicker id="arrivalDatInp" value="{vesMovModel>/ArrivalDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+								<m:Input value="{vesMovModel>/IMONo}"/>
 							</m:HBox>
 						</m:HBox>
 					</m:VBox>
@@ -126,7 +142,7 @@
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
-								<m:Label text="{i18n>Callsign}"/>
+								<m:Label text="Tally(Service) number"/>
 							</m:HBox>
 							<m:HBox width="60%">
 								<m:Input id="callSignInp" value="{path :'vesMovModel>/CallSign',type : 'sap.ui.model.type.String'}"/>
@@ -134,7 +150,7 @@
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
-								<m:Label text="{i18n>Partiallyinvoiced}"/>
+								<m:Label text="{i18n>IMOnumber}"/>
 							</m:HBox>
 							<m:HBox width="60%">
 								<m:Input value="{vesMovModel>/PartiallyInvoice}"/>
@@ -142,7 +158,7 @@
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
-								<m:Label text="{i18n>Countryname}"/>
+								<m:Label text="Employee Id"/>
 							</m:HBox>
 							<m:HBox width="60%">
 								<m:Input value="{vesMovModel>/Countryname}"/>
@@ -150,7 +166,23 @@
 						</m:HBox>
 						<m:HBox alignItems="Center">
 							<m:HBox width="40%">
-								<m:Label text="{i18n>LastPort}"/>
+								<m:Label text="Berth"/>
+							</m:HBox>
+							<m:HBox width="60%">
+								<m:Input value="{vesMovModel>/LastPort}"/>
+							</m:HBox>
+						</m:HBox>
+						<m:HBox alignItems="Center">
+							<m:HBox width="40%">
+								<m:Label text="No of hooks worked in hatch"/>
+							</m:HBox>
+							<m:HBox width="60%">
+								<m:Input value="{vesMovModel>/LastPort}"/>
+							</m:HBox>
+						</m:HBox>
+						<m:HBox alignItems="Center">
+							<m:HBox width="40%">
+								<m:Label text="GUID"/>
 							</m:HBox>
 							<m:HBox width="60%">
 								<m:Input value="{vesMovModel>/LastPort}"/>

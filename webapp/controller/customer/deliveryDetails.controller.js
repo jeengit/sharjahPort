@@ -15,14 +15,13 @@ sap.ui.define([
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.getRoute("deliveryDetails").attachPatternMatched(this._onObjectMatched, this);
 		},
-		_onObjectMatched: function(oEvent) {
+		_onObjectMatched: function() {
 			this.getUserName();
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
 			var modData = sap.ui.getCore().getModel("ManifBOEModel").getData();
 			this.getView().setModel(new JSONModel(modData), "manifstModel");
-            this.createDel();
-			sap.ui.core.BusyIndicator.hide();
+			this.createDel();
 		},
 		createDel: function() {
 			var mandatory = this.getView().getModel("manifstModel").getData();
@@ -52,7 +51,7 @@ sap.ui.define([
 				"Destination": "",
 				"Country": "",
 				"BillNo": mandatory.BilNo,
-				"BillDate":"",
+				"BillDate": "",
 				"PaymentMode": "",
 				"ImportedCode": "",
 				"RNo": "",
@@ -95,16 +94,17 @@ sap.ui.define([
 					"Amount": ""
 				}]
 			};
-				this.getView().setModel(new JSONModel(odata), "delCrtModel");
-			
+			this.getView().setModel(new JSONModel(odata), "delCrtModel");
+			sap.ui.core.BusyIndicator.hide();
 		},
-		deliveryCreatePress: function(){
-					var oModel = this.getOwnerComponent().getModel("s4Model");
+		deliveryCreatePress: function() {
+			sap.ui.core.BusyIndicator.show();
+			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
 			var oEntry = this.getView().getModel("delCrtModel").getData();
 			var that = this;
-				oModel.create("/DeliveryDetailsSet", oEntry, {
-				success: function(data) {
+			oModel.create("/DeliveryDetailsSet", oEntry, {
+				success: function() {
 					sap.m.MessageToast.show("Created Successfully..");
 					that.getRouter().navTo("dashboardManifest");
 					sap.ui.core.BusyIndicator.hide();
@@ -115,22 +115,5 @@ sap.ui.define([
 				}
 			});
 		}
-		
-
-		// handelListPress: function(evt) {
-		// 	var sPath = evt.getSource().getBindingContext("BOEDetailsModel").getPath().split("/")[3];
-		// 	if (this.getView().byId("manifestDispId").getVisible() === true) {
-		// 		for (var i in this.getView().byId("dispDetails").getItems()) {
-		// 			this.getView().byId("dispDetails").getItems()[i].setVisible(false);
-		// 		}
-		// 		this.getView().byId("dispDetails").getItems()[sPath].setVisible(true);
-		// 	} else {
-		// 		for (var j in this.getView().byId("changeDetails").getItems()) {
-		// 			this.getView().byId("changeDetails").getItems()[j].setVisible(false);
-		// 		}
-		// 		this.getView().byId("changeDetails").getItems()[sPath].setVisible(true);
-		// 	}
-		// }
-
 	});
 });

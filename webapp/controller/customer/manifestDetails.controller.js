@@ -36,7 +36,7 @@ sap.ui.define([
 					}
 					that.getView().byId("dispDetails").getItems()[0].setVisible(true);
 					var selItm = that.getView().byId("dispList").getItems()[0];
-					that.getView().byId("dispList").setSelectedItem(selItm,true);
+					that.getView().byId("dispList").setSelectedItem(selItm, true);
 					if (status === 'CUST_APPROVED' || status === 'MAN_CREATED') {
 						that.getView().byId("createBtn").setVisible(true);
 						that.getView().byId("delCrtBtn").setVisible(false);
@@ -57,29 +57,19 @@ sap.ui.define([
 			});
 			sap.ui.core.BusyIndicator.hide();
 		},
-		deliveryCreatePress:function(evt){
-				this.getRouter().navTo("deliveryDetails");
-				// console.log(sap.ui.getCore().getModel("odataNotUrlModel").getData() );
-				// console.log(this.getView().byId("dispDetails").getProperties());
-				// if(sap.ui.getCore().getModel("odataNotUrlModel").getData() !== null){
-				// 	console.log("jjj");
-				// }else{
-				// 	console.log((sap.ui.getCore().getModel( "BOEDetailsModel").getData()));
-				// }
+		deliveryCreatePress: function(evt) {
+			sap.ui.core.BusyIndicator.show();
+			this.getRouter().navTo("deliveryDetails");
 			var selectId = this.getView().byId("dispList").getSelectedItem().getBindingContext("BOEDetailsModel");
-				var sPath = selectId.getPath();
+			var sPath = selectId.getPath();
 			var model = this.getView().getModel("BOEDetailsModel");
-				var obj = model.getProperty(sPath);
-				var oModel = new sap.ui.model.json.JSONModel(obj);
-			sap.ui.getCore().setModel(oModel, "ManifBOEModel");
-				// console.log(sPath);
-				// console.log(obj);
-			
+			var obj = model.getProperty(sPath);
+			sap.ui.getCore().setModel(new JSONModel(obj), "ManifBOEModel");
 		},
 		handelListPress: function(evt) {
 			var sPath = evt.getSource().getBindingContext("BOEDetailsModel").getPath().split("/")[3];
 			var selItm = this.getView().byId("dispList").getItems()[sPath];
-			this.getView().byId("dispList").setSelectedItem(selItm,true);
+			this.getView().byId("dispList").setSelectedItem(selItm, true);
 			if (this.getView().byId("manifestDispId").getVisible() === true) {
 				for (var i in this.getView().byId("dispDetails").getItems()) {
 					this.getView().byId("dispDetails").getItems()[i].setVisible(false);
@@ -91,10 +81,7 @@ sap.ui.define([
 				}
 				this.getView().byId("changeDetails").getItems()[sPath].setVisible(true);
 			}
-			
-			
-		
-		
+
 		},
 		handleCreatePress: function(evt) {
 			//var oEntry  = this.getView().getModel("BOEDetailsModel").getData();
@@ -138,7 +125,7 @@ sap.ui.define([
 			oModel.setUseBatch(false);
 			var that = this;
 			oModel.create("/ManifestDetailsSet", oEntry, {
-				success: function(data) {
+				success: function() {
 					sap.m.MessageToast.show("Created Successfully..");
 					that.getRouter().navTo("dashboardManifest");
 					sap.ui.core.BusyIndicator.hide();

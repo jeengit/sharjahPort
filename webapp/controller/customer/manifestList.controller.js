@@ -40,15 +40,24 @@ sap.ui.define([
 			}, 2000);
 		},
 		handelDetailPress: function(evt) {
-			var sPath = evt.getSource().getBindingContext("manifestListModel").getPath().split("/")[1];
-			var id = evt.getSource().getBindingContext("manifestListModel").getProperty().CustomsRefManifestNo;
-			var status = evt.getSource().getBindingContext("manifestListModel").getProperty().ManifestStatus;
+			var fieldId = evt.getSource().getFieldGroupIds()[0];
+			if (fieldId === "manifest" && evt.getSource().getBindingContext("manifestListModel")) {
+				var sPath = evt.getSource().getBindingContext("manifestListModel").getPath().split("/")[1];
+				var id = evt.getSource().getBindingContext("manifestListModel").getProperty().CustomsRefManifestNo;
+				var status = evt.getSource().getBindingContext("manifestListModel").getProperty().ManifestStatus;
+			}
 			sap.ui.core.BusyIndicator.show();
-			this.getRouter().navTo("manifestDetails", {
+			if (fieldId === "Delivery" && evt.getSource().getBindingContext("deliveryListModel")) {
+				sPath = evt.getSource().getBindingContext("deliveryListModel").getPath();
+				id = evt.getSource().getBindingContext("deliveryListModel").getProperty().DeliveryNo;
+			}
+			var route = fieldId === "manifest" ? "manifestDetails" : "deliveryDetails";
+			this.getRouter().navTo(route, {
 				sPath: encodeURIComponent(sPath),
 				id: id,
 				status: status
 			});
 		}
+
 	});
 });

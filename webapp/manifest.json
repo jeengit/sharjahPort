@@ -171,7 +171,7 @@
 				]
 			}, {
 				"name": "deliveryDetails",
-				"pattern": "deliveryDetails",
+				"pattern": "deliveryDetails/{sPath}/{id}",
 				"target": [
 					"home",
 					"deliveryDetails"

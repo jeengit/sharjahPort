@@ -15,16 +15,110 @@ sap.ui.define([
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.getRoute("deliveryDetails").attachPatternMatched(this._onObjectMatched, this);
 		},
-		_onObjectMatched: function() {
+		_onObjectMatched: function(oEvent) {
 			this.getUserName();
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
-			var modData = sap.ui.getCore().getModel("ManifBOEModel").getData();
-			this.getView().setModel(new JSONModel(modData), "manifstModel");
-			this.createDel();
+			var that = this;
+			var pageId = this.getView().getId();
+			if (oEvent.getParameter("arguments").id === "create") {
+				if (sap.ui.getCore().getModel("ManifBOEModel") && sap.ui.getCore().getModel("ManifBOEModel").getData()) {
+					var modData = sap.ui.getCore().getModel("ManifBOEModel").getData();
+					that.getView().byId(pageId + "--delDisp").setVisible(true);
+					that.getView().byId(pageId + "--delDetails").setVisible(false);
+					that.getView().byId(pageId + "--delSave").setVisible(false);
+					that.getView().byId("apprvBtn").setVisible(false);
+					that.getView().byId("editBtn").setVisible(false);
+					that.getView().byId("saveBtn").setVisible(false);
+					that.getView().byId("createbillBtn").setVisible(true);
+					that.getView().byId("crtBtn").setVisible(true);
+					this.getView().byId("cancelBtn").setVisible(false);
+				}
+				this.getView().setModel(new JSONModel(modData), "manifstModel");
+				this.createDel();
+			} else {
+
+				oModel.read("/DeliveryDetailsSet('" + oEvent.getParameter("arguments").id + "')", {
+					urlParameters: {
+						"$expand": "DeliveryDetailsToCommodities,DeliveryDetailsToDeliverCharge"
+					},
+					success: function(data) {
+						that.getView().setModel(new JSONModel(data), "delvryDetailsModel");
+						that.getView().byId(pageId + "--delDisp").setVisible(false);
+						that.getView().byId(pageId + "--delSave").setVisible(false);
+						that.getView().byId(pageId + "--delDetails").setVisible(true);
+						that.getView().byId("apprvBtn").setVisible(true);
+						that.getView().byId("editBtn").setVisible(true);
+						that.getView().byId("saveBtn").setVisible(false);
+						that.getView().byId("createbillBtn").setVisible(false);
+						that.getView().byId("crtBtn").setVisible(false);
+						this.getView().byId("cancelBtn").setVisible(false);
+					},
+					error: function(oResponse) {
+						sap.m.MessageToast.show(oResponse.statusText);
+					}
+				});
+			}
+			sap.ui.core.BusyIndicator.hide();
+		},
+		handleApprove: function() {
+			var oEntry = this.getView().getModel("delvryDetailsModel").getData();
+			sap.ui.core.BusyIndicator.show();
+			oEntry['ImFlag'] = "APPROVE";
+			var oModel = this.getOwnerComponent().getModel("s4Model");
+			oModel.setUseBatch(false);
+			var that = this;
+			oModel.create("/DeliveryDetailsSet", oEntry, {
+				success: function() {
+					sap.m.MessageToast.show("Approved");
+					sap.ui.core.BusyIndicator.hide();
+				},
+				error: function(oResponse) {
+					sap.m.MessageToast.show(oResponse.statusText);
+					sap.ui.core.BusyIndicator.hide();
+				}
+			});
+		},
+
+		handleEditPress: function() {
+			var pageId = this.getView().getId();
+			this.getView().byId("editBtn").setVisible(false);
+			this.getView().byId("saveBtn").setVisible(true);
+			this.getView().byId("cancelBtn").setVisible(true);
+			this.getView().byId(pageId + "--delDisp").setVisible(false);
+			this.getView().byId(pageId + "--delDetails").setVisible(false);
+			this.getView().byId(pageId + "--delSave").setVisible(true);
+		},
+		handleSavePress: function() {
+			var pageId = this.getView().getId();
+			this.getView().byId("editBtn").setVisible(true);
+			this.getView().byId("saveBtn").setVisible(false);
+			this.getView().byId("cancelBtn").setVisible(false);
+			this.getView().byId(pageId + "--delDisp").setVisible(false);
+			this.getView().byId(pageId + "--delDetails").setVisible(true);
+			this.getView().byId(pageId + "--delSave").setVisible(false);
+			var oEntry = this.getView().getModel("delvryDetailsModel").getData();
+			sap.ui.core.BusyIndicator.show();
+			oEntry['ImFlag'] = "EDIT";
+			var oModel = this.getOwnerComponent().getModel("s4Model");
+			oModel.setUseBatch(false);
+			// var that = this;
+			oModel.create("/DeliveryDetailsSet", oEntry, {
+				success: function() {
+					sap.m.MessageToast.show("Updated Succesfully...");
+					sap.ui.core.BusyIndicator.hide();
+				},
+				error: function(oResponse) {
+					sap.m.MessageToast.show(oResponse.statusText);
+					sap.ui.core.BusyIndicator.hide();
+				}
+			});
 		},
 		createDel: function() {
 			var mandatory = this.getView().getModel("manifstModel").getData();
+			if (mandatory && mandatory.CommoditiesInDetailsSet) {
+				var delCommd = mandatory.CommoditiesInDetailsSet.results;
+			}
 			var odata = {
 				"DeliveryName": "",
 				"PortName": mandatory.PortName,
@@ -68,22 +162,7 @@ sap.ui.define([
 				"OtherTotalCharge": "",
 				"SpecialInstruction": "",
 				"ImFlag": "CREATE",
-				"DeliveryDetailsToCommodities": [{
-					"ManifestNo": "",
-					"Commodities": "",
-					"DeliveryNo": "",
-					"MarkAndNumbers": "",
-					"UOM": "TON",
-					"NoOfPackages": "",
-					"PackageType": "",
-					"SubType": "",
-					"GrossWt": "",
-					"CBM": "",
-					"ChargePerTon": " ",
-					"NetWt": " ",
-					"BOENo": "",
-					"ConsigneeCode": ""
-				}],
+				"DeliveryDetailsToCommodities": delCommd,
 				"DeliveryDetailsToDeliverCharge": [{
 					"DeliveryNo": "",
 					"ItemNo": "",

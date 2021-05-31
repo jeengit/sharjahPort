@@ -15,7 +15,7 @@
 						<List id="list1" class="tableCard card"
 							items="{ path: 'manifestListModel>/',templateShareable:true, filters: {path: 'Import_Export', operator: 'EQ', value1: 'I'} }"
 							headerText="Manifest - Import" noDataText="{i18n>emptyNodata}">
-							<CustomListItem type="Active" press="handelDetailPress">
+							<CustomListItem type="Active" press="handelDetailPress" fieldGroupIds="manifest">
 								<FlexBox alignItems="Start" justifyContent="SpaceBetween">
 									<HBox><core:Icon color="#CEA95B" class="sapUiTinyMarginEnd" size="1rem" src="sap-icon://activities"/>
 										<Text text="{manifestListModel>AgentName} - {manifestListModel>CustomsRefManifestNo}"/>
@@ -68,7 +68,7 @@
 					<VBox width="100%" visible="{= ${deliveryListModel>/length} > 0 ? true : false}">
 						<List id="list3" class="tableCard card" items="{ path: 'deliveryListModel>/',templateShareable:true}" headerText="Delivery"
 							noDataText="{i18n>emptyNodata}">
-							<CustomListItem type="Active">
+							<CustomListItem type="Active" press="handelDetailPress" fieldGroupIds="Delivery">
 								<FlexBox alignItems="Start" justifyContent="SpaceBetween">
 									<HBox><core:Icon color="#CEA95B" class="sapUiTinyMarginEnd" size="1rem" src="sap-icon://activities"/>
 										<Text text="{deliveryListModel>Port} - {deliveryListModel>DeliveryNo}"/>

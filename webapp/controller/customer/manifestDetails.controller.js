@@ -59,12 +59,17 @@ sap.ui.define([
 		},
 		deliveryCreatePress: function(evt) {
 			sap.ui.core.BusyIndicator.show();
-			this.getRouter().navTo("deliveryDetails");
+			// this.getRouter().navTo("deliveryDetails");
 			var selectId = this.getView().byId("dispList").getSelectedItem().getBindingContext("BOEDetailsModel");
 			var sPath = selectId.getPath();
 			var model = this.getView().getModel("BOEDetailsModel");
 			var obj = model.getProperty(sPath);
 			sap.ui.getCore().setModel(new JSONModel(obj), "ManifBOEModel");
+				this.getRouter().navTo("deliveryDetails", {
+				sPath: encodeURIComponent(sPath),
+				id: "create",
+				status: status
+			});
 		},
 		handelListPress: function(evt) {
 			var sPath = evt.getSource().getBindingContext("BOEDetailsModel").getPath().split("/")[3];

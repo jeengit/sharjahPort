@@ -20,44 +20,24 @@ sap.ui.define([
 			if (type === "DELIVERY") {
 				this.getModel("DeliveryListSet", "deliveryListModel");
 				this.getView().setModel(new JSONModel(null), "manifestListModel");
-				this.getView().setModel(new JSONModel(null), "countListModel");
 			}
 			sap.ui.getCore().setModel(new JSONModel({
 				"status": status,
 				"type": type
 			}), "navModel");
 		},
-		getListCount: function() {
-			//sap.ui.core.BusyIndicator.show();
-			var that = this;
-			setTimeout(function() {
-				var count = {
-					"countI": that.getView().byId("list1").getItems().length,
-					"countE": that.getView().byId("list2").getItems().length
-				};
-				that.getView().setModel(new JSONModel(count), "countListModel");
-				sap.ui.core.BusyIndicator.hide();
-			}, 2000);
-		},
 		handelDetailPress: function(evt) {
-			var fieldId = evt.getSource().getFieldGroupIds()[0];
-			if (fieldId === "manifest" && evt.getSource().getBindingContext("manifestListModel")) {
-				var sPath = evt.getSource().getBindingContext("manifestListModel").getPath().split("/")[1];
-				var id = evt.getSource().getBindingContext("manifestListModel").getProperty().CustomsRefManifestNo;
-				var status = evt.getSource().getBindingContext("manifestListModel").getProperty().ManifestStatus;
-			}
 			sap.ui.core.BusyIndicator.show();
-			if (fieldId === "Delivery" && evt.getSource().getBindingContext("deliveryListModel")) {
-				sPath = evt.getSource().getBindingContext("deliveryListModel").getPath();
-				id = evt.getSource().getBindingContext("deliveryListModel").getProperty().DeliveryNo;
-			}
-			var route = fieldId === "manifest" ? "manifestDetails" : "deliveryDetails";
-			this.getRouter().navTo(route, {
+			var model = evt.getSource().getFieldGroupIds()[0] === "manifest" ? "manifestListModel" : "deliveryListModel";
+			var sPath = evt.getSource().getBindingContext(model).getPath().split("/")[1];
+			var property = evt.getSource().getBindingContext(model).getProperty();
+			var id = evt.getSource().getFieldGroupIds()[0] === "manifest" ? property.CustomsRefManifestNo : property.DeliveryNo;
+			var status = evt.getSource().getFieldGroupIds()[0] === "manifest" ? property.ManifestStatus : property.Status;
+			this.getRouter().navTo(model === "manifest" ? "manifestDetails" : "deliveryDetails", {
 				sPath: encodeURIComponent(sPath),
 				id: id,
 				status: status
 			});
 		}
-
 	});
 });

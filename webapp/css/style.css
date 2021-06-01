@@ -365,3 +365,6 @@ html.sap-desktop .sapMBtn:focus>.sapMFocusable{
 .boeMaster .sapMLIB.sapMLIBSelected{
 	border-bottom:none;
 }
+.manifestListClass li:last-child{
+	border-bottom:none;
+}

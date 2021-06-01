@@ -33,7 +33,7 @@ sap.ui.define([
 			var property = evt.getSource().getBindingContext(model).getProperty();
 			var id = evt.getSource().getFieldGroupIds()[0] === "manifest" ? property.CustomsRefManifestNo : property.DeliveryNo;
 			var status = evt.getSource().getFieldGroupIds()[0] === "manifest" ? property.ManifestStatus : property.Status;
-			this.getRouter().navTo(model === "manifest" ? "manifestDetails" : "deliveryDetails", {
+			this.getRouter().navTo(evt.getSource().getFieldGroupIds()[0] === "manifest" ? "manifestDetails" : "deliveryDetails", {
 				sPath: encodeURIComponent(sPath),
 				id: id,
 				status: status

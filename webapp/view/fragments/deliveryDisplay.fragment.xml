@@ -41,7 +41,7 @@
 			<m:FlexBox wrap="Wrap">
 				<m:Avatar class="sapUiSmallMarginEnd" backgroundColor="Accent9" src="sap-icon://shipping-status" displaySize="L"/>
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
-					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginTopBottom">
 						<!--<m:HBox class="sapUiTinyMarginBottom">-->
 						<!--	<m:Label text="{i18n>PortName}" class="sapUiSmallMarginEnd"/>-->
 						<!--	<m:Text text="{delCrtModel>/PortName}"/>-->
@@ -73,7 +73,7 @@
 					</m:VBox>
 				</layout:VerticalLayout>
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
-					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginTopBottom">
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>ArrivalDate}" class="sapUiSmallMarginEnd"/>
 							<m:Text text="{delCrtModel>/ArrivalDate}"/>
@@ -214,8 +214,8 @@
 										</m:VBox>
 									</layout:VerticalLayout>
 									<layout:VerticalLayout class="sapUiTinyMarginBeginEnd sapUiSmallMarginTop">
-										<m:VBox width="60%">
-											<t:Table rows="{delCrtModel>/DeliveryDetailsToCommodities}" selectionMode="None" id="cargoTableChange" ariaLabelledBy="title">
+										<m:VBox width="70%">
+											<t:Table rows="{delCrtModel>/DeliveryDetailsToCommodities}" selectionMode="None" class="sapUiTinyMarginEnd tableCard card" id="cargoTableChange" ariaLabelledBy="title">
 												<t:columns>
 													<t:Column sortProperty="ETANo">
 														<m:Label wrapping="false" text="{i18n>Commodities}"/>
@@ -483,7 +483,7 @@
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>
-			<ObjectPageSection titleUppercase="false" title="{i18n>cargDet}">
+			<ObjectPageSection titleUppercase="false" title="{i18n>otherdet}">
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
@@ -528,7 +528,7 @@
 									</layout:VerticalLayout>
 									<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 										<m:VBox width="70%">
-											<t:Table rows="{delCrtModel>DeliveryDetailsToDeliverCharge/results}" selectionMode="None" id="shifTableChange" ariaLabelledBy="title">
+											<t:Table rows="{delCrtModel>DeliveryDetailsToDeliverCharge/results}" selectionMode="None" id="shifTableChange" class="sapUiTinyMarginEnd tableCard card" ariaLabelledBy="title">
 												<t:columns>
 													<t:Column sortProperty="ETANo">
 														<m:Label wrapping="false" text="{i18n>Charge}"/>

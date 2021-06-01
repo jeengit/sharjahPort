@@ -52,7 +52,7 @@ sap.ui.define([
 						that.getView().byId("saveBtn").setVisible(false);
 						that.getView().byId("createbillBtn").setVisible(false);
 						that.getView().byId("crtBtn").setVisible(false);
-						this.getView().byId("cancelBtn").setVisible(false);
+						that.getView().byId("cancelBtn").setVisible(false);
 					},
 					error: function(oResponse) {
 						sap.m.MessageToast.show(oResponse.statusText);

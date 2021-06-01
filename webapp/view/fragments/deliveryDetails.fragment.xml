@@ -166,9 +166,9 @@
 											</m:HBox>
 										</m:VBox>
 									</layout:VerticalLayout>
-									<layout:VerticalLayout  class="sapUiSmallMarginBegin sapUiSmallMarginTop">
-										<m:VBox width="60%" justifyContent="End">
-											<t:Table rows="{delvryDetailsModel>/DeliveryDetailsToCommodities/results}" selectionMode="None" id="cargoTableChange1" ariaLabelledBy="title">
+									<layout:VerticalLayout  class="sapUiSmallMarginBegin sapUiSmallMarginTop" justifyContent="End">
+										<m:VBox width="70%">
+											<t:Table rows="{delvryDetailsModel>/DeliveryDetailsToCommodities/results}"  class="sapUiTinyMarginEnd tableCard card" selectionMode="None"  ariaLabelledBy="title">
 												<t:columns>
 													<t:Column sortProperty="ETANo">
 														<m:Label wrapping="false" text="{i18n>Commodities}"/>
@@ -360,13 +360,13 @@
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>
-			<ObjectPageSection titleUppercase="false" title="{i18n>cargDet}">
+			<ObjectPageSection titleUppercase="false" title="{i18n>otherdet}">
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
 							<m:FlexBox wrap="Wrap">
 								<layout:HorizontalLayout>
-									<layout:VerticalLayout width="50%" class="sapUiLargeMarginBeginEnd sapUiSmallMarginTop">
+									<layout:VerticalLayout width="50%" class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 										<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>BasicDetails}"/>-->
 										<m:VBox>
 											<m:HBox class="sapUiTinyMarginBottom">
@@ -389,7 +389,7 @@
 									</layout:VerticalLayout>
 									<layout:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginTop">
 										<m:VBox width="70%">
-											<t:Table rows="{delvryDetailsModel>DeliveryDetailsToDeliverCharge/results}" selectionMode="None" id="shifTableChange1"
+											<t:Table rows="{delvryDetailsModel>DeliveryDetailsToDeliverCharge/results}" selectionMode="None" class="sapUiTinyMarginEnd tableCard card"
 												ariaLabelledBy="title">
 												<t:columns>
 													<t:Column sortProperty="ETANo">

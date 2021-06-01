@@ -18,10 +18,10 @@
 							<CustomListItem type="Active" press="handelDetailPress" fieldGroupIds="manifest">
 								<FlexBox alignItems="Start" justifyContent="SpaceBetween">
 									<HBox><core:Icon color="#CEA95B" class="sapUiTinyMarginEnd" size="1rem" src="sap-icon://activities"/>
-										<Text text="{manifestListModel>AgentName} - {manifestListModel>CustomsRefManifestNo}"/>
+										<Text text="{manifestListModel>AgentName} - {manifestListModel>CustomsRefManifestNo}" />
 									</HBox>
 									<tnt:InfoLabel visible="{= ${manifestListModel>ManifestStatus} === '' ? false : true}"
-										text="{= ${manifestListModel>ManifestStatus} === 'MAN_CREATED' ? 'Created' : 'Approved' }" displayOnly="true"
+										text="{= ${manifestListModel>ManifestStatus} === 'MAN_CREATED' ? 'Closed' : 'Open' }" displayOnly="true"
 										colorScheme="{= ${manifestListModel>ManifestStatus} === 'MAN_CREATED' ? 3 : ${manifestListModel>ManifestStatus} === 'CUST_APPROVED' ? 8 : 5 }"/>
 								</FlexBox>
 								<FlexBox alignItems="Start" justifyContent="SpaceBetween">
@@ -48,7 +48,7 @@
 										<Text text="{manifestListModel>AgentName} - {manifestListModel>CustomsRefManifestNo}"/>
 									</HBox>
 									<tnt:InfoLabel visible="{= ${manifestListModel>ManifestStatus} === '' ? false : true}"
-										text="{= ${manifestListModel>ManifestStatus} === 'MAN_CREATED' ? 'Created' : 'Approved' }" displayOnly="true"
+										text="{= ${manifestListModel>ManifestStatus} === 'MAN_CREATED' ? 'Closed' : 'Open' }" displayOnly="true"
 										colorScheme="{= ${manifestListModel>ManifestStatus} === 'MAN_CREATED' ? 3 : ${manifestListModel>ManifestStatus} === 'CUST_APPROVED' ? 8 : 5 }"/>
 								</FlexBox>
 								<FlexBox alignItems="Start" justifyContent="SpaceBetween">

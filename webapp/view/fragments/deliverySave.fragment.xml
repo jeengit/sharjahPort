@@ -21,10 +21,10 @@
 					</m:FlexBox>
 				</snappedHeading>
 				<expandedContent>
-					<m:Text text="Create Delivery"/>
+					<m:Text text=" Delivery Details"/>
 				</expandedContent>
 				<snappedContent>
-					<m:Text text="Create Delivery"/>
+					<m:Text text=" Delivery Details"/>
 				</snappedContent>
 				<snappedTitleOnMobile>
 					<m:Title text="Header Title On Phone"/>
@@ -41,7 +41,7 @@
 			<m:FlexBox wrap="Wrap">
 				<m:Avatar class="sapUiSmallMarginEnd" backgroundColor="Accent9" src="sap-icon://shipping-status" displaySize="L"/>
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
-					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginTopBottom">
 						<!--<m:HBox class="sapUiTinyMarginBottom">-->
 						<!--	<m:Label text="{i18n>PortName}" class="sapUiSmallMarginEnd"/>-->
 						<!--	<m:Text text="{delCrtModel>/PortName}"/>-->
@@ -73,7 +73,7 @@
 					</m:VBox>
 				</layout:VerticalLayout>
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
-					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginTopBottom">
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>ArrivalDate}" class="sapUiSmallMarginEnd"/>
 							<m:Text text="{delvryDetailsModel>/ArrivalDate}"/>
@@ -151,8 +151,8 @@
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
-							<m:FlexBox wrap="Wrap" justifyContent="SpaceBetween">
-								<layout:HorizontalLayout justifyContent="SpaceBetween">
+							<m:FlexBox wrap="Wrap">
+								<layout:HorizontalLayout>
 									<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 										<m:VBox >
 											<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -216,8 +216,8 @@
 										</m:VBox>
 									</layout:VerticalLayout>
 									<layout:VerticalLayout class="sapUiTinyMarginBeginEnd sapUiSmallMarginTop">
-										<m:VBox width="60%">
-											<t:Table rows="{delvryDetailsModel>/DeliveryDetailsToCommodities/results}" selectionMode="None" id="cargoTableSave" ariaLabelledBy="title">
+										<m:VBox width="70%">
+											<t:Table rows="{delvryDetailsModel>/DeliveryDetailsToCommodities/results}" class="tableCard card" selectionMode="None" id="cargoTableSave" ariaLabelledBy="title">
 												<t:columns>
 													<t:Column sortProperty="ETANo">
 														<m:Label wrapping="false" text="{i18n>Commodities}"/>
@@ -485,7 +485,7 @@
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>
-			<ObjectPageSection titleUppercase="false" title="{i18n>cargDet}">
+			<ObjectPageSection titleUppercase="false" title="{i18n>otherdet}">
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
@@ -530,7 +530,7 @@
 									</layout:VerticalLayout>
 									<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 										<m:VBox width="70%">
-											<t:Table rows="{delvryDetailsModel>DeliveryDetailsToDeliverCharge/results}" selectionMode="None" id="shifTableSave" ariaLabelledBy="title">
+											<t:Table rows="{delvryDetailsModel>DeliveryDetailsToDeliverCharge/results}" selectionMode="None" class="sapUiTinyMarginEnd tableCard card" id="shifTableSave" ariaLabelledBy="title">
 												<t:columns>
 													<t:Column sortProperty="ETANo">
 														<m:Label wrapping="false" text="{i18n>Charge}"/>

@@ -21,12 +21,25 @@ sap.ui.define([
 			oModel.setUseBatch(false);
 			var pageId = this.getView().getId();
 			var status = oEvent.getParameter("arguments").status;
+			var urlParms;
+			if (status === "OPEN") {
+				urlParms = {
+					"res": {
+						"$filter": "ManifestNo eq '" + oEvent.getParameter("arguments").id + "'",
+						"$expand": "BillOfEntrySet/CommoditiesInDetailsSet"
+					}
+				};
+			} else {
+				urlParms = {
+					"res": {
+						"$filter": "ManifestNo eq '" + oEvent.getParameter("arguments").id + "' and ImFlag eq 'CUSTOMS'",
+						"$expand": "BillOfEntrySet/CommoditiesInDetailsSet"
+					}
+				};
+			}
 			var that = this;
 			oModel.read("/ManifestDetailsSet", {
-				urlParameters: {
-					"$filter": "ManifestNo eq '" + oEvent.getParameter("arguments").id + "' and ImFlag eq 'CUSTOMS'",
-					"$expand": "BillOfEntrySet/CommoditiesInDetailsSet"
-				},
+				urlParameters: urlParms.res,
 				success: function(data) {
 					that.getView().setModel(new JSONModel(data.results['0']), "BOEDetailsModel");
 					that.getView().byId(pageId + "--manifestChangeId").setVisible(false);
@@ -65,7 +78,7 @@ sap.ui.define([
 			var model = this.getView().getModel("BOEDetailsModel");
 			var obj = model.getProperty(sPath);
 			sap.ui.getCore().setModel(new JSONModel(obj), "ManifBOEModel");
-				this.getRouter().navTo("deliveryDetails", {
+			this.getRouter().navTo("deliveryDetails", {
 				sPath: encodeURIComponent(sPath),
 				id: "create",
 				status: status
@@ -141,7 +154,7 @@ sap.ui.define([
 				}
 			});
 		},
-		handleTallySheetPress: function(){
+		handleTallySheetPress: function() {
 			this.getRouter().navTo("tallySheetClerk");
 		}
 	});

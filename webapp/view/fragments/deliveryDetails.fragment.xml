@@ -168,7 +168,7 @@
 									</layout:VerticalLayout>
 									<layout:VerticalLayout  class="sapUiSmallMarginBegin sapUiSmallMarginTop" justifyContent="End">
 										<m:VBox width="70%">
-											<t:Table rows="{delvryDetailsModel>/DeliveryDetailsToCommodities/results}"  class="sapUiTinyMarginEnd tableCard card" selectionMode="None"  ariaLabelledBy="title">
+											<t:Table visibleRowCount="5" rows="{delvryDetailsModel>/DeliveryDetailsToCommodities/results}"  class="sapUiTinyMarginEnd tableCard" selectionMode="None"  ariaLabelledBy="title">
 												<t:columns>
 													<t:Column sortProperty="ETANo">
 														<m:Label wrapping="false" text="{i18n>Commodities}"/>
@@ -389,7 +389,7 @@
 									</layout:VerticalLayout>
 									<layout:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginTop">
 										<m:VBox width="70%">
-											<t:Table rows="{delvryDetailsModel>DeliveryDetailsToDeliverCharge/results}" selectionMode="None" class="sapUiTinyMarginEnd tableCard card"
+											<t:Table rows="{delvryDetailsModel>DeliveryDetailsToDeliverCharge/results}" visibleRowCount="5" selectionMode="None" class="sapUiTinyMarginEnd tableCard"
 												ariaLabelledBy="title">
 												<t:columns>
 													<t:Column sortProperty="ETANo">

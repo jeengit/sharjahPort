@@ -143,8 +143,11 @@ sap.ui.define([
 			oModel.setUseBatch(false);
 			var that = this;
 			oModel.create("/ManifestDetailsSet", oEntry, {
-				success: function() {
-					sap.m.MessageToast.show("Created Successfully..");
+				success: function(data) {
+					// sap.m.MessageToast.show("" + data.ManifestNo + "Created Successfully..");
+						sap.m.MessageToast.show("Manifest No - " + data.ManifestNo + " Created Successfully", {
+						closeOnBrowserNavigation: false
+					});
 					that.getRouter().navTo("dashboardManifest");
 					sap.ui.core.BusyIndicator.hide();
 				},

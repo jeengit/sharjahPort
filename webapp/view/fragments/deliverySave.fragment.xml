@@ -417,6 +417,8 @@
 											<m:HBox width="60%">
 												<m:Input value="{delvryDetailsModel>/CustomRefNo}"/>
 												<m:HBox class="" alignItems="Center">
+														</m:HBox>
+															<m:HBox alignItems="Center">
 													<m:HBox width="40%">
 														<m:Label text="{i18n>billno}"/>
 													</m:HBox>
@@ -446,7 +448,7 @@
 												<m:Label text="{i18n>DichComp}"/>
 											</m:HBox>
 											<m:HBox width="50%">
-												<m:DatePicker value="{delvryDetailsModel>DisCompleteDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+												<m:DatePicker value="{delvryDetailsModel>/DisCompleteDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
 											</m:HBox>
 										</m:HBox>
 										<m:HBox alignItems="Center">
@@ -454,7 +456,7 @@
 												<m:Label text="{i18n>storeUp}"/>
 											</m:HBox>
 											<m:HBox width="50%">
-												<m:DatePicker value="{delvryDetailsModel>StorageUpto}" valueFormat="yyyyMMdd" displayFormat="long"/>
+												<m:DatePicker value="{delvryDetailsModel>/StorageUpto}" valueFormat="yyyyMMdd" displayFormat="long"/>
 											</m:HBox>
 										</m:HBox>
 										<m:HBox alignItems="Center">
@@ -506,7 +508,7 @@
 													<m:Label text="{i18n>storCharge}"/>
 												</m:HBox>
 												<m:HBox width="50%">
-													<m:DatePicker value="{delvryDetailsModel>StorageCharge}" valueFormat="yyyyMMdd" displayFormat="long"/>
+													<m:Input value="{delvryDetailsModel>/StorageCharge}"/>
 												</m:HBox>
 											</m:HBox>
 											<m:HBox alignItems="Center">
@@ -514,7 +516,7 @@
 													<m:Label text="{i18n>Othertotalcharge}"/>
 												</m:HBox>
 												<m:HBox width="50%">
-													<m:DatePicker value="{delvryDetailsModel>OtherTotalCharge}" valueFormat="yyyyMMdd" displayFormat="long"/>
+													<m:Input value="{delvryDetailsModel>/OtherTotalCharge}"/>
 												</m:HBox>
 											</m:HBox>
 											<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -530,7 +532,7 @@
 													<m:Label text="{i18n>Specialinstruction}"/>
 												</m:HBox>
 												<m:HBox width="50%">
-													<m:DatePicker value="{delvryDetailsModel>SpecialInstruction}" valueFormat="yyyyMMdd" displayFormat="long"/>
+													<m:Input value="{delvryDetailsModel>/SpecialInstruction}"/>
 												</m:HBox>
 											</m:HBox>
 										</m:VBox>

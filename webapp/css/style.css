@@ -359,10 +359,10 @@ html.sap-desktop .sapMBtn:focus>.sapMFocusable{
 .manifestListClass.boeDetailsClass .boeDetails li{
 	border:none;
 }
-.boeMaster .sapMLIBSelectS{
+.boeMaster .sapMLIBSelectS ,.manifestListClass .sapMLIBSelectS{
     display: none;
 }
-.boeMaster .sapMLIB.sapMLIBSelected{
+.boeMaster .sapMLIB.sapMLIBSelected ,.manifestListClass .sapMLIB.sapMLIBSelected{
 	border-bottom:none;
 }
 .manifestListClass li:last-child{

@@ -1,6 +1,7 @@
 sap.ui.define([
-	"../BaseController"
-], function (BaseController) {
+	"../BaseController",
+	"sap/ui/model/json/JSONModel"
+], function (BaseController,JSONModel) {
 	"use strict";
 	return BaseController.extend("com.demo.sharjahPort.controller.customer.customerDashboardManifest", {
 		onInit: function () {
@@ -10,6 +11,7 @@ sap.ui.define([
 		_onObjectMatched: function () {
 			this.getUserName();
 			this.getModel("ManifestDashboardSet","DashboardCountModel");
+			sap.ui.getCore().getModel("rememberSelectionModel") ? sap.ui.getCore().setModel(new JSONModel(null),"rememberSelectionModel") : '';
 		},
 		handleListPress: function (oEvent) {
 			sap.ui.core.BusyIndicator.show();

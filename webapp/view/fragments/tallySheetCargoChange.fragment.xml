@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns:t="sap.ui.table" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core">
-	<ObjectPageLayout upperCaseAnchorBar="false" id="tallyClerkchangId" class="objLayoutClass editMode">
+	<ObjectPageLayout upperCaseAnchorBar="false" id="tallyCargochangId" class="objLayoutClass editMode">
 		<headerTitle>
 			<ObjectPageDynamicHeaderTitle>
 				<breadcrumbs>
@@ -38,47 +38,47 @@
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
-								<m:Label text="Manifest Number"/>
+								<m:Label text="{i18n>tallyCode}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input id="etaInp" value="{vesMovModel>/CustomsReferenceNumber}"/>
+								<m:Input value="{vesMovModel>/CustomsReferenceNumber}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
-								<m:Label text="{i18n>VesselName}"/>
+								<m:Label text="{i18n>PortName}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input id="vnameInp" value="{vesMovModel>/VesselName}"/>
+								<m:Input value="{vesMovModel>/VesselName}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
-								<m:Label text="Agent Code"/>
+								<m:Label text="{i18n>manNo}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input id="portInp" value="{vesMovModel>/PortNo}"/>
+								<m:Input value="{vesMovModel>/PortNo}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
-								<m:Label text="Shift"/>
+								<m:Label text="{i18n>ConsigneeCode}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input id="vrnInp" value="{vesMovModel>/VRN}"/>
+								<m:Input value="{vesMovModel>/ConsigneeName}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox alignItems="Center">
 							<m:HBox width="40%">
-								<m:Label text="Hatch No"/>
+								<m:Label text="{i18n>portOrg}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input id="agentInp" value="{vesMovModel>/AgentCode}"/>
+								<m:Input value="{vesMovModel>/AgentCode}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox alignItems="Center">
 							<m:HBox width="40%">
-								<m:Label text="Time Commenced"/>
+								<m:Label text="B/L no"/>
 							</m:HBox>
 							<m:HBox width="60%">
 								<m:Input value="{vesMovModel>/AgentCode}"/>
@@ -90,15 +90,15 @@
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
-								<m:Label text="{i18n>CustomsRefNo}"/>
+								<m:Label text="{i18n>ArrivalDate}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input id="voyageInp" value="{vesMovModel>/Voyageno}"/>
+								<m:Input value="{vesMovModel>/Voyageno}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
-								<m:Label text="{i18n>Callsign}"/>
+								<m:Label text="{i18n>crtDate}"/>
 							</m:HBox>
 							<m:HBox width="60%">
 								<m:DatePicker value="{vesMovModel>/ETA}" valueFormat="yyyyMMdd" displayFormat="long"/>
@@ -106,7 +106,7 @@
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
-								<m:Label text="{i18n>AgentName}"/>
+								<m:Label text="{i18n>Agentcode}"/>
 							</m:HBox>
 							<m:HBox width="60%">
 								<m:Input value="{vesMovModel>/IMONo}"/>
@@ -114,15 +114,15 @@
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
-								<m:Label text="Date"/>
+								<m:Label text="{i18n>portDis}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:DatePicker value="{vesMovModel>/ETD}" valueFormat="yyyyMMdd" displayFormat="long"/>
+								<m:Input value="{vesMovModel>/IMONo}"/>
 							</m:HBox>
 						</m:HBox>
-						<m:HBox alignItems="Center">
+						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
-								<m:Label text="Derrik/Crain"/>
+								<m:Label text="{i18n>b/ldate}"/>
 							</m:HBox>
 							<m:HBox width="60%">
 								<m:Input value="{vesMovModel>/IMONo}"/>
@@ -130,7 +130,7 @@
 						</m:HBox>
 						<m:HBox alignItems="Center">
 							<m:HBox width="40%">
-								<m:Label text="Time Completed"/>
+								<m:Label text="{i18n>GrandTotal}"/>
 							</m:HBox>
 							<m:HBox width="60%">
 								<m:Input value="{vesMovModel>/IMONo}"/>
@@ -142,15 +142,15 @@
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
-								<m:Label text="Tally(Service) number"/>
+								<m:Label text="{i18n>Voyageno}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input id="callSignInp" value="{path :'vesMovModel>/CallSign',type : 'sap.ui.model.type.String'}"/>
+								<m:Input value="{path :'vesMovModel>/CallSign',type : 'sap.ui.model.type.String'}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
-								<m:Label text="{i18n>IMOnumber}"/>
+								<m:Label text="{i18n>VRN}"/>
 							</m:HBox>
 							<m:HBox width="60%">
 								<m:Input value="{vesMovModel>/PartiallyInvoice}"/>
@@ -158,7 +158,7 @@
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
-								<m:Label text="Employee Id"/>
+								<m:Label text="{i18n>AgentName}"/>
 							</m:HBox>
 							<m:HBox width="60%">
 								<m:Input value="{vesMovModel>/Countryname}"/>
@@ -166,7 +166,7 @@
 						</m:HBox>
 						<m:HBox alignItems="Center">
 							<m:HBox width="40%">
-								<m:Label text="Berth"/>
+								<m:Label text="{i18n>VRN}"/>
 							</m:HBox>
 							<m:HBox width="60%">
 								<m:Input value="{vesMovModel>/LastPort}"/>
@@ -206,7 +206,7 @@
 												<m:Label text="{i18n>ExpectedArrivalDate}"/>
 											</m:HBox>
 											<m:HBox width="50%">
-												<m:DatePicker id="depDateArrival" value="{vesMovModel>/ExpectedArrivalDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+												<m:DatePicker value="{vesMovModel>/ExpectedArrivalDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
 											</m:HBox>
 										</m:HBox>
 										<m:HBox alignItems="Center">
@@ -227,7 +227,7 @@
 												<m:Label text="{i18n>ExpectedArrivalTime}"/>
 											</m:HBox>
 											<m:HBox width="50%">
-												<m:TimePicker id="depTimeArrival" value="{vesMovModel>/ExpectedArrivalTime}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss"
+												<m:TimePicker value="{vesMovModel>/ExpectedArrivalTime}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss"
 													placeholder="{i18n>ExpectedArrivalTime}"/>
 											</m:HBox>
 										</m:HBox>
@@ -299,7 +299,7 @@
 												<m:Label text="{i18n>Pilot}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:ComboBox selectedKey="{vesMovModel>/Anch_PilotName}" items="{path: 'vesMovpilotModel>/'}" id="anc_pilot" change="onPilotChangeFn"
+												<m:ComboBox selectedKey="{vesMovModel>/Anch_PilotName}" items="{path: 'vesMovpilotModel>/'}" change="onPilotChangeFn"
 													placeholder="Select Pilot">
 													<core:Item key="{vesMovpilotModel>PilotName}" text="{vesMovpilotModel>PilotName}"/>
 												</m:ComboBox>
@@ -359,7 +359,7 @@
 												<m:Label text="{i18n>StartTime}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:DateTimePicker id="ancTime" valueFormat="yyyyMMddHHmmss" value="{vesMovModel>/Anch_stime}" placeholder="Enter Date"/>
+												<m:DateTimePicker valueFormat="yyyyMMddHHmmss" value="{vesMovModel>/Anch_stime}" placeholder="Enter Date"/>
 											</m:HBox>
 										</m:HBox>
 										<m:HBox alignItems="Center">
@@ -399,8 +399,7 @@
 												<m:Label text="{i18n>BerthNo}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:ComboBox selectedKey="{vesMovModel>/Berth_berthNumber}" width="100%" items="{path: 'vesMovBertModel>/'}"
-													placeholder="Select Berth">
+												<m:ComboBox selectedKey="{vesMovModel>/Berth_berthNumber}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="Select Berth">
 													<core:Item key="{vesMovBertModel>BerthNumber}" text="{vesMovBertModel>BerthNumber}"/>
 												</m:ComboBox>
 											</m:HBox>
@@ -431,7 +430,7 @@
 												<m:Label text="{i18n>Pilot}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:ComboBox selectedKey="{vesMovModel>/Berth_Pilot}" items="{path: 'vesMovpilotModel>/'}" placeholder="Select Pilot" id="bert_pilot">
+												<m:ComboBox selectedKey="{vesMovModel>/Berth_Pilot}" items="{path: 'vesMovpilotModel>/'}" placeholder="Select Pilot">
 													<core:Item key="{vesMovpilotModel>PilotName}" text="{vesMovpilotModel>PilotName}"/>
 												</m:ComboBox>
 											</m:HBox>
@@ -490,7 +489,7 @@
 												<m:Label text="{i18n>StartTime}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:DateTimePicker id="bertTime" valueFormat="yyyyMMddHHmmss" value="{vesMovModel>/Berth_stime}" placeholder="Enter Date"/>
+												<m:DateTimePicker valueFormat="yyyyMMddHHmmss" value="{vesMovModel>/Berth_stime}" placeholder="Enter Date"/>
 											</m:HBox>
 										</m:HBox>
 										<m:HBox alignItems="Center">
@@ -581,8 +580,7 @@
 												<m:Label text="{i18n>BerthNo}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:ComboBox selectedKey="{vesMovModel>/UBerth_BerthNumber}" width="100%" items="{path: 'vesMovBertModel>/'}"
-													placeholder="Select Berth">
+												<m:ComboBox selectedKey="{vesMovModel>/UBerth_BerthNumber}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="Select Berth">
 													<core:Item key="{vesMovBertModel>BerthNumber}" text="{vesMovBertModel>BerthNumber}"/>
 												</m:ComboBox>
 											</m:HBox>
@@ -614,7 +612,7 @@
 											</m:HBox>
 											<m:HBox width="60%">
 												<m:ComboBox items="{path: 'vesMovpilotModel>/'}" selectedKey="{vesMovModel>/UBerth_Pilot}" placeholder="Select Pilot"
-													id="ubert_pilot" change="onPilotChangeFn">
+													change="onPilotChangeFn">
 													<core:Item key="{vesMovpilotModel>PilotName}" text="{vesMovpilotModel>PilotName}"/>
 												</m:ComboBox>
 											</m:HBox>
@@ -673,7 +671,7 @@
 												<m:Label text="{i18n>StartTime}"/>
 											</m:HBox>
 											<m:HBox width="60%">
-												<m:DateTimePicker id="ubertTime" valueFormat="yyyyMMddHHmmss" value="{vesMovModel>/Unberth_stime}" placeholder="Enter Date"/>
+												<m:DateTimePicker valueFormat="yyyyMMddHHmmss" value="{vesMovModel>/Unberth_stime}" placeholder="Enter Date"/>
 											</m:HBox>
 										</m:HBox>
 										<m:HBox alignItems="Center">
@@ -736,8 +734,7 @@
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
 							<m:VBox>
-								<t:Table rows="{vesMovModel>/LogsheetToShifting/results}" selectionMode="None"
-									id="shifTableChange" ariaLabelledBy="title">
+								<t:Table rows="{vesMovModel>/LogsheetToShifting/results}" selectionMode="None" ariaLabelledBy="title">
 									<t:extension>
 										<m:OverflowToolbar style="Clear">
 											<!--<m:Title text="{i18n>ShiftingTable}"/>-->

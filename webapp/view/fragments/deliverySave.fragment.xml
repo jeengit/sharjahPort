@@ -10,7 +10,7 @@
 				<!--</breadcrumbs>-->
 				<expandedHeading>
 					<m:HBox>
-						<m:Title text="{delvryDetailsModel>/BOE}" wrapping="true"/>
+						<m:Title text="{delvryDetailsModel>/DeliveryName}" wrapping="true"/>
 						<m:ObjectMarker type="Flagged" class="sapUiTinyMarginBegin"/>
 					</m:HBox>
 				</expandedHeading>
@@ -225,6 +225,13 @@
 															<m:Input value="{delvryDetailsModel>Commodities}"/>
 														</t:template>
 													</t:Column>
+														<t:Column sortProperty="ETANo">
+														<m:Label wrapping="false" text="Item No"/>
+														<t:template>
+															<m:Text text="{delvryDetailsModel>ItemNo}"/>
+														</t:template>
+													</t:Column>
+													
 													<t:Column sortProperty="PortName">
 														<m:Label text="{i18n>Markno}"/>
 														<t:template>

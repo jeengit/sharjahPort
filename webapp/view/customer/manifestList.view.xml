@@ -7,7 +7,7 @@
 		</customHeader>
 		<content>
 			<VBox class="sapUiContentPadding">
-				<Breadcrumbs currentLocationText="Manifest List">
+				<Breadcrumbs currentLocationText="{= ${manifestListModel>/0/ManifestStatus} === 'MAN_CREATED' || ${manifestListModel>/0/ManifestStatus} === 'OPEN' ? 'Manifest' : 'Delivery'}">
 					<Link href="#dashboardManifest" text="Home"/>
 				</Breadcrumbs>
 				<FlexBox width="100%" class="manifestListClass">

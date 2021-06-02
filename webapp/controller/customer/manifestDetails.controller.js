@@ -21,25 +21,13 @@ sap.ui.define([
 			oModel.setUseBatch(false);
 			var pageId = this.getView().getId();
 			var status = oEvent.getParameter("arguments").status;
-			var urlParms;
-			if (status === "OPEN") {
-				urlParms = {
-					"res": {
-						"$filter": "ManifestNo eq '" + oEvent.getParameter("arguments").id + "'",
-						"$expand": "BillOfEntrySet/CommoditiesInDetailsSet"
-					}
-				};
-			} else {
-				urlParms = {
-					"res": {
-						"$filter": "ManifestNo eq '" + oEvent.getParameter("arguments").id + "' and ImFlag eq 'CUSTOMS'",
-						"$expand": "BillOfEntrySet/CommoditiesInDetailsSet"
-					}
-				};
-			}
 			var that = this;
 			oModel.read("/ManifestDetailsSet", {
-				urlParameters: urlParms.res,
+				urlParameters: {
+						"$filter": status === "OPEN" ? "ManifestNo eq '" + oEvent.getParameter("arguments").id + "'" : 
+						"ManifestNo eq '" + oEvent.getParameter("arguments").id + "' and ImFlag eq 'CUSTOMS'",
+						"$expand": "BillOfEntrySet/CommoditiesInDetailsSet"
+					},
 				success: function(data) {
 					that.getView().setModel(new JSONModel(data.results['0']), "BOEDetailsModel");
 					that.getView().byId(pageId + "--manifestChangeId").setVisible(false);

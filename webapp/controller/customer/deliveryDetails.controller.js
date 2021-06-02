@@ -24,6 +24,7 @@ sap.ui.define([
 			if (oEvent.getParameter("arguments").id === "create") {
 				if (sap.ui.getCore().getModel("ManifBOEModel") && sap.ui.getCore().getModel("ManifBOEModel").getData()) {
 					var modData = sap.ui.getCore().getModel("ManifBOEModel").getData();
+					console.log(modData);
 					that.getView().byId(pageId + "--delDisp").setVisible(true);
 					that.getView().byId(pageId + "--delDetails").setVisible(false);
 					that.getView().byId(pageId + "--delSave").setVisible(false);
@@ -67,10 +68,9 @@ sap.ui.define([
 			oEntry['ImFlag'] = "APPROVE";
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
-			var that = this;
 			oModel.create("/DeliveryDetailsSet", oEntry, {
 				success: function() {
-					sap.m.MessageToast.show("Approved");
+					sap.m.MessageToast.show("Delivery No - " + oEntry.DeliveryName + " has been approved");
 					sap.ui.core.BusyIndicator.hide();
 				},
 				error: function(oResponse) {
@@ -89,6 +89,15 @@ sap.ui.define([
 			this.getView().byId(pageId + "--delDetails").setVisible(false);
 			this.getView().byId(pageId + "--delSave").setVisible(true);
 		},
+		handleCancelPress: function() {
+			var pageId = this.getView().getId();
+			this.getView().byId("editBtn").setVisible(true);
+			this.getView().byId("saveBtn").setVisible(false);
+			this.getView().byId("cancelBtn").setVisible(false);
+			this.getView().byId(pageId + "--delDisp").setVisible(false);
+			this.getView().byId(pageId + "--delDetails").setVisible(true);
+			this.getView().byId(pageId + "--delSave").setVisible(false);
+		},
 		handleSavePress: function() {
 			var pageId = this.getView().getId();
 			this.getView().byId("editBtn").setVisible(true);
@@ -104,8 +113,8 @@ sap.ui.define([
 			oModel.setUseBatch(false);
 			// var that = this;
 			oModel.create("/DeliveryDetailsSet", oEntry, {
-				success: function() {
-					sap.m.MessageToast.show("Updated Succesfully...");
+				success: function(data) {
+					sap.m.MessageToast.show("Delivery No - " + data.DeliveryName + " Updated Successfully");
 					sap.ui.core.BusyIndicator.hide();
 				},
 				error: function(oResponse) {

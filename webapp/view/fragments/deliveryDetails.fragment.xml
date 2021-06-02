@@ -176,6 +176,12 @@
 															<m:Text text="{delvryDetailsModel>Commodities}"/>
 														</t:template>
 													</t:Column>
+													<t:Column sortProperty="ETANo">
+														<m:Label wrapping="false" text="Item No"/>
+														<t:template>
+															<m:Text text="{delvryDetailsModel>ItemNo}"/>
+														</t:template>
+													</t:Column>
 													<t:Column sortProperty="PortName">
 														<m:Label text="{i18n>Markno}"/>
 														<t:template>

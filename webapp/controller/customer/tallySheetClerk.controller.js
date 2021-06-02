@@ -1,3 +1,4 @@
+
 sap.ui.define([
 	"sap/ui/core/mvc/Controller"
 ], function(Controller) {
@@ -10,9 +11,11 @@ sap.ui.define([
 		 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 		 * @memberOf com.demo.sharjahPort.controller.customer.view.tallySheetClerk
 		 */
-		//	onInit: function() {
-		//
-		//	},
+			onInit: function() {
+			var pageId = this.getView().getId();
+			this.getView().byId(pageId + "--tallyClerkchangId").setVisible(false);
+					this.getView().byId(pageId + "--tallyCargochangId").setVisible(true);
+			}
 
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered

@@ -223,6 +223,12 @@
 															<m:Input value="{delCrtModel>Commodities}"/>
 														</t:template>
 													</t:Column>
+														<t:Column sortProperty="ETANo">
+														<m:Label wrapping="false" text="Item No"/>
+														<t:template>
+															<m:Input value="{delCrtModel>ItemNo}"/>
+														</t:template>
+													</t:Column>
 													<t:Column sortProperty="PortName">
 														<m:Label text="{i18n>Markno}"/>
 														<t:template>
@@ -528,30 +534,30 @@
 									</layout:VerticalLayout>
 									<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 										<m:VBox width="70%">
-											<t:Table rows="{delCrtModel>DeliveryDetailsToDeliverCharge/results}" selectionMode="None" visibleRowCount="5"  id="shifTableChange" class="sapUiTinyMarginEnd tableCard card" ariaLabelledBy="title">
+											<t:Table rows="{delCrtModel>DeliveryDetailsToDeliverCharge/results}" selectionMode="None" visibleRowCount="5"  id="shifTableChange" class="sapUiTinyMarginEnd" ariaLabelledBy="title">
 												<t:columns>
 													<t:Column sortProperty="ETANo">
 														<m:Label wrapping="false" text="{i18n>Charge}"/>
 														<t:template>
-															<m:DatePicker value="{delCrtModel>Charges}" valueFormat="yyyyMMdd" displayFormat="long"/>
+																<m:Input value="{delCrtModel>Charges}"/>
 														</t:template>
 													</t:Column>
 													<t:Column sortProperty="PortName">
 														<m:Label text="{i18n>Description}"/>
 														<t:template>
-															<m:TimePicker value="{delCrtModel>Description}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" placeholder="From"/>
+																<m:Input value="{delCrtModel>Description}"/>
 														</t:template>
 													</t:Column>
 													<t:Column>
 														<m:Label text="{i18n>rate}"/>
 														<t:template>
-															<m:DatePicker value="{delCrtModel>Rate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+																<m:Input value="{delCrtModel>Rate}"/>
 														</t:template>
 													</t:Column>
 													<t:Column>
 														<m:Label text="{i18n>quantity}"/>
 														<t:template>
-															<m:TimePicker placeholder="To Time" value="{delCrtModel>Quantity}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss"/>
+																<m:Input value="{delCrtModel>Quantity}"/>
 														</t:template>
 													</t:Column>
 													<t:Column>

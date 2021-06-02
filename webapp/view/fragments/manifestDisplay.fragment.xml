@@ -188,9 +188,9 @@
 															rows="{BOEDetailsModel>CommoditiesInDetailsSet/results}" selectionMode="None" ariaLabelledBy="title">
 															<t:columns>
 																<t:Column width="130px" sortProperty="ManifestNo">
-																	<m:Label wrapping="false" text="Manifest"/>
+																	<m:Label wrapping="false" text="Item No"/>
 																	<t:template>
-																		<m:Text text="{BOEDetailsModel>ManifestNo}"/>
+																		<m:Text text="{BOEDetailsModel>ItemNo}"/>
 																	</t:template>
 																</t:Column>
 																<t:Column>

@@ -3,24 +3,26 @@ sap.ui.define([
 	"sap/ui/model/json/JSONModel"
 ], function(BaseController, JSONModel) {
 	"use strict";
-	return BaseController.extend("com.demo.sharjahPort.controller.customer.tallySheetClerk", {
+	return BaseController.extend("com.demo.sharjahPort.controller.customer.tallySheetClerkDetails", {
 		onInit: function() {
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-			oRouter.getRoute("tallySheetClerk").attachPatternMatched(this._onObjectMatched, this);
+			oRouter.getRoute("tallySheetClerkDetails").attachPatternMatched(this._onObjectMatched, this);
 		},
 		_onObjectMatched: function(oEvent) {
-			// var status = oEvent.getParameter("arguments").sPath;
-			// var type = oEvent.getParameter("arguments").type;
+			var id = oEvent.getParameter("arguments").id;
 			this.getUserName();
+			this.getView().byId(this.getView().getId() + "--tallyClerkchangId").setVisible(true);
+			this.getView().byId(this.getView().getId() + "--tallyCargochangId").setVisible(false);
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
 			var that = this;
-			oModel.read("/ClerkTallySheetSet('34543TEGY56HTYN6')", {
+			oModel.read("/ClerkTallySheetSet('" + id + "')", {
 				urlParameters: {
 					"$expand": "ChargeDetailsSet,CargoDetailsSet"
 				},
 				success: function(data) {
-					that.getView().setModel(new JSONModel(data.results), "modelName");
+					console.log(JSON.stringify(data));
+					that.getView().setModel(new JSONModel(data), "tSClerkDetailModel");
 					sap.ui.core.BusyIndicator.hide();
 				},
 				error: function(oResponse) {

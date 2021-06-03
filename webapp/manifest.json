@@ -177,11 +177,18 @@
 					"deliveryDetails"
 				]
 			},{
-				"name": "tallySheetClerk",
-				"pattern": "tally-sheet-clerk",
+				"name": "tallySheetClerkList",
+				"pattern": "tallySheetClerkList",
 				"target": [
 					"home",
-					"tallySheetClerk"
+					"tallySheetClerkList"
+				]
+			},{
+				"name": "tallySheetClerkDetails",
+				"pattern": "tallySheetClerkDetails/{id}",
+				"target": [
+					"home",
+					"tallySheetClerkDetails"
 				]
 			}],
 			"targets": {
@@ -240,15 +247,18 @@
 				"manifestDetails": {
 					"viewType": "XML",
 					"viewName": "manifestDetails"
-
 				},
 				"deliveryDetails": {
 					"viewType": "XML",
 					"viewName": "deliveryDetails"
 				},
-				"tallySheetClerk": {
+				"tallySheetClerkList": {
 					"viewType": "XML",
-					"viewName": "tallySheetClerk"
+					"viewName": "tallySheetClerkList"
+				},
+				"tallySheetClerkDetails": {
+					"viewType": "XML",
+					"viewName": "tallySheetClerkDetails"
 				}
 			}
 		}

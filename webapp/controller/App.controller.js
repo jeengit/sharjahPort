@@ -21,7 +21,7 @@ sap.ui.define([
 					if (data.Role === "CONTROL_ROOM") {that.getRouter().navTo("dashboard");}
 					if (data.Role === "HARBOR_MASTER") {that.getRouter().navTo("dashboardHarbour");}
 					if (data.Role === "AGENT") {that.getRouter().navTo("dashboardAgent");}
-					if (data.Role === "CARGO") {that.getRouter().navTo("tallySheetClerkList");}
+					if (data.Role === "CARGO") {that.getRouter().navTo("dashboardManifest");}
 					if (data.Role === "TALLYCLERK"){that.getRouter().navTo("tallySheetClerkList");}
 					var oStore = jQuery.sap.storage(jQuery.sap.storage.Type.local);
 					oStore.put("user", data.Name);

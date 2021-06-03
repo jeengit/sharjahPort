@@ -152,9 +152,9 @@
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
 							<m:FlexBox wrap="Wrap" justifyContent="SpaceBetween">
-								<layout:HorizontalLayout justifyContent="SpaceBetween">
-									<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
-										<m:VBox >
+								<layout:VerticalLayout>
+									<layout:HorizontalLayout justifyContent="SpaceBetween">
+										<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 											<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 												<m:HBox width="50%">
 													<m:Label text="{i18n>Markno}"/>
@@ -173,6 +173,8 @@
 													</m:ComboBox>
 												</m:HBox>
 											</m:HBox>
+										</layout:VerticalLayout>
+										<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 											<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 												<m:HBox width="50%">
 													<m:Label text="{i18n>dirDel}"/>
@@ -193,6 +195,8 @@
 													</m:ComboBox>
 												</m:HBox>
 											</m:HBox>
+										</layout:VerticalLayout>
+										<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 											<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 												<m:HBox width="50%">
 													<m:Label text="{i18n>palletized}"/>
@@ -211,11 +215,12 @@
 													<m:Input value="{delCrtModel>/GeneralRemark}"/>
 												</m:HBox>
 											</m:HBox>
-										</m:VBox>
-									</layout:VerticalLayout>
+										</layout:VerticalLayout>
+									</layout:HorizontalLayout>
 									<layout:VerticalLayout class="sapUiTinyMarginBeginEnd sapUiSmallMarginTop">
-										<m:VBox width="70%">
-											<t:Table rows="{delCrtModel>/DeliveryDetailsToCommodities}" visibleRowCount="5" selectionMode="None" class="sapUiTinyMarginEnd tableCard card" id="cargoTableChange" ariaLabelledBy="title">
+										<m:VBox>
+											<t:Table rows="{delCrtModel>/DeliveryDetailsToCommodities}" visibleRowCount="5" selectionMode="None"
+												class="sapUiTinyMarginEnd tableCard" id="cargoTableChange" ariaLabelledBy="title">
 												<t:columns>
 													<t:Column sortProperty="ETANo">
 														<m:Label wrapping="false" text="{i18n>Commodities}"/>
@@ -223,7 +228,7 @@
 															<m:Input value="{delCrtModel>Commodities}"/>
 														</t:template>
 													</t:Column>
-														<t:Column sortProperty="ETANo">
+													<t:Column sortProperty="ETANo">
 														<m:Label wrapping="false" text="Item No"/>
 														<t:template>
 															<m:Input value="{delCrtModel>ItemNo}"/>
@@ -281,7 +286,7 @@
 											</t:Table>
 										</m:VBox>
 									</layout:VerticalLayout>
-								</layout:HorizontalLayout>
+								</layout:VerticalLayout>
 							</m:FlexBox>
 						</blocks>
 					</ObjectPageSubSection>
@@ -494,17 +499,16 @@
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
 							<m:FlexBox wrap="Wrap">
-								<layout:HorizontalLayout>
-									<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
-										<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>BasicDetails}"/>-->
-										<m:VBox>
+								<layout:VerticalLayout>
+									<layout:HorizontalLayout>
+										<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+											<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>BasicDetails}"/>-->
 											<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 												<m:HBox width="50%">
 													<m:Label text="{i18n>storCharge}"/>
 												</m:HBox>
 												<m:HBox width="50%">
-													<m:Input value="{delCrtModel>/PortHandlingCharge}"/>
-													<m:DatePicker value="{delCrtModel>StorageCharge}" valueFormat="yyyyMMdd" displayFormat="long"/>
+													<m:Input value="{delCrtModel>/StorageCharge}"/>
 												</m:HBox>
 											</m:HBox>
 											<m:HBox alignItems="Center">
@@ -515,6 +519,8 @@
 													<m:Input value="{delCrtModel>/OtherTotalCharge}"/>
 												</m:HBox>
 											</m:HBox>
+										</layout:VerticalLayout>
+										<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 											<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 												<m:HBox width="50%">
 													<m:Label text="{i18n>Netcharge}"/>
@@ -531,34 +537,35 @@
 													<m:Input value="{delCrtModel>/SpecialInstruction}"/>
 												</m:HBox>
 											</m:HBox>
-										</m:VBox>
-									</layout:VerticalLayout>
+										</layout:VerticalLayout>
+									</layout:HorizontalLayout>
 									<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
-										<m:VBox width="70%">
-											<t:Table rows="{delCrtModel>DeliveryDetailsToDeliverCharge/results}" selectionMode="None" visibleRowCount="5"  id="shifTableChange" class="sapUiTinyMarginEnd" ariaLabelledBy="title">
+										<m:VBox >
+											<t:Table rows="{delCrtModel>DeliveryDetailsToDeliverCharge/results}" selectionMode="None" visibleRowCount="5" id="shifTableChange"
+												class="sapUiTinyMarginEnd" ariaLabelledBy="title">
 												<t:columns>
 													<t:Column sortProperty="ETANo">
 														<m:Label wrapping="false" text="{i18n>Charge}"/>
 														<t:template>
-																<m:Input value="{delCrtModel>Charges}"/>
+															<m:Input value="{delCrtModel>Charges}"/>
 														</t:template>
 													</t:Column>
 													<t:Column sortProperty="PortName">
 														<m:Label text="{i18n>Description}"/>
 														<t:template>
-																<m:Input value="{delCrtModel>Description}"/>
+															<m:Input value="{delCrtModel>Description}"/>
 														</t:template>
 													</t:Column>
 													<t:Column>
 														<m:Label text="{i18n>rate}"/>
 														<t:template>
-																<m:Input value="{delCrtModel>Rate}"/>
+															<m:Input value="{delCrtModel>Rate}"/>
 														</t:template>
 													</t:Column>
 													<t:Column>
 														<m:Label text="{i18n>quantity}"/>
 														<t:template>
-																<m:Input value="{delCrtModel>Quantity}"/>
+															<m:Input value="{delCrtModel>Quantity}"/>
 														</t:template>
 													</t:Column>
 													<t:Column>
@@ -571,7 +578,7 @@
 											</t:Table>
 										</m:VBox>
 									</layout:VerticalLayout>
-								</layout:HorizontalLayout>
+								</layout:VerticalLayout>
 							</m:FlexBox>
 						</blocks>
 					</ObjectPageSubSection>

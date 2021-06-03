@@ -443,7 +443,7 @@
 												<m:Label text="{i18n>DichComp}"/>
 											</m:HBox>
 											<m:HBox width="50%">
-												<m:DatePicker value="{delCrtModel>DisCompleteDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+												<m:DatePicker value="{delCrtModel>/DisCompleteDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
 											</m:HBox>
 										</m:HBox>
 										<m:HBox alignItems="Center">
@@ -451,7 +451,7 @@
 												<m:Label text="{i18n>storeUp}"/>
 											</m:HBox>
 											<m:HBox width="50%">
-												<m:DatePicker value="{delCrtModel>StorageUpto}" valueFormat="yyyyMMdd" displayFormat="long"/>
+												<m:DatePicker value="{delCrtModel>/StorageUpto}" valueFormat="yyyyMMdd" displayFormat="long"/>
 											</m:HBox>
 										</m:HBox>
 										<m:HBox alignItems="Center">
@@ -503,6 +503,7 @@
 													<m:Label text="{i18n>storCharge}"/>
 												</m:HBox>
 												<m:HBox width="50%">
+													<m:Input value="{delCrtModel>/PortHandlingCharge}"/>
 													<m:DatePicker value="{delCrtModel>StorageCharge}" valueFormat="yyyyMMdd" displayFormat="long"/>
 												</m:HBox>
 											</m:HBox>
@@ -511,7 +512,7 @@
 													<m:Label text="{i18n>Othertotalcharge}"/>
 												</m:HBox>
 												<m:HBox width="50%">
-													<m:DatePicker value="{delCrtModel>OtherTotalCharge}" valueFormat="yyyyMMdd" displayFormat="long"/>
+													<m:Input value="{delCrtModel>/OtherTotalCharge}"/>
 												</m:HBox>
 											</m:HBox>
 											<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -527,7 +528,7 @@
 													<m:Label text="{i18n>Specialinstruction}"/>
 												</m:HBox>
 												<m:HBox width="50%">
-													<m:DatePicker value="{delCrtModel>SpecialInstruction}" valueFormat="yyyyMMdd" displayFormat="long"/>
+													<m:Input value="{delCrtModel>/SpecialInstruction}"/>
 												</m:HBox>
 											</m:HBox>
 										</m:VBox>

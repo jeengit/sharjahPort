@@ -337,11 +337,11 @@
 									<m:VBox>
 										<m:HBox class="sapUiTinyMarginBottom">
 											<m:Label text="{i18n>DichComp}" class="sapUiSmallMarginEnd"/>
-											<m:Text text="{delvryDetailsModel>DisCompleteDate}"/>
+											<m:Text text="{delvryDetailsModel>/DisCompleteDate}"/>
 										</m:HBox>
 										<m:HBox class="sapUiTinyMarginBottom">
 											<m:Label text="{i18n>storeUp}" class="sapUiSmallMarginEnd"/>
-											<m:Text text="{delvryDetailsModel>StorageUpto}"/>
+											<m:Text text="{delvryDetailsModel>/StorageUpto}"/>
 										</m:HBox>
 										<m:HBox class="sapUiTinyMarginBottom">
 											<m:Label text="{i18n>freedays}" class="sapUiSmallMarginEnd"/>
@@ -357,7 +357,7 @@
 										</m:HBox>
 										<m:HBox class="sapUiTinyMarginBottom">
 											<m:Label text="{i18n>Lastfree}" class="sapUiSmallMarginEnd"/>
-											<m:Text text="{delvryDetailsModel>LastFreeDate}"/>
+											<m:Text text="{delvryDetailsModel>/LastFreeDate}"/>
 										</m:HBox>
 									</m:VBox>
 								</layout:VerticalLayout>
@@ -377,11 +377,11 @@
 										<m:VBox>
 											<m:HBox class="sapUiTinyMarginBottom">
 												<m:Label text="{i18n>storCharge}" class="sapUiSmallMarginEnd"/>
-												<m:Text text="{delvryDetailsModel>StorageCharge}"/>
+												<m:Text text="{delvryDetailsModel>/StorageCharge}"/>
 											</m:HBox>
 											<m:HBox class="sapUiTinyMarginBottom">
 												<m:Label text="{i18n>Othertotalcharge}" class="sapUiSmallMarginEnd"/>
-												<m:Text text="{delvryDetailsModel>OtherTotalCharge}"/>
+												<m:Text text="{delvryDetailsModel>/OtherTotalCharge}"/>
 											</m:HBox>
 											<m:HBox class="sapUiTinyMarginBottom">
 												<m:Label text="{i18n>Netcharge}" class="sapUiSmallMarginEnd"/>
@@ -389,7 +389,7 @@
 											</m:HBox>
 											<m:HBox class="sapUiTinyMarginBottom">
 												<m:Label text="{i18n>Specialinstruction}" class="sapUiSmallMarginEnd"/>
-												<m:Text text="{delvryDetailsModel>SpecialInstruction}"/>
+												<m:Text text="{delvryDetailsModel>/SpecialInstruction}"/>
 											</m:HBox>
 										</m:VBox>
 									</layout:VerticalLayout>

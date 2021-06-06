@@ -7,28 +7,26 @@
 		</customHeader>
 		<content>
 			<VBox class="sapUiContentPadding">
-				<!--<Breadcrumbs currentLocationText="Tally Sheet">-->
-				<!--	<Link id="dashboard" press="onHomePress" text="Home"/>-->
-				<!--</Breadcrumbs>-->
-				<t:Table rows="{tSClerkListModel>/}" selectionMode="None" ariaLabelledBy="title"
+				<t:Table id="tsClerkTable" rows="{tSClerkListModel>/}" selectionMode="None" ariaLabelledBy="title"
 					class="card tableCard no-margin">
 					<t:extension>
 						<OverflowToolbar style="Clear">
 							<Title id="title" text="Tally Sheet ({tSClerkListModel>/length})"/>
 							<ToolbarSpacer/>
+							<Button class="btn-sm" type="Emphasized" text="Create"/>
 							<core:Icon src="sap-icon://sorting-ranking" tooltip="{i18n>sort}" press="sortCategoriesAndName"/>
 							<core:Icon src="sap-icon://sort" tooltip="{i18n>SortCategories}" press="sortCategories"/>
 							<core:Icon src="sap-icon://decline" tooltip="{i18n>Clearallsortings}" press="clearAllSortings"/>
 						</OverflowToolbar>
 					</t:extension>
 					<t:columns>
-						<t:Column sortProperty="LogNumber">
+						<t:Column sortProperty="ManifestNo">
 							<Label text="Manifest No"/>
 							<t:template>
 								<Link press="handleDetailsPress" text="{tSClerkListModel>ManifestNo}" wrapping="false"/>
 							</t:template>
 						</t:Column>
-						<t:Column sortProperty="PortCode" width="10rem">
+						<t:Column sortProperty="VesselName" width="10rem">
 							<Label text="{i18n>VesselName}"/>
 							<t:template>
 								<Text text="{tSClerkListModel>VesselName}"/>

@@ -9,6 +9,7 @@ sap.ui.define([
 		},
 		_onObjectMatched: function() {
 			this.getUserName();
+			this.adjustTableRowsCount();
 			this.getModel("ClerkTallySheetSet","tSClerkListModel");
 		},
 		handleDetailsPress : function (evt) {
@@ -16,6 +17,19 @@ sap.ui.define([
 			var id = evt.getSource().getBindingContext("tSClerkListModel").getProperty().GUID;
 			this.getRouter().navTo("tallySheetClerkDetails", {
 				id: id
+			});
+		},
+		onAfterRendering: function () {
+			var that = this;
+			$(window).resize(function () {
+				that.adjustTableRowsCount();
+			});
+		},
+		adjustTableRowsCount: function(){
+			var that = this;
+			var rows = Math.floor(($("#" + this.getView().getId()).height() - 200) / 30);
+			jQuery.sap.delayedCall(0, this, function () {
+				that.byId("tsClerkTable").setVisibleRowCount(rows);
 			});
 		}
 	});

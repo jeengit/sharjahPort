@@ -18,10 +18,9 @@ sap.ui.define([
 			var that = this;
 			oModel.read("/ClerkTallySheetSet('" + id + "')", {
 				urlParameters: {
-					"$expand": "ChargeDetailsSet,CargoDetailsSet"
+					"$expand": "ServiceChargeSet,CargoDetailsSet"
 				},
 				success: function(data) {
-					console.log(JSON.stringify(data));
 					that.getView().setModel(new JSONModel(data), "tSClerkDetailModel");
 					sap.ui.core.BusyIndicator.hide();
 				},
@@ -30,6 +29,48 @@ sap.ui.define([
 					sap.ui.core.BusyIndicator.hide();
 				}
 			});
+		},
+		addNewRowPress: function(evt) {
+			evt.getSource().getAlt() === "X" ? this.goToCargoDetailsSet() : this.goToServiceChargeSet(evt.getSource().getAlt());
+		},
+		goToServiceChargeSet: function(item_type) {
+			this.getView().getModel("tSClerkDetailModel").getData().ServiceChargeSet.results.unshift({
+				"GUID": "",
+				"ItemNo": "",
+				"ItemType": item_type,
+				"ManifestNo": "",
+				"Commodities": "",
+				"EquipmentCode": "",
+				"DelType": "",
+				"NoOfPackage": "",
+				"Shift": "",
+				"HatchNo": "",
+				"Date": "",
+				"FromTime": "",
+				"ToTime": "",
+				"Weight": "",
+				"Quantity": "",
+				"UOM": "",
+				"Rate": "",
+				"Amount": "",
+				"Remark": "",
+				"RefMaterial": ""
+			});
+			this.getView().getModel("tSClerkDetailModel").refresh();
+		},
+		goToCargoDetailsSet: function() {
+			this.getView().getModel("tSClerkDetailModel").getData().CargoDetailsSet.results.unshift({
+				"GUID": "",
+				"Sling_No": "",
+				"Desc_Package": "Test",
+				"Marks_No": "123",
+				"Particular_TS": "wererwe",
+				"Total": "234",
+				"Gross_Weight": "123",
+				"Sent_to": "",
+				"Remark": ""
+			});
+			this.getView().getModel("tSClerkDetailModel").refresh();
 		}
 	});
 });

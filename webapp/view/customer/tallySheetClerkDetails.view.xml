@@ -11,10 +11,9 @@
 		<footer>
 			<OverflowToolbar>
 				<ToolbarSpacer/>
-				<Button id="approveBtn" type="Accept" text="Approve" visible="false"/>
 				<Button id="cancelBtn" type="Reject" text="Cancel" visible="false"/>
-				<Button id="saveBtn" type="Emphasized" text="Save" visible="false"/>
-				<Button id="creteBtn" type="Emphasized" text="Create"/>
+				<Button id="saveBtn" type="Accept" text="Save" visible="false"/>
+				<Button id="editBtn" type="Emphasized" text="Edit"/>
 			</OverflowToolbar>
 		</footer>
 	</Page>

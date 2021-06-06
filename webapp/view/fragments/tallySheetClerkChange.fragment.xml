@@ -3,9 +3,8 @@
 		<headerTitle>
 			<ObjectPageDynamicHeaderTitle>
 				<breadcrumbs>
-					<m:Breadcrumbs currentLocationText="{tSClerkDetailModel>/LogSheetNo}">
-						<m:Link press="onHomePress" text="Manifest"/>
-						<m:Link press="onNavToPress" text="Tally Sheet"/>
+					<m:Breadcrumbs currentLocationText="{tSClerkDetailModel>/ManifestNo}">
+						<m:Link href="#tallySheetClerkList" text="TallySheet"/>
 					</m:Breadcrumbs>
 				</breadcrumbs>
 				<expandedHeading>
@@ -18,6 +17,7 @@
 					<m:FlexBox fitContainer="true" alignItems="Center">
 						<m:Avatar backgroundColor="Accent9" src="sap-icon://shipping-status" class="sapUiTinyMarginEnd"/>
 						<m:Title text="{tSClerkDetailModel>/ManifestNo} - {tSClerkDetailModel>/VesselName}" wrapping="true"/>
+						<m:ObjectMarker type="Flagged" class="sapUiTinyMarginBegin"/>
 					</m:FlexBox>
 				</snappedHeading>
 				<expandedContent>
@@ -193,57 +193,6 @@
 			</m:FlexBox>
 		</headerContent>
 		<sections>
-			<ObjectPageSection titleUppercase="false" title="Charge Details">
-				<subSections>
-					<ObjectPageSubSection titleUppercase="false">
-						<blocks>
-							<m:FlexBox wrap="Wrap">
-								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
-									<m:VBox>
-										<t:Table visibleRowCount="5" rows="{tSClerkDetailModel>/ChargeDetailsSet/results}" selectionMode="None" ariaLabelledBy="title" class="card tableCard no-margin">
-											<t:extension>
-												<m:OverflowToolbar style="Clear">
-													<m:Title text="Charge Table ({tSClerkDetailModel>/ChargeDetailsSet/results/length})"/>
-													<m:ToolbarSpacer/>
-													<core:Icon src="sap-icon://add" tooltip="{i18n>sort}" press="addNewRowPress"/>
-												</m:OverflowToolbar>
-											</t:extension>
-											<t:columns>
-												<t:Column sortProperty="LogNumber">
-													<m:Label text="Equipment"/>
-													<t:template>
-														<m:Text text="{tSClerkDetailModel>CrEquipment}" wrapping="false"/>
-													</t:template>
-												</t:Column>
-												<t:Column sortProperty="PortCode" width="10rem">
-													<m:Label text="Date"/>
-													<t:template>
-															<m:Text
-																text="{ path: 'tSClerkDetailModel>CrDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"
-																wrapping="false"/>
-													</t:template>
-												</t:Column>
-												<t:Column>
-													<m:Label text="Weight"/>
-													<t:template>
-														<m:Text text="{tSClerkDetailModel>CrWeight}"/>
-													</t:template>
-												</t:Column>
-												<t:Column>
-													<m:Label text="Amount"/>
-													<t:template>
-														<m:Text text="{tSClerkDetailModel>CrAmount}"/>
-													</t:template>
-												</t:Column>
-											</t:columns>
-										</t:Table>
-									</m:VBox>
-								</layout:VerticalLayout>
-							</m:FlexBox>
-						</blocks>
-					</ObjectPageSubSection>
-				</subSections>
-			</ObjectPageSection>
 			<ObjectPageSection titleUppercase="false" title="Cargo Details">
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
@@ -251,25 +200,38 @@
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
-										<t:Table visibleRowCount="5" rows="{tSClerkDetailModel>/CargoDetailsSet/results}" selectionMode="None" ariaLabelledBy="title" class="card tableCard no-margin">
+										<t:Table visibleRowCount="5" rows="{tSClerkDetailModel>/CargoDetailsSet/results}" selectionMode="None" ariaLabelledBy="title"
+											class="card tableCard no-margin">
 											<t:extension>
 												<m:OverflowToolbar style="Clear">
 													<m:Title text="Cargo Table ({tSClerkDetailModel>/CargoDetailsSet/results/length})"/>
 													<m:ToolbarSpacer/>
-													<core:Icon src="sap-icon://add" tooltip="{i18n>sort}" press="addNewRowPress"/>
+													<core:Icon src="sap-icon://add" alt="X" tooltip="{i18n>sort}" press="addNewRowPress"/>
 												</m:OverflowToolbar>
 											</t:extension>
 											<t:columns>
 												<t:Column sortProperty="LogNumber">
-													<m:Label text="Guid"/>
+													<m:Label text="Sling No"/>
 													<t:template>
-														<m:Link press="handleDetailsPress" text="{tSClerkDetailModel>GUID}" wrapping="false"/>
+														<m:Text text="{tSClerkDetailModel>Sling_No}" wrapping="false"/>
 													</t:template>
 												</t:Column>
 												<t:Column sortProperty="PortCode" width="10rem">
-													<m:Label text="Package"/>
+													<m:Label text="Description Package"/>
 													<t:template>
 														<m:Text text="{tSClerkDetailModel>Desc_Package}"/>
+													</t:template>
+												</t:Column>
+												<t:Column sortProperty="Marks_No" width="10rem">
+													<m:Label text="Marks No"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Marks_No}"/>
+													</t:template>
+												</t:Column>
+												<t:Column sortProperty="Marks_No">
+													<m:Label text="Particulars"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Particular_TS}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
@@ -284,9 +246,331 @@
 														<m:Text text="{tSClerkDetailModel>Gross_Weight}"/>
 													</t:template>
 												</t:Column>
+												<t:Column sortProperty="Sent_to">
+													<m:Label text="Sent To"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Sent_to}"/>
+													</t:template>
+												</t:Column>
+												<t:Column sortProperty="Remark">
+													<m:Label text="Remark"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Remark}"/>
+													</t:template>
+												</t:Column>
 											</t:columns>
 										</t:Table>
-										</m:VBox>
+									</m:VBox>
+								</layout:VerticalLayout>
+							</m:FlexBox>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" title="Stevedoring Charge Details">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+							<m:FlexBox wrap="Wrap">
+								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+									<m:VBox>
+										<t:Table visibleRowCount="5" rows="{ path: 'tSClerkDetailModel>/ServiceChargeSet/results',filters: {path: 'ItemType', operator: 'EQ', value1: 'A'} }" selectionMode="None" ariaLabelledBy="title"
+											class="card tableCard no-margin">
+											<t:extension>
+												<m:OverflowToolbar style="Clear">
+													<m:Title text="Stevedoring Table ({tSClerkDetailModel>/ServiceChargeSet/results/length})"/>
+													<m:ToolbarSpacer/>
+													<core:Icon src="sap-icon://add" alt="A" tooltip="Add new item" press="addNewRowPress"/>
+												</m:OverflowToolbar>
+											</t:extension>
+											<t:columns>
+												<t:Column sortProperty="Commodity">
+													<m:Label text="Commodity"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Commodities}" wrapping="false"/>
+													</t:template>
+												</t:Column>
+												<t:Column sortProperty="PortCode" width="10rem">
+													<m:Label text="No of packs"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>NoOfPackage}"/>
+													</t:template>
+												</t:Column>
+												<t:Column>
+													<m:Label text="Quantity"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Quantity}"/>
+													</t:template>
+												</t:Column>
+												<t:Column>
+													<m:Label text="UOM"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>UOM}"/>
+													</t:template>
+												</t:Column>
+												<t:Column>
+													<m:Label text="StRate"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Rate}"/>
+													</t:template>
+												</t:Column>
+												<t:Column>
+													<m:Label text="Amount"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Amount}"/>
+													</t:template>
+												</t:Column>
+												<t:Column>
+													<m:Label text="Remark"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Remark}"/>
+													</t:template>
+												</t:Column>
+											</t:columns>
+										</t:Table>
+									</m:VBox>
+								</layout:VerticalLayout>
+							</m:FlexBox>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" title="Forklift Charge Details">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+							<m:FlexBox wrap="Wrap">
+								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+									<m:VBox>
+										<t:Table visibleRowCount="5" rows="{ path: 'tSClerkDetailModel>/ServiceChargeSet/results',filters: {path: 'ItemType', operator: 'EQ', value1: 'D'} }" selectionMode="None" ariaLabelledBy="title"
+											class="card tableCard no-margin">
+											<t:extension>
+												<m:OverflowToolbar style="Clear">
+													<m:Title text="Forklift Table ({tSClerkDetailModel>/ServiceChargeSet/results/length})"/>
+													<m:ToolbarSpacer/>
+													<core:Icon src="sap-icon://add" alt="D" tooltip="Add new item" press="addNewRowPress"/>
+												</m:OverflowToolbar>
+											</t:extension>
+											<t:columns>
+												<t:Column sortProperty="FlEquipment">
+													<m:Label text="Equipment"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>EquipmentCode}" wrapping="false"/>
+													</t:template>
+												</t:Column>
+												<t:Column>
+													<m:Label text="Hatch no"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>HatchNo}"/>
+													</t:template>
+												</t:Column>
+												<t:Column>
+													<m:Label text="FlDate"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Date}"/>
+													</t:template>
+												</t:Column>
+												<t:Column sortProperty="FlRate">
+													<m:Label text="Rate"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Rate}" wrapping="false"/>
+													</t:template>
+												</t:Column>
+												<t:Column>
+													<m:Label text="Amount"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Amount}"/>
+													</t:template>
+												</t:Column>
+												<t:Column>
+													<m:Label text="Remark"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Remark}"/>
+													</t:template>
+												</t:Column>
+											</t:columns>
+										</t:Table>
+									</m:VBox>
+								</layout:VerticalLayout>
+							</m:FlexBox>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" title="Crane Charge Details">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+							<m:FlexBox wrap="Wrap">
+								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+									<m:VBox>
+										<t:Table visibleRowCount="5" rows="{ path: 'tSClerkDetailModel>/ServiceChargeSet/results',filters: {path: 'ItemType', operator: 'EQ', value1: 'E'} }" selectionMode="None" ariaLabelledBy="title"
+											class="card tableCard no-margin">
+											<t:extension>
+												<m:OverflowToolbar style="Clear">
+													<m:Title text="Crane Table ({tSClerkDetailModel>/ChargeDetailsSet/results/length})"/>
+													<m:ToolbarSpacer/>
+													<core:Icon src="sap-icon://add" alt="E" tooltip="Add new item" press="addNewRowPress"/>
+												</m:OverflowToolbar>
+											</t:extension>
+											<t:columns>
+												<t:Column sortProperty="CrEquipment">
+													<m:Label text="Equipment"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Equipment}" wrapping="false"/>
+													</t:template>
+												</t:Column>
+												<t:Column>
+													<m:Label text="Hatch no"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>HatchNo}"/>
+													</t:template>
+												</t:Column>
+												<t:Column>
+													<m:Label text="Date"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Date}"/>
+													</t:template>
+												</t:Column>
+												<t:Column sortProperty="CrWeight">
+													<m:Label text="Weight"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Weight}" wrapping="false"/>
+													</t:template>
+												</t:Column>
+												<t:Column sortProperty="CrRate">
+													<m:Label text="Rate"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Rate}" wrapping="false"/>
+													</t:template>
+												</t:Column>
+												<t:Column>
+													<m:Label text="Amount"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Amount}"/>
+													</t:template>
+												</t:Column>
+												<t:Column>
+													<m:Label text="Remark"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Remark}"/>
+													</t:template>
+												</t:Column>
+											</t:columns>
+										</t:Table>
+									</m:VBox>
+								</layout:VerticalLayout>
+							</m:FlexBox>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" title="Supplementary Charge Details">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+							<m:FlexBox wrap="Wrap">
+								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+									<m:VBox>
+										<t:Table visibleRowCount="5" rows="{ path: 'tSClerkDetailModel>/ServiceChargeSet/results',filters: {path: 'ItemType', operator: 'EQ', value1: 'F'} }" selectionMode="None" ariaLabelledBy="title"
+											class="card tableCard no-margin">
+											<t:extension>
+												<m:OverflowToolbar style="Clear">
+													<m:Title text="Supplementary Table ({tSClerkDetailModel>/ChargeDetailsSet/results/length})"/>
+													<m:ToolbarSpacer/>
+													<core:Icon src="sap-icon://add" alt="F" tooltip="Add new item" press="addNewRowPress"/>
+												</m:OverflowToolbar>
+											</t:extension>
+											<t:columns>
+												<t:Column>
+													<m:Label text="Date"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Date}"/>
+													</t:template>
+												</t:Column>
+												<t:Column>
+													<m:Label text="From"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>FromTime}"/>
+													</t:template>
+												</t:Column>
+												<t:Column sortProperty="FromTo">
+													<m:Label text="To"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>FromTo}" wrapping="false"/>
+													</t:template>
+												</t:Column>
+												<t:Column>
+													<m:Label text="Rate"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Rate}"/>
+													</t:template>
+												</t:Column>
+												<t:Column>
+													<m:Label text="Amount"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Amount}"/>
+													</t:template>
+												</t:Column>
+												<t:Column>
+													<m:Label text="Remark"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Remark}"/>
+													</t:template>
+												</t:Column>
+											</t:columns>
+										</t:Table>
+									</m:VBox>
+								</layout:VerticalLayout>
+							</m:FlexBox>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" title="Miscellaneous Charge Details">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+							<m:FlexBox wrap="Wrap">
+								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+									<m:VBox>
+										<t:Table visibleRowCount="5" rows="{ path: 'tSClerkDetailModel>/ServiceChargeSet/results',filters: {path: 'ItemType', operator: 'EQ', value1: 'H'} }" selectionMode="None" ariaLabelledBy="title"
+											class="card tableCard no-margin">
+											<t:extension>
+												<m:OverflowToolbar style="Clear">
+													<m:Title text="Miscellaneous Table ({tSClerkDetailModel>/ChargeDetailsSet/results/length})"/>
+													<m:ToolbarSpacer/>
+													<core:Icon src="sap-icon://add" alt="H" tooltip="Add new item" press="addNewRowPress"/>
+												</m:OverflowToolbar>
+											</t:extension>
+											<t:columns>
+												<t:Column>
+													<m:Label text="Date"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Date}"/>
+													</t:template>
+												</t:Column>
+												<t:Column>
+													<m:Label text="Rate"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Rate}"/>
+													</t:template>
+												</t:Column>
+												<t:Column sortProperty="MsCharge">
+													<m:Label text="Charge"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Charge}" wrapping="false"/>
+													</t:template>
+												</t:Column>
+												<t:Column>
+													<m:Label text="MsRemarks"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Remarks}"/>
+													</t:template>
+												</t:Column>
+											</t:columns>
+										</t:Table>
+									</m:VBox>
 								</layout:VerticalLayout>
 							</m:FlexBox>
 						</blocks>

@@ -234,12 +234,7 @@
 																		<m:Text text="{BOEDetailsModel>ManifestNo}" />
 																	</t:template>
 																</t:Column>
-																<t:Column>
-																	<m:Label text="UOM"/>
-																	<t:template>
-																		<m:Text text="{BOEDetailsModel>UOM}"/>
-																	</t:template>
-																</t:Column>
+															
 																<t:Column width="130px">
 																	<m:Label text="Package Type &amp; No"/>
 																	<t:template>
@@ -256,6 +251,12 @@
 																	<m:Label text="GrossWt"/>
 																	<t:template>
 																		<m:Text text="{BOEDetailsModel>GrossWt}"/>
+																	</t:template>
+																</t:Column>
+																	<t:Column>
+																	<m:Label text="UOM"/>
+																	<t:template>
+																		<m:Text text="{BOEDetailsModel>UOM}"/>
 																	</t:template>
 																</t:Column>
 																<t:Column>

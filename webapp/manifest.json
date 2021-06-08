@@ -190,6 +190,14 @@
 					"home",
 					"tallySheetClerkDetails"
 				]
+			},
+			{
+				"name": "tallySheetCargo",
+				"pattern": "tallySheetCargo/{sPath}/{id}",
+				"target": [
+					"home",
+					"tallySheetCargo"
+				]
 			}],
 			"targets": {
 				"home": {
@@ -259,6 +267,10 @@
 				"tallySheetClerkDetails": {
 					"viewType": "XML",
 					"viewName": "tallySheetClerkDetails"
+				},
+				"tallySheetCargo": {
+					"viewType": "XML",
+					"viewName": "tallySheetCargo"
 				}
 			}
 		}

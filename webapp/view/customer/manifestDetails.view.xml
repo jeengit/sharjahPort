@@ -14,7 +14,7 @@
 				<Button id="createBtn" type="Accept" text="Create" visible="false" press="handleCreatePress"/>
 				<Button id="cancelBtn" type="Reject" text="Cancel" visible="false" press="handleCreatePress"/>
 				<Button id="saveBtn" type="Emphasized" text="Save" visible="false" press="handleCreatePress"/>
-				<Button type="Emphasized" text="Tally Sheet" visible="false" press="handleTallySheetPress"/>
+				<!--<Button id="tallyBtn" type="Emphasized" text="Tally Sheet"  press="handleTallySheetPress"/>-->
 			</OverflowToolbar>
 		</footer>
 	</Page>

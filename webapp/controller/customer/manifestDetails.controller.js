@@ -65,6 +65,7 @@ sap.ui.define([
 			var sPath = selectId.getPath();
 			var model = this.getView().getModel("BOEDetailsModel");
 			var obj = model.getProperty(sPath);
+			console.log(obj);
 			sap.ui.getCore().setModel(new JSONModel(obj), "ManifBOEModel");
 			this.getRouter().navTo("deliveryDetails", {
 				sPath: encodeURIComponent(sPath),
@@ -145,8 +146,15 @@ sap.ui.define([
 				}
 			});
 		},
-		handleTallySheetPress: function() {
-			this.getRouter().navTo("tallySheetClerk");
+		handleTallySheetPress: function(evt) {
+				var sPath = evt.getSource().getBindingContext("BOEDetailsModel");
+				console.log(sPath);
+			var id = evt.getSource().getBindingContext("BOEDetailsModel").getProperty().TlyShtCode;
+				this.getRouter().navTo("tallySheetCargo", {
+				sPath: encodeURIComponent(sPath),
+				id: id,
+				status: status
+			});
 		}
 	});
 });

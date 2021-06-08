@@ -193,16 +193,23 @@
 																		<m:Text text="{BOEDetailsModel>ItemNo}"/>
 																	</t:template>
 																</t:Column>
-																<t:Column>
-																	<m:Label text="UOM"/>
+																	<t:Column width="130px" sortProperty="ManifestNo">
+																	<m:Label wrapping="false" text="Commodities Description"/>
 																	<t:template>
-																		<m:Text text="{BOEDetailsModel>UOM}"/>
+																		<m:Text text="{BOEDetailsModel>CommoditiesDescription}"/>
 																	</t:template>
 																</t:Column>
+															
 																<t:Column width="130px">
-																	<m:Label text="Package Type &amp; No"/>
+																	<m:Label text="Package Type"/>
 																	<t:template>
-																		<m:Text text="{BOEDetailsModel>PackageType} - {BOEDetailsModel>NoOfPackages}"/>
+																		<m:Text text="{BOEDetailsModel>PackageType}"/>
+																	</t:template>
+																</t:Column>
+																	<t:Column width="130px">
+																	<m:Label text="No Of Packages"/>
+																	<t:template>
+																		<m:Text text="{BOEDetailsModel>NoOfPackages}"/>
 																	</t:template>
 																</t:Column>
 																<t:Column>
@@ -215,6 +222,12 @@
 																	<m:Label text="GrossWt"/>
 																	<t:template>
 																		<m:Text text="{BOEDetailsModel>GrossWt}"/>
+																	</t:template>
+																</t:Column>
+																	<t:Column>
+																	<m:Label text="UOM"/>
+																	<t:template>
+																		<m:Text text="{BOEDetailsModel>UOM}"/>
 																	</t:template>
 																</t:Column>
 																<t:Column>

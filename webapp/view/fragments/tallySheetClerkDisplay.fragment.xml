@@ -193,73 +193,6 @@
 			</m:FlexBox>
 		</headerContent>
 		<sections>
-			<ObjectPageSection titleUppercase="false" title="Cargo Details">
-				<subSections>
-					<ObjectPageSubSection titleUppercase="false">
-						<blocks>
-							<m:FlexBox wrap="Wrap">
-								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
-									<m:VBox>
-										<t:Table visibleRowCount="5" rows="{tSClerkDetailModel>/CargoDetailsSet/results}" selectionMode="None" ariaLabelledBy="title"
-											class="card tableCard no-margin">
-											<t:columns>
-												<t:Column sortProperty="LogNumber">
-													<m:Label text="Sling No"/>
-													<t:template>
-														<m:Text text="{tSClerkDetailModel>Sling_No}" wrapping="false"/>
-													</t:template>
-												</t:Column>
-												<t:Column sortProperty="PortCode" width="10rem">
-													<m:Label text="Description Package"/>
-													<t:template>
-														<m:Text text="{tSClerkDetailModel>Desc_Package}"/>
-													</t:template>
-												</t:Column>
-												<t:Column sortProperty="Marks_No" width="10rem">
-													<m:Label text="Marks No"/>
-													<t:template>
-														<m:Text text="{tSClerkDetailModel>Marks_No}"/>
-													</t:template>
-												</t:Column>
-												<t:Column sortProperty="Marks_No">
-													<m:Label text="Particulars"/>
-													<t:template>
-														<m:Text text="{tSClerkDetailModel>Particular_TS}"/>
-													</t:template>
-												</t:Column>
-												<t:Column>
-													<m:Label text="Total"/>
-													<t:template>
-														<m:Text text="{tSClerkDetailModel>Total}"/>
-													</t:template>
-												</t:Column>
-												<t:Column>
-													<m:Label text="Gross Weight"/>
-													<t:template>
-														<m:Text text="{tSClerkDetailModel>Gross_Weight}"/>
-													</t:template>
-												</t:Column>
-												<t:Column sortProperty="Sent_to">
-													<m:Label text="Sent To"/>
-													<t:template>
-														<m:Text text="{tSClerkDetailModel>Sent_to}"/>
-													</t:template>
-												</t:Column>
-												<t:Column sortProperty="Remark">
-													<m:Label text="Remark"/>
-													<t:template>
-														<m:Text text="{tSClerkDetailModel>Remark}"/>
-													</t:template>
-												</t:Column>
-											</t:columns>
-										</t:Table>
-									</m:VBox>
-								</layout:VerticalLayout>
-							</m:FlexBox>
-						</blocks>
-					</ObjectPageSubSection>
-				</subSections>
-			</ObjectPageSection>
 			<ObjectPageSection titleUppercase="false" title="Stevedoring Charge Details">
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
@@ -524,6 +457,74 @@
 													<m:Label text="MsRemarks"/>
 													<t:template>
 														<m:Text text="{tSClerkDetailModel>Remarks}"/>
+													</t:template>
+												</t:Column>
+											</t:columns>
+										</t:Table>
+									</m:VBox>
+								</layout:VerticalLayout>
+							</m:FlexBox>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			
+			<ObjectPageSection titleUppercase="false" title="Cargo Details">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+							<m:FlexBox wrap="Wrap">
+								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+									<m:VBox>
+										<t:Table visibleRowCount="5" rows="{tSClerkDetailModel>/CargoDetailsSet/results}" selectionMode="None" ariaLabelledBy="title"
+											class="card tableCard no-margin">
+											<t:columns>
+												<t:Column sortProperty="LogNumber">
+													<m:Label text="Sling No"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Sling_No}" wrapping="false"/>
+													</t:template>
+												</t:Column>
+												<t:Column sortProperty="PortCode" width="10rem">
+													<m:Label text="Description Package"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Desc_Package}"/>
+													</t:template>
+												</t:Column>
+												<t:Column sortProperty="Marks_No" width="10rem">
+													<m:Label text="Marks No"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Marks_No}"/>
+													</t:template>
+												</t:Column>
+												<t:Column sortProperty="Marks_No">
+													<m:Label text="Particulars"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Particular_TS}"/>
+													</t:template>
+												</t:Column>
+												<t:Column>
+													<m:Label text="Total"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Total}"/>
+													</t:template>
+												</t:Column>
+												<t:Column>
+													<m:Label text="Gross Weight"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Gross_Weight}"/>
+													</t:template>
+												</t:Column>
+												<t:Column sortProperty="Sent_to">
+													<m:Label text="Sent To"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Sent_to}"/>
+													</t:template>
+												</t:Column>
+												<t:Column sortProperty="Remark">
+													<m:Label text="Remark"/>
+													<t:template>
+														<m:Text text="{tSClerkDetailModel>Remark}"/>
 													</t:template>
 												</t:Column>
 											</t:columns>

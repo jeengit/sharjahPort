@@ -7,6 +7,9 @@ sap.ui.define([
 		onInit: function() {
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.getRoute("dashboardHarbour").attachPatternMatched(this._onObjectMatched, this);
+			var oPopOver = this.getView().byId("idPopOver");
+			var oVizFrame = this.getView().byId("idVizFrame");
+            oPopOver.connect(oVizFrame.getVizUid());
 		},
 		_onObjectMatched: function() {
 			this.getUserName();

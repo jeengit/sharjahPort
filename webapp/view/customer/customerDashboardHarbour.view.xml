@@ -48,8 +48,8 @@
 				<VBox width="32.2%" class="box-shadow">
 					<viz:Popover id="idPopOver"></viz:Popover>
 					<viz:VizFrame
-						vizProperties="{ title: {text : 'Log Sheet', visible : true},plotArea:{ dataLabel:{visible: true,showTotal:true,type:'normal'} }}"
-						id="idVizFrame" uiConfig="{applicationSet:'fiori'}" height="300px" width="100%" vizType='pie'>
+						vizProperties="{ title: {text : 'Log Sheet', visible : true},plotArea:{ dataLabel:{visible: true,type:'value'} }}"
+						id="idVizFrame" uiConfig="{applicationSet:'fiori'}" height="300px" width="100%" vizType='donut'>
 						<viz:dataset>
 							<viz.data:FlattenedDataset data="{pieChartModel>/results}">
 								<viz.data:dimensions>

@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns:t="sap.ui.table" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core">
-	<ObjectPageLayout upperCaseAnchorBar="false" id="tallyClerkchangId" class="objLayoutClass editMode">
+	<ObjectPageLayout upperCaseAnchorBar="false" id="tallyClerkDispId" class="objLayoutClass editMode">
 		<headerTitle>
 			<ObjectPageDynamicHeaderTitle>
 				<breadcrumbs>
@@ -9,19 +9,13 @@
 				</breadcrumbs>
 				<expandedHeading>
 					<m:HBox>
-						<m:Title visible="{= ${tSClerkDetailModel>/ManifestNo} === '' ? true: false}" text="{tSClerkDetailModel>/ManifestNo} - {tSClerkDetailModel>/VesselName}" wrapping="true"/>
-						<m:ComboBox visible="{= ${tSClerkDetailModel>/ManifestNo} === '' ? false: true}" placeholder="{i18n>select}" width="100%" items="{manifestListModel>/}" change="handleMDetailsPress">
-							<core:Item key="{manifestListModel>ManifestNo}" text="{manifestListModel>ManifestNo}"/>
-						</m:ComboBox>
+						<m:Title text="{tSClerkDetailModel>/ManifestNo} - {tSClerkDetailModel>/VesselName}" wrapping="true"/>
 					</m:HBox>
 				</expandedHeading>
 				<snappedHeading>
 					<m:FlexBox fitContainer="true" alignItems="Center">
 						<m:Avatar backgroundColor="Accent9" src="sap-icon://shipping-status" class="sapUiTinyMarginEnd"/>
-						<m:Title visible="{= ${tSClerkDetailModel>/ManifestNo} === '' ? true: false}" text="{tSClerkDetailModel>/ManifestNo} - {tSClerkDetailModel>/VesselName}" wrapping="true"/>
-						<m:ComboBox visible="{= ${tSClerkDetailModel>/ManifestNo} === '' ? false: true}" placeholder="{i18n>select}" width="100%" items="{manifestListModel>/}" change="handleMDetailsPress">
-							<core:Item key="{manifestListModel>ManifestNo}" text="{manifestListModel>ManifestNo}"/>
-						</m:ComboBox>
+						<m:Title text="{tSClerkDetailModel>/ManifestNo} - {tSClerkDetailModel>/VesselName}" wrapping="true"/>
 					</m:FlexBox>
 				</snappedHeading>
 				<expandedContent>
@@ -41,43 +35,43 @@
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox width="40%">
+							<m:HBox width="8rem">
 								<m:Label text="{i18n>VesselName}"/>
 							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input value="{tSClerkDetailModel>/VesselName}"/>
+							<m:HBox width="10rem">
+								<m:Text text="{tSClerkDetailModel>/VesselName}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox width="40%">
+							<m:HBox width="8rem">
 								<m:Label text="Agent Code"/>
 							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input enabled="false" value="{tSClerkDetailModel>/AgentCode}"/>
+							<m:HBox width="10rem">
+								<m:Text text="{tSClerkDetailModel>/AgentCode}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox width="40%">
+							<m:HBox width="8rem">
 								<m:Label text="Shift"/>
 							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input value="{tSClerkDetailModel>/Shift}"/>
+							<m:HBox width="10rem">
+								<m:Text text="{tSClerkDetailModel>/Shift}"/>
 							</m:HBox>
 						</m:HBox>
-						<m:HBox alignItems="Center">
-							<m:HBox width="40%">
+						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+							<m:HBox width="8rem">
 								<m:Label text="Hatch No"/>
 							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input value="{tSClerkDetailModel>/HatchNo}"/>
+							<m:HBox width="10rem">
+								<m:Text text="{tSClerkDetailModel>/HatchNo}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox alignItems="Center">
-							<m:HBox width="40%">
+							<m:HBox width="8rem">
 								<m:Label text="Time Commenced"/>
 							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input value="{tSClerkDetailModel>/TimeCommenced}"/>
+							<m:HBox width="10rem">
+								<m:Text text="{tSClerkDetailModel>/TimeCommenced}"/>
 							</m:HBox>
 						</m:HBox>
 					</m:VBox>
@@ -85,59 +79,61 @@
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox width="40%">
+							<m:HBox width="8rem">
 								<m:Label text="{i18n>CustomsRefNo}"/>
 							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input enabled="false" value="{tSClerkDetailModel>/CustomsRefNo}"/>
+							<m:HBox width="10rem">
+								<m:Text text="{tSClerkDetailModel>/CustomsRefNo}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox width="40%">
+							<m:HBox width="8rem">
 								<m:Label text="{i18n>Callsign}"/>
 							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input enabled="false" value="{tSClerkDetailModel>/Callsign}"/>
+							<m:HBox width="10rem">
+								<m:Text text="{tSClerkDetailModel>/CallSign}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox visible="{= ${tSClerkDetailModel>/AgentName} === '' ? false: true}" class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox width="40%">
+							<m:HBox width="8rem">
 								<m:Label text="{i18n>AgentName}"/>
 							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input enabled="false" value="{tSClerkDetailModel>/AgentName}"/>
+							<m:HBox width="10rem">
+								<m:Text text="{tSClerkDetailModel>/AgentName}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox visible="{= ${tSClerkDetailModel>/AgentCode} === '' ? false: true}" class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox width="40%">
+							<m:HBox width="8rem">
 								<m:Label text="{i18n>AgentCode}"/>
 							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input enabled="false" value="{tSClerkDetailModel>/AgentCode}"/>
+							<m:HBox width="10rem">
+								<m:Text text="{tSClerkDetailModel>/AgentCode}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox width="40%">
+							<m:HBox width="8rem">
 								<m:Label text="Date"/>
 							</m:HBox>
-							<m:HBox width="60%">
-								<m:DatePicker value="{tSClerkDetailModel>/Date}" valueFormat="yyyyMMdd" displayFormat="long"/>
+							<m:HBox width="10rem">
+								<m:Text
+								text="{ path: 'tSClerkDetailModel>/Date', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"
+								wrapping="false"/>
 							</m:HBox>
 						</m:HBox>
-						<m:HBox visible="{= ${tSClerkDetailModel>/Derrik_Crain} === '' ? false: true}" alignItems="Center">
-							<m:HBox width="40%">
+						<m:HBox class="sapUiTinyMarginBottom" visible="{= ${tSClerkDetailModel>/Derrik_Crain} === '' ? false: true}" alignItems="Center">
+							<m:HBox width="8rem">
 								<m:Label text="Derrik/Crain"/>
 							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input value="{tSClerkDetailModel>/Derrik_Crain}"/>
+							<m:HBox width="10rem">
+								<m:Text text="{tSClerkDetailModel>/Derrik_Crain}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox visible="{= ${tSClerkDetailModel>/TimeCompleted} === '' ? false: true}" alignItems="Center">
-							<m:HBox width="40%">
+							<m:HBox width="8rem">
 								<m:Label text="Time Completed"/>
 							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input value="{tSClerkDetailModel>/TimeCompleted}"/>
+							<m:HBox width="10rem">
+								<m:Text text="{tSClerkDetailModel>/TimeCompleted}"/>
 							</m:HBox>
 						</m:HBox>
 					</m:VBox>
@@ -145,51 +141,51 @@
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 						<m:HBox visible="{= ${tSClerkDetailModel>/TallyServiceNo} === '' ? false: true}" class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox width="40%">
+							<m:HBox width="8rem">
 								<m:Label text="Tally(Service) number"/>
 							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input enabled="false" value="{tSClerkDetailModel>/TallyServiceNo}"/>
+							<m:HBox width="10rem">
+								<m:Text text="{tSClerkDetailModel>/TallyServiceNo}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox width="40%">
+							<m:HBox width="8rem">
 								<m:Label text="{i18n>IMOnumber}"/>
 							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input enabled="false" value="{tSClerkDetailModel>/IMO}"/>
+							<m:HBox width="10rem">
+								<m:Text text="{tSClerkDetailModel>/IMO}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox visible="{= ${tSClerkDetailModel>/EmployeeId} === '' ? false: true}" class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox width="40%">
+							<m:HBox width="8rem">
 								<m:Label text="Employee Id"/>
 							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input value="{tSClerkDetailModel>/EmployeeId}"/>
+							<m:HBox width="10rem">
+								<m:Text text="{tSClerkDetailModel>/EmployeeId}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox alignItems="Center">
-							<m:HBox width="40%">
+							<m:HBox width="8rem">
 								<m:Label text="Berth"/>
 							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input value="{tSClerkDetailModel>/Berth}"/>
+							<m:HBox width="10rem">
+								<m:Text text="{tSClerkDetailModel>/Berth}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox alignItems="Center">
-							<m:HBox width="40%">
+							<m:HBox width="8rem">
 								<m:Label text="No of Hooks"/>
 							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input value="{tSClerkDetailModel>/NoOfHooks}"/>
+							<m:HBox width="10rem">
+								<m:Text text="{tSClerkDetailModel>/NoOfHooks}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox alignItems="Center">
-							<m:HBox width="40%">
+							<m:HBox width="8rem">
 								<m:Label text="GUID"/>
 							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input enabled="false" value="{tSClerkDetailModel>/GUID}"/>
+							<m:HBox width="10rem">
+								<m:Text text="{tSClerkDetailModel>/GUID}"/>
 							</m:HBox>
 						</m:HBox>
 					</m:VBox>
@@ -204,9 +200,6 @@
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
-										<m:FlexBox justifyContent="End" width="100%">
-										<core:Icon color="#333" src="sap-icon://add" alt="X" tooltip="{i18n>sort}" press="addNewRowPress"/>
-										</m:FlexBox>
 										<t:Table visibleRowCount="5" rows="{tSClerkDetailModel>/CargoDetailsSet/results}" selectionMode="None" ariaLabelledBy="title"
 											class="card tableCard no-margin">
 											<t:columns>
@@ -274,9 +267,6 @@
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
-										<m:FlexBox justifyContent="End" width="100%">
-										<core:Icon color="#333" src="sap-icon://add" alt="A" tooltip="{i18n>sort}" press="addNewRowPress"/>
-										</m:FlexBox>
 										<t:Table visibleRowCount="5" rows="{ path: 'tSClerkDetailModel>/ServiceChargeSet/results',filters: {path: 'ItemType', operator: 'EQ', value1: 'A'} }" selectionMode="None" ariaLabelledBy="title"
 											class="card tableCard no-margin">
 											<t:columns>
@@ -338,9 +328,6 @@
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
-										<m:FlexBox justifyContent="End" width="100%">
-										<core:Icon color="#333" src="sap-icon://add" alt="D" tooltip="{i18n>sort}" press="addNewRowPress"/>
-										</m:FlexBox>
 										<t:Table visibleRowCount="5" rows="{ path: 'tSClerkDetailModel>/ServiceChargeSet/results',filters: {path: 'ItemType', operator: 'EQ', value1: 'D'} }" selectionMode="None" ariaLabelledBy="title"
 											class="card tableCard no-margin">
 											<t:columns>
@@ -396,9 +383,6 @@
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
-										<m:FlexBox justifyContent="End" width="100%">
-										<core:Icon color="#333" src="sap-icon://add" alt="E" tooltip="{i18n>sort}" press="addNewRowPress"/>
-										</m:FlexBox>
 										<t:Table visibleRowCount="5" rows="{ path: 'tSClerkDetailModel>/ServiceChargeSet/results',filters: {path: 'ItemType', operator: 'EQ', value1: 'E'} }" selectionMode="None" ariaLabelledBy="title"
 											class="card tableCard no-margin">
 											<t:columns>
@@ -460,9 +444,6 @@
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
-										<m:FlexBox justifyContent="End" width="100%">
-										<core:Icon color="#333" src="sap-icon://add" alt="F" tooltip="{i18n>sort}" press="addNewRowPress"/>
-										</m:FlexBox>
 										<t:Table visibleRowCount="5" rows="{ path: 'tSClerkDetailModel>/ServiceChargeSet/results',filters: {path: 'ItemType', operator: 'EQ', value1: 'F'} }" selectionMode="None" ariaLabelledBy="title"
 											class="card tableCard no-margin">
 											<t:columns>
@@ -518,9 +499,6 @@
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
-										<m:FlexBox justifyContent="End" width="100%">
-										<core:Icon color="#333" src="sap-icon://add" alt="H" tooltip="{i18n>sort}" press="addNewRowPress"/>
-										</m:FlexBox>
 										<t:Table visibleRowCount="5" rows="{ path: 'tSClerkDetailModel>/ServiceChargeSet/results',filters: {path: 'ItemType', operator: 'EQ', value1: 'H'} }" selectionMode="None" ariaLabelledBy="title"
 											class="card tableCard no-margin">
 											<t:columns>

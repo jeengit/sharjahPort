@@ -6,14 +6,15 @@
 		</customHeader>
 		<content>
 			<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.tallySheetClerkChange" type="XML"/>
+			<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.tallySheetClerkDisplay" type="XML"/>
 			<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.tallySheetCargoChange" type="XML"/>
 		</content>
 		<footer>
 			<OverflowToolbar>
 				<ToolbarSpacer/>
-				<Button id="cancelBtn" type="Reject" text="Cancel" visible="false"/>
-				<Button id="saveBtn" type="Accept" text="Save" visible="false"/>
-				<Button id="editBtn" text="Edit"/>
+				<Button id="cancel" type="Reject" text="Cancel" visible="false" press="handleChangePress"/>
+				<Button id="save" type="Accept" text="Save" visible="false" press="handleChangePress"/>
+				<Button id="edit" text="Edit" visible="false" press="handleChangePress"/>
 			</OverflowToolbar>
 		</footer>
 	</Page>

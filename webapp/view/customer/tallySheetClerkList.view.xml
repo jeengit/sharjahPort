@@ -13,7 +13,7 @@
 						<OverflowToolbar style="Clear">
 							<Title id="title" text="Tally Sheet ({tSClerkListModel>/length})"/>
 							<ToolbarSpacer/>
-							<Button class="btn-sm" text="Create"/>
+							<Button class="btn-sm" text="Create" id="create" press="handleDetailsPress"/>
 							<core:Icon src="sap-icon://sorting-ranking" tooltip="{i18n>sort}" press="sortCategoriesAndName"/>
 							<core:Icon src="sap-icon://sort" tooltip="{i18n>SortCategories}" press="sortCategories"/>
 							<core:Icon src="sap-icon://decline" tooltip="{i18n>Clearallsortings}" press="clearAllSortings"/>

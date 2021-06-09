@@ -13,8 +13,8 @@ sap.ui.define([
 			this.getModel("ClerkTallySheetSet","tSClerkListModel");
 		},
 		handleDetailsPress : function (evt) {
-			sap.ui.core.BusyIndicator.show();                  
-			var id = evt.getSource().getBindingContext("tSClerkListModel").getProperty().GUID;
+			sap.ui.core.BusyIndicator.show();
+			var id = evt.getSource().getText() !== 'Create' ? evt.getSource().getBindingContext("tSClerkListModel").getProperty().GUID : false;
 			this.getRouter().navTo("tallySheetClerkDetails", {
 				id: id
 			});

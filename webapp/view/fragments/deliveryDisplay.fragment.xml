@@ -503,9 +503,9 @@
 						<blocks>
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout>
-									<layout:HorizontalLayout>
+							<!--		<layout:HorizontalLayout>
 										<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
-											<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>BasicDetails}"/>-->
+									
 											<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 												<m:HBox width="50%">
 													<m:Label text="{i18n>storCharge}"/>
@@ -541,40 +541,50 @@
 												</m:HBox>
 											</m:HBox>
 										</layout:VerticalLayout>
-									</layout:HorizontalLayout>
+									</layout:HorizontalLayout> -->
 									<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 										<m:VBox >
-											<t:Table rows="{delCrtModel>DeliveryDetailsToDeliverCharge/results}" selectionMode="None" visibleRowCount="5" id="shifTableChange"
+											<m:Button class="add-charge-row-class" type="Default" icon="sap-icon://add" text="Add Charge" press="addNextRowForDeliveryCharge" />
+											<t:Table rows="{deliverChargeModel>/items}" selectionMode="None" id="shifTableChange"
 												class="sapUiTinyMarginEnd" ariaLabelledBy="title">
 												<t:columns>
 													<t:Column sortProperty="ETANo">
 														<m:Label wrapping="false" text="{i18n>Charge}"/>
 														<t:template>
-															<m:Input value="{delCrtModel>Charges}"/>
+															<!--<m:Input value="{delCrtModel>Charges}"/> -->
+															<m:Select change="fnSelectChargeRow" visible="true" editable="true" items="{chargeDiscModel>/items}">
+																	<core:ListItem key="{chargeDiscModel>id}" text="{chargeDiscModel>Charges}" /> 
+															</m:Select>
 														</t:template>
 													</t:Column>
 													<t:Column sortProperty="PortName">
 														<m:Label text="{i18n>Description}"/>
 														<t:template>
-															<m:Input value="{delCrtModel>Description}"/>
+															<m:Text text="{deliverChargeModel>Description}"/>
 														</t:template>
 													</t:Column>
 													<t:Column>
 														<m:Label text="{i18n>rate}"/>
 														<t:template>
-															<m:Input value="{delCrtModel>Rate}"/>
+															<m:Text text="{deliverChargeModel>Rate}"/>
 														</t:template>
 													</t:Column>
 													<t:Column>
 														<m:Label text="{i18n>quantity}"/>
 														<t:template>
-															<m:Input value="{delCrtModel>Quantity}"/>
+															<m:Input type="Number" liveChange="chageQuantityEvent" value="{deliverChargeModel>Quantity}"/>
 														</t:template>
 													</t:Column>
 													<t:Column>
 														<m:Label text="{i18n>Amount}"/>
 														<t:template>
-															<m:Input value="{delCrtModel>Amount}"/>
+															<m:Text text="{deliverChargeModel>Amount}"/>
+														</t:template>
+													</t:Column>
+													<t:Column>
+														<m:Label text="Action"/>
+														<t:template>
+															<m:Button icon="sap-icon://delete" press="deleteThisItem"/>
 														</t:template>
 													</t:Column>
 												</t:columns>

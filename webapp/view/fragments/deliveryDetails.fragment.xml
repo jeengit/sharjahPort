@@ -379,9 +379,9 @@
 							<blocks>
 								<m:FlexBox wrap="Wrap">
 										<layout:VerticalLayout >
-									<layout:HorizontalLayout>
+							<!--		<layout:HorizontalLayout>
 										<layout:VerticalLayout  class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
-											<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>BasicDetails}"/>-->
+										
 										
 												<m:HBox class="sapUiTinyMarginBottom">
 													<m:Label text="{i18n>storCharge}" class="sapUiSmallMarginEnd"/>
@@ -403,10 +403,10 @@
 												</m:HBox>
 										
 										</layout:VerticalLayout>
-											</layout:HorizontalLayout>
+											</layout:HorizontalLayout> -->
 										<layout:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginTop">
 											<m:VBox>
-												<t:Table rows="{delvryDetailsModel>DeliveryDetailsToDeliverCharge/results}" visibleRowCount="5" selectionMode="None"
+												<t:Table rows="{delvryDetailsModel>/DeliveryDetailsToDeliverCharge/results}" visibleRowCount="5" selectionMode="None"
 													class="sapUiTinyMarginEnd tableCard" ariaLabelledBy="title">
 													<t:columns>
 														<t:Column sortProperty="ETANo">

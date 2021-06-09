@@ -510,10 +510,9 @@
 						<blocks>
 							<m:FlexBox wrap="Wrap">
 									<layout:VerticalLayout>
-								<layout:HorizontalLayout>
+							<!--	<layout:HorizontalLayout>
 									<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
-										<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>BasicDetails}"/>-->
-									
+
 											<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 												<m:HBox width="50%">
 													<m:Label text="{i18n>storCharge}"/>
@@ -550,39 +549,48 @@
 											</m:HBox>
 									
 									</layout:VerticalLayout>
-								</layout:HorizontalLayout>
+								</layout:HorizontalLayout> -->
 									<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 										<m:VBox>
-											<t:Table rows="{delvryDetailsModel>DeliveryDetailsToDeliverCharge/results}" visibleRowCount="5" selectionMode="None" class="sapUiTinyMarginEnd tableCard" id="shifTableSave" ariaLabelledBy="title">
+										<m:Button class="add-charge-row-class" type="Default" icon="sap-icon://add" text="Add Charge" press="addNextRowForDeliveryChargeEdit" />
+											<t:Table rows="{deliverChargeEditModel>/items}" visibleRowCount="5" selectionMode="None" class="sapUiTinyMarginEnd tableCard" id="shifTableSave" ariaLabelledBy="title">
 												<t:columns>
 													<t:Column sortProperty="ETANo">
 														<m:Label wrapping="false" text="{i18n>Charge}"/>
 														<t:template>
-															<m:DatePicker value="{delvryDetailsModel>Charges}" valueFormat="yyyyMMdd" displayFormat="long"/>
+																<m:Select selectedKey="{deliverChargeEditModel>selectedCharge}" value="{deliverChargeEditModel>Charges}" change="fnSelectChargeRowEdit" visible="true" editable="true" items="{chargeDiscModel>/items}">
+																	<core:ListItem key="{chargeDiscModel>id}" text="{chargeDiscModel>Charges}" /> 
+															</m:Select>
 														</t:template>
 													</t:Column>
 													<t:Column sortProperty="PortName">
 														<m:Label text="{i18n>Description}"/>
 														<t:template>
-															<m:TimePicker value="{delvryDetailsModel>Description}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" placeholder="From"/>
+														<m:Text text="{deliverChargeEditModel>Description}"/>
 														</t:template>
 													</t:Column>
 													<t:Column>
 														<m:Label text="{i18n>rate}"/>
 														<t:template>
-															<m:DatePicker value="{delvryDetailsModel>Rate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+																<m:Text text="{deliverChargeEditModel>Rate}"/>
 														</t:template>
 													</t:Column>
 													<t:Column>
 														<m:Label text="{i18n>quantity}"/>
 														<t:template>
-															<m:TimePicker placeholder="To Time" value="{delvryDetailsModel>Quantity}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss"/>
-														</t:template>
+														<m:Input liveChange="chageQuantityEventEdit" value="{deliverChargeEditModel>Quantity}"/>
+													    </t:template>
 													</t:Column>
 													<t:Column>
 														<m:Label text="{i18n>Amount}"/>
 														<t:template>
-															<m:Input value="{delvryDetailsModel>Amount}"/>
+																<m:Text text="{deliverChargeEditModel>Amount}"/>
+														</t:template>
+													</t:Column>
+													<t:Column>
+														<m:Label text="Action"/>
+														<t:template>
+															<m:Button icon="sap-icon://delete" press="deleteThisItem"/>
 														</t:template>
 													</t:Column>
 												</t:columns>

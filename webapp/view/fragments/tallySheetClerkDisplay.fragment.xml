@@ -156,7 +156,7 @@
 								<m:Text text="{tSClerkDetailModel>/IMO}"/>
 							</m:HBox>
 						</m:HBox>
-						<m:HBox visible="{= ${tSClerkDetailModel>/EmployeeId} === '' ? false: true}" class="sapUiTinyMarginBottom" alignItems="Center">
+						<m:HBox class="sapUiTinyMarginBottom" visible="{= ${tSClerkDetailModel>/EmployeeId} === '' ? false: true}" class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="8rem">
 								<m:Label text="Employee Id"/>
 							</m:HBox>
@@ -164,7 +164,7 @@
 								<m:Text text="{tSClerkDetailModel>/EmployeeId}"/>
 							</m:HBox>
 						</m:HBox>
-						<m:HBox alignItems="Center">
+						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="8rem">
 								<m:Label text="Berth"/>
 							</m:HBox>
@@ -172,7 +172,7 @@
 								<m:Text text="{tSClerkDetailModel>/Berth}"/>
 							</m:HBox>
 						</m:HBox>
-						<m:HBox alignItems="Center">
+						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="8rem">
 								<m:Label text="No of Hooks"/>
 							</m:HBox>

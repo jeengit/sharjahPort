@@ -11,6 +11,7 @@ sap.ui.define([
 		},
 		_onObjectMatched: function (oEvent) {
 			var status = oEvent.getParameter("arguments").sPath;
+			var type = oEvent.getParameter("arguments").type;
 			this.getUserName();
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
@@ -30,6 +31,10 @@ sap.ui.define([
 					// getDialog.close();
 				}
 			});
+			sap.ui.getCore().setModel(new JSONModel({
+				"status": status,
+				"type": type
+			}), "navModel");
 			this.adjustTableRowsCount();
 		},
 		onETADetailsPress: function (evt) {

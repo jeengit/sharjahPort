@@ -8,7 +8,6 @@
 		<content>
 			<VBox class="section">
 				<Title text="Dashboard" class="heading"/>
-				<html:div class="card">
 					<l:Grid class="sapUiSmallMarginTopBottom custTile" defaultSpan="L2 M2 S12">
 						<l:content>
 							<GenericTile ariaLabel="APPROVED/ETA" press="handleListPress" class="tileLayout" header="{i18n>etaTile}" subheader="{i18n>subApprvd}">
@@ -38,7 +37,6 @@
 							</GenericTile>
 						</l:content>
 					</l:Grid>
-				</html:div>
 			</VBox>
 			<VBox class="section">
 				<html:div>

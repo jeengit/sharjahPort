@@ -22,6 +22,9 @@ sap.ui.define([
 				sPath: status,
 				type: type
 			});
+		},
+		press: function(evt){
+			console.log(evt.getSource());
 		}
 	});
 });

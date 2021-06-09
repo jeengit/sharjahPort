@@ -8,7 +8,6 @@
 		<content>
 			<VBox class="section">
 				<Title text="Dashboard" class="heading"/>
-				<html:div class="card">
 					<l:Grid class="sapUiSmallMarginTopBottom custTile" defaultSpan="L2 M2 S12">
 						<l:content>
 							<GenericTile ariaLabel="CUSTOMS/MANIFEST" press="handleListPress" class="tileLayout" header="Manifest - Customs" subheader="Customs Approved Manifest">
@@ -48,7 +47,6 @@
 							</GenericTile>
 						</l:content>
 					</l:Grid>
-				</html:div>
 			</VBox>
 		</content>
 	</Page>

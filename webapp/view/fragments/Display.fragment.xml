@@ -5,14 +5,13 @@
 			<ObjectPageDynamicHeaderTitle>
 				<breadcrumbs>
 					<m:Breadcrumbs currentLocationText="{etaDetailsModel>/ZETANumber}">
-						<m:Link id="dashboard" press="onHomePress" text="Home"/>
-						<m:Link id="products" press="onNavToPress" text="ETA List"/>
+						<m:Link href="#dashboardAgent" text="Home"/>
+						<m:Link href="products" text="ETA List"/>
 					</m:Breadcrumbs>
 				</breadcrumbs>
 				<expandedHeading>
 					<m:HBox>
 						<m:Title text="{etaDetailsModel>/ZVesselName}" wrapping="true"/>
-						<m:ObjectMarker type="Flagged" class="sapUiTinyMarginBegin"/>
 					</m:HBox>
 				</expandedHeading>
 				<snappedHeading>

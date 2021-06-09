@@ -10,14 +10,12 @@
 				<expandedHeading>
 					<m:HBox>
 						<m:Title text="{tSClerkDetailModel>/ManifestNo} - {tSClerkDetailModel>/VesselName}" wrapping="true"/>
-						<m:ObjectMarker type="Flagged" class="sapUiTinyMarginBegin"/>
 					</m:HBox>
 				</expandedHeading>
 				<snappedHeading>
 					<m:FlexBox fitContainer="true" alignItems="Center">
 						<m:Avatar backgroundColor="Accent9" src="sap-icon://shipping-status" class="sapUiTinyMarginEnd"/>
 						<m:Title text="{tSClerkDetailModel>/ManifestNo} - {tSClerkDetailModel>/VesselName}" wrapping="true"/>
-						<m:ObjectMarker type="Flagged" class="sapUiTinyMarginBegin"/>
 					</m:FlexBox>
 				</snappedHeading>
 				<expandedContent>
@@ -41,7 +39,7 @@
 								<m:Label text="{i18n>VesselName}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input id="vnameInp" value="{tSClerkDetailModel>/VesselName}"/>
+								<m:Input value="{tSClerkDetailModel>/VesselName}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -49,7 +47,7 @@
 								<m:Label text="Agent Code"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input enabled="false" id="portInp" value="{tSClerkDetailModel>/AgentCode}"/>
+								<m:Input enabled="false" value="{tSClerkDetailModel>/AgentCode}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -57,7 +55,7 @@
 								<m:Label text="Shift"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input id="vrnInp" value="{tSClerkDetailModel>/Shift}"/>
+								<m:Input value="{tSClerkDetailModel>/Shift}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox alignItems="Center">
@@ -65,7 +63,7 @@
 								<m:Label text="Hatch No"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input id="agentInp" value="{tSClerkDetailModel>/HatchNo}"/>
+								<m:Input value="{tSClerkDetailModel>/HatchNo}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox alignItems="Center">
@@ -200,15 +198,11 @@
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
+										<m:FlexBox justifyContent="End" width="100%">
+										<core:Icon color="#333" src="sap-icon://add" alt="X" tooltip="{i18n>sort}" press="addNewRowPress"/>
+										</m:FlexBox>
 										<t:Table visibleRowCount="5" rows="{tSClerkDetailModel>/CargoDetailsSet/results}" selectionMode="None" ariaLabelledBy="title"
 											class="card tableCard no-margin">
-											<t:extension>
-												<m:OverflowToolbar style="Clear">
-													<m:Title text="Cargo Table ({tSClerkDetailModel>/CargoDetailsSet/results/length})"/>
-													<m:ToolbarSpacer/>
-													<core:Icon src="sap-icon://add" alt="X" tooltip="{i18n>sort}" press="addNewRowPress"/>
-												</m:OverflowToolbar>
-											</t:extension>
 											<t:columns>
 												<t:Column sortProperty="LogNumber">
 													<m:Label text="Sling No"/>
@@ -274,15 +268,11 @@
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
+										<m:FlexBox justifyContent="End" width="100%">
+										<core:Icon color="#333" src="sap-icon://add" alt="A" tooltip="{i18n>sort}" press="addNewRowPress"/>
+										</m:FlexBox>
 										<t:Table visibleRowCount="5" rows="{ path: 'tSClerkDetailModel>/ServiceChargeSet/results',filters: {path: 'ItemType', operator: 'EQ', value1: 'A'} }" selectionMode="None" ariaLabelledBy="title"
 											class="card tableCard no-margin">
-											<t:extension>
-												<m:OverflowToolbar style="Clear">
-													<m:Title text="Stevedoring Table ({tSClerkDetailModel>/ServiceChargeSet/results/length})"/>
-													<m:ToolbarSpacer/>
-													<core:Icon src="sap-icon://add" alt="A" tooltip="Add new item" press="addNewRowPress"/>
-												</m:OverflowToolbar>
-											</t:extension>
 											<t:columns>
 												<t:Column sortProperty="Commodity">
 													<m:Label text="Commodity"/>
@@ -342,15 +332,11 @@
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
+										<m:FlexBox justifyContent="End" width="100%">
+										<core:Icon color="#333" src="sap-icon://add" alt="D" tooltip="{i18n>sort}" press="addNewRowPress"/>
+										</m:FlexBox>
 										<t:Table visibleRowCount="5" rows="{ path: 'tSClerkDetailModel>/ServiceChargeSet/results',filters: {path: 'ItemType', operator: 'EQ', value1: 'D'} }" selectionMode="None" ariaLabelledBy="title"
 											class="card tableCard no-margin">
-											<t:extension>
-												<m:OverflowToolbar style="Clear">
-													<m:Title text="Forklift Table ({tSClerkDetailModel>/ServiceChargeSet/results/length})"/>
-													<m:ToolbarSpacer/>
-													<core:Icon src="sap-icon://add" alt="D" tooltip="Add new item" press="addNewRowPress"/>
-												</m:OverflowToolbar>
-											</t:extension>
 											<t:columns>
 												<t:Column sortProperty="FlEquipment">
 													<m:Label text="Equipment"/>
@@ -404,15 +390,11 @@
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
+										<m:FlexBox justifyContent="End" width="100%">
+										<core:Icon color="#333" src="sap-icon://add" alt="E" tooltip="{i18n>sort}" press="addNewRowPress"/>
+										</m:FlexBox>
 										<t:Table visibleRowCount="5" rows="{ path: 'tSClerkDetailModel>/ServiceChargeSet/results',filters: {path: 'ItemType', operator: 'EQ', value1: 'E'} }" selectionMode="None" ariaLabelledBy="title"
 											class="card tableCard no-margin">
-											<t:extension>
-												<m:OverflowToolbar style="Clear">
-													<m:Title text="Crane Table ({tSClerkDetailModel>/ChargeDetailsSet/results/length})"/>
-													<m:ToolbarSpacer/>
-													<core:Icon src="sap-icon://add" alt="E" tooltip="Add new item" press="addNewRowPress"/>
-												</m:OverflowToolbar>
-											</t:extension>
 											<t:columns>
 												<t:Column sortProperty="CrEquipment">
 													<m:Label text="Equipment"/>
@@ -472,15 +454,11 @@
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
+										<m:FlexBox justifyContent="End" width="100%">
+										<core:Icon color="#333" src="sap-icon://add" alt="F" tooltip="{i18n>sort}" press="addNewRowPress"/>
+										</m:FlexBox>
 										<t:Table visibleRowCount="5" rows="{ path: 'tSClerkDetailModel>/ServiceChargeSet/results',filters: {path: 'ItemType', operator: 'EQ', value1: 'F'} }" selectionMode="None" ariaLabelledBy="title"
 											class="card tableCard no-margin">
-											<t:extension>
-												<m:OverflowToolbar style="Clear">
-													<m:Title text="Supplementary Table ({tSClerkDetailModel>/ChargeDetailsSet/results/length})"/>
-													<m:ToolbarSpacer/>
-													<core:Icon src="sap-icon://add" alt="F" tooltip="Add new item" press="addNewRowPress"/>
-												</m:OverflowToolbar>
-											</t:extension>
 											<t:columns>
 												<t:Column>
 													<m:Label text="Date"/>
@@ -534,15 +512,11 @@
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
+										<m:FlexBox justifyContent="End" width="100%">
+										<core:Icon color="#333" src="sap-icon://add" alt="H" tooltip="{i18n>sort}" press="addNewRowPress"/>
+										</m:FlexBox>
 										<t:Table visibleRowCount="5" rows="{ path: 'tSClerkDetailModel>/ServiceChargeSet/results',filters: {path: 'ItemType', operator: 'EQ', value1: 'H'} }" selectionMode="None" ariaLabelledBy="title"
 											class="card tableCard no-margin">
-											<t:extension>
-												<m:OverflowToolbar style="Clear">
-													<m:Title text="Miscellaneous Table ({tSClerkDetailModel>/ChargeDetailsSet/results/length})"/>
-													<m:ToolbarSpacer/>
-													<core:Icon src="sap-icon://add" alt="H" tooltip="Add new item" press="addNewRowPress"/>
-												</m:OverflowToolbar>
-											</t:extension>
 											<t:columns>
 												<t:Column>
 													<m:Label text="Date"/>

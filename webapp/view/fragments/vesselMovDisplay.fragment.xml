@@ -4,14 +4,13 @@
 			<ObjectPageDynamicHeaderTitle>
 				<breadcrumbs>
 					<m:Breadcrumbs currentLocationText="{vesMovModel>/LogSheetNo}">
-						<m:Link id="dashboard" press="onHomePress" text="Home"/>
-						<m:Link id="orders" press="onNavToPress" text="ETA Logs"/>
+						<m:Link href="#dashboardHarbour" text="Home"/>
+						<m:Link href="#items={navModel>/status}&amp;type='{navModel>/type}'" text="ETA Logs"/>
 					</m:Breadcrumbs>
 				</breadcrumbs>
 				<expandedHeading>
 					<m:HBox>
 						<m:Title text="{vesMovModel>/VesselName}" wrapping="true"/>
-						<m:ObjectMarker type="Flagged" class="sapUiTinyMarginBegin"/>
 					</m:HBox>
 				</expandedHeading>
 				<snappedHeading>

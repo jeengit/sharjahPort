@@ -1,6 +1,7 @@
 <mvc:View controllerName="com.demo.sharjahPort.controller.customer.customerDashboardHarbour" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
 	displayBlock="true" xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:u="sap.ui.unified" xmlns:l="sap.ui.layout"
-	xmlns:f="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml">
+	xmlns:f="sap.ui.layout.form" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz="sap.viz.ui5.controls"
+	xmlns:viz.data="sap.viz.ui5.data" xmlns:unified="sap.ui.unified" xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page showHeader="true" class="sapUiResponsiveContentPadding harbourBoard">
 		<customHeader>
 			<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.TopNav" type="XML"/>
@@ -8,43 +9,86 @@
 		<content>
 			<VBox class="section">
 				<Title text="{i18n>dashboard}" class="heading"/>
-				<html:div class="card">
-					<l:Grid class="sapUiSmallMarginTopBottom custTile" defaultSpan="L2 M2 S12">
-						<l:content>
-							<GenericTile ariaLabel="NEW/ETA" press="handleListPress" class="tileLayout" header="{i18n>etaReq}" subheader="{i18n>subReq}">
-								<TileContent unit="" footer="{DashboardCountModel>/0/EtaRequest}">
-									<!--<ImageContent src="sap-icon://complete" />-->
-								</TileContent>
-							</GenericTile>
-							<GenericTile ariaLabel="APPROVED/ETA" class="tileLayout" press="handleListPress" header="{i18n>etaTile}" subheader="{i18n>subApprvd}">
-								<TileContent unit="" footer="{DashboardCountModel>/0/EtaApproved}">
-									<!--<ImageContent src="sap-icon://product" />-->
-								</TileContent>
-							</GenericTile>
-							<GenericTile ariaLabel="PENDING/LOG" class="tileLayout" press="handleListPress" header="{i18n>logPending}" subheader="{i18n>subInProg}">
-								<TileContent unit="" footer="{DashboardCountModel>/0/LogsheetPending}">
-									<!--<ImageContent src="sap-icon://complete" />-->
-								</TileContent>
-							</GenericTile>
-							<GenericTile ariaLabel="CLOSED/LOG" class="tileLayout" press="handleListPress" header="{i18n>logclosed}" subheader="{i18n>agentPay}">
-								<TileContent unit="" footer="{DashboardCountModel>/0/LogsheetClosed}">
-									<!--<ImageContent src="sap-icon://product" />-->
-								</TileContent>
-							</GenericTile>
-							<GenericTile class="tileLayout" header="{i18n>serReq}" subheader="{i18n>subServ}">
-								<TileContent unit="" footer="{DashboardCountModel>/0/ServiceRequest}">
-									<!--<ImageContent src="sap-icon://complete" />-->
-								</TileContent>
-							</GenericTile>
-							<GenericTile class="tileLayout" header="{i18n>serApprov}" subheader="{i18n>subServ}">
-								<TileContent unit="" footer="{DashboardCountModel>/0/ServiceApproved}">
-									<!--<ImageContent src="sap-icon://complete" />-->
-								</TileContent>
-							</GenericTile>
-						</l:content>
-					</l:Grid>
-				</html:div>
+				<l:Grid class="sapUiSmallMarginTopBottom custTile" defaultSpan="L2 M2 S12">
+					<l:content>
+						<GenericTile ariaLabel="NEW/ETA" press="handleListPress" class="tileLayout" header="{i18n>etaReq}" subheader="{i18n>subReq}">
+							<TileContent unit="" footer="{DashboardCountModel>/0/EtaRequest}">
+								<!--<ImageContent src="sap-icon://complete" />-->
+							</TileContent>
+						</GenericTile>
+						<GenericTile ariaLabel="APPROVED/ETA" class="tileLayout" press="handleListPress" header="{i18n>etaTile}" subheader="{i18n>subApprvd}">
+							<TileContent unit="" footer="{DashboardCountModel>/0/EtaApproved}">
+								<!--<ImageContent src="sap-icon://product" />-->
+							</TileContent>
+						</GenericTile>
+						<GenericTile ariaLabel="PENDING/LOG" class="tileLayout" press="handleListPress" header="{i18n>logPending}" subheader="{i18n>subInProg}">
+							<TileContent unit="" footer="{DashboardCountModel>/0/LogsheetPending}">
+								<!--<ImageContent src="sap-icon://complete" />-->
+							</TileContent>
+						</GenericTile>
+						<GenericTile ariaLabel="CLOSED/LOG" class="tileLayout" press="handleListPress" header="{i18n>logclosed}" subheader="{i18n>agentPay}">
+							<TileContent unit="" footer="{DashboardCountModel>/0/LogsheetClosed}">
+								<!--<ImageContent src="sap-icon://product" />-->
+							</TileContent>
+						</GenericTile>
+						<GenericTile class="tileLayout" header="{i18n>serReq}" subheader="{i18n>subServ}">
+							<TileContent unit="" footer="{DashboardCountModel>/0/ServiceRequest}">
+								<!--<ImageContent src="sap-icon://complete" />-->
+							</TileContent>
+						</GenericTile>
+						<GenericTile class="tileLayout" header="{i18n>serApprov}" subheader="{i18n>subServ}">
+							<TileContent unit="" footer="{DashboardCountModel>/0/ServiceApproved}">
+								<!--<ImageContent src="sap-icon://complete" />-->
+							</TileContent>
+						</GenericTile>
+					</l:content>
+				</l:Grid>
 			</VBox>
+			<FlexBox class="sapUiTinyMarginBegin" width="100%" height="300px">
+				<VBox width="32.2%" class="box-shadow">
+					<viz:Popover id="idPopOver"></viz:Popover>
+					<viz:VizFrame
+						vizProperties="{ title: {text : 'Log Sheet', visible : true},plotArea:{ dataLabel:{visible: true,showTotal:true,type:'normal'} }}"
+						id="idVizFrame" uiConfig="{applicationSet:'fiori'}" height="300px" width="100%" vizType='pie'>
+						<viz:dataset>
+							<viz.data:FlattenedDataset data="{pieChartModel>/results}">
+								<viz.data:dimensions>
+									<viz.data:DimensionDefinition name="Status" value="{pieChartModel>status}"/>
+								</viz.data:dimensions>
+								<viz.data:measures>
+									<viz.data:MeasureDefinition name="Count" value="{pieChartModel>count}"/>
+								</viz.data:measures>
+							</viz.data:FlattenedDataset>
+						</viz:dataset>
+						<viz:feeds>
+							<viz.feeds:FeedItem uid="size" type="Measure" values="Count"/>
+							<viz.feeds:FeedItem uid="color" type="Dimension" values="Status"/>
+						</viz:feeds>
+					</viz:VizFrame>
+				</VBox>
+				<VBox width="66.8%">
+					<FlexBox alignContent="Center" class="sapUiSmallMarginBegin box-shadow">
+						<PlanningCalendar height="300px" startDate="{path: '/startDate'}" rows="{path: '/people'}" appointmentsVisualization="Filled"
+							appointmentSelect="handleAppointmentSelect" showEmptyIntervalHeaders="false" stickyHeader="true" showWeekNumbers="true">
+							<toolbarContent>
+								<Title text="Title" titleStyle="H4"/>
+							</toolbarContent>
+							<rows>
+								<PlanningCalendarRow icon="{pic}" title="{name}" text="{role}" appointments="{path : 'appointments', templateShareable: false}"
+									intervalHeaders="{path: 'headers', templateShareable: false}">
+									<appointments>
+										<unified:CalendarAppointment startDate="{start}" endDate="{end}" icon="{pic}" title="{title}" text="{info}" type="{type}"
+											tentative="{tentative}"></unified:CalendarAppointment>
+									</appointments>
+									<intervalHeaders>
+										<unified:CalendarAppointment startDate="{start}" endDate="{end}" icon="{pic}" title="{title}" type="{type}"></unified:CalendarAppointment>
+									</intervalHeaders>
+								</PlanningCalendarRow>
+							</rows>
+						</PlanningCalendar>
+					</FlexBox>
+				</VBox>
+			</FlexBox>
 			<!--<FlexBox class="section tabs" width="100%">-->
 			<!--	<HBox class="harbourList" width="20%">-->
 			<!--		<List headerText="ETA" mode="None"-->

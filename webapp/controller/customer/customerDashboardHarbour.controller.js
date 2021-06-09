@@ -1,16 +1,27 @@
 sap.ui.define([
 	"../BaseController",
 	"sap/ui/model/json/JSONModel"
-], function (BaseController, JSONModel) {
+], function(BaseController, JSONModel) {
 	"use strict";
 	return BaseController.extend("com.demo.sharjahPort.controller.customer.customerDashboardHarbour", {
-		onInit: function () {
+		onInit: function() {
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.getRoute("dashboardHarbour").attachPatternMatched(this._onObjectMatched, this);
 		},
-		_onObjectMatched: function () {
+		_onObjectMatched: function() {
 			this.getUserName();
-			this.getModel("DashboardCount","DashboardCountModel");
+			this.getModel("DashboardCount", "DashboardCountModel");
+			var oModData = this.getView().getModel("DashboardCountModel").getData();
+			var res = {
+				"results": [{
+					"status":"Pending",
+					"count": oModData['0'].LogsheetPending
+				},{
+					"status":"Closed",
+					"count": oModData['0'].LogsheetClosed
+				}]
+			};
+			this.getView().setModel(new JSONModel(res), "pieChartModel");
 			var oData = {
 				"results": [{
 					"count": 1,
@@ -164,7 +175,7 @@ sap.ui.define([
 			this.getView().setModel(new JSONModel(pendReqData), "pendReqTable");
 			sap.ui.core.BusyIndicator.hide();
 		},
-		handleListPress: function (oEvent) {
+		handleListPress: function(oEvent) {
 				sap.ui.core.BusyIndicator.show();
 				var status = oEvent.getSource().getAriaLabel().split("/")[0];
 				var type = oEvent.getSource().getAriaLabel().split("/")[1];

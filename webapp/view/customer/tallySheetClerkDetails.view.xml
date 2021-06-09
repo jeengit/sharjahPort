@@ -13,7 +13,7 @@
 				<ToolbarSpacer/>
 				<Button id="cancelBtn" type="Reject" text="Cancel" visible="false"/>
 				<Button id="saveBtn" type="Accept" text="Save" visible="false"/>
-				<Button id="editBtn" type="Emphasized" text="Edit"/>
+				<Button id="editBtn" text="Edit"/>
 			</OverflowToolbar>
 		</footer>
 	</Page>

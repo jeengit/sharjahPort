@@ -8,7 +8,7 @@
 		<content>
 			<VBox class="sapUiContentPadding">
 				<Breadcrumbs currentLocationText="Log Sheet">
-					<Link id="dashboard" press="onHomePress" text="Home"/>
+					<Link href="#dashboardHarbour" text="Home"/>
 				</Breadcrumbs>
 				<t:Table id="logTable" rows="{etaListModel>/results}" selectionMode="None" ariaLabelledBy="title"
 					class="card tableCard no-margin">

@@ -13,6 +13,7 @@
 			<OverflowToolbar>
 				<ToolbarSpacer/>
 				<Button id="cancel" type="Reject" text="Cancel" visible="false" press="handleChangePress"/>
+				<Button id="create" type="Accept" text="Create" visible="false" press="handleChangePress"/>
 				<Button id="save" type="Accept" text="Save" visible="false" press="handleChangePress"/>
 				<Button id="edit" text="Edit" visible="false" press="handleChangePress"/>
 			</OverflowToolbar>

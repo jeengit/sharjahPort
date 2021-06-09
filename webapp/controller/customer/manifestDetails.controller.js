@@ -41,13 +41,15 @@ sap.ui.define([
 					if (status === 'CUST_APPROVED' || status === 'MAN_CREATED') {
 						that.getView().byId("createBtn").setVisible(true);
 						that.getView().byId("delCrtBtn").setVisible(false);
-						// that.getView().byId("editBtn").setVisible(false);
+						that.getView().byId("tallyBtn").setVisible(false);
+						that.getView().byId("tallyCrtBtn").setVisible(false);
 						that.getView().byId("saveBtn").setVisible(false);
 						that.getView().byId("cancelBtn").setVisible(false);
 					} else {
 						that.getView().byId("createBtn").setVisible(false);
 						that.getView().byId("delCrtBtn").setVisible(true);
-						// that.getView().byId("editBtn").setVisible(true);
+						// that.getView().byId("tallyBtn").setVisible(true);
+						// that.getView().byId("tallyCrtBtn").setVisible(true);
 						that.getView().byId("saveBtn").setVisible(false);
 						that.getView().byId("cancelBtn").setVisible(false);
 					}
@@ -147,13 +149,12 @@ sap.ui.define([
 			});
 		},
 		handleTallySheetPress: function(evt) {
-				var sPath = evt.getSource().getBindingContext("BOEDetailsModel");
-				console.log(sPath);
-			var id = evt.getSource().getBindingContext("BOEDetailsModel").getProperty().TlyShtCode;
+			
+			var id = evt.getSource().getModel("BOEDetailsModel").getData().TlyShtCode;
 				this.getRouter().navTo("tallySheetCargo", {
-				sPath: encodeURIComponent(sPath),
-				id: id,
-				status: status
+				sPath: encodeURIComponent(),
+				id: "1000000000"
+				
 			});
 		}
 	});

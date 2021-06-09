@@ -101,7 +101,7 @@
 				]
 			}, {
 				"name": "etaList",
-				"pattern": "items={sPath}&type={type}",
+				"pattern": "items={sPath}&type='ETA'",
 				"target": [
 					"home",
 					"etaList"
@@ -115,7 +115,7 @@
 				]
 			}, {
 				"name": "logList",
-				"pattern": "items={sPath}&type={type}",
+				"pattern": "items={sPath}&type='LOG'",
 				"target": [
 					"home",
 					"logList"

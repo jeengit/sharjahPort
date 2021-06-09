@@ -14,7 +14,8 @@
 				<Button id="createBtn" type="Accept" text="Create" visible="false" press="handleCreatePress"/>
 				<Button id="cancelBtn" type="Reject" text="Cancel" visible="false" press="handleCreatePress"/>
 				<Button id="saveBtn" type="Emphasized" text="Save" visible="false" press="handleCreatePress"/>
-				<!--<Button id="tallyBtn" type="Emphasized" text="Tally Sheet"  press="handleTallySheetPress"/>-->
+				<Button id="tallyBtn" visible="{= ${BOEDetailsModel>/TlyShtCode} === '' ? false: true}" type="Emphasized" text="Tally Sheet"  press="handleTallySheetPress"/>
+				<Button id="tallyCrtBtn" visible="{= ${BOEDetailsModel>/TlyShtCode} === '' ? true: false}"  type="Emphasized" text="Create Tally Sheet"  press="handleTallySheetPress"/>
 			</OverflowToolbar>
 		</footer>
 	</Page>

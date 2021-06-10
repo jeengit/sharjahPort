@@ -196,7 +196,7 @@
 			},
 			{
 				"name": "tallySheetCargo",
-				"pattern": "tallySheetCargo/{sPath}/{id}",
+				"pattern": "tallySheetCargo/{sPath}/{id}/{status}",
 				"target": [
 					"home",
 					"tallySheetCargo"

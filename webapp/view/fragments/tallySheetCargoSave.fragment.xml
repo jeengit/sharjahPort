@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns:t="sap.ui.table" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core">
-	<ObjectPageLayout upperCaseAnchorBar="false" id="tallyCargochangeId" class="objLayoutClass editMode">
+	<ObjectPageLayout upperCaseAnchorBar="false" id="tallyCargoSaveId" class="objLayoutClass editMode">
 		<headerTitle>
 			<ObjectPageDynamicHeaderTitle>
 				<breadcrumbs>
@@ -10,13 +10,13 @@
 				</breadcrumbs>
 				<expandedHeading>
 					<m:HBox>
-						<m:Title text="{tSDetailModel>/TallySheetCode}" wrapping="true"/>
+						<m:Title text="Create TallySheet" wrapping="true"/>
 					</m:HBox>
 				</expandedHeading>
 				<snappedHeading>
 					<m:FlexBox fitContainer="true" alignItems="Center">
 						<m:Avatar backgroundColor="Accent9" src="sap-icon://excel-attachment" class="sapUiTinyMarginEnd"/>
-						<m:Title text="{tSDetailModel>/TallySheetCode}" wrapping="true"/>
+						<m:Title text="Create TallySheet" wrapping="true"/>
 					</m:FlexBox>
 				</snappedHeading>
 				<expandedContent>
@@ -40,7 +40,7 @@
 								<m:Label text="{i18n>tallyCode}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input  value="{tSDetailModel>/TallySheetCode}"/>
+								<m:Input  value="{tSCrtModel>/TallySheetCode}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -48,7 +48,7 @@
 								<m:Label text="{i18n>PortName}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input  value="{tSDetailModel>/PortName}"/>
+								<m:Input  value="{tSCrtModel>/PortName}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -56,7 +56,7 @@
 								<m:Label text="{i18n>manNo}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input  value="{tSDetailModel>/ManifestNo}"/>
+								<m:Input  value="{tSCrtModel>/ManifestNo}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox alignItems="Center">
@@ -64,7 +64,7 @@
 								<m:Label text="{i18n>ConsigneeCode}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input  value="{tSDetailModel>/ConsigneeCode}"/>
+								<m:Input  value="{tSCrtModel>/ConsigneeCode}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox alignItems="Center">
@@ -72,7 +72,7 @@
 								<m:Label text="{i18n>portOrg}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input value="{tSDetailModel>/PortOfShipment}"/>
+								<m:Input value="{tSCrtModel>/PortOfShipment}"/>
 							</m:HBox>
 						</m:HBox>
 					
@@ -81,7 +81,7 @@
 								<m:Label text="Completed "/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:ComboBox selectedKey="{tSDetailModel>/CargoCategory}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="Select">
+								<m:ComboBox selectedKey="{tSCrtModel>/CargoCategory}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="Select">
 									<core:Item key="{vesMovBertModel>CargoCategory}" text="{vesMovBertModel>CargoCategory}"/>
 								</m:ComboBox>
 							</m:HBox>
@@ -95,7 +95,7 @@
 								<m:Label text="{i18n>ArrivalDate}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:DatePicker value="{tSDetailModel>/ArrivalDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+								<m:DatePicker value="{tSCrtModel>/ArrivalDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
 							</m:HBox>
 						</m:HBox>
 							<m:HBox alignItems="Center">
@@ -103,7 +103,7 @@
 								<m:Label text="B/L no"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input value="{tSDetailModel>/BLNo}"/>
+								<m:Input value="{tSCrtModel>/BLNo}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -111,7 +111,7 @@
 								<m:Label text="{i18n>crtDate}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:DatePicker value="{tSDetailModel>/CreationDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+								<m:DatePicker value="{tSCrtModel>/CreationDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -119,7 +119,7 @@
 								<m:Label text="{i18n>Agentcode}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input value="{tSDetailModel>/AgentCode}"/>
+								<m:Input value="{tSCrtModel>/AgentCode}"/>
 							</m:HBox>
 						</m:HBox>
 					
@@ -128,7 +128,7 @@
 								<m:Label text="{i18n>b/ldate}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:DatePicker value="{tSDetailModel>/BLDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+								<m:DatePicker value="{tSCrtModel>/BLDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox alignItems="Center">
@@ -136,7 +136,7 @@
 								<m:Label text="Grand Total"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input value="{tSDetailModel>/GrandTotal}"/>
+								<m:Input value="{tSCrtModel>/GrandTotal}"/>
 							</m:HBox>
 						</m:HBox>
 					</m:VBox>
@@ -148,7 +148,7 @@
 								<m:Label text="{i18n>portDis}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input value="{tSDetailModel>/PortOfDischarge}"/>
+								<m:Input value="{tSCrtModel>/PortOfDischarge}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -156,7 +156,7 @@
 								<m:Label text="Voyage number"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input enabled="false" value="{tSDetailModel>/VoyageNumber}"/>
+								<m:Input enabled="false" value="{tSCrtModel>/VoyageNumber}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -164,7 +164,7 @@
 								<m:Label text="VRN no"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input enabled="false" value="{tSDetailModel>/VRNNo}"/>
+								<m:Input enabled="false" value="{tSCrtModel>/VRNNo}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -172,7 +172,7 @@
 								<m:Label text="Agent name"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input enabled="false" value="{tSDetailModel>/AgentName}"/>
+								<m:Input enabled="false" value="{tSCrtModel>/AgentName}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox alignItems="Center">
@@ -180,7 +180,7 @@
 								<m:Label text="Consignee name"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input enabled="false" value="{tSDetailModel>/ConsigneeName}"/>
+								<m:Input enabled="false" value="{tSCrtModel>/ConsigneeName}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox alignItems="Center">
@@ -188,7 +188,7 @@
 								<m:Label text="Split"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:ComboBox selectedKey="{tSDetailModel>/CargoCategory}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="Select">
+								<m:ComboBox selectedKey="{tSCrtModel>/CargoCategory}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="Select">
 									<core:Item key="{vesMovBertModel>CargoCategory}" text="{vesMovBertModel>CargoCategory}"/>
 								</m:ComboBox>
 							</m:HBox>
@@ -205,49 +205,49 @@
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
-										<t:Table rows="{ path: 'tSDetailModel>/ChargeDetails/results',filters: {path: 'ItmType', operator: 'EQ', value1: 'A'} }" visibleRowCount="5" class="tableCard" selectionMode="None"
+										<t:Table rows="{ path: 'tSCrtModel>/ChargeDetails/results',filters: {path: 'ItemType', operator: 'EQ', value1: 'A'} }" visibleRowCount="5" class="tableCard" selectionMode="None"
 											 ariaLabelledBy="title">
 											<t:columns>
 												<t:Column sortProperty="ETANo">
 													<m:Label wrapping="false" text="{i18n>Commodities}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Commodity}"/>
+														<m:Input value="{tSCrtModel>Commodity}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="UOM"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>UOM}"/>
+														<m:Input value="{tSCrtModel>UOM}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>NoOfpackages}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>NoOfPacks}"/>
+														<m:Input value="{tSCrtModel>NoOfPacks}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>quantity}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Quantity}"/>
+														<m:Input value="{tSCrtModel>Quantity}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>rate}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Rate}"/>
+														<m:Input value="{tSCrtModel>Rate}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>Amount}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Amount}"/>
+														<m:Input value="{tSCrtModel>Amount}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>Remark}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Remark}"/>
+														<m:Input value="{tSCrtModel>Remark}"/>
 													</t:template>
 												</t:Column>
 											</t:columns>
@@ -266,49 +266,49 @@
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
-										<t:Table rows="{ path: 'tSDetailModel>/ChargeDetails/results',filters: {path: 'ItmType', operator: 'EQ', value1: 'B'} }" visibleRowCount="5" class="tableCard" selectionMode="None"
+										<t:Table rows="{ path: 'tSCrtModel>/ChargeDetails/results',filters: {path: 'ItemType', operator: 'EQ', value1: 'B'} }" visibleRowCount="5" class="tableCard" selectionMode="None"
 										 ariaLabelledBy="title">
 											<t:columns>
 												<t:Column sortProperty="ETANo">
 													<m:Label wrapping="false" text="{i18n>Commodities}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Commodity}"/>
+														<m:Input value="{tSCrtModel>Commodity}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="UOM"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>UOM}"/>
+														<m:Input value="{tSCrtModel>UOM}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>NoOfpackages}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>NoOfPacks}"/>
+														<m:Input value="{tSCrtModel>NoOfPacks}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>quantity}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Quantity}"/>
+														<m:Input value="{tSCrtModel>Quantity}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>rate}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Rate}"/>
+														<m:Input value="{tSCrtModel>Rate}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>Amount}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Amount}"/>
+														<m:Input value="{tSCrtModel>Amount}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>Remark}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Remark}"/>
+														<m:Input value="{tSCrtModel>Remark}"/>
 													</t:template>
 												</t:Column>
 											</t:columns>
@@ -327,43 +327,43 @@
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
-										<t:Table rows="{ path: 'tSDetailModel>/ChargeDetails/results',filters: {path: 'ItmType', operator: 'EQ', value1: 'C'} }" visibleRowCount="5" class="tableCard" selectionMode="None"
+										<t:Table rows="{ path: 'tSCrtModel>/ChargeDetails/results',filters: {path: 'ItemType', operator: 'EQ', value1: 'C'} }" visibleRowCount="5" class="tableCard" selectionMode="None"
 											 ariaLabelledBy="title">
 											<t:columns>
 												<t:Column sortProperty="ETANo">
 													<m:Label wrapping="false" text="{i18n>Commodities}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Commodity}"/>
+														<m:Input value="{tSCrtModel>Commodity}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="UOM"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>UOM}"/>
+														<m:Input value="{tSCrtModel>UOM}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>quantity}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Quantity}"/>
+														<m:Input value="{tSCrtModel>Quantity}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>rate}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Rate}"/>
+														<m:Input value="{tSCrtModel>Rate}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>Amount}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Amount}"/>
+														<m:Input value="{tSCrtModel>Amount}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>Remark}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Remark}"/>
+														<m:Input value="{tSCrtModel>Remark}"/>
 													</t:template>
 												</t:Column>
 											</t:columns>
@@ -382,61 +382,61 @@
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
-										<t:Table rows="{ path: 'tSDetailModel>/ChargeDetails/results',filters: {path: 'ItmType', operator: 'EQ', value1: 'D'} }" visibleRowCount="5" class="tableCard" selectionMode="None"
+										<t:Table rows="{ path: 'tSCrtModel>/ChargeDetails/results',filters: {path: 'ItemType', operator: 'EQ', value1: 'D'} }" visibleRowCount="5" class="tableCard" selectionMode="None"
 											 ariaLabelledBy="title">
 											<t:columns>
 												<t:Column sortProperty="ETANo">
 													<m:Label wrapping="false" text="Equipment"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Equipment}"/>
+														<m:Input value="{tSCrtModel>Equipment}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="Shift"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Shift}"/>
+														<m:Input value="{tSCrtModel>Shift}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="Hatch No"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>HatchNo}"/>
+														<m:Input value="{tSCrtModel>HatchNo}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="Date"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Date}"/>
+														<m:Input value="{tSCrtModel>Date}"/>
 													</t:template>
 												</t:Column>
 													<t:Column>
 													<m:Label text="From"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>From}"/>
+														<m:Input value="{tSCrtModel>From}"/>
 													</t:template>
 												</t:Column>
 													<t:Column>
 													<m:Label text="To"/>
 													<t:template>
-														<m:Input value="{delvryDetailsModel>To}"/>
+														<m:Input value="{tSCrtModel>To}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>rate}"/>
 													<t:template>
-														<m:Input value="{delvryDetailsModel>Rate}"/>
+														<m:Input value="{tSCrtModel>Rate}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>Amount}"/>
 													<t:template>
-														<m:Input value="{delvryDetailsModel>Amount}"/>
+														<m:Input value="{tSCrtModel>Amount}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>Remark}"/>
 													<t:template>
-														<m:Input value="{delvryDetailsModel>Remark}"/>
+														<m:Input value="{tSCrtModel>Remark}"/>
 													</t:template>
 												</t:Column>
 											</t:columns>
@@ -455,43 +455,43 @@
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
-										<t:Table rows="{ path: 'tSDetailModel>/ChargeDetails/results',filters: {path: 'ItmType', operator: 'EQ', value1: 'E'} }" visibleRowCount="5" class="tableCard" selectionMode="None"
+										<t:Table rows="{ path: 'tSCrtModel>/ChargeDetails/results',filters: {path: 'ItemType', operator: 'EQ', value1: 'E'} }" visibleRowCount="5" class="tableCard" selectionMode="None"
 											 ariaLabelledBy="title">
 											<t:columns>
 												<t:Column sortProperty="ETANo">
 													<m:Label wrapping="false" text="Equipment"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Equipment}"/>
+														<m:Input value="{tSCrtModel>Equipment}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="Shift"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Shift}"/>
+														<m:Input value="{tSCrtModel>Shift}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="Hatch No"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>HatchNo}"/>
+														<m:Input value="{tSCrtModel>HatchNo}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="Date"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Date}"/>
+														<m:Input value="{tSCrtModel>Date}"/>
 													</t:template>
 												</t:Column>
 													<t:Column>
 													<m:Label text="Weight"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Weight}"/>
+														<m:Input value="{tSCrtModel>Weight}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>rate}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Rate}"/>
+														<m:Input value="{tSCrtModel>Rate}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
@@ -522,55 +522,55 @@
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
-										<t:Table rows="{ path: 'tSDetailModel>/ChargeDetails/results',filters: {path: 'ItmType', operator: 'EQ', value1: 'F'} }" visibleRowCount="5" class="tableCard" selectionMode="None"
+										<t:Table rows="{ path: 'tSCrtModel>/ChargeDetails/results',filters: {path: 'ItemType', operator: 'EQ', value1: 'F'} }" visibleRowCount="5" class="tableCard" selectionMode="None"
 											 ariaLabelledBy="title">
 											<t:columns>
 												<t:Column sortProperty="ETANo">
 													<m:Label wrapping="false" text="Supplementary Type"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>SuplymentryType}"/>
+														<m:Input value="{tSCrtModel>SuplymentryType}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="Shift"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Shift}"/>
+														<m:Input value="{tSCrtModel>Shift}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="Date"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Date}"/>
+														<m:Input value="{tSCrtModel>Date}"/>
 													</t:template>
 												</t:Column>
 													<t:Column>
 													<m:Label text="From"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>From}"/>
+														<m:Input value="{tSCrtModel>From}"/>
 													</t:template>
 												</t:Column>
 													<t:Column>
 													<m:Label text="To"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>To}"/>
+														<m:Input value="{tSCrtModel>To}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>rate}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Rate}"/>
+														<m:Input value="{tSCrtModel>Rate}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>Amount}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Amount}"/>
+														<m:Input value="{tSCrtModel>Amount}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>Remark}"/>
 													<t:template>
-														<m:Input value="{delvryDetailsModel>Remark}"/>
+														<m:Input value="{tSCrtModel>Remark}"/>
 													</t:template>
 												</t:Column>
 											</t:columns>

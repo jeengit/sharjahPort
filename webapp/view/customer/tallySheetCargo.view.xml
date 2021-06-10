@@ -6,12 +6,17 @@
 		</customHeader>
 		<content>
 			<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.tallySheetCargoChange" type="XML"/>
+			<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.tallySheetCargoDisplay" type="XML"/>
+			<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.tallySheetCargoSave" type="XML"/>
 		</content>
 		<footer>
 			<OverflowToolbar>
 				<ToolbarSpacer/>
-				<Button id="creteBtn" type="Emphasized" text="Create Bill"/>
-				<Button id="saveBtn" type="Emphasized" text="Save"/>
+				<Button id="creteBtn" visible="{= ${tSCrtModel>/TallySheetCode} === '' ? false : true }" type="Emphasized" text="Create Bill"/>
+				<Button id="saveBtn" visible="false" type="Emphasized" text="Save" press="onTallyUpdatePress"/>
+				<Button id="editBtn" visible="false" type="Emphasized" text="Edit" press="editPress"/>
+				<Button id="tallyBtn" visible="false" press="tallyCrtPress" type="Emphasized"
+					text="Create"/>
 			</OverflowToolbar>
 		</footer>
 	</Page>

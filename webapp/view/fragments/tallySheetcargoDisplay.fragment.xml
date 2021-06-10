@@ -1,11 +1,10 @@
 <core:FragmentDefinition xmlns:t="sap.ui.table" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core">
-	<ObjectPageLayout upperCaseAnchorBar="false" id="tallyCargochangeId" class="objLayoutClass editMode">
+	<ObjectPageLayout upperCaseAnchorBar="false" id="tallyCargoDispId" class="objLayoutClass editMode">
 		<headerTitle>
 			<ObjectPageDynamicHeaderTitle>
 				<breadcrumbs>
 					<m:Breadcrumbs currentLocationText="Tally Sheet">
 						<m:Link press="onHomePress" text="Manifest"/>
-					
 					</m:Breadcrumbs>
 				</breadcrumbs>
 				<expandedHeading>
@@ -16,7 +15,7 @@
 				<snappedHeading>
 					<m:FlexBox fitContainer="true" alignItems="Center">
 						<m:Avatar backgroundColor="Accent9" src="sap-icon://excel-attachment" class="sapUiTinyMarginEnd"/>
-						<m:Title text="{tSDetailModel>/TallySheetCode}" wrapping="true"/>
+						<m:Title text="{tSDetailModel>/tallyCode}" wrapping="true"/>
 					</m:FlexBox>
 				</snappedHeading>
 				<expandedContent>
@@ -36,54 +35,53 @@
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox width="40%">
+							<m:HBox  class="sapUiTinyMarginEnd">
 								<m:Label text="{i18n>tallyCode}"/>
 							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input  value="{tSDetailModel>/TallySheetCode}"/>
+							<m:HBox >
+								<m:Text text="{tSDetailModel>/TallySheetCode}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox width="40%">
+							<m:HBox class="sapUiTinyMarginEnd">
 								<m:Label text="{i18n>PortName}"/>
 							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input  value="{tSDetailModel>/PortName}"/>
+							<m:HBox>
+								<m:Text text="{tSDetailModel>/PortName}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox width="40%">
+							<m:HBox width="40%" class="sapUiTinyMarginEnd">
 								<m:Label text="{i18n>manNo}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input  value="{tSDetailModel>/ManifestNo}"/>
+								<m:Text text="{tSDetailModel>/ManifestNo}"/>
 							</m:HBox>
 						</m:HBox>
-						<m:HBox alignItems="Center">
-							<m:HBox width="40%">
+						<m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+							<m:HBox width="40%" class="sapUiTinyMarginEnd">
 								<m:Label text="{i18n>ConsigneeCode}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input  value="{tSDetailModel>/ConsigneeCode}"/>
+								<m:Text text="{tSDetailModel>/ConsigneeCode}"/>
 							</m:HBox>
 						</m:HBox>
-						<m:HBox alignItems="Center">
-							<m:HBox width="40%">
+						<m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+							<m:HBox width="40%" class="sapUiTinyMarginEnd">
 								<m:Label text="{i18n>portOrg}"/>
 							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input value="{tSDetailModel>/PortOfShipment}"/>
+							<m:HBox >
+								<m:Text text="{tSDetailModel>/PortOfShipment}"/>
 							</m:HBox>
 						</m:HBox>
 					
-						<m:HBox alignItems="Center">
-							<m:HBox width="40%">
+						<m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+							<m:HBox class="sapUiTinyMarginEnd">
 								<m:Label text="Completed "/>
 							</m:HBox>
-							<m:HBox width="60%">
-								<m:ComboBox selectedKey="{tSDetailModel>/CargoCategory}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="Select">
-									<core:Item key="{vesMovBertModel>CargoCategory}" text="{vesMovBertModel>CargoCategory}"/>
-								</m:ComboBox>
+							<m:HBox >
+									<m:Text text="{tSDetailModel>/CargoCategory}"/>
+							
 							</m:HBox>
 						</m:HBox>
 					</m:VBox>
@@ -91,52 +89,52 @@
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox width="40%">
+							<m:HBox  class="sapUiTinyMarginEnd">
 								<m:Label text="{i18n>ArrivalDate}"/>
 							</m:HBox>
-							<m:HBox width="60%">
-								<m:DatePicker value="{tSDetailModel>/ArrivalDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+							<m:HBox >
+								<m:Text text="{tSDetailModel>/ArrivalDate}"/>
 							</m:HBox>
 						</m:HBox>
-							<m:HBox alignItems="Center">
-							<m:HBox width="40%">
+							<m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+							<m:HBox   class="sapUiTinyMarginEnd">
 								<m:Label text="B/L no"/>
 							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input value="{tSDetailModel>/BLNo}"/>
+							<m:HBox >
+								<m:Text text="{tSDetailModel>/BLNo}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox width="40%">
+							<m:HBox   class="sapUiTinyMarginEnd">
 								<m:Label text="{i18n>crtDate}"/>
 							</m:HBox>
-							<m:HBox width="60%">
-								<m:DatePicker value="{tSDetailModel>/CreationDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+							<m:HBox >
+								<m:Text text="{tSDetailModel>/CreationDate}" />
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox width="40%">
+							<m:HBox   class="sapUiTinyMarginEnd">
 								<m:Label text="{i18n>Agentcode}"/>
 							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input value="{tSDetailModel>/AgentCode}"/>
+							<m:HBox >
+								<m:Text text="{tSDetailModel>/AgentCode}"/>
 							</m:HBox>
 						</m:HBox>
 					
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox width="40%">
+							<m:HBox  class="sapUiTinyMarginEnd">
 								<m:Label text="{i18n>b/ldate}"/>
 							</m:HBox>
-							<m:HBox width="60%">
-								<m:DatePicker value="{tSDetailModel>/BLDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+							<m:HBox >
+								<m:Text text="{tSDetailModel>/BLDate}" />
 							</m:HBox>
 						</m:HBox>
 						<m:HBox alignItems="Center">
-							<m:HBox width="40%">
+							<m:HBox  class="sapUiTinyMarginEnd">
 								<m:Label text="Grand Total"/>
 							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input value="{tSDetailModel>/GrandTotal}"/>
+							<m:HBox >
+								<m:Text text="{tSDetailModel>/GrandTotal}"/>
 							</m:HBox>
 						</m:HBox>
 					</m:VBox>
@@ -144,53 +142,52 @@
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 							<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox width="40%">
+							<m:HBox   class="sapUiTinyMarginEnd">
 								<m:Label text="{i18n>portDis}"/>
 							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input value="{tSDetailModel>/PortOfDischarge}"/>
+							<m:HBox >
+								<m:Text text="{tSDetailModel>/PortOfDischarge}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox width="40%">
+							<m:HBox  class="sapUiTinyMarginEnd">
 								<m:Label text="Voyage number"/>
 							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input enabled="false" value="{tSDetailModel>/VoyageNumber}"/>
+							<m:HBox >
+								<m:Text text="{tSDetailModel>/VoyageNumber}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox width="40%">
+							<m:HBox   class="sapUiTinyMarginEnd">
 								<m:Label text="VRN no"/>
 							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input enabled="false" value="{tSDetailModel>/VRNNo}"/>
+							<m:HBox >
+								<m:Text text="{tSDetailModel>/VRNNo}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox width="40%">
+							<m:HBox  class="sapUiTinyMarginEnd">
 								<m:Label text="Agent name"/>
 							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input enabled="false" value="{tSDetailModel>/AgentName}"/>
+							<m:HBox >
+								<m:Text text="{tSDetailModel>/AgentName}"/>
 							</m:HBox>
 						</m:HBox>
-						<m:HBox alignItems="Center">
-							<m:HBox width="40%">
+						<m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+							<m:HBox   class="sapUiTinyMarginEnd">
 								<m:Label text="Consignee name"/>
 							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input enabled="false" value="{tSDetailModel>/ConsigneeName}"/>
+							<m:HBox >
+								<m:Text text="{tSDetailModel>/ConsigneeName}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox alignItems="Center">
-							<m:HBox width="40%">
+							<m:HBox  class="sapUiTinyMarginEnd">
 								<m:Label text="Split"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:ComboBox selectedKey="{tSDetailModel>/CargoCategory}" width="100%" items="{path: 'vesMovBertModel>/'}" placeholder="Select">
-									<core:Item key="{vesMovBertModel>CargoCategory}" text="{vesMovBertModel>CargoCategory}"/>
-								</m:ComboBox>
+									<m:Text text="{tSDetailModel>/Split}"/>
+							
 							</m:HBox>
 						</m:HBox>
 					</m:VBox>
@@ -211,43 +208,43 @@
 												<t:Column sortProperty="ETANo">
 													<m:Label wrapping="false" text="{i18n>Commodities}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Commodity}"/>
+														<m:Text text="{tSDetailModel>Commodity}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="UOM"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>UOM}"/>
+														<m:Text text="{tSDetailModel>UOM}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>NoOfpackages}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>NoOfPacks}"/>
+														<m:Text text="{tSDetailModel>NoOfPacks}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>quantity}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Quantity}"/>
+														<m:Text text="{tSDetailModel>Quantity}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>rate}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Rate}"/>
+														<m:Text text="{tSDetailModel>Rate}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>Amount}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Amount}"/>
+														<m:Text text="{tSDetailModel>Amount}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>Remark}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Remark}"/>
+														<m:Text text="{tSDetailModel>Remark}"/>
 													</t:template>
 												</t:Column>
 											</t:columns>
@@ -272,43 +269,43 @@
 												<t:Column sortProperty="ETANo">
 													<m:Label wrapping="false" text="{i18n>Commodities}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Commodity}"/>
+														<m:Text text="{tSDetailModel>Commodity}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="UOM"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>UOM}"/>
+														<m:Text text="{tSDetailModel>UOM}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>NoOfpackages}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>NoOfPacks}"/>
+														<m:Text text="{tSDetailModel>NoOfPacks}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>quantity}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Quantity}"/>
+														<m:Text text="{tSDetailModel>Quantity}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>rate}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Rate}"/>
+														<m:Text text="{tSDetailModel>Rate}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>Amount}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Amount}"/>
+														<m:Text text="{tSDetailModel>Amount}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>Remark}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Remark}"/>
+														<m:Text text="{tSDetailModel>Remark}"/>
 													</t:template>
 												</t:Column>
 											</t:columns>
@@ -333,37 +330,37 @@
 												<t:Column sortProperty="ETANo">
 													<m:Label wrapping="false" text="{i18n>Commodities}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Commodity}"/>
+														<m:Text text="{tSDetailModel>Commodity}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="UOM"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>UOM}"/>
+														<m:Text text="{tSDetailModel>UOM}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>quantity}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Quantity}"/>
+														<m:Text text="{tSDetailModel>Quantity}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>rate}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Rate}"/>
+														<m:Text text="{tSDetailModel>Rate}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>Amount}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Amount}"/>
+														<m:Text text="{tSDetailModel>Amount}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>Remark}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Remark}"/>
+														<m:Text text="{tSDetailModel>Remark}"/>
 													</t:template>
 												</t:Column>
 											</t:columns>
@@ -388,55 +385,55 @@
 												<t:Column sortProperty="ETANo">
 													<m:Label wrapping="false" text="Equipment"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Equipment}"/>
+														<m:Text text="{tSDetailModel>Equipment}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="Shift"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Shift}"/>
+														<m:Text text="{tSDetailModel>Shift}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="Hatch No"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>HatchNo}"/>
+														<m:Text text="{tSDetailModel>HatchNo}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="Date"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Date}"/>
+														<m:Text text="{tSDetailModel>Date}"/>
 													</t:template>
 												</t:Column>
 													<t:Column>
 													<m:Label text="From"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>From}"/>
+														<m:Text text="{tSDetailModel>From}"/>
 													</t:template>
 												</t:Column>
 													<t:Column>
 													<m:Label text="To"/>
 													<t:template>
-														<m:Input value="{delvryDetailsModel>To}"/>
+														<m:Text text="{delvryDetailsModel>To}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>rate}"/>
 													<t:template>
-														<m:Input value="{delvryDetailsModel>Rate}"/>
+														<m:Text text="{delvryDetailsModel>Rate}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>Amount}"/>
 													<t:template>
-														<m:Input value="{delvryDetailsModel>Amount}"/>
+														<m:Text text="{delvryDetailsModel>Amount}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>Remark}"/>
 													<t:template>
-														<m:Input value="{delvryDetailsModel>Remark}"/>
+														<m:Text text="{delvryDetailsModel>Remark}"/>
 													</t:template>
 												</t:Column>
 											</t:columns>
@@ -461,49 +458,49 @@
 												<t:Column sortProperty="ETANo">
 													<m:Label wrapping="false" text="Equipment"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Equipment}"/>
+														<m:Text text="{tSDetailModel>Equipment}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="Shift"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Shift}"/>
+														<m:Text text="{tSDetailModel>Shift}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="Hatch No"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>HatchNo}"/>
+														<m:Text text="{tSDetailModel>HatchNo}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="Date"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Date}"/>
+														<m:Text text="{tSDetailModel>Date}"/>
 													</t:template>
 												</t:Column>
 													<t:Column>
 													<m:Label text="Weight"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Weight}"/>
+														<m:Text text="{tSDetailModel>Weight}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>rate}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Rate}"/>
+														<m:Text text="{tSDetailModel>Rate}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>Amount}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Amount}"/>
+														<m:Text text="{tSDetailModel>Amount}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>Remark}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Remark}"/>
+														<m:Text text="{tSDetailModel>Remark}"/>
 													</t:template>
 												</t:Column>
 											</t:columns>
@@ -528,49 +525,49 @@
 												<t:Column sortProperty="ETANo">
 													<m:Label wrapping="false" text="Supplementary Type"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>SuplymentryType}"/>
+														<m:Text text="{tSDetailModel>SuplymentryType}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="Shift"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Shift}"/>
+														<m:Text text="{tSDetailModel>Shift}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="Date"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Date}"/>
+														<m:Text text="{tSDetailModel>Date}"/>
 													</t:template>
 												</t:Column>
 													<t:Column>
 													<m:Label text="From"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>From}"/>
+														<m:Text text="{tSDetailModel>From}"/>
 													</t:template>
 												</t:Column>
 													<t:Column>
 													<m:Label text="To"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>To}"/>
+														<m:Text text="{tSDetailModel>To}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>rate}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Rate}"/>
+														<m:Text text="{tSDetailModel>Rate}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>Amount}"/>
 													<t:template>
-														<m:Input value="{tSDetailModel>Amount}"/>
+														<m:Text text="{tSDetailModel>Amount}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="{i18n>Remark}"/>
 													<t:template>
-														<m:Input value="{delvryDetailsModel>Remark}"/>
+														<m:Text text="{delvryDetailsModel>Remark}"/>
 													</t:template>
 												</t:Column>
 											</t:columns>

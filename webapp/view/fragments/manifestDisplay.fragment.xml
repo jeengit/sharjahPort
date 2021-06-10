@@ -187,26 +187,26 @@
 														<t:Table visible="{= ${BOEDetailsModel>CommoditiesInDetailsSet/results/length} === 0 ? false:true}" visibleRowCount="6"
 															rows="{BOEDetailsModel>CommoditiesInDetailsSet/results}" selectionMode="None" ariaLabelledBy="title">
 															<t:columns>
-																<t:Column width="130px" sortProperty="ManifestNo">
+																<t:Column  sortProperty="ManifestNo">
 																	<m:Label wrapping="false" text="Item No"/>
 																	<t:template>
 																		<m:Text text="{BOEDetailsModel>ItemNo}"/>
 																	</t:template>
 																</t:Column>
-																	<t:Column width="130px" sortProperty="ManifestNo">
+																	<t:Column  sortProperty="ManifestNo">
 																	<m:Label wrapping="false" text="Commodities Description"/>
 																	<t:template>
 																		<m:Text text="{BOEDetailsModel>CommoditiesDescription}"/>
 																	</t:template>
 																</t:Column>
 															
-																<t:Column width="130px">
+																<t:Column >
 																	<m:Label text="Package Type"/>
 																	<t:template>
 																		<m:Text text="{BOEDetailsModel>PackageType}"/>
 																	</t:template>
 																</t:Column>
-																	<t:Column width="130px">
+																	<t:Column>
 																	<m:Label text="No Of Packages"/>
 																	<t:template>
 																		<m:Text text="{BOEDetailsModel>NoOfPackages}"/>

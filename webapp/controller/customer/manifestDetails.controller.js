@@ -24,10 +24,10 @@ sap.ui.define([
 			var that = this;
 			oModel.read("/ManifestDetailsSet", {
 				urlParameters: {
-						"$filter": status === "OPEN" ? "ManifestNo eq '" + oEvent.getParameter("arguments").id + "'" : 
-						"ManifestNo eq '" + oEvent.getParameter("arguments").id + "' and ImFlag eq 'CUSTOMS'",
-						"$expand": "BillOfEntrySet/CommoditiesInDetailsSet"
-					},
+					"$filter": status === "OPEN" ? "ManifestNo eq '" + oEvent.getParameter("arguments").id + "'" : "ManifestNo eq '" + oEvent.getParameter(
+						"arguments").id + "' and ImFlag eq 'CUSTOMS'",
+					"$expand": "BillOfEntrySet/CommoditiesInDetailsSet"
+				},
 				success: function(data) {
 					that.getView().setModel(new JSONModel(data.results['0']), "BOEDetailsModel");
 					that.getView().byId(pageId + "--manifestChangeId").setVisible(false);
@@ -136,7 +136,7 @@ sap.ui.define([
 			oModel.create("/ManifestDetailsSet", oEntry, {
 				success: function(data) {
 					// sap.m.MessageToast.show("" + data.ManifestNo + "Created Successfully..");
-						sap.m.MessageToast.show("Manifest No - " + data.ManifestNo + " Created Successfully", {
+					sap.m.MessageToast.show("Manifest No - " + data.ManifestNo + " Created Successfully", {
 						closeOnBrowserNavigation: false
 					});
 					that.getRouter().navTo("dashboardManifest");
@@ -149,13 +149,22 @@ sap.ui.define([
 			});
 		},
 		handleTallySheetPress: function(evt) {
-			
-			var id = evt.getSource().getModel("BOEDetailsModel").getData().TlyShtCode;
-				this.getRouter().navTo("tallySheetCargo", {
+		var	tallyHeaderData =  evt.getSource().getModel("BOEDetailsModel").getData();
+		
+			sap.ui.getCore().setModel(new JSONModel(tallyHeaderData), "ManifModel");
+			var tallycode = evt.getSource().getModel("BOEDetailsModel").getData().TlyShtCode;
+		var	mafstNo =evt.getSource().getModel("BOEDetailsModel").getData().ManifestNo; 
+			var id = evt.getSource().getId().split("--")[1] === "tallyBtn" ? tallycode : mafstNo;
+			var status= evt.getSource().getId().split("--")[1] === "tallyBtn" ? "Details" : "create";
+			console.log(tallyHeaderData);
+			tallyHeaderData.ActionFlag === "No items to consolidate" ? sap.m.MessageToast.show(	tallyHeaderData.ActionFlag) :   this.getRouter().navTo("tallySheetCargo", {
 				sPath: encodeURIComponent(),
-				id: "1000000000"
-				
-			});
+				id: id,
+				status: status
+
+			});                  
+
+			
 		}
 	});
 });

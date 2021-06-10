@@ -205,7 +205,7 @@
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
-										<t:Table rows="{ path: 'tSCrtModel>/ChargeDetails/results',filters: {path: 'ItemType', operator: 'EQ', value1: 'A'} }" visibleRowCount="5" class="tableCard" selectionMode="None"
+										<t:Table rows="{ path: 'tSCrtModel>/ChargeDetails/results',filters: {path: 'ItmType', operator: 'EQ', value1: 'A'} }" visibleRowCount="5" class="tableCard" selectionMode="None"
 											 ariaLabelledBy="title">
 											<t:columns>
 												<t:Column sortProperty="ETANo">

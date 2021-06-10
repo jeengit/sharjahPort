@@ -72,8 +72,12 @@ sap.ui.define([
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
 			oModel.create("/DeliveryDetailsSet", oEntry, {
-				success: function() {
-					sap.m.MessageToast.show("Delivery No - " + oEntry.DeliveryName + " has been approved");
+				success: function(data) {
+					if(data && data.BillNo !== 'Not Created' && data.SalesOrderNumber !== 'Not Created') {
+							sap.m.MessageToast.show("Delivery No - " + oEntry.DeliveryName + " has been approved with bill no " + data.BillNo + " and sales order no " + data.SalesOrderNumber);
+					} else {
+						sap.m.MessageToast.show("Delivery is not approved");
+					}
 					sap.ui.core.BusyIndicator.hide();
 				},
 				error: function(oResponse) {
@@ -208,10 +212,13 @@ sap.ui.define([
 			}
 			var that = this;
 			oModel.create("/DeliveryDetailsSet", oEntry, {
-				success: function() {
-					sap.m.MessageToast.show("Created Successfully..");
-					that.getRouter().navTo("dashboardManifest");
-					sap.ui.core.BusyIndicator.hide();
+				success: function(data) {
+					sap.m.MessageToast.show("Delivery Created Successfully with delivery no " + + data.DeliveryName);
+					setTimeout(function(){
+						sap.ui.core.BusyIndicator.hide();
+						that.getRouter().navTo("dashboardManifest");
+					}, 3000);
+					
 				},
 				error: function(oResponse) {
 					sap.m.MessageToast.show(oResponse.statusText);

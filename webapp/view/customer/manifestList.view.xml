@@ -88,7 +88,7 @@
 							</CustomListItem>
 							<headerToolbar>
 								<Toolbar>
-									<Title text="Delivery - {= ${manifestListModel>/0/Status} === 'OPEN' ? 'Open' : 'Closed'} ({deliveryListModel>/length})" level="H1"/>
+									<Title text="Delivery - {= ${deliveryListModel>/0/Status} === 'OPEN' ? 'Open' : 'Closed'} ({deliveryListModel>/length})" level="H1"/>
 								</Toolbar>
 							</headerToolbar>
 						</List>

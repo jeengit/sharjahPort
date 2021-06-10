@@ -341,11 +341,11 @@
 										<m:VBox>
 											<m:HBox class="sapUiTinyMarginBottom">
 												<m:Label text="{i18n>DichComp}" class="sapUiSmallMarginEnd"/>
-												<m:Text text="{delvryDetailsModel>/DisCompleteDate}"/>
+												<m:Text text="{path:'delvryDetailsModel>/DisCompleteDate' , formatter:'.formatter.changeDataFormat'}"/>
 											</m:HBox>
 											<m:HBox class="sapUiTinyMarginBottom">
 												<m:Label text="{i18n>storeUp}" class="sapUiSmallMarginEnd"/>
-												<m:Text text="{delvryDetailsModel>/StorageUpto}"/>
+												<m:Text text="{path:'delvryDetailsModel>/StorageUpto' , formatter:'.formatter.changeDataFormat'}"/>
 											</m:HBox>
 											
 										</m:VBox>
@@ -358,7 +358,7 @@
 											</m:HBox>
 											<m:HBox class="sapUiTinyMarginBottom">
 												<m:Label text="{i18n>Lastfree}" class="sapUiSmallMarginEnd"/>
-												<m:Text text="{delvryDetailsModel>/LastFreeDate}"/>
+												<m:Text text="{path:'delvryDetailsModel>/LastFreeDate' , formatter:'.formatter.changeDataFormat'}"/>
 											</m:HBox>
 										</m:VBox>
 									</layout:VerticalLayout>

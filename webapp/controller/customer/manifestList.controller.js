@@ -19,7 +19,8 @@ sap.ui.define([
 				this.getModel("ManifestListSet", "manifestListModel", status);
 			}
 			if (type === "DELIVERY") {
-				this.getModel("DeliveryListSet", "deliveryListModel");
+			//	this.getModel("DeliveryListSet", "deliveryListModel");
+				this.callOdata("DeliveryListSet", "deliveryListModel", "Status", status);
 				this.getView().setModel(new JSONModel(null), "manifestListModel");
 			}
 			var that = this;

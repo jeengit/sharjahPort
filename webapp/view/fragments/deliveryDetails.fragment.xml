@@ -44,7 +44,7 @@
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>PortName}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{delvryDetailsModel>/PortCode}"/>
+							<m:Text text="{delvryDetailsModel>/PortName}"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>B/Enumber}" class="sapUiSmallMarginEnd"/>
@@ -68,19 +68,19 @@
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>ArrivalDate}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{delvryDetailsModel>/ArrivalDate}"/>
+							<m:Text text="{path:'delvryDetailsModel>/ArrivalDate' , formatter:'.formatter.changeDataFormat'}"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="B/E date" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{delvryDetailsModel>/BEDate}"/>
+							<m:Text text="{path:'delvryDetailsModel>/BOEdate' , formatter:'.formatter.changeDataFormat'}"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>b/ldate}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{delvryDetailsModel>/BLDate}" wrapping="false"/>
+							<m:Text text="{path:'delvryDetailsModel>/BLDate' , formatter:'.formatter.changeDataFormat'}" wrapping="false"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>crtDate}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{delvryDetailsModel>/CreationDate}" wrapping="false"/>
+							<m:Text text="{path:'delvryDetailsModel>/CaretedDate' , formatter:'.formatter.changeDataFormat'}" wrapping="false"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>delDoc}" class="sapUiSmallMarginEnd"/>
@@ -100,7 +100,7 @@
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>Voyageno}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{delvryDetailsModel>/VoyegeNo}" wrapping="false"/>
+							<m:Text text="{delvryDetailsModel>/VoyageNo}" wrapping="false"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>ConsigneeCode}" class="sapUiSmallMarginEnd"/>
@@ -108,7 +108,7 @@
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>AgentName}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{delvryDetailsModel>/AgentName}"/>
+							<m:Text text="{delvryDetailsModel>/Agentname}"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>VesselName}" class="sapUiSmallMarginEnd"/>

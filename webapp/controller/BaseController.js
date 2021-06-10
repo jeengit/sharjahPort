@@ -46,6 +46,42 @@ sap.ui.define([
 				});
 			}
 		},
+		callOdata: function(entity, modelName, statusKey, statusValue) {
+			var oModel = this.getOwnerComponent().getModel("s4Model");
+			oModel.setUseBatch(false);
+			var that = this;
+			if (!statusKey || !statusValue) {
+				oModel.read("/" + entity, {
+					success: function(data) {
+						that.getView().setModel(new JSONModel(data.results), modelName);
+						sap.ui.core.BusyIndicator.hide();
+					},
+					error: function(oResponse) {
+						sap.m.MessageToast.show(oResponse.statusText);
+						sap.ui.core.BusyIndicator.hide();
+					}
+				});
+			} else {
+				oModel.read("/" + entity, {
+					urlParameters: {
+						"$filter": statusKey + " eq '" + statusValue + "'"
+					},
+					success: function(data) {
+						var export_res = data.results.filter(res => res.Import_Export === 'E');
+						var import_res = data.results.filter(res => res.Import_Export === 'I');
+						data.results['countE'] = export_res.length;
+						data.results['countI'] = import_res.length;
+						that.getView().setModel(new JSONModel(data.results), modelName);
+				//		sap.m.MessageToast.show("Items loaded succesfully with status - " + status);
+						sap.ui.core.BusyIndicator.hide();
+					},
+					error: function(oResponse) {
+						sap.m.MessageToast.show(oResponse.statusText);
+						sap.ui.core.BusyIndicator.hide();
+					}
+				});
+			}
+		},
 		onNavToPress: function(evt) {
 			var route = evt.getParameter("id").split("--")[1];
 			this.getRouter().navTo(route);

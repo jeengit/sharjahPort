@@ -64,7 +64,7 @@
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>Voyageno}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{delCrtModel>/VoyegeNo}" wrapping="false"/>
+							<m:Text text="{delCrtModel>/VoyageNo}" wrapping="false"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>VesselName}" class="sapUiSmallMarginEnd"/>
@@ -76,19 +76,19 @@
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginTopBottom">
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>ArrivalDate}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{delCrtModel>/ArrivalDate}"/>
+							<m:Text text="{path:'delCrtModel>/ArrivalDate' , formatter:'.formatter.changeDataFormat'}"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="B/E date" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{delCrtModel>/BOEdate}"/>
+							<m:Text text="{path:'delCrtModel>/BOEdate' , formatter:'.formatter.changeDataFormat'}"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>b/ldate}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{delCrtModel>/BLDate}" wrapping="false"/>
+							<m:Text text="{path:'delCrtModel>/BLDate' , formatter:'.formatter.changeDataFormat'}" wrapping="false"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>crtDate}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{delCrtModel>/CaretedDate}" wrapping="false"/>
+							<m:Text text="{path:'delCrtModel>/CaretedDate' , formatter:'.formatter.changeDataFormat'}" wrapping="false"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>delDoc}" class="sapUiSmallMarginEnd"/>
@@ -96,7 +96,7 @@
 						</m:HBox>
 						<m:HBox class="">
 							<m:Label text="{i18n>AgentName}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{delCrtModel>/AgentName}"/>
+							<m:Text text="{delCrtModel>/Agentname}"/>
 						</m:HBox>
 					</m:VBox>
 				</layout:VerticalLayout>

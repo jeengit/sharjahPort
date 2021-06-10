@@ -5,12 +5,13 @@ sap.ui.define([
 	"sap/ui/model/Filter",
 	"sap/ui/model/FilterOperator",
 	"sap/ui/core/Fragment",
-	"sap/ui/model/json/JSONModel"
-], function(Device, BaseController, Controller, Filter, FilterOperator, Fragment, JSONModel) {
+	"sap/ui/model/json/JSONModel",
+	"com/demo/sharjahPort/model/formatter",
+], function(Device, BaseController, Controller, Filter, FilterOperator, Fragment, JSONModel, formatter) {
 	"use strict";
 
 	return BaseController.extend("com.demo.sharjahPort.controller.customer.deliveryDetails", {
-
+		formatter: formatter,
 		onInit: function() {
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.getRoute("deliveryDetails").attachPatternMatched(this._onObjectMatched, this);

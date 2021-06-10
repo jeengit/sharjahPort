@@ -565,3 +565,15 @@ html.sap-desktop .sapMBtn:focus>.sapMFocusable {
 	box-shadow: 0 0 0 0.0625rem rgb(0 0 0 / 10%), 0 0.125rem 0.5rem 0 rgb(0 0 0 / 10%);
     border-radius: 0.2rem;
 }
+.search .sapMSFF{
+	background: transparent;
+    border-bottom: 3px solid #ff8989!important;
+    border: none;
+    border-radius: 0;
+}
+.search input::placeholder ,.search input{
+	color:#fff!important;
+}
+.search .sapMSFB{
+	color:#333;
+}

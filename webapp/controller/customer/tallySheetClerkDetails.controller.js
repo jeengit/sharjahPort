@@ -11,7 +11,7 @@ sap.ui.define([
 		_onObjectMatched: function(oEvent) {
 			var id = oEvent.getParameter("arguments").id;
 			this.getUserName();
-			this.getView().byId(this.getView().getId() + "--tallyCargochangId").setVisible(false);
+			this.getView().byId(this.getView().getId() + "--tallyCargochangeId").setVisible(false);
 			var that = this;
 			if (id !== 'false') {
 				this.getView().byId(this.getView().getId() + "--tallyClerkDispId").setVisible(true);
@@ -90,7 +90,7 @@ sap.ui.define([
 				"GUID": "",
 				"ItmNo": "",
 				"ItmType": item_type,
-				"ManifestNo": "",
+				"ManifestNo": this.getView().getModel("tSClerkDetailModel").getData().ManifestNo,
 				"Commodity": "",
 				"Equipment": "",
 				"DelType": "",

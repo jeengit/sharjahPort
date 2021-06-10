@@ -10,9 +10,10 @@
 				<t:Table id="tsClerkTable" rows="{tSClerkListModel>/}" selectionMode="None" ariaLabelledBy="title"
 					class="card tableCard no-margin">
 					<t:extension>
-						<OverflowToolbar style="Clear">
+						<OverflowToolbar>
 							<Title id="title" text="Tally Sheet ({tSClerkListModel>/length})"/>
 							<ToolbarSpacer/>
+							<SearchField class="search" liveChange="onSearch" width="250px"/>
 							<Button class="btn-sm" text="Create" id="create" press="handleDetailsPress"/>
 							<core:Icon src="sap-icon://sorting-ranking" tooltip="{i18n>sort}" press="sortCategoriesAndName"/>
 							<core:Icon src="sap-icon://sort" tooltip="{i18n>SortCategories}" press="sortCategories"/>

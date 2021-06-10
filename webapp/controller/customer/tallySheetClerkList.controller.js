@@ -1,6 +1,7 @@
 sap.ui.define([
-	"../BaseController"
-], function(BaseController) {
+	"../BaseController",
+	"sap/ui/model/json/JSONModel"
+], function(BaseController,JSONModel) {
 	"use strict";
 	return BaseController.extend("com.demo.sharjahPort.controller.customer.tallySheetClerkList", {
 		onInit: function() {
@@ -11,6 +12,10 @@ sap.ui.define([
 			this.getUserName();
 			this.adjustTableRowsCount();
 			this.getModel("ClerkTallySheetSet","tSClerkListModel");
+			var that = this;
+			setTimeout(function(){
+				sap.ui.getCore().setModel(new JSONModel(that.getView().getModel("tSClerkListModel").getData()), "tSClerkListModel");
+			}, 2000);
 		},
 		handleDetailsPress : function (evt) {
 			sap.ui.core.BusyIndicator.show();
@@ -31,6 +36,12 @@ sap.ui.define([
 			jQuery.sap.delayedCall(0, this, function () {
 				that.byId("tsClerkTable").setVisibleRowCount(rows);
 			});
+		},
+		onSearch: function(evt){
+			var data = sap.ui.getCore().getModel("tSClerkListModel").getData();
+			var key = evt.getSource().getValue().toLowerCase().replace(/\s/g, '');
+			var searchedData = data.filter(val=> val.CallSign.toLowerCase().replace(/\s/g, '').includes(key));
+			this.getView().setModel(new JSONModel(searchedData), "tSClerkListModel");
 		}
 	});
 });

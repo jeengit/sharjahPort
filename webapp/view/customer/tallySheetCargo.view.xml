@@ -12,7 +12,7 @@
 		<footer>
 			<OverflowToolbar>
 				<ToolbarSpacer/>
-				<Button id="creteBtn" visible="{= ${tSCrtModel>/TallySheetCode} === '' ? false : true }" type="Emphasized" text="Create Bill"/>
+				<Button id="creteBtn" visible="false"  type="Emphasized" text="Create Bill"/>
 				<Button id="saveBtn" visible="false" type="Emphasized" text="Save" press="onTallyUpdatePress"/>
 				<Button id="editBtn" visible="false" type="Emphasized" text="Edit" press="editPress"/>
 				<Button id="tallyBtn" visible="false" press="tallyCrtPress" type="Emphasized"

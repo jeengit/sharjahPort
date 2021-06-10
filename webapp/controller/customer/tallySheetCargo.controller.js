@@ -50,6 +50,7 @@ sap.ui.define([
 				that.getView().byId(pageId + "--tallyCargoDispId").setVisible(true);
 				that.getView().byId("tallyBtn").setVisible(false);
 					that.getView().byId("editBtn").setVisible(true);
+					this.getView().byId("creteBtn").setVisible(true);
 
 				oModel.read("/TallySheetDetailsSet('" + id + "')", {
 					urlParameters: {
@@ -111,7 +112,7 @@ sap.ui.define([
 			this.getView().byId(pageId + "--tallyCargoDispId").setVisible(false);
 			this.getView().byId("saveBtn").setVisible(true);
 			this.getView().byId("editBtn").setVisible(false);
-			this.getView().byId("creteBtn").setVisible(false);
+			this.getView().byId("creteBtn").setVisible(true);
 			this.getView().byId("tallyBtn").setVisible(false);
 
 		},

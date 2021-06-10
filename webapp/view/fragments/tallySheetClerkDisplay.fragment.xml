@@ -9,13 +9,15 @@
 				</breadcrumbs>
 				<expandedHeading>
 					<m:HBox>
-						<m:Title text="{tSClerkDetailModel>/ManifestNo} - {tSClerkDetailModel>/VesselName}" wrapping="true"/>
+						<m:Title visible="{= ${tSClerkDetailModel>/ManifestNo} !== '' ? true: false}"
+							text="{tSClerkDetailModel>/ManifestNo} - {tSClerkDetailModel>/VesselName}" wrapping="true"/>
 					</m:HBox>
 				</expandedHeading>
 				<snappedHeading>
 					<m:FlexBox fitContainer="true" alignItems="Center">
 						<m:Avatar backgroundColor="Accent9" src="sap-icon://shipping-status" class="sapUiTinyMarginEnd"/>
-						<m:Title text="{tSClerkDetailModel>/ManifestNo} - {tSClerkDetailModel>/VesselName}" wrapping="true"/>
+						<m:Title visible="{= ${tSClerkDetailModel>/ManifestNo} !== '' ? true: false}"
+							text="{tSClerkDetailModel>/ManifestNo} - {tSClerkDetailModel>/VesselName}" wrapping="true"/>
 					</m:FlexBox>
 				</snappedHeading>
 				<expandedContent>
@@ -34,6 +36,14 @@
 				<m:Avatar class="sapUiSmallMarginEnd" backgroundColor="Accent9" src="sap-icon://shipping-status" displaySize="L"/>
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+							<m:HBox width="8rem">
+								<m:Label text="{i18n>ManifestNo}"/>
+							</m:HBox>
+							<m:HBox width="10rem">
+								<m:Text text="{tSClerkDetailModel>/ManifestNo}"/>
+							</m:HBox>
+						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="8rem">
 								<m:Label text="{i18n>VesselName}"/>
@@ -55,7 +65,11 @@
 								<m:Label text="Shift"/>
 							</m:HBox>
 							<m:HBox width="10rem">
-								<m:Text text="{tSClerkDetailModel>/Shift}"/>
+								<m:ComboBox enabled="false" width="100%" selectedKey="{tSClerkDetailModel>/Shift}">
+									<core:Item key="1" text="6AM - 2PM"/>
+									<core:Item key="2" text="2PM - 10PM"/>
+									<core:Item key="3" text="10PM - 6AM"/>
+								</m:ComboBox>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -63,7 +77,13 @@
 								<m:Label text="Hatch No"/>
 							</m:HBox>
 							<m:HBox width="10rem">
-								<m:Text text="{tSClerkDetailModel>/HatchNo}"/>
+								<m:ComboBox enabled="false" width="100%" selectedKey="{tSClerkDetailModel>/HatchNo}">
+									<core:Item key="1" text="Hatch1"/>
+									<core:Item key="2" text="Hatch2"/>
+									<core:Item key="3" text="Hatch3"/>
+									<core:Item key="4" text="Hatch4"/>
+									<core:Item key="5" text="Hatch5"/>
+								</m:ComboBox>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox alignItems="Center">
@@ -116,8 +136,8 @@
 							</m:HBox>
 							<m:HBox width="10rem">
 								<m:Text
-								text="{ path: 'tSClerkDetailModel>/Date', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"
-								wrapping="false"/>
+									text="{ path: 'tSClerkDetailModel>/Date', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"
+									wrapping="false"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" visible="{= ${tSClerkDetailModel>/Derrik_Crain} === '' ? false: true}" alignItems="Center">
@@ -156,7 +176,7 @@
 								<m:Text text="{tSClerkDetailModel>/IMO}"/>
 							</m:HBox>
 						</m:HBox>
-						<m:HBox class="sapUiTinyMarginBottom" visible="{= ${tSClerkDetailModel>/EmployeeId} === '' ? false: true}" class="sapUiTinyMarginBottom" alignItems="Center">
+						<m:HBox visible="{= ${tSClerkDetailModel>/EmployeeId} === '' ? false: true}" class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="8rem">
 								<m:Label text="Employee Id"/>
 							</m:HBox>
@@ -185,7 +205,7 @@
 								<m:Label text="GUID"/>
 							</m:HBox>
 							<m:HBox width="10rem">
-								<m:Text text="{tSClerkDetailModel>/GUID}"/>
+								<m:Text tooltip="{tSClerkDetailModel>/GUID}" text="{tSClerkDetailModel>/GUID}" wrapping="false" width="8rem"/>
 							</m:HBox>
 						</m:HBox>
 					</m:VBox>
@@ -200,19 +220,25 @@
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
-										<t:Table visibleRowCount="5" rows="{ path: 'tSClerkDetailModel>/ServiceChargeSet/results',filters: {path: 'ItemType', operator: 'EQ', value1: 'A'} }" selectionMode="None" ariaLabelledBy="title"
-											class="card tableCard no-margin">
+										<t:Table visibleRowCount="5"
+											rows="{ path: 'tSClerkDetailModel>/ServiceChargeSet/results',filters: {path: 'ItmType', operator: 'EQ', value1: 'A'} }" selectionMode="None"
+											ariaLabelledBy="title" class="card tableCard no-margin">
 											<t:columns>
 												<t:Column sortProperty="Commodity">
 													<m:Label text="Commodity"/>
 													<t:template>
-														<m:Text text="{tSClerkDetailModel>Commodities}" wrapping="false"/>
+														<m:ComboBox enabled="false" width="100%" selectedKey="{tSClerkDetailModel>Commodity}">
+															<core:Item key="CO001" text="Plywood"/>
+															<core:Item key="CO002" text="Timber Bundles"/>
+															<core:Item key="CO003" text="Steel Rod"/>
+															<core:Item key="CO004" text="Aluminium Rolls"/>
+														</m:ComboBox>
 													</t:template>
 												</t:Column>
 												<t:Column sortProperty="PortCode" width="10rem">
 													<m:Label text="No of packs"/>
 													<t:template>
-														<m:Text text="{tSClerkDetailModel>NoOfPackage}"/>
+														<m:Text text="{tSClerkDetailModel>NoOfPacks}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
@@ -224,7 +250,9 @@
 												<t:Column>
 													<m:Label text="UOM"/>
 													<t:template>
-														<m:Text text="{tSClerkDetailModel>UOM}"/>
+														<m:ComboBox enabled="false" width="100%" selectedKey="{tSClerkDetailModel>UOM}">
+															<core:Item key="TON" text="Tone"/>
+														</m:ComboBox>
 													</t:template>
 												</t:Column>
 												<t:Column>
@@ -261,25 +289,37 @@
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
-										<t:Table visibleRowCount="5" rows="{ path: 'tSClerkDetailModel>/ServiceChargeSet/results',filters: {path: 'ItemType', operator: 'EQ', value1: 'D'} }" selectionMode="None" ariaLabelledBy="title"
-											class="card tableCard no-margin">
+										<t:Table visibleRowCount="5"
+											rows="{ path: 'tSClerkDetailModel>/ServiceChargeSet/results',filters: {path: 'ItmType', operator: 'EQ', value1: 'D'} }" selectionMode="None"
+											ariaLabelledBy="title" class="card tableCard no-margin">
 											<t:columns>
 												<t:Column sortProperty="FlEquipment">
 													<m:Label text="Equipment"/>
 													<t:template>
-														<m:Text text="{tSClerkDetailModel>EquipmentCode}" wrapping="false"/>
+														<m:ComboBox enabled="false" width="100%" selectedKey="{tSClerkDetailModel>Equipment}">
+															<core:Item key="FL001" text="FLT (5T)"/>
+														</m:ComboBox>
 													</t:template>
 												</t:Column>
 												<t:Column>
-													<m:Label text="Hatch no"/>
+													<m:Label text="Hatch No"/>
 													<t:template>
 														<m:Text text="{tSClerkDetailModel>HatchNo}"/>
+														<m:ComboBox enabled="false" width="100%" selectedKey="{tSClerkDetailModel>HatchNo}">
+															<core:Item key="1" text="Hatch1"/>
+															<core:Item key="2" text="Hatch2"/>
+															<core:Item key="3" text="Hatch3"/>
+															<core:Item key="4" text="Hatch4"/>
+															<core:Item key="5" text="Hatch5"/>
+														</m:ComboBox>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="FlDate"/>
 													<t:template>
-														<m:Text text="{tSClerkDetailModel>Date}"/>
+														<m:Text
+															text="{ path: 'tSClerkDetailModel>Date', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"
+															wrapping="false"/>
 													</t:template>
 												</t:Column>
 												<t:Column sortProperty="FlRate">
@@ -316,25 +356,36 @@
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
-										<t:Table visibleRowCount="5" rows="{ path: 'tSClerkDetailModel>/ServiceChargeSet/results',filters: {path: 'ItemType', operator: 'EQ', value1: 'E'} }" selectionMode="None" ariaLabelledBy="title"
-											class="card tableCard no-margin">
+										<t:Table visibleRowCount="5"
+											rows="{ path: 'tSClerkDetailModel>/ServiceChargeSet/results',filters: {path: 'ItmType', operator: 'EQ', value1: 'E'} }" selectionMode="None"
+											ariaLabelledBy="title" class="card tableCard no-margin">
 											<t:columns>
 												<t:Column sortProperty="CrEquipment">
 													<m:Label text="Equipment"/>
 													<t:template>
-														<m:Text text="{tSClerkDetailModel>Equipment}" wrapping="false"/>
+														<m:ComboBox enabled="false" width="100%" selectedKey="{tSClerkDetailModel>Equipment}">
+															<core:Item key="CR001" text="CRANE (12T)"/>
+														</m:ComboBox>
 													</t:template>
 												</t:Column>
 												<t:Column>
-													<m:Label text="Hatch no"/>
+													<m:Label text="Hatch No"/>
 													<t:template>
-														<m:Text text="{tSClerkDetailModel>HatchNo}"/>
+														<m:ComboBox enabled="false" width="100%" selectedKey="{tSClerkDetailModel>HatchNo}">
+															<core:Item key="1" text="Hatch1"/>
+															<core:Item key="2" text="Hatch2"/>
+															<core:Item key="3" text="Hatch3"/>
+															<core:Item key="4" text="Hatch4"/>
+															<core:Item key="5" text="Hatch5"/>
+														</m:ComboBox>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="Date"/>
 													<t:template>
-														<m:Text text="{tSClerkDetailModel>Date}"/>
+														<m:Text
+															text="{ path: 'tSClerkDetailModel>Date', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"
+															wrapping="false"/>
 													</t:template>
 												</t:Column>
 												<t:Column sortProperty="CrWeight">
@@ -377,25 +428,36 @@
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
-										<t:Table visibleRowCount="5" rows="{ path: 'tSClerkDetailModel>/ServiceChargeSet/results',filters: {path: 'ItemType', operator: 'EQ', value1: 'F'} }" selectionMode="None" ariaLabelledBy="title"
-											class="card tableCard no-margin">
+										<t:Table visibleRowCount="5"
+											rows="{ path: 'tSClerkDetailModel>/ServiceChargeSet/results',filters: {path: 'ItmType', operator: 'EQ', value1: 'F'} }" selectionMode="None"
+											ariaLabelledBy="title" class="card tableCard no-margin">
 											<t:columns>
+												<t:Column>
+													<m:Label text="Equipment"/>
+													<t:template>
+														<m:ComboBox enabled="false" width="100%" selectedKey="{tSClerkDetailModel>Equipment}">
+															<core:Item key="SC001" text="GANG ENGAGED-COLLECT/DISCH DONNAGES"/>
+														</m:ComboBox>
+													</t:template>
+												</t:Column>
 												<t:Column>
 													<m:Label text="Date"/>
 													<t:template>
-														<m:Text text="{tSClerkDetailModel>Date}"/>
+														<m:Text
+															text="{ path: 'tSClerkDetailModel>Date', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"
+															wrapping="false"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="From"/>
 													<t:template>
-														<m:Text text="{tSClerkDetailModel>FromTime}"/>
+														<m:Text text="{tSClerkDetailModel>From}"/>
 													</t:template>
 												</t:Column>
-												<t:Column sortProperty="FromTo">
+												<t:Column sortProperty="To">
 													<m:Label text="To"/>
 													<t:template>
-														<m:Text text="{tSClerkDetailModel>FromTo}" wrapping="false"/>
+														<m:Text text="{tSClerkDetailModel>To}" wrapping="false"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
@@ -425,50 +487,52 @@
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>
-			<ObjectPageSection titleUppercase="false" title="Miscellaneous Charge Details">
-				<subSections>
-					<ObjectPageSubSection titleUppercase="false">
-						<blocks>
-							<m:FlexBox wrap="Wrap">
-								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
-									<m:VBox>
-										<t:Table visibleRowCount="5" rows="{ path: 'tSClerkDetailModel>/ServiceChargeSet/results',filters: {path: 'ItemType', operator: 'EQ', value1: 'H'} }" selectionMode="None" ariaLabelledBy="title"
-											class="card tableCard no-margin">
-											<t:columns>
-												<t:Column>
-													<m:Label text="Date"/>
-													<t:template>
-														<m:Text text="{tSClerkDetailModel>Date}"/>
-													</t:template>
-												</t:Column>
-												<t:Column>
-													<m:Label text="Rate"/>
-													<t:template>
-														<m:Text text="{tSClerkDetailModel>Rate}"/>
-													</t:template>
-												</t:Column>
-												<t:Column sortProperty="MsCharge">
-													<m:Label text="Charge"/>
-													<t:template>
-														<m:Text text="{tSClerkDetailModel>Charge}" wrapping="false"/>
-													</t:template>
-												</t:Column>
-												<t:Column>
-													<m:Label text="MsRemarks"/>
-													<t:template>
-														<m:Text text="{tSClerkDetailModel>Remarks}"/>
-													</t:template>
-												</t:Column>
-											</t:columns>
-										</t:Table>
-									</m:VBox>
-								</layout:VerticalLayout>
-							</m:FlexBox>
-						</blocks>
-					</ObjectPageSubSection>
-				</subSections>
-			</ObjectPageSection>
-			
+			<!--<ObjectPageSection titleUppercase="false" title="Miscellaneous Charge Details">-->
+			<!--	<subSections>-->
+			<!--		<ObjectPageSubSection titleUppercase="false">-->
+			<!--			<blocks>-->
+			<!--				<m:FlexBox wrap="Wrap">-->
+			<!--					<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">-->
+			<!--						<m:VBox>-->
+			<!--							<t:Table visibleRowCount="5"-->
+			<!--								rows="{ path: 'tSClerkDetailModel>/ServiceChargeSet/results',filters: {path: 'ItmType', operator: 'EQ', value1: 'H'} }" selectionMode="None"-->
+			<!--								ariaLabelledBy="title" class="card tableCard no-margin">-->
+			<!--								<t:columns>-->
+			<!--									<t:Column>-->
+			<!--										<m:Label text="Date"/>-->
+			<!--										<t:template>-->
+			<!--											<m:Text-->
+			<!--												text="{ path: 'tSClerkDetailModel>Date', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"-->
+			<!--												wrapping="false"/>-->
+			<!--										</t:template>-->
+			<!--									</t:Column>-->
+			<!--									<t:Column>-->
+			<!--										<m:Label text="Rate"/>-->
+			<!--										<t:template>-->
+			<!--											<m:Text text="{tSClerkDetailModel>Rate}"/>-->
+			<!--										</t:template>-->
+			<!--									</t:Column>-->
+			<!--									<t:Column sortProperty="MsCharge">-->
+			<!--										<m:Label text="Charge"/>-->
+			<!--										<t:template>-->
+			<!--											<m:Text text="{tSClerkDetailModel>Charge}" wrapping="false"/>-->
+			<!--										</t:template>-->
+			<!--									</t:Column>-->
+			<!--									<t:Column>-->
+			<!--										<m:Label text="MsRemarks"/>-->
+			<!--										<t:template>-->
+			<!--											<m:Text text="{tSClerkDetailModel>Remarks}"/>-->
+			<!--										</t:template>-->
+			<!--									</t:Column>-->
+			<!--								</t:columns>-->
+			<!--							</t:Table>-->
+			<!--						</m:VBox>-->
+			<!--					</layout:VerticalLayout>-->
+			<!--				</m:FlexBox>-->
+			<!--			</blocks>-->
+			<!--		</ObjectPageSubSection>-->
+			<!--	</subSections>-->
+			<!--</ObjectPageSection>-->
 			<ObjectPageSection titleUppercase="false" title="Cargo Details">
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
@@ -485,13 +549,13 @@
 														<m:Text text="{tSClerkDetailModel>Sling_No}" wrapping="false"/>
 													</t:template>
 												</t:Column>
-												<t:Column sortProperty="PortCode" width="10rem">
+												<t:Column sortProperty="PortCode">
 													<m:Label text="Description Package"/>
 													<t:template>
 														<m:Text text="{tSClerkDetailModel>Desc_Package}"/>
 													</t:template>
 												</t:Column>
-												<t:Column sortProperty="Marks_No" width="10rem">
+												<t:Column sortProperty="Marks_No">
 													<m:Label text="Marks No"/>
 													<t:template>
 														<m:Text text="{tSClerkDetailModel>Marks_No}"/>

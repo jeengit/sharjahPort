@@ -205,7 +205,7 @@
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
-										<t:Table rows="{ path: 'tSCrtModel>/ChargeDetails/results',filters: {path: 'ItmType', operator: 'EQ', value1: 'A'} }" visibleRowCount="5" class="tableCard" selectionMode="None"
+										<t:Table rows="{ path: 'tSCrtModel>/ChargeDetails',filters: {path: 'ItmType', operator: 'EQ', value1: 'A'} }" visibleRowCount="5" class="tableCard" selectionMode="None"
 											 ariaLabelledBy="title">
 											<t:columns>
 												<t:Column sortProperty="ETANo">
@@ -266,7 +266,7 @@
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
-										<t:Table rows="{ path: 'tSCrtModel>/ChargeDetails/results',filters: {path: 'ItmType', operator: 'EQ', value1: 'B'} }" visibleRowCount="5" class="tableCard" selectionMode="None"
+										<t:Table rows="{ path: 'tSCrtModel>/ChargeDetails',filters: {path: 'ItmType', operator: 'EQ', value1: 'B'} }" visibleRowCount="5" class="tableCard" selectionMode="None"
 										 ariaLabelledBy="title">
 											<t:columns>
 												<t:Column sortProperty="ETANo">
@@ -327,7 +327,7 @@
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
-										<t:Table rows="{ path: 'tSCrtModel>/ChargeDetails/results',filters: {path: 'ItmType', operator: 'EQ', value1: 'C'} }" visibleRowCount="5" class="tableCard" selectionMode="None"
+										<t:Table rows="{ path: 'tSCrtModel>/ChargeDetails',filters: {path: 'ItmType', operator: 'EQ', value1: 'C'} }" visibleRowCount="5" class="tableCard" selectionMode="None"
 											 ariaLabelledBy="title">
 											<t:columns>
 												<t:Column sortProperty="ETANo">
@@ -382,7 +382,7 @@
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
-										<t:Table rows="{ path: 'tSCrtModel>/ChargeDetails/results',filters: {path: 'ItmType', operator: 'EQ', value1: 'D'} }" visibleRowCount="5" class="tableCard" selectionMode="None"
+										<t:Table rows="{ path: 'tSCrtModel>/ChargeDetails',filters: {path: 'ItmType', operator: 'EQ', value1: 'D'} }" visibleRowCount="5" class="tableCard" selectionMode="None"
 											 ariaLabelledBy="title">
 											<t:columns>
 												<t:Column sortProperty="ETANo">
@@ -455,7 +455,7 @@
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
-										<t:Table rows="{ path: 'tSCrtModel>/ChargeDetails/results',filters: {path: 'ItmType', operator: 'EQ', value1: 'E'} }" visibleRowCount="5" class="tableCard" selectionMode="None"
+										<t:Table rows="{ path: 'tSCrtModel>/ChargeDetails',filters: {path: 'ItmType', operator: 'EQ', value1: 'E'} }" visibleRowCount="5" class="tableCard" selectionMode="None"
 											 ariaLabelledBy="title">
 											<t:columns>
 												<t:Column sortProperty="ETANo">
@@ -522,7 +522,7 @@
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
-										<t:Table rows="{ path: 'tSCrtModel>/ChargeDetails/results',filters: {path: 'ItmType', operator: 'EQ', value1: 'F'} }" visibleRowCount="5" class="tableCard" selectionMode="None"
+										<t:Table rows="{ path: 'tSCrtModel>/ChargeDetails',filters: {path: 'ItmType', operator: 'EQ', value1: 'F'} }" visibleRowCount="5" class="tableCard" selectionMode="None"
 											 ariaLabelledBy="title">
 											<t:columns>
 												<t:Column sortProperty="ETANo">

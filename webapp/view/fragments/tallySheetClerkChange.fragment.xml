@@ -41,7 +41,7 @@
 								<m:Label text="{i18n>ManifestNo}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:ComboBox id="manifestSel" visible="{= ${tSClerkDetailModel>/ManifestNo} === '' ? false: true}" placeholder="{i18n>select}" width="100%"
+								<m:ComboBox selectedKey="{tSClerkDetailModel>/ManifestNo}" id="manifestSel" placeholder="{i18n>select}" width="100%"
 									items="{manifestFilterListModel>/}" change="handleMDetailsPress">
 									<core:Item key="{manifestFilterListModel>ManifestNo}" text="{manifestFilterListModel>ManifestNo}"/>
 								</m:ComboBox>
@@ -233,7 +233,7 @@
 												<t:Column sortProperty="Commodity">
 													<m:Label text="Commodity"/>
 													<t:template>
-														<m:ComboBox placeholder="{i18n>select}" width="100%" selectedKey="{tSClerkDetailModel>Commodity}">
+														<m:ComboBox change="handleLiveChange" placeholder="{i18n>select}" width="100%" selectedKey="{tSClerkDetailModel>Commodity}">
 															<core:Item key="CO001" text="Plywood"/>
 															<core:Item key="CO002" text="Timber Bundles"/>
 															<core:Item key="CO003" text="Steel Rod"/>
@@ -244,19 +244,19 @@
 												<t:Column sortProperty="PortCode" width="10rem">
 													<m:Label text="No of packs"/>
 													<t:template>
-														<m:Input value="{tSClerkDetailModel>NoOfPacks}"/>
+														<m:Input liveChange="handleLiveChange" value="{tSClerkDetailModel>NoOfPacks}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="Quantity"/>
 													<t:template>
-														<m:Input value="{tSClerkDetailModel>Quantity}"/>
+														<m:Input liveChange="handleLiveChange" value="{tSClerkDetailModel>Quantity}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="UOM"/>
 													<t:template>
-														<m:ComboBox placeholder="{i18n>select}" width="100%" selectedKey="{tSClerkDetailModel>UOM}">
+														<m:ComboBox change="handleLiveChange" placeholder="{i18n>select}" width="100%" selectedKey="{tSClerkDetailModel>UOM}">
 															<core:Item key="TON" text="Tone"/>
 														</m:ComboBox>
 													</t:template>
@@ -264,19 +264,19 @@
 												<t:Column>
 													<m:Label text="StRate"/>
 													<t:template>
-														<m:Input value="{tSClerkDetailModel>Rate}"/>
+														<m:Input liveChange="handleLiveChange" value="{tSClerkDetailModel>Rate}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="Amount"/>
 													<t:template>
-														<m:Input value="{tSClerkDetailModel>Amount}"/>
+														<m:Input liveChange="handleLiveChange" value="{tSClerkDetailModel>Amount}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="Remark"/>
 													<t:template>
-														<m:Input value="{tSClerkDetailModel>Remark}"/>
+														<m:Input liveChange="handleLiveChange" value="{tSClerkDetailModel>Remark}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
@@ -311,7 +311,7 @@
 												<t:Column sortProperty="FlEquipment">
 													<m:Label text="Equipment"/>
 													<t:template>
-														<m:ComboBox placeholder="{i18n>select}" width="100%" selectedKey="{tSClerkDetailModel>Equipment}">
+														<m:ComboBox change="handleLiveChange" placeholder="{i18n>select}" width="100%" selectedKey="{tSClerkDetailModel>Equipment}">
 															<core:Item key="FL001" text="FLT (5T)"/>
 														</m:ComboBox>
 													</t:template>
@@ -319,7 +319,7 @@
 												<t:Column>
 													<m:Label text="Hatch No"/>
 													<t:template>
-														<m:ComboBox placeholder="{i18n>select}" width="100%" selectedKey="{tSClerkDetailModel>HatchNo}">
+														<m:ComboBox change="handleLiveChange" placeholder="{i18n>select}" width="100%" selectedKey="{tSClerkDetailModel>HatchNo}">
 															<core:Item key="1" text="Hatch1"/>
 															<core:Item key="2" text="Hatch2"/>
 															<core:Item key="3" text="Hatch3"/>
@@ -331,37 +331,37 @@
 												<t:Column>
 													<m:Label text="Date"/>
 													<t:template>
-														<m:DatePicker value="{tSClerkDetailModel>Date}" valueFormat="yyyyMMdd" displayFormat="long"/>
+														<m:DatePicker change="handleLiveChange" value="{tSClerkDetailModel>Date}" valueFormat="yyyyMMdd" displayFormat="long"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="From"/>
 													<t:template>
-														<m:DateTimePicker valueFormat="HH:mm:ss" value="{tSClerkDetailModel>From}" placeholder="Enter Date"/>
+														<m:DateTimePicker change="handleLiveChange" valueFormat="HH:mm:ss" value="{tSClerkDetailModel>From}" placeholder="Enter Date"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="To"/>
 													<t:template>
-														<m:DateTimePicker valueFormat="HH:mm:ss" value="{tSClerkDetailModel>To}" placeholder="Enter Date"/>
+														<m:DateTimePicker change="handleLiveChange" valueFormat="HH:mm:ss" value="{tSClerkDetailModel>To}" placeholder="Enter Date"/>
 													</t:template>
 												</t:Column>
 												<t:Column sortProperty="FlRate">
 													<m:Label text="Rate"/>
 													<t:template>
-														<m:Input value="{tSClerkDetailModel>Rate}" wrapping="false"/>
+														<m:Input liveChange="handleLiveChange" value="{tSClerkDetailModel>Rate}" wrapping="false"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="Amount"/>
 													<t:template>
-														<m:Input value="{tSClerkDetailModel>Amount}"/>
+														<m:Input liveChange="handleLiveChange" value="{tSClerkDetailModel>Amount}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="Remark"/>
 													<t:template>
-														<m:Input value="{tSClerkDetailModel>Remark}"/>
+														<m:Input liveChange="handleLiveChange" value="{tSClerkDetailModel>Remark}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
@@ -396,7 +396,7 @@
 												<t:Column sortProperty="CrEquipment">
 													<m:Label text="Equipment"/>
 													<t:template>
-														<m:ComboBox placeholder="{i18n>select}" width="100%" selectedKey="{tSClerkDetailModel>Equipment}">
+														<m:ComboBox change="handleLiveChange" placeholder="{i18n>select}" width="100%" selectedKey="{tSClerkDetailModel>Equipment}">
 															<core:Item key="CR001" text="CRANE (12T)"/>
 														</m:ComboBox>
 													</t:template>
@@ -404,7 +404,7 @@
 												<t:Column>
 													<m:Label text="Hatch No"/>
 													<t:template>
-														<m:ComboBox placeholder="{i18n>select}" width="100%" selectedKey="{tSClerkDetailModel>HatchNo}">
+														<m:ComboBox change="handleLiveChange" placeholder="{i18n>select}" width="100%" selectedKey="{tSClerkDetailModel>HatchNo}">
 															<core:Item key="1" text="Hatch1"/>
 															<core:Item key="2" text="Hatch2"/>
 															<core:Item key="3" text="Hatch3"/>
@@ -416,31 +416,31 @@
 												<t:Column>
 													<m:Label text="Date"/>
 													<t:template>
-														<m:DatePicker value="{tSClerkDetailModel>Date}" valueFormat="yyyyMMdd" displayFormat="long"/>
+														<m:DatePicker change="handleLiveChange" value="{tSClerkDetailModel>Date}" valueFormat="yyyyMMdd" displayFormat="long"/>
 													</t:template>
 												</t:Column>
 												<t:Column sortProperty="CrWeight">
 													<m:Label text="Weight"/>
 													<t:template>
-														<m:Input value="{tSClerkDetailModel>Weight}" wrapping="false"/>
+														<m:Input liveChange="handleLiveChange" value="{tSClerkDetailModel>Weight}" wrapping="false"/>
 													</t:template>
 												</t:Column>
 												<t:Column sortProperty="CrRate">
 													<m:Label text="Rate"/>
 													<t:template>
-														<m:Input value="{tSClerkDetailModel>Rate}" wrapping="false"/>
+														<m:Input liveChange="handleLiveChange" value="{tSClerkDetailModel>Rate}" wrapping="false"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="Amount"/>
 													<t:template>
-														<m:Input value="{tSClerkDetailModel>Amount}"/>
+														<m:Input liveChange="handleLiveChange" value="{tSClerkDetailModel>Amount}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="Remark"/>
 													<t:template>
-														<m:Input value="{tSClerkDetailModel>Remark}"/>
+														<m:Input liveChange="handleLiveChange" value="{tSClerkDetailModel>Remark}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
@@ -475,7 +475,7 @@
 												<t:Column>
 													<m:Label text="Equipment"/>
 													<t:template>
-														<m:ComboBox placeholder="{i18n>select}" width="100%" selectedKey="{tSClerkDetailModel>Equipment}">
+														<m:ComboBox change="handleLiveChange" placeholder="{i18n>select}" width="100%" selectedKey="{tSClerkDetailModel>Equipment}">
 															<core:Item key="SC001" text="GANG ENGAGED-COLLECT/DISCH DONNAGES"/>
 														</m:ComboBox>
 													</t:template>
@@ -483,37 +483,37 @@
 												<t:Column>
 													<m:Label text="Date"/>
 													<t:template>
-														<m:DatePicker value="{tSClerkDetailModel>Date}" valueFormat="yyyyMMdd" displayFormat="long"/>
+														<m:DatePicker change="handleLiveChange" value="{tSClerkDetailModel>Date}" valueFormat="yyyyMMdd" displayFormat="long"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="From"/>
 													<t:template>
-														<m:DateTimePicker valueFormat="HH:mm:ss" value="{tSClerkDetailModel>From}" placeholder="Enter Date"/>
+														<m:DateTimePicker change="handleLiveChange" valueFormat="HH:mm:ss" value="{tSClerkDetailModel>From}" placeholder="Enter Date"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="To"/>
 													<t:template>
-														<m:DateTimePicker valueFormat="HH:mm:ss" value="{tSClerkDetailModel>To}" placeholder="Enter Date"/>
+														<m:DateTimePicker change="handleLiveChange" valueFormat="HH:mm:ss" value="{tSClerkDetailModel>To}" placeholder="Enter Date"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="Rate"/>
 													<t:template>
-														<m:Input value="{tSClerkDetailModel>Rate}"/>
+														<m:Input liveChange="handleLiveChange" value="{tSClerkDetailModel>Rate}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="Amount"/>
 													<t:template>
-														<m:Input value="{tSClerkDetailModel>Amount}"/>
+														<m:Input liveChange="handleLiveChange" value="{tSClerkDetailModel>Amount}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>
 													<m:Label text="Remark"/>
 													<t:template>
-														<m:Input value="{tSClerkDetailModel>Remark}"/>
+														<m:Input liveChange="handleLiveChange" value="{tSClerkDetailModel>Remark}"/>
 													</t:template>
 												</t:Column>
 												<t:Column>

@@ -41,7 +41,10 @@
 								<m:Label text="{i18n>ManifestNo}"/>
 							</m:HBox>
 							<m:HBox width="10rem">
-								<m:Text text="{tSClerkDetailModel>/ManifestNo}"/>
+								<m:ComboBox enabled="false" visible="{= ${tSClerkDetailModel>/ManifestNo} === '' ? false: true}" selectedKey="{tSClerkDetailModel>/ManifestNo}" width="100%"
+									items="{manifestFilterListModel>/}">
+									<core:Item key="{manifestFilterListModel>ManifestNo}" text="{manifestFilterListModel>ManifestNo}"/>
+								</m:ComboBox>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -111,7 +114,9 @@
 								<m:Label text="{i18n>Callsign}"/>
 							</m:HBox>
 							<m:HBox width="10rem">
-								<m:Text text="{tSClerkDetailModel>/CallSign}"/>
+								<m:ComboBox enabled="false" items="{callSignModel>/}" placeholder="{i18n>select}" width="100%" selectedKey="{tSClerkDetailModel>/CallSign}">
+									<core:Item key="{callSignModel>CallSign}" text="{callSignModel>CallSign}"/>
+								</m:ComboBox>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox visible="{= ${tSClerkDetailModel>/AgentName} === '' ? false: true}" class="sapUiTinyMarginBottom" alignItems="Center">

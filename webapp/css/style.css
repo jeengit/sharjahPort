@@ -567,7 +567,7 @@ html.sap-desktop .sapMBtn:focus>.sapMFocusable {
 }
 .search .sapMSFF{
 	background: transparent;
-    border-bottom: 3px solid #ff8989!important;
+    border-bottom: 3px solid #BC9E6D!important;
     border: none;
     border-radius: 0;
 }
@@ -575,5 +575,5 @@ html.sap-desktop .sapMBtn:focus>.sapMFocusable {
 	color:#fff!important;
 }
 .search .sapMSFB{
-	color:#333;
+	color:#BC9E6D;
 }

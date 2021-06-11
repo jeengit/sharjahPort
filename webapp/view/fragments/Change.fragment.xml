@@ -118,8 +118,10 @@
 								<m:Label text="{i18n>Port}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:ComboBox placeholder="{i18n>select}" selectedKey="{etaDetailsModel>/Port}" items="{path: 'portListModel>/results'}">
-									<core:Item key="{portListModel>PortName}" text="{portListModel>PortName}"/>
+									<m:ComboBox placeholder="{i18n>select}" selectedKey="{etaDetailsModel>/Port}" width="100%" items="">
+									<core:Item key="HAMRIYA" text="HAMRIYA"/>
+									<core:Item key="KHORFAKKAN" text="KHORFAKKAN"/>
+									<core:Item key="MENAKALID" text="MENAKALID"/>
 								</m:ComboBox>
 							</m:HBox>
 						</m:HBox>

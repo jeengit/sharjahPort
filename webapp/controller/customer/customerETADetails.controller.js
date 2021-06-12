@@ -119,11 +119,22 @@ sap.ui.define([
 				var oContext = oItem.getBindingContext("agentVesselModel");
 				var oPath = oContext.getPath();
 				var obj = model.getProperty(oPath);
+				console.log(obj);
 				this.getView().byId("lineId").setValue(obj.LineCode);
 				this.getView().byId("vesselId").setValue(obj.VesselName);
-				this.getView().byId("imoId").setValue(obj.ImoNumber);
+				// this.getView().byId("imoId").setValue(obj.ImoNumber);
 				this.getView().byId("grtId").setValue(obj.Grt);
 			}
+		},
+		onSelectPurpose: function() {
+			
+			this.getView().byId("purpVisit").getValue() !== "REFUEL" ? this.getView().byId("DischargeDetails").setVisible(true) : this.getView()
+				.byId("DischargeDetails").setVisible(false);
+			this.getView().byId("purpVisit").getValue() === "UNLOADING" || 	this.getView().byId("purpVisit").getValue() === "BOTH" ? this.getView().byId("cargoDisBox").setVisible(true) : this.getView()
+				.byId("cargoDisBox").setVisible(false);
+			this.getView().byId("purpVisit").getValue() === "LOADING" || this.getView().byId("purpVisit").getValue() ==="BOTH" ? this.getView().byId("cargoLoadBox").setVisible(true) : this.getView()
+				.byId("cargoLoadBox").setVisible(false);
+
 		},
 		gotoLog: function() {
 			sap.ui.core.BusyIndicator.show();

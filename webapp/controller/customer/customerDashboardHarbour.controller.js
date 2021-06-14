@@ -9,22 +9,25 @@ sap.ui.define([
 			oRouter.getRoute("dashboardHarbour").attachPatternMatched(this._onObjectMatched, this);
 			var oPopOver = this.getView().byId("idPopOver");
 			var oVizFrame = this.getView().byId("idVizFrame");
-            oPopOver.connect(oVizFrame.getVizUid());
+			oPopOver.connect(oVizFrame.getVizUid());
 		},
 		_onObjectMatched: function() {
 			this.getUserName();
 			this.getModel("DashboardCount", "DashboardCountModel");
-			var oModData = this.getView().getModel("DashboardCountModel").getData();
-			var res = {
-				"results": [{
-					"status":"Pending",
-					"count": oModData['0'].LogsheetPending
-				},{
-					"status":"Closed",
-					"count": oModData['0'].LogsheetClosed
-				}]
-			};
-			this.getView().setModel(new JSONModel(res), "pieChartModel");
+			var that = this;
+			setTimeout(function() {
+				var oModData = that.getView().getModel("DashboardCountModel").getData();
+				var res = {
+					"results": [{
+						"status": "Pending",
+						"count": oModData['0'].LogsheetPending
+					}, {
+						"status": "Closed",
+						"count": oModData['0'].LogsheetClosed
+					}]
+				};
+				that.getView().setModel(new JSONModel(res), "pieChartModel");
+			}, 2000);
 			var oData = {
 				"results": [{
 					"count": 1,

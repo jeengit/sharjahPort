@@ -45,7 +45,7 @@ sap.ui.define([
 				this.getView().byId(this.getView().getId() + "--tallyClerkchangId").setVisible(true);
 				this.getView().byId(this.getView().getId() + "--cancel").setVisible(false);
 				this.getView().byId(this.getView().getId() + "--save").setVisible(false);
-				this.getView().byId(this.getView().getId() + "--create").setVisible(true);
+				//this.getView().byId(this.getView().getId() + "--create").setVisible(true);
 				this.getView().byId(this.getView().getId() + "--edit").setVisible(false);
 			}
 			setTimeout(function() {
@@ -238,6 +238,7 @@ sap.ui.define([
 				TimeCompleted: "",
 				VesselName: obj.VesselName
 			};
+			console.log(oData);
 			this.getView().setModel(new JSONModel(oData), "tSClerkDetailModel");
 		},
 		deleteThisItem: function(oEvent) {

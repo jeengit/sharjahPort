@@ -9,16 +9,15 @@
 				<Breadcrumbs currentLocationText="ETA List">
 					<Link press="onHomePress" text="Home"/>
 				</Breadcrumbs>
-				<t:Table id="etaTable" class="card tableCard no-margin" rows="{etaListModel>/results}" selectionMode="MultiToggle" ariaLabelledBy="title">
+				<t:Table id="etaTable" class="card tableCard no-margin" rows="{etaListModel>/results}" selectionMode="None" ariaLabelledBy="title">
 					<t:extension>
 						<OverflowToolbar style="Clear">
 							<Title id="title" text="{i18n>ETATable} ({etaListModel>/results/length})"/>
 							<ToolbarSpacer/>
-							<Button type="Transparent" tooltip="{i18n>CreateETA}"
+							<SearchField class="search" liveChange="onSearch" width="250px"/>
+							<Button class="btn-sm" tooltip="{i18n>CreateETA}"
 								visible="{= ${etaListModel>/results/0/Status} === 'NEW' &amp;&amp; ${loginModel>/uRole} === 'AGENT' ? true : false }" press="gotoCreatEta"
-								text="{i18n>CreateETA}">
-								<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
-							</Button>
+								text="{i18n>CreateETA}"/>
 							<core:Icon src="sap-icon://sorting-ranking" tooltip="{i18n>sort}" press="sortCategoriesAndName"/>
 							<core:Icon src="sap-icon://sort" tooltip="{i18n>SortCategories}" press="sortCategories"/>
 							<core:Icon src="sap-icon://decline" tooltip="{i18n>Clearallsortings}" press="clearAllSortings"/>

@@ -20,7 +20,7 @@
 									<!--<ImageContent src="sap-icon://product" />-->
 								</TileContent>
 							</GenericTile>
-							<GenericTile ariaLabel="REJECTED/LOG" press="onNavToPress" class="tileLayout" header="{i18n>etaRej}" subheader="{i18n>agentPay}">
+							<GenericTile ariaLabel="REJECTED/ETA" press="onNavToPress" class="tileLayout" header="{i18n>etaRej}" subheader="{i18n>agentPay}">
 								<TileContent unit="" footer="{DashboardCountModel>/0/EtaRejected}">
 									<!--<ImageContent src="sap-icon://product" />-->
 								</TileContent>

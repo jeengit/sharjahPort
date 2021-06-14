@@ -205,7 +205,7 @@
 								<m:Text text="{tSClerkDetailModel>/NoOfHooks}"/>
 							</m:HBox>
 						</m:HBox>
-						<m:HBox alignItems="Center">
+						<m:HBox visible="{= ${tSClerkDetailModel>/GUID} !== '' ? true: false}"  alignItems="Center">
 							<m:HBox width="8rem">
 								<m:Label text="GUID"/>
 							</m:HBox>

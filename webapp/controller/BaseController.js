@@ -17,7 +17,10 @@ sap.ui.define([
 				oModel.read("/" + entity, {
 					success: function(data) {
 						that.getView().setModel(new JSONModel(data.results), modelName);
-						sap.ui.core.BusyIndicator.hide();
+						setTimeout(function() {
+							sap.ui.getCore().setModel(new JSONModel(that.getView().getModel(modelName).getData()), modelName);
+							sap.ui.core.BusyIndicator.hide();
+						}, 2000);
 					},
 					error: function(oResponse) {
 						sap.m.MessageToast.show(oResponse.statusText);
@@ -36,8 +39,11 @@ sap.ui.define([
 						data.results['countE'] = export_res.length;
 						data.results['countI'] = import_res.length;
 						that.getView().setModel(new JSONModel(data.results), modelName);
-						sap.m.MessageToast.show("Items loaded succesfully with status - " + status);
-						sap.ui.core.BusyIndicator.hide();
+						setTimeout(function() {
+							sap.m.MessageToast.show("Items loaded succesfully with status - " + status);
+							sap.ui.getCore().setModel(new JSONModel(that.getView().getModel(modelName).getData()), modelName);
+							sap.ui.core.BusyIndicator.hide();
+						}, 2000);
 					},
 					error: function(oResponse) {
 						sap.m.MessageToast.show(oResponse.statusText);
@@ -72,7 +78,7 @@ sap.ui.define([
 						data.results['countE'] = export_res.length;
 						data.results['countI'] = import_res.length;
 						that.getView().setModel(new JSONModel(data.results), modelName);
-				//		sap.m.MessageToast.show("Items loaded succesfully with status - " + status);
+						//		sap.m.MessageToast.show("Items loaded succesfully with status - " + status);
 						sap.ui.core.BusyIndicator.hide();
 					},
 					error: function(oResponse) {

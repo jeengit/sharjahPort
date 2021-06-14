@@ -42,7 +42,7 @@
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 						<m:HBox class="sapUiTinyMarginBottom">
-							<m:Label text="{i18n>ETA}"/>
+							<m:Label text="{i18n>ETA}" class="sapUiSmallMarginEnd"/>
 							<m:Text text="{etaDetailsModel>/ZETANumber}"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
@@ -53,27 +53,10 @@
 							<m:Label text="{i18n>AgentName}" class="sapUiSmallMarginEnd"/>
 							<m:Text text="{etaDetailsModel>/ZAgentName}"/>
 						</m:HBox>
-						<m:HBox class="sapUiTinyMarginBottom">
-							<m:Label text="{i18n>Linecode}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{etaDetailsModel>/ZLineCode}"/>
+						<m:HBox>
+							<m:Label text="{i18n>PreferredBerth}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZPreferedBerth}"/>
 						</m:HBox>
-						<m:HBox class="sapUiTinyMarginBottom">
-							<m:Label text="{i18n>Purposeofvisit}"  class="sapUiSmallMarginEnd"/>
-							<m:Text text="{etaDetailsModel>/ZPurposeOfVisit}" wrapping="false"/>
-						</m:HBox>
-					</m:VBox>
-				</layout:VerticalLayout>
-				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
-					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
-						<!--<m:HBox class="sapUiTinyMarginBottom">-->
-						<!--	<m:Label text="{i18n>Vesselnature}" class="sapUiSmallMarginEnd"/>-->
-						<!--	<m:Text text="{etaDetailsModel>/ZVesselNature}"/>-->
-						<!--</m:HBox>-->
-						<!--	<m:HBox class="sapUiTinyMarginBottom">-->
-						<!--	<m:Label text="{i18n>VoyageNature}" class="sapUiSmallMarginEnd"/>-->
-						<!--	<m:Text text="{etaDetailsModel>/ZVoyageNature}"-->
-						<!--		wrapping="false"/>-->
-						<!--</m:HBox>-->
 					</m:VBox>
 				</layout:VerticalLayout>
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
@@ -83,25 +66,37 @@
 							<m:Text text="{etaDetailsModel>/ZPortName}"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
-							<m:Label text="{i18n>Status}" class="sapUiSmallMarginEnd"/>
-							<m:ObjectStatus active="true" inverted="true" text="{etaDetailsModel>/ZStatus}"
-								state="{= ${etaDetailsModel>/ZStatus} === 'NEW' ? 'Information' : 'Warning' }"/>
+							<m:Label text="{i18n>Callsign}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZCallSign}"/>
 						</m:HBox>
-						<m:HBox class="sapUiTinyMarginBottom">
-							<m:Label text="{i18n>Generalremark}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{etaDetailsModel>/ZGeneralRemark}" wrapping="false"/>
-						</m:HBox>
-						<m:HBox class="sapUiTinyMarginBottom">
-							<m:Label text="{i18n>IMOnumber}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{etaDetailsModel>/ZIMONumber}"/>
+						<m:HBox>
+							<m:Label text="{i18n>Linecode}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZLineCode}"/>
 						</m:HBox>
 					</m:VBox>
 				</layout:VerticalLayout>
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 						<m:HBox class="sapUiTinyMarginBottom">
-							<m:Label text="{i18n>Callsign}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{etaDetailsModel>/ZCallSign}"/>
+							<m:Label text="{i18n>Purposeofvisit}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZPurposeOfVisit}" wrapping="false"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>Status}" class="sapUiSmallMarginEnd"/>
+							<m:ObjectStatus active="true" inverted="true" text="{etaDetailsModel>/ZStatus}"
+								state="{= ${etaDetailsModel>/ZStatus} === 'NEW' ? 'Information' : 'Warning' }"/>
+						</m:HBox>
+						<m:HBox>
+							<m:Label text="{i18n>Generalremark}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZGeneralRemark}" wrapping="false"/>
+						</m:HBox>
+					</m:VBox>
+				</layout:VerticalLayout>
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>IMOnumber}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{etaDetailsModel>/ZIMONumber}"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>Agentcode}" class="sapUiSmallMarginEnd"/>
@@ -110,10 +105,6 @@
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>GRT}" class="sapUiSmallMarginEnd"/>
 							<m:Text text="{etaDetailsModel>/ZGRT}"/>
-						</m:HBox>
-						<m:HBox class="sapUiTinyMarginBottom">
-							<m:Label text="{i18n>PreferredBerth}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{etaDetailsModel>/ZPreferedBerth}"/>
 						</m:HBox>
 					</m:VBox>
 				</layout:VerticalLayout>
@@ -168,9 +159,9 @@
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
 							<m:FlexBox wrap="Wrap">
-								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+								<layout:VerticalLayout visible="{= ${etaDetailsModel>/ZPurposeOfVisit} === 'UNLOADING' || ${etaDetailsModel>/ZPurposeOfVisit} ==='BOTH' ? true : false}" class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>BasicDetails}"/>-->
-									<m:VBox visible="{= ${etaDetailsModel>/ZPurposeOfVisit} === 'UNLOADING' || ${etaDetailsModel>/ZPurposeOfVisit} ==='BOTH' ? true : false}">
+									<m:VBox>
 										<m:HBox class="sapUiTinyMarginBottom">
 											<m:Label text="{i18n>cargoDis}" class="sapUiSmallMarginEnd"/>
 											<m:Text text="{etaDetailsModel>/ZCargoDischarge}"/>
@@ -185,8 +176,8 @@
 										</m:HBox>
 									</m:VBox>
 								</layout:VerticalLayout>
-								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
-									<m:VBox visible="{= ${etaDetailsModel>/ZPurposeOfVisit} === 'LOADING' || ${etaDetailsModel>/ZPurposeOfVisit} ==='BOTH' ? true : false}">
+								<layout:VerticalLayout visible="{= ${etaDetailsModel>/ZPurposeOfVisit} === 'LOADING' || ${etaDetailsModel>/ZPurposeOfVisit} ==='BOTH' ? true : false}" class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+									<m:VBox>
 										<m:HBox class="sapUiTinyMarginBottom">
 											<m:Label text="{i18n>CargoLoaded}" class="sapUiSmallMarginEnd"/>
 											<m:Text text="{etaDetailsModel>/ZCargoLoaded}" wrapping="false"/>

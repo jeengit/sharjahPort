@@ -12,10 +12,6 @@ sap.ui.define([
 			this.getUserName();
 			this.adjustTableRowsCount();
 			this.getModel("ClerkTallySheetSet","tSClerkListModel");
-			var that = this;
-			setTimeout(function(){
-				sap.ui.getCore().setModel(new JSONModel(that.getView().getModel("tSClerkListModel").getData()), "tSClerkListModel");
-			}, 2000);
 		},
 		handleDetailsPress : function (evt) {
 			sap.ui.core.BusyIndicator.show();

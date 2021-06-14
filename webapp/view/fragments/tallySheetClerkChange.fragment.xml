@@ -1,7 +1,7 @@
 <core:FragmentDefinition xmlns:t="sap.ui.table" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core">
 	<ObjectPageLayout upperCaseAnchorBar="false" id="tallyClerkchangId" class="objLayoutClass editMode">
 		<headerTitle>
-			<ObjectPageDynamicHeaderTitle>
+			<ObjectPageDynamicHeaderTitle visible="{= ${tSClerkDetailModel>/ManifestNo} ? true: false}">
 				<breadcrumbs>
 					<m:Breadcrumbs currentLocationText="{tSClerkDetailModel>/ManifestNo}">
 						<m:Link href="#tallySheetClerkList" text="TallySheet"/>
@@ -9,15 +9,13 @@
 				</breadcrumbs>
 				<expandedHeading>
 					<m:HBox>
-						<m:Title visible="{= ${tSClerkDetailModel>/ManifestNo} !== '' ? true: false}"
-							text="{tSClerkDetailModel>/ManifestNo} - {tSClerkDetailModel>/VesselName}" wrapping="true"/>
+						<m:Title text="{tSClerkDetailModel>/ManifestNo} - {tSClerkDetailModel>/VesselName}" wrapping="true"/>
 					</m:HBox>
 				</expandedHeading>
 				<snappedHeading>
 					<m:FlexBox fitContainer="true" alignItems="Center">
 						<m:Avatar backgroundColor="Accent9" src="sap-icon://shipping-status" class="sapUiTinyMarginEnd"/>
-						<m:Title visible="{= ${tSClerkDetailModel>/ManifestNo} !== '' ? true: false}"
-							text="{tSClerkDetailModel>/ManifestNo} - {tSClerkDetailModel>/VesselName}" wrapping="true"/>
+						<m:Title text="{tSClerkDetailModel>/ManifestNo} - {tSClerkDetailModel>/VesselName}" wrapping="true"/>
 					</m:FlexBox>
 				</snappedHeading>
 				<expandedContent>
@@ -38,16 +36,15 @@
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
-								<m:Label text="{i18n>ManifestNo}"/>
+								<m:Label text="{i18n>Callsign}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:ComboBox selectedKey="{tSClerkDetailModel>/ManifestNo}" id="manifestSel" placeholder="{i18n>select}" width="100%"
-									items="{manifestFilterListModel>/}" change="handleMDetailsPress">
-									<core:Item key="{manifestFilterListModel>ManifestNo}" text="{manifestFilterListModel>ManifestNo}"/>
+								<m:ComboBox change="handleCallSignPress" items="{callSignModel>/}" placeholder="{i18n>select}" width="100%" selectedKey="{tSClerkDetailModel>/CallSign}">
+									<core:Item key="{callSignModel>CallSign}" text="{callSignModel>CallSign}"/>
 								</m:ComboBox>
 							</m:HBox>
 						</m:HBox>
-						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+						<m:HBox visible="{= ${tSClerkDetailModel>/VesselName} ? true: false}" class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
 								<m:Label text="{i18n>VesselName}"/>
 							</m:HBox>
@@ -55,7 +52,7 @@
 								<m:Input enabled="false" value="{tSClerkDetailModel>/VesselName}"/>
 							</m:HBox>
 						</m:HBox>
-						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+						<m:HBox visible="{= ${tSClerkDetailModel>/AgentCode} ? true: false}" class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
 								<m:Label text="Agent Code"/>
 							</m:HBox>
@@ -63,7 +60,7 @@
 								<m:Input enabled="false" value="{tSClerkDetailModel>/AgentCode}"/>
 							</m:HBox>
 						</m:HBox>
-						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+						<m:HBox visible="{= ${tSClerkDetailModel>/ManifestNo} ? true: false}" class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
 								<m:Label text="Shift"/>
 							</m:HBox>
@@ -75,7 +72,7 @@
 								</m:ComboBox>
 							</m:HBox>
 						</m:HBox>
-						<m:HBox alignItems="Center">
+						<m:HBox class="sapUiTinyMarginBottom" visible="{= ${tSClerkDetailModel>/ManifestNo} ? true: false}" alignItems="Center">
 							<m:HBox width="40%">
 								<m:Label text="Hatch No"/>
 							</m:HBox>
@@ -89,7 +86,7 @@
 								</m:ComboBox>
 							</m:HBox>
 						</m:HBox>
-						<m:HBox alignItems="Center">
+						<m:HBox visible="{= ${tSClerkDetailModel>/ManifestNo} ? true: false}" alignItems="Center">
 							<m:HBox width="40%">
 								<m:Label text="Time Commenced"/>
 							</m:HBox>
@@ -101,7 +98,18 @@
 				</layout:VerticalLayout>
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
-						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+						<m:HBox visible="{= ${tSClerkDetailModel>/CallSign} ? true: false}" class="sapUiTinyMarginBottom" alignItems="Center">
+							<m:HBox width="40%">
+								<m:Label text="{i18n>ManifestNo}"/>
+							</m:HBox>
+							<m:HBox width="60%">
+								<m:ComboBox selectedKey="{tSClerkDetailModel>/ManifestNo}" id="manifestSel" placeholder="{i18n>select}" width="100%"
+									items="{manifestFilterListModel>/}" change="handleMDetailsPress">
+									<core:Item key="{manifestFilterListModel>ManifestNo}" text="{manifestFilterListModel>ManifestNo}"/>
+								</m:ComboBox>
+							</m:HBox>
+						</m:HBox>
+						<m:HBox visible="{= ${tSClerkDetailModel>/CustomsRefNo} ? true: false}" class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
 								<m:Label text="{i18n>CustomsRefNo}"/>
 							</m:HBox>
@@ -109,17 +117,7 @@
 								<m:Input enabled="false" value="{tSClerkDetailModel>/CustomsRefNo}"/>
 							</m:HBox>
 						</m:HBox>
-						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox width="40%">
-								<m:Label text="{i18n>Callsign}"/>
-							</m:HBox>
-							<m:HBox width="60%">
-								<m:ComboBox change="handleCallSignPress" items="{callSignModel>/}" placeholder="{i18n>select}" width="100%" selectedKey="{tSClerkDetailModel>/CallSign}">
-									<core:Item key="{callSignModel>CallSign}" text="{callSignModel>CallSign}"/>
-								</m:ComboBox>
-							</m:HBox>
-						</m:HBox>
-						<m:HBox visible="{= ${tSClerkDetailModel>/AgentName} === '' ? false: true}" class="sapUiTinyMarginBottom" alignItems="Center">
+						<m:HBox visible="{= ${tSClerkDetailModel>/AgentName} ? true: false}" class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
 								<m:Label text="{i18n>AgentName}"/>
 							</m:HBox>
@@ -127,7 +125,7 @@
 								<m:Input enabled="false" value="{tSClerkDetailModel>/AgentName}"/>
 							</m:HBox>
 						</m:HBox>
-						<m:HBox visible="{= ${tSClerkDetailModel>/AgentCode} === '' ? false: true}" class="sapUiTinyMarginBottom" alignItems="Center">
+						<m:HBox visible="{= ${tSClerkDetailModel>/AgentCode} ? true: false}" class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
 								<m:Label text="{i18n>AgentCode}"/>
 							</m:HBox>
@@ -135,7 +133,7 @@
 								<m:Input enabled="false" value="{tSClerkDetailModel>/AgentCode}"/>
 							</m:HBox>
 						</m:HBox>
-						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+						<m:HBox visible="{= ${tSClerkDetailModel>/Date} ? true: false}" class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
 								<m:Label text="Date"/>
 							</m:HBox>
@@ -143,15 +141,15 @@
 								<m:DatePicker enabled="false" value="{tSClerkDetailModel>/Date}" valueFormat="yyyyMMdd" displayFormat="long"/>
 							</m:HBox>
 						</m:HBox>
-						<m:HBox visible="{= ${tSClerkDetailModel>/Derrik_Crain} === '' ? false: true}" alignItems="Center">
-							<m:HBox width="40%">
-								<m:Label text="Derrik/Crain"/>
-							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input value="{tSClerkDetailModel>/Derrik_Crain}"/>
-							</m:HBox>
-						</m:HBox>
-						<m:HBox visible="{= ${tSClerkDetailModel>/TimeCompleted} === '' ? false: true}" alignItems="Center">
+						<!--<m:HBox class="sapUiTinyMarginBottom" visible="{= ${tSClerkDetailModel>/ManifestNo} ? true: false}" alignItems="Center">-->
+						<!--	<m:HBox width="40%">-->
+						<!--		<m:Label text="Derrik/Crain"/>-->
+						<!--	</m:HBox>-->
+						<!--	<m:HBox width="60%">-->
+						<!--		<m:Input value="{tSClerkDetailModel>/Derrik_Crain}"/>-->
+						<!--	</m:HBox>-->
+						<!--</m:HBox>-->
+						<m:HBox visible="{= ${tSClerkDetailModel>/ManifestNo} ? true: false}" alignItems="Center">
 							<m:HBox width="40%">
 								<m:Label text="Time Completed"/>
 							</m:HBox>
@@ -163,15 +161,15 @@
 				</layout:VerticalLayout>
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
-						<m:HBox visible="{= ${tSClerkDetailModel>/TallyServiceNo} === '' ? false: true}" class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox width="40%">
-								<m:Label text="Tally(Service) number"/>
-							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input enabled="false" value="{tSClerkDetailModel>/TallyServiceNo}"/>
-							</m:HBox>
-						</m:HBox>
-						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+						<!--<m:HBox visible="{= ${tSClerkDetailModel>/ManifestNo} ? true: false}" class="sapUiTinyMarginBottom" alignItems="Center">-->
+						<!--	<m:HBox width="40%">-->
+						<!--		<m:Label text="Tally(Service) number"/>-->
+						<!--	</m:HBox>-->
+						<!--	<m:HBox width="60%">-->
+						<!--		<m:Input value="{tSClerkDetailModel>/TallyServiceNo}"/>-->
+						<!--	</m:HBox>-->
+						<!--</m:HBox>-->
+						<m:HBox visible="{= ${tSClerkDetailModel>/IMO} ? true: false}" class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
 								<m:Label text="{i18n>IMOnumber}"/>
 							</m:HBox>
@@ -179,15 +177,15 @@
 								<m:Input enabled="false" value="{tSClerkDetailModel>/IMO}"/>
 							</m:HBox>
 						</m:HBox>
-						<m:HBox visible="{= ${tSClerkDetailModel>/EmployeeId} === '' ? false: true}" class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox width="40%">
-								<m:Label text="Employee Id"/>
-							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input enabled="false" value="{tSClerkDetailModel>/EmployeeId}"/>
-							</m:HBox>
-						</m:HBox>
-						<m:HBox alignItems="Center">
+						<!--<m:HBox visible="{= ${tSClerkDetailModel>/ManifestNo} ? true: false}" class="sapUiTinyMarginBottom" alignItems="Center">-->
+						<!--	<m:HBox width="40%">-->
+						<!--		<m:Label text="Employee Id"/>-->
+						<!--	</m:HBox>-->
+						<!--	<m:HBox width="60%">-->
+						<!--		<m:Input value="{tSClerkDetailModel>/EmployeeId}"/>-->
+						<!--	</m:HBox>-->
+						<!--</m:HBox>-->
+						<m:HBox visible="{= ${tSClerkDetailModel>/ManifestNo} ? true: false}" alignItems="Center">
 							<m:HBox width="40%">
 								<m:Label text="Berth"/>
 							</m:HBox>
@@ -195,20 +193,12 @@
 								<m:Input value="{tSClerkDetailModel>/Berth}"/>
 							</m:HBox>
 						</m:HBox>
-						<m:HBox alignItems="Center">
+						<m:HBox visible="{= ${tSClerkDetailModel>/ManifestNo} ? true: false}" alignItems="Center">
 							<m:HBox width="40%">
 								<m:Label text="No of Hooks"/>
 							</m:HBox>
 							<m:HBox width="60%">
 								<m:Input value="{tSClerkDetailModel>/NoOfHooks}"/>
-							</m:HBox>
-						</m:HBox>
-						<m:HBox alignItems="Center">
-							<m:HBox width="40%">
-								<m:Label text="GUID"/>
-							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input enabled="false" value="{tSClerkDetailModel>/GUID}" wrapping="false"/>
 							</m:HBox>
 						</m:HBox>
 					</m:VBox>
@@ -262,7 +252,7 @@
 													</t:template>
 												</t:Column>
 												<t:Column>
-													<m:Label text="StRate"/>
+													<m:Label text="Rate"/>
 													<t:template>
 														<m:Input liveChange="handleLiveChange" value="{tSClerkDetailModel>Rate}"/>
 													</t:template>

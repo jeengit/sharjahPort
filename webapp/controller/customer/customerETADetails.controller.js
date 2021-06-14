@@ -122,7 +122,7 @@ sap.ui.define([
 				console.log(obj);
 				this.getView().byId("lineId").setValue(obj.LineCode);
 				this.getView().byId("vesselId").setValue(obj.VesselName);
-				// this.getView().byId("imoId").setValue(obj.ImoNumber);
+				this.getView().byId("imoId").setValue(obj.ImoNumber);
 				this.getView().byId("grtId").setValue(obj.Grt);
 			}
 		},
@@ -179,7 +179,13 @@ sap.ui.define([
 				"ImFlag": evt.getSource().getType() === "Accept" ? "APPROVE" : "REJECT",
 				"ETA_no": this.getView().getModel("etaDetailsModel").getData().ZETANumber,
 				"Gen_Remark": "",
-				"Reject_Remark": ""
+				"Reject_Remark": "",
+				"PreferedBerth":this.getView().getModel("etaDetailsModel").getData().ZPreferedBerth,
+				"Port":this.getView().getModel("etaDetailsModel").getData().ZPortName,
+				"ExpArrivalDate":this.getView().getModel("etaDetailsModel").getData().ZExpectedArrivalDate,
+				"ExpArrivalTime":this.getView().getModel("etaDetailsModel").getData().ZExpectedArrivalTime,
+				"ImoNo":this.getView().getModel("etaDetailsModel").getData().ZIMONumber,
+				"CallSign":this.getView().getModel("etaDetailsModel").getData().ZCallSign
 			};
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);

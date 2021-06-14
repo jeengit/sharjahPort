@@ -126,7 +126,14 @@
 								<m:Input value="{etaDetailsModel>/GenRemark}"/>
 							</m:HBox>
 						</m:HBox>
-					
+						<m:HBox alignItems="Center">
+							<m:HBox width="40%">
+								<m:Label text="{i18n>IMOnumber}"/>
+							</m:HBox>
+							<m:HBox width="60%">
+								<m:Input id="imoId" editable="false" value="{etaDetailsModel>/ImoNo}"/>
+							</m:HBox>
+						</m:HBox>
 					</m:VBox>
 				</layout:VerticalLayout>
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
@@ -273,7 +280,7 @@
 												<m:Label text="Expected Arrival Time"/>
 											</m:HBox>
 											<m:HBox width="50%">
-												<m:TimePicker name="TimeArrival" change="handleChangeSelect" editable="true" value="{etaDetailsModel>/ExpArrivalDate}"
+												<m:TimePicker id="depTimeArrival"  editable="true" value="{etaDetailsModel>/ExpArrivalTime}"
 													valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" placeholder="Expected Arrival Date"/>
 											</m:HBox>
 										</m:HBox>

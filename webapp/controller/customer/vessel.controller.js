@@ -30,7 +30,7 @@ sap.ui.define([
 			oMM.registerObject(oView.byId("vnameInp"), true);
 			oMM.registerObject(oView.byId("portInp"), true);
 			// oMM.registerObject(oView.byId("vrnInp"), true);
-			oMM.registerObject(oView.byId("voyageInp"), true);
+			// oMM.registerObject(oView.byId("voyageInp"), true);
 
 			// this._formFragments = {};
 			// this._showFormFragment("vesselMov");
@@ -305,9 +305,9 @@ sap.ui.define([
 					oView.byId("callSignInp"),
 					oView.byId("etaInp"),
 					oView.byId("vnameInp"),
-					oView.byId("portInp"),
+					oView.byId("portInp")
 					// oView.byId("vrnInp"),
-					oView.byId("voyageInp")
+					// oView.byId("voyageInp")
 					
 				],
 				bValidationError = false;

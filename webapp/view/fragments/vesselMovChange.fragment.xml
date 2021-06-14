@@ -68,26 +68,19 @@
 								<m:Input id="vrnInp" value="{vesMovModel>/VRN}"/>
 							</m:HBox>
 						</m:HBox>
-						<m:HBox alignItems="Center">
-							<m:HBox width="40%">
-								<m:Label text="{i18n>Agentcode}"/>
-							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input id="agentInp" value="{vesMovModel>/AgentCode}"/>
-							</m:HBox>
-						</m:HBox>
+					
 					</m:VBox>
 				</layout:VerticalLayout>
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
-						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox width="40%">
-								<m:Label text="{i18n>Voyageno}"/>
-							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input id="voyageInp" value="{vesMovModel>/Voyageno}"/>
-							</m:HBox>
-						</m:HBox>
+						<!--<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">-->
+						<!--	<m:HBox width="40%">-->
+						<!--		<m:Label text="{i18n>Voyageno}"/>-->
+						<!--	</m:HBox>-->
+						<!--	<m:HBox width="60%">-->
+						<!--		<m:Input id="voyageInp" value="{vesMovModel>/Voyageno}"/>-->
+						<!--	</m:HBox>-->
+						<!--</m:HBox>-->
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
 								<m:Label text="{i18n>ETA}"/>
@@ -132,22 +125,30 @@
 								<m:Input id="callSignInp" value="{path :'vesMovModel>/CallSign',type : 'sap.ui.model.type.String'}"/>
 							</m:HBox>
 						</m:HBox>
-						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+							<m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
 							<m:HBox width="40%">
-								<m:Label text="{i18n>Partiallyinvoiced}"/>
+								<m:Label text="{i18n>Agentcode}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input value="{vesMovModel>/PartiallyInvoice}"/>
+								<m:Input id="agentInp" value="{vesMovModel>/AgentCode}"/>
 							</m:HBox>
 						</m:HBox>
-						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox width="40%">
-								<m:Label text="{i18n>Countryname}"/>
-							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input value="{vesMovModel>/Countryname}"/>
-							</m:HBox>
-						</m:HBox>
+						<!--<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">-->
+						<!--	<m:HBox width="40%">-->
+						<!--		<m:Label text="{i18n>Partiallyinvoiced}"/>-->
+						<!--	</m:HBox>-->
+						<!--	<m:HBox width="60%">-->
+						<!--		<m:Input value="{vesMovModel>/PartiallyInvoice}"/>-->
+						<!--	</m:HBox>-->
+						<!--</m:HBox>-->
+						<!--<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">-->
+						<!--	<m:HBox width="40%">-->
+						<!--		<m:Label text="{i18n>Countryname}"/>-->
+						<!--	</m:HBox>-->
+						<!--	<m:HBox width="60%">-->
+						<!--		<m:Input value="{vesMovModel>/Countryname}"/>-->
+						<!--	</m:HBox>-->
+						<!--</m:HBox>-->
 						<m:HBox alignItems="Center">
 							<m:HBox width="40%">
 								<m:Label text="{i18n>LastPort}"/>
@@ -167,7 +168,7 @@
 						<blocks>
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
-									<m:Text class="title sapUiTinyMarginBottom" text="{i18n>BasicDetails}"/>
+									<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>BasicDetails}"/>-->
 									<m:VBox>
 										<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 											<m:HBox width="50%">
@@ -190,7 +191,7 @@
 								</layout:VerticalLayout>
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
-										<m:HBox class="sapUiSmallMarginTop" alignItems="Center">
+										<m:HBox class=" sapUiTinyMarginBottom" alignItems="Center">
 											<m:HBox width="50%">
 												<m:Label text="{i18n>ExpectedArrivalTime}"/>
 											</m:HBox>

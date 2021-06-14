@@ -10,10 +10,10 @@
         </customHeader>
         <content>
         	<VBox class="sapUiSmallMargin">
-				<Breadcrumbs currentLocationText="{vesMovModel>/LogSheetNo}">
-					<Link id="dashboard" press="onHomePress" text="Home"/>
-					<Link id="products" press="onNavToPress" text="ETA List"/>
-				</Breadcrumbs>
+				<!--<Breadcrumbs currentLocationText="{vesMovModel>/LogSheetNo}">-->
+				<!--	<Link id="dashboard" press="onHomePress" text="Home"/>-->
+				<!--	<Link id="products" press="onNavToPress" text="ETA List"/>-->
+				<!--</Breadcrumbs>-->
         	<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.vesselMovChange" type="XML"/>
         	</VBox>
         </content>

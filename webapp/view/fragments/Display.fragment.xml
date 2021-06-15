@@ -5,7 +5,7 @@
 				<breadcrumbs>
 					<m:Breadcrumbs currentLocationText="{etaDetailsModel>/ZETANumber}">
 						<m:Link href="#dashboardAgent" text="Home"/>
-						<m:Link href="products" text="ETA List"/>
+						<m:Link href="#" text="ETA List"/>
 					</m:Breadcrumbs>
 				</breadcrumbs>
 				<expandedHeading>
@@ -126,7 +126,7 @@
 												wrapping="false"/>
 										</m:HBox>
 										<m:HBox class="sapUiTinyMarginBottom">
-											<m:Label text="{i18n>LastPort}" class="sapUiMediumMarginEnd"/>
+											<m:Label text="{i18n>LastPort}" class="sapUiSmallMarginEnd"/>
 											<m:Text text="{etaDetailsModel>/ZLastPort}" wrapping="false"/>
 										</m:HBox>
 									</m:VBox>
@@ -140,7 +140,7 @@
 												wrapping="false"/>
 										</m:HBox>
 										<m:HBox class="sapUiTinyMarginBottom">
-											<m:Label text="{i18n>NextPort}" class="sapUiMediumMarginEnd"/>
+											<m:Label text="{i18n>NextPort}" class="sapUiSmallMarginEnd"/>
 											<m:Text text="{etaDetailsModel>/ZNextPort}" wrapping="false"/>
 										</m:HBox>
 										<!--<m:HBox class="sapUiTinyMarginBottom">-->

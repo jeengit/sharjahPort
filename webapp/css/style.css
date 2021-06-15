@@ -401,8 +401,8 @@ html.sap-desktop .sapMBtn:focus>.sapMFocusable {
     color: #333;
 }
 
-.sapMLnk {
-    color: #BC9E6D!important;
+.sapMLnk{
+    color:#BC9E6D!important;
 }
 
 .tabs .sapMLabel {
@@ -427,7 +427,7 @@ html.sap-desktop .sapMBtn:focus>.sapMFocusable {
 }
 
 .detailspage .sapMPageFooter {
-    top: 90px;
+    top: 65px;
     right: 45px;
     width: auto;
     bottom: auto;
@@ -505,7 +505,7 @@ html.sap-desktop .sapMBtn:focus>.sapMFocusable {
 
 .objLayoutClass .sapFDynamicPageTitle,
 .objLayoutClass .sapFDynamicPageTitle:hover {
-    background: rgb(188 158 109 / 15%)!important;
+    background: rgb(227 25 54 / 90%)!important;
     border-top-right-radius: 0.2rem;
     border-top-left-radius: 0.2rem;
 }
@@ -576,4 +576,22 @@ html.sap-desktop .sapMBtn:focus>.sapMFocusable {
 }
 .search .sapMSFB{
 	color:#BC9E6D;
+}
+.objLayoutClass .sapUxAPObjectPageHeaderDetails .sapMLabel ,.objLayoutClass .sapMLabel {
+    color: #BC9E6D;
+    width: 8rem;
+    font-size: 13px;
+}
+.objLayoutClass .sapUxAPObjectPageHeaderDetails .sapMLabel{
+	width:6rem!important;
+}
+.objLayoutClass .sapMTitle{
+	font-weight:700!important;
+	color:#fff!important;
+}
+.objLayoutClass .sapMLnk {
+	color:#fff!important;
+}
+.sapUiTableRow .sapMLabel {
+    color: #333;
 }

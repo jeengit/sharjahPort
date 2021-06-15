@@ -128,12 +128,12 @@ sap.ui.define([
 		},
 		onSelectPurpose: function() {
 			
-			this.getView().byId("purpVisit").getValue() !== "REFUEL" ? this.getView().byId("DischargeDetails").setVisible(true) : this.getView()
-				.byId("DischargeDetails").setVisible(false);
-			this.getView().byId("purpVisit").getValue() === "UNLOADING" || 	this.getView().byId("purpVisit").getValue() === "BOTH" ? this.getView().byId("cargoDisBox").setVisible(true) : this.getView()
-				.byId("cargoDisBox").setVisible(false);
-			this.getView().byId("purpVisit").getValue() === "LOADING" || this.getView().byId("purpVisit").getValue() ==="BOTH" ? this.getView().byId("cargoLoadBox").setVisible(true) : this.getView()
-				.byId("cargoLoadBox").setVisible(false);
+			// this.getView().byId("purpVisit").getValue() !== "REFUEL" ? this.getView().byId("DischargeDetails").setVisible(true) : this.getView()
+			// 	.byId("DischargeDetails").setVisible(false);
+			// this.getView().byId("purpVisit").getValue() === "UNLOADING" || 	this.getView().byId("purpVisit").getValue() === "BOTH" ? this.getView().byId("cargoDisBox").setVisible(true) : this.getView()
+			// 	.byId("cargoDisBox").setVisible(false);
+			// this.getView().byId("purpVisit").getValue() === "LOADING" || this.getView().byId("purpVisit").getValue() ==="BOTH" ? this.getView().byId("cargoLoadBox").setVisible(true) : this.getView()
+			// 	.byId("cargoLoadBox").setVisible(false);
 
 		},
 		gotoLog: function() {

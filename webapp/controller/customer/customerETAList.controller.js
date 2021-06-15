@@ -30,12 +30,6 @@ sap.ui.define([
 				}
 			});
 		},
-		gotoCreatEta: function () {
-			this.getRouter().navTo("etaDetails", {
-				sPath: "0",
-				id: "createETA"
-			});
-		},
 		onETADetailsPress: function (evt) {
 			var sPath = evt.getSource().getBindingContext("etaListModel").getPath().split("/")[2];
 			var id = evt.getSource().getBindingContext("etaListModel").getProperty().ETANo;

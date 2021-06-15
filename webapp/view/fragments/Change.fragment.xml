@@ -11,7 +11,6 @@
 				<expandedHeading>
 					<m:HBox>
 						<m:Title text="Create ETA" wrapping="true"/>
-						<m:ObjectMarker type="Flagged" class="sapUiTinyMarginBegin"/>
 					</m:HBox>
 				</expandedHeading>
 				<snappedHeading>
@@ -108,7 +107,7 @@
 								<m:Label text="{i18n>Purposeofvisit}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:ComboBox placeholder="{i18n>select}" id="purpVisit" selectedKey="{etaDetailsModel>/VisitPurpose}" change="onSelectPurpose" width="100%" items="">
+								<m:ComboBox placeholder="{i18n>select}" selectedKey="{etaDetailsModel>/VisitPurpose}" change="onSelectPurpose" width="100%" items="">
 									<core:Item key="LOADING" text="LOADING"/>
 									<core:Item key="UNLOADING" text="UNLOADING"/>
 									<core:Item key="BOTH" text="BOTH"/>
@@ -322,14 +321,14 @@
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>
-			<ObjectPageSection titleUppercase="false" title="{i18n>DischargeDetails}" visible="false" id="DischargeDetails">
+			<ObjectPageSection titleUppercase="false" title="{i18n>DischargeDetails}" visible="{=  ${etaDetailsModel>/VisitPurpose} &amp;&amp; ${etaDetailsModel>/VisitPurpose} !== 'REFUEL' ? true : false }">
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
 							<m:FlexBox wrap="Wrap">
-								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+								<layout:VerticalLayout visible="{=  ${etaDetailsModel>/VisitPurpose} === 'UNLOADING' || ${etaDetailsModel>/VisitPurpose} === 'BOTH' ? true: false }" class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>BasicDetails}"/>-->
-									<m:VBox id="cargoDisBox">
+									<m:VBox>
 										<m:HBox alignItems="Center">
 											<m:HBox width="50%">
 												<m:Label text="{i18n>cargoDis}"/>
@@ -362,8 +361,8 @@
 										</m:HBox>
 									</m:VBox>
 								</layout:VerticalLayout>
-								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
-									<m:VBox id="cargoLoadBox">
+								<layout:VerticalLayout visible="{=  ${etaDetailsModel>/VisitPurpose} === 'LOADING' || ${etaDetailsModel>/VisitPurpose} === 'BOTH' ? true : false }" class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+									<m:VBox>
 										<m:HBox alignItems="Center">
 											<m:HBox width="50%">
 												<m:Label text="{i18n>CargoLoaded}"/>

@@ -1,42 +1,32 @@
-<mvc:View controllerName="com.demo.sharjahPort.controller.customer.vessel"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m" displayBlock="true"
-    xmlns:core="sap.ui.core"
-    xmlns:l="sap.ui.layout"
-    xmlns:html="http://www.w3.org/1999/xhtml">
-    <Page id="page" showHeader="true" class="sapUiResponsiveContentPadding">
-        <customHeader>
-            <core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.TopNav" type="XML"/>
-        </customHeader>
-        <content>
-        	<VBox class="sapUiSmallMargin">
-				<!--<Breadcrumbs currentLocationText="{vesMovModel>/LogSheetNo}">-->
-				<!--	<Link id="dashboard" press="onHomePress" text="Home"/>-->
-				<!--	<Link id="products" press="onNavToPress" text="ETA List"/>-->
-				<!--</Breadcrumbs>-->
-        	<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.vesselMovChange" type="XML"/>
-        	</VBox>
-        </content>
-        <footer>
-			<OverflowToolbar id="otbFooter">
+<mvc:View controllerName="com.demo.sharjahPort.controller.customer.vessel" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" displayBlock="true"
+	xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page id="page" showHeader="true" class="sapUiResponsiveContentPadding detailspage">
+		<customHeader>
+			<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.TopNav" type="XML"/>
+		</customHeader>
+		<content>
+			<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.vesselMovChange" type="XML"/>
+		</content>
+		<footer>
+			<OverflowToolbar>
 				<ToolbarSpacer/>
 				<HBox visible="{= ${visModel>/status} === 'APPROVED' ? true : false }">
-				<Button type="Emphasized" text="Create" press="newLogPress">
-					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow" /></layoutData>
-				</Button>
+					<Button type="Emphasized" text="Create" press="newLogPress">
+						<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+					</Button>
 				</HBox>
 				<HBox visible="{= ${visModel>/status} === 'APPROVED' ? false : true }">
-				<Button type="Accept" text="Approve">
-					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow" /></layoutData>
-				</Button>
-				<Button type="Reject" text="Reject">
-					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow" /></layoutData>
-				</Button>
-                <OverflowToolbarButton tooltip="Cancel" text="Cancel" icon="sap-icon://cancel"/>
-				<!-- <OverflowToolbarButton tooltip="View" text="View" icon="sap-icon://detail-view"/> -->
-				<OverflowToolbarButton tooltip="Log Sheet" text="Log Sheet" icon="sap-icon://timesheet"/>
+					<Button type="Accept" text="Approve">
+						<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+					</Button>
+					<Button type="Reject" text="Reject">
+						<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
+					</Button>
+					<OverflowToolbarButton tooltip="Cancel" text="Cancel" icon="sap-icon://cancel"/>
+					<!-- <OverflowToolbarButton tooltip="View" text="View" icon="sap-icon://detail-view"/> -->
+					<OverflowToolbarButton tooltip="Log Sheet" text="Log Sheet" icon="sap-icon://timesheet"/>
 				</HBox>
 			</OverflowToolbar>
 		</footer>
-    </Page>
+	</Page>
 </mvc:View>

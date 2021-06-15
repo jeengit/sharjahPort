@@ -11,7 +11,7 @@
 				<expandedHeading>
 					<m:HBox>
 						<m:Title text="{delvryDetailsModel>/DeliveryName}" wrapping="true"/>
-						<m:ObjectMarker type="Flagged" class="sapUiTinyMarginBegin"/>
+						<!--<m:ObjectMarker type="Flagged" class="sapUiTinyMarginBegin"/>-->
 					</m:HBox>
 				</expandedHeading>
 				<snappedHeading>
@@ -82,14 +82,7 @@
 							<m:Label text="{i18n>crtDate}" class="sapUiSmallMarginEnd"/>
 							<m:Text text="{path:'delvryDetailsModel>/CaretedDate' , formatter:'.formatter.changeDataFormat'}" wrapping="false"/>
 						</m:HBox>
-						<m:HBox class="sapUiTinyMarginBottom">
-							<m:Label text="{i18n>delDoc}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{delvryDetailsModel>/DeliveryNumber}"/>
-						</m:HBox>
-						<m:HBox class="sapUiTinyMarginBottom">
-							<m:Label text="{i18n>portDis}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{delvryDetailsModel>/PortOfDischarge}"/>
-						</m:HBox>
+					
 					</m:VBox>
 				</layout:VerticalLayout>
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
@@ -102,6 +95,19 @@
 							<m:Label text="{i18n>Voyageno}" class="sapUiSmallMarginEnd"/>
 							<m:Text text="{delvryDetailsModel>/VoyageNo}" wrapping="false"/>
 						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>delDoc}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{delvryDetailsModel>/DeliveryNumber}"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>portDis}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{delvryDetailsModel>/PortOfDischarge}"/>
+						</m:HBox>
+					</m:VBox>
+				</layout:VerticalLayout>
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+					
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>ConsigneeCode}" class="sapUiSmallMarginEnd"/>
 							<m:Text text="{delvryDetailsModel>/ConsigneeCode}"/>

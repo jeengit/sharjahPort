@@ -1,19 +1,19 @@
 .add-charge-row-class {
 	float:right;
-	color: #333;
-	font-size: .825rem;
+	/*color: #333;*/
+	/*font-size: .825rem;*/
 }
 
-.add-charge-row-class .sapMBtnInner {
-	height:1.3rem;
-	background-color: #f3d2d5;
-}
+/*.add-charge-row-class .sapMBtnInner {*/
+/*	height:1.3rem;*/
+/*	background-color: #f3d2d5;*/
+/*}*/
 
-.add-charge-row-class .sapMBtnInner .sapMBtnContent, .add-charge-row-class .sapMBtnInner .sapMBtnIcon {
-	line-height:1.125rem;
-	color: #333;
-	border: none !important;
-}
+/*.add-charge-row-class .sapMBtnInner .sapMBtnContent, .add-charge-row-class .sapMBtnInner .sapMBtnIcon {*/
+/*	line-height:1.125rem;*/
+/*	color: #333;*/
+/*	border: none !important;*/
+/*}*/
 .vsl-side-vbox {
 
 }

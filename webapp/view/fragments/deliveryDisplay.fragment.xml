@@ -11,7 +11,7 @@
 				<expandedHeading>
 					<m:HBox>
 						<m:Title text="{delCrtModel>/BOE}" wrapping="true"/>
-						<m:ObjectMarker type="Flagged" class="sapUiTinyMarginBegin"/>
+						<!--<m:ObjectMarker type="Flagged" class="sapUiTinyMarginBegin"/>-->
 					</m:HBox>
 				</expandedHeading>
 				<snappedHeading>
@@ -62,14 +62,7 @@
 							<m:Label text="{i18n>docNo}" class="sapUiSmallMarginEnd"/>
 							<m:Text text="{delCrtModel>/ZPreferedBerth}"/>
 						</m:HBox>
-						<m:HBox class="sapUiTinyMarginBottom">
-							<m:Label text="{i18n>Voyageno}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{delCrtModel>/VoyageNo}" wrapping="false"/>
-						</m:HBox>
-						<m:HBox class="sapUiTinyMarginBottom">
-							<m:Label text="{i18n>VesselName}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{delCrtModel>/vesselName}"/>
-						</m:HBox>
+					
 					</m:VBox>
 				</layout:VerticalLayout>
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
@@ -90,6 +83,19 @@
 							<m:Label text="{i18n>crtDate}" class="sapUiSmallMarginEnd"/>
 							<m:Text text="{path:'delCrtModel>/CaretedDate' , formatter:'.formatter.changeDataFormat'}" wrapping="false"/>
 						</m:HBox>
+					
+					</m:VBox>
+				</layout:VerticalLayout>
+					<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginTopBottom">
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>Voyageno}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{delCrtModel>/VoyageNo}" wrapping="false"/>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>VesselName}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{delCrtModel>/vesselName}"/>
+						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>delDoc}" class="sapUiSmallMarginEnd"/>
 							<m:Text text="{delCrtModel>/DocNo}"/>
@@ -101,46 +107,26 @@
 					</m:VBox>
 				</layout:VerticalLayout>
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
-					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
-						<m:HBox alignItems="Center">
-							<m:HBox width="40%">
-								<m:Label text="{i18n>PortName}"/>
-							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input value="{delCrtModel>/PortName}"/>
-							</m:HBox>
+					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginTopBottom">
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>PortName}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{delCrtModel>/PortName}"/>
 						</m:HBox>
-						<m:HBox alignItems="Center">
-							<m:HBox width="40%">
-								<m:Label text="{i18n>Agentcode}"/>
-							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input value="{delCrtModel>/AgentCode}"/>
-							</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>Agentcode}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{delCrtModel>/AgentCode}"/>
 						</m:HBox>
-						<m:HBox class="" alignItems="Center">
-							<m:HBox width="40%">
-								<m:Label text="{i18n>ConsigneeCode}"/>
-							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input value="{delCrtModel>/ConsigneeCode}"/>
-							</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>ConsigneeCode}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{delCrtModel>/ConsigneeCode}"/>
 						</m:HBox>
-						<m:HBox alignItems="Center">
-							<m:HBox width="40%">
-								<m:Label text="{i18n>portDis}"/>
-							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input value="{delCrtModel>/PortOfDischarge}"/>
-							</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>portDis}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{delCrtModel>/PortOfDischarge}"/>
 						</m:HBox>
-						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox width="40%">
-								<m:Label text="{i18n>portOrg}"/>
-							</m:HBox>
-							<m:HBox width="60%">
-								<m:Input value="{delCrtModel>/PortOfShipment}"/>
-							</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom">
+							<m:Label text="{i18n>portOrg}" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{delCrtModel>/PortOfShipment}"/>
 						</m:HBox>
 					</m:VBox>
 				</layout:VerticalLayout>
@@ -219,8 +205,8 @@
 									<!--</layout:HorizontalLayout>-->
 									<layout:VerticalLayout class="sapUiTinyMarginBeginEnd sapUiSmallMarginTop">
 										<m:VBox>
-											<t:Table rows="{delCrtModel>/DeliveryDetailsToCommodities}" visibleRowCount="5" selectionMode="None"
-												class="sapUiTinyMarginEnd tableCard" id="cargoTableChange" ariaLabelledBy="title">
+											<t:Table rows="{delCrtModel>/DeliveryDetailsToCommodities}" visibleRowCount="5" selectionMode="None" class="sapUiTinyMarginEnd tableCard"
+												id="cargoTableChange" ariaLabelledBy="title">
 												<t:columns>
 													<t:Column sortProperty="ETANo">
 														<m:Label wrapping="false" text="{i18n>Commodities}"/>
@@ -298,7 +284,7 @@
 			<!--			<blocks>-->
 			<!--				<m:FlexBox wrap="Wrap">-->
 			<!--					<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">-->
-									<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>shipperDet}"/>-->
+			<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>shipperDet}"/>-->
 			<!--						<m:VBox>-->
 			<!--							<m:HBox class="" alignItems="Center">-->
 			<!--								<m:HBox width="40%">-->
@@ -339,7 +325,7 @@
 			<!--						</m:VBox>-->
 			<!--					</layout:VerticalLayout>-->
 			<!--					<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">-->
-									<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>consignDet}"/>-->
+			<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>consignDet}"/>-->
 			<!--						<m:VBox>-->
 			<!--							<m:HBox alignItems="Center">-->
 			<!--								<m:HBox width="40%">-->
@@ -386,7 +372,7 @@
 			<!--						</m:VBox>-->
 			<!--					</layout:VerticalLayout>-->
 			<!--					<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">-->
-									<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>consignDet}"/>-->
+			<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>consignDet}"/>-->
 			<!--						<m:VBox>-->
 			<!--							<m:HBox alignItems="Center">-->
 			<!--								<m:HBox width="40%">-->
@@ -459,7 +445,6 @@
 												<m:DatePicker value="{delCrtModel>/StorageUpto}" valueFormat="yyyyMMdd" displayFormat="long"/>
 											</m:HBox>
 										</m:HBox>
-									
 									</m:VBox>
 								</layout:VerticalLayout>
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
@@ -482,16 +467,16 @@
 										</m:HBox>
 									</m:VBox>
 								</layout:VerticalLayout>
-									<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
-										<m:HBox alignItems="Center">
-											<m:HBox width="40%">
-												<m:Label text="{i18n>freedays}"/>
-											</m:HBox>
-											<m:HBox width="60%">
-												<m:Input value="{delCrtModel>/FreeDays}"/>
-											</m:HBox>
+								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+									<m:HBox alignItems="Center">
+										<m:HBox width="40%">
+											<m:Label text="{i18n>freedays}"/>
 										</m:HBox>
-											</layout:VerticalLayout>
+										<m:HBox width="60%">
+											<m:Input value="{delCrtModel>/FreeDays}"/>
+										</m:HBox>
+									</m:HBox>
+								</layout:VerticalLayout>
 							</m:FlexBox>
 						</blocks>
 					</ObjectPageSubSection>
@@ -503,7 +488,7 @@
 						<blocks>
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout>
-							<!--		<layout:HorizontalLayout>
+									<!--		<layout:HorizontalLayout>
 										<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									
 											<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -544,16 +529,15 @@
 									</layout:HorizontalLayout> -->
 									<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 										<m:VBox >
-											<m:Button class="add-charge-row-class" type="Default" icon="sap-icon://add" text="Add Charge" press="addNextRowForDeliveryCharge" />
-											<t:Table rows="{deliverChargeModel>/items}" selectionMode="None" id="shifTableChange"
-												class="sapUiTinyMarginEnd" ariaLabelledBy="title">
+											<m:Button class="add-charge-row-class sapUiTinyMarginEnd" type="Emphasized"  text="Add Charge" press="addNextRowForDeliveryCharge"/>
+											<t:Table rows="{deliverChargeModel>/items}" selectionMode="None" id="shifTableChange" visibleRowCount="5" class="sapUiTinyMarginEnd tableCard" ariaLabelledBy="title">
 												<t:columns>
 													<t:Column sortProperty="ETANo">
 														<m:Label wrapping="false" text="{i18n>Charge}"/>
 														<t:template>
 															<!--<m:Input value="{delCrtModel>Charges}"/> -->
 															<m:Select change="fnSelectChargeRow" visible="true" editable="true" items="{chargeDiscModel>/items}">
-																	<core:ListItem key="{chargeDiscModel>id}" text="{chargeDiscModel>Charges}" /> 
+																<core:ListItem key="{chargeDiscModel>id}" text="{chargeDiscModel>Charges}"/>
 															</m:Select>
 														</t:template>
 													</t:Column>

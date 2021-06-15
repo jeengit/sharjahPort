@@ -37,7 +37,8 @@ sap.ui.define([
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.getRoute("vessel").attachPatternMatched(this._onObjectMatched, this);
 		},
-		_onObjectMatched: function (oEvent) {
+		_onObjectMatched: function () {
+			this.getUserName();
 			var status = sap.ui.getCore().getModel("etaIdModel").getData().status;
 			this.getView().setModel(new JSONModel(sap.ui.getCore().getModel("etaIdModel").getData()), "visModel");
 			if (status !== "APPROVED") {

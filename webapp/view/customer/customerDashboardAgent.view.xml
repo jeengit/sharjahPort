@@ -7,6 +7,9 @@
 		</customHeader>
 		<content>
 			<VBox class="section">
+				<FlexBox visible="{= ${loginModel>/uRole} === 'AGENT' ? true : false }" width="100%" justifyContent="End">
+							<core:Icon class="add-icon" tooltip="{i18n>CreateETA}" press="gotoCreatEta"
+								src="sap-icon://add"/></FlexBox>
 				<Title text="Dashboard" class="heading"/>
 					<l:Grid class="sapUiSmallMarginTopBottom custTile" defaultSpan="L2 M2 S12">
 						<l:content>

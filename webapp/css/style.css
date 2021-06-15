@@ -32,6 +32,10 @@ li[data-todo-item-completed="true"] span {
     color: #333!important;
 }
 
+.text-light {
+    color: #fff!important;
+}
+
 .table {
     padding: 0.5rem 1rem;
 }
@@ -401,8 +405,8 @@ html.sap-desktop .sapMBtn:focus>.sapMFocusable {
     color: #333;
 }
 
-.sapMLnk{
-    color:#BC9E6D!important;
+.sapMLnk {
+    color: #BC9E6D!important;
 }
 
 .tabs .sapMLabel {
@@ -540,7 +544,7 @@ html.sap-desktop .sapMBtn:focus>.sapMFocusable {
 }
 
 .sapMBreadcrumbs .sapMBreadcrumbsCurrentLocation {
-    color: #333;
+    color: #d2d0d0;
 }
 
 .objLayoutClass .sapFDynamicPageToggleHeaderIndicator:before,
@@ -561,37 +565,85 @@ html.sap-desktop .sapMBtn:focus>.sapMFocusable {
     border: 1px solid #E31936;
     border-radius: 0.2rem;
 }
-.box-shadow{
-	box-shadow: 0 0 0 0.0625rem rgb(0 0 0 / 10%), 0 0.125rem 0.5rem 0 rgb(0 0 0 / 10%);
+
+.box-shadow {
+    box-shadow: 0 0 0 0.0625rem rgb(0 0 0 / 10%), 0 0.125rem 0.5rem 0 rgb(0 0 0 / 10%);
     border-radius: 0.2rem;
 }
-.search .sapMSFF{
-	background: transparent;
+
+.search .sapMSFF {
+    background: transparent;
     border-bottom: 3px solid #BC9E6D!important;
     border: none;
     border-radius: 0;
 }
-.search input::placeholder ,.search input{
-	color:#fff!important;
+
+.search input::placeholder,
+.search input {
+    color: #fff!important;
 }
-.search .sapMSFB{
-	color:#BC9E6D;
+
+.search .sapMSFB {
+    color: #BC9E6D;
 }
-.objLayoutClass .sapUxAPObjectPageHeaderDetails .sapMLabel ,.objLayoutClass .sapMLabel {
+
+.objLayoutClass .sapUxAPObjectPageHeaderDetails .sapMLabel,
+.objLayoutClass .sapMLabel {
     color: #BC9E6D;
     width: 8rem;
     font-size: 13px;
 }
-.objLayoutClass .sapUxAPObjectPageHeaderDetails .sapMLabel{
-	width:6rem!important;
+
+.objLayoutClass .sapUxAPObjectPageHeaderDetails .sapMLabel {
+    width: 6rem!important;
 }
-.objLayoutClass .sapMTitle{
-	font-weight:700!important;
-	color:#fff!important;
+
+.objLayoutClass .sapMTitle {
+    font-weight: 700!important;
+    color: #fff!important;
 }
+
 .objLayoutClass .sapMLnk {
-	color:#fff!important;
+    color: #fff!important;
 }
+
 .sapUiTableRow .sapMLabel {
+    color: #333;
+}
+
+.objLayoutClass .sapFDynamicPageTitle .sapMText {
+    color: #d2d0d0;
+}
+
+.editMode .sapMFlexItemAlignAuto {
+    flex-grow: 1!important;
+}
+
+.editMode .sapMInputBaseContentWrapper {
+    border: .0625rem solid #d2d0d0;
+    border-radius: 4px;
+}
+
+.editMode .sapMInputBaseIcon {
+    color: #000!important;
+}
+
+.btn-sm.text-light .sapMBtnContent {
+    color: #fff;
+}
+
+.add-icon {
+    background: #e31936!important;
+    padding: 0.5rem 0.6rem;
+    border-radius: 1rem;
+    color: #fff;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+    position: absolute;
+    right: 0;
+    top: -5px;
+    z-index: 9999;
+}
+
+.headerBar .sapMBtnInner.sapMBtnText .sapMBtnIcon, .headerBar .sapMBtnInner.sapMBtnText {
     color: #333;
 }

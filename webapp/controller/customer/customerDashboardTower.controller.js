@@ -9,6 +9,7 @@ sap.ui.define([
 			oRouter.getRoute("dashboard").attachPatternMatched(this._onObjectMatched, this);
 		},
 		_onObjectMatched: function () {
+		//	this.selectCallSign();
 			this.getUserName();
 			this.getModel("DashboardCount","DashboardCountModel");
 			var oData = {
@@ -182,6 +183,38 @@ sap.ui.define([
 			};
 			this.getView().setModel(new JSONModel(harbourData), "harbourTable");
 			sap.ui.core.BusyIndicator.hide();
+			this.setVesselMovement();
+		},
+		setVesselMovement: function() {
+			this.statusData = [{
+					"id": 7,
+					"name": "3 Hours Call"
+				},
+				{
+					"id": 6,
+					"name": "1 Hour Call"
+				},
+				{
+					"id": 5,
+					"name": "5 Mile Call"
+				},
+				{
+					"id": 4,
+					"name": "1 Mile Call"
+				},
+				{
+					"id": 3,
+					"name": "Half Mile Call"
+				},
+				{
+					"id": 2,
+					"name": "Arrived"
+				},
+				{
+					"id": 1,
+					"name": "Departure"
+				}];
+		//	this.getView().setModel(new JSONModel(harbourData), "harbourTable");
 		},
 		handleListPress: function (oEvent) {
 			sap.ui.core.BusyIndicator.show();
@@ -209,6 +242,100 @@ sap.ui.define([
 					title: "Sharjah Port",
 				});
 			}
+		},
+		searchCallSignData: function(oEvent) {
+			var q = oEvent.getSource().getValue();
+			var thisObj = this;
+			var oModel = this.getOwnerComponent().getModel("s4Model");
+				oModel.read("/CallSignSearchSet", {
+					urlParameters: {
+						"$filter": "CallSign eq '" + q + "'"
+					},
+					success: function(data) {
+						thisObj.getView().setModel(new JSONModel(data), "callSignSearchModel");
+						sap.ui.core.BusyIndicator.hide();
+					},
+					error: function(oResponse) {
+			//			sap.m.MessageToast.show(oResponse.statusText);
+						sap.ui.core.BusyIndicator.hide();
+					}
+				});
+		},
+		selectCallSign: function(oEvent) {
+			var selectedVal = oEvent.getSource().getSelectedKey();
+			if(selectedVal) {
+			var thisObj = this;
+			var oModel = this.getOwnerComponent().getModel("s4Model");
+			oModel.read("/BerthStatusChangeSet('" + selectedVal + "')", {
+					success: function(data) {
+						var statusData = JSON.parse(JSON.stringify(thisObj.statusData));
+						var curStatus = 8;
+						var curStatusStr = '';
+						if(data && data.Status) {
+							curStatus = Number(data.Status);
+						} else if(data && data.CallStatus) {
+							curStatus = Number(data.CallStatus);
+						}
+						var curStatusInx = statusData.findIndex(cs => cs.id == Number(curStatus));
+						data['cs'] = (curStatus > -1 && statusData[curStatusInx] && statusData[curStatusInx].name) ? statusData[curStatusInx].name : '';
+						var dropdownStatusArr = statusData.filter(sd => Number(sd.id) < curStatus);
+						dropdownStatusArr.unshift({id: 0, name: ''});
+						thisObj.getView().setModel(new JSONModel({items: dropdownStatusArr}), 'vesselMovementStatusModel');
+						thisObj.getView().setModel(new JSONModel(data), 'bearthStatusDataModel');
+						sap.ui.core.BusyIndicator.hide();
+					},
+					error: function(oResponse) {
+					//	sap.m.MessageToast.show(oResponse.statusText);
+						sap.ui.core.BusyIndicator.hide();
+					}
+				});
+		    }
+		},
+		fnChangeStatusBox: function(oEvent) {
+			var selValue = oEvent.getSource().getSelectedKey();
+			if(selValue > 0) {
+				this.getView().byId('VesselStatusUpdateBtn').setEnabled(true);
+			} else {
+					this.getView().byId('VesselStatusUpdateBtn').setEnabled(false);
+			}
+		},
+		fnUpdateStatus: function(oEvent) {
+			var thisObj = this;
+			var oModel = this.getOwnerComponent().getModel("s4Model");
+			var newStatus = this.getView().byId('upVesselStatusId').getSelectedKey();
+			var exData = this.getView().getModel("bearthStatusDataModel").getData();
+			var oEntry = {
+    				BerthNumber : exData["BerthNumber"],
+    				Port : exData["Port"],
+    				CallSign : exData["CallSign"]
+			}
+			if(newStatus == 1 || newStatus == 2) {
+				oEntry['CallStatus'] = '';
+				oEntry['Status'] = newStatus.toString();
+			} else {
+				oEntry['Status'] = '';
+				oEntry['CallStatus'] = newStatus.toString();
+			}
+	/*		delete oEntry['__metadata'];
+			delete oEntry['cs']; */
+			oModel.create("/BerthStatusChangeSet", oEntry, {
+				success: function(data) {
+					thisObj.clearStatusBox();
+					sap.m.MessageToast.show("Status updated Successfully", {
+						closeOnBrowserNavigation: false
+					});
+					sap.ui.core.BusyIndicator.hide();
+				},
+				error: function(oResponse) {
+					sap.m.MessageToast.show(oResponse.statusText);
+					sap.ui.core.BusyIndicator.hide();
+				}
+			});
+		},
+		clearStatusBox: function() {
+			this.getView().byId('callSignInputId').setValue();
+			this.getView().setModel(new JSONModel({items: []}), 'vesselMovementStatusModel');
+			this.getView().setModel(new JSONModel({}), 'bearthStatusDataModel');
 		}
 	});
 

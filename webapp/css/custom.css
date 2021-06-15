@@ -14,3 +14,67 @@
 	color: #333;
 	border: none !important;
 }
+.vsl-side-vbox {
+
+}
+
+.vsl-side-hbox {
+	margin: 16px 0px;
+}
+
+.vsl-side-labl {
+	margin-right: 8px;
+	min-width: 114px;
+	font-size: 16px;
+	font-weight: 400;
+}
+
+.vsl-side-value {
+	font-color:#32363a;
+	font-size: 16px;
+	font-weight: 700;
+}
+.input-vl-lbl {
+	margin-top: 24px;
+}
+
+.right-side-bar-vsl {
+	margin-left: 1rem;
+}
+.cardList li {
+    width: calc(33.3% - 25px);
+}
+.cardList li:nth-child(5n) {
+	 width: calc(33.3% - 25px);
+	 margin: 0 1rem 1rem 0 !important;
+}
+
+.cardList li:nth-child(3n) {
+    width: 33.3%;
+}
+.custTile .sapUiRespGridSpanL2 {
+	    width: calc(17.666666666666668%) !important;
+}
+.vsl-side-vbox {
+		padding: 10px 16px;
+}
+.input-vsl-class .sapMInputBaseContentWrapper {
+	border: none;
+	border-bottom: 1px solid #89919a;
+}
+
+.select-vsl-class {
+		border: none;
+	border-bottom: 1px solid #89919a;
+	width: 100% !important;
+}
+.sel-hbox .sapMFlexItem {
+	width: 100% !important;
+}
+.inp-hbox2 {
+	margin-top: -8px;
+}
+
+.inp-hbox1 {
+	margin-top: 2px;
+}

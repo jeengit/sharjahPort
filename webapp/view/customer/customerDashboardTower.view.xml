@@ -1,11 +1,13 @@
 <mvc:View controllerName="com.demo.sharjahPort.controller.customer.customerDashboardTower" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
-	displayBlock="true" xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:u="sap.ui.unified" xmlns:l="sap.ui.layout"
-	xmlns:f="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml">
+	displayBlock="true" xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:u="sap.ui.unified" xmlns:l="sap.ui.layout" xmlns:f="sap.f" xmlns:card="sap.f.cards"
+	xmlns:fm="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page showHeader="true" class="sapUiResponsiveContentPadding">
 		<customHeader>
 			<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.TopNav" type="XML"/>
 		</customHeader>
 		<content>
+			<HBox>
+			<VBox width="80%">
 			<VBox class="section">
 				<Title text="Dashboard" class="heading"/>
 					<l:Grid class="sapUiSmallMarginTopBottom custTile" defaultSpan="L2 M2 S12">
@@ -65,6 +67,44 @@
 					</IconTabBar>
 				</html:div>
 			</VBox>
+			</VBox>
+			<VBox class="right-side-bar-vsl" width="25%">
+					<Title text="Vessel Movement" class="heading"/>
+			<f:Card class="vsl-card">
+<!--	<f:header>
+		<card:Header title="Vessel Movement" subtitle="" />
+	</f:header> -->
+	<f:content>
+		<VBox class="vsl-side-vbox">
+			<HBox class="vsl-side-hbox inp-hbox1"><Label class="vsl-side-labl input-vl-lbl" text="Call Sign:" ></Label>
+			<Input class="input-vsl-class" id="callSignInputId" showSuggestion="true" suggestionItemSelected="selectCallSign"
+							suggest="searchCallSignData" autocomplete="false"
+							suggestionItems="{callSignSearchModel>/results}">
+								<suggestionItems>
+                                    <core:Item key="{callSignSearchModel>CallSign}" text="{callSignSearchModel>CallSign}" />
+                                </suggestionItems>
+                            </Input>
+			
+			</HBox>
+			<HBox class="vsl-side-hbox"><Label class="vsl-side-labl" text="Vessel Name:" ></Label><Text class="vsl-side-value" text="{bearthStatusDataModel>/VesselName}" /></HBox>
+			<HBox class="vsl-side-hbox"><Label class="vsl-side-labl" text="IMO Number:" ></Label><Text class="vsl-side-value" text="{bearthStatusDataModel>/ImoNo}" /></HBox>
+			<HBox class="vsl-side-hbox"><Label class="vsl-side-labl" text="Berth Number:" ></Label><Text class="vsl-side-value" text="{bearthStatusDataModel>/BerthNumber}" /></HBox>
+			<HBox class="vsl-side-hbox"><Label class="vsl-side-labl" text="Current Status:" ></Label><Text class="vsl-side-value" text="{bearthStatusDataModel>/cs}" /></HBox>
+			<HBox class="vsl-side-hbox sel-hbox inp-hbox2"><Label class="vsl-side-labl input-vl-lbl" text="Update Status:" ></Label>
+			
+			<Select class="select-vsl-class" id="upVesselStatusId" change="fnChangeStatusBox"
+					items="{vesselMovementStatusModel>/items}">
+					<core:ListItem key="{vesselMovementStatusModel>id}" text="{vesselMovementStatusModel>name}" />
+			</Select>
+			
+			</HBox>
+			<Button enabled="false" id="VesselStatusUpdateBtn" type="Emphasized" text="Update" press="fnUpdateStatus" />
+		</VBox>
+
+	</f:content>
+</f:Card>	
+</VBox>
+			</HBox>
 			<!--<VBox class="section">-->
 			<!--<FlexBox width="100%">-->
 			<!--<HBox width="20%">-->

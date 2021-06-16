@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns:t="sap.ui.table" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core">
-	<ObjectPageLayout upperCaseAnchorBar="false" id="delDisp" class="objLayoutClass">
+	<ObjectPageLayout upperCaseAnchorBar="false" id="delDisp" class="objLayoutClass editMode">
 		<headerTitle>
 			<ObjectPageDynamicHeaderTitle>
 				<!--<breadcrumbs>-->
@@ -16,7 +16,7 @@
 				</expandedHeading>
 				<snappedHeading>
 					<m:FlexBox fitContainer="true" alignItems="Center">
-						<m:Avatar backgroundColor="Accent9" src="sap-icon://shipping-status" class="sapUiTinyMarginEnd"/>
+						<m:Avatar backgroundColor="Accent9" src="images/cargo-ship.png" class="sapUiTinyMarginEnd"/>
 						<m:Title text="{delCrtModel>/BOE}" wrapping="true"/>
 					</m:FlexBox>
 				</snappedHeading>
@@ -39,7 +39,7 @@
 		</headerTitle>
 		<headerContent>
 			<m:FlexBox wrap="Wrap">
-				<m:Avatar class="sapUiSmallMarginEnd" backgroundColor="Accent9" src="sap-icon://shipping-status" displaySize="L"/>
+				<m:Avatar class="sapUiSmallMarginEnd" backgroundColor="Accent9" src="images/cargo-ship.png" displaySize="L"/>
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginTopBottom">
 						<!--<m:HBox class="sapUiTinyMarginBottom">-->
@@ -62,7 +62,6 @@
 							<m:Label text="{i18n>docNo}" class="sapUiSmallMarginEnd"/>
 							<m:Text text="{delCrtModel>/ZPreferedBerth}"/>
 						</m:HBox>
-					
 					</m:VBox>
 				</layout:VerticalLayout>
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
@@ -83,10 +82,9 @@
 							<m:Label text="{i18n>crtDate}" class="sapUiSmallMarginEnd"/>
 							<m:Text text="{path:'delCrtModel>/CaretedDate' , formatter:'.formatter.changeDataFormat'}" wrapping="false"/>
 						</m:HBox>
-					
 					</m:VBox>
 				</layout:VerticalLayout>
-					<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginTopBottom">
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>Voyageno}" class="sapUiSmallMarginEnd"/>
@@ -487,94 +485,53 @@
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
 							<m:FlexBox wrap="Wrap">
-								<layout:VerticalLayout>
-									<!--		<layout:HorizontalLayout>
-										<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
-									
-											<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-												<m:HBox width="50%">
-													<m:Label text="{i18n>storCharge}"/>
-												</m:HBox>
-												<m:HBox width="50%">
-													<m:Input value="{delCrtModel>/StorageCharge}"/>
-												</m:HBox>
-											</m:HBox>
-											<m:HBox alignItems="Center">
-												<m:HBox width="50%">
-													<m:Label text="{i18n>Othertotalcharge}"/>
-												</m:HBox>
-												<m:HBox width="50%">
-													<m:Input value="{delCrtModel>/OtherTotalCharge}"/>
-												</m:HBox>
-											</m:HBox>
-										</layout:VerticalLayout>
-										<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
-											<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-												<m:HBox width="50%">
-													<m:Label text="{i18n>Netcharge}"/>
-												</m:HBox>
-												<m:HBox width="50%">
-													<m:Input value="{delCrtModel>/NetCharge}"/>
-												</m:HBox>
-											</m:HBox>
-											<m:HBox alignItems="Center">
-												<m:HBox width="50%">
-													<m:Label text="{i18n>Specialinstruction}"/>
-												</m:HBox>
-												<m:HBox width="50%">
-													<m:Input value="{delCrtModel>/SpecialInstruction}"/>
-												</m:HBox>
-											</m:HBox>
-										</layout:VerticalLayout>
-									</layout:HorizontalLayout> -->
-									<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
-										<m:VBox >
-											<m:Button class="add-charge-row-class sapUiTinyMarginEnd" type="Emphasized"  text="Add Charge" press="addNextRowForDeliveryCharge"/>
-											<t:Table rows="{deliverChargeModel>/items}" selectionMode="None" id="shifTableChange" visibleRowCount="5" class="sapUiTinyMarginEnd tableCard" ariaLabelledBy="title">
-												<t:columns>
-													<t:Column sortProperty="ETANo">
-														<m:Label wrapping="false" text="{i18n>Charge}"/>
-														<t:template>
-															<!--<m:Input value="{delCrtModel>Charges}"/> -->
-															<m:Select change="fnSelectChargeRow" visible="true" editable="true" items="{chargeDiscModel>/items}">
-																<core:ListItem key="{chargeDiscModel>id}" text="{chargeDiscModel>Charges}"/>
-															</m:Select>
-														</t:template>
-													</t:Column>
-													<t:Column sortProperty="PortName">
-														<m:Label text="{i18n>Description}"/>
-														<t:template>
-															<m:Text text="{deliverChargeModel>Description}"/>
-														</t:template>
-													</t:Column>
-													<t:Column>
-														<m:Label text="{i18n>rate}"/>
-														<t:template>
-															<m:Text text="{deliverChargeModel>Rate}"/>
-														</t:template>
-													</t:Column>
-													<t:Column>
-														<m:Label text="{i18n>quantity}"/>
-														<t:template>
-															<m:Input type="Number" liveChange="chageQuantityEvent" value="{deliverChargeModel>Quantity}"/>
-														</t:template>
-													</t:Column>
-													<t:Column>
-														<m:Label text="{i18n>Amount}"/>
-														<t:template>
-															<m:Text text="{deliverChargeModel>Amount}"/>
-														</t:template>
-													</t:Column>
-													<t:Column>
-														<m:Label text="Action"/>
-														<t:template>
-															<m:Button icon="sap-icon://delete" press="deleteThisItem"/>
-														</t:template>
-													</t:Column>
-												</t:columns>
-											</t:Table>
-										</m:VBox>
-									</layout:VerticalLayout>
+								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+									<m:VBox >
+										<m:Button class="add-charge-row-class sapUiTinyMarginEnd" type="Emphasized" text="Add Charge" press="addNextRowForDeliveryCharge"/>
+										<t:Table rows="{deliverChargeModel>/items}" selectionMode="None" id="shifTableChange" visibleRowCount="5"
+											class="sapUiTinyMarginEnd tableCard" ariaLabelledBy="title">
+											<t:columns>
+												<t:Column sortProperty="ETANo">
+													<m:Label wrapping="false" text="{i18n>Charge}"/>
+													<t:template>
+														<m:ComboBox width="100%" change="fnSelectChargeRow" visible="true" editable="true" items="{chargeDiscModel>/items}">
+															<core:Item key="{chargeDiscModel>id}" text="{chargeDiscModel>Charges}"/>
+														</m:ComboBox>
+													</t:template>
+												</t:Column>
+												<t:Column sortProperty="PortName">
+													<m:Label text="{i18n>Description}"/>
+													<t:template>
+														<m:Text text="{deliverChargeModel>Description}"/>
+													</t:template>
+												</t:Column>
+												<t:Column>
+													<m:Label text="{i18n>rate}"/>
+													<t:template>
+														<m:Text text="{deliverChargeModel>Rate}"/>
+													</t:template>
+												</t:Column>
+												<t:Column>
+													<m:Label text="{i18n>quantity}"/>
+													<t:template>
+														<m:Input type="Number" liveChange="chageQuantityEvent" value="{deliverChargeModel>Quantity}"/>
+													</t:template>
+												</t:Column>
+												<t:Column>
+													<m:Label text="{i18n>Amount}"/>
+													<t:template>
+														<m:Text text="{deliverChargeModel>Amount}"/>
+													</t:template>
+												</t:Column>
+												<t:Column>
+													<m:Label text="Action"/>
+													<t:template>
+														<m:Button icon="sap-icon://delete" press="deleteThisItem"/>
+													</t:template>
+												</t:Column>
+											</t:columns>
+										</t:Table>
+									</m:VBox>
 								</layout:VerticalLayout>
 							</m:FlexBox>
 						</blocks>

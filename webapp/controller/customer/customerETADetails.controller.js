@@ -17,6 +17,7 @@ sap.ui.define([
 		},
 		_onObjectMatched: function(oEvent) {
 			this.getUserName();
+			this.getView().byId("createEta").setVisible(false);
 			sap.ui.core.BusyIndicator.show();
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);

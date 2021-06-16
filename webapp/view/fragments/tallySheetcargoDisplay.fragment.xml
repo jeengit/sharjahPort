@@ -14,7 +14,7 @@
 				</expandedHeading>
 				<snappedHeading>
 					<m:FlexBox fitContainer="true" alignItems="Center">
-						<m:Avatar backgroundColor="Accent9" src="sap-icon://excel-attachment" class="sapUiTinyMarginEnd"/>
+						<m:Avatar backgroundColor="Accent9" src="images/cargo-ship.png" class="sapUiTinyMarginEnd"/>
 						<m:Title text="{tSDetailModel>/tallyCode}" wrapping="true"/>
 					</m:FlexBox>
 				</snappedHeading>
@@ -31,14 +31,14 @@
 		</headerTitle>
 		<headerContent>
 			<m:FlexBox wrap="Wrap">
-				<m:Avatar class="sapUiSmallMarginEnd" backgroundColor="Accent9" src="sap-icon://excel-attachment" displaySize="L"/>
+				<m:Avatar class="sapUiSmallMarginEnd" backgroundColor="Accent9" src="images/cargo-ship.png" displaySize="L"/>
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox  class="sapUiTinyMarginEnd">
+							<m:HBox class="sapUiTinyMarginEnd">
 								<m:Label text="{i18n>tallyCode}"/>
 							</m:HBox>
-							<m:HBox >
+							<m:HBox>
 								<m:Text text="{tSDetailModel>/TallySheetCode}"/>
 							</m:HBox>
 						</m:HBox>
@@ -74,14 +74,12 @@
 								<m:Text text="{tSDetailModel>/PortOfShipment}"/>
 							</m:HBox>
 						</m:HBox>
-					
 						<m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
 							<m:HBox class="sapUiTinyMarginEnd">
 								<m:Label text="Completed "/>
 							</m:HBox>
 							<m:HBox >
-									<m:Text text="{tSDetailModel>/CargoCategory}"/>
-							
+								<m:Text text="{tSDetailModel>/CargoCategory}"/>
 							</m:HBox>
 						</m:HBox>
 					</m:VBox>
@@ -89,15 +87,15 @@
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox  class="sapUiTinyMarginEnd">
+							<m:HBox class="sapUiTinyMarginEnd">
 								<m:Label text="{i18n>ArrivalDate}"/>
 							</m:HBox>
 							<m:HBox >
 								<m:Text text="{tSDetailModel>/ArrivalDate}"/>
 							</m:HBox>
 						</m:HBox>
-							<m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
-							<m:HBox   class="sapUiTinyMarginEnd">
+						<m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
+							<m:HBox class="sapUiTinyMarginEnd">
 								<m:Label text="B/L no"/>
 							</m:HBox>
 							<m:HBox >
@@ -105,32 +103,31 @@
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox   class="sapUiTinyMarginEnd">
+							<m:HBox class="sapUiTinyMarginEnd">
 								<m:Label text="{i18n>crtDate}"/>
 							</m:HBox>
 							<m:HBox >
-								<m:Text text="{tSDetailModel>/CreationDate}" />
+								<m:Text text="{tSDetailModel>/CreationDate}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox   class="sapUiTinyMarginEnd">
+							<m:HBox class="sapUiTinyMarginEnd">
 								<m:Label text="{i18n>Agentcode}"/>
 							</m:HBox>
 							<m:HBox >
 								<m:Text text="{tSDetailModel>/AgentCode}"/>
 							</m:HBox>
 						</m:HBox>
-					
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox  class="sapUiTinyMarginEnd">
+							<m:HBox class="sapUiTinyMarginEnd">
 								<m:Label text="{i18n>b/ldate}"/>
 							</m:HBox>
 							<m:HBox >
-								<m:Text text="{tSDetailModel>/BLDate}" />
+								<m:Text text="{tSDetailModel>/BLDate}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox alignItems="Center">
-							<m:HBox  class="sapUiTinyMarginEnd">
+							<m:HBox class="sapUiTinyMarginEnd">
 								<m:Label text="Grand Total"/>
 							</m:HBox>
 							<m:HBox >
@@ -141,8 +138,8 @@
 				</layout:VerticalLayout>
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
-							<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox   class="sapUiTinyMarginEnd">
+						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+							<m:HBox class="sapUiTinyMarginEnd">
 								<m:Label text="{i18n>portDis}"/>
 							</m:HBox>
 							<m:HBox >
@@ -150,7 +147,7 @@
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox  class="sapUiTinyMarginEnd">
+							<m:HBox class="sapUiTinyMarginEnd">
 								<m:Label text="Voyage number"/>
 							</m:HBox>
 							<m:HBox >
@@ -158,7 +155,7 @@
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox   class="sapUiTinyMarginEnd">
+							<m:HBox class="sapUiTinyMarginEnd">
 								<m:Label text="VRN no"/>
 							</m:HBox>
 							<m:HBox >
@@ -166,7 +163,7 @@
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox  class="sapUiTinyMarginEnd">
+							<m:HBox class="sapUiTinyMarginEnd">
 								<m:Label text="Agent name"/>
 							</m:HBox>
 							<m:HBox >
@@ -174,7 +171,7 @@
 							</m:HBox>
 						</m:HBox>
 						<m:HBox alignItems="Center" class="sapUiTinyMarginBottom">
-							<m:HBox   class="sapUiTinyMarginEnd">
+							<m:HBox class="sapUiTinyMarginEnd">
 								<m:Label text="Consignee name"/>
 							</m:HBox>
 							<m:HBox >
@@ -182,12 +179,11 @@
 							</m:HBox>
 						</m:HBox>
 						<m:HBox alignItems="Center">
-							<m:HBox  class="sapUiTinyMarginEnd">
+							<m:HBox class="sapUiTinyMarginEnd">
 								<m:Label text="Split"/>
 							</m:HBox>
 							<m:HBox width="60%">
-									<m:Text text="{tSDetailModel>/Split}"/>
-							
+								<m:Text text="{tSDetailModel>/Split}"/>
 							</m:HBox>
 						</m:HBox>
 					</m:VBox>
@@ -202,8 +198,8 @@
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
-										<t:Table rows="{ path: 'tSDetailModel>/ChargeDetails/results',filters: {path: 'ItmType', operator: 'EQ', value1: 'A'} }" visibleRowCount="5" class="tableCard" selectionMode="None"
-											 ariaLabelledBy="title">
+										<t:Table rows="{ path: 'tSDetailModel>/ChargeDetails/results',filters: {path: 'ItmType', operator: 'EQ', value1: 'A'} }" visibleRowCount="5"
+											class="tableCard" selectionMode="None" ariaLabelledBy="title">
 											<t:columns>
 												<t:Column sortProperty="ETANo">
 													<m:Label wrapping="false" text="{i18n>Commodities}"/>
@@ -256,15 +252,15 @@
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>
-						<ObjectPageSection titleUppercase="false" title="Handling  charge details">
+			<ObjectPageSection titleUppercase="false" title="Handling charge details">
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
-										<t:Table rows="{ path: 'tSDetailModel>/ChargeDetails/results',filters: {path: 'ItmType', operator: 'EQ', value1: 'B'} }" visibleRowCount="5" class="tableCard" selectionMode="None"
-										 ariaLabelledBy="title">
+										<t:Table rows="{ path: 'tSDetailModel>/ChargeDetails/results',filters: {path: 'ItmType', operator: 'EQ', value1: 'B'} }" visibleRowCount="5"
+											class="tableCard" selectionMode="None" ariaLabelledBy="title">
 											<t:columns>
 												<t:Column sortProperty="ETANo">
 													<m:Label wrapping="false" text="{i18n>Commodities}"/>
@@ -317,15 +313,15 @@
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>
-			<ObjectPageSection titleUppercase="false" title="Gear Supply  charge details">
+			<ObjectPageSection titleUppercase="false" title="Gear Supply charge details">
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
-										<t:Table rows="{ path: 'tSDetailModel>/ChargeDetails/results',filters: {path: 'ItmType', operator: 'EQ', value1: 'C'} }" visibleRowCount="5" class="tableCard" selectionMode="None"
-											 ariaLabelledBy="title">
+										<t:Table rows="{ path: 'tSDetailModel>/ChargeDetails/results',filters: {path: 'ItmType', operator: 'EQ', value1: 'C'} }" visibleRowCount="5"
+											class="tableCard" selectionMode="None" ariaLabelledBy="title">
 											<t:columns>
 												<t:Column sortProperty="ETANo">
 													<m:Label wrapping="false" text="{i18n>Commodities}"/>
@@ -372,15 +368,15 @@
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>
-			<ObjectPageSection titleUppercase="false" title="Forklift  charge details">
+			<ObjectPageSection titleUppercase="false" title="Forklift charge details">
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
-										<t:Table rows="{ path: 'tSDetailModel>/ChargeDetails/results',filters: {path: 'ItmType', operator: 'EQ', value1: 'D'} }" visibleRowCount="5" class="tableCard" selectionMode="None"
-											 ariaLabelledBy="title">
+										<t:Table rows="{ path: 'tSDetailModel>/ChargeDetails/results',filters: {path: 'ItmType', operator: 'EQ', value1: 'D'} }" visibleRowCount="5"
+											class="tableCard" selectionMode="None" ariaLabelledBy="title">
 											<t:columns>
 												<t:Column sortProperty="ETANo">
 													<m:Label wrapping="false" text="Equipment"/>
@@ -406,13 +402,13 @@
 														<m:Text text="{tSDetailModel>Date}"/>
 													</t:template>
 												</t:Column>
-													<t:Column>
+												<t:Column>
 													<m:Label text="From"/>
 													<t:template>
 														<m:Text text="{tSDetailModel>From}"/>
 													</t:template>
 												</t:Column>
-													<t:Column>
+												<t:Column>
 													<m:Label text="To"/>
 													<t:template>
 														<m:Text text="{delvryDetailsModel>To}"/>
@@ -445,15 +441,15 @@
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>
-						<ObjectPageSection titleUppercase="false" title="Crane  charge details">
+			<ObjectPageSection titleUppercase="false" title="Crane charge details">
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
-										<t:Table rows="{ path: 'tSDetailModel>/ChargeDetails/results',filters: {path: 'ItmType', operator: 'EQ', value1: 'E'} }" visibleRowCount="5" class="tableCard" selectionMode="None"
-											 ariaLabelledBy="title">
+										<t:Table rows="{ path: 'tSDetailModel>/ChargeDetails/results',filters: {path: 'ItmType', operator: 'EQ', value1: 'E'} }" visibleRowCount="5"
+											class="tableCard" selectionMode="None" ariaLabelledBy="title">
 											<t:columns>
 												<t:Column sortProperty="ETANo">
 													<m:Label wrapping="false" text="Equipment"/>
@@ -479,7 +475,7 @@
 														<m:Text text="{tSDetailModel>Date}"/>
 													</t:template>
 												</t:Column>
-													<t:Column>
+												<t:Column>
 													<m:Label text="Weight"/>
 													<t:template>
 														<m:Text text="{tSDetailModel>Weight}"/>
@@ -512,15 +508,15 @@
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>
-			<ObjectPageSection titleUppercase="false" title="Supplementary  charge details">
+			<ObjectPageSection titleUppercase="false" title="Supplementary charge details">
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
 							<m:FlexBox wrap="Wrap">
 								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:VBox>
-										<t:Table rows="{ path: 'tSDetailModel>/ChargeDetails/results',filters: {path: 'ItmType', operator: 'EQ', value1: 'F'} }" visibleRowCount="5" class="tableCard" selectionMode="None"
-											 ariaLabelledBy="title">
+										<t:Table rows="{ path: 'tSDetailModel>/ChargeDetails/results',filters: {path: 'ItmType', operator: 'EQ', value1: 'F'} }" visibleRowCount="5"
+											class="tableCard" selectionMode="None" ariaLabelledBy="title">
 											<t:columns>
 												<t:Column sortProperty="ETANo">
 													<m:Label wrapping="false" text="Supplementary Type"/>
@@ -540,13 +536,13 @@
 														<m:Text text="{tSDetailModel>Date}"/>
 													</t:template>
 												</t:Column>
-													<t:Column>
+												<t:Column>
 													<m:Label text="From"/>
 													<t:template>
 														<m:Text text="{tSDetailModel>From}"/>
 													</t:template>
 												</t:Column>
-													<t:Column>
+												<t:Column>
 													<m:Label text="To"/>
 													<t:template>
 														<m:Text text="{tSDetailModel>To}"/>
@@ -579,8 +575,6 @@
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>
-
-
 		</sections>
 	</ObjectPageLayout>
 </core:FragmentDefinition>

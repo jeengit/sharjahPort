@@ -1,6 +1,6 @@
 <core:FragmentDefinition xmlns:t="sap.ui.table" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core"
 	xmlns:tnt="sap.tnt">
-	<ObjectPageLayout upperCaseAnchorBar="false" id="manifestChangeId" class="objLayoutClass">
+	<ObjectPageLayout upperCaseAnchorBar="false" id="manifestChangeId" class="objLayoutClass editMode">
 		<headerTitle>
 			<ObjectPageDynamicHeaderTitle>
 				<breadcrumbs>
@@ -12,7 +12,6 @@
 				<expandedHeading>
 					<m:HBox>
 						<m:Title text="{BOEDetailsModel>/VesselName} - {BOEDetailsModel>/ManifestNo}" wrapping="true"/>
-						<m:ObjectMarker type="Flagged" class="sapUiTinyMarginBegin"/>
 					</m:HBox>
 				</expandedHeading>
 				<snappedHeading>
@@ -235,7 +234,7 @@
 																	</t:template>
 																</t:Column>
 															
-																<t:Column width="130px">
+																<t:Column>
 																	<m:Label text="Package Type &amp; No"/>
 																	<t:template>
 																		<m:Text text="{BOEDetailsModel>PackageType} - {BOEDetailsModel>NoOfPackages}"/>

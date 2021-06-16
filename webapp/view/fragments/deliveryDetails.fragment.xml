@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns:t="sap.ui.table" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core">
-	<ObjectPageLayout upperCaseAnchorBar="false" id="delDetails" class="objLayoutClass">
+	<ObjectPageLayout upperCaseAnchorBar="false" id="delDetails" class="objLayoutClass editMode">
 		<headerTitle>
 			<ObjectPageDynamicHeaderTitle>
 				<!--<breadcrumbs>-->
@@ -16,7 +16,7 @@
 				</expandedHeading>
 				<snappedHeading>
 					<m:FlexBox fitContainer="true" alignItems="Center">
-						<m:Avatar backgroundColor="Accent9" src="sap-icon://shipping-status" class="sapUiTinyMarginEnd"/>
+						<m:Avatar backgroundColor="Accent9" src="images/cargo-ship.png" class="sapUiTinyMarginEnd"/>
 						<m:Title text="{delvryDetailsModel>/DeliveryName}" wrapping="true"/>
 					</m:FlexBox>
 				</snappedHeading>
@@ -39,7 +39,7 @@
 		</headerTitle>
 		<headerContent>
 			<m:FlexBox wrap="Wrap">
-				<m:Avatar class="sapUiSmallMarginEnd" backgroundColor="Accent9" src="sap-icon://shipping-status" displaySize="L"/>
+				<m:Avatar class="sapUiSmallMarginEnd" backgroundColor="Accent9" src="images/cargo-ship.png" displaySize="L"/>
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 						<m:HBox class="sapUiTinyMarginBottom">
@@ -82,7 +82,6 @@
 							<m:Label text="{i18n>crtDate}" class="sapUiSmallMarginEnd"/>
 							<m:Text text="{path:'delvryDetailsModel>/CaretedDate' , formatter:'.formatter.changeDataFormat'}" wrapping="false"/>
 						</m:HBox>
-					
 					</m:VBox>
 				</layout:VerticalLayout>
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
@@ -107,7 +106,6 @@
 				</layout:VerticalLayout>
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
-					
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>ConsigneeCode}" class="sapUiSmallMarginEnd"/>
 							<m:Text text="{delvryDetailsModel>/ConsigneeCode}"/>
@@ -135,257 +133,255 @@
 						<blocks>
 							<m:FlexBox>
 								<layout:VerticalLayout>
-								<!--<layout:HorizontalLayout >-->
-								<!--	<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">-->
-								<!--			<m:HBox class="sapUiTinyMarginBottom sapUiSmallMarginEnd">-->
-								<!--				<m:Label text="{i18n>Markno}" class="sapUiSmallMarginEnd"/>-->
-								<!--				<m:Text text="{delvryDetailsModel>/MarksAndNo}"/>-->
-								<!--			</m:HBox>-->
-								<!--			<m:HBox class="sapUiTinyMarginBottom sapUiSmallMarginEnd">-->
-								<!--				<m:Label text="{i18n>Cargocategory}" class="sapUiSmallMarginEnd"/>-->
-								<!--				<m:Text text="{delvryDetailsModel>/CargoCategory}" wrapping="false"/>-->
-								<!--			</m:HBox>-->
-								<!--		</layout:VerticalLayout>-->
-								<!--		<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">-->
-								<!--			<m:HBox class="sapUiTinyMarginBottom">-->
-								<!--				<m:Label text="{i18n>dirDel}" class="sapUiSmallMarginEnd"/>-->
-								<!--				<m:Text text="{delvryDetailsModel>/Berth_berthNumber}"/>-->
-								<!--			</m:HBox>-->
-								<!--			<m:HBox class="sapUiTinyMarginBottom">-->
-								<!--				<m:Label text="{i18n>transcargo}" class="sapUiSmallMarginEnd"/>-->
-								<!--				<m:Text text="{delvryDetailsModel>/TransitDetails}"/>-->
-								<!--			</m:HBox>-->
-								<!--		</layout:VerticalLayout>-->
-								<!--		<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">-->
-								<!--			<m:HBox class="sapUiTinyMarginBottom">-->
-								<!--				<m:Label text="{i18n>palletized}" class="sapUiSmallMarginEnd"/>-->
-								<!--				<m:Text text="{delvryDetailsModel>/Berth_berthNumber}"/>-->
-								<!--			</m:HBox>-->
-								<!--			<m:HBox class="sapUiTinyMarginBottom">-->
-								<!--				<m:Label text="{i18n>transcargo}" class="sapUiSmallMarginEnd"/>-->
-								<!--				<m:Text text="{delvryDetailsModel>/TransitDetails}"/>-->
-								<!--			</m:HBox>-->
-								<!--		</layout:VerticalLayout>-->
-								<!--		<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">-->
-								<!--			<m:HBox class="sapUiTinyMarginBottom">-->
-								<!--				<m:Label text="{i18n>transcargo}" class="sapUiSmallMarginEnd"/>-->
-								<!--				<m:Text text="{delvryDetailsModel>/TransitDetails}"/>-->
-								<!--			</m:HBox>-->
-								<!--			<m:HBox class="sapUiTinyMarginBottom">-->
-								<!--				<m:Label text="{i18n>Generalremark}" class="sapUiSmallMarginEnd"/>-->
-								<!--				<m:Text text="{delvryDetailsModel>/GeneralRemark}" wrapping="false"/>-->
-								<!--			</m:HBox>-->
-								<!--		</layout:VerticalLayout>-->
-								<!--			</layout:HorizontalLayout>-->
-										<layout:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginTop" justifyContent="End">
-											<m:VBox>
-												<t:Table visibleRowCount="5" rows="{delvryDetailsModel>/DeliveryDetailsToCommodities/results}" class="sapUiTinyMarginEnd tableCard"
-													selectionMode="None" ariaLabelledBy="title">
-													<t:columns>
-														<t:Column sortProperty="ETANo">
-															<m:Label wrapping="false" text="{i18n>Commodities}"/>
-															<t:template>
-																<m:Text text="{delvryDetailsModel>Commodities}"/>
-															</t:template>
-														</t:Column>
-														<t:Column sortProperty="ETANo">
-															<m:Label wrapping="false" text="Item No"/>
-															<t:template>
-																<m:Text text="{delvryDetailsModel>ItemNo}"/>
-															</t:template>
-														</t:Column>
-														<t:Column sortProperty="PortName">
-															<m:Label text="{i18n>Markno}"/>
-															<t:template>
-																<m:Text text="{delvryDetailsModel>MarkAndNumbers}"/>
-															</t:template>
-														</t:Column>
-														<t:Column>
-															<m:Label text="UOM"/>
-															<t:template>
-																<m:Text text="{delvryDetailsModel>UOM}"/>
-															</t:template>
-														</t:Column>
-														<t:Column>
-															<m:Label text="{i18n>NoOfpackages}"/>
-															<t:template>
-																<m:Text text="{delvryDetailsModel>NoOfPackages}"/>
-															</t:template>
-														</t:Column>
-														<t:Column>
-															<m:Label text="{i18n>Subtype}"/>
-															<t:template>
-																<m:Text text="{delvryDetailsModel>SubType}"/>
-															</t:template>
-														</t:Column>
-														<t:Column>
-															<m:Label text="{i18n>Grosswt}"/>
-															<t:template>
-																<m:Text text="{delvryDetailsModel>GrossWt}"/>
-															</t:template>
-														</t:Column>
-														<t:Column>
-															<m:Label text="{i18n>ConsigneeAddress}"/>
-															<t:template>
-																<m:Text text="{delvryDetailsModel>ConsigneeCode}"/>
-															</t:template>
-														</t:Column>
-														<t:Column>
-															<m:Label text="{i18n>ChargeTon}"/>
-															<t:template>
-																<m:Text text="{delvryDetailsModel>ChargePerTon}"/>
-															</t:template>
-														</t:Column>
-														<t:Column>
-															<m:Label text="{i18n>NetWt}"/>
-															<t:template>
-																<m:Text text="{delvryDetailsModel>NetWt}"/>
-															</t:template>
-														</t:Column>
-													</t:columns>
-												</t:Table>
-											</m:VBox>
-										</layout:VerticalLayout>
+									<!--<layout:HorizontalLayout >-->
+									<!--	<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">-->
+									<!--			<m:HBox class="sapUiTinyMarginBottom sapUiSmallMarginEnd">-->
+									<!--				<m:Label text="{i18n>Markno}" class="sapUiSmallMarginEnd"/>-->
+									<!--				<m:Text text="{delvryDetailsModel>/MarksAndNo}"/>-->
+									<!--			</m:HBox>-->
+									<!--			<m:HBox class="sapUiTinyMarginBottom sapUiSmallMarginEnd">-->
+									<!--				<m:Label text="{i18n>Cargocategory}" class="sapUiSmallMarginEnd"/>-->
+									<!--				<m:Text text="{delvryDetailsModel>/CargoCategory}" wrapping="false"/>-->
+									<!--			</m:HBox>-->
+									<!--		</layout:VerticalLayout>-->
+									<!--		<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">-->
+									<!--			<m:HBox class="sapUiTinyMarginBottom">-->
+									<!--				<m:Label text="{i18n>dirDel}" class="sapUiSmallMarginEnd"/>-->
+									<!--				<m:Text text="{delvryDetailsModel>/Berth_berthNumber}"/>-->
+									<!--			</m:HBox>-->
+									<!--			<m:HBox class="sapUiTinyMarginBottom">-->
+									<!--				<m:Label text="{i18n>transcargo}" class="sapUiSmallMarginEnd"/>-->
+									<!--				<m:Text text="{delvryDetailsModel>/TransitDetails}"/>-->
+									<!--			</m:HBox>-->
+									<!--		</layout:VerticalLayout>-->
+									<!--		<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">-->
+									<!--			<m:HBox class="sapUiTinyMarginBottom">-->
+									<!--				<m:Label text="{i18n>palletized}" class="sapUiSmallMarginEnd"/>-->
+									<!--				<m:Text text="{delvryDetailsModel>/Berth_berthNumber}"/>-->
+									<!--			</m:HBox>-->
+									<!--			<m:HBox class="sapUiTinyMarginBottom">-->
+									<!--				<m:Label text="{i18n>transcargo}" class="sapUiSmallMarginEnd"/>-->
+									<!--				<m:Text text="{delvryDetailsModel>/TransitDetails}"/>-->
+									<!--			</m:HBox>-->
+									<!--		</layout:VerticalLayout>-->
+									<!--		<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">-->
+									<!--			<m:HBox class="sapUiTinyMarginBottom">-->
+									<!--				<m:Label text="{i18n>transcargo}" class="sapUiSmallMarginEnd"/>-->
+									<!--				<m:Text text="{delvryDetailsModel>/TransitDetails}"/>-->
+									<!--			</m:HBox>-->
+									<!--			<m:HBox class="sapUiTinyMarginBottom">-->
+									<!--				<m:Label text="{i18n>Generalremark}" class="sapUiSmallMarginEnd"/>-->
+									<!--				<m:Text text="{delvryDetailsModel>/GeneralRemark}" wrapping="false"/>-->
+									<!--			</m:HBox>-->
+									<!--		</layout:VerticalLayout>-->
+									<!--			</layout:HorizontalLayout>-->
+									<layout:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginTop" justifyContent="End">
+										<m:VBox>
+											<t:Table visibleRowCount="5" rows="{delvryDetailsModel>/DeliveryDetailsToCommodities/results}" class="sapUiTinyMarginEnd tableCard"
+												selectionMode="None" ariaLabelledBy="title">
+												<t:columns>
+													<t:Column sortProperty="ETANo">
+														<m:Label wrapping="false" text="{i18n>Commodities}"/>
+														<t:template>
+															<m:Text text="{delvryDetailsModel>Commodities}"/>
+														</t:template>
+													</t:Column>
+													<t:Column sortProperty="ETANo">
+														<m:Label wrapping="false" text="Item No"/>
+														<t:template>
+															<m:Text text="{delvryDetailsModel>ItemNo}"/>
+														</t:template>
+													</t:Column>
+													<t:Column sortProperty="PortName">
+														<m:Label text="{i18n>Markno}"/>
+														<t:template>
+															<m:Text text="{delvryDetailsModel>MarkAndNumbers}"/>
+														</t:template>
+													</t:Column>
+													<t:Column>
+														<m:Label text="UOM"/>
+														<t:template>
+															<m:Text text="{delvryDetailsModel>UOM}"/>
+														</t:template>
+													</t:Column>
+													<t:Column>
+														<m:Label text="{i18n>NoOfpackages}"/>
+														<t:template>
+															<m:Text text="{delvryDetailsModel>NoOfPackages}"/>
+														</t:template>
+													</t:Column>
+													<t:Column>
+														<m:Label text="{i18n>Subtype}"/>
+														<t:template>
+															<m:Text text="{delvryDetailsModel>SubType}"/>
+														</t:template>
+													</t:Column>
+													<t:Column>
+														<m:Label text="{i18n>Grosswt}"/>
+														<t:template>
+															<m:Text text="{delvryDetailsModel>GrossWt}"/>
+														</t:template>
+													</t:Column>
+													<t:Column>
+														<m:Label text="{i18n>ConsigneeAddress}"/>
+														<t:template>
+															<m:Text text="{delvryDetailsModel>ConsigneeCode}"/>
+														</t:template>
+													</t:Column>
+													<t:Column>
+														<m:Label text="{i18n>ChargeTon}"/>
+														<t:template>
+															<m:Text text="{delvryDetailsModel>ChargePerTon}"/>
+														</t:template>
+													</t:Column>
+													<t:Column>
+														<m:Label text="{i18n>NetWt}"/>
+														<t:template>
+															<m:Text text="{delvryDetailsModel>NetWt}"/>
+														</t:template>
+													</t:Column>
+												</t:columns>
+											</t:Table>
+										</m:VBox>
+									</layout:VerticalLayout>
 								</layout:VerticalLayout>
-								</m:FlexBox>
-							</blocks>
-						</ObjectPageSubSection>
-					</subSections>
-				</ObjectPageSection>
-				<!--<ObjectPageSection titleUppercase="false" title="{i18n>custDet}">-->
-				<!--	<subSections>-->
-				<!--		<ObjectPageSubSection titleUppercase="false">-->
-				<!--			<blocks>-->
-				<!--				<m:FlexBox wrap="Wrap">-->
-				<!--					<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">-->
-										<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>shipperDet}"/>-->
-				<!--						<m:VBox>-->
-				<!--							<m:HBox class="sapUiTinyMarginBottom">-->
-				<!--								<m:Label text="{i18n>billtype}" class="sapUiSmallMarginEnd"/>-->
-				<!--								<m:Text text="{delvryDetailsModel>/BillType}"/>-->
-				<!--							</m:HBox>-->
-				<!--							<m:HBox class="sapUiTinyMarginBottom">-->
-				<!--								<m:Label text="{i18n>ExcepCode}" class="sapUiSmallMarginEnd"/>-->
-				<!--								<m:Text text="{delvryDetailsModel>/Berth_berthNumber}"/>-->
-				<!--							</m:HBox>-->
-				<!--							<m:HBox class="sapUiTinyMarginBottom">-->
-				<!--								<m:Label text="{i18n>palletized}" class="sapUiSmallMarginEnd"/>-->
-				<!--								<m:Text text="{delvryDetailsModel>/ExceptionCode}"/>-->
-				<!--							</m:HBox>-->
-				<!--							<m:HBox class="sapUiTinyMarginBottom">-->
-				<!--								<m:Label text="{i18n>dstination}" class="sapUiSmallMarginEnd"/>-->
-				<!--								<m:Text text="{delvryDetailsModel>/Destination}"/>-->
-				<!--							</m:HBox>-->
-				<!--							<m:HBox class="sapUiTinyMarginBottom">-->
-				<!--								<m:Label text="{i18n>corgin}" class="sapUiSmallMarginEnd"/>-->
-				<!--								<m:Text text="{delvryDetailsModel>/Country}"/>-->
-				<!--							</m:HBox>-->
-				<!--						</m:VBox>-->
-				<!--					</layout:VerticalLayout>-->
-				<!--					<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">-->
-										<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>consignDet}"/>-->
-				<!--						<m:VBox>-->
-				<!--							<m:HBox class="sapUiTinyMarginBottom">-->
-				<!--								<m:Label text="{i18n>paymod}" class="sapUiSmallMarginEnd"/>-->
-				<!--								<m:Text text="{delvryDetailsModel>/PaymentMode}"/>-->
-				<!--							</m:HBox>-->
-				<!--							<m:HBox class="sapUiTinyMarginBottom">-->
-				<!--								<m:Label text="{i18n>impcode}" class="sapUiSmallMarginEnd"/>-->
-				<!--								<m:Text text="{delvryDetailsModel>/ImportedCode}"/>-->
-				<!--							</m:HBox>-->
-				<!--							<m:HBox class="sapUiTinyMarginBottom">-->
-				<!--								<m:Label text="{i18n>r/no}" class="sapUiSmallMarginEnd"/>-->
-				<!--								<m:Text text="{delvryDetailsModel>/RNo}"/>-->
-				<!--							</m:HBox>-->
-				<!--							<m:HBox class="sapUiTinyMarginBottom">-->
-				<!--								<m:Label text="{i18n>dutyAmn}" class="sapUiSmallMarginEnd"/>-->
-				<!--								<m:Text text="{delvryDetailsModel>/DutyAmount}"/>-->
-				<!--							</m:HBox>-->
-				<!--							<m:HBox class="sapUiTinyMarginBottom">-->
-				<!--								<m:Label text="{i18n>billD}" class="sapUiSmallMarginEnd"/>-->
-				<!--								<m:Text text="{delvryDetailsModel>/BillDate}"/>-->
-				<!--							</m:HBox>-->
-				<!--						</m:VBox>-->
-				<!--					</layout:VerticalLayout>-->
-				<!--					<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">-->
-										<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>consignDet}"/>-->
-				<!--						<m:VBox>-->
-				<!--							<m:HBox class="sapUiTinyMarginBottom">-->
-				<!--								<m:Label text="{i18n>tranDet}" class="sapUiSmallMarginEnd"/>-->
-				<!--								<m:Text text="{delvryDetailsModel>/TransitDetails}"/>-->
-				<!--							</m:HBox>-->
-				<!--							<m:HBox class="sapUiTinyMarginBottom">-->
-				<!--								<m:Label text="{i18n>Agentcode}" class="sapUiSmallMarginEnd"/>-->
-				<!--								<m:Text text="{delvryDetailsModel>/AgentCode}"/>-->
-				<!--							</m:HBox>-->
-				<!--							<m:HBox class="sapUiTinyMarginBottom">-->
-				<!--								<m:Label text="{i18n>AgentName}" class="sapUiSmallMarginEnd"/>-->
-				<!--								<m:Text text="{delvryDetailsModel>/AgentName}"/>-->
-				<!--							</m:HBox>-->
-				<!--							<m:HBox class="sapUiTinyMarginBottom">-->
-				<!--								<m:Label text="{i18n>CustomsRefNo}" class="sapUiSmallMarginEnd"/>-->
-				<!--								<m:Text text="{delvryDetailsModel>/CustomRefNo}"/>-->
-				<!--							</m:HBox>-->
-				<!--							<m:HBox class="sapUiTinyMarginBottom">-->
-				<!--								<m:Label text="{i18n>billno}" class="sapUiSmallMarginEnd"/>-->
-				<!--								<m:Text text="{delvryDetailsModel>/BillNo}"/>-->
-				<!--							</m:HBox>-->
-				<!--						</m:VBox>-->
-				<!--					</layout:VerticalLayout>-->
-				<!--				</m:FlexBox>-->
-				<!--			</blocks>-->
-				<!--		</ObjectPageSubSection>-->
-				<!--	</subSections>-->
-				<!--</ObjectPageSection>-->
-				<ObjectPageSection titleUppercase="false" title="{i18n>storChrg}">
-					<subSections>
-						<ObjectPageSubSection titleUppercase="false">
-							<blocks>
-								<m:FlexBox wrap="Wrap">
-									<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
-										<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>BasicDetails}"/>-->
-										<m:VBox>
-											<m:HBox class="sapUiTinyMarginBottom">
-												<m:Label text="{i18n>DichComp}" class="sapUiSmallMarginEnd"/>
-												<m:Text text="{path:'delvryDetailsModel>/DisCompleteDate' , formatter:'.formatter.changeDataFormat'}"/>
-											</m:HBox>
-											<m:HBox class="sapUiTinyMarginBottom">
-												<m:Label text="{i18n>storeUp}" class="sapUiSmallMarginEnd"/>
-												<m:Text text="{path:'delvryDetailsModel>/StorageUpto' , formatter:'.formatter.changeDataFormat'}"/>
-											</m:HBox>
-											
-										</m:VBox>
-									</layout:VerticalLayout>
-									<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
-										<m:VBox>
-											<m:HBox class="sapUiTinyMarginBottom">
-												<m:Label text="{i18n>porthand}" class="sapUiSmallMarginEnd"/>
-												<m:Text text="{delvryDetailsModel>/PortHandlingCharge}"/>
-											</m:HBox>
-											<m:HBox class="sapUiTinyMarginBottom">
-												<m:Label text="{i18n>Lastfree}" class="sapUiSmallMarginEnd"/>
-												<m:Text text="{path:'delvryDetailsModel>/LastFreeDate' , formatter:'.formatter.changeDataFormat'}"/>
-											</m:HBox>
-										</m:VBox>
-									</layout:VerticalLayout>
-									<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+							</m:FlexBox>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<!--<ObjectPageSection titleUppercase="false" title="{i18n>custDet}">-->
+			<!--	<subSections>-->
+			<!--		<ObjectPageSubSection titleUppercase="false">-->
+			<!--			<blocks>-->
+			<!--				<m:FlexBox wrap="Wrap">-->
+			<!--					<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">-->
+			<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>shipperDet}"/>-->
+			<!--						<m:VBox>-->
+			<!--							<m:HBox class="sapUiTinyMarginBottom">-->
+			<!--								<m:Label text="{i18n>billtype}" class="sapUiSmallMarginEnd"/>-->
+			<!--								<m:Text text="{delvryDetailsModel>/BillType}"/>-->
+			<!--							</m:HBox>-->
+			<!--							<m:HBox class="sapUiTinyMarginBottom">-->
+			<!--								<m:Label text="{i18n>ExcepCode}" class="sapUiSmallMarginEnd"/>-->
+			<!--								<m:Text text="{delvryDetailsModel>/Berth_berthNumber}"/>-->
+			<!--							</m:HBox>-->
+			<!--							<m:HBox class="sapUiTinyMarginBottom">-->
+			<!--								<m:Label text="{i18n>palletized}" class="sapUiSmallMarginEnd"/>-->
+			<!--								<m:Text text="{delvryDetailsModel>/ExceptionCode}"/>-->
+			<!--							</m:HBox>-->
+			<!--							<m:HBox class="sapUiTinyMarginBottom">-->
+			<!--								<m:Label text="{i18n>dstination}" class="sapUiSmallMarginEnd"/>-->
+			<!--								<m:Text text="{delvryDetailsModel>/Destination}"/>-->
+			<!--							</m:HBox>-->
+			<!--							<m:HBox class="sapUiTinyMarginBottom">-->
+			<!--								<m:Label text="{i18n>corgin}" class="sapUiSmallMarginEnd"/>-->
+			<!--								<m:Text text="{delvryDetailsModel>/Country}"/>-->
+			<!--							</m:HBox>-->
+			<!--						</m:VBox>-->
+			<!--					</layout:VerticalLayout>-->
+			<!--					<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">-->
+			<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>consignDet}"/>-->
+			<!--						<m:VBox>-->
+			<!--							<m:HBox class="sapUiTinyMarginBottom">-->
+			<!--								<m:Label text="{i18n>paymod}" class="sapUiSmallMarginEnd"/>-->
+			<!--								<m:Text text="{delvryDetailsModel>/PaymentMode}"/>-->
+			<!--							</m:HBox>-->
+			<!--							<m:HBox class="sapUiTinyMarginBottom">-->
+			<!--								<m:Label text="{i18n>impcode}" class="sapUiSmallMarginEnd"/>-->
+			<!--								<m:Text text="{delvryDetailsModel>/ImportedCode}"/>-->
+			<!--							</m:HBox>-->
+			<!--							<m:HBox class="sapUiTinyMarginBottom">-->
+			<!--								<m:Label text="{i18n>r/no}" class="sapUiSmallMarginEnd"/>-->
+			<!--								<m:Text text="{delvryDetailsModel>/RNo}"/>-->
+			<!--							</m:HBox>-->
+			<!--							<m:HBox class="sapUiTinyMarginBottom">-->
+			<!--								<m:Label text="{i18n>dutyAmn}" class="sapUiSmallMarginEnd"/>-->
+			<!--								<m:Text text="{delvryDetailsModel>/DutyAmount}"/>-->
+			<!--							</m:HBox>-->
+			<!--							<m:HBox class="sapUiTinyMarginBottom">-->
+			<!--								<m:Label text="{i18n>billD}" class="sapUiSmallMarginEnd"/>-->
+			<!--								<m:Text text="{delvryDetailsModel>/BillDate}"/>-->
+			<!--							</m:HBox>-->
+			<!--						</m:VBox>-->
+			<!--					</layout:VerticalLayout>-->
+			<!--					<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">-->
+			<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>consignDet}"/>-->
+			<!--						<m:VBox>-->
+			<!--							<m:HBox class="sapUiTinyMarginBottom">-->
+			<!--								<m:Label text="{i18n>tranDet}" class="sapUiSmallMarginEnd"/>-->
+			<!--								<m:Text text="{delvryDetailsModel>/TransitDetails}"/>-->
+			<!--							</m:HBox>-->
+			<!--							<m:HBox class="sapUiTinyMarginBottom">-->
+			<!--								<m:Label text="{i18n>Agentcode}" class="sapUiSmallMarginEnd"/>-->
+			<!--								<m:Text text="{delvryDetailsModel>/AgentCode}"/>-->
+			<!--							</m:HBox>-->
+			<!--							<m:HBox class="sapUiTinyMarginBottom">-->
+			<!--								<m:Label text="{i18n>AgentName}" class="sapUiSmallMarginEnd"/>-->
+			<!--								<m:Text text="{delvryDetailsModel>/AgentName}"/>-->
+			<!--							</m:HBox>-->
+			<!--							<m:HBox class="sapUiTinyMarginBottom">-->
+			<!--								<m:Label text="{i18n>CustomsRefNo}" class="sapUiSmallMarginEnd"/>-->
+			<!--								<m:Text text="{delvryDetailsModel>/CustomRefNo}"/>-->
+			<!--							</m:HBox>-->
+			<!--							<m:HBox class="sapUiTinyMarginBottom">-->
+			<!--								<m:Label text="{i18n>billno}" class="sapUiSmallMarginEnd"/>-->
+			<!--								<m:Text text="{delvryDetailsModel>/BillNo}"/>-->
+			<!--							</m:HBox>-->
+			<!--						</m:VBox>-->
+			<!--					</layout:VerticalLayout>-->
+			<!--				</m:FlexBox>-->
+			<!--			</blocks>-->
+			<!--		</ObjectPageSubSection>-->
+			<!--	</subSections>-->
+			<!--</ObjectPageSection>-->
+			<ObjectPageSection titleUppercase="false" title="{i18n>storChrg}">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+							<m:FlexBox wrap="Wrap">
+								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+									<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>BasicDetails}"/>-->
+									<m:VBox>
+										<m:HBox class="sapUiTinyMarginBottom">
+											<m:Label text="{i18n>DichComp}" class="sapUiSmallMarginEnd"/>
+											<m:Text text="{path:'delvryDetailsModel>/DisCompleteDate' , formatter:'.formatter.changeDataFormat'}"/>
+										</m:HBox>
+										<m:HBox class="sapUiTinyMarginBottom">
+											<m:Label text="{i18n>storeUp}" class="sapUiSmallMarginEnd"/>
+											<m:Text text="{path:'delvryDetailsModel>/StorageUpto' , formatter:'.formatter.changeDataFormat'}"/>
+										</m:HBox>
+									</m:VBox>
+								</layout:VerticalLayout>
+								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+									<m:VBox>
+										<m:HBox class="sapUiTinyMarginBottom">
+											<m:Label text="{i18n>porthand}" class="sapUiSmallMarginEnd"/>
+											<m:Text text="{delvryDetailsModel>/PortHandlingCharge}"/>
+										</m:HBox>
+										<m:HBox class="sapUiTinyMarginBottom">
+											<m:Label text="{i18n>Lastfree}" class="sapUiSmallMarginEnd"/>
+											<m:Text text="{path:'delvryDetailsModel>/LastFreeDate' , formatter:'.formatter.changeDataFormat'}"/>
+										</m:HBox>
+									</m:VBox>
+								</layout:VerticalLayout>
+								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 									<m:HBox class="sapUiTinyMarginBottom">
-												<m:Label text="{i18n>freedays}" class="sapUiSmallMarginEnd"/>
-												<m:Text text="{delvryDetailsModel>/FreeDays}"/>
-											</m:HBox>
-											</layout:VerticalLayout>
-								</m:FlexBox>
-							</blocks>
-						</ObjectPageSubSection>
-					</subSections>
-				</ObjectPageSection>
-				<ObjectPageSection titleUppercase="false" title="{i18n>otherdet}">
-					<subSections>
-						<ObjectPageSubSection titleUppercase="false">
-							<blocks>
-								<m:FlexBox wrap="Wrap">
-										<layout:VerticalLayout >
-							<!--		<layout:HorizontalLayout>
+										<m:Label text="{i18n>freedays}" class="sapUiSmallMarginEnd"/>
+										<m:Text text="{delvryDetailsModel>/FreeDays}"/>
+									</m:HBox>
+								</layout:VerticalLayout>
+							</m:FlexBox>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" title="{i18n>otherdet}">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+							<m:FlexBox wrap="Wrap">
+									<!--		<layout:HorizontalLayout>
 										<layout:VerticalLayout  class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
 										
 										
@@ -410,52 +406,50 @@
 										
 										</layout:VerticalLayout>
 											</layout:HorizontalLayout> -->
-										<layout:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginTop">
-											<m:VBox>
-												<t:Table rows="{delvryDetailsModel>/DeliveryDetailsToDeliverCharge/results}" visibleRowCount="5" selectionMode="None"
-													class="sapUiTinyMarginEnd tableCard" ariaLabelledBy="title">
-													<t:columns>
-														<t:Column sortProperty="ETANo">
-															<m:Label wrapping="false" text="{i18n>Charge}"/>
-															<t:template>
-																<m:Text text="{delvryDetailsModel>Charges}"/>
-															</t:template>
-														</t:Column>
-														<t:Column sortProperty="PortName">
-															<m:Label text="{i18n>Description}"/>
-															<t:template>
-																<m:Text text="{delvryDetailsModel>Description}"/>
-															</t:template>
-														</t:Column>
-														<t:Column>
-															<m:Label text="{i18n>rate}"/>
-															<t:template>
-																<m:Text text="{delvryDetailsModel>Rate}"/>
-															</t:template>
-														</t:Column>
-														<t:Column>
-															<m:Label text="{i18n>quantity}"/>
-															<t:template>
-																<m:Text text="{delvryDetailsModel>Quantity}"/>
-															</t:template>
-														</t:Column>
-														<t:Column>
-															<m:Label text="{i18n>Amount}"/>
-															<t:template>
-																<m:Text text="{delvryDetailsModel>Amount}"/>
-															</t:template>
-														</t:Column>
-													</t:columns>
-												</t:Table>
-											</m:VBox>
-										</layout:VerticalLayout>
-										</layout:VerticalLayout>
-								
-								</m:FlexBox>
-							</blocks>
-						</ObjectPageSubSection>
-					</subSections>
-				</ObjectPageSection>
-			</sections>
-		</ObjectPageLayout>
-	</core:FragmentDefinition>
+									<layout:VerticalLayout class="sapUiSmallMarginBegin sapUiSmallMarginTop">
+										<m:VBox>
+											<t:Table rows="{delvryDetailsModel>/DeliveryDetailsToDeliverCharge/results}" visibleRowCount="5" selectionMode="None"
+												class="sapUiTinyMarginEnd tableCard" ariaLabelledBy="title">
+												<t:columns>
+													<t:Column sortProperty="ETANo">
+														<m:Label wrapping="false" text="{i18n>Charge}"/>
+														<t:template>
+															<m:Text text="{delvryDetailsModel>Charges}"/>
+														</t:template>
+													</t:Column>
+													<t:Column sortProperty="PortName">
+														<m:Label text="{i18n>Description}"/>
+														<t:template>
+															<m:Text text="{delvryDetailsModel>Description}"/>
+														</t:template>
+													</t:Column>
+													<t:Column>
+														<m:Label text="{i18n>rate}"/>
+														<t:template>
+															<m:Text text="{delvryDetailsModel>Rate}"/>
+														</t:template>
+													</t:Column>
+													<t:Column>
+														<m:Label text="{i18n>quantity}"/>
+														<t:template>
+															<m:Text text="{delvryDetailsModel>Quantity}"/>
+														</t:template>
+													</t:Column>
+													<t:Column>
+														<m:Label text="{i18n>Amount}"/>
+														<t:template>
+															<m:Text text="{delvryDetailsModel>Amount}"/>
+														</t:template>
+													</t:Column>
+												</t:columns>
+											</t:Table>
+										</m:VBox>
+									</layout:VerticalLayout>
+							</m:FlexBox>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+	</ObjectPageLayout>
+</core:FragmentDefinition>

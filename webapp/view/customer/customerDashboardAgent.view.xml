@@ -1,50 +1,71 @@
 <mvc:View controllerName="com.demo.sharjahPort.controller.customer.customerDashboardAgent" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
 	displayBlock="true" xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:u="sap.ui.unified" xmlns:l="sap.ui.layout"
-	xmlns:f="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml">
+	xmlns:f="sap.ui.layout.form" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz="sap.viz.ui5.controls"
+	xmlns:viz.data="sap.viz.ui5.data" xmlns:unified="sap.ui.unified" xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page showHeader="true" class="sapUiResponsiveContentPadding">
 		<customHeader>
 			<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.TopNav" type="XML"/>
 		</customHeader>
 		<content>
 			<VBox class="section">
-				<FlexBox visible="{= ${loginModel>/uRole} === 'AGENT' ? true : false }" width="100%" justifyContent="End">
-							<core:Icon class="add-icon" tooltip="{i18n>CreateETA}" press="gotoCreatEta"
-								src="sap-icon://add"/></FlexBox>
+				<!--<FlexBox visible="{= ${loginModel>/uRole} === 'AGENT' ? true : false }" width="100%" justifyContent="End">-->
+				<!--			<core:Icon class="add-icon" tooltip="{i18n>CreateETA}" press="gotoCreatEta"-->
+				<!--				src="sap-icon://add"/></FlexBox>-->
 				<Title text="Dashboard" class="heading"/>
-					<l:Grid class="sapUiSmallMarginTopBottom custTile" defaultSpan="L2 M2 S12">
-						<l:content>
-							<GenericTile ariaLabel="APPROVED/ETA" press="onNavToPress" class="tileLayout" header="{i18n>etaTile}" subheader="{i18n>subApprvd}">
-								<TileContent unit="" footer="{DashboardCountModel>/0/EtaApproved}">
-									<!--<ImageContent src="sap-icon://complete" />-->
-								</TileContent>
-							</GenericTile>
-							<GenericTile ariaLabel="NEW/ETA" press="onNavToPress" class="tileLayout" header="{i18n>etaReq}" subheader="{i18n>subReq}">
-								<TileContent unit="" footer="{DashboardCountModel>/0/EtaRequested}">
-									<!--<ImageContent src="sap-icon://product" />-->
-								</TileContent>
-							</GenericTile>
-							<GenericTile ariaLabel="REJECTED/ETA" press="onNavToPress" class="tileLayout" header="{i18n>etaRej}" subheader="{i18n>agentPay}">
-								<TileContent unit="" footer="{DashboardCountModel>/0/EtaRejected}">
-									<!--<ImageContent src="sap-icon://product" />-->
-								</TileContent>
-							</GenericTile>
-							<GenericTile class="tileLayout" header="{i18n>PortClearance}" subheader="{i18n>subPcReq}">
-								<TileContent unit="" footer="{DashboardCountModel>/0/PortCApproved}">
-									<!--<ImageContent src="sap-icon://complete" />-->
-								</TileContent>
-							</GenericTile>
-							<GenericTile class="tileLayout" header="{i18n>PaymentList}" >
-								<TileContent unit="" footer="5">
-									<!--<ImageContent src="sap-icon://complete" />-->
-								</TileContent>
-							</GenericTile>
-							<GenericTile class="tileLayout" header="Service request" subheader="{i18n>subServ}">
-								<TileContent unit="" footer="20">
-									<!--<ImageContent src="sap-icon://complete" />-->
-								</TileContent>
-							</GenericTile>
-						</l:content>
-					</l:Grid>
+				<l:Grid class="sapUiSmallMarginTopBottom custTile" defaultSpan="L2 M2 S12">
+					<l:content>
+						<GenericTile ariaLabel="APPROVED/ETA" press="onNavToPress" class="tileLayout" header="{i18n>etaTile}" subheader="{i18n>subApprvd}">
+							<TileContent unit="" footer="{DashboardCountModel>/0/EtaApproved}">
+								<!--<ImageContent src="sap-icon://complete" />-->
+							</TileContent>
+						</GenericTile>
+						<GenericTile ariaLabel="NEW/ETA" press="onNavToPress" class="tileLayout" header="{i18n>etaReq}" subheader="{i18n>subReq}">
+							<TileContent unit="" footer="{DashboardCountModel>/0/EtaRequested}">
+								<!--<ImageContent src="sap-icon://product" />-->
+							</TileContent>
+						</GenericTile>
+						<GenericTile ariaLabel="REJECTED/ETA" press="onNavToPress" class="tileLayout" header="{i18n>etaRej}" subheader="{i18n>agentPay}">
+							<TileContent unit="" footer="{DashboardCountModel>/0/EtaRejected}">
+								<!--<ImageContent src="sap-icon://product" />-->
+							</TileContent>
+						</GenericTile>
+						<GenericTile class="tileLayout" header="{i18n>PortClearance}" subheader="{i18n>subPcReq}">
+							<TileContent unit="" footer="{DashboardCountModel>/0/PortCApproved}">
+								<!--<ImageContent src="sap-icon://complete" />-->
+							</TileContent>
+						</GenericTile>
+						<GenericTile class="tileLayout" header="{i18n>PaymentList}">
+							<TileContent unit="" footer="5">
+								<!--<ImageContent src="sap-icon://complete" />-->
+							</TileContent>
+						</GenericTile>
+						<GenericTile class="tileLayout" header="Service request" subheader="{i18n>subServ}">
+							<TileContent unit="" footer="20">
+								<!--<ImageContent src="sap-icon://complete" />-->
+							</TileContent>
+						</GenericTile>
+						<VBox width="207%" class="box-shadow">
+							<viz:Popover id="idPopOver"></viz:Popover>
+							<viz:VizFrame vizProperties="{ title: {text : 'ETA Summary', visible : true},plotArea:{ dataLabel:{visible: true,type:'value'} }}"
+								id="idVizFrame" uiConfig="{applicationSet:'fiori'}" height="176px" width="100%" vizType='donut'>
+								<viz:dataset>
+									<viz.data:FlattenedDataset data="{pieChartModel>/results}">
+										<viz.data:dimensions>
+											<viz.data:DimensionDefinition name="Status" value="{pieChartModel>status}"/>
+										</viz.data:dimensions>
+										<viz.data:measures>
+											<viz.data:MeasureDefinition name="Count" value="{pieChartModel>count}"/>
+										</viz.data:measures>
+									</viz.data:FlattenedDataset>
+								</viz:dataset>
+								<viz:feeds>
+									<viz.feeds:FeedItem uid="size" type="Measure" values="Count"/>
+									<viz.feeds:FeedItem uid="color" type="Dimension" values="Status"/>
+								</viz:feeds>
+							</viz:VizFrame>
+						</VBox>
+					</l:content>
+				</l:Grid>
 			</VBox>
 			<!--<VBox class="section">-->
 			<!--<FlexBox width="100%">-->

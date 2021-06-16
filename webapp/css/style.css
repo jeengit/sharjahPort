@@ -628,22 +628,29 @@ html.sap-desktop .sapMBtn:focus>.sapMFocusable {
     color: #000!important;
 }
 
+.btn-sm.text-light .sapMBtnInner{
+	background: #e31936!important;
+}
+
 .btn-sm.text-light .sapMBtnContent {
     color: #fff;
 }
 
-.add-icon {
-    background: #e31936!important;
-    padding: 0.5rem 0.6rem;
-    border-radius: 1rem;
-    color: #fff;
-    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
-    position: absolute;
-    right: 0;
-    top: -5px;
-    z-index: 9999;
-}
+/*.add-icon {*/
+/*    background: #e31936!important;*/
+/*    padding: 0.5rem 0.6rem;*/
+/*    border-radius: 1rem;*/
+/*    color: #fff;*/
+/*    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);*/
+/*    position: absolute;*/
+/*    right: 0;*/
+/*    top: -5px;*/
+/*    z-index: 9999;*/
+/*}*/
 
 .headerBar .sapMBtnInner.sapMBtnText .sapMBtnIcon, .headerBar .sapMBtnInner.sapMBtnText {
     color: #333;
+}
+.editMode .addbtn .sapMFlexItemAlignAuto {
+    flex-grow: 0!important;
 }

@@ -148,6 +148,12 @@ sap.ui.define([
 					});
 				}
 			});
+		},
+		gotoCreatEta: function () {
+			this.getRouter().navTo("etaDetails", {
+				sPath: "0",
+				id: "createETA"
+			});
 		}
 	});
 });

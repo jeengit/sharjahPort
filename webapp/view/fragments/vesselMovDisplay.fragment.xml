@@ -79,6 +79,10 @@
 							<m:Text text="{ path: 'vesMovModel>/ETD', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"
 								wrapping="false"/>
 						</m:HBox>
+							<m:HBox class="sapUiTinyMarginBottom" visible="{=  ${vesMovModel>/Status} === 'CLOSED'  ? true: false }">
+							<m:Label text="Sales Order Number" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{vesMovModel>/SalesOrderNumber}" wrapping="false"/>
+						</m:HBox>
 					</m:VBox>
 				</layout:VerticalLayout>
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
@@ -92,11 +96,15 @@
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>Callsign}" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{vesMovModel>/Callsign}"/>
+							<m:Text text="{vesMovModel>/CallSign}"/>
 						</m:HBox>
 							<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>LastPort}" class="sapUiSmallMarginEnd"/>
 							<m:Text text="{vesMovModel>/LastPort}"/>
+						</m:HBox>
+							<m:HBox class="sapUiTinyMarginBottom" visible="{=  ${vesMovModel>/Status} === 'CLOSED'  ? true: false }">
+							<m:Label text="Bill Number" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{vesMovModel>/BillNo}" wrapping="false"/>
 						</m:HBox>
 					</m:VBox>
 				</layout:VerticalLayout>

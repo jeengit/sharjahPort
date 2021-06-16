@@ -128,7 +128,7 @@ sap.ui.define([
 			}
 			oModel.create("/DeliveryDetailsSet", oEntry, {
 				success: function(data) {
-					sap.m.MessageToast.show("Delivery No - " + data.DeliveryName + " Updated Successfully");
+					sap.m.MessageToast.show("Delivery No - " + oEntry.DeliveryName + " Updated Successfully");
 					sap.ui.core.BusyIndicator.hide();
 				},
 				error: function(oResponse) {

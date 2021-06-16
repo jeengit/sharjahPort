@@ -52,7 +52,7 @@
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="B/L No" class="sapUiSmallMarginEnd"/>
-							<m:Text text="{delvryDetailsModel>/BLNo}"/>
+							<m:Text text="{delvryDetailsModel>/BLno}"/>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>manNo}" class="sapUiSmallMarginEnd"/>
@@ -82,6 +82,10 @@
 							<m:Label text="{i18n>crtDate}" class="sapUiSmallMarginEnd"/>
 							<m:Text text="{path:'delvryDetailsModel>/CaretedDate' , formatter:'.formatter.changeDataFormat'}" wrapping="false"/>
 						</m:HBox>
+							<m:HBox class="sapUiTinyMarginBottom" visible="{=  ${delvryDetailsModel>/Status} === 'CLOSED'  ? true: false }">
+							<m:Label text="Sales Order Number" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{delvryDetailsModel>/SalesOrderNumber}" wrapping="false"/>
+						</m:HBox>
 					</m:VBox>
 				</layout:VerticalLayout>
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
@@ -101,6 +105,10 @@
 						<m:HBox class="sapUiTinyMarginBottom">
 							<m:Label text="{i18n>portDis}" class="sapUiSmallMarginEnd"/>
 							<m:Text text="{delvryDetailsModel>/PortOfDischarge}"/>
+						</m:HBox>
+							<m:HBox class="sapUiTinyMarginBottom" visible="{=  ${delvryDetailsModel>/Status} === 'CLOSED'  ? true: false }">
+							<m:Label text="Bill Number" class="sapUiSmallMarginEnd"/>
+							<m:Text text="{delvryDetailsModel>/BillNo}" wrapping="false"/>
 						</m:HBox>
 					</m:VBox>
 				</layout:VerticalLayout>

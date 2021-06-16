@@ -479,10 +479,10 @@
 											</m:HBox>
 										</m:HBox>
 										<m:HBox alignItems="Center">
-											<m:HBox width="40%">
+											<m:HBox width="50%">
 												<m:Label text="{i18n>Lastfree}"/>
 											</m:HBox>
-											<m:HBox width="60%">
+											<m:HBox width="50%">
 												<m:DatePicker value="{delvryDetailsModel>LastFreeDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
 											</m:HBox>
 										</m:HBox>

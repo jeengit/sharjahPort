@@ -566,10 +566,13 @@
 													<t:Column sortProperty="ETANo">
 														<m:Label wrapping="false" text="{i18n>Charge}"/>
 														<t:template>
-															<m:Select selectedKey="{deliverChargeEditModel>selectedCharge}" value="{deliverChargeEditModel>Charges}" change="fnSelectChargeRowEdit"
-																visible="true" editable="true" items="{chargeDiscModel>/items}">
-																<core:ListItem key="{chargeDiscModel>id}" text="{chargeDiscModel>Charges}"/>
-															</m:Select>
+															<!--<m:Select selectedKey="{deliverChargeEditModel>selectedCharge}" value="{deliverChargeEditModel>Charges}" change="fnSelectChargeRowEdit"-->
+															<!--	visible="true" editable="true" items="{chargeDiscModel>/items}">-->
+															<!--	<core:ListItem key="{chargeDiscModel>id}" text="{chargeDiscModel>Charges}"/>-->
+															<!--</m:Select>-->
+																<m:ComboBox width="100%" value="{deliverChargeEditModel>selectedCharge}" change="fnSelectChargeRow" visible="true" editable="true" items="{chargeDiscModel>/items}">
+															<core:Item key="{chargeDiscModel>id}" text="{chargeDiscModel>Charges}"/>
+														</m:ComboBox>
 														</t:template>
 													</t:Column>
 													<t:Column sortProperty="PortName">

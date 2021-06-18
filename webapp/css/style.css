@@ -654,3 +654,9 @@ html.sap-desktop .sapMBtn:focus>.sapMFocusable {
 .editMode .addbtn .sapMFlexItemAlignAuto {
     flex-grow: 0!important;
 }
+.headerBar .btn-sm .sapUiIcon {
+    color: #fff!important;
+    line-height: 22px;
+    font-size: smaller;
+    padding-right: 2px!important;
+}

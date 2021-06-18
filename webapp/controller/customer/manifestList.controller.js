@@ -25,6 +25,7 @@ sap.ui.define([
 			}
 			var that = this;
 			setTimeout(function() {
+				console.log(res.path);
 				res.id ? that.getView().byId(res.id).setSelectedItem(that.getView().byId(res.id).getItems()[res.path],
 					true) : '';
 			}, 1000);

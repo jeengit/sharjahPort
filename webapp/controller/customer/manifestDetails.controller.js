@@ -16,6 +16,7 @@ sap.ui.define([
 			oRouter.getRoute("manifestDetails").attachPatternMatched(this._onObjectMatched, this);
 		},
 		_onObjectMatched: function(oEvent) {
+			this.getView().setModel(new JSONModel(sap.ui.getCore().getModel("navModel").getData()),"navModel");
 			this.getUserName();
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
@@ -149,22 +150,20 @@ sap.ui.define([
 			});
 		},
 		handleTallySheetPress: function(evt) {
-		var	tallyHeaderData =  evt.getSource().getModel("BOEDetailsModel").getData();
-		
+			var tallyHeaderData = evt.getSource().getModel("BOEDetailsModel").getData();
 			sap.ui.getCore().setModel(new JSONModel(tallyHeaderData), "ManifModel");
 			var tallycode = evt.getSource().getModel("BOEDetailsModel").getData().TlyShtCode;
-		var	mafstNo =evt.getSource().getModel("BOEDetailsModel").getData().ManifestNo; 
+			var mafstNo = evt.getSource().getModel("BOEDetailsModel").getData().ManifestNo;
 			var id = evt.getSource().getId().split("--")[1] === "tallyBtn" ? tallycode : mafstNo;
-			var status= evt.getSource().getId().split("--")[1] === "tallyBtn" ? "Details" : "create";
-			console.log(tallyHeaderData);
-			tallyHeaderData.ActionFlag === "No items to consolidate" ? sap.m.MessageToast.show(	tallyHeaderData.ActionFlag) :   this.getRouter().navTo("tallySheetCargo", {
-				sPath: encodeURIComponent(),
-				id: id,
-				status: status
+			var status = evt.getSource().getId().split("--")[1] === "tallyBtn" ? "Details" : "create";
+			tallyHeaderData.ActionFlag === "No items to consolidate" ? sap.m.MessageToast.show(tallyHeaderData.ActionFlag) : this.getRouter().navTo(
+				"tallySheetCargo", {
+					sPath: encodeURIComponent(),
+					id: id,
+					status: status
 
-			});                  
+				});
 
-			
 		}
 	});
 });

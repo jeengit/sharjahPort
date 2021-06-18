@@ -2,8 +2,9 @@ sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/ui/core/UIComponent",
 	"sap/ui/core/Fragment",
-	"sap/ui/model/json/JSONModel"
-], function(Controller, UIComponent, Fragment, JSONModel) {
+	"sap/ui/model/json/JSONModel",
+	"sap/ui/core/Popup"
+], function(Controller, UIComponent, Fragment, JSONModel, Popup) {
 	"use strict";
 	return Controller.extend("com.demo.sharjahPort.BaseController", {
 		getRouter: function() {
@@ -149,11 +150,30 @@ sap.ui.define([
 				}
 			});
 		},
-		gotoCreatEta: function () {
-			this.getRouter().navTo("etaDetails", {
-				sPath: "0",
-				id: "createETA"
-			});
+		handleMenuItemPress: function(oEvent) {
+			var oItem = oEvent.getParameter("item").getId();
+			if (oItem) {
+				this.getRouter().navTo(oItem, {
+					sPath: "0",
+					id: "createETA"
+				});
+			}
+		},
+		handlePressOpenMenu: function(oEvent) {
+			var oButton = oEvent.getSource();
+			// create menu only once
+			if (!this._menu) {
+				Fragment.load({
+					name: "com.demo.sharjahPort.view.fragments.menuEventing",
+					controller: this
+				}).then(function(oMenu) {
+					this._menu = oMenu;
+					this.getView().addDependent(this._menu);
+					this._menu.open(this._bKeyboard, oButton, Popup.Dock.BeginTop, Popup.Dock.BeginBottom, oButton);
+				}.bind(this));
+			} else {
+				this._menu.open(this._bKeyboard, oButton, Popup.Dock.BeginTop, Popup.Dock.BeginBottom, oButton);
+			}
 		}
 	});
 });

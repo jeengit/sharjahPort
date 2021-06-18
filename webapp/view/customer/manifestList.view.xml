@@ -14,7 +14,7 @@
 					<VBox width="{= ${manifestListModel>/countE} > 0 ? '50%' : '100%'}" visible="{= ${manifestListModel>/countI} > 0 ? true : false}">
 						<List id="list1" class="tableCard card"
 							items="{ path: 'manifestListModel>/',templateShareable:true, filters: {path: 'Import_Export', operator: 'EQ', value1: 'I'} }"
-							headerText="Manifest - Import" noDataText="{i18n>emptyNodata}" mode="None" selectionChange="changeSelectedLine">
+							headerText="Manifest - Import" noDataText="{i18n>emptyNodata}" mode="SingleSelect" selectionChange="changeSelectedLine">
 							<CustomListItem type="Active" press="handelDetailPress" fieldGroupIds="manifest">
 								<FlexBox alignItems="Start" justifyContent="SpaceBetween">
 									<HBox><core:Icon color="#CEA95B" class="sapUiTinyMarginEnd" size="1rem" src="sap-icon://activities"/>
@@ -42,7 +42,7 @@
 					<VBox width="{= ${manifestListModel>/countE} > 0 ? '50%' : '100%'}" visible="{= ${manifestListModel>/countE} > 0 ? true : false}">
 						<List id="list2" class="tableCard card"
 							items="{ path: 'manifestListModel>/',templateShareable:true, filters: {path: 'Import_Export', operator: 'EQ', value1: 'E'} }"
-							headerText="Manifest - Export" noDataText="{i18n>emptyNodata}" mode="None">
+							headerText="Manifest - Export" noDataText="{i18n>emptyNodata}" mode="SingleSelect">
 							<CustomListItem type="Active">
 								<FlexBox alignItems="Start" justifyContent="SpaceBetween">
 									<HBox><core:Icon color="#CEA95B" class="sapUiTinyMarginEnd" size="1rem" src="sap-icon://activities"/>
@@ -69,7 +69,7 @@
 					</VBox>
 					<VBox width="100%" visible="{= ${deliveryListModel>/length} > 0 ? true : false}">
 						<List id="list3" class="tableCard card" items="{ path: 'deliveryListModel>/',templateShareable:true}" headerText="Delivery"
-							noDataText="{i18n>emptyNodata}" mode="None">
+							noDataText="{i18n>emptyNodata}" mode="SingleSelect">
 							<CustomListItem type="Active" press="handelDetailPress" fieldGroupIds="Delivery">
 								<FlexBox alignItems="Start" justifyContent="SpaceBetween">
 									<HBox><core:Icon color="#CEA95B" class="sapUiTinyMarginEnd" size="1rem" src="sap-icon://activities"/>

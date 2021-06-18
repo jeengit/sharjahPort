@@ -5,8 +5,8 @@
 		</contentLeft>
 		<contentMiddle></contentMiddle>
 		<contentRight>
-			<Button icon="sap-icon://add" id="createEta" visible="{= ${loginModel>/uRole} === 'AGENT' ? true : false }" class="sapUiTinyMarginEnd btn-sm text-light"
-				text="{i18n>Create}" press="handlePressOpenMenu" ariaHasPopup="Menu"/>
+			<Button icon="sap-icon://add" id="createEta" visible="{= ${loginModel>/uRole} === 'AGENT' ? true : false }"
+				class="sapUiTinyMarginEnd btn-sm text-light" text="{i18n>Create}" press="handlePressOpenMenu" ariaHasPopup="Menu"/>
 			<core:Icon color="#333" class="sapUiTinyMarginEnd" size="1rem" src="sap-icon://search" press="onPress" ariaLabelledBy="actionButtonLabel"/>
 			<core:Icon color="#333" class="sapUiTinyMarginEnd" size="1rem" src="sap-icon://bell" press="onPress" ariaLabelledBy="actionButtonLabel"/>
 			<MenuButton menuPosition="CenterBottom" text="{loginModel>/name}">

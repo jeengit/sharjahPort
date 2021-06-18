@@ -3,9 +3,9 @@
 		<headerTitle>
 			<ObjectPageDynamicHeaderTitle>
 				<breadcrumbs>
-					<m:Breadcrumbs currentLocationText="Delivery Details">
-						<m:Link href="#dashboardManifest" press="onHomePress" text="Home"/>
-						<m:Link href="products" press="onNavToPress" text="Delivey List"/>
+					<m:Breadcrumbs currentLocationText="{delvryDetailsModel>/ManifestNo}">
+						<m:Link href="#dashboardManifest" text="Home"/>
+						<m:Link href="#manifest={navModel>/status}&amp;type='{navModel>/type}'" text="Delivery"/>
 					</m:Breadcrumbs>
 				</breadcrumbs>
 				<expandedHeading>

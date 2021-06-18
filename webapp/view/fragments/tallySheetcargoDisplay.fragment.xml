@@ -4,7 +4,7 @@
 			<ObjectPageDynamicHeaderTitle>
 				<breadcrumbs>
 					<m:Breadcrumbs currentLocationText="Tally Sheet">
-						<m:Link press="onHomePress" text="Manifest"/>
+						<m:Link href="#dashboardManifest" text="Home"/>
 					</m:Breadcrumbs>
 				</breadcrumbs>
 				<expandedHeading>

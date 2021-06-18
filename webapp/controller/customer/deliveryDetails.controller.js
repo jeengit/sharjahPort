@@ -17,6 +17,7 @@ sap.ui.define([
 			oRouter.getRoute("deliveryDetails").attachPatternMatched(this._onObjectMatched, this);
 		},
 		_onObjectMatched: function(oEvent) {
+			this.getView().setModel(new JSONModel(sap.ui.getCore().getModel("navModel").getData()),"navModel");
 			this.getUserName();
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);

@@ -104,7 +104,7 @@
 				]
 			}, {
 				"name": "etaList",
-				"pattern": "items={sPath}&type='ETA'",
+				"pattern": "etaList={sPath}&type='{type}'",
 				"target": [
 					"home",
 					"etaList"
@@ -118,7 +118,7 @@
 				]
 			}, {
 				"name": "logList",
-				"pattern": "items={sPath}&type='LOG'",
+				"pattern": "logList={sPath}&type='{type}'",
 				"target": [
 					"home",
 					"logList"
@@ -160,7 +160,7 @@
 				]
 			}, {
 				"name": "manifest",
-				"pattern": "items={sPath}&type='{type}'",
+				"pattern": "manifest={sPath}&type='{type}'",
 				"target": [
 					"home",
 					"manifest"

@@ -5,7 +5,7 @@
 				<breadcrumbs>
 					<m:Breadcrumbs currentLocationText="{etaDetailsModel>/ZETANumber}">
 						<m:Link href="#dashboardAgent" text="Home"/>
-						<m:Link href="#" text="ETA List"/>
+						<m:Link href="#etaList={navModel>/status}&amp;type='{navModel>/type}'" text="ETA"/>
 					</m:Breadcrumbs>
 				</breadcrumbs>
 				<expandedHeading>

@@ -29,6 +29,7 @@ sap.ui.define([
 			oRouter.getRoute("logDetails").attachPatternMatched(this._onObjectMatched, this);
 		},
 		_onObjectMatched: function(oEvent) {
+			this.getView().setModel(new JSONModel(sap.ui.getCore().getModel("navModel").getData()),"navModel");
 			this.getUserName();
 			var pageId = this.getView().getId();
 			this.getView().byId(pageId + "--vesMovDispId").setVisible(true);

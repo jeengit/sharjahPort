@@ -151,13 +151,15 @@ sap.ui.define([
 			});
 		},
 		handleMenuItemPress: function(oEvent) {
-			var oItem = oEvent.getParameter("item").getId();
-			if (oItem) {
-				this.getRouter().navTo(oItem, {
+			console.log(oEvent.getParameter("item"));
+			// var oItem = oEvent.getParameter("item").getId();
+			// if (oItem) {
+				this.getRouter().navTo("etaDetails", {
 					sPath: "0",
 					id: "createETA"
 				});
-			}
+				sap.ui.getCore().setModel(new JSONModel({}), "navModel");
+			//}
 		},
 		handlePressOpenMenu: function(oEvent) {
 			var oButton = oEvent.getSource();

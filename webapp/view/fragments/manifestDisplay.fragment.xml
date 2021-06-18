@@ -4,9 +4,9 @@
 		<headerTitle>
 			<ObjectPageDynamicHeaderTitle>
 				<breadcrumbs>
-					<m:Breadcrumbs currentLocationText="{BOEDetailsModel>/VesselName}">
+					<m:Breadcrumbs currentLocationText="{BOEDetailsModel>/ManifestNo}">
 						<m:Link href="#dashboardManifest" text="Home"/>
-						<m:Link href="#items={navModel>/status}&amp;type='{navModel>/type}'" text="Manifest List"/>
+						<m:Link href="#manifest={navModel>/status}&amp;type='{navModel>/type}'" text="Manifest List"/>
 					</m:Breadcrumbs>
 				</breadcrumbs>
 				<expandedHeading>

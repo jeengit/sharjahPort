@@ -1,6 +1,6 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified">
 	<u:Menu itemSelect="handleMenuItemPress">
-		<u:MenuItem id="etaDetails" text="New ETA Request"/>
+		<u:MenuItem startsSection="etaDetails" text="New ETA Request"/>
 		<u:MenuItem text="Manifest" startsSection="true"/>
 		<u:MenuItem text="Service Request" startsSection="true"/>
 		<u:MenuItem text="Equipment Request" startsSection="true"/>

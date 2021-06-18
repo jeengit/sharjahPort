@@ -2,12 +2,12 @@
 	<ObjectPageLayout upperCaseAnchorBar="false" id="delDisp" class="objLayoutClass editMode">
 		<headerTitle>
 			<ObjectPageDynamicHeaderTitle>
-				<!--<breadcrumbs>-->
-				<!--	<m:Breadcrumbs currentLocationText="{etaDetailsModel>/ZETANumber}">-->
-				<!--		<m:Link id="dashboard" press="onHomePress" text="Home"/>-->
-				<!--		<m:Link id="products" press="onNavToPress" text="ETA List"/>-->
-				<!--	</m:Breadcrumbs>-->
-				<!--</breadcrumbs>-->
+				<breadcrumbs>
+					<m:Breadcrumbs currentLocationText="Create Delivery">
+						<m:Link href="#dashboardManifest" press="onHomePress" text="Home"/>
+						<m:Link href="products" press="onNavToPress" text="Manifest"/>
+					</m:Breadcrumbs>
+				</breadcrumbs>
 				<expandedHeading>
 					<m:HBox>
 						<m:Title text="{delCrtModel>/BOE}" wrapping="true"/>
@@ -40,92 +40,160 @@
 		<headerContent>
 			<m:FlexBox wrap="Wrap">
 				<m:Avatar class="sapUiSmallMarginEnd" backgroundColor="Accent9" src="images/cargo-ship.png" displaySize="L"/>
-				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
-					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginTopBottom">
+				<layout:VerticalLayout class="">
+					<m:VBox class=" sapUiSmallMarginTopBottom">
 						<!--<m:HBox class="sapUiTinyMarginBottom">-->
 						<!--	<m:Label text="{i18n>PortName}" class="sapUiSmallMarginEnd"/>-->
 						<!--	<m:Text text="{delCrtModel>/PortName}"/>-->
 						<!--</m:HBox>-->
 						<m:HBox class="sapUiTinyMarginBottom">
+								<m:HBox width="8rem">
 							<m:Label text="{i18n>B/Enumber}" class="sapUiSmallMarginEnd"/>
+								</m:HBox>
+							<m:HBox width="8rem">
 							<m:Text text="{delCrtModel>/BOE}"/>
 						</m:HBox>
+							</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
+								<m:HBox width="8rem">
 							<m:Label text="B/L No" class="sapUiSmallMarginEnd"/>
+								</m:HBox>
+							<m:HBox width="8rem">
 							<m:Text text="{delCrtModel>/BLNo}"/>
 						</m:HBox>
+							</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
+								<m:HBox width="8rem">
 							<m:Label text="{i18n>manNo}" class="sapUiSmallMarginEnd"/>
+								</m:HBox>
+							<m:HBox width="8rem">
 							<m:Text text="{delCrtModel>/ManifestNo}"/>
 						</m:HBox>
+							</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
+								<m:HBox width="8rem">
 							<m:Label text="{i18n>docNo}" class="sapUiSmallMarginEnd"/>
+								</m:HBox>
+							<m:HBox width="8rem">
 							<m:Text text="{delCrtModel>/ZPreferedBerth}"/>
 						</m:HBox>
+							</m:HBox>
 					</m:VBox>
 				</layout:VerticalLayout>
-				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
-					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginTopBottom">
+				<layout:VerticalLayout class="">
+					<m:VBox class=" sapUiSmallMarginTopBottom">
 						<m:HBox class="sapUiTinyMarginBottom">
+								<m:HBox width="8rem">
 							<m:Label text="{i18n>ArrivalDate}" class="sapUiSmallMarginEnd"/>
+								</m:HBox>
+							<m:HBox width="8rem">
 							<m:Text text="{path:'delCrtModel>/ArrivalDate' , formatter:'.formatter.changeDataFormat'}"/>
 						</m:HBox>
+						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
+								<m:HBox width="8rem">
 							<m:Label text="B/E date" class="sapUiSmallMarginEnd"/>
+								</m:HBox>
+							<m:HBox width="8rem">
 							<m:Text text="{path:'delCrtModel>/BOEdate' , formatter:'.formatter.changeDataFormat'}"/>
 						</m:HBox>
+						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
+								<m:HBox width="8rem">
 							<m:Label text="{i18n>b/ldate}" class="sapUiSmallMarginEnd"/>
+								</m:HBox>
+							<m:HBox width="8rem">
 							<m:Text text="{path:'delCrtModel>/BLDate' , formatter:'.formatter.changeDataFormat'}" wrapping="false"/>
 						</m:HBox>
+						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
+								<m:HBox width="8rem">
 							<m:Label text="{i18n>crtDate}" class="sapUiSmallMarginEnd"/>
+								</m:HBox>
+							<m:HBox width="8rem">
 							<m:Text text="{path:'delCrtModel>/CaretedDate' , formatter:'.formatter.changeDataFormat'}" wrapping="false"/>
 						</m:HBox>
+						</m:HBox>
 					</m:VBox>
 				</layout:VerticalLayout>
-				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
-					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginTopBottom">
+				<layout:VerticalLayout class="">
+					<m:VBox class=" sapUiSmallMarginTopBottom">
 						<m:HBox class="sapUiTinyMarginBottom">
+								<m:HBox width="8rem">
 							<m:Label text="{i18n>Voyageno}" class="sapUiSmallMarginEnd"/>
+								</m:HBox>
+							<m:HBox width="8rem">
 							<m:Text text="{delCrtModel>/VoyageNo}" wrapping="false"/>
 						</m:HBox>
+							</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
+								<m:HBox width="8rem">
 							<m:Label text="{i18n>VesselName}" class="sapUiSmallMarginEnd"/>
+								</m:HBox>
+							<m:HBox width="8rem">
 							<m:Text text="{delCrtModel>/vesselName}"/>
 						</m:HBox>
+							</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
+								<m:HBox width="8rem">
 							<m:Label text="{i18n>delDoc}" class="sapUiSmallMarginEnd"/>
+								</m:HBox>
+							<m:HBox width="8rem">
 							<m:Text text="{delCrtModel>/DocNo}"/>
 						</m:HBox>
+							</m:HBox>
 						<m:HBox class="">
+								<m:HBox width="8rem">
 							<m:Label text="{i18n>AgentName}" class="sapUiSmallMarginEnd"/>
+								</m:HBox>
+							<m:HBox width="8rem">
 							<m:Text text="{delCrtModel>/Agentname}"/>
 						</m:HBox>
+							</m:HBox>
 					</m:VBox>
 				</layout:VerticalLayout>
-				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
-					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginTopBottom">
+				<layout:VerticalLayout class="">
+					<m:VBox class=" sapUiSmallMarginTopBottom">
 						<m:HBox class="sapUiTinyMarginBottom">
+								<m:HBox width="8rem">
 							<m:Label text="{i18n>PortName}" class="sapUiSmallMarginEnd"/>
+								</m:HBox>
+							<m:HBox width="8rem">
 							<m:Text text="{delCrtModel>/PortName}"/>
 						</m:HBox>
+							</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
+								<m:HBox width="8rem">
 							<m:Label text="{i18n>Agentcode}" class="sapUiSmallMarginEnd"/>
+								</m:HBox>
+							<m:HBox width="8rem">
 							<m:Text text="{delCrtModel>/AgentCode}"/>
 						</m:HBox>
+							</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
+								<m:HBox width="8rem">
 							<m:Label text="{i18n>ConsigneeCode}" class="sapUiSmallMarginEnd"/>
+								</m:HBox>
+							<m:HBox width="8rem">
 							<m:Text text="{delCrtModel>/ConsigneeCode}"/>
 						</m:HBox>
+							</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
+								<m:HBox width="8rem">
 							<m:Label text="{i18n>portDis}" class="sapUiSmallMarginEnd"/>
+								</m:HBox>
+							<m:HBox width="8rem">
 							<m:Text text="{delCrtModel>/PortOfDischarge}"/>
 						</m:HBox>
+							</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom">
+								<m:HBox width="8rem">
 							<m:Label text="{i18n>portOrg}" class="sapUiSmallMarginEnd"/>
+								</m:HBox>
+							<m:HBox width="8rem">
 							<m:Text text="{delCrtModel>/PortOfShipment}"/>
 						</m:HBox>
+							</m:HBox>
 					</m:VBox>
 				</layout:VerticalLayout>
 			</m:FlexBox>

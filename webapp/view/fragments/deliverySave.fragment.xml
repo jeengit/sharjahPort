@@ -2,12 +2,12 @@
 	<ObjectPageLayout upperCaseAnchorBar="false" id="delSave" class="objLayoutClass editMode">
 		<headerTitle>
 			<ObjectPageDynamicHeaderTitle>
-				<!--<breadcrumbs>-->
-				<!--	<m:Breadcrumbs currentLocationText="{etaDetailsModel>/ZETANumber}">-->
-				<!--		<m:Link id="dashboard" press="onHomePress" text="Home"/>-->
-				<!--		<m:Link id="products" press="onNavToPress" text="ETA List"/>-->
-				<!--	</m:Breadcrumbs>-->
-				<!--</breadcrumbs>-->
+				<breadcrumbs>
+					<m:Breadcrumbs currentLocationText="Delivery Details">
+						<m:Link href="#dashboardManifest" press="onHomePress" text="Home"/>
+						<m:Link href="products" press="onNavToPress" text="Delivey List"/>
+					</m:Breadcrumbs>
+				</breadcrumbs>
 				<expandedHeading>
 					<m:HBox>
 						<m:Title text="{delvryDetailsModel>/DeliveryName}" wrapping="true"/>
@@ -40,75 +40,131 @@
 			<m:FlexBox wrap="Wrap">
 				<m:Avatar class="sapUiSmallMarginEnd" backgroundColor="Accent9" src="images/cargo-ship.png" displaySize="L"/>
 				<layout:VerticalLayout class="">
-					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginTopBottom">
+					<m:VBox class=" sapUiSmallMarginTopBottom">
 						<!--<m:HBox class="sapUiTinyMarginBottom">-->
 						<!--	<m:Label text="{i18n>PortName}" class="sapUiSmallMarginEnd"/>-->
 						<!--	<m:Text text="{delCrtModel>/PortName}"/>-->
 						<!--</m:HBox>-->
 						<m:HBox class="sapUiSmallMarginBottom">
+								<m:HBox width="8rem">
 							<m:Label text="{i18n>B/Enumber}" class="sapUiSmallMarginEnd"/>
+								</m:HBox>
+							<m:HBox width="8rem">
 							<m:Text text="{delvryDetailsModel>/BOE}"/>
 						</m:HBox>
+							</m:HBox>
 						<m:HBox class="sapUiSmallMarginBottom">
+								<m:HBox width="8rem">
 							<m:Label text="B/L No" class="sapUiSmallMarginEnd"/>
+								</m:HBox>
+							<m:HBox width="8rem">
 							<m:Text text="{delvryDetailsModel>/BLno}"/>
 						</m:HBox>
+							</m:HBox>
 						<m:HBox class="sapUiSmallMarginBottom">
+								<m:HBox width="8rem">
 							<m:Label text="{i18n>manNo}" class="sapUiSmallMarginEnd"/>
+								</m:HBox>
+							<m:HBox width="8rem">
 							<m:Text text="{delvryDetailsModel>/ManifestNo}"/>
 						</m:HBox>
+							</m:HBox>
 						<m:HBox class="sapUiSmallMarginBottom">
+								<m:HBox width="8rem">
 							<m:Label text="{i18n>docNo}" class="sapUiSmallMarginEnd"/>
+								</m:HBox>
+							<m:HBox width="8rem">
 							<m:Text text="{delvryDetailsModel>/ZPreferedBerth}"/>
 						</m:HBox>
+							</m:HBox>
 					</m:VBox>
 				</layout:VerticalLayout>
 				<layout:VerticalLayout class="">
-					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginTopBottom">
+					<m:VBox class=" sapUiSmallMarginTopBottom">
 						<m:HBox class="sapUiSmallMarginBottom">
+								<m:HBox width="8rem">
 							<m:Label text="{i18n>ArrivalDate}" class="sapUiSmallMarginEnd"/>
+									</m:HBox>
+							<m:HBox width="8rem">
 							<m:Text text="{path:'delvryDetailsModel>/ArrivalDate' , formatter:'.formatter.changeDataFormat'}"/>
 						</m:HBox>
+							</m:HBox>
 						<m:HBox class="sapUiSmallMarginBottom">
+								<m:HBox width="8rem">
 							<m:Label text="B/E date" class="sapUiSmallMarginEnd"/>
+									</m:HBox>
+							<m:HBox width="8rem">
 							<m:Text text="{path:'delvryDetailsModel>/BOEdate' , formatter:'.formatter.changeDataFormat'}"/>
 						</m:HBox>
+							</m:HBox>
 						<m:HBox class="sapUiSmallMarginBottom">
+								<m:HBox width="8rem">
 							<m:Label text="{i18n>b/ldate}" class="sapUiSmallMarginEnd"/>
+									</m:HBox>
+							<m:HBox width="8rem">
 							<m:Text text="{path:'delvryDetailsModel>/BLDate' , formatter:'.formatter.changeDataFormat'}" wrapping="false"/>
 						</m:HBox>
+							</m:HBox>
 						<m:HBox class="sapUiSmallMarginBottom">
+								<m:HBox width="8rem">
 							<m:Label text="{i18n>crtDate}" class="sapUiSmallMarginEnd"/>
+									</m:HBox>
+							<m:HBox width="8rem">
 							<m:Text text="{path:'delvryDetailsModel>/CaretedDate' , formatter:'.formatter.changeDataFormat'}" wrapping="false"/>
 						</m:HBox>
+							</m:HBox>
 							<m:HBox class="sapUiTinyMarginBottom" visible="{=  ${delvryDetailsModel>/Status} === 'CLOSED'  ? true: false }">
+							<m:HBox width="8rem">
 							<m:Label text="Sales Order Number" class="sapUiSmallMarginEnd"/>
+									</m:HBox>
+							<m:HBox width="8rem">
 							<m:Text text="{delvryDetailsModel>/SalesOrderNumber}" wrapping="false"/>
 						</m:HBox>
+							</m:HBox>
 					</m:VBox>
 				</layout:VerticalLayout>
 				<layout:VerticalLayout class="">
-					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginTopBottom">
+					<m:VBox class=" sapUiSmallMarginTopBottom">
 						<m:HBox class="sapUiSmallMarginBottom">
+								<m:HBox width="8rem">
 							<m:Label text="{i18n>Voyageno}" class="sapUiSmallMarginEnd"/>
+							</m:HBox>
+							<m:HBox width="8rem">
 							<m:Text text="{delvryDetailsModel>/VoyageNo}" wrapping="false"/>
 						</m:HBox>
+							</m:HBox>
 						<m:HBox class="sapUiSmallMarginBottom">
+								<m:HBox width="8rem">
 							<m:Label text="{i18n>VesselName}" class="sapUiSmallMarginEnd"/>
+							</m:HBox>
+							<m:HBox width="8rem">
 							<m:Text text="{delvryDetailsModel>/vesselName}"/>
 						</m:HBox>
+							</m:HBox>
 						<m:HBox class="sapUiSmallMarginBottom">
+								<m:HBox width="8rem">
 							<m:Label text="{i18n>delDoc}" class="sapUiSmallMarginEnd"/>
+							</m:HBox>
+							<m:HBox width="8rem">
 							<m:Text text="{delvryDetailsModel>/DocNo}"/>
 						</m:HBox>
+							</m:HBox>
 						<m:HBox class="sapUiSmallMarginBottom">
+								<m:HBox width="8rem">
 							<m:Label text="{i18n>AgentName}" class="sapUiSmallMarginEnd"/>
+							</m:HBox>
+							<m:HBox width="8rem">
 							<m:Text text="{delvryDetailsModel>/Agentname}"/>
 						</m:HBox>
+							</m:HBox>
 							<m:HBox class="sapUiTinyMarginBottom" visible="{=  ${delvryDetailsModel>/Status} === 'CLOSED'  ? true: false }">
+									<m:HBox width="8rem">
 							<m:Label text="Bill Number" class="sapUiSmallMarginEnd"/>
+							</m:HBox>
+							<m:HBox width="8rem">
 							<m:Text text="{delvryDetailsModel>/BillNo}" wrapping="false"/>
 						</m:HBox>
+							</m:HBox>
 					</m:VBox>
 				</layout:VerticalLayout>
 				<layout:VerticalLayout class="">

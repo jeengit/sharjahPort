@@ -212,8 +212,8 @@ sap.ui.define([
 						oButtonBadgeCustomData.setVisible(false);
 					}
 					thisObj.getView().setModel(new JSONModel(data), "harbourMasterNotificationListModel");
-					//console.log(thisObj.getView().getModel("harbourMasterNotificationListModel").getData())
-						sap.ui.core.BusyIndicator.hide();
+				//	sap.ui.getCore().setModel(new JSONModel(data), "harbourMasterNotificationListModel");
+					sap.ui.core.BusyIndicator.hide();
 					},
 					error: function(oResponse) {
 			//			sap.m.MessageToast.show(oResponse.statusText);
@@ -238,12 +238,18 @@ sap.ui.define([
 				}
 			});
 		},
-		callForHarbourNotification: function() {
+		callForHarbourNotification: function(val) {
+			var oStore = jQuery.sap.storage(jQuery.sap.storage.Type.local);
+			var uRole = oStore.get("role");
 			var thisObj = this;
 			thisObj.getAllNotifications();
-			setInterval(function(){ 
+			if(val) {
+			setInterval(function(){
+				if (uRole === "HARBOR_MASTER") {
 				thisObj.getAllNotifications();
+				}
 			}, 60000);
+			}
 		}
 	});
 });

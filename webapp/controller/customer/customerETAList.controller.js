@@ -9,6 +9,7 @@ sap.ui.define([
 			oRouter.getRoute("etaList").attachPatternMatched(this._onObjectMatched, this);
 		},
 		_onObjectMatched: function (oEvent) {
+			this.callForHarbourNotification('');
 			var status = oEvent.getParameter("arguments").sPath;
 			var type = oEvent.getParameter("arguments").type;
 			this.getUserName();

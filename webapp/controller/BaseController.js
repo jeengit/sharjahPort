@@ -242,14 +242,19 @@ sap.ui.define([
 			var oStore = jQuery.sap.storage(jQuery.sap.storage.Type.local);
 			var uRole = oStore.get("role");
 			var thisObj = this;
-			thisObj.getAllNotifications();
-			if(val) {
-			setInterval(function(){
-				if (uRole === "HARBOR_MASTER") {
+			if(uRole === "HARBOR_MASTER") {
 				thisObj.getAllNotifications();
-				}
-			}, 60000);
 			}
+			if (val && uRole === "HARBOR_MASTER") {
+					this.oneMinCallForHarbourNotification();
+			}
+			
+		},
+		oneMinCallForHarbourNotification: function() {
+			var thisObj = this;
+			setInterval(function(){
+				thisObj.getAllNotifications();
+			}, 60000);
 		}
 	});
 });

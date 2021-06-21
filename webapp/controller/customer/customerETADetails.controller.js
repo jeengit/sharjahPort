@@ -16,6 +16,7 @@ sap.ui.define([
 			oRouter.getRoute("etaDetails").attachPatternMatched(this._onObjectMatched, this);
 		},
 		_onObjectMatched: function(oEvent) {
+			this.callForHarbourNotification('');
 			this.getView().setModel(new JSONModel(sap.ui.getCore().getModel("navModel").getData()),"navModel");
 			this.getUserName();
 			//this.getView().byId("createEta").setVisible(false);

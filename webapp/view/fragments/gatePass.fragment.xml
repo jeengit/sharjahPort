@@ -1,0 +1,271 @@
+<core:FragmentDefinition xmlns:t="sap.ui.table" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:layout="sap.ui.layout" 	xmlns:u="sap.ui.unified" xmlns:core="sap.ui.core">
+	<ObjectPageLayout upperCaseAnchorBar="false" id="gatePass" class="objLayoutClass editMode">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<breadcrumbs>
+					<m:Breadcrumbs currentLocationText="Gate Pass">
+						<m:Link href="#dashboardManifest" text="Home"/>
+						<!--<m:Link href="#manifest={navModel>/status}&amp;type='{navModel>/type}'" text="Delivery"/>-->
+					</m:Breadcrumbs>
+				</breadcrumbs>
+				<expandedHeading>
+					<m:HBox>
+						<m:Title text="Gate Pass" wrapping="true"/>
+						<!--<m:ObjectMarker type="Flagged" class="sapUiTinyMarginBegin"/>-->
+					</m:HBox>
+				</expandedHeading>
+				<snappedHeading>
+					<m:FlexBox fitContainer="true" alignItems="Center">
+						<m:Avatar backgroundColor="Accent9" src="images/cargo-ship.png" class="sapUiTinyMarginEnd"/>
+						<m:Title text="Gate Pass" wrapping="true"/>
+					</m:FlexBox>
+				</snappedHeading>
+				<expandedContent>
+					<!--<m:Text text="Gate Pass"/>-->
+				</expandedContent>
+				<snappedContent>
+					<!--<m:Text text="Gate Pass"/>-->
+				</snappedContent>
+				<snappedTitleOnMobile>
+					<m:Title text="Header Title On Phone"/>
+				</snappedTitleOnMobile>
+				<!--<actions>-->
+				<!--	<m:OverflowToolbarButton icon="sap-icon://edit" text="edit header" type="Emphasized" tooltip="edit"/>-->
+				<!--	<m:OverflowToolbarButton icon="sap-icon://pull-down" text="show section" type="Emphasized" tooltip="pull-down"/>-->
+				<!--	<m:OverflowToolbarButton icon="sap-icon://show" text="show state" tooltip="show"/>-->
+				<!--	<m:Button text="Toggle Footer" press="toggleFooter"/>-->
+				<!--</actions>-->
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+		<headerContent>
+			<m:FlexBox >
+				<m:Avatar class="" backgroundColor="Accent9" src="images/cargo-ship.png" displaySize="L"/>
+				<layout:VerticalLayout class="sapUiSmallMarginTop">
+					<m:CheckBox  text="Daily" id="Dcheck" select="onCheck" wrapping="true"  class=""/>
+					<m:HBox class="sapUiTinyMarginTop">
+						<m:HBox width="40%">
+							<m:Label text="Select Date" class="sapUiSmallMarginTop"/>
+						</m:HBox>
+						<m:HBox width="60%">
+							<m:DatePicker value="{delCrtModel>/BillDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+						</m:HBox>
+					</m:HBox>
+					<m:HBox class="sapUiTinyMarginBottom">
+						<m:HBox width="40%">
+							<m:Label text="From Date" class="sapUiSmallMarginTop"/>
+						</m:HBox>
+						<m:HBox width="60%">
+							<m:DatePicker value="{delCrtModel>/BillDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+						</m:HBox>
+					</m:HBox>
+					<m:HBox class="sapUiTinyMarginBottom">
+						<m:HBox width="40%">
+							<m:Label text="To Date" class="sapUiSmallMarginTop"/>
+						</m:HBox>
+						<m:HBox width="60%">
+							<m:DatePicker value="{delCrtModel>/BillDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+						</m:HBox>
+					</m:HBox>
+				</layout:VerticalLayout>
+				<layout:VerticalLayout class="sapUiSmallMarginTop">
+					<m:CheckBox text="Long Term" wrapping="true" width="150px"/>
+					<m:HBox class="sapUiTinyMarginBottom">
+						<m:HBox width="40%">
+							<m:Label text="Name" class="sapUiSmallMarginTop"/>
+						</m:HBox>
+						<m:HBox width="60%">
+							<m:Input value="{delCrtModel>/MarksAndNo}"/>
+						</m:HBox>
+					</m:HBox>
+					<m:HBox class="sapUiTinyMarginBottom">
+						<m:HBox width="40%">
+							<m:Label text="Purpose" class="sapUiSmallMarginTop"/>
+						</m:HBox>
+						<m:HBox width="60%">
+							<m:Input value="{delCrtModel>/MarksAndNo}"/>
+						</m:HBox>
+					</m:HBox>
+					<m:HBox class="sapUiTinyMarginBottom">
+						<m:HBox width="40%">
+							<m:Label text="Company Name" class="sapUiSmallMarginTop"/>
+						</m:HBox>
+						<m:HBox width="60%">
+							<m:Input value="{delCrtModel>/MarksAndNo}"/>
+						</m:HBox>
+					</m:HBox>
+				</layout:VerticalLayout>
+			</m:FlexBox>
+		</headerContent>
+		<sections>
+			<ObjectPageSection titleUppercase="false" title="Daily" id="dailyDet" >
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+							<m:FlexBox wrap="Wrap" justifyContent="SpaceBetween">
+								<layout:VerticalLayout>
+									<layout:HorizontalLayout justifyContent="SpaceBetween">
+										<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+											<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+												<m:HBox width="50%">
+													<m:Label text="Emirates ID"/>
+												</m:HBox>
+												<m:HBox width="100%">
+													<u:FileUploader  name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server"
+													uploadComplete="handleUploadComplete" change="handleValueChange" typeMissmatch="handleTypeMissmatch" style="Emphasized" fileType="txt,jpg"
+													placeholder="Choose a file for Upload...">
+													<u:parameters>
+														<u:FileUploaderParameter name="Accept-CH" value="Viewport-Width"/>
+														<u:FileUploaderParameter name="Accept-CH" value="Width"/>
+														<u:FileUploaderParameter name="Accept-CH-Lifetime" value="86400"/>
+													</u:parameters>
+												</u:FileUploader>
+												<m:Button text="Upload File" press="handleUploadPress"/>
+												</m:HBox>
+											</m:HBox>
+											<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+												<m:HBox width="50%">
+													<m:Label text="Request Letter"/>
+												</m:HBox>
+												<m:HBox width="100%">
+													<u:FileUploader  name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server"
+													uploadComplete="handleUploadComplete" change="handleValueChange" typeMissmatch="handleTypeMissmatch" style="Emphasized" fileType="txt,jpg"
+													placeholder="Choose a file for Upload...">
+													<u:parameters>
+														<u:FileUploaderParameter name="Accept-CH" value="Viewport-Width"/>
+														<u:FileUploaderParameter name="Accept-CH" value="Width"/>
+														<u:FileUploaderParameter name="Accept-CH-Lifetime" value="86400"/>
+													</u:parameters>
+												</u:FileUploader>
+												<m:Button text="Upload File" press="handleUploadPress"/>
+												</m:HBox>
+											</m:HBox>
+												<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+												<m:HBox width="50%">
+													<m:Label text="Photo"/>
+												</m:HBox>
+												<m:HBox width="100%">
+													<u:FileUploader  name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server"
+													uploadComplete="handleUploadComplete" change="handleValueChange" typeMissmatch="handleTypeMissmatch" style="Emphasized" fileType="txt,jpg"
+													placeholder="Choose a file for Upload...">
+													<u:parameters>
+														<u:FileUploaderParameter name="Accept-CH" value="Viewport-Width"/>
+														<u:FileUploaderParameter name="Accept-CH" value="Width"/>
+														<u:FileUploaderParameter name="Accept-CH-Lifetime" value="86400"/>
+													</u:parameters>
+												</u:FileUploader>
+												<m:Button text="Upload File" press="handleUploadPress"/>
+												</m:HBox>
+											</m:HBox>
+										</layout:VerticalLayout>
+										<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+											<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+												<m:HBox width="50%">
+													<m:Label text="Port Reg Card"/>
+												</m:HBox>
+												<m:HBox width="100%">
+													<u:FileUploader  name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server"
+													uploadComplete="handleUploadComplete" change="handleValueChange" typeMissmatch="handleTypeMissmatch" style="Emphasized" fileType="txt,jpg"
+													placeholder="Choose a file for Upload...">
+													<u:parameters>
+														<u:FileUploaderParameter name="Accept-CH" value="Viewport-Width"/>
+														<u:FileUploaderParameter name="Accept-CH" value="Width"/>
+														<u:FileUploaderParameter name="Accept-CH-Lifetime" value="86400"/>
+													</u:parameters>
+												</u:FileUploader>
+												<m:Button text="Upload File" press="handleUploadPress"/>
+												</m:HBox>
+											</m:HBox>
+											<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+												<m:HBox width="50%">
+													<m:Label text="Driving License"/>
+												</m:HBox>
+												<m:HBox width="100%">
+													<u:FileUploader  name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server"
+													uploadComplete="handleUploadComplete" change="handleValueChange" typeMissmatch="handleTypeMissmatch" style="Emphasized" fileType="txt,jpg"
+													placeholder="Choose a file for Upload...">
+													<u:parameters>
+														<u:FileUploaderParameter name="Accept-CH" value="Viewport-Width"/>
+														<u:FileUploaderParameter name="Accept-CH" value="Width"/>
+														<u:FileUploaderParameter name="Accept-CH-Lifetime" value="86400"/>
+													</u:parameters>
+												</u:FileUploader>
+												<m:Button text="Upload File" press="handleUploadPress"/>
+												</m:HBox>
+											</m:HBox>
+										
+										</layout:VerticalLayout>
+									
+									</layout:HorizontalLayout>
+								</layout:VerticalLayout>
+							</m:FlexBox>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" title="Long Term">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+							<m:FlexBox wrap="Wrap">
+								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+									<!--<m:Text class="title sapUiTinyMarginBottom" text="{i18n>BasicDetails}"/>-->
+									<m:VBox>
+										<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+											<m:HBox width="50%">
+												<m:Label text="Application form"/>
+											</m:HBox>
+											<m:HBox width="100%">
+	<u:FileUploader  name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server"
+													uploadComplete="handleUploadComplete" change="handleValueChange" typeMissmatch="handleTypeMissmatch" style="Emphasized" fileType="txt,jpg"
+													placeholder="Choose a file for Upload...">
+													<u:parameters>
+														<u:FileUploaderParameter name="Accept-CH" value="Viewport-Width"/>
+														<u:FileUploaderParameter name="Accept-CH" value="Width"/>
+														<u:FileUploaderParameter name="Accept-CH-Lifetime" value="86400"/>
+													</u:parameters>
+												</u:FileUploader>
+												<m:Button text="Upload File" press="handleUploadPress"/>											</m:HBox>
+										</m:HBox>
+										<m:HBox alignItems="Center">
+											<m:HBox width="50%">
+												<m:Label text="Request Letter"/>
+											</m:HBox>
+											<m:HBox width="100%">
+	<u:FileUploader  name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server"
+													uploadComplete="handleUploadComplete" change="handleValueChange" typeMissmatch="handleTypeMissmatch" style="Emphasized" fileType="txt,jpg"
+													placeholder="Choose a file for Upload...">
+													<u:parameters>
+														<u:FileUploaderParameter name="Accept-CH" value="Viewport-Width"/>
+														<u:FileUploaderParameter name="Accept-CH" value="Width"/>
+														<u:FileUploaderParameter name="Accept-CH-Lifetime" value="86400"/>
+													</u:parameters>
+												</u:FileUploader>
+												<m:Button text="Upload File" press="handleUploadPress"/>											</m:HBox>
+										</m:HBox>
+										<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+											<m:HBox width="50%">
+												<m:Label text="Emirates ID"/>
+											</m:HBox>
+											<m:HBox width="100%">
+												<u:FileUploader  name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server"
+													uploadComplete="handleUploadComplete" change="handleValueChange" typeMissmatch="handleTypeMissmatch" style="Emphasized" fileType="txt,jpg"
+													placeholder="Choose a file for Upload...">
+													<u:parameters>
+														<u:FileUploaderParameter name="Accept-CH" value="Viewport-Width"/>
+														<u:FileUploaderParameter name="Accept-CH" value="Width"/>
+														<u:FileUploaderParameter name="Accept-CH-Lifetime" value="86400"/>
+													</u:parameters>
+												</u:FileUploader>
+												<m:Button text="Upload File" press="handleUploadPress"/>
+											</m:HBox>
+										</m:HBox>
+									</m:VBox>
+								</layout:VerticalLayout>
+							</m:FlexBox>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+	</ObjectPageLayout>
+</core:FragmentDefinition>

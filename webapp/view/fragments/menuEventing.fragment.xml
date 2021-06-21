@@ -4,6 +4,6 @@
 		<u:MenuItem text="Manifest" startsSection="true"/>
 		<u:MenuItem text="Service Request" startsSection="true"/>
 		<u:MenuItem text="Equipment Request" startsSection="true"/>
-		<u:MenuItem text="Gate Pass Request" startsSection="true"/>
+		<u:MenuItem text="Gate Pass Request"  startsSection="true"/>
 	</u:Menu>
 </core:FragmentDefinition>

@@ -150,14 +150,16 @@ sap.ui.define([
 				}
 			});
 		},
-		handleMenuItemPress: function(oEvent) {
+	handleMenuItemPress: function(oEvent) {
 			console.log(oEvent.getParameter("item"));
-			// var oItem = oEvent.getParameter("item").getId();
-			// if (oItem) {
-				this.getRouter().navTo("etaDetails", {
+			var oItem = oEvent.getParameter("item").getText();
+				console.log(oItem);
+			oEvent.getParameter("item").getText() === "Gate Pass Request"?	this.getRouter().navTo("gatepass") :	this.getRouter().navTo("etaDetails", {
 					sPath: "0",
 					id: "createETA"
 				});
+			// if (oItem) {
+			
 				sap.ui.getCore().setModel(new JSONModel({}), "navModel");
 			//}
 		},

@@ -201,6 +201,14 @@
 					"home",
 					"tallySheetCargo"
 				]
+			},
+				{
+				"name": "gatepass",
+				"pattern": "gatepass",
+				"target": [
+					"home",
+					"gatepass"
+				]
 			}],
 			"targets": {
 				"home": {
@@ -274,6 +282,10 @@
 				"tallySheetCargo": {
 					"viewType": "XML",
 					"viewName": "tallySheetCargo"
+				},
+					"gatepass": {
+					"viewType": "XML",
+					"viewName": "gatepass"
 				}
 			}
 		}

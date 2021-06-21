@@ -660,3 +660,20 @@ html.sap-desktop .sapMBtn:focus>.sapMFocusable {
     font-size: smaller;
     padding-right: 2px!important;
 }
+.segBtn li {
+    width: auto!important;
+    padding: 0!important;
+}
+.segBtn li .sapMSegBBtnInner {
+    height: 1.5rem!important;
+    line-height: 24px!important;
+    border: none!important;
+    color: #333!important;
+}
+.segBtn .sapMSegBBtnSel .sapMSegBBtnInner{
+	background:#BC9E6D!important;
+	color: #fff!important;
+}
+.fileupload .sapMBtnBase.sapMBtn {
+    display: none;
+}

@@ -1,4 +1,5 @@
-<core:FragmentDefinition xmlns:t="sap.ui.table" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:layout="sap.ui.layout" 	xmlns:u="sap.ui.unified" xmlns:core="sap.ui.core">
+<core:FragmentDefinition xmlns:t="sap.ui.table" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:layout="sap.ui.layout" xmlns:u="sap.ui.unified"
+	xmlns:core="sap.ui.core">
 	<ObjectPageLayout upperCaseAnchorBar="false" id="gatePass" class="objLayoutClass editMode">
 		<headerTitle>
 			<ObjectPageDynamicHeaderTitle>
@@ -11,13 +12,26 @@
 				<expandedHeading>
 					<m:HBox>
 						<m:Title text="Gate Pass" wrapping="true"/>
-						<!--<m:ObjectMarker type="Flagged" class="sapUiTinyMarginBegin"/>-->
+						<m:SegmentedButton class="sapUiTinyMarginBegin segBtn" selectedKey="monthly">
+							<m:items>
+								<m:SegmentedButtonItem text="Daily" key="daily"/>
+								<m:SegmentedButtonItem text="Monthly" key="monthly"/>
+							</m:items>
+						</m:SegmentedButton>
 					</m:HBox>
 				</expandedHeading>
 				<snappedHeading>
 					<m:FlexBox fitContainer="true" alignItems="Center">
 						<m:Avatar backgroundColor="Accent9" src="images/cargo-ship.png" class="sapUiTinyMarginEnd"/>
+						<m:HBox>
 						<m:Title text="Gate Pass" wrapping="true"/>
+						<m:SegmentedButton class="sapUiTinyMarginBegin segBtn" selectedKey="monthly">
+							<m:items>
+								<m:SegmentedButtonItem text="Daily" key="daily"/>
+								<m:SegmentedButtonItem text="Monthly" key="monthly"/>
+							</m:items>
+						</m:SegmentedButton>
+						</m:HBox>
 					</m:FlexBox>
 				</snappedHeading>
 				<expandedContent>
@@ -41,7 +55,6 @@
 			<m:FlexBox >
 				<m:Avatar class="" backgroundColor="Accent9" src="images/cargo-ship.png" displaySize="L"/>
 				<layout:VerticalLayout class="sapUiSmallMarginTop">
-					<m:CheckBox  text="Daily" id="Dcheck" select="onCheck" wrapping="true"  class=""/>
 					<m:HBox class="sapUiTinyMarginTop">
 						<m:HBox width="40%">
 							<m:Label text="Select Date" class="sapUiSmallMarginTop"/>
@@ -68,7 +81,6 @@
 					</m:HBox>
 				</layout:VerticalLayout>
 				<layout:VerticalLayout class="sapUiSmallMarginTop">
-					<m:CheckBox text="Long Term" wrapping="true" width="150px"/>
 					<m:HBox class="sapUiTinyMarginBottom">
 						<m:HBox width="40%">
 							<m:Label text="Name" class="sapUiSmallMarginTop"/>
@@ -97,7 +109,7 @@
 			</m:FlexBox>
 		</headerContent>
 		<sections>
-			<ObjectPageSection titleUppercase="false" title="Daily" id="dailyDet" >
+			<ObjectPageSection titleUppercase="false" title="Daily" id="dailyDet">
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
@@ -110,16 +122,9 @@
 													<m:Label text="Emirates ID"/>
 												</m:HBox>
 												<m:HBox width="100%">
-													<u:FileUploader  name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server"
-													uploadComplete="handleUploadComplete" change="handleValueChange" typeMissmatch="handleTypeMissmatch" style="Emphasized" fileType="txt,jpg"
-													placeholder="Choose a file for Upload...">
-													<u:parameters>
-														<u:FileUploaderParameter name="Accept-CH" value="Viewport-Width"/>
-														<u:FileUploaderParameter name="Accept-CH" value="Width"/>
-														<u:FileUploaderParameter name="Accept-CH-Lifetime" value="86400"/>
-													</u:parameters>
-												</u:FileUploader>
-												<m:Button text="Upload File" press="handleUploadPress"/>
+													<u:FileUploader class="fileupload" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"
+														change="handleValueChange" typeMissmatch="handleTypeMissmatch" fileType="txt,jpg"
+														placeholder="Choose file"/>
 												</m:HBox>
 											</m:HBox>
 											<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -127,33 +132,19 @@
 													<m:Label text="Request Letter"/>
 												</m:HBox>
 												<m:HBox width="100%">
-													<u:FileUploader  name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server"
-													uploadComplete="handleUploadComplete" change="handleValueChange" typeMissmatch="handleTypeMissmatch" style="Emphasized" fileType="txt,jpg"
-													placeholder="Choose a file for Upload...">
-													<u:parameters>
-														<u:FileUploaderParameter name="Accept-CH" value="Viewport-Width"/>
-														<u:FileUploaderParameter name="Accept-CH" value="Width"/>
-														<u:FileUploaderParameter name="Accept-CH-Lifetime" value="86400"/>
-													</u:parameters>
-												</u:FileUploader>
-												<m:Button text="Upload File" press="handleUploadPress"/>
+													<u:FileUploader class="fileupload" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"
+														change="handleValueChange" typeMissmatch="handleTypeMissmatch" style="Emphasized" fileType="txt,jpg"
+														placeholder="Choose file"/>
 												</m:HBox>
 											</m:HBox>
-												<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+											<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 												<m:HBox width="50%">
 													<m:Label text="Photo"/>
 												</m:HBox>
 												<m:HBox width="100%">
-													<u:FileUploader  name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server"
-													uploadComplete="handleUploadComplete" change="handleValueChange" typeMissmatch="handleTypeMissmatch" style="Emphasized" fileType="txt,jpg"
-													placeholder="Choose a file for Upload...">
-													<u:parameters>
-														<u:FileUploaderParameter name="Accept-CH" value="Viewport-Width"/>
-														<u:FileUploaderParameter name="Accept-CH" value="Width"/>
-														<u:FileUploaderParameter name="Accept-CH-Lifetime" value="86400"/>
-													</u:parameters>
-												</u:FileUploader>
-												<m:Button text="Upload File" press="handleUploadPress"/>
+													<u:FileUploader class="fileupload" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"
+														change="handleValueChange" typeMissmatch="handleTypeMissmatch" style="Emphasized" fileType="txt,jpg"
+														placeholder="Choose file"/>
 												</m:HBox>
 											</m:HBox>
 										</layout:VerticalLayout>
@@ -163,16 +154,9 @@
 													<m:Label text="Port Reg Card"/>
 												</m:HBox>
 												<m:HBox width="100%">
-													<u:FileUploader  name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server"
-													uploadComplete="handleUploadComplete" change="handleValueChange" typeMissmatch="handleTypeMissmatch" style="Emphasized" fileType="txt,jpg"
-													placeholder="Choose a file for Upload...">
-													<u:parameters>
-														<u:FileUploaderParameter name="Accept-CH" value="Viewport-Width"/>
-														<u:FileUploaderParameter name="Accept-CH" value="Width"/>
-														<u:FileUploaderParameter name="Accept-CH-Lifetime" value="86400"/>
-													</u:parameters>
-												</u:FileUploader>
-												<m:Button text="Upload File" press="handleUploadPress"/>
+													<u:FileUploader class="fileupload" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"
+														change="handleValueChange" typeMissmatch="handleTypeMissmatch" style="Emphasized" fileType="txt,jpg"
+														placeholder="Choose file"/>
 												</m:HBox>
 											</m:HBox>
 											<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -180,21 +164,12 @@
 													<m:Label text="Driving License"/>
 												</m:HBox>
 												<m:HBox width="100%">
-													<u:FileUploader  name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server"
-													uploadComplete="handleUploadComplete" change="handleValueChange" typeMissmatch="handleTypeMissmatch" style="Emphasized" fileType="txt,jpg"
-													placeholder="Choose a file for Upload...">
-													<u:parameters>
-														<u:FileUploaderParameter name="Accept-CH" value="Viewport-Width"/>
-														<u:FileUploaderParameter name="Accept-CH" value="Width"/>
-														<u:FileUploaderParameter name="Accept-CH-Lifetime" value="86400"/>
-													</u:parameters>
-												</u:FileUploader>
-												<m:Button text="Upload File" press="handleUploadPress"/>
+													<u:FileUploader class="fileupload" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"
+														change="handleValueChange" typeMissmatch="handleTypeMissmatch" style="Emphasized" fileType="txt,jpg"
+														placeholder="Choose file"/>
 												</m:HBox>
 											</m:HBox>
-										
 										</layout:VerticalLayout>
-									
 									</layout:HorizontalLayout>
 								</layout:VerticalLayout>
 							</m:FlexBox>
@@ -215,48 +190,29 @@
 												<m:Label text="Application form"/>
 											</m:HBox>
 											<m:HBox width="100%">
-	<u:FileUploader  name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server"
-													uploadComplete="handleUploadComplete" change="handleValueChange" typeMissmatch="handleTypeMissmatch" style="Emphasized" fileType="txt,jpg"
-													placeholder="Choose a file for Upload...">
-													<u:parameters>
-														<u:FileUploaderParameter name="Accept-CH" value="Viewport-Width"/>
-														<u:FileUploaderParameter name="Accept-CH" value="Width"/>
-														<u:FileUploaderParameter name="Accept-CH-Lifetime" value="86400"/>
-													</u:parameters>
-												</u:FileUploader>
-												<m:Button text="Upload File" press="handleUploadPress"/>											</m:HBox>
+												<u:FileUploader class="fileupload" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"
+													change="handleValueChange" typeMissmatch="handleTypeMissmatch" style="Emphasized" fileType="txt,jpg"
+													placeholder="Choose file"/>
+											</m:HBox>
 										</m:HBox>
 										<m:HBox alignItems="Center">
 											<m:HBox width="50%">
 												<m:Label text="Request Letter"/>
 											</m:HBox>
 											<m:HBox width="100%">
-	<u:FileUploader  name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server"
-													uploadComplete="handleUploadComplete" change="handleValueChange" typeMissmatch="handleTypeMissmatch" style="Emphasized" fileType="txt,jpg"
-													placeholder="Choose a file for Upload...">
-													<u:parameters>
-														<u:FileUploaderParameter name="Accept-CH" value="Viewport-Width"/>
-														<u:FileUploaderParameter name="Accept-CH" value="Width"/>
-														<u:FileUploaderParameter name="Accept-CH-Lifetime" value="86400"/>
-													</u:parameters>
-												</u:FileUploader>
-												<m:Button text="Upload File" press="handleUploadPress"/>											</m:HBox>
+												<u:FileUploader class="fileupload" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"
+													change="handleValueChange" typeMissmatch="handleTypeMissmatch" style="Emphasized" fileType="txt,jpg"
+													placeholder="Choose file"/>
+											</m:HBox>
 										</m:HBox>
 										<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 											<m:HBox width="50%">
 												<m:Label text="Emirates ID"/>
 											</m:HBox>
 											<m:HBox width="100%">
-												<u:FileUploader  name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server"
-													uploadComplete="handleUploadComplete" change="handleValueChange" typeMissmatch="handleTypeMissmatch" style="Emphasized" fileType="txt,jpg"
-													placeholder="Choose a file for Upload...">
-													<u:parameters>
-														<u:FileUploaderParameter name="Accept-CH" value="Viewport-Width"/>
-														<u:FileUploaderParameter name="Accept-CH" value="Width"/>
-														<u:FileUploaderParameter name="Accept-CH-Lifetime" value="86400"/>
-													</u:parameters>
-												</u:FileUploader>
-												<m:Button text="Upload File" press="handleUploadPress"/>
+												<u:FileUploader class="fileupload" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"
+													change="handleValueChange" typeMissmatch="handleTypeMissmatch" style="Emphasized" fileType="txt,jpg"
+													placeholder="Choose file"/>
 											</m:HBox>
 										</m:HBox>
 									</m:VBox>

@@ -1,29 +1,22 @@
-<mvc:View controllerName="com.demo.sharjahPort.controller.customer.gatepass"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m" displayBlock="true"
-    xmlns:core="sap.ui.core"
-    xmlns:l="sap.ui.layout"
-    xmlns:html="http://www.w3.org/1999/xhtml">
-    <Page id="page" showHeader="true" class="sapUiResponsiveContentPadding detailspage">
-        <customHeader>
-            <core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.TopNav" type="XML"/>
-        </customHeader>
-        <content>
-        
-        			<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.gatePass" type="XML"/>
-        </content>
-        <footer>
+<mvc:View controllerName="com.demo.sharjahPort.controller.customer.gatepass" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" displayBlock="true"
+	xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page id="page" showHeader="true" class="sapUiResponsiveContentPadding detailspage">
+		<customHeader>
+			<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.TopNav" type="XML"/>
+		</customHeader>
+		<content>
+			<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.gatePass" type="XML"/>
+		</content>
+		<footer>
 			<OverflowToolbar id="otbFooter">
 				<ToolbarSpacer/>
 				<Button press="handleAcceptRejectPress" type="Accept" text="Submit">
-					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow" /></layoutData>
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
 				</Button>
-				<Button press="handleAcceptRejectPress" type="Reject"  text="Cancel">
-					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow" /></layoutData>
+				<Button press="handleAcceptRejectPress" type="Reject" text="Cancel">
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
 				</Button>
-				</OverflowToolbar>
-				
-			
+			</OverflowToolbar>
 		</footer>
-    </Page>
+	</Page>
 </mvc:View>

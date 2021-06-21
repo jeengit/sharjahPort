@@ -5,5 +5,19 @@
       "templateVersion": "1.4.0",
       "dateTimeStamp": "Thu, 27 May 2021 15:26:00 GMT"
     }
-  ]
+  ],
+  "mockpreview": {
+    "mockUri": "/sap/opu/odata/sap/ZSPA_DEMO_SRV/",
+    "metadataFilePath": "localService/ZSPA_DEMO_SRV/metadata.xml",
+    "mockRequestsFilePath": "",
+    "loadJSONFiles": false,
+    "loadCustomRequests": false
+  },
+  "translation": {
+    "translationDomain": "",
+    "supportedLanguages": "",
+    "defaultLanguage": "",
+    "defaultI18NPropertyFile": "",
+    "resourceModelName": ""
+  }
 }

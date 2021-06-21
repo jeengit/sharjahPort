@@ -6,6 +6,45 @@
 			<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.TopNav" type="XML"/>
 		</customHeader>
 		<content>
+						<VBox class="section">
+				<html:div>
+					<IconTabBar select="handleTabPress" expandable="false" class="tabs">
+						<items>
+							<IconTabFilter text="{i18n>bertOver}" key="info">
+								<List class="cardList" headerText="{i18n>bertOver}" mode="None" items="{path: 'berthStatusModel>/results'}">
+									<CustomListItem press="openStatusDetails" type="Active">
+										<FlexBox alignItems="Center">
+											<HBox justifyContent="Center" class="boxLeft" width="38%"><Text text="{berthStatusModel>BerthNumber}"/>
+											<customData>
+    <core:CustomData xmlns:core="sap.ui.core"
+      key="bertStatus-{berthStatusModel>Status}"
+      value="{berthStatusModel>Status}"
+      writeToDom="true"
+    />
+  </customData>
+											</HBox>
+											<HBox direction="Column" width="52%" class="sapUiTinyMargin">
+												<Text class="title" text="{berthStatusModel>CallSign}"/>
+												<Label class="desc" text="{berthStatusModel>desc}"/>
+											</HBox>
+											<HBox class="sapUiTinyMarginEnd" justifyContent="End" width="10%">
+												<core:Icon src="sap-icon://cancel" visible="{= ${berthStatusModel>Status} === 'OCCUPIED' ? true : false }" color="red" tooltip="OCCUPIED"/>
+												<core:Icon src="sap-icon://away" visible="{= ${berthStatusModel>Status} === 'ESTIMATED' ? true : false }" color="orange" tooltip="ESTIMATED"/>
+												<core:Icon src="sap-icon://sys-enter" visible="{= ${berthStatusModel>Status} === 'AVAILABLE' ? true : false }" color="green" tooltip="AVAILABLE"/>
+											</HBox>
+										</FlexBox>
+									</CustomListItem>
+								</List>
+							</IconTabFilter>
+						<IconTabFilter text="{i18n>mapView}" key="map">
+								<FlexBox width="100%" height="390px">
+									<HBox width="100%" height="390px" id="map_canvas" fitContainer="true" justifyContent="Center" alignItems="Center" />
+								</FlexBox>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</html:div>
+			</VBox>
 			<HBox>
 			<VBox width="80%">
 			<VBox class="section">
@@ -40,33 +79,7 @@
 						</l:content>
 					</l:Grid>
 			</VBox>
-			<VBox class="section">
-				<html:div>
-					<IconTabBar select="handleTabPress" expandable="false" class="tabs">
-						<items>
-							<IconTabFilter text="{i18n>bertOver}" key="info">
-								<List class="cardList" headerText="{i18n>bertOver}" mode="None" items="{path: 'berthModel>/results'}">
-									<CustomListItem>
-										<FlexBox alignItems="Center">
-											<HBox justifyContent="Center" class="boxLeft" width="20%"><Text text="{berthModel>count}"/></HBox>
-											<HBox direction="Column" width="70%" class="sapUiTinyMargin">
-												<Text class="title" text="{berthModel>title}"/>
-												<Label class="desc" text="{berthModel>desc}"/>
-											</HBox>
-											<HBox class="sapUiTinyMarginEnd" justifyContent="End" width="10%"><core:Icon src="sap-icon://circle-task-2" color="{= ${berthModel>status} === 'completed' ? 'green' : 'red' }"/></HBox>
-										</FlexBox>
-									</CustomListItem>
-								</List>
-							</IconTabFilter>
-						<IconTabFilter text="{i18n>mapView}" key="map">
-								<FlexBox width="100%" height="390px">
-									<HBox width="100%" height="390px" id="map_canvas" fitContainer="true" justifyContent="Center" alignItems="Center" />
-								</FlexBox>
-							</IconTabFilter>
-						</items>
-					</IconTabBar>
-				</html:div>
-			</VBox>
+
 			</VBox>
 			<VBox class="right-side-bar-vsl" width="25%">
 					<Title text="Vessel Movement" class="heading"/>

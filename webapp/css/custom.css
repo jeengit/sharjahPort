@@ -41,6 +41,7 @@
 .right-side-bar-vsl {
 	margin-left: 1rem;
 }
+/*
 .cardList li {
     width: calc(33.3% - 25px);
 }
@@ -51,7 +52,7 @@
 
 .cardList li:nth-child(3n) {
     width: 33.3%;
-}
+} */
 .custTile .sapUiRespGridSpanL2 {
 	    width: calc(17.666666666666668%) !important;
 }
@@ -77,4 +78,39 @@
 
 .inp-hbox1 {
 	margin-top: 2px;
+}
+.cardList ul {
+	width:100%;
+}
+
+.boxLeft[data-bertstatus-occupied], .popup-common-hd[data-bertstatusdetails-occupied] .sapMDialogTitle .sapMHeader-CTX {
+	background-color: #fb8e8e !important;
+}
+
+
+.boxLeft[data-bertstatus-estimated], .popup-common-hd[data-bertstatusdetails-estimated] .sapMDialogTitle .sapMHeader-CTX {
+	background-color: #fbc767 !important;
+}
+
+
+.boxLeft[data-bertstatus-avilable], .popup-common-hd[data-bertstatusdetails-available] .sapMDialogTitle .sapMHeader-CTX {
+	background-color: #83f983 !important;
+}
+
+.berth-stats-vbox-main {
+	padding: 10px 20px;
+}
+
+.bs-in-hbox-class {
+	padding: 6px 0px;
+}
+.bs-detail-lbl {
+	margin-right: 6px;
+}
+.b-status-det-icon {
+	margin-left: 5px;
+}
+
+.boxLeft {
+    padding: 1.6rem 0.6rem;
 }

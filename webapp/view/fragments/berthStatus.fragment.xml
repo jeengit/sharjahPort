@@ -1,0 +1,50 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core"
+   	xmlns:f="sap.ui.layout.form">
+   <Dialog class="user-view-dl popup-common-hd"
+      title="Berth Status for {berthStatusDetailsModel>/results/0/BerthNumber}" id="berthStatusDetailsPopId">
+   	  	<customData><core:CustomData xmlns:core="sap.ui.core"
+      key="bertStatusdetails-{berthStatusDetailsModel>/results/0/Status}"
+      value="{berthStatusDetailsModel>/results/0/Status}"
+      writeToDom="true"
+    />
+  </customData>
+      <content>
+			<VBox class='berth-stats-vbox-main'>
+				<HBox class="bs-in-hbox-class">
+				<Label text="Berth Number:" class="bs-detail-lbl"></Label>	
+				<Text text="{berthStatusDetailsModel>/results/0/BerthNumber}" class="bs-detail-val"></Text>
+				</HBox>
+				
+					<HBox class="bs-in-hbox-class">
+				<Label text="Call Sign:" class="bs-detail-lbl"></Label>	
+				<Text text="{berthStatusDetailsModel>/results/0/CallSign}" class="bs-detail-val"></Text>
+				</HBox>
+				
+					<HBox class="bs-in-hbox-class">
+				<Label text="Vessel Name:" class="bs-detail-lbl"></Label>	
+				<Text text="{berthStatusDetailsModel>/results/0/VesselName}" class="bs-detail-val"></Text>
+				</HBox>
+				
+					<HBox class="bs-in-hbox-class">
+				<Label text="IMO Number:" class="bs-detail-lbl"></Label>	
+				<Text text="{berthStatusDetailsModel>/results/0/ImoNo}" class="bs-detail-val"></Text>
+				</HBox>
+				
+					<HBox class="bs-in-hbox-class">
+				<Label text="Status:" class="bs-detail-lbl"></Label>	
+				<Text text="{berthStatusDetailsModel>/results/0/Status}" class="bs-detail-val"></Text>
+					<core:Icon class="b-status-det-icon" src="sap-icon://cancel" visible="{= ${berthStatusDetailsModel>/results/0/Status} === 'OCCUPIED' ? true : false }" color="red" tooltip="OCCUPIED"/>
+					<core:Icon class="b-status-det-icon" src="sap-icon://away" visible="{= ${berthStatusDetailsModel>/results/0/Status} === 'ESTIMATED' ? true : false }" color="orange" tooltip="ESTIMATED"/>
+					<core:Icon class="b-status-det-icon" src="sap-icon://sys-enter" visible="{= ${berthStatusDetailsModel>/results/0/Status} === 'AVAILABLE' ? true : false }" color="green" tooltip="AVAILABLE"/>
+		
+				</HBox>
+			</VBox>
+      </content>
+
+      <endButton>
+    	<Button text="Cancel" press="closeBerthStatusPopup"/>
+      </endButton>
+   </Dialog>
+</core:FragmentDefinition>

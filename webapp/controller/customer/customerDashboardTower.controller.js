@@ -1,7 +1,8 @@
 sap.ui.define([
 	"../BaseController",
-	"sap/ui/model/json/JSONModel"
-], function (BaseController, JSONModel) {
+	"sap/ui/model/json/JSONModel",
+	"sap/ui/core/Fragment"
+], function (BaseController, JSONModel, Fragment) {
 	"use strict";
 	return BaseController.extend("com.demo.sharjahPort.controller.customer.customerDashboardTower", {
 		onInit: function () {
@@ -10,6 +11,7 @@ sap.ui.define([
 		},
 		_onObjectMatched: function () {
 		//	this.selectCallSign();
+			this.getBerthStatus();
 			this.getUserName();
 			this.getModel("DashboardCount","DashboardCountModel");
 			var oData = {
@@ -336,7 +338,58 @@ sap.ui.define([
 			this.getView().byId('callSignInputId').setValue();
 			this.getView().setModel(new JSONModel({items: []}), 'vesselMovementStatusModel');
 			this.getView().setModel(new JSONModel({}), 'bearthStatusDataModel');
-		}
+		},
+		getBerthStatus: function(oEvent) {
+			var portName = "HAMRIYA";
+			var thisObj = this;
+			var oModel = this.getOwnerComponent().getModel("s4Model");
+				oModel.read("/BerthStatusDashboardSet", {
+					urlParameters: {
+						"$filter": "Port eq '" + portName + "'"
+					},
+					success: function(data) {
+						thisObj.getView().setModel(new JSONModel(data), "berthStatusModel");
+						sap.ui.core.BusyIndicator.hide();
+					},
+					error: function(oResponse) {
+			//			sap.m.MessageToast.show(oResponse.statusText);
+						sap.ui.core.BusyIndicator.hide();
+					}
+				});
+		},
+		openStatusDetails: function(oEvent) {
+			sap.ui.core.BusyIndicator.show();
+			var bNo = oEvent.getSource().getBindingContext("berthStatusModel").getProperty().BerthNumber;
+			var bSTatus = oEvent.getSource().getBindingContext("berthStatusModel").getProperty().Status;
+				var thisObj = this;
+			var oModel = this.getOwnerComponent().getModel("s4Model");
+			
+				oModel.read("/BerthVesselListSet", {
+					urlParameters: {
+						"$filter": "BerthNumber eq '" + bNo + "' and Status eq '" + bSTatus + "'"
+					},
+					success: function(data) {
+						thisObj.getView().setModel(new JSONModel(data), "berthStatusDetailsModel");
+						thisObj.openStatusDetailsPopup()
+						sap.ui.core.BusyIndicator.hide();
+					},
+					error: function(oResponse) {
+			//			sap.m.MessageToast.show(oResponse.statusText);
+						sap.ui.core.BusyIndicator.hide();
+					}
+				});
+		},
+		openStatusDetailsPopup: function(evt) {
+			var oView = this.getView();
+			if (!this.dialog) {
+				this.dialog = sap.ui.xmlfragment("com.demo.sharjahPort.view.fragments.berthStatus",this);
+				oView.addDependent(this.dialog);
+				}
+				this.dialog.open();
+		},
+		closeBerthStatusPopup: function(evt){
+			sap.ui.getCore().byId("berthStatusDetailsPopId").close();
+		},
 	});
 
 });

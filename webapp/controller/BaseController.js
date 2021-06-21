@@ -4,7 +4,7 @@ sap.ui.define([
 	"sap/ui/core/Fragment",
 	"sap/ui/model/json/JSONModel",
 	"sap/ui/core/Popup"
-], function(Controller, UIComponent, Fragment, JSONModel, Popup) {
+	], function(Controller, UIComponent, Fragment, JSONModel, Popup) {
 	"use strict";
 	return Controller.extend("com.demo.sharjahPort.BaseController", {
 		getRouter: function() {
@@ -176,6 +176,74 @@ sap.ui.define([
 			} else {
 				this._menu.open(this._bKeyboard, oButton, Popup.Dock.BeginTop, Popup.Dock.BeginBottom, oButton);
 			}
+		},
+		openNotificationHarbourMaster: function(oEvent) {
+			var oButton = oEvent.getSource(),
+			oView = this.getView();
+			//this.getAllNotifications();
+			if (!this._pPopover) {
+				this._pPopover = Fragment.load({
+					id: oView.getId(),
+					name: "com.demo.sharjahPort.view.fragments.harbourMasterNotification",
+					controller: this
+				}).then(function(oPopover) {
+					oView.addDependent(oPopover);
+					return oPopover;
+				});
+			}
+			this._pPopover.then(function(oPopover) {
+				oPopover.openBy(oButton);
+			});
+		},
+		closeHarbourMasterNotification: function (oEvent) {
+			this.byId("harbourMasterNotificationPopupId").close();
+		},
+		getAllNotifications: function() {
+			var thisObj = this;
+			var oModel = this.getOwnerComponent().getModel("s4Model");
+				oModel.read("/HarbourMasterStatusSet", {
+					success: function(data) {
+					var oButtonBadgeCustomData = thisObj.getView().byId('notifyButtonHarbourId').getBadgeCustomData();
+					if(oButtonBadgeCustomData && data && data.results && data.results.length > 0) {
+						oButtonBadgeCustomData.setValue(data.results.length);
+						oButtonBadgeCustomData.setVisible(true);
+					} else {
+						oButtonBadgeCustomData.setValue(0);
+						oButtonBadgeCustomData.setVisible(false);
+					}
+					thisObj.getView().setModel(new JSONModel(data), "harbourMasterNotificationListModel");
+					//console.log(thisObj.getView().getModel("harbourMasterNotificationListModel").getData())
+						sap.ui.core.BusyIndicator.hide();
+					},
+					error: function(oResponse) {
+			//			sap.m.MessageToast.show(oResponse.statusText);
+						sap.ui.core.BusyIndicator.hide();
+					}
+				});
+		},
+		readHarbourNotifications: function(oEvent) {
+			var notModel = oEvent.getSource().getBindingContext("harbourMasterNotificationListModel").getProperty();
+			var thisObj = this;
+			var oModel = this.getOwnerComponent().getModel("s4Model");
+			notModel['HarbourStatus'] = 'NOTIFIED';
+			delete notModel['__metadata'];
+			console.log(notModel);
+			oModel.create("/HarbourMasterStatusSet", notModel, {
+				success: function(data) {
+					thisObj.getAllNotifications();
+				},
+				error: function(oResponse) {
+			//		sap.m.MessageToast.show(oResponse.statusText);
+			//		sap.ui.core.BusyIndicator.hide();
+				}
+			});
+		},
+		callForHarbourNotification: function() {
+			var thisObj = this;
+			thisObj.getAllNotifications();
+			setInterval(function(){ 
+				thisObj.getAllNotifications();
+			}, 60000);
 		}
 	});
 });

@@ -12,6 +12,7 @@ sap.ui.define([
 			oPopOver.connect(oVizFrame.getVizUid());
 		},
 		_onObjectMatched: function() {
+			this.callForHarbourNotification();
 			this.getUserName();
 			this.getModel("DashboardCount", "DashboardCountModel");
 			var that = this;

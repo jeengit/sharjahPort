@@ -114,3 +114,15 @@
 .boxLeft {
     padding: 1.6rem 0.6rem;
 }
+
+.notf-harbor-popup-class .sapMPopoverScroll {
+	padding: 0px !important;
+}
+.har-notf-hbox {
+	    padding: 15px 10px;
+}
+
+.badge-harbour-noty-btn .sapMBadgeIndicator {
+	margin-top: 6px;
+    margin-right: 6px;
+}

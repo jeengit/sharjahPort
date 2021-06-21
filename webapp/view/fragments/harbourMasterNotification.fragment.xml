@@ -1,0 +1,23 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<ResponsivePopover
+		id="harbourMasterNotificationPopupId"
+		title="Notifications"
+		class="notf-harbor-popup-class"
+		placement="Bottom" >
+
+		<endButton>
+			<Button text="Close" press="closeHarbourMasterNotification" />
+		</endButton>
+		<content>
+<List mode="None" items="{path: 'harbourMasterNotificationListModel>/results'}">
+									<CustomListItem press="readHarbourNotifications" type="Active">
+											<HBox class="har-notf-hbox"><Text text="{harbourMasterNotificationListModel>VesselName} - "/>
+											<Text text="{harbourMasterNotificationListModel>VesselName}"/>
+											</HBox>
+											</CustomListItem>
+											</List>
+		</content>
+	</ResponsivePopover>
+</core:FragmentDefinition>

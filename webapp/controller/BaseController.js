@@ -123,7 +123,8 @@ sap.ui.define([
 			var oStore = jQuery.sap.storage(jQuery.sap.storage.Type.local);
 			var oData = {
 				"name": oStore.get("user"),
-				"uRole": oStore.get("role")
+				"uRole": oStore.get("role"),
+				"companyName":oStore.get("CompanyName")
 			};
 			this.getView().setModel(new JSONModel(oData), "loginModel");
 		},

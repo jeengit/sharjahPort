@@ -55,6 +55,18 @@
 			<m:FlexBox >
 				<m:Avatar class="" backgroundColor="Accent9" src="images/cargo-ship.png" displaySize="L"/>
 				<layout:VerticalLayout class="sapUiSmallMarginTop">
+						<m:HBox alignItems="Center">
+							<m:HBox width="40%">
+								<m:Label text="{i18n>Port}"/>
+							</m:HBox>
+							<m:HBox width="60%">
+									<m:ComboBox placeholder="{i18n>select}" selectedKey="{etaDetailsModel>/Port}" width="100%" items="">
+									<core:Item key="HAMRIYA" text="HAMRIYA"/>
+									<core:Item key="KHORFAKKAN" text="KHORFAKKAN"/>
+									<core:Item key="MENAKALID" text="MENAKALID"/>
+								</m:ComboBox>
+							</m:HBox>
+						</m:HBox>
 					<m:HBox class="sapUiTinyMarginTop">
 						<m:HBox width="40%">
 							<m:Label text="Select Date" class="sapUiSmallMarginTop"/>
@@ -63,7 +75,7 @@
 							<m:DatePicker value="{delCrtModel>/BillDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
 						</m:HBox>
 					</m:HBox>
-					<m:HBox class="sapUiTinyMarginBottom">
+					<m:HBox class="sapUiTinyMarginTop">
 						<m:HBox width="40%">
 							<m:Label text="From Date" class="sapUiSmallMarginTop"/>
 						</m:HBox>
@@ -71,7 +83,7 @@
 							<m:DatePicker value="{delCrtModel>/BillDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
 						</m:HBox>
 					</m:HBox>
-					<m:HBox class="sapUiTinyMarginBottom">
+					<m:HBox class="sapUiTinyMarginTop">
 						<m:HBox width="40%">
 							<m:Label text="To Date" class="sapUiSmallMarginTop"/>
 						</m:HBox>
@@ -86,7 +98,7 @@
 							<m:Label text="Name" class="sapUiSmallMarginTop"/>
 						</m:HBox>
 						<m:HBox width="60%">
-							<m:Input value="{delCrtModel>/MarksAndNo}"/>
+							<m:Input value="{loginModel>/name}"/>
 						</m:HBox>
 					</m:HBox>
 					<m:HBox class="sapUiTinyMarginBottom">
@@ -102,7 +114,7 @@
 							<m:Label text="Company Name" class="sapUiSmallMarginTop"/>
 						</m:HBox>
 						<m:HBox width="60%">
-							<m:Input value="{delCrtModel>/MarksAndNo}"/>
+							<m:Input value="{loginModel>/companyName}"/>
 						</m:HBox>
 					</m:HBox>
 				</layout:VerticalLayout>

@@ -44,6 +44,11 @@
 								<!--<ImageContent src="sap-icon://complete" />-->
 							</TileContent>
 						</GenericTile>
+							<GenericTile class="tileLayout" press="handleListPress" ariaLabel="GATEPASS" header="Gate Pass">
+							<TileContent unit="" footer="5">
+								<!--<ImageContent src="sap-icon://complete" />-->
+							</TileContent>
+						</GenericTile>
 						<VBox width="207%" class="box-shadow">
 							<viz:Popover id="idPopOver"></viz:Popover>
 							<viz:VizFrame vizProperties="{ title: {text : 'ETA Summary', visible : true},plotArea:{ dataLabel:{visible: true,type:'value'} }}"

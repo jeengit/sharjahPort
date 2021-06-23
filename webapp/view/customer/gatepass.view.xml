@@ -5,15 +5,16 @@
 			<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.TopNav" type="XML"/>
 		</customHeader>
 		<content>
-			<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.gatePass" type="XML"/>
+			<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.gatePassCreate" type="XML"/>
+				<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.gatepassDet" type="XML"/>
 		</content>
 		<footer>
 			<OverflowToolbar id="otbFooter">
 				<ToolbarSpacer/>
-				<Button press="handleAcceptRejectPress" type="Accept" text="Submit">
+				<Button press="onCreatePress" id="subId" type="Accept" text="Submit">
 					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
 				</Button>
-				<Button press="handleAcceptRejectPress" type="Reject" text="Cancel">
+				<Button press="handleAcceptRejectPress"  id="canId" type="Reject" text="Cancel">
 					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow"/></layoutData>
 				</Button>
 			</OverflowToolbar>

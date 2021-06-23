@@ -155,6 +155,32 @@
 							</headerToolbar>
 						</List>
 					</VBox>
+					<VBox width="100%" visible="{= ${GatePassListModel>/length} > 0 ? true : false}">
+						<List class="tableCard card" mode="SingleSelect" noDataText="{i18n>emptyNodata}" headerText="Delivery"
+							items="{ path: 'GatePassListModel>/',templateShareable:true}" id="list4">
+							<CustomListItem type="Active" fieldGroupIds="Delivery" press="handelgateDetailPress">
+								<FlexBox justifyContent="SpaceBetween" alignItems="Start">
+									<HBox>
+										<core:Icon class="sapUiTinyMarginEnd" src="sap-icon://activities" size="1rem" color="#CEA95B"/>
+										<Text text="{GatePassListModel>Port} - {GatePassListModel>Company_Name}"/>
+									</HBox>
+									<tnt:InfoLabel text="{= ${GatePassListModel>Status} === 'OPEN' ? 'Open' : 'Closed' }"
+										visible="{= ${GatePassListModel>Status} === '' ? false : true}"
+										colorScheme="{= ${GatePassListModel>Status} === 'OPEN' ? 3 : ${GatePassListModel>Status} === 'CLOSED' ? 8 : 5 }" displayOnly="true"/>
+								</FlexBox>
+								<FlexBox justifyContent="SpaceBetween" alignItems="Start">
+									<Text class="desc" text="{GatePassListModel>Name}"/>
+									<Text class="desc sapMLnk"
+										text="{ path: 'GatePassListModel>Date', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}} }" wrapping="false"/>
+								</FlexBox>
+							</CustomListItem>
+							<headerToolbar>
+								<Toolbar>
+									<Title text="Gate Pass" level="H1"/>
+								</Toolbar>
+							</headerToolbar>
+						</List>
+					</VBox>
 				</FlexBox>
 			</VBox>
 		</content>

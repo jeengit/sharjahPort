@@ -7,7 +7,8 @@
 		</customHeader>
 		<content>
 			<VBox class="sapUiContentPadding">
-				<Breadcrumbs currentLocationText="{= ${manifestListModel>/0/ManifestStatus} === 'MAN_CREATED' || ${manifestListModel>/0/ManifestStatus} === 'OPEN' ? 'Manifest' : 'Delivery'}">
+				<Breadcrumbs
+					currentLocationText="{= ${manifestListModel>/0/ManifestStatus} === 'MAN_CREATED' || ${manifestListModel>/0/ManifestStatus} === 'OPEN' ? 'Manifest' : ${consigneeListModel>/length} > 0 ? 'Consignee' : 'Delivery'}">
 					<Link href="#dashboardManifest" text="Home"/>
 				</Breadcrumbs>
 				<FlexBox width="100%" class="manifestListClass">
@@ -18,8 +19,10 @@
 							<CustomListItem type="Active" press="handelDetailPress" fieldGroupIds="manifest">
 								<FlexBox alignItems="Start" justifyContent="SpaceBetween">
 									<HBox><core:Icon color="#CEA95B" class="sapUiTinyMarginEnd" size="1rem" src="sap-icon://activities"/>
-										<Text visible="{= ${manifestListModel>ManifestNo} === '' ? true : false}" text="{manifestListModel>AgentName} - {manifestListModel>CustomsRefManifestNo}" />
-										<Text visible="{= ${manifestListModel>ManifestNo} === '' ? false : true}" text="{manifestListModel>AgentName} - {manifestListModel>ManifestNo}"/>
+										<Text visible="{= ${manifestListModel>ManifestNo} === '' ? true : false}"
+											text="{manifestListModel>AgentName} - {manifestListModel>CustomsRefManifestNo}"/>
+										<Text visible="{= ${manifestListModel>ManifestNo} === '' ? false : true}"
+											text="{manifestListModel>AgentName} - {manifestListModel>ManifestNo}"/>
 									</HBox>
 									<tnt:InfoLabel visible="{= ${manifestListModel>ManifestStatus} === '' ? false : true}"
 										text="{= ${manifestListModel>ManifestStatus} === 'MAN_CREATED' ? 'Closed' : 'Open' }" displayOnly="true"
@@ -34,7 +37,8 @@
 							</CustomListItem>
 							<headerToolbar>
 								<Toolbar>
-									<Title text="Manifest - {= ${manifestListModel>/0/ManifestStatus} === 'MAN_CREATED' ? 'Import' : 'Import'} ({manifestListModel>/countI})" level="H1"/>
+									<Title text="Manifest - {= ${manifestListModel>/0/ManifestStatus} === 'MAN_CREATED' ? 'Import' : 'Import'} ({manifestListModel>/countI})"
+										level="H1"/>
 								</Toolbar>
 							</headerToolbar>
 						</List>
@@ -46,8 +50,10 @@
 							<CustomListItem type="Active">
 								<FlexBox alignItems="Start" justifyContent="SpaceBetween">
 									<HBox><core:Icon color="#CEA95B" class="sapUiTinyMarginEnd" size="1rem" src="sap-icon://activities"/>
-											<Text visible="{= ${manifestListModel>ManifestNo} === '' ? true : false}" text="{manifestListModel>AgentName} - {manifestListModel>CustomsRefManifestNo}" />
-										<Text visible="{= ${manifestListModel>ManifestNo} === '' ? false : true}" text="{manifestListModel>AgentName} - {manifestListModel>ManifestNo}"/>
+										<Text visible="{= ${manifestListModel>ManifestNo} === '' ? true : false}"
+											text="{manifestListModel>AgentName} - {manifestListModel>CustomsRefManifestNo}"/>
+										<Text visible="{= ${manifestListModel>ManifestNo} === '' ? false : true}"
+											text="{manifestListModel>AgentName} - {manifestListModel>ManifestNo}"/>
 									</HBox>
 									<tnt:InfoLabel visible="{= ${manifestListModel>ManifestStatus} === '' ? false : true}"
 										text="{= ${manifestListModel>ManifestStatus} === 'MAN_CREATED' ? 'Closed' : 'Open' }" displayOnly="true"
@@ -62,7 +68,8 @@
 							</CustomListItem>
 							<headerToolbar>
 								<Toolbar>
-									<Title text="Manifest - {= ${manifestListModel>/0/ManifestStatus} === 'MAN_CREATED' ? 'Export' : 'Export'} ({manifestListModel>/countE})" level="H1"/>
+									<Title text="Manifest - {= ${manifestListModel>/0/ManifestStatus} === 'MAN_CREATED' ? 'Export' : 'Export'} ({manifestListModel>/countE})"
+										level="H1"/>
 								</Toolbar>
 							</headerToolbar>
 						</List>
@@ -89,6 +96,54 @@
 							<headerToolbar>
 								<Toolbar>
 									<Title text="Delivery - {= ${deliveryListModel>/0/Status} === 'OPEN' ? 'Open' : 'Closed'} ({deliveryListModel>/length})" level="H1"/>
+								</Toolbar>
+							</headerToolbar>
+						</List>
+					</VBox>
+					<VBox width="{= ${consigneeListModel>/countP} &amp;&amp; ${consigneeListModel>/countC} > 0 ? '50%' : '100%'}" visible="{= ${consigneeListModel>/countP} > 0 ? true : false}">
+						<List class="tableCard card"
+							items="{ path: 'consigneeListModel>/',templateShareable:true, filters: {path: 'Status', operator: 'EQ', value1: 'PENDING'} }"
+							headerText="Manifest - Import" noDataText="{i18n>emptyNodata}" mode="SingleSelect" selectionChange="changeSelectedLine">
+							<CustomListItem type="Active" fieldGroupIds="manifest">
+								<FlexBox alignItems="Start" justifyContent="SpaceBetween">
+									<HBox><core:Icon color="#CEA95B" class="sapUiTinyMarginEnd" size="1rem" src="sap-icon://activities"/>
+										<Text text="{consigneeListModel>DocNo} - {consigneeListModel>Port}"/>
+									</HBox>
+									<tnt:InfoLabel visible="{= ${consigneeListModel>Status} === '' ? false : true}" text="{consigneeListModel>Status}" displayOnly="true"
+										colorScheme="3"/>
+								</FlexBox>
+								<FlexBox alignItems="Start" justifyContent="SpaceBetween">
+									<Text class="desc" text="Doc No: {consigneeListModel>ConsigneeCode}"/>
+									<Text class="desc" text="{consigneeListModel>FiscalYear}"/>
+								</FlexBox>
+							</CustomListItem>
+							<headerToolbar>
+								<Toolbar>
+									<Title text="Consignee - Pending ({consigneeListModel>/countP})" level="H1"/>
+								</Toolbar>
+							</headerToolbar>
+						</List>
+					</VBox>
+					<VBox class="sapUiSmallMarginBegin" width="{= ${consigneeListModel>/countP} &amp;&amp; ${consigneeListModel>/countC} > 0 ? '50%' : '100%'}" visible="{= ${consigneeListModel>/countC} > 0 ? true : false}">
+						<List class="tableCard card"
+							items="{ path: 'consigneeListModel>/',templateShareable:true, filters: {path: 'Status', operator: 'EQ', value1: 'COMPLETED'} }"
+							headerText="Manifest - Export" noDataText="{i18n>emptyNodata}" mode="SingleSelect">
+							<CustomListItem type="Active" fieldGroupIds="manifest">
+								<FlexBox alignItems="Start" justifyContent="SpaceBetween">
+									<HBox><core:Icon color="#CEA95B" class="sapUiTinyMarginEnd" size="1rem" src="sap-icon://activities"/>
+										<Text text="{consigneeListModel>DocNo} - {consigneeListModel>Port}"/>
+									</HBox>
+									<tnt:InfoLabel visible="{= ${consigneeListModel>Status} === '' ? false : true}" text="{consigneeListModel>Status}" displayOnly="true"
+										colorScheme="8"/>
+								</FlexBox>
+								<FlexBox alignItems="Start" justifyContent="SpaceBetween">
+									<Text class="desc" text="Doc No: {consigneeListModel>ConsigneeCode}"/>
+									<Text class="desc" text="{consigneeListModel>FiscalYear}"/>
+								</FlexBox>
+							</CustomListItem>
+							<headerToolbar>
+								<Toolbar>
+									<Title text="Consignee - Completed ({consigneeListModel>/countC})" level="H1"/>
 								</Toolbar>
 							</headerToolbar>
 						</List>

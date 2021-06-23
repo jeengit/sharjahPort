@@ -16,12 +16,19 @@ sap.ui.define([
 			var res = sap.ui.getCore().getModel("rememberSelectionModel") ? sap.ui.getCore().getModel("rememberSelectionModel").getData() : '';
 			if (type === "MANIFEST") {
 				this.getView().setModel(new JSONModel(null), "deliveryListModel");
+				this.getView().setModel(new JSONModel(null), "consigneeListModel");
 				this.getModel("ManifestListSet", "manifestListModel", status);
 			}
 			if (type === "DELIVERY") {
-			//	this.getModel("DeliveryListSet", "deliveryListModel");
+				//	this.getModel("DeliveryListSet", "deliveryListModel");
 				this.callOdata("DeliveryListSet", "deliveryListModel", "Status", status);
 				this.getView().setModel(new JSONModel(null), "manifestListModel");
+				this.getView().setModel(new JSONModel(null), "consigneeListModel");
+			}
+			if (type === "CONSIGNEE") {
+				this.getConsigneeList();
+				this.getView().setModel(new JSONModel(null), "manifestListModel");
+				this.getView().setModel(new JSONModel(null), "deliveryListModel");
 			}
 			var that = this;
 			setTimeout(function() {
@@ -50,6 +57,28 @@ sap.ui.define([
 				sPath: encodeURIComponent(sPath),
 				id: id,
 				status: status
+			});
+		},
+		getConsigneeList: function() {
+			var oModel = this.getOwnerComponent().getModel("s4Model");
+			oModel.setUseBatch(false);
+			var that = this;
+			oModel.read("/PaymentStatusListSet", {
+				urlParameters: {
+					"$filter": "ConsigneeCode eq '10000020' and FiscalYear eq '2021'"
+				},
+				success: function(data) {
+					var pending = data.results.filter(res => res.Status === 'PENDING');
+					var completed = data.results.filter(res => res.Status === 'COMPLETED');
+					data.results['countP'] = pending.length;
+					data.results['countC'] = completed.length;
+					that.getView().setModel(new JSONModel(data.results), "consigneeListModel");
+					sap.ui.core.BusyIndicator.hide();
+				},
+				error: function(oResponse) {
+					sap.m.MessageToast.show(oResponse.statusText);
+					sap.ui.core.BusyIndicator.hide();
+				}
 			});
 		}
 	});

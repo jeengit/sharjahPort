@@ -52,7 +52,12 @@
 								<!--<ImageContent src="sap-icon://complete" />-->
 							</TileContent>
 						</GenericTile>
-						<VBox width="207%" class="box-shadow">
+						<GenericTile ariaLabel="NA/CONSIGNEE" press="handleListPress" class="tileLayout" header="Consignee - Payment" subheader="Status for Consignee Payment">
+							<TileContent unit="" footer="" class="sapUiTinyMarginBottom">
+								<ImageContent class="sapUiSmallMarginTop" src="sap-icon://capital-projects" />
+							</TileContent>
+						</GenericTile>
+						<VBox width="100%" class="box-shadow">
 							<viz:Popover id="idPopOver"></viz:Popover>
 							<viz:VizFrame vizProperties="{ title: {text : 'Manifest Summary', visible : true},plotArea:{ dataLabel:{visible: true,type:'value'} }}"
 								id="idVizFrame" uiConfig="{applicationSet:'fiori'}" height="176px" width="100%" vizType='donut'>

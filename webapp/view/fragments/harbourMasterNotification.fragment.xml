@@ -16,6 +16,9 @@
 											<HBox class="har-notf-hbox"><Text text="{harbourMasterNotificationListModel>VesselName} - "/>
 											<Text text="{harbourMasterNotificationListModel>VesselName}"/>
 											</HBox>
+											<HBox justifyContent="End" class="har-notf-time-hbox">
+												<Text class="time-ago-class" text="{harbourMasterNotificationListModel>timeAgo}"/>
+												</HBox>
 											</CustomListItem>
 											</List>
 		</content>

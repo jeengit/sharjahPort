@@ -119,9 +119,15 @@
 	padding: 0px !important;
 }
 .har-notf-hbox {
-	    padding: 15px 10px;
+	    padding: 15px 10px 4px 10px;
 }
 
+.har-notf-time-hbox {
+	 padding: 3px 10px 15px 10px;
+}
+.time-ago-class {
+		 color: #908686;
+}
 .badge-harbour-noty-btn .sapMBadgeIndicator {
 	margin-top: 6px;
     margin-right: 6px;

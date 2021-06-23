@@ -210,6 +210,11 @@ sap.ui.define([
 					if(oButtonBadgeCustomData && data && data.results && data.results.length > 0) {
 						oButtonBadgeCustomData.setValue(data.results.length);
 						oButtonBadgeCustomData.setVisible(true);
+						for(var ds of data.results) {
+							if(ds && ds.CreatedDate && ds.CreatedTime) {
+								ds['timeAgo'] = thisObj.timeDifference(new Date(Number(ds.CreatedDate.substring(0, 4)), Number(ds.CreatedDate.substring(4, 6)), Number(ds.CreatedDate.substring(6, 8)), Number(ds.CreatedTime.substring(0, 2)), Number(ds.CreatedTime.substring(2, 4)), Number(ds.CreatedTime.substring(4, 6)), 0));
+							}
+						}
 					} else {
 						oButtonBadgeCustomData.setValue(0);
 						oButtonBadgeCustomData.setVisible(false);
@@ -258,6 +263,52 @@ sap.ui.define([
 			setInterval(function(){
 				thisObj.getAllNotifications();
 			}, 60000);
-		}
+		},
+		 timeDifference: function(previous) {
+  
+ var isoDateStr = new Date().toISOString();
+var isoDate = new Date(isoDateStr);
+
+var dYear = isoDate.getFullYear();
+var dMonth = isoDate.getMonth()+1;
+var dDay = isoDate.getDate();
+
+var dHour = isoDate.getHours();
+var dMin = isoDate.getMinutes();
+var dSec = isoDate.getSeconds();
+    
+  var current = new Date(dYear, dMonth, dDay, dHour, dMin, dSec, 0);
+    var msPerMinute = 60 * 1000;
+    var msPerHour = msPerMinute * 60;
+    var msPerDay = msPerHour * 24;
+    var msPerMonth = msPerDay * 30;
+    var msPerYear = msPerDay * 365;
+    
+    var elapsed = current - previous;
+    
+    if (elapsed < msPerMinute) {
+         return Math.round(elapsed/1000) + ' seconds ago';   
+    }
+    
+    else if (elapsed < msPerHour) {
+         return Math.round(elapsed/msPerMinute) + ' minutes ago';   
+    }
+    
+    else if (elapsed < msPerDay ) {
+         return Math.round(elapsed/msPerHour ) + ' hours ago';   
+    }
+
+    else if (elapsed < msPerMonth) {
+         return '' + Math.round(elapsed/msPerDay) + ' days ago';   
+    }
+    
+    else if (elapsed < msPerYear) {
+         return '' + Math.round(elapsed/msPerMonth) + ' months ago';   
+    }
+    
+    else {
+         return '' + Math.round(elapsed/msPerYear ) + ' years ago';   
+    }
+}
 	});
 });

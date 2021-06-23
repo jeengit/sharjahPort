@@ -25,7 +25,7 @@
 											</HBox>
 											<HBox direction="Column" width="52%" class="sapUiTinyMargin">
 												<Text class="title" text="{berthStatusModel>CallSign}"/>
-												<Label class="desc" text="{berthStatusModel>desc}"/>
+												<Label class="desc" text="{berthStatusModel>Vessel}"/>
 											</HBox>
 											<HBox class="sapUiTinyMarginEnd" justifyContent="End" width="10%">
 												<core:Icon src="sap-icon://cancel" visible="{= ${berthStatusModel>Status} === 'OCCUPIED' ? true : false }" color="red" tooltip="OCCUPIED"/>

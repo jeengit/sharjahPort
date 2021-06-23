@@ -12,12 +12,12 @@
 				<expandedHeading>
 					<m:HBox>
 						<m:Title text="Gate Pass" wrapping="true"/>
-						<m:SegmentedButton  press="onBtnPress" class="sapUiTinyMarginBegin segBtn">
-							<m:items>
-								<m:SegmentedButtonItem text="Daily" key="daily"/>
-								<m:SegmentedButtonItem text="Monthly" key="monthly"/>
-							</m:items>
-						</m:SegmentedButton>
+						<!--<m:SegmentedButton  press="onBtnPress" class="sapUiTinyMarginBegin segBtn">-->
+						<!--	<m:items>-->
+						<!--		<m:SegmentedButtonItem text="Daily" key="daily"/>-->
+						<!--		<m:SegmentedButtonItem text="Monthly" key="monthly"/>-->
+						<!--	</m:items>-->
+						<!--</m:SegmentedButton>-->
 					</m:HBox>
 				</expandedHeading>
 				<snappedHeading>
@@ -25,12 +25,12 @@
 						<m:Avatar backgroundColor="Accent9" src="images/cargo-ship.png" class="sapUiTinyMarginEnd"/>
 						<m:HBox>
 						<m:Title text="Gate Pass" wrapping="true"/>
-						<m:SegmentedButton class="sapUiTinyMarginBegin segBtn" selectedKey="monthly">
-							<m:items>
-								<m:SegmentedButtonItem text="Daily" key="daily"/>
-								<m:SegmentedButtonItem text="Monthly" key="monthly"/>
-							</m:items>
-						</m:SegmentedButton>
+						<!--<m:SegmentedButton class="sapUiTinyMarginBegin segBtn" selectedKey="monthly">-->
+						<!--	<m:items>-->
+						<!--		<m:SegmentedButtonItem text="Daily" key="daily"/>-->
+						<!--		<m:SegmentedButtonItem text="Monthly" key="monthly"/>-->
+						<!--	</m:items>-->
+						<!--</m:SegmentedButton>-->
 						</m:HBox>
 					</m:FlexBox>
 				</snappedHeading>
@@ -67,25 +67,25 @@
 								</m:ComboBox>
 							</m:HBox>
 						</m:HBox>
-					<m:HBox class="sapUiTinyMarginTop">
+					<m:HBox class="sapUiTinyMarginTop" visible="{=  ${gateDetModel>/Type} === 'D'? true : false}">
 						<m:HBox width="40%">
 							<m:Label text="Select Date" class="sapUiSmallMarginTop"/>
 						</m:HBox>
 						<m:HBox width="60%">
-							<m:DatePicker value="{gateDetModel>/Date}" valueFormat="yyyyMMdd" editable="false" displayFormat="long"/>
+							<m:DatePicker value="{gateDetModel>/FromDate}" valueFormat="yyyyMMdd" editable="false" displayFormat="long"/>
 						</m:HBox>
 					</m:HBox>
-					<m:HBox class="sapUiTinyMarginTop">
+					<m:HBox class="sapUiTinyMarginTop" visible="{=  ${gateDetModel>/Type} === 'L'? true : false}">
 						<m:HBox width="40%">
-							<m:Label text="From Date" class="sapUiSmallMarginTop"/>
+							<m:Label text="From Date" class="sapUiSmallMarginTop" />
 						</m:HBox>
 						<m:HBox width="60%">
 							<m:DatePicker  value="{gateDetModel>/FromDate}" editable="false" valueFormat="yyyyMMdd" displayFormat="long"/>
 						</m:HBox>
 					</m:HBox>
-					<m:HBox class="sapUiTinyMarginTop">
+					<m:HBox class="sapUiTinyMarginTop" visible="{=  ${gateDetModel>/Type} === 'L'? true : false}">
 						<m:HBox width="40%">
-							<m:Label text="To Date" class="sapUiSmallMarginTop"/>
+							<m:Label text="To Date" class="sapUiSmallMarginTop" />
 						</m:HBox>
 						<m:HBox width="60%">
 							<m:DatePicker name="depDateArrival" change="handleChangeSelect" editable="false" value="{gateDetModel>/ToDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
@@ -121,7 +121,7 @@
 			</m:FlexBox>
 		</headerContent>
 		<sections>
-			<ObjectPageSection titleUppercase="false" title="Daily" >
+			<ObjectPageSection titleUppercase="false" title="Daily" visible="{=  ${gateDetModel>/Type} === 'D'? true : false}">
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
@@ -189,7 +189,7 @@
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>
-			<ObjectPageSection titleUppercase="false" title="Long Term">
+			<ObjectPageSection titleUppercase="false" title="Long Term" visible="{=  ${gateDetModel>/Type} === 'L'? true : false}">
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>

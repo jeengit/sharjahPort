@@ -204,7 +204,7 @@
 			},
 				{
 				"name": "gatepass",
-				"pattern": "gatepass",
+				"pattern": "gatepass/{sPath}/{id}",
 				"target": [
 					"home",
 					"gatepass"

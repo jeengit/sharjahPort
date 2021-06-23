@@ -41,6 +41,16 @@ sap.ui.define([
 				sPath: status,
 				type: type
 			});
+		},
+		handleListPress: function (oEvent) {
+			sap.ui.core.BusyIndicator.show();
+			var status = oEvent.getSource().getAriaLabel().split("/")[0];
+			var type = oEvent.getSource().getAriaLabel().split("/")[1];
+			//var route = type === "MANIFEST" ? "manifest" : "dashboardManifest";
+			this.getRouter().navTo("manifest", {
+				sPath: status,
+				type: "gatePassList"
+			});
 		}
 	});
 

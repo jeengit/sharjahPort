@@ -93,8 +93,8 @@
 }
 
 
-.boxLeft[data-bertstatus-avilable], .popup-common-hd[data-bertstatusdetails-available] .sapMDialogTitle .sapMHeader-CTX {
-	background-color: #83f983 !important;
+.boxLeft[data-bertstatus-available], .popup-common-hd[data-bertstatusdetails-available] .sapMDialogTitle .sapMHeader-CTX {
+	background-color: #aaffaa !important;
 }
 
 .berth-stats-vbox-main {

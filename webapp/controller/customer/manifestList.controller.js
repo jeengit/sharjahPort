@@ -17,11 +17,13 @@ sap.ui.define([
 			if (type === "MANIFEST") {
 				this.getView().setModel(new JSONModel(null), "deliveryListModel");
 				this.getView().setModel(new JSONModel(null), "consigneeListModel");
+				this.getView().setModel(new JSONModel(null), "GatePassListModel");
 				this.getModel("ManifestListSet", "manifestListModel", status);
 			}
 			if (type === "DELIVERY") {
 				//	this.getModel("DeliveryListSet", "deliveryListModel");
 				this.callOdata("DeliveryListSet", "deliveryListModel", "Status", status);
+				this.getView().setModel(new JSONModel(null), "GatePassListModel");
 				this.getView().setModel(new JSONModel(null), "manifestListModel");
 				this.getView().setModel(new JSONModel(null), "consigneeListModel");
 			}
@@ -29,6 +31,13 @@ sap.ui.define([
 				this.getConsigneeList();
 				this.getView().setModel(new JSONModel(null), "manifestListModel");
 				this.getView().setModel(new JSONModel(null), "deliveryListModel");
+			}
+			if (type === "gatePassList") {
+
+				this.callOdata("GatePassSet", "GatePassListModel");
+				this.getView().setModel(new JSONModel(null), "manifestListModel");
+				this.getView().setModel(new JSONModel(null), "deliveryListModel");
+				this.getView().setModel(new JSONModel(null), "consigneeListModel");
 			}
 			var that = this;
 			setTimeout(function() {
@@ -57,6 +66,18 @@ sap.ui.define([
 				sPath: encodeURIComponent(sPath),
 				id: id,
 				status: status
+			});
+		},
+		handelgateDetailPress: function(evt) {
+
+			var sPath = evt.getSource().getBindingContext("GatePassListModel").getPath().split("/")[1];
+			var property = evt.getSource().getBindingContext("GatePassListModel").getProperty();
+			console.log(property);
+			var id = property.Guid;
+			this.getRouter().navTo("gatepass", {
+				sPath: "0",
+				id: id
+
 			});
 		},
 		getConsigneeList: function() {

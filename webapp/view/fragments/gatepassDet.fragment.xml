@@ -1,18 +1,18 @@
 <core:FragmentDefinition xmlns:t="sap.ui.table" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:layout="sap.ui.layout" xmlns:u="sap.ui.unified"
 	xmlns:core="sap.ui.core">
-	<ObjectPageLayout upperCaseAnchorBar="false" id="gatePass" class="objLayoutClass editMode">
+	<ObjectPageLayout upperCaseAnchorBar="false" id="gatePassDet" class="objLayoutClass editMode">
 		<headerTitle>
 			<ObjectPageDynamicHeaderTitle>
 				<breadcrumbs>
 					<m:Breadcrumbs currentLocationText="Gate Pass">
-						<m:Link href="#dashboardManifest" text="Home"/>
+						<m:Link href="#dashboardAgent" text="Home"/>
 						<!--<m:Link href="#manifest={navModel>/status}&amp;type='{navModel>/type}'" text="Delivery"/>-->
 					</m:Breadcrumbs>
 				</breadcrumbs>
 				<expandedHeading>
 					<m:HBox>
 						<m:Title text="Gate Pass" wrapping="true"/>
-						<m:SegmentedButton class="sapUiTinyMarginBegin segBtn" selectedKey="monthly">
+						<m:SegmentedButton  press="onBtnPress" class="sapUiTinyMarginBegin segBtn">
 							<m:items>
 								<m:SegmentedButtonItem text="Daily" key="daily"/>
 								<m:SegmentedButtonItem text="Monthly" key="monthly"/>
@@ -60,7 +60,7 @@
 								<m:Label text="{i18n>Port}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-									<m:ComboBox placeholder="{i18n>select}" selectedKey="{etaDetailsModel>/Port}" width="100%" items="">
+									<m:ComboBox placeholder="{i18n>select}" value="{gateDetModel>/Port}" width="100%" items="" editable="false">
 									<core:Item key="HAMRIYA" text="HAMRIYA"/>
 									<core:Item key="KHORFAKKAN" text="KHORFAKKAN"/>
 									<core:Item key="MENAKALID" text="MENAKALID"/>
@@ -72,7 +72,7 @@
 							<m:Label text="Select Date" class="sapUiSmallMarginTop"/>
 						</m:HBox>
 						<m:HBox width="60%">
-							<m:DatePicker value="{delCrtModel>/BillDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+							<m:DatePicker value="{gateDetModel>/Date}" valueFormat="yyyyMMdd" editable="false" displayFormat="long"/>
 						</m:HBox>
 					</m:HBox>
 					<m:HBox class="sapUiTinyMarginTop">
@@ -80,7 +80,7 @@
 							<m:Label text="From Date" class="sapUiSmallMarginTop"/>
 						</m:HBox>
 						<m:HBox width="60%">
-							<m:DatePicker value="{delCrtModel>/BillDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+							<m:DatePicker  value="{gateDetModel>/FromDate}" editable="false" valueFormat="yyyyMMdd" displayFormat="long"/>
 						</m:HBox>
 					</m:HBox>
 					<m:HBox class="sapUiTinyMarginTop">
@@ -88,7 +88,7 @@
 							<m:Label text="To Date" class="sapUiSmallMarginTop"/>
 						</m:HBox>
 						<m:HBox width="60%">
-							<m:DatePicker value="{delCrtModel>/BillDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+							<m:DatePicker name="depDateArrival" change="handleChangeSelect" editable="false" value="{gateDetModel>/ToDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
 						</m:HBox>
 					</m:HBox>
 				</layout:VerticalLayout>
@@ -98,7 +98,7 @@
 							<m:Label text="Name" class="sapUiSmallMarginTop"/>
 						</m:HBox>
 						<m:HBox width="60%">
-							<m:Input value="{loginModel>/name}"/>
+							<m:Input value="{gateDetModel>/Name}" editable="false"/>
 						</m:HBox>
 					</m:HBox>
 					<m:HBox class="sapUiTinyMarginBottom">
@@ -106,7 +106,7 @@
 							<m:Label text="Purpose" class="sapUiSmallMarginTop"/>
 						</m:HBox>
 						<m:HBox width="60%">
-							<m:Input value="{delCrtModel>/MarksAndNo}"/>
+							<m:Input value="{gateDetModel>/Purpose}" editable="false"/>
 						</m:HBox>
 					</m:HBox>
 					<m:HBox class="sapUiTinyMarginBottom">
@@ -114,14 +114,14 @@
 							<m:Label text="Company Name" class="sapUiSmallMarginTop"/>
 						</m:HBox>
 						<m:HBox width="60%">
-							<m:Input value="{loginModel>/companyName}"/>
+							<m:Input value="{gateDetModel>/Company_Name}" editable="false"/>
 						</m:HBox>
 					</m:HBox>
 				</layout:VerticalLayout>
 			</m:FlexBox>
 		</headerContent>
 		<sections>
-			<ObjectPageSection titleUppercase="false" title="Daily" id="dailyDet">
+			<ObjectPageSection titleUppercase="false" title="Daily" >
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
@@ -136,7 +136,7 @@
 												<m:HBox width="100%">
 													<u:FileUploader class="fileupload" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"
 														change="handleValueChange" typeMissmatch="handleTypeMissmatch" fileType="txt,jpg"
-														placeholder="Choose file"/>
+														placeholder="Choose file" editable="false"/>
 												</m:HBox>
 											</m:HBox>
 											<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -146,7 +146,7 @@
 												<m:HBox width="100%">
 													<u:FileUploader class="fileupload" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"
 														change="handleValueChange" typeMissmatch="handleTypeMissmatch" style="Emphasized" fileType="txt,jpg"
-														placeholder="Choose file"/>
+														placeholder="Choose file" editable="false"/>
 												</m:HBox>
 											</m:HBox>
 											<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -156,7 +156,7 @@
 												<m:HBox width="100%">
 													<u:FileUploader class="fileupload" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"
 														change="handleValueChange" typeMissmatch="handleTypeMissmatch" style="Emphasized" fileType="txt,jpg"
-														placeholder="Choose file"/>
+														placeholder="Choose file" editable="false"/>
 												</m:HBox>
 											</m:HBox>
 										</layout:VerticalLayout>
@@ -168,7 +168,7 @@
 												<m:HBox width="100%">
 													<u:FileUploader class="fileupload" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"
 														change="handleValueChange" typeMissmatch="handleTypeMissmatch" style="Emphasized" fileType="txt,jpg"
-														placeholder="Choose file"/>
+														placeholder="Choose file" editable="false"/>
 												</m:HBox>
 											</m:HBox>
 											<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -178,7 +178,7 @@
 												<m:HBox width="100%">
 													<u:FileUploader class="fileupload" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"
 														change="handleValueChange" typeMissmatch="handleTypeMissmatch" style="Emphasized" fileType="txt,jpg"
-														placeholder="Choose file"/>
+														placeholder="Choose file" editable="false"/>
 												</m:HBox>
 											</m:HBox>
 										</layout:VerticalLayout>
@@ -204,7 +204,7 @@
 											<m:HBox width="100%">
 												<u:FileUploader class="fileupload" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"
 													change="handleValueChange" typeMissmatch="handleTypeMissmatch" style="Emphasized" fileType="txt,jpg"
-													placeholder="Choose file"/>
+													placeholder="Choose file" editable="false"/>
 											</m:HBox>
 										</m:HBox>
 										<m:HBox alignItems="Center">
@@ -214,7 +214,7 @@
 											<m:HBox width="100%">
 												<u:FileUploader class="fileupload" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"
 													change="handleValueChange" typeMissmatch="handleTypeMissmatch" style="Emphasized" fileType="txt,jpg"
-													placeholder="Choose file"/>
+													placeholder="Choose file" editable="false"/>
 											</m:HBox>
 										</m:HBox>
 										<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -222,9 +222,9 @@
 												<m:Label text="Emirates ID"/>
 											</m:HBox>
 											<m:HBox width="100%">
-												<u:FileUploader class="fileupload" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"
+												<u:FileUploader  class="fileupload" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"
 													change="handleValueChange" typeMissmatch="handleTypeMissmatch" style="Emphasized" fileType="txt,jpg"
-													placeholder="Choose file"/>
+													placeholder="Choose file" editable="false"/>
 											</m:HBox>
 										</m:HBox>
 									</m:VBox>

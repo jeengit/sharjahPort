@@ -4,7 +4,7 @@ sap.ui.define([
 	"sap/ui/core/Fragment",
 	"sap/ui/model/json/JSONModel",
 	"sap/ui/core/Popup"
-	], function(Controller, UIComponent, Fragment, JSONModel, Popup) {
+], function(Controller, UIComponent, Fragment, JSONModel, Popup) {
 	"use strict";
 	return Controller.extend("com.demo.sharjahPort.BaseController", {
 		getRouter: function() {
@@ -124,7 +124,7 @@ sap.ui.define([
 			var oData = {
 				"name": oStore.get("user"),
 				"uRole": oStore.get("role"),
-				"companyName":oStore.get("CompanyName")
+				"companyName": oStore.get("CompanyName")
 			};
 			this.getView().setModel(new JSONModel(oData), "loginModel");
 		},
@@ -151,18 +151,18 @@ sap.ui.define([
 				}
 			});
 		},
-	handleMenuItemPress: function(oEvent) {
+		handleMenuItemPress: function(oEvent) {
 			console.log(oEvent.getParameter("item"));
 			var oItem = oEvent.getParameter("item").getText();
-				console.log(oItem);
-			oEvent.getParameter("item").getText() === "Gate Pass Request"?	this.getRouter().navTo("gatepass") :	this.getRouter().navTo("etaDetails", {
-					sPath: "0",
-					id: "createETA"
-				});
-			// if (oItem) {
-			
-				sap.ui.getCore().setModel(new JSONModel({}), "navModel");
-			//}
+			console.log(oItem);
+			oEvent.getParameter("item").getText() === "Gate Pass Request" ? this.getRouter().navTo("gatepass", {
+				sPath: "0",
+				id: "gateId"
+			}) : this.getRouter().navTo("etaDetails", {
+				sPath: "0",
+				id: "createETA"
+			});
+			sap.ui.getCore().setModel(new JSONModel({}), "navModel");
 		},
 		handlePressOpenMenu: function(oEvent) {
 			var oButton = oEvent.getSource();
@@ -182,7 +182,7 @@ sap.ui.define([
 		},
 		openNotificationHarbourMaster: function(oEvent) {
 			var oButton = oEvent.getSource(),
-			oView = this.getView();
+				oView = this.getView();
 			//this.getAllNotifications();
 			if (!this._pPopover) {
 				this._pPopover = Fragment.load({
@@ -198,21 +198,23 @@ sap.ui.define([
 				oPopover.openBy(oButton);
 			});
 		},
-		closeHarbourMasterNotification: function (oEvent) {
+		closeHarbourMasterNotification: function(oEvent) {
 			this.byId("harbourMasterNotificationPopupId").close();
 		},
 		getAllNotifications: function() {
 			var thisObj = this;
 			var oModel = this.getOwnerComponent().getModel("s4Model");
-				oModel.read("/HarbourMasterStatusSet", {
-					success: function(data) {
+			oModel.read("/HarbourMasterStatusSet", {
+				success: function(data) {
 					var oButtonBadgeCustomData = thisObj.getView().byId('notifyButtonHarbourId').getBadgeCustomData();
-					if(oButtonBadgeCustomData && data && data.results && data.results.length > 0) {
+					if (oButtonBadgeCustomData && data && data.results && data.results.length > 0) {
 						oButtonBadgeCustomData.setValue(data.results.length);
 						oButtonBadgeCustomData.setVisible(true);
-						for(var ds of data.results) {
-							if(ds && ds.CreatedDate && ds.CreatedTime) {
-								ds['timeAgo'] = thisObj.timeDifference(new Date(Number(ds.CreatedDate.substring(0, 4)), Number(ds.CreatedDate.substring(4, 6)), Number(ds.CreatedDate.substring(6, 8)), Number(ds.CreatedTime.substring(0, 2)), Number(ds.CreatedTime.substring(2, 4)), Number(ds.CreatedTime.substring(4, 6)), 0));
+						for (var ds of data.results) {
+							if (ds && ds.CreatedDate && ds.CreatedTime) {
+								ds['timeAgo'] = thisObj.timeDifference(new Date(Number(ds.CreatedDate.substring(0, 4)), Number(ds.CreatedDate.substring(4,
+									6)), Number(ds.CreatedDate.substring(6, 8)), Number(ds.CreatedTime.substring(0, 2)), Number(ds.CreatedTime.substring(2,
+									4)), Number(ds.CreatedTime.substring(4, 6)), 0));
 							}
 						}
 					} else {
@@ -220,14 +222,14 @@ sap.ui.define([
 						oButtonBadgeCustomData.setVisible(false);
 					}
 					thisObj.getView().setModel(new JSONModel(data), "harbourMasterNotificationListModel");
-				//	sap.ui.getCore().setModel(new JSONModel(data), "harbourMasterNotificationListModel");
+					//	sap.ui.getCore().setModel(new JSONModel(data), "harbourMasterNotificationListModel");
 					sap.ui.core.BusyIndicator.hide();
-					},
-					error: function(oResponse) {
-			//			sap.m.MessageToast.show(oResponse.statusText);
-						sap.ui.core.BusyIndicator.hide();
-					}
-				});
+				},
+				error: function(oResponse) {
+					//			sap.m.MessageToast.show(oResponse.statusText);
+					sap.ui.core.BusyIndicator.hide();
+				}
+			});
 		},
 		readHarbourNotifications: function(oEvent) {
 			var notModel = oEvent.getSource().getBindingContext("harbourMasterNotificationListModel").getProperty();
@@ -241,8 +243,8 @@ sap.ui.define([
 					thisObj.getAllNotifications();
 				},
 				error: function(oResponse) {
-			//		sap.m.MessageToast.show(oResponse.statusText);
-			//		sap.ui.core.BusyIndicator.hide();
+					//		sap.m.MessageToast.show(oResponse.statusText);
+					//		sap.ui.core.BusyIndicator.hide();
 				}
 			});
 		},
@@ -250,65 +252,55 @@ sap.ui.define([
 			var oStore = jQuery.sap.storage(jQuery.sap.storage.Type.local);
 			var uRole = oStore.get("role");
 			var thisObj = this;
-			if(uRole === "HARBOR_MASTER") {
+			if (uRole === "HARBOR_MASTER") {
 				thisObj.getAllNotifications();
 			}
 			if (val && uRole === "HARBOR_MASTER") {
-					this.oneMinCallForHarbourNotification();
+				this.oneMinCallForHarbourNotification();
 			}
-			
+
 		},
 		oneMinCallForHarbourNotification: function() {
 			var thisObj = this;
-			setInterval(function(){
+			setInterval(function() {
 				thisObj.getAllNotifications();
 			}, 60000);
 		},
-		 timeDifference: function(previous) {
-  
- var isoDateStr = new Date().toISOString();
-var isoDate = new Date(isoDateStr);
+		timeDifference: function(previous) {
 
-var dYear = isoDate.getFullYear();
-var dMonth = isoDate.getMonth()+1;
-var dDay = isoDate.getDate();
+			var isoDateStr = new Date().toISOString();
+			var isoDate = new Date(isoDateStr);
 
-var dHour = isoDate.getHours();
-var dMin = isoDate.getMinutes();
-var dSec = isoDate.getSeconds();
-    
-  var current = new Date(dYear, dMonth, dDay, dHour, dMin, dSec, 0);
-    var msPerMinute = 60 * 1000;
-    var msPerHour = msPerMinute * 60;
-    var msPerDay = msPerHour * 24;
-    var msPerMonth = msPerDay * 30;
-    var msPerYear = msPerDay * 365;
-    
-    var elapsed = current - previous;
-    
-    if (elapsed < msPerMinute) {
-         return Math.round(elapsed/1000) + ' seconds ago';   
-    }
-    
-    else if (elapsed < msPerHour) {
-         return Math.round(elapsed/msPerMinute) + ' minutes ago';   
-    }
-    
-    else if (elapsed < msPerDay ) {
-         return Math.round(elapsed/msPerHour ) + ' hours ago';   
-    }
+			var dYear = isoDate.getFullYear();
+			var dMonth = isoDate.getMonth() + 1;
+			var dDay = isoDate.getDate();
 
-    else if (elapsed < msPerMonth) {
-         return '' + Math.round(elapsed/msPerDay) + ' days ago';   
-    }
-    
-    else if (elapsed < msPerYear) {
-         return '' + Math.round(elapsed/msPerMonth) + ' months ago';   
-    }
-    
-    else {
-         return '' + Math.round(elapsed/msPerYear ) + ' years ago';   
-    }
-}
+			var dHour = isoDate.getHours();
+			var dMin = isoDate.getMinutes();
+			var dSec = isoDate.getSeconds();
+
+			var current = new Date(dYear, dMonth, dDay, dHour, dMin, dSec, 0);
+			var msPerMinute = 60 * 1000;
+			var msPerHour = msPerMinute * 60;
+			var msPerDay = msPerHour * 24;
+			var msPerMonth = msPerDay * 30;
+			var msPerYear = msPerDay * 365;
+
+			var elapsed = current - previous;
+
+			if (elapsed < msPerMinute) {
+				return Math.round(elapsed / 1000) + ' seconds ago';
+			} else if (elapsed < msPerHour) {
+				return Math.round(elapsed / msPerMinute) + ' minutes ago';
+			} else if (elapsed < msPerDay) {
+				return Math.round(elapsed / msPerHour) + ' hours ago';
+			} else if (elapsed < msPerMonth) {
+				return '' + Math.round(elapsed / msPerDay) + ' days ago';
+			} else if (elapsed < msPerYear) {
+				return '' + Math.round(elapsed / msPerMonth) + ' months ago';
+			} else {
+				return '' + Math.round(elapsed / msPerYear) + ' years ago';
+			}
+		}
 	});
 });

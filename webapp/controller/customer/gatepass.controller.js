@@ -16,10 +16,12 @@ sap.ui.define([
 			this.getView().setModel(new JSONModel(sap.ui.getCore().getModel("navModel").getData()), "navModel");
 			this.getUserName();
 			// this.creategatepass();
+			
 			var pageId = this.getView().getId();
 			this.getView().byId(pageId + "--gatePass").setVisible(false);
 			this.getView().byId(pageId + "--gatePassDet").setVisible(true);
 			var oModel = this.getOwnerComponent().getModel("s4Model");
+			this.onBtnPress();
 			oModel.setUseBatch(false);
 			var that = this;
 			oEvent.getParameter("arguments").id === "gateId" ? that.creategatepass() : oModel.read("/GatePassSet('" + oEvent.getParameter(
@@ -49,10 +51,18 @@ sap.ui.define([
 			}
 		},
 		onBtnPress: function(evt) {
-			alert("hh");
-			console.log(this.getView().byId("segBtn").getSelectedKey());
+		var data =	{
+		"value":	this.getView().byId("segBtn").getSelectedKey()
+		};
+		
+	this.getView().setModel(new JSONModel(data), "segModel");
 		},
 		creategatepass: function() {
+			// var key =	this.getView().byId("segBtn").getSelectedKey() ;
+			// if(key=== "daily"){
+			// 	this.getView().byId("fromId").setVisible(false);
+			// this.getView().byId("toId").setVisible(false);
+			// }
 			var pageId = this.getView().getId();
 			this.getView().byId("subId").setVisible(true);
 			this.getView().byId("canId").setVisible(true);
@@ -71,6 +81,7 @@ sap.ui.define([
 			};
 			this.getView().setModel(new JSONModel(odata), "crtGateModel");
 			sap.ui.core.BusyIndicator.hide();
+		
 
 		},
 		onCreatePress: function() {
@@ -78,7 +89,7 @@ sap.ui.define([
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
 			var oEntry = this.getView().getModel("crtGateModel").getData();
-
+            	oEntry['Type'] = this.getView().getModel("segModel").getData().value === "daily"? "D" : "L"; 
 			var that = this;
 			oModel.create("/GatePassSet", oEntry, {
 				success: function(data) {

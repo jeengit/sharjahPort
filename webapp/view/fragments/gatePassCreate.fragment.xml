@@ -12,10 +12,10 @@
 				<expandedHeading>
 					<m:HBox>
 						<m:Title text="Gate Pass" wrapping="true"/>
-						<m:SegmentedButton id="segBtn" onChange="onBtnPress" class="sapUiTinyMarginBegin segBtn">
+						<m:SegmentedButton id="segBtn" selectionChange="onBtnPress" class="sapUiTinyMarginBegin segBtn">
 							<m:items>
 								<m:SegmentedButtonItem text="Daily" key="daily"/>
-								<m:SegmentedButtonItem text="Monthly" key="monthly"/>
+								<m:SegmentedButtonItem text="Long Term" key="monthly"/>
 							</m:items>
 						</m:SegmentedButton>
 					</m:HBox>
@@ -25,12 +25,12 @@
 						<m:Avatar backgroundColor="Accent9" src="images/cargo-ship.png" class="sapUiTinyMarginEnd"/>
 						<m:HBox>
 						<m:Title text="Gate Pass" wrapping="true"/>
-						<m:SegmentedButton class="sapUiTinyMarginBegin segBtn" selectionChange="onBtnPress" selectedKey="daily">
-							<m:items>
-								<m:SegmentedButtonItem text="Daily" key="daily"/>
-								<m:SegmentedButtonItem text="Monthly" key="monthly"/>
-							</m:items>
-						</m:SegmentedButton>
+						<!--<m:SegmentedButton class="sapUiTinyMarginBegin segBtn" selectionChange="onBtnPress">-->
+						<!--	<m:items>-->
+						<!--		<m:SegmentedButtonItem text="Daily" key="daily"/>-->
+						<!--		<m:SegmentedButtonItem text="Long Term" key="monthly"/>-->
+						<!--	</m:items>-->
+						<!--</m:SegmentedButton>-->
 						</m:HBox>
 					</m:FlexBox>
 				</snappedHeading>
@@ -67,15 +67,15 @@
 								</m:ComboBox>
 							</m:HBox>
 						</m:HBox>
-					<m:HBox class="sapUiTinyMarginTop">
+					<m:HBox class="sapUiTinyMarginTop" visible="{=  ${segModel>/value} === 'daily'? true : false}">
 						<m:HBox width="40%">
 							<m:Label text="Select Date" class="sapUiSmallMarginTop"/>
 						</m:HBox>
 						<m:HBox width="60%">
-							<m:DatePicker value="{crtGateModel>/BillDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+							<m:DatePicker value="{crtGateModel>/FromDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
 						</m:HBox>
 					</m:HBox>
-					<m:HBox class="sapUiTinyMarginTop">
+					<m:HBox class="sapUiTinyMarginTop" visible="{=  ${segModel>/value} === 'monthly'? true : false}">
 						<m:HBox width="40%">
 							<m:Label text="From Date" class="sapUiSmallMarginTop"/>
 						</m:HBox>
@@ -83,8 +83,8 @@
 							<m:DatePicker id="depDateArrival" value="{crtGateModel>/FromDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
 						</m:HBox>
 					</m:HBox>
-					<m:HBox class="sapUiTinyMarginTop">
-						<m:HBox width="40%">
+					<m:HBox class="sapUiTinyMarginTop" visible="{=  ${segModel>/value} === 'monthly'? true : false}" >
+						<m:HBox width="40%" >
 							<m:Label text="To Date" class="sapUiSmallMarginTop"/>
 						</m:HBox>
 						<m:HBox width="60%">
@@ -121,7 +121,7 @@
 			</m:FlexBox>
 		</headerContent>
 		<sections>
-			<ObjectPageSection titleUppercase="false" title="Daily" id="dailyDet">
+			<ObjectPageSection titleUppercase="false" title="Daily" visible="{=  ${segModel>/value} === 'monthly'? false : true}">
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
@@ -189,7 +189,7 @@
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>
-			<ObjectPageSection titleUppercase="false" title="Long Term">
+			<ObjectPageSection titleUppercase="false" title="Long Term" visible="{=  ${segModel>/value} === 'monthly'? true : false}">
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>

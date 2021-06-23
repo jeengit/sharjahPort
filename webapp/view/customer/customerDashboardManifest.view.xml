@@ -53,7 +53,7 @@
 							</TileContent>
 						</GenericTile>
 						<GenericTile ariaLabel="NA/CONSIGNEE" press="handleListPress" class="tileLayout" header="Consignee - Payment" subheader="Status for Consignee Payment">
-							<TileContent unit="" footer="" class="sapUiTinyMarginBottom">
+							<TileContent unit="" footer="" class="sapUiTinyMarginBottom sapUiTinyMarginTop">
 								<ImageContent class="sapUiSmallMarginTop" src="sap-icon://capital-projects" />
 							</TileContent>
 						</GenericTile>

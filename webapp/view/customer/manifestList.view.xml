@@ -7,10 +7,15 @@
 		</customHeader>
 		<content>
 			<VBox class="sapUiContentPadding">
-				<Breadcrumbs
-					currentLocationText="{= ${manifestListModel>/0/ManifestStatus} === 'MAN_CREATED' || ${manifestListModel>/0/ManifestStatus} === 'OPEN' ? 'Manifest' : ${consigneeListModel>/length} > 0 ? 'Consignee' : 'Delivery'}">
-					<Link href="#dashboardManifest" text="Home"/>
-				</Breadcrumbs>
+				<FlexBox alignItems="Center" justifyContent="SpaceBetween">
+					<Breadcrumbs
+						currentLocationText="{= ${manifestListModel>/0/ManifestStatus} === 'MAN_CREATED' || ${manifestListModel>/0/ManifestStatus} === 'OPEN' ? 'Manifest' : ${consigneeListModel>/length} > 0 ? 'Consignee' : 'Delivery'}">
+						<Link href="#dashboardManifest" text="Home"/>
+					</Breadcrumbs>
+					<ComboBox class="inputClass" visible="{= ${consigneeListModel>/length} > 0 ? true : false}" width="100%" selectedKey="2021">
+						<core:Item key="2021" text="2021"/>
+					</ComboBox>
+				</FlexBox>
 				<FlexBox width="100%" class="manifestListClass">
 					<VBox width="{= ${manifestListModel>/countE} > 0 ? '50%' : '100%'}" visible="{= ${manifestListModel>/countI} > 0 ? true : false}">
 						<List id="list1" class="tableCard card"
@@ -100,7 +105,8 @@
 							</headerToolbar>
 						</List>
 					</VBox>
-					<VBox width="{= ${consigneeListModel>/countP} &amp;&amp; ${consigneeListModel>/countC} > 0 ? '50%' : '100%'}" visible="{= ${consigneeListModel>/countP} > 0 ? true : false}">
+					<VBox width="{= ${consigneeListModel>/countP} &amp;&amp; ${consigneeListModel>/countC} > 0 ? '50%' : '100%'}"
+						visible="{= ${consigneeListModel>/countP} > 0 ? true : false}">
 						<List class="tableCard card"
 							items="{ path: 'consigneeListModel>/',templateShareable:true, filters: {path: 'Status', operator: 'EQ', value1: 'PENDING'} }"
 							headerText="Manifest - Import" noDataText="{i18n>emptyNodata}" mode="SingleSelect" selectionChange="changeSelectedLine">
@@ -124,7 +130,8 @@
 							</headerToolbar>
 						</List>
 					</VBox>
-					<VBox class="sapUiSmallMarginBegin" width="{= ${consigneeListModel>/countP} &amp;&amp; ${consigneeListModel>/countC} > 0 ? '50%' : '100%'}" visible="{= ${consigneeListModel>/countC} > 0 ? true : false}">
+					<VBox class="sapUiSmallMarginBegin" width="{= ${consigneeListModel>/countP} &amp;&amp; ${consigneeListModel>/countC} > 0 ? '50%' : '100%'}"
+						visible="{= ${consigneeListModel>/countC} > 0 ? true : false}">
 						<List class="tableCard card"
 							items="{ path: 'consigneeListModel>/',templateShareable:true, filters: {path: 'Status', operator: 'EQ', value1: 'COMPLETED'} }"
 							headerText="Manifest - Export" noDataText="{i18n>emptyNodata}" mode="SingleSelect">

@@ -215,7 +215,7 @@ html.sap-desktop .sapMBtn:focus>.sapMFocusable {
     font-weight: 300;
 }
 
-.tileLayout .sapMTileCntFtrTxt {
+.tileLayout .sapMTileCntFtrTxt ,.tileLayout .sapUiIcon {
     font-weight: 800;
     font-size: 2rem;
     height: auto;
@@ -619,7 +619,7 @@ html.sap-desktop .sapMBtn:focus>.sapMFocusable {
     flex-grow: 1!important;
 }
 
-.editMode .sapMInputBaseContentWrapper {
+.editMode .sapMInputBaseContentWrapper ,.inputClass .sapMInputBaseContentWrapper {
     border: .0625rem solid #d2d0d0;
     border-radius: 4px;
 }

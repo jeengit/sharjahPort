@@ -57,7 +57,7 @@
 								<ImageContent class="sapUiSmallMarginTop" src="sap-icon://capital-projects" />
 							</TileContent>
 						</GenericTile>
-						<VBox width="100%" class="box-shadow">
+						<VBox width="208%" class="box-shadow bg-light">
 							<viz:Popover id="idPopOver"></viz:Popover>
 							<viz:VizFrame vizProperties="{ title: {text : 'Manifest Summary', visible : true},plotArea:{ dataLabel:{visible: true,type:'value'} }}"
 								id="idVizFrame" uiConfig="{applicationSet:'fiori'}" height="176px" width="100%" vizType='donut'>

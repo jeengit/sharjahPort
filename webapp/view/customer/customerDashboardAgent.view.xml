@@ -45,7 +45,7 @@
 							</TileContent>
 						</GenericTile>
 							<GenericTile class="tileLayout" press="handleListPress" ariaLabel="GATEPASS" header="Gate Pass">
-							<TileContent unit="" footer="5">
+							<TileContent unit="" footer="{DashboardCountModel>/0/GatePassOpen}">
 								<!--<ImageContent src="sap-icon://complete" />-->
 							</TileContent>
 						</GenericTile>

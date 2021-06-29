@@ -14,23 +14,7 @@ sap.ui.define([
 			var type = oEvent.getParameter("arguments").type;
 			this.getUserName();
 			this.adjustTableRowsCount();
-			var oModel = this.getOwnerComponent().getModel("s4Model");
-			oModel.setUseBatch(false);
-			var that = this;
-			oModel.read("/EtaListSet", {
-				urlParameters: {
-					"$filter": "Status eq '" + status + "'"
-				},
-				success: function (data) {
-					that.getView().setModel(new JSONModel(data), "etaListModel");
-					sap.m.MessageToast.show("Items loaded succesfully with status - " + status);
-					sap.ui.core.BusyIndicator.hide();
-				},
-				error: function (oResponse) {
-					sap.m.MessageToast.show(oResponse.statusText);
-					sap.ui.core.BusyIndicator.hide();
-				}
-			});
+			this.getEtaList(status);
 			sap.ui.getCore().setModel(new JSONModel({
 				"status": status,
 				"type": type
@@ -56,6 +40,29 @@ sap.ui.define([
 			var rows = Math.floor(($("#" + pageId).height() - 200) / 32);
 			jQuery.sap.delayedCall(0, this, function () {
 				that.byId("etaTable").setVisibleRowCount(rows);
+			});
+		},
+		onBtnPress : function (evt){
+			sap.ui.core.BusyIndicator.show();
+			this.getEtaList(evt.getSource().getSelectedKey());
+		},
+		getEtaList: function(status){
+			var oModel = this.getOwnerComponent().getModel("s4Model");
+			oModel.setUseBatch(false);
+			var that = this;
+			oModel.read("/EtaListSet", {
+				urlParameters: {
+					"$filter": "Status eq '" + status + "'"
+				},
+				success: function (data) {
+					that.getView().setModel(new JSONModel(data), "etaListModel");
+					sap.m.MessageToast.show("Items loaded succesfully with status - " + status);
+					sap.ui.core.BusyIndicator.hide();
+				},
+				error: function (oResponse) {
+					sap.m.MessageToast.show(oResponse.statusText);
+					sap.ui.core.BusyIndicator.hide();
+				}
 			});
 		}
 	});

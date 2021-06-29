@@ -12,15 +12,15 @@
 				<l:Grid class="sapUiSmallMarginTopBottom custTile" defaultSpan="L2 M2 S12">
 					<l:content>
 						<GenericTile ariaLabel="NEW/ETA" press="handleListPress" class="tileLayout" header="{i18n>etaReq}" subheader="{i18n>subReq}">
-							<TileContent unit="" footer="{DashboardCountModel>/0/EtaRequest}">
+							<TileContent unit="" footer="{= ${DashboardCountModel>/0/EtaRequest} + ${DashboardCountModel>/0/EtaApproved}}">
 								<!--<ImageContent src="sap-icon://complete" />-->
 							</TileContent>
 						</GenericTile>
-						<GenericTile ariaLabel="APPROVED/ETA" class="tileLayout" press="handleListPress" header="{i18n>etaTile}" subheader="{i18n>subApprvd}">
-							<TileContent unit="" footer="{DashboardCountModel>/0/EtaApproved}">
+						<!--<GenericTile ariaLabel="APPROVED/ETA" class="tileLayout" press="handleListPress" header="{i18n>etaTile}" subheader="{i18n>subApprvd}">-->
+						<!--	<TileContent unit="" footer="{DashboardCountModel>/0/EtaApproved}">-->
 								<!--<ImageContent src="sap-icon://product" />-->
-							</TileContent>
-						</GenericTile>
+						<!--	</TileContent>-->
+						<!--</GenericTile>-->
 						<GenericTile ariaLabel="PENDING/LOG" class="tileLayout" press="handleListPress" header="{i18n>logPending}" subheader="{i18n>subInProg}">
 							<TileContent unit="" footer="{DashboardCountModel>/0/LogsheetPending}">
 								<!--<ImageContent src="sap-icon://complete" />-->
@@ -68,21 +68,17 @@
 				</VBox>
 				<VBox width="66.8%">
 					<FlexBox alignContent="Center" class="sapUiSmallMarginBegin box-shadow">
-						<PlanningCalendar height="300px" startDate="{path: '/startDate'}" rows="{path: '/people'}" appointmentsVisualization="Filled"
+						<PlanningCalendar height="300px" startDate="{path: 'calenderSetModel>/startDate'}" rows="{path: 'calenderSetModel>/people'}" appointmentsVisualization="Filled"
 							appointmentSelect="handleAppointmentSelect" showEmptyIntervalHeaders="false" stickyHeader="true" showWeekNumbers="true">
 							<toolbarContent>
 								<Title text="Title" titleStyle="H4"/>
 							</toolbarContent>
 							<rows>
-								<PlanningCalendarRow icon="{pic}" title="{name}" text="{role}" appointments="{path : 'appointments', templateShareable: false}"
-									intervalHeaders="{path: 'headers', templateShareable: false}">
+								<PlanningCalendarRow appointments="{path : 'calenderSetModel>appointments', templateShareable: false}">
 									<appointments>
-										<unified:CalendarAppointment startDate="{start}" endDate="{end}" icon="{pic}" title="{title}" text="{info}" type="{type}"
-											tentative="{tentative}"></unified:CalendarAppointment>
+										<unified:CalendarAppointment startDate="{calenderSetModel>start}" endDate="{calenderSetModel>end}" text="{calenderSetModel>title}"
+											></unified:CalendarAppointment>
 									</appointments>
-									<intervalHeaders>
-										<unified:CalendarAppointment startDate="{start}" endDate="{end}" icon="{pic}" title="{title}" type="{type}"></unified:CalendarAppointment>
-									</intervalHeaders>
 								</PlanningCalendarRow>
 							</rows>
 						</PlanningCalendar>

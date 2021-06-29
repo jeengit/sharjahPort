@@ -8,7 +8,7 @@
 		<content>
 			<VBox class="sapUiContentPadding">
 				<Breadcrumbs currentLocationText="Log Sheet">
-					<Link href="{= ${loginModel>/uRole} === 'HARBOR_MASTER' ? '#dashboardHarbour' : ${loginModel>/uRole} === 'CONTROL_ROOM' ? '#dashboard' :  '#'}" text="Home"/>
+					<Link href="#{= ${loginModel>/uRole} === 'HARBOR_MASTER' ? 'dashboardHarbour' : ${loginModel>/uRole} === 'CONTROL_ROOM' ? 'dashboard' :  ${loginModel>/uRole} === 'CARGO' ? 'dashboardManifest' : ''}" text="Home"/>
 				</Breadcrumbs>
 				<t:Table id="logTable" rows="{etaListModel>/results}" selectionMode="None" ariaLabelledBy="title"
 					class="card tableCard no-margin">

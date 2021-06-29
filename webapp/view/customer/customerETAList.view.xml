@@ -7,12 +7,18 @@
 		<content>
 			<VBox class="sapUiContentPadding">
 				<Breadcrumbs currentLocationText="ETA List">
-					<Link press="onHomePress" text="Home"/>
+					<Link href="#{= ${loginModel>/uRole} === 'HARBOR_MASTER' ? 'dashboardHarbour' : ${loginModel>/uRole} === 'CONTROL_ROOM' ? 'dashboard' :  ${loginModel>/uRole} === 'CARGO' ? 'dashboardManifest' : ''}" text="Home"/>
 				</Breadcrumbs>
 				<t:Table id="etaTable" class="card tableCard no-margin" rows="{etaListModel>/results}" selectionMode="None" ariaLabelledBy="title">
 					<t:extension>
 						<OverflowToolbar style="Clear">
 							<Title id="title" text="{i18n>ETATable} ({etaListModel>/results/length})"/>
+							<SegmentedButton selectedKey="{etaListModel>/results/0/Status}" selectionChange="onBtnPress" class="sapUiSmallMarginTop segBtn segBtnList">
+								<items>
+									<SegmentedButtonItem text="New" key="NEW"/>
+									<SegmentedButtonItem text="Approved" key="APPROVED"/>
+								</items>
+							</SegmentedButton>
 							<ToolbarSpacer/>
 							<SearchField class="search" liveChange="onSearch" width="250px"/>
 							<core:Icon src="sap-icon://sorting-ranking" tooltip="{i18n>sort}" press="sortCategoriesAndName"/>

@@ -24,7 +24,7 @@ sap.ui.define([
 			this.onBtnPress();
 			oModel.setUseBatch(false);
 			var that = this;
-			oEvent.getParameter("arguments").id === "gateId" ? that.creategatepass() : oModel.read("/GatePassSet('" + oEvent.getParameter(
+			oEvent.getParameter("arguments").id === "creategatepass" ? that.creategatepass() : oModel.read("/GatePassSet('" + oEvent.getParameter(
 				"arguments").id + "')", {
 
 				success: function(data) {

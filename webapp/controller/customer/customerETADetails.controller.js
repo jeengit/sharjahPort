@@ -28,7 +28,7 @@ sap.ui.define([
 			};
 			var pageId = this.getView().getId();
 			var that = this;
-			if (odata.id === "createETA") {
+			if (odata.id === "createetaDetails") {
 				var etaDetailsData = {
 					"ETANo": "",
 					"VRN": "",

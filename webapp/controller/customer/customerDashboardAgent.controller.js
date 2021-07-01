@@ -14,6 +14,7 @@ sap.ui.define([
 		_onObjectMatched: function () {
 			this.getUserName();
 			this.getModel("AgentDashboardSet","DashboardCountModel");
+			this.getModel("CallSignSearchSet","callSignModel");
 			var that = this;
 			setTimeout(function() {
 				var oModData = that.getView().getModel("DashboardCountModel").getData();

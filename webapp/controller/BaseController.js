@@ -152,16 +152,21 @@ sap.ui.define([
 			});
 		},
 		handleMenuItemPress: function(oEvent) {
-			console.log(oEvent.getParameter("item"));
-			var oItem = oEvent.getParameter("item").getText();
-			console.log(oItem);
-			oEvent.getParameter("item").getText() === "Gate Pass Request" ? this.getRouter().navTo("gatepass", {
-				sPath: "0",
-				id: "gateId"
-			}) : this.getRouter().navTo("etaDetails", {
-				sPath: "0",
-				id: "createETA"
-			});
+			if (oEvent.getParameter("item").getIcon() !== "NA") {
+				if (oEvent.getParameter("item").getIcon() !== "hotWorks") {
+					this.getRouter().navTo(oEvent.getParameter("item").getIcon(), {
+						sPath: "0",
+						id: "create" + oEvent.getParameter("item").getIcon()
+					});
+				} else {
+					var oView = this.getView();
+					if (!this.dialogHWA) {
+						this.dialogHWA = sap.ui.xmlfragment("com.demo.sharjahPort.view.fragments.hotWorksAgentCreate", this);
+						oView.addDependent(this.dialogHWA);
+					}
+					this.dialogHWA.open();
+				}
+			} 
 			sap.ui.getCore().setModel(new JSONModel({}), "navModel");
 		},
 		handlePressOpenMenu: function(oEvent) {
@@ -301,6 +306,28 @@ sap.ui.define([
 			} else {
 				return '' + Math.round(elapsed / msPerYear) + ' years ago';
 			}
+		},
+		closeHotWorkPopup : function(){
+			this.dialogHWA.close();
+		},
+		handleCallSignHotWorks : function(evt){
+			sap.ui.core.BusyIndicator.show();
+			var oModel = this.getOwnerComponent().getModel("s4Model");
+			oModel.setUseBatch(false);
+			var that = this;
+			oModel.read("/CallSignHotWorksSet", {
+					urlParameters: {
+						"$filter":  "CallSign eq '" + evt.getSource().getSelectedKey() + "'"
+					},
+					success: function(data) {
+						that.getView().setModel(new JSONModel(data.results), "hotWorksModel");
+						sap.ui.core.BusyIndicator.hide();
+					},
+					error: function(oResponse) {
+						sap.m.MessageToast.show(oResponse.statusText);
+						sap.ui.core.BusyIndicator.hide();
+					}
+				});
 		}
 	});
 });

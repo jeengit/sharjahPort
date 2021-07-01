@@ -78,12 +78,14 @@
 			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			},
-			{
-				"uri": "css/custom.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				},
+				{
+					"uri": "css/custom.css"
+				}
+			]
 		},
 		"routing": {
 			"config": {
@@ -95,121 +97,136 @@
 				"controlId": "app",
 				"clearControlAggregation": false
 			},
-			"routes": [{
-				"name": "dashboard",
-				"pattern": "dashboard",
-				"target": [
-					"home",
-					"dashboard"
-				]
-			}, {
-				"name": "etaList",
-				"pattern": "etaList={sPath}&type='{type}'",
-				"target": [
-					"home",
-					"etaList"
-				]
-			}, {
-				"name": "etaDetails",
-				"pattern": "etaDetails/{sPath}/{id}",
-				"target": [
-					"home",
-					"etaDetails"
-				]
-			}, {
-				"name": "logList",
-				"pattern": "logList={sPath}&type='{type}'",
-				"target": [
-					"home",
-					"logList"
-				]
-			}, {
-				"name": "logDetails",
-				"pattern": "logDetails/{sPath}/{id}",
-				"target": [
-					"home",
-					"logDetails"
-				]
-			}, {
-				"name": "vessel",
-				"pattern": "vessel",
-				"target": [
-					"home",
-					"vessel"
-				]
-			}, {
-				"name": "dashboardHarbour",
-				"pattern": "dashboardHarbour",
-				"target": [
-					"home",
-					"dashboardHarbour"
-				]
-			}, {
-				"name": "dashboardAgent",
-				"pattern": "dashboardAgent",
-				"target": [
-					"home",
-					"dashboardAgent"
-				]
-			}, {
-				"name": "dashboardManifest",
-				"pattern": "dashboardManifest",
-				"target": [
-					"home",
-					"dashboardManifest"
-				]
-			}, {
-				"name": "manifest",
-				"pattern": "manifest={sPath}&type='{type}'",
-				"target": [
-					"home",
-					"manifest"
-				]
-			}, {
-				"name": "manifestDetails",
-				"pattern": "manifestDetails/{sPath}/{id}/{status}",
-				"target": [
-					"home",
-					"manifestDetails"
-				]
-			}, {
-				"name": "deliveryDetails",
-				"pattern": "deliveryDetails/{sPath}/{id}",
-				"target": [
-					"home",
-					"deliveryDetails"
-				]
-			},{
-				"name": "tallySheetClerkList",
-				"pattern": "tallySheetClerkList",
-				"target": [
-					"home",
-					"tallySheetClerkList"
-				]
-			},{
-				"name": "tallySheetClerkDetails",
-				"pattern": "tallySheetClerkDetails/{id}",
-				"target": [
-					"home",
-					"tallySheetClerkDetails"
-				]
-			},
-			{
-				"name": "tallySheetCargo",
-				"pattern": "tallySheetCargo/{sPath}/{id}/{status}",
-				"target": [
-					"home",
-					"tallySheetCargo"
-				]
-			},
+			"routes": [
 				{
-				"name": "gatepass",
-				"pattern": "gatepass/{sPath}/{id}",
-				"target": [
-					"home",
-					"gatepass"
-				]
-			}],
+					"name": "dashboard",
+					"pattern": "dashboard",
+					"target": [
+						"home",
+						"dashboard"
+					]
+				},
+				{
+					"name": "etaList",
+					"pattern": "etaList={sPath}&type='{type}'",
+					"target": [
+						"home",
+						"etaList"
+					]
+				},
+				{
+					"name": "etaDetails",
+					"pattern": "etaDetails/{sPath}/{id}",
+					"target": [
+						"home",
+						"etaDetails"
+					]
+				},
+				{
+					"name": "logList",
+					"pattern": "logList={sPath}&type='{type}'",
+					"target": [
+						"home",
+						"logList"
+					]
+				},
+				{
+					"name": "logDetails",
+					"pattern": "logDetails/{sPath}/{id}",
+					"target": [
+						"home",
+						"logDetails"
+					]
+				},
+				{
+					"name": "vessel",
+					"pattern": "vessel",
+					"target": [
+						"home",
+						"vessel"
+					]
+				},
+				{
+					"name": "dashboardHarbour",
+					"pattern": "dashboardHarbour",
+					"target": [
+						"home",
+						"dashboardHarbour"
+					]
+				},
+				{
+					"name": "dashboardAgent",
+					"pattern": "dashboardAgent",
+					"target": [
+						"home",
+						"dashboardAgent"
+					]
+				},
+				{
+					"name": "dashboardManifest",
+					"pattern": "dashboardManifest",
+					"target": [
+						"home",
+						"dashboardManifest"
+					]
+				},
+				{
+					"name": "manifest",
+					"pattern": "manifest={sPath}&type='{type}'",
+					"target": [
+						"home",
+						"manifest"
+					]
+				},
+				{
+					"name": "manifestDetails",
+					"pattern": "manifestDetails/{sPath}/{id}/{status}",
+					"target": [
+						"home",
+						"manifestDetails"
+					]
+				},
+				{
+					"name": "deliveryDetails",
+					"pattern": "deliveryDetails/{sPath}/{id}",
+					"target": [
+						"home",
+						"deliveryDetails"
+					]
+				},
+				{
+					"name": "tallySheetClerkList",
+					"pattern": "tallySheetClerkList",
+					"target": [
+						"home",
+						"tallySheetClerkList"
+					]
+				},
+				{
+					"name": "tallySheetClerkDetails",
+					"pattern": "tallySheetClerkDetails/{id}",
+					"target": [
+						"home",
+						"tallySheetClerkDetails"
+					]
+				},
+				{
+					"name": "tallySheetCargo",
+					"pattern": "tallySheetCargo/{sPath}/{id}/{status}",
+					"target": [
+						"home",
+						"tallySheetCargo"
+					]
+				},
+				{
+					"name": "gatepass",
+					"pattern": "gatepass/{sPath}/{id}",
+					"target": [
+						"home",
+						"gatepass"
+					]
+				}
+			],
 			"targets": {
 				"home": {
 					"viewType": "XML",
@@ -283,7 +300,7 @@
 					"viewType": "XML",
 					"viewName": "tallySheetCargo"
 				},
-					"gatepass": {
+				"gatepass": {
 					"viewType": "XML",
 					"viewName": "gatepass"
 				}

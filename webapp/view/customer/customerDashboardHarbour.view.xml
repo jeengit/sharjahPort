@@ -68,15 +68,15 @@
 				</VBox>
 				<VBox width="66.8%">
 					<FlexBox alignContent="Center" class="sapUiSmallMarginBegin box-shadow">
-						<PlanningCalendar height="300px" startDate="{path: 'calenderSetModel>/startDate'}" rows="{path: 'calenderSetModel>/people'}" appointmentsVisualization="Filled"
+						<PlanningCalendar  startDate="{path: 'calenderSetModel>/startDate'}" rows="{path: 'calenderSetModel>/CalendarSet'}" appointmentsVisualization="Filled"
 							appointmentSelect="handleAppointmentSelect" showEmptyIntervalHeaders="false" stickyHeader="true" showWeekNumbers="true">
 							<toolbarContent>
 								<Title text="Title" titleStyle="H4"/>
 							</toolbarContent>
 							<rows>
-								<PlanningCalendarRow appointments="{path : 'calenderSetModel>appointments', templateShareable: false}">
+								<PlanningCalendarRow appointments="{path : 'calenderSetModel>results', templateShareable: false}">
 									<appointments>
-										<unified:CalendarAppointment startDate="{calenderSetModel>start}" endDate="{calenderSetModel>end}" text="{calenderSetModel>title}"
+										<unified:CalendarAppointment startDate="{calenderSetModel>EstdDate}" endDate="{calenderSetModel>EndDate}" text="{calenderSetModel>Status}"
 											></unified:CalendarAppointment>
 									</appointments>
 								</PlanningCalendarRow>

@@ -663,6 +663,10 @@ html.sap-desktop .sapMBtn:focus>.sapMFocusable {
 .segBtn li {
     width: auto!important;
     padding: 0!important;
+    border-right: 1px solid #eee;
+}
+.segBtn li:last-child{
+	border:none;
 }
 .segBtn li .sapMSegBBtnInner {
     height: 1.5rem!important;
@@ -682,4 +686,13 @@ html.sap-desktop .sapMBtn:focus>.sapMFocusable {
 }
 .dialogBox{
 	box-shadow: 5px 5px 10px rgb(0 0 0 / 50%);
+}
+.custTile .sapMFlexItem {
+    width: calc(100% - 1rem);
+}
+.custTile .sapSuiteCpMC{
+	width:100%!important;
+}
+.chart .sapMFlexItem:last-child {
+    width: calc(100% - 1rem);
 }

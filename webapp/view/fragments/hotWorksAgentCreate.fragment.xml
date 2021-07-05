@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
-	<Dialog title="Hot Works" class="dialogBox objLayoutClass editMode">
+	<Dialog title="Hot Works" class="dialogBox objLayoutClass editMode" id="hotWorksDialog">
 		<content>
 			<FlexBox class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop" direction="Column">
 				<HBox width="100%" alignItems="Center" class="sapUiTinyMarginEnd">
@@ -7,7 +7,7 @@
 						<Label text="{i18n>CallSign}" class="sapUiTinyMarginEnd"/>
 					</HBox>
 					<HBox width="60%">
-						<ComboBox change="handleCallSignHotWorks" placeholder="Call Sign" width="100%" items="{callSignModel>/}">
+						<ComboBox change="handleCallSignHotWorks" value="{hotWorksModel>/CallSign}" placeholder="Call Sign" width="100%" items="{callSignModel>/}">
 							<core:Item key="{callSignModel>CallSign}" text="{callSignModel>CallSign}"/>
 						</ComboBox>
 					</HBox>
@@ -17,11 +17,7 @@
 						<Label text="Port" class="sapUiTinyMarginEnd"/>
 					</HBox>
 					<HBox width="60%">
-						<ComboBox placeholder="{i18n>select}" value="{crtGateModel>/Port}" width="100%" items="">
-							<core:Item key="HAMRIYA" text="HAMRIYA"/>
-							<core:Item key="KHORFAKKAN" text="KHORFAKKAN"/>
-							<core:Item key="MENAKALID" text="MENAKALID"/>
-						</ComboBox>
+						<Input enabled="false" value="{hotWorksModel>/Port}"/>
 					</HBox>
 				</HBox>
 			</FlexBox>
@@ -31,7 +27,7 @@
 						<Label text="{i18n>VesselName}" class="sapUiTinyMarginEnd"/>
 					</HBox>
 					<HBox width="60%">
-						<Input value=""/>
+						<Input enabled="false" value="{hotWorksModel>/VesselName}"/>
 					</HBox>
 				</HBox>
 				<HBox width="100%" alignItems="Center" class="sapUiTinyMarginEnd">
@@ -39,17 +35,17 @@
 						<Label text="IMO Number" class="sapUiTinyMarginEnd"/>
 					</HBox>
 					<HBox width="60%">
-						<Input value=""/>
+						<Input enabled="false" value="{hotWorksModel>/ImoNo}"/>
 					</HBox>
 				</HBox>
 			</FlexBox>
 			<FlexBox class="sapUiSmallMarginBeginEnd" direction="Column">
 				<HBox width="100%" alignItems="Center" class="sapUiTinyMarginEnd">
 					<HBox width="40%">
-						<Label text="Call Sign" class="sapUiTinyMarginEnd"/>
+						<Label text="ETA Number" class="sapUiTinyMarginEnd"/>
 					</HBox>
 					<HBox width="60%">
-						<Input value=""/>
+						<Input enabled="false" value="{hotWorksModel>/EtaNo}"/>
 					</HBox>
 				</HBox>
 				<HBox width="100%" alignItems="Center" class="sapUiTinyMarginEnd">
@@ -57,7 +53,7 @@
 						<Label text="Agent Name" class="sapUiTinyMarginEnd"/>
 					</HBox>
 					<HBox width="60%">
-						<Input value=""/>
+						<Input enabled="false" value="{hotWorksModel>/AgentName}"/>
 					</HBox>
 				</HBox>
 			</FlexBox>
@@ -67,7 +63,7 @@
 						<Label text="Agent Code" class="sapUiTinyMarginEnd"/>
 					</HBox>
 					<HBox width="60%">
-						<Input value=""/>
+						<Input enabled="false" value="{hotWorksModel>/AgentCode}"/>
 					</HBox>
 				</HBox>
 				<HBox width="100%" alignItems="Center" class="sapUiTinyMarginEnd">
@@ -75,7 +71,7 @@
 						<Label text="Puropse" class="sapUiTinyMarginEnd"/>
 					</HBox>
 					<HBox width="60%">
-						<TextArea width="100%" value=""/>
+						<TextArea width="100%" value="{hotWorksModel>/Purpose}"/>
 					</HBox>
 				</HBox>
 			</FlexBox>
@@ -84,7 +80,7 @@
 			<Button class="btn-sm" type="Reject" text="Cancel" press="closeHotWorkPopup"/>
 		</beginButton>
 		<endButton>
-			<Button class="btn-sm btn-primary text-light" type="Emphasized" text="Create" press=""/>
+			<Button tooltip="CREATE" enabled="{= ${hotWorksModel>/CallSign} !== '' ? true: false}" class="btn-sm btn-primary text-light" type="Emphasized" text="Create" press="handleCreateHotWorks"/>
 		</endButton>
 	</Dialog>
 </core:FragmentDefinition>

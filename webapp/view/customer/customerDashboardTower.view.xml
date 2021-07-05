@@ -1,12 +1,12 @@
 <mvc:View controllerName="com.demo.sharjahPort.controller.customer.customerDashboardTower" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
-	displayBlock="true" xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:u="sap.ui.unified" xmlns:l="sap.ui.layout" xmlns:f="sap.f" xmlns:card="sap.f.cards"
-	xmlns:fm="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml">
+	displayBlock="true" xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:u="sap.ui.unified" xmlns:l="sap.ui.layout" xmlns:f="sap.f"
+	xmlns:card="sap.f.cards" xmlns:fm="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page showHeader="true" class="sapUiResponsiveContentPadding">
 		<customHeader>
 			<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.TopNav" type="XML"/>
 		</customHeader>
 		<content>
-						<VBox class="section">
+			<VBox class="section">
 				<html:div>
 					<IconTabBar select="handleTabPress" expandable="false" class="tabs">
 						<items>
@@ -15,13 +15,9 @@
 									<CustomListItem press="openStatusDetails" type="Active">
 										<FlexBox alignItems="Center">
 											<HBox justifyContent="Center" class="boxLeft" width="38%"><Text text="{berthStatusModel>BerthNumber}"/>
-											<customData>
-    <core:CustomData xmlns:core="sap.ui.core"
-      key="bertStatus-{berthStatusModel>Status}"
-      value="{berthStatusModel>Status}"
-      writeToDom="true"
-    />
-  </customData>
+												<customData>
+													<core:CustomData xmlns:core="sap.ui.core" key="bertStatus-{berthStatusModel>Status}" value="{berthStatusModel>Status}" writeToDom="true"/>
+												</customData>
 											</HBox>
 											<HBox direction="Column" width="52%" class="sapUiTinyMargin">
 												<Text class="title" text="{berthStatusModel>CallSign}"/>
@@ -30,15 +26,16 @@
 											<HBox class="sapUiTinyMarginEnd" justifyContent="End" width="10%">
 												<core:Icon src="sap-icon://cancel" visible="{= ${berthStatusModel>Status} === 'OCCUPIED' ? true : false }" color="red" tooltip="OCCUPIED"/>
 												<core:Icon src="sap-icon://away" visible="{= ${berthStatusModel>Status} === 'ESTIMATED' ? true : false }" color="orange" tooltip="ESTIMATED"/>
-												<core:Icon src="sap-icon://sys-enter" visible="{= ${berthStatusModel>Status} === 'AVAILABLE' ? true : false }" color="green" tooltip="AVAILABLE"/>
+												<core:Icon src="sap-icon://sys-enter" visible="{= ${berthStatusModel>Status} === 'AVAILABLE' ? true : false }" color="green"
+													tooltip="AVAILABLE"/>
 											</HBox>
 										</FlexBox>
 									</CustomListItem>
 								</List>
 							</IconTabFilter>
-						<IconTabFilter text="{i18n>mapView}" key="map">
+							<IconTabFilter text="{i18n>mapView}" key="map">
 								<FlexBox width="100%" height="390px">
-									<HBox width="100%" height="390px" id="map_canvas" fitContainer="true" justifyContent="Center" alignItems="Center" />
+									<HBox width="100%" height="390px" id="map_canvas" fitContainer="true" justifyContent="Center" alignItems="Center"/>
 								</FlexBox>
 							</IconTabFilter>
 						</items>
@@ -46,77 +43,76 @@
 				</html:div>
 			</VBox>
 			<HBox>
-			<VBox width="80%">
-			<VBox class="section">
-				<Title text="Dashboard" class="heading"/>
-					<l:Grid class="sapUiSmallMarginTopBottom custTile" defaultSpan="L2 M2 S12">
-						<l:content>
-							<GenericTile ariaLabel="APPROVED/ETA" press="handleListPress" class="tileLayout" header="{i18n>etaTile}" subheader="{i18n>subApprvd}">
-								<TileContent unit="" footer="{DashboardCountModel>/0/EtaApproved}">
-									<!--<ImageContent src="sap-icon://complete" />-->
-								</TileContent>
-							</GenericTile>
-							<GenericTile ariaLabel="NEW/ETA" press="handleListPress" class="tileLayout" header="{i18n>etaReq}" subheader="{i18n>subReq}">
-								<TileContent unit="" footer="{DashboardCountModel>/0/EtaRequest}">
-									<!--<ImageContent src="sap-icon://product" />-->
-								</TileContent>
-							</GenericTile>
-							<GenericTile ariaLabel="PENDING/LOG" press="handleListPress" class="tileLayout" header="{i18n>logPending}" subheader="{i18n>subInProg}">
-								<TileContent unit="" footer="{DashboardCountModel>/0/LogsheetPending}">
-									<!--<ImageContent src="sap-icon://complete" />-->
-								</TileContent>
-							</GenericTile>
-							<GenericTile ariaLabel="CLOSED/LOG" press="handleListPress" class="tileLayout" header="{i18n>logclosed}" subheader="{i18n>agentPay}">
-								<TileContent unit="" footer="{DashboardCountModel>/0/LogsheetClosed}">
-									<!--<ImageContent src="sap-icon://product" />-->
-								</TileContent>
-							</GenericTile>
-							<GenericTile  class="tileLayout" header="{i18n>PortClearance}" subheader="{i18n>subPcReq}">
-								<TileContent unit="" footer="{DashboardCountModel>/0/PortClearance}">
-									<!--<ImageContent src="sap-icon://complete" />-->
-								</TileContent>
-							</GenericTile>
-						</l:content>
-					</l:Grid>
-			</VBox>
-
-			</VBox>
-			<VBox class="right-side-bar-vsl" width="25%">
+				<VBox width="80%">
+					<VBox class="section">
+						<Title text="Dashboard" class="heading"/>
+						<l:Grid class="sapUiSmallMarginTopBottom custTile" defaultSpan="L2 M2 S12">
+							<l:content>
+								<GenericTile ariaLabel="APPROVED/ETA" press="handleListPress" class="tileLayout" header="{i18n>etaTile}" subheader="{i18n>subApprvd}">
+									<TileContent unit="" footer="{DashboardCountModel>/0/EtaApproved}">
+										<!--<ImageContent src="sap-icon://complete" />-->
+									</TileContent>
+								</GenericTile>
+								<GenericTile ariaLabel="NEW/ETA" press="handleListPress" class="tileLayout" header="{i18n>etaReq}" subheader="{i18n>subReq}">
+									<TileContent unit="" footer="{DashboardCountModel>/0/EtaRequest}">
+										<!--<ImageContent src="sap-icon://product" />-->
+									</TileContent>
+								</GenericTile>
+								<GenericTile ariaLabel="PENDING/LOG" press="handleListPress" class="tileLayout" header="{i18n>logPending}" subheader="{i18n>subInProg}">
+									<TileContent unit="" footer="{DashboardCountModel>/0/LogsheetPending}">
+										<!--<ImageContent src="sap-icon://complete" />-->
+									</TileContent>
+								</GenericTile>
+								<GenericTile ariaLabel="CLOSED/LOG" press="handleListPress" class="tileLayout" header="{i18n>logclosed}" subheader="{i18n>agentPay}">
+									<TileContent unit="" footer="{DashboardCountModel>/0/LogsheetClosed}">
+										<!--<ImageContent src="sap-icon://product" />-->
+									</TileContent>
+								</GenericTile>
+								<GenericTile class="tileLayout" header="{i18n>PortClearance}" subheader="{i18n>subPcReq}">
+									<TileContent unit="" footer="{DashboardCountModel>/0/PortClearance}">
+										<!--<ImageContent src="sap-icon://complete" />-->
+									</TileContent>
+								</GenericTile>
+							</l:content>
+						</l:Grid>
+					</VBox>
+				</VBox>
+				<VBox class="right-side-bar-vsl" width="25%">
 					<Title text="Vessel Movement" class="heading"/>
-			<f:Card class="vsl-card">
-<!--	<f:header>
+					<f:Card class="vsl-card">
+						<!--	<f:header>
 		<card:Header title="Vessel Movement" subtitle="" />
 	</f:header> -->
-	<f:content>
-		<VBox class="vsl-side-vbox">
-			<HBox class="vsl-side-hbox inp-hbox1"><Label class="vsl-side-labl input-vl-lbl" text="Call Sign:" ></Label>
-			<Input class="input-vsl-class" id="callSignInputId" showSuggestion="true" suggestionItemSelected="selectCallSign"
-							suggest="searchCallSignData" autocomplete="false"
-							suggestionItems="{callSignSearchModel>/results}">
-								<suggestionItems>
-                                    <core:Item key="{callSignSearchModel>CallSign}" text="{callSignSearchModel>CallSign}" />
-                                </suggestionItems>
-                            </Input>
-			
-			</HBox>
-			<HBox class="vsl-side-hbox"><Label class="vsl-side-labl" text="Vessel Name:" ></Label><Text class="vsl-side-value" text="{bearthStatusDataModel>/VesselName}" /></HBox>
-			<HBox class="vsl-side-hbox"><Label class="vsl-side-labl" text="IMO Number:" ></Label><Text class="vsl-side-value" text="{bearthStatusDataModel>/ImoNo}" /></HBox>
-			<HBox class="vsl-side-hbox"><Label class="vsl-side-labl" text="Berth Number:" ></Label><Text class="vsl-side-value" text="{bearthStatusDataModel>/BerthNumber}" /></HBox>
-			<HBox class="vsl-side-hbox"><Label class="vsl-side-labl" text="Current Status:" ></Label><Text class="vsl-side-value" text="{bearthStatusDataModel>/cs}" /></HBox>
-			<HBox class="vsl-side-hbox sel-hbox inp-hbox2"><Label class="vsl-side-labl input-vl-lbl" text="Update Status:" ></Label>
-			
-			<Select class="select-vsl-class" id="upVesselStatusId" change="fnChangeStatusBox"
-					items="{vesselMovementStatusModel>/items}">
-					<core:ListItem key="{vesselMovementStatusModel>id}" text="{vesselMovementStatusModel>name}" />
-			</Select>
-			
-			</HBox>
-			<Button enabled="false" id="VesselStatusUpdateBtn" type="Emphasized" text="Update" press="fnUpdateStatus" />
-		</VBox>
-
-	</f:content>
-</f:Card>	
-</VBox>
+						<f:content>
+							<VBox class="vsl-side-vbox">
+								<HBox class="vsl-side-hbox inp-hbox1">
+									<Label class="vsl-side-labl input-vl-lbl" text="Call Sign:"></Label>
+									<Input class="input-vsl-class" id="callSignInputId" showSuggestion="true" suggestionItemSelected="selectCallSign"
+										suggest="searchCallSignData" autocomplete="false" suggestionItems="{callSignSearchModel>/results}">
+										<suggestionItems>
+											<core:Item key="{callSignSearchModel>CallSign}" text="{callSignSearchModel>CallSign}"/>
+										</suggestionItems>
+									</Input>
+								</HBox>
+								<HBox class="vsl-side-hbox">
+									<Label class="vsl-side-labl" text="Vessel Name:"></Label><Text class="vsl-side-value" text="{bearthStatusDataModel>/VesselName}"/></HBox>
+								<HBox class="vsl-side-hbox">
+									<Label class="vsl-side-labl" text="IMO Number:"></Label><Text class="vsl-side-value" text="{bearthStatusDataModel>/ImoNo}"/></HBox>
+								<HBox class="vsl-side-hbox">
+									<Label class="vsl-side-labl" text="Berth Number:"></Label><Text class="vsl-side-value" text="{bearthStatusDataModel>/BerthNumber}"/></HBox>
+								<HBox class="vsl-side-hbox">
+									<Label class="vsl-side-labl" text="Current Status:"></Label><Text class="vsl-side-value" text="{bearthStatusDataModel>/cs}"/></HBox>
+								<HBox class="vsl-side-hbox sel-hbox inp-hbox2">
+									<Label class="vsl-side-labl input-vl-lbl" text="Update Status:"></Label>
+									<Select class="select-vsl-class" id="upVesselStatusId" change="fnChangeStatusBox" items="{vesselMovementStatusModel>/items}">
+										<core:ListItem key="{vesselMovementStatusModel>id}" text="{vesselMovementStatusModel>name}"/>
+									</Select>
+								</HBox>
+								<Button enabled="false" id="VesselStatusUpdateBtn" type="Emphasized" text="Update" press="fnUpdateStatus"/>
+							</VBox>
+						</f:content>
+					</f:Card>
+				</VBox>
 			</HBox>
 			<!--<VBox class="section">-->
 			<!--<FlexBox width="100%">-->

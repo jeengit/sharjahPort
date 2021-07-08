@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
-	<Dialog title="Hot Works" class="dialogBox objLayoutClass editMode" id="hotWorksDialog">
+	<Dialog title="Hot Works ({= ${hotWorksModel>/CallSign} ? ${hotWorksModel>/LogSheetNo} : 'New'})" class="dialogBox objLayoutClass editMode">
 		<content>
 			<FlexBox class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop" direction="Column">
 				<HBox width="100%" alignItems="Center" class="sapUiTinyMarginEnd">
@@ -7,7 +7,7 @@
 						<Label text="{i18n>CallSign}" class="sapUiTinyMarginEnd"/>
 					</HBox>
 					<HBox width="60%">
-						<ComboBox change="handleCallSignHotWorks" value="{hotWorksModel>/CallSign}" placeholder="Call Sign" width="100%" items="{callSignModel>/}">
+						<ComboBox enabled="{= ${hotWorksModel>/CallSign} ? false : true}" change="handleCallSignHotWorks" selectedKey="{hotWorksModel>/CallSign}" value="{hotWorksModel>/CallSign}" placeholder="Call Sign" width="100%" items="{callSignModel>/}">
 							<core:Item key="{callSignModel>CallSign}" text="{callSignModel>CallSign}"/>
 						</ComboBox>
 					</HBox>
@@ -77,10 +77,10 @@
 			</FlexBox>
 		</content>
 		<beginButton>
-			<Button class="btn-sm" type="Reject" text="Cancel" press="closeHotWorkPopup"/>
+			<Button class="btn-sm" type="Reject" text="Close" press="closeHotWorkPopup"/>
 		</beginButton>
 		<endButton>
-			<Button tooltip="CREATE" enabled="{= ${hotWorksModel>/CallSign} !== '' ? true: false}" class="btn-sm btn-primary text-light" type="Emphasized" text="Create" press="handleCreateHotWorks"/>
+			<Button visible="{= ${hotWorksModel>/Flag} === '' ? false: true}" tooltip="CREATE" enabled="{= ${hotWorksModel>/CallSign} ? true: false}" class="btn-sm btn-primary text-light" type="Emphasized" text="Create" press="handleCreateHotWorks"/>
 		</endButton>
 	</Dialog>
 </core:FragmentDefinition>

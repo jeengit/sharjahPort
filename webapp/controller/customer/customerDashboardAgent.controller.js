@@ -37,7 +37,7 @@ sap.ui.define([
 			sap.ui.core.BusyIndicator.show();
 			var status = oEvent.getSource().getAriaLabel().split("/")[0];
 			var type = oEvent.getSource().getAriaLabel().split("/")[1];
-			var route = type === "ETA" ? "etaList" : "logList";
+			var route = type === "ETA" || type === "HOTWORKS" ? "etaList" : "logList";
 			this.getRouter().navTo(route, {
 				sPath: status,
 				type: type

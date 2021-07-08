@@ -166,7 +166,7 @@ sap.ui.define([
 					}
 					this.dialogHWA.open();
 				}
-			} 
+			}
 			sap.ui.getCore().setModel(new JSONModel({}), "navModel");
 		},
 		handlePressOpenMenu: function(oEvent) {
@@ -307,45 +307,57 @@ sap.ui.define([
 				return '' + Math.round(elapsed / msPerYear) + ' years ago';
 			}
 		},
-		closeHotWorkPopup : function(){
+		closeHotWorkPopup: function() {
 			this.dialogHWA.close();
 		},
-		handleCallSignHotWorks : function(evt){
+		handleCallSignHotWorks: function(evt) {
 			sap.ui.core.BusyIndicator.show();
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
 			var that = this;
 			oModel.read("/CallSignHotWorksSet", {
-					urlParameters: {
-						"$filter":  "CallSign eq '" + evt.getSource().getSelectedKey() + "'"
-					},
-					success: function(data) {
-						that.getView().setModel(new JSONModel(data.results[0]), "hotWorksModel");
-						sap.ui.core.BusyIndicator.hide();
-					},
-					error: function(oResponse) {
-						sap.m.MessageToast.show(oResponse.statusText);
-						sap.ui.core.BusyIndicator.hide();
-					}
-				});
+				urlParameters: {
+					"$filter": "CallSign eq '" + evt.getSource().getSelectedKey() + "'"
+				},
+				success: function(data) {
+					that.getView().setModel(new JSONModel(data.results[0]), "hotWorksModel");
+					sap.ui.core.BusyIndicator.hide();
+				},
+				error: function(oResponse) {
+					sap.m.MessageToast.show(oResponse.statusText);
+					sap.ui.core.BusyIndicator.hide();
+				}
+			});
 		},
-		handleCreateHotWorks: function(evt){
+		handleCreateHotWorks: function(evt) {
 			sap.ui.core.BusyIndicator.show();
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
-			var oEntry = this.getView().getModel("hotWorksModel").getData();
-			oEntry['Flag'] = evt.getSource().getTooltip();
-			oModel.create("/CallSignHotWorksSet", oEntry,{
-					success: function(data) {
-						this.dialogHWA.close();
-						sap.m.MessageToast.show("Hotworks Created Successfully..");
-						sap.ui.core.BusyIndicator.hide();
-					},
-					error: function(oResponse) {
-						sap.m.MessageToast.show(oResponse.statusText);
-						sap.ui.core.BusyIndicator.hide();
-					}
-				});
+			var data = this.getView().getModel("hotWorksModel").getData();
+			var oEntry = {
+					"LogSheetNo": data.LogSheetNo,
+					"EtaNo": data.EtaNo,
+					"Port": data.Port,
+					"VesselName": data.VesselName,
+					"Purpose": data.Purpose,
+					"ImoNo": data.ImoNo,
+					"CallSign": data.CallSign,
+					"AgentName": data.AgentName,
+					"AgentCode": data.AgentCode,
+					"Flag": evt.getSource().getTooltip()
+				}
+				var that = this;
+				oModel.create("/HotWorksSet", oEntry,{
+						success: function(data) {
+							that.dialogHWA.close();
+							sap.m.MessageToast.show("Hotworks Created Successfully..");
+							sap.ui.core.BusyIndicator.hide();
+						},
+						error: function(oResponse) {
+							sap.m.MessageToast.show(oResponse.statusText);
+							sap.ui.core.BusyIndicator.hide();
+						}
+					});
 		}
 	});
 });

@@ -6,14 +6,14 @@
 		</customHeader>
 		<content>
 			<VBox class="sapUiContentPadding">
-				<Breadcrumbs currentLocationText="ETA List">
+				<Breadcrumbs currentLocationText="{= ${etaListModel>/results/0/Status} ? 'ETA' : 'Hot Works'}">
 					<Link href="#{= ${loginModel>/uRole} === 'HARBOR_MASTER' ? 'dashboardHarbour' : ${loginModel>/uRole} === 'CONTROL_ROOM' ? 'dashboard' :  ${loginModel>/uRole} === 'CARGO' ? 'dashboardManifest' : ${loginModel>/uRole} === 'AGENT' ? 'dashboardAgent':''}" text="Home"/>
 				</Breadcrumbs>
 				<t:Table id="etaTable" class="card tableCard no-margin" rows="{etaListModel>/results}" selectionMode="None" ariaLabelledBy="title">
 					<t:extension>
 						<OverflowToolbar style="Clear">
-							<Title id="title" text="{i18n>ETATable} ({etaListModel>/results/length})"/>
-							<SegmentedButton selectedKey="{etaListModel>/results/0/Status}" selectionChange="onBtnPress" class="sapUiSmallMarginTop segBtn segBtnList">
+							<Title id="title" text="{= ${etaListModel>/results/0/Status} ? ${i18n>ETATable} : 'Hot Works Table'} ({etaListModel>/results/length})"/>
+							<SegmentedButton visible="{= ${etaListModel>/results/0/Status} ? true : false}" selectedKey="{etaListModel>/results/0/Status}" selectionChange="onBtnPress" class="sapUiSmallMarginTop segBtn segBtnList">
 								<items>
 									<SegmentedButtonItem text="New" key="NEW"/>
 									<SegmentedButtonItem text="Approved" key="APPROVED"/>
@@ -28,16 +28,22 @@
 						</OverflowToolbar>
 					</t:extension>
 					<t:columns>
-						<t:Column sortProperty="ETANo">
-							<Label text="{i18n>ETANumber}"/>
+						<t:Column sortProperty="EtaNo">
+							<Label text="{= ${etaListModel>ETANo} ? ${i18n>ETANumber} : 'LogSheetNo'}"/>
 							<t:template>
-								<Link press="onETADetailsPress" text="{etaListModel>ETANo}" wrapping="false"/>
+								<Link press="onETADetailsPress" text="{= ${etaListModel>ETANo} ? ${etaListModel>ETANo} : ${etaListModel>LogSheetNo}}" wrapping="false"/>
+							</t:template>
+						</t:Column>
+						<t:Column sortProperty="CallSign">
+							<Label text="{i18n>CallSign}"/>
+							<t:template>
+								<Text text="{etaListModel>CallSign}"/>
 							</t:template>
 						</t:Column>
 						<t:Column sortProperty="PortName" id="categories">
 							<Label text="{i18n>PortName}"/>
 							<t:template>
-								<Text text="{etaListModel>PortName}"/>
+								<Text text="{= ${etaListModel>PortName} ? ${etaListModel>PortName} : ${etaListModel>Port}}"/>
 							</t:template>
 						</t:Column>
 						<t:Column>
@@ -61,10 +67,10 @@
 						<t:Column>
 							<Label text="{i18n>CustomsRefNo}"/>
 							<t:template>
-								<Text text="{etaListModel>IMONumber}" wrapping="false"/>
+								<Text text="{= ${etaListModel>IMONumber} ? ${etaListModel>IMONumber} : ${etaListModel>ImoNo}}" wrapping="false"/>
 							</t:template>
 						</t:Column>
-						<t:Column>
+						<t:Column visible="{= ${etaListModel>/results/0/Status} ? true : false}">
 							<Label text="{i18n>Status}"/>
 							<t:template>
 								<!--<ObjectStatus active="true" text="{etaListModel>Status}"-->
@@ -73,22 +79,20 @@
 									colorScheme="{= ${etaListModel>Status} === 'NEW' ? 8 : 3 }"/>
 							</t:template>
 						</t:Column>
-						<t:Column>
+						<t:Column visible="{= ${etaListModel>/results/0/Status} ? true : false}">
 							<Label text="{i18n>ETA}"/>
 							<t:template>
 								<HBox>
-									<!--<core:Icon color="#8c8a8a" src="sap-icon://calendar" tooltip="Expected Arrival Date"/>-->
 									<Text
 										text="{ path: 'etaListModel>ExpArrivalDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"
 										wrapping="false" class="dateDisp"/>
 								</HBox>
 							</t:template>
 						</t:Column>
-						<t:Column>
+						<t:Column visible="{= ${etaListModel>/results/0/Status} ? true : false}">
 							<Label text="{i18n>ETD}"/>
 							<t:template>
 								<HBox>
-									<!--<core:Icon color="#8c8a8a" src="sap-icon://calendar" tooltip="Expected Departure Date"/>-->
 									<Text
 										text="{ path: 'etaListModel>ExpDepartureDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }"
 										wrapping="false" class="dateDisp"/>

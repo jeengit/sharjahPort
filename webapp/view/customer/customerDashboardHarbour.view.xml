@@ -1,7 +1,7 @@
 <mvc:View controllerName="com.demo.sharjahPort.controller.customer.customerDashboardHarbour" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
 	displayBlock="true" xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:u="sap.ui.unified" xmlns:l="sap.ui.layout"
 	xmlns:f="sap.ui.layout.form" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz="sap.viz.ui5.controls"
-	xmlns:viz.data="sap.viz.ui5.data" xmlns:unified="sap.ui.unified" xmlns:html="http://www.w3.org/1999/xhtml">
+	xmlns:viz.data="sap.viz.ui5.data" xmlns:unified="sap.ui.unified" xmlns:mi="sap.suite.ui.microchart" xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page showHeader="true" class="sapUiResponsiveContentPadding harbourBoard">
 		<customHeader>
 			<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.TopNav" type="XML"/>
@@ -11,35 +11,47 @@
 				<Title text="{i18n>dashboard}" class="heading"/>
 				<l:Grid class="sapUiSmallMarginTopBottom custTile" defaultSpan="L2 M2 S12">
 					<l:content>
-						<GenericTile ariaLabel="NEW/ETA" press="handleListPress" class="tileLayout" header="{i18n>etaReq}" subheader="{i18n>subReq}">
-							<TileContent unit="" footer="{= ${DashboardCountModel>/0/EtaRequest} + ${DashboardCountModel>/0/EtaApproved}}">
-								<!--<ImageContent src="sap-icon://complete" />-->
-							</TileContent>
+						<GenericTile ariaLabel="NEW/ETA" class="tileLayout" press="handleListPress" header="{i18n>etaReq}" subheader="{i18n>subReq}">
+							<tileContent>
+								<TileContent>
+									<content>
+										<mi:ComparisonMicroChart minValue="0" maxValue="50">
+											<mi:data>
+												<mi:ComparisonMicroChartData title="New" value="{DashboardCountModel>/0/EtaRequest}" color="#f5c11a"/>
+												<mi:ComparisonMicroChartData title="Approved" value="{DashboardCountModel>/0/EtaApproved}" color="Good"/>
+											</mi:data>
+										</mi:ComparisonMicroChart>
+									</content>
+								</TileContent>
+							</tileContent>
 						</GenericTile>
-						<!--<GenericTile ariaLabel="APPROVED/ETA" class="tileLayout" press="handleListPress" header="{i18n>etaTile}" subheader="{i18n>subApprvd}">-->
-						<!--	<TileContent unit="" footer="{DashboardCountModel>/0/EtaApproved}">-->
-								<!--<ImageContent src="sap-icon://product" />-->
-						<!--	</TileContent>-->
-						<!--</GenericTile>-->
-						<GenericTile ariaLabel="PENDING/LOG" class="tileLayout" press="handleListPress" header="{i18n>logPending}" subheader="{i18n>subInProg}">
-							<TileContent unit="" footer="{DashboardCountModel>/0/LogsheetPending}">
-								<!--<ImageContent src="sap-icon://complete" />-->
-							</TileContent>
+						<GenericTile ariaLabel="PENDING/LOG" class="tileLayout" press="handleListPress" header="Log Sheet Request" subheader="{i18n>subInProg}">
+							<tileContent>
+								<TileContent>
+									<content>
+										<mi:ComparisonMicroChart minValue="0" maxValue="50">
+											<mi:data>
+												<mi:ComparisonMicroChartData title="Pending" value="{DashboardCountModel>/0/LogsheetPending}" color="#f5c11a"/>
+												<mi:ComparisonMicroChartData title="Closed" value="{DashboardCountModel>/0/LogsheetClosed}" color="Good"/>
+											</mi:data>
+										</mi:ComparisonMicroChart>
+									</content>
+								</TileContent>
+							</tileContent>
 						</GenericTile>
-						<GenericTile ariaLabel="CLOSED/LOG" class="tileLayout" press="handleListPress" header="{i18n>logclosed}" subheader="{i18n>agentPay}">
-							<TileContent unit="" footer="{DashboardCountModel>/0/LogsheetClosed}">
-								<!--<ImageContent src="sap-icon://product" />-->
-							</TileContent>
-						</GenericTile>
-						<GenericTile class="tileLayout" header="{i18n>serReq}" subheader="{i18n>subServ}">
-							<TileContent unit="" footer="{DashboardCountModel>/0/ServiceRequest}">
-								<!--<ImageContent src="sap-icon://complete" />-->
-							</TileContent>
-						</GenericTile>
-						<GenericTile class="tileLayout" header="{i18n>serApprov}" subheader="{i18n>subServ}">
-							<TileContent unit="" footer="{DashboardCountModel>/0/ServiceApproved}">
-								<!--<ImageContent src="sap-icon://complete" />-->
-							</TileContent>
+						<GenericTile ariaLabel="NEW/HOTWORKS" class="tileLayout" press="handleListPress" header="{i18n>serReq}" subheader="{i18n>subServ}">
+							<tileContent>
+								<TileContent>
+									<content>
+										<mi:ComparisonMicroChart minValue="0" maxValue="50">
+											<mi:data>
+												<mi:ComparisonMicroChartData title="New" value="{DashboardCountModel>/0/ServiceRequest}" color="#f5c11a"/>
+												<mi:ComparisonMicroChartData title="Approved" value="{DashboardCountModel>/0/ServiceApproved}" color="Good"/>
+											</mi:data>
+										</mi:ComparisonMicroChart>
+									</content>
+								</TileContent>
+							</tileContent>
 						</GenericTile>
 					</l:content>
 				</l:Grid>

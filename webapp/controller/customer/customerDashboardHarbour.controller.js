@@ -187,7 +187,7 @@ sap.ui.define([
 			sap.ui.core.BusyIndicator.show();
 			var status = oEvent.getSource().getAriaLabel().split("/")[0];
 			var type = oEvent.getSource().getAriaLabel().split("/")[1];
-			var route = type === "ETA" ? "etaList" : "logList";
+			var route = type === "ETA" || type === "HOTWORKS" ? "etaList" : "logList";
 			this.getRouter().navTo(route, {
 				sPath: status,
 				type: type
@@ -256,23 +256,25 @@ sap.ui.define([
 			// this.getView().setModel(new JSONModel(data), "calenderSetModel");
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
+			var formatDate = '"2015", "11", "15", "0", "30"';
+			// var yyyy = formatDate.substring(0,4);
+			// var mo = formatDate.substring(4,6);
+			// var dd = formatDate.substring(6,8);
+			// var mi = formatDate.substring(8,10);
+			// var ss = formatDate.substring(10,12);
+			console.log(new Date("2019", "23", "04"));
+			console.log(new Date(formatDate));
 			var that = this;
 			oModel.read("/CalendarDateSet('')", {
-				method: "GET",
 				urlParameters: {
-
-					"$expand": "CalendarDetailsSet/CalendarSet",
-					"$format": "json"
+					"$expand": "CalendarDetailsSet/CalendarSet"
 				},
 				success: function(data) {
-					console.log(data.StartDate);
-					for (var k = 0; k < 1; k++) {
-						data.StartDate =  new Date(data.StartDate);
-						console.log(data.StartDate);
-					}
 
-					that.getView().setModel(new JSONModel(data), "calenderSetModel");
-					console.log(JSON.stringify(data));
+					// var newDate = new Date(formatDate);
+					// console.log(newDate);
+					// console.log(new Date(data.StartDate.replace(/\\|\//g,'')));
+					// that.getView().setModel(new JSONModel(data), "calenderSetModel");
 				},
 				error: function(oResponse) {
 					sap.m.MessageToast.show(oResponse.statusText);

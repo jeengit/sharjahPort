@@ -1,65 +1,89 @@
 sap.ui.define([
 	"../BaseController",
 	"sap/ui/model/json/JSONModel"
-], function ( BaseController, JSONModel) {
+], function(BaseController, JSONModel) {
 	"use strict";
 	return BaseController.extend("com.demo.sharjahPort.controller.customer.customerETAList", {
-		onInit: function () {
+		onInit: function() {
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.getRoute("etaList").attachPatternMatched(this._onObjectMatched, this);
 		},
-		_onObjectMatched: function (oEvent) {
+		_onObjectMatched: function(oEvent) {
 			this.callForHarbourNotification('');
 			var status = oEvent.getParameter("arguments").sPath;
 			var type = oEvent.getParameter("arguments").type;
+			this.getEtaList(status, type);
 			this.getUserName();
 			this.adjustTableRowsCount();
-			this.getEtaList(status);
 			sap.ui.getCore().setModel(new JSONModel({
 				"status": status,
 				"type": type
 			}), "navModel");
 		},
-		onETADetailsPress: function (evt) {
+		onETADetailsPress: function(evt) {
 			var sPath = evt.getSource().getBindingContext("etaListModel").getPath().split("/")[2];
-			var id = evt.getSource().getBindingContext("etaListModel").getProperty().ETANo;
-			this.getRouter().navTo("etaDetails", {
-				sPath: encodeURIComponent(sPath),
-				id: id
-			});
+			var id = evt.getSource().getBindingContext("etaListModel").getProperty().ETANo ? evt.getSource().getBindingContext("etaListModel").getProperty()
+				.ETANo : evt.getSource().getBindingContext("etaListModel").getProperty().LogSheetNo;
+			evt.getSource().getBindingContext("etaListModel").getProperty().LogSheetNo ? this.openHotWorkDialog(id) :
+				this.getRouter().navTo("etaDetails", {
+					sPath: encodeURIComponent(sPath),
+					id: id
+				});
 		},
-		onAfterRendering: function () {
-			var that = this;
-			$(window).resize(function () {
-				that.adjustTableRowsCount();
-			});
-		},
-		adjustTableRowsCount: function(){
-			var that = this;
-			var pageId = this.getView().byId("etaPage").getId();
-			var rows = Math.floor(($("#" + pageId).height() - 200) / 32);
-			jQuery.sap.delayedCall(0, this, function () {
-				that.byId("etaTable").setVisibleRowCount(rows);
-			});
-		},
-		onBtnPress : function (evt){
-			sap.ui.core.BusyIndicator.show();
-			this.getEtaList(evt.getSource().getSelectedKey());
-		},
-		getEtaList: function(status){
+		openHotWorkDialog: function(id) {
+			var oView = this.getView();
+			if (!this.dialogHWA) {
+				this.dialogHWA = sap.ui.xmlfragment("com.demo.sharjahPort.view.fragments.hotWorksAgentCreate", this);
+				oView.addDependent(this.dialogHWA);
+			}
+			this.dialogHWA.open();
+			this.getModel("CallSignSearchSet", "callSignModel");
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
 			var that = this;
-			oModel.read("/EtaListSet", {
-				urlParameters: {
-					"$filter": "Status eq '" + status + "'"
+			oModel.read("/HotWorksSet('" + id + "')", {
+				success: function(data) {
+					that.getView().setModel(new JSONModel(data), "hotWorksModel");
+					sap.ui.core.BusyIndicator.hide();
 				},
-				success: function (data) {
+				error: function(oResponse) {
+					alert("Error...");
+					sap.ui.core.BusyIndicator.hide();
+				}
+			});
+		},
+		onAfterRendering: function() {
+			var that = this;
+			$(window).resize(function() {
+				that.adjustTableRowsCount();
+			});
+		},
+		adjustTableRowsCount: function() {
+			var that = this;
+			var pageId = this.getView().byId("etaPage").getId();
+			var rows = Math.floor(($("#" + pageId).height() - 200) / 32);
+			jQuery.sap.delayedCall(0, this, function() {
+				that.byId("etaTable").setVisibleRowCount(rows);
+			});
+		},
+		onBtnPress: function(evt) {
+			sap.ui.core.BusyIndicator.show();
+			this.getEtaList(evt.getSource().getSelectedKey());
+		},
+		getEtaList: function(status, type) {
+			var oModel = this.getOwnerComponent().getModel("s4Model");
+			oModel.setUseBatch(false);
+			var that = this;
+			oModel.read(type === 'HOTWORKS' ? "/HotWorksSet" : "/EtaListSet", {
+				urlParameters: type !== 'HOTWORKS' ? {
+					"$filter": "Status eq '" + status + "'"
+				} : "",
+				success: function(data) {
 					that.getView().setModel(new JSONModel(data), "etaListModel");
 					sap.m.MessageToast.show("Items loaded succesfully with status - " + status);
 					sap.ui.core.BusyIndicator.hide();
 				},
-				error: function (oResponse) {
+				error: function(oResponse) {
 					sap.m.MessageToast.show(oResponse.statusText);
 					sap.ui.core.BusyIndicator.hide();
 				}

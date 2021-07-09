@@ -194,87 +194,67 @@ sap.ui.define([
 			});
 		},
 		getCalenderData: function() {
-			var ddata = {
-				startDate: new Date("2015", "11", "15", "8", "0"),
-				people: [{
-					appointments: [{
-						start: new Date("2015", "11", "15", "0", "0"),
-						end: new Date("2015", "11", "15", "0", "0"),
-						title: "Team meeting"
-					}, {
-						start: new Date("2015", "11", "16", "0", "0"),
-						end: new Date("2015", "11", "16", "0", "0"),
-						title: "Vacation"
-					}]
-				}, {
-					appointments: [{
-						start: new Date("2015", "11", "15", "0", "0"),
-						end: new Date("2015", "11", "15", "0", "0"),
-						title: "Meeting"
-					}, {
-						start: new Date("2015", "11", "15", "0", "0"),
-						end: new Date("2015", "11", "15", "0", "0"),
-						title: "Team meeting"
-					}, {
-						start: new Date("2015", "11", "15", "0", "30"),
-						end: new Date("2015", "11", "15", "0", "30"),
-						title: "Lunch"
-					}]
-				}]
-			};
-
 			// var data = {
-			//  "startDate": new Date("2015", "11", "15", "8", "0"),
-			//   "Port": "",
-			//   "CallSign": "JD345E",
-			//   "CalendarSet": [{
-			//     "results": [{
-
-			//         "CallSign": "JD345E",
-			//         "VesselName": "",
-			//         "BerthNumber": "B0002",
-			//         "Port": "",
-			//         "ImoNo": "",
-			//         "Status": "ESTIMATED",
-			//         "EstdDate": new Date("2015", "11", "15", "0", "30"),
-			//         "EndDate": new Date("2015", "11", "15", "0", "30")
-			//       },
-			//       {
-
-			//         "CallSign": "JD345E",
-			//         "VesselName": "",
-			//         "BerthNumber": "B0002",
-			//         "Port": "",
-			//         "ImoNo": "",
-			//         "Status": "ESTIMATED",
-			//         "EstdDate": new Date("2015", "11", "15", "0", "30"),
-			//         "EndDate":new Date("2015", "11", "15", "0", "30")
-			//       }
-			//     ]
-			//   }]
+			// 	startDate: new Date("2015", "11", "15"),
+			// 	people: [{
+			// 		appointments: [{
+			// 			start: new Date("2015", "11", "15"),
+			// 			end: new Date("2015", "11", "15"),
+			// 			title: "Team meeting"
+			// 		}, {
+			// 			start: new Date("2015", "11", "16"),
+			// 			end: new Date("2015", "11", "16"),
+			// 			title: "Vacation"
+			// 		}]
+			// 	}, {
+			// 		appointments: [{
+			// 			start: new Date("2015", "11", "15"),
+			// 			end: new Date("2015", "11", "15"),
+			// 			title: "Meeting"
+			// 		}, {
+			// 			start: new Date("2015", "11", "15"),
+			// 			end: new Date("2015", "11", "15"),
+			// 			title: "Team meeting"
+			// 		}, {
+			// 			start: new Date("2015", "11", "15"),
+			// 			end: new Date("2015", "11", "15"),
+			// 			title: "Lunch"
+			// 		}]
+			// 	}]
 			// };
-			// this.getView().setModel(new JSONModel(data), "calenderSetModel");
+			// console.log(data);
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
-			var formatDate = '"2015", "11", "15", "0", "30"';
-			// var yyyy = formatDate.substring(0,4);
-			// var mo = formatDate.substring(4,6);
-			// var dd = formatDate.substring(6,8);
-			// var mi = formatDate.substring(8,10);
-			// var ss = formatDate.substring(10,12);
-			console.log(new Date("2019", "23", "04"));
-			console.log(new Date(formatDate));
 			var that = this;
+			that.getView().byId("PC1").setViewKey("Month");
 			oModel.read("/CalendarDateSet('')", {
 				urlParameters: {
 					"$expand": "CalendarDetailsSet/CalendarSet"
 				},
 				success: function(data) {
-
-					// var newDate = new Date(formatDate);
-					// console.log(newDate);
-					// console.log(new Date(data.StartDate.replace(/\\|\//g,'')));
-					// that.getView().setModel(new JSONModel(data), "calenderSetModel");
+					var jsonCalendar = {
+						"people": [],
+						"startDate": new Date()
+					};
+					for (var i = 0; i < data.CalendarDetailsSet.results.length; i++) {
+						var appointments = [];
+						for (var k = 0; k < data.CalendarDetailsSet.results[i].CalendarSet.results.length; k++) {
+							var de = data.CalendarDetailsSet.results[i].CalendarSet.results[k].EstdDate;
+							var date = de.charAt(6) + de.charAt(7) - 1;
+							var month = de.charAt(4) + de.charAt(5);
+							var year = de.charAt(0) + de.charAt(1) + de.charAt(2) + de.charAt(3);
+							appointments.push({
+								"title": data.CalendarDetailsSet.results[i].CalendarSet.results[k].BerthNumber,
+								"start": new Date(year, month, date),
+								"end": new Date(year, month, date+30)
+							});
+						}
+						jsonCalendar.people.push({
+							"name": data.CalendarDetailsSet.results[i].CallSign,
+							"appointments": appointments
+						});
+					}
+					that.getView().setModel(new JSONModel(jsonCalendar), "calenderSetModel");
 				},
 				error: function(oResponse) {
 					sap.m.MessageToast.show(oResponse.statusText);

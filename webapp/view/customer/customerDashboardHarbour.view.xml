@@ -39,7 +39,7 @@
 								</TileContent>
 							</tileContent>
 						</GenericTile>
-						<GenericTile ariaLabel="NEW/HOTWORKS" class="tileLayout" press="handleListPress" header="{i18n>serReq}" subheader="{i18n>subServ}">
+						<GenericTile ariaLabel="OPEN/HOTWORKS" class="tileLayout" press="handleListPress" header="{i18n>serReq}" subheader="{i18n>subServ}">
 							<tileContent>
 								<TileContent>
 									<content>
@@ -79,16 +79,19 @@
 					</viz:VizFrame>
 				</VBox>
 				<VBox width="66.8%">
+					<!--<FlexBox width="100%" justifyContent="End">-->
+					<!--	<core:Icon src="sap-icon://circle-task-2"/>-->
+					<!--</FlexBox>-->
 					<FlexBox alignContent="Center" class="sapUiSmallMarginBegin box-shadow">
-						<PlanningCalendar  startDate="{path: 'calenderSetModel>/startDate'}" rows="{path: 'calenderSetModel>/CalendarSet'}" appointmentsVisualization="Filled"
+						<PlanningCalendar id="PC1" startDate="{path: 'calenderSetModel>/startDate'}" rows="{path: 'calenderSetModel>/people'}" appointmentsVisualization="Filled"
 							appointmentSelect="handleAppointmentSelect" showEmptyIntervalHeaders="false" stickyHeader="true" showWeekNumbers="true">
 							<toolbarContent>
-								<Title text="Title" titleStyle="H4"/>
+								<Title text="Planning Calender" titleStyle="H4"/>
 							</toolbarContent>
 							<rows>
-								<PlanningCalendarRow appointments="{path : 'calenderSetModel>results', templateShareable: false}">
+								<PlanningCalendarRow title="Callsign - {calenderSetModel>name}" appointments="{path : 'calenderSetModel>appointments', templateShareable: false}">
 									<appointments>
-										<unified:CalendarAppointment startDate="{calenderSetModel>EstdDate}" endDate="{calenderSetModel>EndDate}" text="{calenderSetModel>Status}"
+										<unified:CalendarAppointment type="Type04" startDate="{calenderSetModel>start}" endDate="{calenderSetModel>end}" text="{calenderSetModel>title}"
 											></unified:CalendarAppointment>
 									</appointments>
 								</PlanningCalendarRow>

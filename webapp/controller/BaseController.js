@@ -330,7 +330,7 @@ sap.ui.define([
 			});
 		},
 		handleCreateHotWorks: function(evt) {
-			sap.ui.core.BusyIndicator.show();
+			//sap.ui.core.BusyIndicator.show();
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
 			var data = this.getView().getModel("hotWorksModel").getData();
@@ -350,7 +350,7 @@ sap.ui.define([
 				oModel.create("/HotWorksSet", oEntry,{
 						success: function(data) {
 							that.dialogHWA.close();
-							sap.m.MessageToast.show("Hotworks Created Successfully..");
+							sap.m.MessageToast.show(oEntry['Flag'] === 'CREATE' ? 'Created Successfully!..' : oEntry['Flag'] === 'APPROVE' ? 'Hotwork Approved Successfully!..' : 'Hotwork Rejected Successfully!..');
 							sap.ui.core.BusyIndicator.hide();
 						},
 						error: function(oResponse) {

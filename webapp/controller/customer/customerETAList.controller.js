@@ -22,15 +22,16 @@ sap.ui.define([
 		},
 		onETADetailsPress: function(evt) {
 			var sPath = evt.getSource().getBindingContext("etaListModel").getPath().split("/")[2];
+			var status = evt.getSource().getBindingContext("etaListModel").getProperty().Status;
 			var id = evt.getSource().getBindingContext("etaListModel").getProperty().ETANo ? evt.getSource().getBindingContext("etaListModel").getProperty()
 				.ETANo : evt.getSource().getBindingContext("etaListModel").getProperty().LogSheetNo;
-			evt.getSource().getBindingContext("etaListModel").getProperty().LogSheetNo ? this.openHotWorkDialog(id) :
+			evt.getSource().getBindingContext("etaListModel").getProperty().LogSheetNo ? this.openHotWorkDialog(id,status) :
 				this.getRouter().navTo("etaDetails", {
 					sPath: encodeURIComponent(sPath),
 					id: id
 				});
 		},
-		openHotWorkDialog: function(id) {
+		openHotWorkDialog: function(id,status) {
 			var oView = this.getView();
 			if (!this.dialogHWA) {
 				this.dialogHWA = sap.ui.xmlfragment("com.demo.sharjahPort.view.fragments.hotWorksAgentCreate", this);
@@ -43,6 +44,7 @@ sap.ui.define([
 			var that = this;
 			oModel.read("/HotWorksSet('" + id + "')", {
 				success: function(data) {
+					data['STATUS'] = status;
 					that.getView().setModel(new JSONModel(data), "hotWorksModel");
 					sap.ui.core.BusyIndicator.hide();
 				},
@@ -67,18 +69,20 @@ sap.ui.define([
 			});
 		},
 		onBtnPress: function(evt) {
-			sap.ui.core.BusyIndicator.show();
-			this.getEtaList(evt.getSource().getSelectedKey());
+			//sap.ui.core.BusyIndicator.show();
+			var splitVal = evt.getSource().getSelectedKey().split("/");
+			this.getEtaList(splitVal[0],splitVal[1]);
 		},
 		getEtaList: function(status, type) {
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
 			var that = this;
 			oModel.read(type === 'HOTWORKS' ? "/HotWorksSet" : "/EtaListSet", {
-				urlParameters: type !== 'HOTWORKS' ? {
+				urlParameters:  {
 					"$filter": "Status eq '" + status + "'"
-				} : "",
+				},
 				success: function(data) {
+					data['TYPE'] = type;
 					that.getView().setModel(new JSONModel(data), "etaListModel");
 					sap.m.MessageToast.show("Items loaded succesfully with status - " + status);
 					sap.ui.core.BusyIndicator.hide();

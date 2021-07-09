@@ -628,12 +628,16 @@ html.sap-desktop .sapMBtn:focus>.sapMFocusable {
     color: #000!important;
 }
 
-.btn-sm.text-light .sapMBtnInner ,.dialogBox .sapMDialogTitle .sapMIBar{
+.btn-sm.text-light .sapMBtnInner ,.dialogBox .sapMDialogSubHeader .sapMIBar{
 	background: #e31936!important;
 }
 
-.btn-sm.text-light .sapMBtnContent ,.dialogBox.sapMDialog>header.sapMDialogTitle .sapMTitle {
+.btn-sm.text-light .sapMBtnContent ,.dialogBox .sapMDialogSubHeader .sapMBarLeft .sapMText ,.dialogBox .sapMDialogSubHeader .sapMBarRight .sapUiIcon {
     color: #fff;
+}
+.dialogBox .sapMDialogSubHeader .sapMBarLeft .sapMText{
+	font-size:16px;
+	font-weight:bold;
 }
 
 /*.add-icon {*/
@@ -695,4 +699,14 @@ html.sap-desktop .sapMBtn:focus>.sapMFocusable {
 }
 .chart .sapMFlexItem:last-child {
     width: calc(100% - 1rem);
+}
+.btn-sm.text-light.btn-secondary .sapMBtnEmphasized {
+    background-color: #0e630e!important;
+    border: none;
+}
+.closeBtn{
+	position:absolute;
+	right:10px;
+	top:20px;
+	z-index:999;
 }

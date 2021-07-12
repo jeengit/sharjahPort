@@ -88,9 +88,9 @@
 			</FlexBox>
 		</content>
 		<buttons>
-			<Button visible="{= ${loginModel>/uRole} === 'HARBOR_MASTER' &amp;&amp; ${hotWorksModel>/STATUS} === 'OPEN' ? true : false}"
+			<Button visible="{= ${loginModel>/uRole} === 'HARBOR_MASTER' &amp;&amp; ${hotWorksModel>/STATUS} === 'OPEN' ? true : = ${loginModel>/uRole} === 'AGENT' ? false : false}"
 				tooltip="REJECTED" class="btn-sm btn-primary text-light" type="Error" text="Reject" press="handleCreateHotWorks"/>
-			<Button visible="{= ${loginModel>/uRole} === 'HARBOR_MASTER' &amp;&amp; ${hotWorksModel>/STATUS} === 'OPEN' ? true : false}"
+			<Button visible="{= ${loginModel>/uRole} === 'HARBOR_MASTER' &amp;&amp; ${hotWorksModel>/STATUS} === 'OPEN' ? true  : = ${loginModel>/uRole} === 'AGENT' ? false : false}"
 				tooltip="APPROVE" class="btn-sm btn-secondary text-light" type="Emphasized" text="Approve" press="handleCreateHotWorks"/>
 			<Button visible="{= ${loginModel>/uRole} === 'AGENT' ? true: false}" tooltip="CREATE" class="btn-sm btn-primary text-light"
 				type="Emphasized" text="Create" press="handleCreateHotWorks"/>

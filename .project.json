@@ -19,5 +19,9 @@
     "defaultLanguage": "",
     "defaultI18NPropertyFile": "",
     "resourceModelName": ""
+  },
+  "deploy": {
+    "destination": "S4H",
+    "name": "ZSHARJAHPORT"
   }
 }

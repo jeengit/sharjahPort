@@ -10,6 +10,7 @@ sap.ui.define([
 		},
 		_onObjectMatched: function(oEvent) {
 			this.callForHarbourNotification('');
+			this.getModel("CallSignSearchSet","callSignModel");
 			var status = oEvent.getParameter("arguments").sPath;
 			var type = oEvent.getParameter("arguments").type;
 			this.getEtaList(status, type);

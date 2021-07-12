@@ -39,7 +39,7 @@
 						</GenericTile>
 					</HBox>
 					<HBox width="20%" class="tileLayout">
-						<GenericTile ariaLabel="NEW/HOTWORKS" press="onNavToPress" class="sapUiSmallMarginBottom" header="Service request" subheader="{i18n>subServ}">
+						<GenericTile ariaLabel="OPEN/HOTWORKS" press="onNavToPress" class="sapUiSmallMarginBottom" header="Service request" subheader="{i18n>subServ}">
 							<TileContent unit="" footer="{DashboardCountModel>/0/ServiceRequested}"></TileContent>
 						</GenericTile>
 					</HBox>

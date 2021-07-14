@@ -709,3 +709,18 @@ html.sap-desktop .sapMBtn:focus>.sapMFocusable {
 	top:20px;
 	z-index:999;
 }
+.tabfilter .sapMITB{
+	position: absolute;
+    top: 3rem;
+    left: 0rem;
+}
+.tabfilter .sapUiTableCnt{
+	margin-top: 5.7rem;
+	border-top: none;
+}
+.tabfilter .sapMITH{
+	padding:0!important;
+}
+.tabfilter .sapMITH .sapMITBHead{
+	padding-left:0.5rem;
+}

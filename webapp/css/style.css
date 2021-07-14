@@ -198,8 +198,7 @@ html.sap-desktop .sapMBtn:focus>.sapMFocusable {
     padding: 0rem!important;
 }
 
-.tileLayout .sapMGTTitle,
-.title {
+.tileLayout .sapMGTTitle, .title, .sapMTitle {
     font-weight: 800;
     font-size: 1rem;
 }

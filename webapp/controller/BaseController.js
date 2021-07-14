@@ -159,6 +159,8 @@ sap.ui.define([
 						id: "create" + oEvent.getParameter("item").getIcon()
 					});
 				} else {
+					this.getView().getModel("hotWorksModel") ?  
+					this.getView().setModel(new JSONModel({"STATUS":"NEW"}), "hotWorksModel") : '';
 					var oView = this.getView();
 					if (!this.dialogHWA) {
 						this.dialogHWA = sap.ui.xmlfragment("com.demo.sharjahPort.view.fragments.hotWorksAgentCreate", this);

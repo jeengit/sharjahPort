@@ -2,13 +2,13 @@
 	<Dialog showHeader="false" title="" class="dialogBox objLayoutClass editMode">
 		<subHeader>
 			<Bar>
-			<contentLeft>
-				<Text text="Hot Works ({= ${hotWorksModel>/CallSign} ? ${hotWorksModel>/LogSheetNo} : 'New'})"/>
-			</contentLeft>
-			<contentRight>
-				<core:Icon src="sap-icon://decline" press="closeHotWorkPopup"/>
+				<contentLeft>
+					<Text text="Hot Works ({= ${hotWorksModel>/CallSign} ? ${hotWorksModel>/LogSheetNo} : 'New'})"/>
+				</contentLeft>
+				<contentRight>
+					<core:Icon src="sap-icon://decline" press="closeHotWorkPopup"/>
 				</contentRight>
-				</Bar>
+			</Bar>
 		</subHeader>
 		<content>
 			<FlexBox class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop" direction="Column">
@@ -88,12 +88,14 @@
 			</FlexBox>
 		</content>
 		<buttons>
-			<Button visible="{= ${loginModel>/uRole} === 'HARBOR_MASTER' &amp;&amp; ${hotWorksModel>/STATUS} === 'OPEN' ? true : = ${loginModel>/uRole} === 'AGENT' ? false : false}"
+			<Button
+				visible="{= ${loginModel>/uRole} === 'HARBOR_MASTER' &amp;&amp; ${hotWorksModel>/STATUS} === 'OPEN' ? true : ${loginModel>/uRole} === 'AGENT' ? false : false}"
 				tooltip="REJECTED" class="btn-sm btn-primary text-light" type="Error" text="Reject" press="handleCreateHotWorks"/>
-			<Button visible="{= ${loginModel>/uRole} === 'HARBOR_MASTER' &amp;&amp; ${hotWorksModel>/STATUS} === 'OPEN' ? true  : = ${loginModel>/uRole} === 'AGENT' ? false : false}"
+			<Button
+				visible="{= ${loginModel>/uRole} === 'HARBOR_MASTER' &amp;&amp; ${hotWorksModel>/STATUS} === 'OPEN' ? true : ${loginModel>/uRole} === 'AGENT' ? false : false}"
 				tooltip="APPROVE" class="btn-sm btn-secondary text-light" type="Emphasized" text="Approve" press="handleCreateHotWorks"/>
-			<Button visible="{= ${loginModel>/uRole} === 'AGENT' ? true: false}" tooltip="CREATE" class="btn-sm btn-primary text-light"
-				type="Emphasized" text="Create" press="handleCreateHotWorks"/>
+			<Button visible="{= ${loginModel>/uRole} === 'AGENT' &amp;&amp; ${hotWorksModel>/STATUS} === 'NEW' ? true: false}" tooltip="CREATE"
+				class="btn-sm btn-primary text-light" type="Emphasized" text="Create" press="handleCreateHotWorks"/>
 		</buttons>
 	</Dialog>
 </core:FragmentDefinition>

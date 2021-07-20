@@ -6,7 +6,7 @@
 			<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.TopNav" type="XML"/>
 		</customHeader>
 		<content>
-			<VBox class="sapUiContentPadding">
+			<VBox class="sapUiContentPadding tabfilter">
 				<FlexBox alignItems="Center" justifyContent="SpaceBetween">
 					<Breadcrumbs
 						currentLocationText="{= ${manifestListModel>/0/ManifestStatus} === 'MAN_CREATED' || ${manifestListModel>/0/ManifestStatus} === 'OPEN' ? 'Manifest' : ${consigneeListModel>/length} > 0 ? 'Consignee' : 'Delivery'}">
@@ -16,145 +16,177 @@
 						<core:Item key="2021" text="2021"/>
 					</ComboBox>
 				</FlexBox>
+				<IconTabBar expandable="false" select="onBtnPress" class="sapUiResponsiveContentPadding">
+					<items>
+						<IconTabFilter visible="{= ${manifestListModel>/length} > 0 ? true : false}" icon="sap-icon://excel-attachment" iconColor="Positive"
+							text="Import" key="CUSTOMS/MANIFEST/I"/>
+						<IconTabFilter visible="{= ${manifestListModel>/length} > 0 ? true : false}" icon="sap-icon://excel-attachment" iconColor="Positive"
+							text="Export" key="CUSTOMS/MANIFEST/E"/>
+						<IconTabFilter icon="sap-icon://approvals" iconColor="Critical" text="{= ${consigneeListModel>/length} > 0 ? 'Pending':'Open'}"
+							key="{= ${manifestListModel>/length} > 0 ? 'OPEN/MANIFEST/' : ${deliveryListModel>/length} > 0 ? 'OPEN/DELIVERY/' : ${consigneeListModel>/length} > 0 ? 'NA/CONSIGNEE/PENDING' : ''}"/>
+						<IconTabFilter icon="sap-icon://decline" iconColor="Negative" text="{= ${consigneeListModel>/length} > 0 ? 'Completed':'Closed'}"
+							key="{= ${manifestListModel>/length} > 0 ? 'CLOSED/MANIFEST/' : ${deliveryListModel>/length} > 0 ? 'CLOSED/DELIVERY/' : ${consigneeListModel>/length} > 0 ? 'NA/CONSIGNEE/COMPLETED' : ''}"/>
+					</items>
+				</IconTabBar>
+				<t:Table visible="{= ${manifestListModel>/length} > 0 ? true : false}" rows="{manifestListModel>/}" class="card tableCard no-margin"
+					selectionMode="None" ariaLabelledBy="title">
+					<t:extension>
+						<OverflowToolbar style="Clear">
+							<Title
+								text="Manifest ({manifestListModel>/length})"/>
+							<ToolbarSpacer/>
+							<SearchField class="search" liveChange="onSearch" width="250px"/>
+							<core:Icon src="sap-icon://sorting-ranking" tooltip="{i18n>sort}" press="sortCategoriesAndName"/>
+							<core:Icon src="sap-icon://sort" tooltip="{i18n>SortCategories}" press="sortCategories"/>
+							<core:Icon src="sap-icon://decline" tooltip="{i18n>Clearallsortings}" press="clearAllSortings"/>
+						</OverflowToolbar>
+					</t:extension>
+					<t:columns>
+						<t:Column sortProperty="EtaNo">
+							<Label text="Agent ID"/>
+							<t:template>
+								<HBox>
+									<Link fieldGroupIds="manifest" press="handelDetailPress" visible="{= ${manifestListModel>ManifestNo} === '' ? true : false}"
+										text="{manifestListModel>CustomsRefManifestNo}"/>
+									<Link fieldGroupIds="manifest" press="handelDetailPress" visible="{= ${manifestListModel>ManifestNo} === '' ? false : true}" text="{manifestListModel>ManifestNo}"/>
+								</HBox>
+							</t:template>
+						</t:Column>
+						<t:Column sortProperty="EtaNo">
+							<Label text="Agent Name"/>
+							<t:template>
+								<HBox>
+									<Text visible="{= ${manifestListModel>ManifestNo} === '' ? true : false}" text="{manifestListModel>AgentName}"/>
+									<Text visible="{= ${manifestListModel>ManifestNo} === '' ? false : true}" text="{manifestListModel>AgentName}"/>
+								</HBox>
+							</t:template>
+						</t:Column>
+						<t:Column sortProperty="VesselName">
+							<Label text="{i18n>VesselName}"/>
+							<t:template>
+								<Text text="{manifestListModel>VesselName}"/>
+							</t:template>
+						</t:Column>
+						<t:Column sortProperty="PortName">
+							<Label text="Arrival Date"/>
+							<t:template>
+								<Text text="{ path: 'manifestListModel>Arrivaldate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}} }"
+									wrapping="false"/>
+							</t:template>
+						</t:Column>
+						<t:Column>
+							<Label text="{i18n>Status}"/>
+							<t:template>
+								<tnt:InfoLabel visible="{= ${manifestListModel>ManifestStatus} === '' ? false : true}"
+									text="{= ${manifestListModel>ManifestStatus} === 'MAN_CREATED' ? 'Closed' : 'Open' }" displayOnly="true"
+									colorScheme="{= ${manifestListModel>ManifestStatus} === 'MAN_CREATED' ? 3 : ${manifestListModel>ManifestStatus} === 'CUST_APPROVED' ? 8 : 5 }"/>
+							</t:template>
+						</t:Column>
+					</t:columns>
+				</t:Table>
+				<t:Table visible="{= ${deliveryListModel>/length} > 0 ? true : false}" rows="{deliveryListModel>/}" class="card tableCard no-margin"
+					selectionMode="None" ariaLabelledBy="title">
+					<t:extension>
+						<OverflowToolbar style="Clear">
+							<Title text="Delivery ({deliveryListModel>/length})"/>
+							<ToolbarSpacer/>
+							<SearchField class="search" liveChange="onSearch" width="250px"/>
+							<core:Icon src="sap-icon://sorting-ranking" tooltip="{i18n>sort}" press="sortCategoriesAndName"/>
+							<core:Icon src="sap-icon://sort" tooltip="{i18n>SortCategories}" press="sortCategories"/>
+							<core:Icon src="sap-icon://decline" tooltip="{i18n>Clearallsortings}" press="clearAllSortings"/>
+						</OverflowToolbar>
+					</t:extension>
+					<t:columns>
+						<t:Column sortProperty="DeliveryNo">
+							<Label text="Delivery No"/>
+							<t:template>
+								<HBox>
+									<Link fieldGroupIds="Delivery" press="handelDetailPress" text="{deliveryListModel>DeliveryNo}"/>
+								</HBox>
+							</t:template>
+						</t:Column>
+						<t:Column sortProperty="Port">
+							<Label text="Port"/>
+							<t:template>
+								<HBox>
+									<Text text="{deliveryListModel>Port}"/>
+								</HBox>
+							</t:template>
+						</t:Column>
+						<t:Column sortProperty="ConsigneeCode">
+							<Label text="{i18n>ConsigneeCode}"/>
+							<t:template>
+								<Text text="{deliveryListModel>ConsigneeCode}"/>
+							</t:template>
+						</t:Column>
+						<t:Column sortProperty="ArrivalDate">
+							<Label text="Arrival Date"/>
+							<t:template>
+								<Text text="{ path: 'deliveryListModel>ArrivalDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}} }"
+									wrapping="false"/>
+							</t:template>
+						</t:Column>
+						<t:Column>
+							<Label text="{i18n>Status}"/>
+							<t:template>
+								<tnt:InfoLabel visible="{= ${deliveryListModel>Status} === '' ? false : true}"
+									text="{= ${deliveryListModel>Status} === 'OPEN' ? 'Open' : 'Closed' }" displayOnly="true"
+									colorScheme="{= ${deliveryListModel>Status} === 'OPEN' ? 8 : 3 }"/>
+							</t:template>
+						</t:Column>
+					</t:columns>
+				</t:Table>
+				<t:Table visible="{= ${consigneeListModel>/length} > 0 ? true : false}" rows="{consigneeListModel>/}" class="card tableCard no-margin"
+					selectionMode="None" ariaLabelledBy="title">
+					<t:extension>
+						<OverflowToolbar style="Clear">
+							<Title text="Consignee Payment ({consigneeListModel>/length})"/>
+							<ToolbarSpacer/>
+							<SearchField class="search" liveChange="onSearch" width="250px"/>
+							<core:Icon src="sap-icon://sorting-ranking" tooltip="{i18n>sort}" press="sortCategoriesAndName"/>
+							<core:Icon src="sap-icon://sort" tooltip="{i18n>SortCategories}" press="sortCategories"/>
+							<core:Icon src="sap-icon://decline" tooltip="{i18n>Clearallsortings}" press="clearAllSortings"/>
+						</OverflowToolbar>
+					</t:extension>
+					<t:columns>
+						<t:Column sortProperty="DocNo">
+							<Label text="Doc No"/>
+							<t:template>
+								<HBox>
+									<Text text="{consigneeListModel>DocNo}"/>
+								</HBox>
+							</t:template>
+						</t:Column>
+						<t:Column sortProperty="Port">
+							<Label text="Port"/>
+							<t:template>
+								<HBox>
+									<Text text="{consigneeListModel>Port}"/>
+								</HBox>
+							</t:template>
+						</t:Column>
+						<t:Column sortProperty="ConsigneeCode">
+							<Label text="{i18n>ConsigneeCode}"/>
+							<t:template>
+								<Text text="{consigneeListModel>ConsigneeCode}"/>
+							</t:template>
+						</t:Column>
+						<t:Column sortProperty="FiscalYear">
+							<Label text="Year"/>
+							<t:template>
+								<Text text="{consigneeListModel>FiscalYear}"/>
+							</t:template>
+						</t:Column>
+						<t:Column>
+							<Label text="{i18n>Status}"/>
+							<t:template>
+								<tnt:InfoLabel visible="{= ${consigneeListModel>Status} === '' ? false : true}" text="{consigneeListModel>Status}" displayOnly="true"
+									colorScheme="{= ${consigneeListModel>Status} === 'PENDING' ? 3 : 5 }"/>
+							</t:template>
+						</t:Column>
+					</t:columns>
+				</t:Table>
 				<FlexBox width="100%" class="manifestListClass">
-					<VBox width="{= ${manifestListModel>/countE} > 0 ? '50%' : '100%'}" visible="{= ${manifestListModel>/countI} > 0 ? true : false}">
-						<List id="list1" class="tableCard card"
-							items="{ path: 'manifestListModel>/',templateShareable:true, filters: {path: 'Import_Export', operator: 'EQ', value1: 'I'} }"
-							headerText="Manifest - Import" noDataText="{i18n>emptyNodata}" mode="SingleSelect" selectionChange="changeSelectedLine">
-							<CustomListItem type="Active" press="handelDetailPress" fieldGroupIds="manifest">
-								<FlexBox alignItems="Start" justifyContent="SpaceBetween">
-									<HBox><core:Icon color="#CEA95B" class="sapUiTinyMarginEnd" size="1rem" src="sap-icon://activities"/>
-										<Text visible="{= ${manifestListModel>ManifestNo} === '' ? true : false}"
-											text="{manifestListModel>AgentName} - {manifestListModel>CustomsRefManifestNo}"/>
-										<Text visible="{= ${manifestListModel>ManifestNo} === '' ? false : true}"
-											text="{manifestListModel>AgentName} - {manifestListModel>ManifestNo}"/>
-									</HBox>
-									<tnt:InfoLabel visible="{= ${manifestListModel>ManifestStatus} === '' ? false : true}"
-										text="{= ${manifestListModel>ManifestStatus} === 'MAN_CREATED' ? 'Closed' : 'Open' }" displayOnly="true"
-										colorScheme="{= ${manifestListModel>ManifestStatus} === 'MAN_CREATED' ? 3 : ${manifestListModel>ManifestStatus} === 'CUST_APPROVED' ? 8 : 5 }"/>
-								</FlexBox>
-								<FlexBox alignItems="Start" justifyContent="SpaceBetween">
-									<Text class="desc" text="{manifestListModel>VesselName}"/>
-									<Text class="desc sapMLnk"
-										text="{ path: 'manifestListModel>Arrivaldate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}} }"
-										wrapping="false"/>
-								</FlexBox>
-							</CustomListItem>
-							<headerToolbar>
-								<Toolbar>
-									<Title text="Manifest - {= ${manifestListModel>/0/ManifestStatus} === 'MAN_CREATED' ? 'Import' : 'Import'} ({manifestListModel>/countI})"
-										level="H1"/>
-								</Toolbar>
-							</headerToolbar>
-						</List>
-					</VBox>
-					<VBox width="{= ${manifestListModel>/countE} > 0 ? '50%' : '100%'}" visible="{= ${manifestListModel>/countE} > 0 ? true : false}">
-						<List id="list2" class="tableCard card"
-							items="{ path: 'manifestListModel>/',templateShareable:true, filters: {path: 'Import_Export', operator: 'EQ', value1: 'E'} }"
-							headerText="Manifest - Export" noDataText="{i18n>emptyNodata}" mode="SingleSelect">
-							<CustomListItem type="Active">
-								<FlexBox alignItems="Start" justifyContent="SpaceBetween">
-									<HBox><core:Icon color="#CEA95B" class="sapUiTinyMarginEnd" size="1rem" src="sap-icon://activities"/>
-										<Text visible="{= ${manifestListModel>ManifestNo} === '' ? true : false}"
-											text="{manifestListModel>AgentName} - {manifestListModel>CustomsRefManifestNo}"/>
-										<Text visible="{= ${manifestListModel>ManifestNo} === '' ? false : true}"
-											text="{manifestListModel>AgentName} - {manifestListModel>ManifestNo}"/>
-									</HBox>
-									<tnt:InfoLabel visible="{= ${manifestListModel>ManifestStatus} === '' ? false : true}"
-										text="{= ${manifestListModel>ManifestStatus} === 'MAN_CREATED' ? 'Closed' : 'Open' }" displayOnly="true"
-										colorScheme="{= ${manifestListModel>ManifestStatus} === 'MAN_CREATED' ? 3 : ${manifestListModel>ManifestStatus} === 'CUST_APPROVED' ? 8 : 5 }"/>
-								</FlexBox>
-								<FlexBox alignItems="Start" justifyContent="SpaceBetween">
-									<Text class="desc" text="{manifestListModel>VesselName}"/>
-									<Text class="desc sapMLnk"
-										text="{ path: 'manifestListModel>Arrivaldate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}} }"
-										wrapping="false"/>
-								</FlexBox>
-							</CustomListItem>
-							<headerToolbar>
-								<Toolbar>
-									<Title text="Manifest - {= ${manifestListModel>/0/ManifestStatus} === 'MAN_CREATED' ? 'Export' : 'Export'} ({manifestListModel>/countE})"
-										level="H1"/>
-								</Toolbar>
-							</headerToolbar>
-						</List>
-					</VBox>
-					<VBox width="100%" visible="{= ${deliveryListModel>/length} > 0 ? true : false}">
-						<List id="list3" class="tableCard card" items="{ path: 'deliveryListModel>/',templateShareable:true}" headerText="Delivery"
-							noDataText="{i18n>emptyNodata}" mode="SingleSelect">
-							<CustomListItem type="Active" press="handelDetailPress" fieldGroupIds="Delivery">
-								<FlexBox alignItems="Start" justifyContent="SpaceBetween">
-									<HBox><core:Icon color="#CEA95B" class="sapUiTinyMarginEnd" size="1rem" src="sap-icon://activities"/>
-										<Text text="{deliveryListModel>Port} - {deliveryListModel>DeliveryNo}"/>
-									</HBox>
-									<tnt:InfoLabel visible="{= ${deliveryListModel>Status} === '' ? false : true}"
-										text="{= ${deliveryListModel>Status} === 'OPEN' ? 'Open' : 'Closed' }" displayOnly="true"
-										colorScheme="{= ${deliveryListModel>Status} === 'OPEN' ? 3 : ${deliveryListModel>Status} === 'CLOSED' ? 8 : 5 }"/>
-								</FlexBox>
-								<FlexBox alignItems="Start" justifyContent="SpaceBetween">
-									<Text class="desc" text="{deliveryListModel>ConsigneeCode}"/>
-									<Text class="desc sapMLnk"
-										text="{ path: 'deliveryListModel>ArrivalDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}} }"
-										wrapping="false"/>
-								</FlexBox>
-							</CustomListItem>
-							<headerToolbar>
-								<Toolbar>
-									<Title text="Delivery - {= ${deliveryListModel>/0/Status} === 'OPEN' ? 'Open' : 'Closed'} ({deliveryListModel>/length})" level="H1"/>
-								</Toolbar>
-							</headerToolbar>
-						</List>
-					</VBox>
-					<VBox width="{= ${consigneeListModel>/countP} &amp;&amp; ${consigneeListModel>/countC} > 0 ? '50%' : '100%'}"
-						visible="{= ${consigneeListModel>/countP} > 0 ? true : false}">
-						<List class="tableCard card"
-							items="{ path: 'consigneeListModel>/',templateShareable:true, filters: {path: 'Status', operator: 'EQ', value1: 'PENDING'} }"
-							headerText="Manifest - Import" noDataText="{i18n>emptyNodata}" mode="SingleSelect" selectionChange="changeSelectedLine">
-							<CustomListItem type="Active" fieldGroupIds="manifest">
-								<FlexBox alignItems="Start" justifyContent="SpaceBetween">
-									<HBox><core:Icon color="#CEA95B" class="sapUiTinyMarginEnd" size="1rem" src="sap-icon://activities"/>
-										<Text text="{consigneeListModel>DocNo} - {consigneeListModel>Port}"/>
-									</HBox>
-									<tnt:InfoLabel visible="{= ${consigneeListModel>Status} === '' ? false : true}" text="{consigneeListModel>Status}" displayOnly="true"
-										colorScheme="3"/>
-								</FlexBox>
-								<FlexBox alignItems="Start" justifyContent="SpaceBetween">
-									<Text class="desc" text="Doc No: {consigneeListModel>ConsigneeCode}"/>
-									<Text class="desc" text="{consigneeListModel>FiscalYear}"/>
-								</FlexBox>
-							</CustomListItem>
-							<headerToolbar>
-								<Toolbar>
-									<Title text="Consignee Payment ({consigneeListModel>/countP})" level="H1"/>
-								</Toolbar>
-							</headerToolbar>
-						</List>
-					</VBox>
-					<VBox class="sapUiSmallMarginBegin" width="{= ${consigneeListModel>/countP} &amp;&amp; ${consigneeListModel>/countC} > 0 ? '50%' : '100%'}"
-						visible="{= ${consigneeListModel>/countC} > 0 ? true : false}">
-						<List class="tableCard card"
-							items="{ path: 'consigneeListModel>/',templateShareable:true, filters: {path: 'Status', operator: 'EQ', value1: 'COMPLETED'} }"
-							headerText="Manifest - Export" noDataText="{i18n>emptyNodata}" mode="SingleSelect">
-							<CustomListItem type="Active" fieldGroupIds="manifest">
-								<FlexBox alignItems="Start" justifyContent="SpaceBetween">
-									<HBox><core:Icon color="#CEA95B" class="sapUiTinyMarginEnd" size="1rem" src="sap-icon://activities"/>
-										<Text text="{consigneeListModel>DocNo} - {consigneeListModel>Port}"/>
-									</HBox>
-									<tnt:InfoLabel visible="{= ${consigneeListModel>Status} === '' ? false : true}" text="{consigneeListModel>Status}" displayOnly="true"
-										colorScheme="8"/>
-								</FlexBox>
-								<FlexBox alignItems="Start" justifyContent="SpaceBetween">
-									<Text class="desc" text="Doc No: {consigneeListModel>ConsigneeCode}"/>
-									<Text class="desc" text="{consigneeListModel>FiscalYear}"/>
-								</FlexBox>
-							</CustomListItem>
-							<headerToolbar>
-								<Toolbar>
-									<Title text="Consignee Payment ({consigneeListModel>/countC})" level="H1"/>
-								</Toolbar>
-							</headerToolbar>
-						</List>
-					</VBox>
 					<VBox width="100%" visible="{= ${GatePassListModel>/length} > 0 ? true : false}">
 						<List class="tableCard card" mode="SingleSelect" noDataText="{i18n>emptyNodata}" headerText="Delivery"
 							items="{ path: 'GatePassListModel>/',templateShareable:true}" id="list4">

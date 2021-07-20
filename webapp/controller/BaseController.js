@@ -10,7 +10,7 @@ sap.ui.define([
 		getRouter: function() {
 			return UIComponent.getRouterFor(this);
 		},
-		getModel: function(entity, modelName, status) {
+		getModel: function(entity, modelName, status, flag) {
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
 			var that = this;
@@ -35,11 +35,8 @@ sap.ui.define([
 						"$filter": filterVal + " eq '" + status + "'"
 					},
 					success: function(data) {
-						var export_res = data.results.filter(res => res.Import_Export === 'E');
-						var import_res = data.results.filter(res => res.Import_Export === 'I');
-						data.results['countE'] = export_res.length;
-						data.results['countI'] = import_res.length;
-						that.getView().setModel(new JSONModel(data.results), modelName);
+						var res = flag ? data.results.filter(res => res.Import_Export === flag) : data.results;
+						that.getView().setModel(new JSONModel(res), modelName);
 						setTimeout(function() {
 							sap.m.MessageToast.show("Items loaded succesfully with status - " + status);
 							sap.ui.getCore().setModel(new JSONModel(that.getView().getModel(modelName).getData()), modelName);

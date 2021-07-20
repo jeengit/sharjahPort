@@ -18,7 +18,7 @@ sap.ui.define([
 				this.getView().setModel(new JSONModel(null), "deliveryListModel");
 				this.getView().setModel(new JSONModel(null), "consigneeListModel");
 				this.getView().setModel(new JSONModel(null), "GatePassListModel");
-				this.getModel("ManifestListSet", "manifestListModel", status);
+				this.getModel("ManifestListSet", "manifestListModel", status, "I");
 			}
 			if (type === "DELIVERY") {
 				//	this.getModel("DeliveryListSet", "deliveryListModel");
@@ -28,12 +28,11 @@ sap.ui.define([
 				this.getView().setModel(new JSONModel(null), "consigneeListModel");
 			}
 			if (type === "CONSIGNEE") {
-				this.getConsigneeList();
+				this.getConsigneeList("PENDING");
 				this.getView().setModel(new JSONModel(null), "manifestListModel");
 				this.getView().setModel(new JSONModel(null), "deliveryListModel");
 			}
 			if (type === "gatePassList") {
-
 				this.callOdata("GatePassSet", "GatePassListModel");
 				this.getView().setModel(new JSONModel(null), "manifestListModel");
 				this.getView().setModel(new JSONModel(null), "deliveryListModel");
@@ -53,11 +52,11 @@ sap.ui.define([
 			sap.ui.core.BusyIndicator.show();
 			var model = evt.getSource().getFieldGroupIds()[0] === "manifest" ? "manifestListModel" : "deliveryListModel";
 			var sPath = evt.getSource().getBindingContext(model).getPath().split("/")[1];
-			evt.getSource().getParent().setSelectedItem(evt.getSource().getParent().getItems()[evt.getSource().getId().split("-")[4]], true);
-			sap.ui.getCore().setModel(new JSONModel({
-				path: evt.getSource().getId().split("-")[4],
-				id: evt.getSource().getParent().getId().split("--")[1]
-			}), "rememberSelectionModel");
+			// evt.getSource().getParent().setSelectedItem(evt.getSource().getParent().getItems()[evt.getSource().getId().split("-")[4]], true);
+			// sap.ui.getCore().setModel(new JSONModel({
+			// 	path: evt.getSource().getId().split("-")[4],
+			// 	id: evt.getSource().getParent().getId().split("--")[1]
+			// }), "rememberSelectionModel");
 			var property = evt.getSource().getBindingContext(model).getProperty();
 			var id = evt.getSource().getFieldGroupIds()[0] === "manifest" && property.ManifestNo === '' ? property.CustomsRefManifestNo :
 				evt.getSource().getFieldGroupIds()[0] === "manifest" && property.ManifestNo !== '' ? property.ManifestNo : property.DeliveryNo;
@@ -69,7 +68,6 @@ sap.ui.define([
 			});
 		},
 		handelgateDetailPress: function(evt) {
-
 			var sPath = evt.getSource().getBindingContext("GatePassListModel").getPath().split("/")[1];
 			var property = evt.getSource().getBindingContext("GatePassListModel").getProperty();
 			console.log(property);
@@ -80,7 +78,7 @@ sap.ui.define([
 
 			});
 		},
-		getConsigneeList: function() {
+		getConsigneeList: function(flag) {
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
 			var that = this;
@@ -89,11 +87,8 @@ sap.ui.define([
 					"$filter": "ConsigneeCode eq '10000020' and FiscalYear eq '2021'"
 				},
 				success: function(data) {
-					var pending = data.results.filter(res => res.Status === 'PENDING');
-					var completed = data.results.filter(res => res.Status === 'COMPLETED');
-					data.results['countP'] = pending.length;
-					data.results['countC'] = completed.length;
-					that.getView().setModel(new JSONModel(data.results), "consigneeListModel");
+					var result = data.results.filter(res => res.Status === flag);
+					that.getView().setModel(new JSONModel(result), "consigneeListModel");
 					sap.ui.core.BusyIndicator.hide();
 				},
 				error: function(oResponse) {
@@ -101,6 +96,37 @@ sap.ui.define([
 					sap.ui.core.BusyIndicator.hide();
 				}
 			});
+		},
+		onBtnPress: function(evt) {
+			sap.ui.core.BusyIndicator.show();
+			var splitVal = evt.getSource().getSelectedKey().split("/");
+			this.getManifestList(splitVal[0],splitVal[1],splitVal[2]);
+		},
+		getManifestList: function(status, type, flag) {
+			if (type === "MANIFEST") {
+				this.getView().setModel(new JSONModel(null), "deliveryListModel");
+				this.getView().setModel(new JSONModel(null), "consigneeListModel");
+				this.getView().setModel(new JSONModel(null), "GatePassListModel");
+				this.getModel("ManifestListSet", "manifestListModel", status , flag);
+			}
+			if (type === "DELIVERY") {
+				this.callOdata("DeliveryListSet", "deliveryListModel", "Status", status);
+				this.getView().setModel(new JSONModel(null), "GatePassListModel");
+				this.getView().setModel(new JSONModel(null), "manifestListModel");
+				this.getView().setModel(new JSONModel(null), "consigneeListModel");
+			}
+			if (type === "CONSIGNEE") {
+				this.getConsigneeList(flag);
+				this.getView().setModel(new JSONModel(null), "manifestListModel");
+				this.getView().setModel(new JSONModel(null), "deliveryListModel");
+			}
+			if (type === "gatePassList") {
+				this.callOdata("GatePassSet", "GatePassListModel");
+				this.getView().setModel(new JSONModel(null), "manifestListModel");
+				this.getView().setModel(new JSONModel(null), "deliveryListModel");
+				this.getView().setModel(new JSONModel(null), "consigneeListModel");
+			}
+			sap.ui.core.BusyIndicator.hide();
 		}
 	});
 });

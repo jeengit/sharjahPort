@@ -1,7 +1,8 @@
 <mvc:View controllerName="com.demo.sharjahPort.controller.customer.customerDashboardManifest" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
 	displayBlock="true" xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:u="sap.ui.unified" xmlns:l="sap.ui.layout"
 	xmlns:f="sap.ui.layout.form" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz="sap.viz.ui5.controls"
-	xmlns:viz.data="sap.viz.ui5.data" xmlns:unified="sap.ui.unified" xmlns:html="http://www.w3.org/1999/xhtml">
+	xmlns:viz.data="sap.viz.ui5.data" xmlns:unified="sap.ui.unified" xmlns:mi="sap.suite.ui.microchart"
+	xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page showHeader="true" class="sapUiResponsiveContentPadding">
 		<customHeader>
 			<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.TopNav" type="XML"/>
@@ -9,58 +10,85 @@
 		<content>
 			<VBox class="section">
 				<Title text="Dashboard" class="heading"/>
-				<l:Grid class="sapUiSmallMarginTopBottom custTile" defaultSpan="L2 M2 S12">
-					<l:content>
-						<GenericTile ariaLabel="CUSTOMS/MANIFEST" press="handleListPress" class="tileLayout" header="Manifest - Customs"
-							subheader="Customs Approved Manifest">
-							<TileContent unit="" footer="{DashboardCountModel>/0/Manifest}">
-								<!--<ImageContent src="sap-icon://complete" />-->
-							</TileContent>
+				<FlexBox width="100%" class="sapUiSmallMarginTopBottom custTile">
+					<HBox width="20%" class="tileLayout">
+						<GenericTile ariaLabel="CUSTOMS/MANIFEST/I" press="handleListPress" header="Manifest" subheader="Manifest">
+							<tileContent>
+								<TileContent>
+									<content>
+										<mi:ComparisonMicroChart minValue="0" maxValue="100">
+											<mi:data>
+												<mi:ComparisonMicroChartData title="Custom" value="{DashboardCountModel>/0/Manifest}" color="#f5c11a"/>
+												<mi:ComparisonMicroChartData title="Open" value="{DashboardCountModel>/0/OpenManifest}" color="Good"/>
+												<mi:ComparisonMicroChartData title="Closed" value="{DashboardCountModel>/0/ClosedManifest}" color="Error"/>
+											</mi:data>
+										</mi:ComparisonMicroChart>
+									</content>
+								</TileContent>
+							</tileContent>
 						</GenericTile>
-						<GenericTile ariaLabel="OPEN/MANIFEST" press="handleListPress" class="tileLayout" header="Manifest - Open" subheader="Open Manifest">
-							<TileContent unit="" footer="{DashboardCountModel>/0/OpenManifest}">
-								<!--<ImageContent src="sap-icon://product" />-->
-							</TileContent>
+					</HBox>
+					<HBox width="20%" class="tileLayout">
+						<GenericTile ariaLabel="OPEN/BOE" header="Bill of Entry" subheader="Bill of Entry">
+							<tileContent>
+								<TileContent>
+									<content>
+										<mi:ComparisonMicroChart minValue="0" maxValue="100">
+											<mi:data>
+												<mi:ComparisonMicroChartData title="New" value="{DashboardCountModel>/0/OpenBOE}" color="Good"/>
+												<mi:ComparisonMicroChartData title="Rejected" value="{DashboardCountModel>/0/ClosedBOE}" color="Error"/>
+											</mi:data>
+										</mi:ComparisonMicroChart>
+									</content>
+								</TileContent>
+							</tileContent>
 						</GenericTile>
-						<GenericTile ariaLabel="CLOSED/MANIFEST" press="handleListPress" class="tileLayout" header="Manifest - Closed" subheader="Closed Manifest">
-							<TileContent unit="" footer="{DashboardCountModel>/0/ClosedManifest}">
-								<!--<ImageContent src="sap-icon://product" />-->
-							</TileContent>
+					</HBox>
+					<HBox width="20%" class="tileLayout">
+						<GenericTile ariaLabel="OPEN/DELIVERY" press="handleListPress" header="Delivery" subheader="Delivery">
+							<tileContent>
+								<TileContent>
+									<content>
+										<mi:ComparisonMicroChart minValue="0" maxValue="100">
+											<mi:data>
+												<mi:ComparisonMicroChartData title="Open" value="{DashboardCountModel>/0/OpenDelivery}" color="Good"/>
+												<mi:ComparisonMicroChartData title="Closed" value="{DashboardCountModel>/0/ClosedDelivery}" color="Error"/>
+											</mi:data>
+										</mi:ComparisonMicroChart>
+									</content>
+								</TileContent>
+							</tileContent>
 						</GenericTile>
-						<GenericTile ariaLabel="OPEN/BOE" class="tileLayout" header="Bill of entry - Open" subheader="Bill of Entry">
-							<TileContent unit="" footer="{DashboardCountModel>/0/OpenBOE}">
-								<!--<ImageContent src="sap-icon://complete" />-->
-							</TileContent>
-						</GenericTile>
-						<GenericTile ariaLabel="CLOSED/BOE" class="tileLayout" header="Bill of Entry - Closed" subheader="Bill of Entry">
-							<TileContent unit="" footer="{DashboardCountModel>/0/ClosedBOE}">
-								<!--<ImageContent src="sap-icon://complete" />-->
-							</TileContent>
-						</GenericTile>
-						<GenericTile ariaLabel="OPEN/DELIVERY" press="handleListPress" class="tileLayout" header="Delivery - Open" subheader="Delivery">
-							<TileContent unit="" footer="{DashboardCountModel>/0/OpenDelivery}">
-								<!--<ImageContent src="sap-icon://complete" />-->
-							</TileContent>
-						</GenericTile>
-						<GenericTile ariaLabel="CLOSED/DELIVERY" press="handleListPress" class="tileLayout" header="Delivery - Closed" subheader="Delivery">
-							<TileContent unit="" footer="{DashboardCountModel>/0/ClosedDelivery}">
-								<!--<ImageContent src="sap-icon://complete" />-->
-							</TileContent>
-						</GenericTile>
-						<GenericTile ariaLabel="CLOSED/DELIVERY" class="tileLayout" header="Request From Consignee" subheader="Delivery for Bill of Entry">
+					</HBox>
+					<HBox width="20%" class="tileLayout">
+						<GenericTile ariaLabel="CLOSED/DELIVERY" header="Request From Consignee" subheader="Delivery for Bill of Entry">
 							<TileContent unit="" footer="5">
 								<!--<ImageContent src="sap-icon://complete" />-->
 							</TileContent>
 						</GenericTile>
-						<GenericTile ariaLabel="NA/CONSIGNEE" press="handleListPress" class="tileLayout" header="Consignee - Payment" subheader="Status for Consignee Payment">
-							<TileContent unit="" footer="" class="sapUiTinyMarginBottom sapUiTinyMarginTop">
-								<ImageContent class="sapUiSmallMarginTop" src="sap-icon://capital-projects" />
-							</TileContent>
+					</HBox>
+					<HBox width="20%" class="tileLayout">
+						<GenericTile ariaLabel="NA/CONSIGNEE" press="handleListPress" header="Consignee - Payment" subheader="Status for Consignee Payment">
+							<tileContent>
+								<TileContent>
+									<content>
+										<mi:ComparisonMicroChart minValue="0" maxValue="100">
+											<mi:data>
+												<mi:ComparisonMicroChartData title="Pending" value="0" color="Error"/>
+												<mi:ComparisonMicroChartData title="Completed" value="0" color="Good"/>
+											</mi:data>
+										</mi:ComparisonMicroChart>
+									</content>
+								</TileContent>
+							</tileContent>
 						</GenericTile>
-						<VBox width="208%" class="box-shadow bg-light">
+					</HBox>
+					</FlexBox>
+					<FlexBox>
+						<HBox width="40%" class="chart">
 							<viz:Popover id="idPopOver"></viz:Popover>
-							<viz:VizFrame vizProperties="{ title: {text : 'Manifest Summary', visible : true},plotArea:{ dataLabel:{visible: true,type:'value'} }}"
-								id="idVizFrame" uiConfig="{applicationSet:'fiori'}" height="176px" width="100%" vizType='donut'>
+							<viz:VizFrame class="box-shadow bg-light sapUiSmallMarginEnd sapUiSmallMarginTop" vizProperties="{ title: {text : 'Manifest Summary', visible : true},plotArea:{ dataLabel:{visible: true,type:'value'} }}"
+								id="idVizFrame" uiConfig="{applicationSet:'fiori'}" height="300px" width="100%" vizType='donut'>
 								<viz:dataset>
 									<viz.data:FlattenedDataset data="{pieChartModel>/results}">
 										<viz.data:dimensions>
@@ -76,9 +104,8 @@
 									<viz.feeds:FeedItem uid="color" type="Dimension" values="Status"/>
 								</viz:feeds>
 							</viz:VizFrame>
-						</VBox>
-					</l:content>
-				</l:Grid>
+						</HBox>
+				</FlexBox>
 			</VBox>
 		</content>
 	</Page>

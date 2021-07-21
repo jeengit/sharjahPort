@@ -21,10 +21,10 @@
 					</m:FlexBox>
 				</snappedHeading>
 				<expandedContent>
-					<m:Text text="Manifest Details"/>
+					<m:Text text="Manifest"/>
 				</expandedContent>
 				<snappedContent>
-					<m:Text text="Manifest Details"/>
+					<m:Text text="Manifest"/>
 				</snappedContent>
 				<snappedTitleOnMobile>
 					<m:Title text="Header Title On Phone"/>
@@ -41,7 +41,7 @@
 								<m:Label text="External Manifest no."/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input value="{ManDetailsModel>/ManifestExt}"/>
+								<m:Input value="{inCreateModel>/ManifestExt}" id="extManid"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -78,15 +78,13 @@
 							</m:HBox>
 							<m:HBox width="60%">
 								<!--<m:Input value="{ManDetailsModel>/Callsign}"/>-->
-							
-							
-									<m:Input class="" value="{ManDetailsModel>/Callsign}" id="callSignInputId" showSuggestion="true" suggestionItemSelected="selectCallSign"
-										suggest="searchCallSignData" autocomplete="false" suggestionItems="{callsignModel>/results}">
-										<m:suggestionItems>
-											<core:Item key="{callsignModel>CallSign}" text="{callsignModel>CallSign}"/>
-										</m:suggestionItems>
-									</m:Input>
-									</m:HBox>
+								<m:Input class="" value="{ManDetailsModel>/Callsign}" id="callSignInputId" showSuggestion="true" suggestionItemSelected="selectCallSign"
+									suggest="searchCallSignData" autocomplete="false" suggestionItems="{callsignModel>/results}">
+									<m:suggestionItems>
+										<core:Item key="{callsignModel>CallSign}" text="{callsignModel>CallSign}"/>
+									</m:suggestionItems>
+								</m:Input>
+							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
@@ -109,7 +107,7 @@
 								<m:Label text="{i18n>Agentcode}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input value="{ManDetailsModel>/AgentCode}" editable="false" wrapping="false"/>
+								<m:Input value="{callsigndetModel>/AgentCode}" id="agentCode" editable="false" wrapping="false"/>
 							</m:HBox>
 						</m:HBox>
 					</m:VBox>
@@ -129,7 +127,7 @@
 								<m:Label text="{i18n>voyNo}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input value="{ManDetailsModel>/VoyegeNo}"/>
+								<m:Input value="{ManDetailsModel>/VoyageNumber}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -145,7 +143,7 @@
 								<m:Label text="{i18n>VesselName}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input value="{ManDetailsModel>/VesselName}" editable="false"/>
+								<m:Input value="{callsigndetModel>/VesselName}" id="vesselname" editable="false"/>
 							</m:HBox>
 						</m:HBox>
 					</m:VBox>
@@ -159,18 +157,20 @@
 						<blocks>
 							<m:FlexBox width="100%" class="manifestListClass boeDetailsClass">
 								<m:HBox width="30%" class="boeMaster">
-									<m:List id="changeList" class="tableCard card" items="{path :'ManDetModel>/BillOfEntrySet/results'}" headerText="Manifest - Import"
+									<m:List id="changeList" class="tableCard card" items="{path : 'ManDetModel>/BillOfEntrySet/results'}"  headerText="Manifest - Import"
 										noDataText="{i18n>emptyNodata}">
 										<m:CustomListItem type="Active" press="handelListPress">
 											<m:FlexBox alignItems="Start" justifyContent="SpaceBetween">
 												<m:HBox><core:Icon color="#CEA95B" class="sapUiTinyMarginEnd" size="1rem" src="sap-icon://activities"/>
-													<m:Text text="{ManDetModel>BENo} - {ManDetModel>AgentCode}"/>
+													<m:Text text="{ManDetModel>BENo} - {ManDetModel>ConsigneeCode}"/>
 												</m:HBox>
-													</m:FlexBox>
+												<!--	<tnt:InfoLabel visible="{= ${BOEDetailsModel>Status} === '' ? false : true}" text="{BOEDetailsModel>Status}" displayOnly="true"-->
+												<!--		colorScheme="{= ${BOEDetailsModel>Status} === 'OPEN' ? 8 : ${BOEDetailsModel>Status} === 'IN PROGRESS' ? 3 : 5 }"/>-->
+											</m:FlexBox>
 											<m:FlexBox alignItems="Start" justifyContent="SpaceBetween">
-												<m:Text class="desc" text="{ManDetModel>CargoCategory}"/>
+												<m:Text class="desc" text="{ManDetailsModel>CargoCategory}"/>
 												<m:Text class="desc sapMLnk"
-													text="{ path: 'ManDetModel>ArrivalDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}} }"
+													text="{ path: 'ManDetailsModel>ArrivalDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}} }"
 													wrapping="false"/>
 											</m:FlexBox>
 										</m:CustomListItem>
@@ -194,17 +194,17 @@
 															<m:VBox class="sapUiSmallMarginBottom sapUiSmallMarginEnd">
 																<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Bill of Lading" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{ManDetailsModel>/VesselName}"/>
+																	<m:Input value="{ManDetailsModel>/BillOfLading}"/>
 																</m:HBox>
 																<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Consignee Code" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{ManDetailsModel>/ConsigneeCode}" />
+																	<m:Input value="{ManDetailsModel>/ConsigneeCode}"/>
 																</m:HBox>
 																<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Bill of Entry" class="sapUiSmallMarginEnd"/>
 																	<m:Input value="{ManDetailsModel>/BillOfEntry}" editable="false"/>
 																</m:HBox>
-																	<m:HBox class="sapUiTinyMarginBottom">
+																<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Contry of origin" class="sapUiSmallMarginEnd"/>
 																	<m:Input value="{ManDetailsModel>/CountryOfOrigin}"/>
 																</m:HBox>
@@ -214,7 +214,7 @@
 															<m:VBox class="sapUiSmallMarginBottom sapUiSmallMarginEnd">
 																<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Consignee" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{ManDetailsModel>/Consignee}" />
+																	<m:Input value="{ManDetailsModel>/Consignee}"/>
 																</m:HBox>
 																<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Creation Date" class="sapUiSmallMarginEnd"/>
@@ -222,20 +222,17 @@
 																</m:HBox>
 																<m:VBox class="sapUiSmallMarginBottom">
 																	<m:HBox class="sapUiTinyMarginBottom">
-																	<m:Label text="Cargo category" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{ManDetailsModel>/CargoCategory}"/>
-																</m:HBox>
-															
-															</m:VBox>
+																		<m:Label text="Cargo category" class="sapUiSmallMarginEnd"/>
+																		<m:Input value="{ManDetailsModel>/CargoCategory}"/>
+																	</m:HBox>
+																</m:VBox>
 															</m:VBox>
 														</layout:VerticalLayout>
 														<!--<layout:VerticalLayout>-->
-														
 														<!--</layout:VerticalLayout>-->
-														<t:Table visible="{= ${BOEDetailsModel>CommoditiesInDetailsSet/results/length} === 0 ? false:true}" visibleRowCount="6"
-															rows="{ManDetailsModel>/AgentCommoditiesSet}" selectionMode="None" ariaLabelledBy="title">
+														<t:Table visibleRowCount="6" rows="{ManDetailsModel>/AgentCommoditiesSet}" selectionMode="None" ariaLabelledBy="title">
 															<t:columns>
-																<t:Column  width="130px" sortProperty="ManifestNo">
+																<t:Column width="130px" sortProperty="ManifestNo">
 																	<m:Label wrapping="false" text="Commodities"/>
 																	<t:template>
 																		<m:Text text="{ManDetailsModel>Commodities}"/>
@@ -247,7 +244,7 @@
 																		<m:Text text="{ManDetailsModel>MarkAndNumbers} - {BOEDetailsModel>NoOfPackages}"/>
 																	</t:template>
 																</t:Column>
-																	<t:Column>
+																<t:Column>
 																	<m:Label text="UOM"/>
 																	<t:template>
 																		<m:Text text="{ManDetailsModel>UOM}"/>
@@ -259,13 +256,13 @@
 																		<m:Text text="{ManDetailsModel>NoOfPackages}"/>
 																	</t:template>
 																</t:Column>
-																	<t:Column>
+																<t:Column>
 																	<m:Label text="Pakage Type"/>
 																	<t:template>
 																		<m:Text text="{ManDetailsModel>PackageType}"/>
 																	</t:template>
 																</t:Column>
-																	<t:Column>
+																<t:Column>
 																	<m:Label text="Sub Type"/>
 																	<t:template>
 																		<m:Text text="{ManDetailsModel>SubType}"/>
@@ -277,7 +274,6 @@
 																		<m:Text text="{ManDetailsModel>GrowsWt}"/>
 																	</t:template>
 																</t:Column>
-															
 																<t:Column>
 																	<m:Label text="CBM"/>
 																	<t:template>

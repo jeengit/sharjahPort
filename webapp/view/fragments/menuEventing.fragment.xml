@@ -1,7 +1,7 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified">
 	<u:Menu itemSelect="handleMenuItemPress">
 		<u:MenuItem icon="etaDetails" text="New ETA Request" class="sapUiSmallMarginEnd"/>
-		<u:MenuItem icon="NA" text="Manifest"/>
+		<u:MenuItem icon="agentManifest" text="Manifest"/>
 		<u:MenuItem icon="NA" text="Service Request"/>
 		<u:MenuItem icon="NA" text="Equipment Request"/>
 		<u:MenuItem icon="gatepass" text="Gate Pass Request"/>

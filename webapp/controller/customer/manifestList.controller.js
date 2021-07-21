@@ -18,6 +18,7 @@ sap.ui.define([
 				this.getView().setModel(new JSONModel(null), "deliveryListModel");
 				this.getView().setModel(new JSONModel(null), "consigneeListModel");
 				this.getView().setModel(new JSONModel(null), "GatePassListModel");
+				this.getView().setModel(new JSONModel(null), "agentListModel");
 				this.getModel("ManifestListSet", "manifestListModel", status, "I");
 			}
 			if (type === "DELIVERY") {
@@ -26,15 +27,27 @@ sap.ui.define([
 				this.getView().setModel(new JSONModel(null), "GatePassListModel");
 				this.getView().setModel(new JSONModel(null), "manifestListModel");
 				this.getView().setModel(new JSONModel(null), "consigneeListModel");
+				this.getView().setModel(new JSONModel(null), "agentListModel");
 			}
 			if (type === "CONSIGNEE") {
 				this.getConsigneeList("PENDING");
 				this.getView().setModel(new JSONModel(null), "manifestListModel");
 				this.getView().setModel(new JSONModel(null), "deliveryListModel");
+				this.getView().setModel(new JSONModel(null), "agentListModel");
+				this.getView().setModel(new JSONModel(null), "GatePassListModel");
 			}
 			if (type === "gatePassList") {
 				this.callOdata("GatePassSet", "GatePassListModel");
 				this.getView().setModel(new JSONModel(null), "manifestListModel");
+				this.getView().setModel(new JSONModel(null), "deliveryListModel");
+				this.getView().setModel(new JSONModel(null), "consigneeListModel");
+				this.getView().setModel(new JSONModel(null), "agentListModel");
+			}
+			if (type === "AGENTMANIFEST") {
+
+				this.callOdata("AgentManifestListSet", "agentListModel");
+				this.getView().setModel(new JSONModel(null), "manifestListModel");
+				this.getView().setModel(new JSONModel(null), "GatePassListModel");
 				this.getView().setModel(new JSONModel(null), "deliveryListModel");
 				this.getView().setModel(new JSONModel(null), "consigneeListModel");
 			}
@@ -101,6 +114,19 @@ sap.ui.define([
 			sap.ui.core.BusyIndicator.show();
 			var splitVal = evt.getSource().getSelectedKey().split("/");
 			this.getManifestList(splitVal[0],splitVal[1],splitVal[2]);
+		},
+		handelagentDetailPress: function(evt) {
+
+			var sPath = evt.getSource().getBindingContext("agentListModel").getPath().split("/")[1];
+			var property = evt.getSource().getBindingContext("agentListModel").getProperty();
+			console.log(property);
+			var id = property.AgentManifestNo;
+			this.getRouter().navTo("manifestDetails", {
+				sPath: "0",
+				id: id,
+				status: "AGENT"
+
+			});
 		},
 		getManifestList: function(status, type, flag) {
 			if (type === "MANIFEST") {

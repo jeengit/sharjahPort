@@ -32,8 +32,7 @@
 					selectionMode="None" ariaLabelledBy="title">
 					<t:extension>
 						<OverflowToolbar style="Clear">
-							<Title
-								text="Manifest ({manifestListModel>/length})"/>
+							<Title text="Manifest ({manifestListModel>/length})"/>
 							<ToolbarSpacer/>
 							<SearchField class="search" liveChange="onSearch" width="250px"/>
 							<core:Icon src="sap-icon://sorting-ranking" tooltip="{i18n>sort}" press="sortCategoriesAndName"/>
@@ -48,7 +47,8 @@
 								<HBox>
 									<Link fieldGroupIds="manifest" press="handelDetailPress" visible="{= ${manifestListModel>ManifestNo} === '' ? true : false}"
 										text="{manifestListModel>CustomsRefManifestNo}"/>
-									<Link fieldGroupIds="manifest" press="handelDetailPress" visible="{= ${manifestListModel>ManifestNo} === '' ? false : true}" text="{manifestListModel>ManifestNo}"/>
+									<Link fieldGroupIds="manifest" press="handelDetailPress" visible="{= ${manifestListModel>ManifestNo} === '' ? false : true}"
+										text="{manifestListModel>ManifestNo}"/>
 								</HBox>
 							</t:template>
 						</t:Column>
@@ -133,6 +133,58 @@
 									text="{= ${deliveryListModel>Status} === 'OPEN' ? 'Open' : 'Closed' }" displayOnly="true"
 									colorScheme="{= ${deliveryListModel>Status} === 'OPEN' ? 8 : 3 }"/>
 							</t:template>
+						</t:Column>
+					</t:columns>
+				</t:Table>
+				<t:Table visible="{= ${agentListModel>/length} > 0 ? true : false}" rows="{agentListModel>/}" class="card tableCard no-margin"
+					selectionMode="None" ariaLabelledBy="title">
+					<t:extension>
+						<OverflowToolbar style="Clear">
+							<Title text="Manifest ({agentListModel>/length})"/>
+							<ToolbarSpacer/>
+							<SearchField class="search" liveChange="onSearch" width="250px"/>
+							<core:Icon src="sap-icon://sorting-ranking" tooltip="{i18n>sort}" press="sortCategoriesAndName"/>
+							<core:Icon src="sap-icon://sort" tooltip="{i18n>SortCategories}" press="sortCategories"/>
+							<core:Icon src="sap-icon://decline" tooltip="{i18n>Clearallsortings}" press="clearAllSortings"/>
+						</OverflowToolbar>
+					</t:extension>
+					<t:columns>
+						<t:Column sortProperty="EtaNo">
+							<Label text=" Manifest No."/>
+							<t:template>
+								<HBox>
+									<Link fieldGroupIds="agentmanifest" press="handelagentDetailPress" text="{agentListModel>AgentManifestNo}"/>
+									<!--<Link fieldGroupIds="manifest" press="handelDetailPress" visible="{= ${manifestListModel>ManifestNo} === '' ? false : true}" text="{manifestListModel>ManifestNo}"/>-->
+								</HBox>
+							</t:template>
+						</t:Column>
+						<t:Column sortProperty="EtaNo">
+							<Label text="Agent ID"/>
+							<t:template>
+								<HBox>
+									<Text  text="{agentListModel>AgentID}"/>
+									<!--<Text visible="{= ${manifestListModel>ManifestNo} === '' ? false : true}" text="{manifestListModel>AgentName}"/>-->
+								</HBox>
+							</t:template>
+						</t:Column>
+						<t:Column sortProperty="VesselName">
+							<Label text="{i18n>VesselName}"/>
+							<t:template>
+								<Text text="{agentListModel>VesselName}"/>
+							</t:template>
+						</t:Column>
+						<t:Column sortProperty="PortName">
+							<Label text="Arrival Date"/>
+							<t:template>
+								<Text text="{ path: 'agentListModel>Arrivaldate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}} }"
+									wrapping="false"/>
+							</t:template>
+						</t:Column>
+						<t:Column>
+							<Label text="call Sign"/>
+							<t:template>
+								<Text text="{agentListModel>CallSign}"/>
+								</t:template>
 						</t:Column>
 					</t:columns>
 				</t:Table>

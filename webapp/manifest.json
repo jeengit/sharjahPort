@@ -225,6 +225,15 @@
 						"home",
 						"gatepass"
 					]
+				},
+				
+					{
+					"name": "agentManifest",
+					"pattern": "agentManifest/{sPath}/{id}",
+					"target": [
+						"home",
+						"agentManifest"
+					]
 				}
 			],
 			"targets": {
@@ -303,6 +312,10 @@
 				"gatepass": {
 					"viewType": "XML",
 					"viewName": "gatepass"
+				},
+				"agentManifest": {
+					"viewType": "XML",
+					"viewName": "agentManifest"
 				}
 			}
 		}

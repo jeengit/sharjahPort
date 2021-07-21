@@ -43,8 +43,13 @@
 							<TileContent unit="" footer="{DashboardCountModel>/0/ServiceRequested}"></TileContent>
 						</GenericTile>
 					</HBox>
-					<HBox width="20%" class="tileLayout">
-						<GenericTile class="sapUiSmallMarginBottom" width="100%" press="handleListPress" ariaLabel="GATEPASS" header="Gate Pass">
+				<HBox width="20%" class="tileLayout">
+						<GenericTile class="sapUiSmallMarginBottom" width="100%" press="handleListPress" ariaLabel="list/GATEPASS" header="Gate Pass">
+							<TileContent unit="" footer="{DashboardCountModel>/0/GatePassOpen}"></TileContent>
+						</GenericTile>
+					</HBox>
+						<HBox width="20%" class="tileLayout">
+						<GenericTile class="sapUiSmallMarginBottom" width="100%" press="handleListPress" ariaLabel="AGENT/AGENTMANIFEST" header="Manifest">
 							<TileContent unit="" footer="{DashboardCountModel>/0/GatePassOpen}"></TileContent>
 						</GenericTile>
 					</HBox>

@@ -226,8 +226,7 @@
 						"gatepass"
 					]
 				},
-				
-					{
+				{
 					"name": "agentManifest",
 					"pattern": "agentManifest/{sPath}/{id}",
 					"target": [

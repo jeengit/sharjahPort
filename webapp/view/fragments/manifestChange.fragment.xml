@@ -11,13 +11,13 @@
 				</breadcrumbs>
 				<expandedHeading>
 					<m:HBox>
-						<m:Title text="{ManDetailsModel>/VesselName} - {ManDetailsModel>/ManifestNo}" wrapping="true"/>
+						<m:Title text="{ManDetModel>/VesselName} - {ManDetModel>/AGENT_MANIFEST_NO}" wrapping="true"/>
 					</m:HBox>
 				</expandedHeading>
 				<snappedHeading>
 					<m:FlexBox fitContainer="true" alignItems="Center">
 						<m:Avatar backgroundColor="Accent9" src="sap-icon://manager-insight" class="sapUiTinyMarginEnd"/>
-						<m:Title text="{ManDetailsModel>/VesselName} - {ManDetailsModel>/ManifestNo}" wrapping="true"/>
+						<m:Title text="{ManDetModel>/VesselName} - {ManDetModel>/AGENT_MANIFEST_NO}" wrapping="true"/>
 					</m:FlexBox>
 				</snappedHeading>
 				<expandedContent>
@@ -41,7 +41,7 @@
 								<m:Label text="External Manifest no."/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input value="{ManDetailsModel>/ManifestExt}"/>
+								<m:Input value="{ManDetModel>/EXT_MANIFEST_NO}" editable="false"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -49,7 +49,7 @@
 								<m:Label text="{i18n>manNo}" class="sapUiSmallMarginEnd"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input value="{ManDetailsModel>/ManifestNo}" editable="false"/>
+								<m:Input value="{ManDetModel>/AGENT_MANIFEST_NO}" editable="false"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -57,7 +57,7 @@
 								<m:Label text="To Port" class="sapUiSmallMarginEnd"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input value="{ManDetailsModel>/ToPort}"/>
+								<m:Input value="{ManDetModel>/TO_PORT}" editable="false"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -65,7 +65,7 @@
 								<m:Label text="From Port" class="sapUiSmallMarginEnd"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input value="{ManDetailsModel>/FromPort}"/>
+								<m:Input value="{ManDetModel>/FROM_PORT}" editable="false"/>
 							</m:HBox>
 						</m:HBox>
 					</m:VBox>
@@ -77,15 +77,15 @@
 								<m:Label text="{i18n>Callsign}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<!--<m:Input value="{ManDetailsModel>/Callsign}"/>-->
+								<m:Input value="{ManDetModel>/ZCallsign}" editable="false"/>
 							
 							
-									<m:Input class="" value="{ManDetailsModel>/Callsign}" id="callSignInputId" showSuggestion="true" suggestionItemSelected="selectCallSign"
-										suggest="searchCallSignData" autocomplete="false" suggestionItems="{callsignModel>/results}">
-										<m:suggestionItems>
-											<core:Item key="{callsignModel>CallSign}" text="{callsignModel>CallSign}"/>
-										</m:suggestionItems>
-									</m:Input>
+									<!--<m:Input class="" value="{ManDetModel>/ZCallsign}" id="callSignInputId" showSuggestion="true" suggestionItemSelected="selectCallSign"-->
+									<!--	suggest="searchCallSignData" autocomplete="false" suggestionItems="{callsignModel>/results}">-->
+									<!--	<m:suggestionItems>-->
+									<!--		<core:Item key="{callsignModel>CallSign}" text="{callsignModel>CallSign}"/>-->
+									<!--	</m:suggestionItems>-->
+									<!--</m:Input>-->
 									</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -93,7 +93,7 @@
 								<m:Label text="{i18n>ArrivalDate}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:DatePicker value="{ManDetailsModel>/ArrivalDate}" valueFormat="yyyyMMdd" displayFormat="long" editable="false"/>
+								<m:DatePicker value="{ManDetModel>/ArrivalDate}" valueFormat="yyyyMMdd" displayFormat="long" editable="false"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -101,7 +101,7 @@
 								<m:Label text="{i18n>crtDate}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:DatePicker value="{ManDetailsModel>/CreationDate}" editable="false" valueFormat="yyyyMMdd" displayFormat="long"/>
+								<m:DatePicker value="{ManDetModel>/CreationDate}" editable="false" valueFormat="yyyyMMdd" displayFormat="long"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -109,7 +109,7 @@
 								<m:Label text="{i18n>Agentcode}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input value="{ManDetailsModel>/AgentCode}" editable="false" wrapping="false"/>
+								<m:Input value="{ManDetModel>/AgentCode}" editable="false" wrapping="false"/>
 							</m:HBox>
 						</m:HBox>
 					</m:VBox>
@@ -121,7 +121,7 @@
 								<m:Label text="{i18n>PortName}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input value="{ManDetailsModel>/PortName}" wrapping="false"/>
+								<m:Input value="{ManDetModel>/PortName}" editable="false" wrapping="false"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -129,7 +129,7 @@
 								<m:Label text="{i18n>voyNo}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input value="{ManDetailsModel>/VoyegeNo}"/>
+								<m:Input value="{ManDetModel>/VoyegeNo}" editable="false"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -137,7 +137,7 @@
 								<m:Label text="{i18n>Captain}" class="sapUiSmallMarginEnd"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input value="{ManDetailsModel>/Caption}"/>
+								<m:Input value="{ManDetModel>/Caption}" editable="false"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -145,7 +145,7 @@
 								<m:Label text="{i18n>VesselName}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input value="{ManDetailsModel>/VesselName}" editable="false"/>
+								<m:Input value="{ManDetModel>/VesselName}" editable="false"/>
 							</m:HBox>
 						</m:HBox>
 					</m:VBox>
@@ -194,19 +194,19 @@
 															<m:VBox class="sapUiSmallMarginBottom sapUiSmallMarginEnd">
 																<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Bill of Lading" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{ManDetailsModel>/VesselName}"/>
+																	<m:Input value="{ManDetModel>/BillOfLading}"/>
 																</m:HBox>
 																<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Consignee Code" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{ManDetailsModel>/ConsigneeCode}" />
+																	<m:Input value="{ManDetModel>/ConsigneeCode}" />
 																</m:HBox>
 																<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Bill of Entry" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{ManDetailsModel>/BillOfEntry}" editable="false"/>
+																	<m:Input value="{ManDetModel>/BillOfEntry}" editable="false"/>
 																</m:HBox>
 																	<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Contry of origin" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{ManDetailsModel>/CountryOfOrigin}"/>
+																	<m:Input value="{ManDetModel>/CountryOfOrigin}"/>
 																</m:HBox>
 															</m:VBox>
 														</layout:VerticalLayout>
@@ -214,16 +214,16 @@
 															<m:VBox class="sapUiSmallMarginBottom sapUiSmallMarginEnd">
 																<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Consignee" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{ManDetailsModel>/Consignee}" />
+																	<m:Input value="{ManDetModel>/Consignee}" />
 																</m:HBox>
 																<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Creation Date" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{ManDetailsModel>/CreationDate}" editable="false"/>
+																	<m:Input value="{ManDetModel>/CreationDate}" editable="false"/>
 																</m:HBox>
 																<m:VBox class="sapUiSmallMarginBottom">
 																	<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Cargo category" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{ManDetailsModel>/CargoCategory}"/>
+																	<m:Input value="{ManDetModel>/CargoCategory}"/>
 																</m:HBox>
 															
 															</m:VBox>
@@ -232,68 +232,68 @@
 														<!--<layout:VerticalLayout>-->
 														
 														<!--</layout:VerticalLayout>-->
-														<t:Table visible="{= ${BOEDetailsModel>CommoditiesInDetailsSet/results/length} === 0 ? false:true}" visibleRowCount="6"
-															rows="{ManDetailsModel>/AgentCommoditiesSet}" selectionMode="None" ariaLabelledBy="title">
+														<t:Table  visibleRowCount="6"
+															rows="{ManDetModel>/BillOfEntrySet/results}" selectionMode="None" ariaLabelledBy="title">
 															<t:columns>
 																<t:Column  width="130px" sortProperty="ManifestNo">
 																	<m:Label wrapping="false" text="Commodities"/>
 																	<t:template>
-																		<m:Text text="{ManDetailsModel>Commodities}"/>
+																		<m:Text text="{ManDetModel>CommoditiesInDetailsSet/results/0/Commodities}"/>
 																	</t:template>
 																</t:Column>
 																<t:Column>
 																	<m:Label text="Mark &amp; No"/>
 																	<t:template>
-																		<m:Text text="{ManDetailsModel>MarkAndNumbers} - {BOEDetailsModel>NoOfPackages}"/>
+																		<m:Text text="{ManDetModel>CommoditiesInDetailsSet/results/0/MarkAndNumbers}"/>
 																	</t:template>
 																</t:Column>
 																	<t:Column>
 																	<m:Label text="UOM"/>
 																	<t:template>
-																		<m:Text text="{ManDetailsModel>UOM}"/>
+																		<m:Text text="{ManDetModel>CommoditiesInDetailsSet/results/0/UOM}"/>
 																	</t:template>
 																</t:Column>
 																<t:Column>
 																	<m:Label text="No.of packages"/>
 																	<t:template>
-																		<m:Text text="{ManDetailsModel>NoOfPackages}"/>
+																		<m:Text text="{ManDetModel>CommoditiesInDetailsSet/results/0/NoOfPackages}"/>
 																	</t:template>
 																</t:Column>
 																	<t:Column>
 																	<m:Label text="Pakage Type"/>
 																	<t:template>
-																		<m:Text text="{ManDetailsModel>PackageType}"/>
+																		<m:Text text="{ManDetModel>CommoditiesInDetailsSet/results/0/PackageType}"/>
 																	</t:template>
 																</t:Column>
 																	<t:Column>
 																	<m:Label text="Sub Type"/>
 																	<t:template>
-																		<m:Text text="{ManDetailsModel>SubType}"/>
+																		<m:Text text="{ManDetModel>CommoditiesInDetailsSet/results/0/SubType}"/>
 																	</t:template>
 																</t:Column>
 																<t:Column>
 																	<m:Label text="GrossWt"/>
 																	<t:template>
-																		<m:Text text="{ManDetailsModel>GrowsWt}"/>
+																		<m:Text text="{ManDetModel>CommoditiesInDetailsSet/results/0/GrowsWt}"/>
 																	</t:template>
 																</t:Column>
 															
 																<t:Column>
 																	<m:Label text="CBM"/>
 																	<t:template>
-																		<m:Text text="{ManDetailsModel>CBM}"/>
+																		<m:Text text="{ManDetModel>CommoditiesInDetailsSet/results/0/CBM}"/>
 																	</t:template>
 																</t:Column>
 																<t:Column>
 																	<m:Label text="Charge / Ton"/>
 																	<t:template>
-																		<m:Text text="{ManDetailsModel>ChargeTon}"/>
+																		<m:Text text="{ManDetModel>CommoditiesInDetailsSet/results/0/ChargeTon}"/>
 																	</t:template>
 																</t:Column>
 																<t:Column>
 																	<m:Label text="Net Weight"/>
 																	<t:template>
-																		<m:Text text="{ManDetailsModel>NetWt}"/>
+																		<m:Text text="{ManDetModel>CommoditiesInDetailsSet/results/0/NetWt}"/>
 																	</t:template>
 																</t:Column>
 															</t:columns>

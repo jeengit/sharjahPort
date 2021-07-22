@@ -25,7 +25,7 @@ sap.ui.define([
 			console.log(status);
 			var id = oEvent.getParameter("arguments").id;
 			var that = this;
-		  if (status === "AGENT") {
+			if (status === "AGENT") {
 
 				that.getView().byId(pageId + "--manifestChangeId").setVisible(true);
 				that.getView().byId(pageId + "--manifestDispId").setVisible(false);
@@ -38,8 +38,8 @@ sap.ui.define([
 						"$expand": "BillOfEntrySet/CommoditiesInDetailsSet"
 					},
 					success: function(data) {
-					that.getView().setModel(new JSONModel(data.results['0']), "ManDetModel");
-						that.createMan();
+						that.getView().setModel(new JSONModel(data.results['0']), "ManDetModel");
+					
 					},
 					error: function(oResponse) {
 						sap.m.MessageToast.show(oResponse.statusText);
@@ -122,71 +122,31 @@ sap.ui.define([
 				});
 			}
 		},
-		createMan: function() {
-			var mandatory = this.getView().getModel("ManDetModel").getData();
-			console.log(mandatory);
-			var odata = {
-				"ManifestExt": mandatory.EXT_MANIFEST_NO,
-				"ManifestNo": mandatory.AGENT_MANIFEST_NO,
-				"ToPort": mandatory.TO_PORT,
-				"FromPort": mandatory.FROM_PORT,
-				"Callsign": mandatory.ZCallsign,
-				"ArrivalDate": mandatory.ArrivalDate,
-				"CreationDate": mandatory.CreationDate,
-				"AgentCode": mandatory.AgentCode,
-				"PortName": mandatory.PortName,
-				"VoyageNumber": mandatory.VoyegeNo,
-				"VesselName": mandatory.VesselName,
-				"Caption": mandatory.Caption,
-				"BillOfLading": mandatory.FROM_PORT,
-				"ConsigneeCode": mandatory.BillOfEntrySet.results[0].ConsigneeCode,
-				"BillOfEntry": mandatory.BillOfEntrySet.results[0].BENo,
-				"Consignee": mandatory.BillOfEntrySet.results[0].ConsigneeName,
-				"BoeCreationDate": mandatory.BillOfEntrySet.results[0].BEDate,
-				"CargoCategory": mandatory.BillOfEntrySet.results[0].CargoCategory,
-				"CountryOfOrigin": mandatory.BillOfEntrySet.results[0].CountryofOrigin,
-				"AgentCommoditiesSet": [{
-
-					"ManifestNo": mandatory.BillOfEntrySet.results[0].CommoditiesInDetailsSet.results[0].ManifestNo,
-					"Commodities": mandatory.BillOfEntrySet.results[0].CommoditiesInDetailsSet.results[0].Commodities,
-					"MarksAndNos": mandatory.BillOfEntrySet.results[0].CommoditiesInDetailsSet.results[0].MarkAndNumbers,
-					"UOM": mandatory.BillOfEntrySet.results[0].CommoditiesInDetailsSet.results[0].UOM,
-					"NoOfPackages": mandatory.BillOfEntrySet.results[0].CommoditiesInDetailsSet.results[0].NoOfPackages,
-					"PackageType": mandatory.BillOfEntrySet.results[0].CommoditiesInDetailsSet.results[0].PackageType,
-					"SubType": mandatory.BillOfEntrySet.results[0].CommoditiesInDetailsSet.results[0].SubType,
-					"GrowsWt": mandatory.BillOfEntrySet.results[0].CommoditiesInDetailsSet.results[0].GrossWt,
-					"CBM": mandatory.BillOfEntrySet.results[0].CommoditiesInDetailsSet.results[0].CBM,
-					"ChargeTon": mandatory.BillOfEntrySet.results[0].CommoditiesInDetailsSet.results[0].ChargePerTon,
-					"NetWt": mandatory.BillOfEntrySet.results[0].CommoditiesInDetailsSet.results[0].NetWt
-				}]
-			};
-		this.getView().setModel(new JSONModel(odata), "ManDetailsModel");
-			sap.ui.core.BusyIndicator.hide();
-		},
-			onCreate: function() {
+	
+		onCreate: function() {
 			sap.ui.core.BusyIndicator.show();
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
 			var that = this;
-		
-				var oEntry = this.getView().getModel("BOEDetailsModel").getData();
-				oModel.create("/ManifestDetailsSet", oEntry, {
-					success: function(data) {
-						// sap.m.MessageToast.show("" + data.ManifestNo + "Created Successfully..");
-						sap.m.MessageToast.show("Manifest No - " + data.ManifestNo + " Created Successfully", {
-							closeOnBrowserNavigation: false
-						});
-						that.getRouter().navTo("dashboardManifest");
-						sap.ui.core.BusyIndicator.hide();
-					},
-					error: function(oResponse) {
-						sap.m.MessageToast.show(oResponse.statusText);
-						sap.ui.core.BusyIndicator.hide();
-					}
-				});
-			
+
+			var oEntry = this.getView().getModel("BOEDetailsModel").getData();
+			oModel.create("/ManifestDetailsSet", oEntry, {
+				success: function(data) {
+					// sap.m.MessageToast.show("" + data.ManifestNo + "Created Successfully..");
+					sap.m.MessageToast.show("Manifest No - " + data.ManifestNo + " Created Successfully", {
+						closeOnBrowserNavigation: false
+					});
+					that.getRouter().navTo("dashboardManifest");
+					sap.ui.core.BusyIndicator.hide();
+				},
+				error: function(oResponse) {
+					sap.m.MessageToast.show(oResponse.statusText);
+					sap.ui.core.BusyIndicator.hide();
+				}
+			});
+
 		},
-	
+
 		deliveryCreatePress: function(evt) {
 			sap.ui.core.BusyIndicator.show();
 			// this.getRouter().navTo("deliveryDetails");
@@ -271,7 +231,33 @@ sap.ui.define([
 				this.getView().byId("changeDetails").getItems()[0].setVisible(true);
 			}
 		},
-	
+		handlePress: function(evt) {
+
+			sap.ui.core.BusyIndicator.show();
+			var oEntry = {
+
+				"ManifestNo": this.getView().getModel("ManDetModel").getData().AGENT_MANIFEST_NO,
+				"Status": evt.getSource().getType() === "Accept" ? "APPROVE" : "REJECT",
+				"RejectRemark": ""
+			};
+			var oModel = this.getOwnerComponent().getModel("s4Model");
+			oModel.setUseBatch(false);
+			var that = this;
+			oModel.create("/AgentStatusSet", oEntry, {
+				success: function(data) {
+					sap.m.MessageToast.show("Manifest " + oEntry.Status + "ED Successfully", {
+						closeOnBrowserNavigation: false
+					});
+				that.getRouter().navTo("dashboardAgent");
+					sap.ui.core.BusyIndicator.hide();
+				},
+				error: function(oResponse) {
+					sap.m.MessageToast.show("Something went wrong");
+					sap.ui.core.BusyIndicator.hide();
+				}
+			});
+
+		},
 		handleTallySheetPress: function(evt) {
 			var tallyHeaderData = evt.getSource().getModel("BOEDetailsModel").getData();
 			sap.ui.getCore().setModel(new JSONModel(tallyHeaderData), "ManifModel");

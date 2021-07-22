@@ -100,23 +100,25 @@ sap.ui.define([
 				sap.ui.getCore().setModel(new JSONModel(odata), "etaIdModel");
 				oModel.read("/ETAdetailsSet('" + odata.id + "')", {
 					success: function(data) {
-						oModel.read("/ServiceListSet", {
-							urlParameters: {
-								"$filter": "ETAno eq '" + odata.id + "'"
-							},
-							success: function(data1) {
-								data['Hotworks_guid'] = data1.results['0'].GUID;
-								data['Hotwork_type'] = data1.results['0'].Type;
-								data['HStatus'] = data1.results['0'].Status;
-								data['Purpose'] = data1.results['0'].Purpose;
-								that.getView().setModel(new JSONModel(data), "etaDetailsModel");
-								sap.ui.getCore().setModel(new JSONModel(data), "etaDetailsModel");
-								sap.ui.core.BusyIndicator.hide();
-							},
-							error: function(oResponse) {
-								sap.m.MessageToast.show(oResponse.statusText);
-							}
-						});
+						if (data.ZStatus === "APPROVED") {
+							oModel.read("/ServiceListSet", {
+								urlParameters: {
+									"$filter": "ETAno eq '" + odata.id + "'"
+								},
+								success: function(data1) {
+									data['Hotworks_guid'] = data1.results['0'].GUID;
+									data['Hotwork_type'] = data1.results['0'].Type;
+									data['HStatus'] = data1.results['0'].Status;
+									data['Purpose'] = data1.results['0'].Purpose;
+									sap.ui.core.BusyIndicator.hide();
+								},
+								error: function(oResponse) {
+									sap.m.MessageToast.show(oResponse.statusText);
+								}
+							});
+						}
+						that.getView().setModel(new JSONModel(data), "etaDetailsModel");
+						sap.ui.getCore().setModel(new JSONModel(data), "etaDetailsModel");
 					},
 					error: function(oResponse) {
 						sap.m.MessageToast.show(oResponse.statusText);

@@ -62,10 +62,8 @@ sap.ui.define([
 			}
 		},
 		_validateInput: function (oInput) {
-			var sValueState = "None";
 			var bValidationError = false;
 			var oBinding = oInput.getBinding("value").getValue();
-			console.log(oBinding);
 			// console.log(oBinding.getType());
 			if (!oBinding) {
 				oInput.setValueState("Error");
@@ -88,9 +86,12 @@ sap.ui.define([
 			return bValidationError;
 		},
 		createLog: function () {
-
 			var mandatory = sap.ui.getCore().getModel("etaDetailsModel").getData();
 			var odata = {
+				"Hotworks_guid":mandatory.Hotworks_guid,
+				"Hotwork_type":mandatory.Hotwork_type,
+				"HStatus":mandatory.HStatus,
+				"Purpose":mandatory.Purpose,
 				"ImLogSheetNo": "",
 				"ImPortNo": "",
 				"LogSheetNo": "",
@@ -312,8 +313,6 @@ sap.ui.define([
 					
 				],
 				bValidationError = false;
-			console.log(aInputs);
-
 			// Check that inputs are not empty.
 			// Validation does not happen during data binding as this is only triggered by user actions.
 			aInputs.forEach(function (oInput) {

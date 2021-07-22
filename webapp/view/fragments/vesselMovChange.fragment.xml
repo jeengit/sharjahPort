@@ -813,6 +813,41 @@
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>
+			<ObjectPageSection visible="{= ${vesMovModel>/Hotwork_type} === 'H' ? true : false}" titleUppercase="false" title="Hotworks">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+							<m:FlexBox wrap="Wrap">
+								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+									<m:Text class="title sapUiTinyMarginBottom" text="{i18n>BasicDetails}"/>
+									<m:VBox>
+										<m:HBox class="sapUiTinyMarginBottom">
+											<m:Label text="{i18n>GUID}" class="sapUiSmallMarginEnd"/>
+											<m:Text text="{vesMovModel>/Hotworks_guid}"/>
+										</m:HBox>
+										<m:HBox>
+											<m:Label text="{i18n>Type}" class="sapUiSmallMarginEnd"/>
+											<m:Text text="{vesMovModel>/Hotwork_type}"/>
+										</m:HBox>
+									</m:VBox>
+								</layout:VerticalLayout>
+								<layout:VerticalLayout class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop">
+									<m:VBox>
+										<m:HBox class="sapUiSmallMarginTop">
+											<m:Label text="{i18n>Status}" class="sapUiSmallMarginEnd sapUiTinyMarginTop"/>
+											<m:Text text="{vesMovModel>/HStatus}" class="sapUiTinyMarginTop"/>
+										</m:HBox>
+										<m:HBox class="sapUiTinyMarginTop">
+											<m:Label text="{i18n>Purpose}" class="sapUiSmallMarginEnd"/>
+											<m:Text text="{vesMovModel>/Purpose}" class=""/>
+										</m:HBox>
+									</m:VBox>
+								</layout:VerticalLayout>
+							</m:FlexBox>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
 		</sections>
 	</ObjectPageLayout>
 </core:FragmentDefinition>

@@ -17,8 +17,8 @@ sap.ui.define([
 		},
 		_onObjectMatched: function(oEvent) {
 			this.callForHarbourNotification('');
-			this.getModel("CallSignSearchSet","callSignModel");
-			this.getView().setModel(new JSONModel(sap.ui.getCore().getModel("navModel").getData()),"navModel");
+			this.getModel("CallSignSearchSet", "callSignModel");
+			this.getView().setModel(new JSONModel(sap.ui.getCore().getModel("navModel").getData()), "navModel");
 			this.getUserName();
 			//this.getView().byId("createEta").setVisible(false);
 			sap.ui.core.BusyIndicator.show();
@@ -100,12 +100,26 @@ sap.ui.define([
 				sap.ui.getCore().setModel(new JSONModel(odata), "etaIdModel");
 				oModel.read("/ETAdetailsSet('" + odata.id + "')", {
 					success: function(data) {
-						that.getView().setModel(new JSONModel(data), "etaDetailsModel");
-						sap.ui.getCore().setModel(new JSONModel(data), "etaDetailsModel");
-						sap.ui.core.BusyIndicator.hide();
+						oModel.read("/ServiceListSet", {
+							urlParameters: {
+								"$filter": "ETAno eq '" + odata.id + "'"
+							},
+							success: function(data1) {
+								data['Hotworks_guid'] = data1.results['0'].GUID;
+								data['Hotwork_type'] = data1.results['0'].Type;
+								data['HStatus'] = data1.results['0'].Status;
+								data['Purpose'] = data1.results['0'].Purpose;
+								that.getView().setModel(new JSONModel(data), "etaDetailsModel");
+								sap.ui.getCore().setModel(new JSONModel(data), "etaDetailsModel");
+								sap.ui.core.BusyIndicator.hide();
+							},
+							error: function(oResponse) {
+								sap.m.MessageToast.show(oResponse.statusText);
+							}
+						});
 					},
 					error: function(oResponse) {
-						alert("Error...");
+						sap.m.MessageToast.show(oResponse.statusText);
 						sap.ui.core.BusyIndicator.hide();
 					}
 				});
@@ -123,7 +137,6 @@ sap.ui.define([
 				var oContext = oItem.getBindingContext("agentVesselModel");
 				var oPath = oContext.getPath();
 				var obj = model.getProperty(oPath);
-				console.log(obj);
 				this.getView().byId("lineId").setValue(obj.LineCode);
 				this.getView().byId("vesselId").setValue(obj.VesselName);
 				this.getView().byId("imoId").setValue(obj.ImoNumber);
@@ -131,7 +144,7 @@ sap.ui.define([
 			}
 		},
 		onSelectPurpose: function() {
-			
+
 			// this.getView().byId("purpVisit").getValue() !== "REFUEL" ? this.getView().byId("DischargeDetails").setVisible(true) : this.getView()
 			// 	.byId("DischargeDetails").setVisible(false);
 			// this.getView().byId("purpVisit").getValue() === "UNLOADING" || 	this.getView().byId("purpVisit").getValue() === "BOTH" ? this.getView().byId("cargoDisBox").setVisible(true) : this.getView()
@@ -184,18 +197,18 @@ sap.ui.define([
 				"ETA_no": this.getView().getModel("etaDetailsModel").getData().ZETANumber,
 				"Gen_Remark": "",
 				"Reject_Remark": "",
-				"PreferedBerth":this.getView().getModel("etaDetailsModel").getData().ZPreferedBerth,
-				"Port":this.getView().getModel("etaDetailsModel").getData().ZPortName,
-				"ExpArrivalDate":this.getView().getModel("etaDetailsModel").getData().ZExpectedArrivalDate,
-				"ExpArrivalTime":this.getView().getModel("etaDetailsModel").getData().ZExpectedArrivalTime,
-				"ImoNo":this.getView().getModel("etaDetailsModel").getData().ZIMONumber,
-				"CallSign":this.getView().getModel("etaDetailsModel").getData().ZCallSign
+				"PreferedBerth": this.getView().getModel("etaDetailsModel").getData().ZPreferedBerth,
+				"Port": this.getView().getModel("etaDetailsModel").getData().ZPortName,
+				"ExpArrivalDate": this.getView().getModel("etaDetailsModel").getData().ZExpectedArrivalDate,
+				"ExpArrivalTime": this.getView().getModel("etaDetailsModel").getData().ZExpectedArrivalTime,
+				"ImoNo": this.getView().getModel("etaDetailsModel").getData().ZIMONumber,
+				"CallSign": this.getView().getModel("etaDetailsModel").getData().ZCallSign
 			};
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
 			var that = this;
 			oModel.create("/ETApproveRejectSet", oEntry, {
-				success: function(data) {
+				success: function() {
 					sap.m.MessageToast.show("ETA " + oEntry.ImFlag + "ED Successfully", {
 						closeOnBrowserNavigation: false
 					});

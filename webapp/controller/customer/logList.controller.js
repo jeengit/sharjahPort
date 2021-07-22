@@ -14,24 +14,7 @@ sap.ui.define([
 			var status = oEvent.getParameter("arguments").sPath;
 			var type = oEvent.getParameter("arguments").type;
 			this.getUserName();
-			var oModel = this.getOwnerComponent().getModel("s4Model");
-			oModel.setUseBatch(false);
-			var that = this;
-			oModel.read("/LogSheetListSet", {
-				urlParameters: {
-					"$filter": "Status eq '" + status + "'"
-				},
-				success: function (data) {
-					that.getView().setModel(new JSONModel(data), "etaListModel");
-					sap.m.MessageToast.show("Items loaded succesfully with status - " + status);
-					sap.ui.core.BusyIndicator.hide();
-				},
-				error: function (oResponse) {
-					sap.m.MessageToast.show(oResponse.statusText);
-					sap.ui.core.BusyIndicator.hide();
-					// getDialog.close();
-				}
-			});
+			this.getEtaLogList(status,type);
 			sap.ui.getCore().setModel(new JSONModel({
 				"status": status,
 				"type": type
@@ -41,10 +24,12 @@ sap.ui.define([
 		onETADetailsPress: function (evt) {
 			sap.ui.core.BusyIndicator.show();
 			var sPath = evt.getSource().getBindingContext("etaListModel").getPath().split("/")[2];
-			var id = evt.getSource().getBindingContext("etaListModel").getProperty().LogNumber;
+			var logId = evt.getSource().getBindingContext("etaListModel").getProperty().LogNumber;
+			var etaId = evt.getSource().getBindingContext("etaListModel").getProperty().ETAno;
 			this.getRouter().navTo("logDetails", {
 				sPath: encodeURIComponent(sPath),
-				id: id
+				logId: logId,
+				etaId: etaId
 			});
 		},
 		onAfterRendering: function () {
@@ -59,6 +44,32 @@ sap.ui.define([
 			var rows = Math.floor(($("#" + pageId).height() - 200) / 32);
 			jQuery.sap.delayedCall(0, this, function () {
 				that.byId("logTable").setVisibleRowCount(rows);
+			});
+		},
+		onBtnPress: function(evt) {
+			//sap.ui.core.BusyIndicator.show();
+			var splitVal = evt.getSource().getSelectedKey().split("/");
+			this.getEtaLogList(splitVal[0],splitVal[1]);
+		},
+		getEtaLogList: function(status, type) {
+			var oModel = this.getOwnerComponent().getModel("s4Model");
+			oModel.setUseBatch(false);
+			var that = this;
+			oModel.read("/LogSheetListSet", {
+				urlParameters: {
+					"$filter": "Status eq '" + status + "'"
+				},
+				success: function (data) {
+					data['TYPE'] = type;
+					that.getView().setModel(new JSONModel(data), "etaListModel");
+					sap.m.MessageToast.show("Items loaded succesfully with status - " + status);
+					sap.ui.core.BusyIndicator.hide();
+				},
+				error: function (oResponse) {
+					sap.m.MessageToast.show(oResponse.statusText);
+					sap.ui.core.BusyIndicator.hide();
+					// getDialog.close();
+				}
 			});
 		}
 	});

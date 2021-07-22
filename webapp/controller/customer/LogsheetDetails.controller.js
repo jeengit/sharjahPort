@@ -42,15 +42,31 @@ sap.ui.define([
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
 			var that = this;
-			oModel.read("/LogSheetDetailsSet('" + oEvent.getParameter("arguments").id + "')", {
+			var etaId = oEvent.getParameter("arguments").etaId;
+			oModel.read("/LogSheetDetailsSet('" + oEvent.getParameter("arguments").logId + "')", {
 				urlParameters: {
 					"$expand": "LogsheetToShifting"
 				},
 				success: function(data) {
-					that.getView().setModel(new JSONModel(data), "vesMovModel");
+						// oModel.read("/ServiceListSet", {
+						// 	urlParameters: {
+						// 		"$filter": "ETAno eq '" + etaId + "'"
+						// 	},
+						// 	success: function(data1) {
+						// 		data['Hotworks_guid'] = data1.results['0'].GUID;
+						// 		data['Hotwork_type'] = data1.results['0'].Type;
+						// 		data['HStatus'] = data1.results['0'].Status;
+						// 		data['Purpose'] = data1.results['0'].Purpose;
+								that.getView().setModel(new JSONModel(data), "vesMovModel");
+								sap.ui.core.BusyIndicator.hide();
+						// 	},
+						// 	error: function(oResponse) {
+						// 		sap.m.MessageToast.show(oResponse.statusText);
+						// 	}
+						// });
 				},
 				error: function(oResponse) {
-					sap.m.MessageToast.show("Something went wrong!..");
+					sap.m.MessageToast.show(oResponse.statusText);
 				}
 			});
 			this.getModel("TugListSet", "vesMovTugModel");
@@ -126,6 +142,7 @@ sap.ui.define([
 		onApprove: function() {
 			var oEntry = this.getView().getModel("vesMovModel").getData();
 			oEntry['ImFlag'] = "APPROVE";
+			console.log(oEntry);
 			sap.ui.core.BusyIndicator.show();
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);

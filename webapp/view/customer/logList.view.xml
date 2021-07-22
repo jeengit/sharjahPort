@@ -6,10 +6,18 @@
 			<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.TopNav" type="XML"/>
 		</customHeader>
 		<content>
-			<VBox class="sapUiContentPadding">
+			<VBox class="sapUiContentPadding tabfilter">
 				<Breadcrumbs currentLocationText="Log Sheet">
 					<Link href="#{= ${loginModel>/uRole} === 'HARBOR_MASTER' ? 'dashboardHarbour' : ${loginModel>/uRole} === 'CONTROL_ROOM' ? 'dashboard' :  ${loginModel>/uRole} === 'CARGO' ? 'dashboardManifest' : ''}" text="Home"/>
 				</Breadcrumbs>
+				<IconTabBar expandable="false" select="onBtnPress" class="sapUiResponsiveContentPadding">
+					<items>
+						<IconTabFilter icon="sap-icon://request" iconColor="Positive" text="Pending"
+							key="PENDING/LOG"/>
+						<IconTabFilter icon="sap-icon://approvals" iconColor="Critical"
+							text="Closed" key="CLOSED/LOG"/>
+					</items>
+				</IconTabBar>
 				<t:Table id="logTable" rows="{etaListModel>/results}" selectionMode="None" ariaLabelledBy="title"
 					class="card tableCard no-margin">
 					<t:extension>

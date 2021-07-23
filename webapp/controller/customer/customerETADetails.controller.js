@@ -20,7 +20,6 @@ sap.ui.define([
 			this.getModel("CallSignSearchSet", "callSignModel");
 			this.getView().setModel(new JSONModel(sap.ui.getCore().getModel("navModel").getData()), "navModel");
 			this.getUserName();
-			//this.getView().byId("createEta").setVisible(false);
 			sap.ui.core.BusyIndicator.show();
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
@@ -71,7 +70,6 @@ sap.ui.define([
 				oModel.read("/AgentSearchSet", {
 					success: function(data) {
 						that.getView().setModel(new JSONModel(data), "agentModel");
-						// console.log(data.results[0].ImAgentCode);      
 						if (data.results[0].ImAgentCode) {
 							oModel.read("/AgentVesselListSet", {
 								urlParameters: {
@@ -82,14 +80,13 @@ sap.ui.define([
 									sap.ui.core.BusyIndicator.hide();
 								},
 								error: function(oResponse) {
-
+									sap.m.MessageToast.show(oResponse.statusText);
 								}
 							});
 						}
-						sap.ui.core.BusyIndicator.hide();
 					},
 					error: function(oResponse) {
-						alert("Error...");
+						sap.m.MessageToast.show(oResponse.statusText);
 						sap.ui.core.BusyIndicator.hide();
 					}
 				});

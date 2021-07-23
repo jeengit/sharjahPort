@@ -11,7 +11,7 @@
 						href="#{= ${loginModel>/uRole} === 'HARBOR_MASTER' ? 'dashboardHarbour' : ${loginModel>/uRole} === 'CONTROL_ROOM' ? 'dashboard' : ${loginModel>/uRole} === 'CARGO' ? 'dashboardManifest' : ${loginModel>/uRole} === 'AGENT' ? 'dashboardAgent':''}"
 						text="Home"/>
 				</Breadcrumbs>
-				<IconTabBar expandable="false" id="idIconTabBar" select="onBtnPress" class="sapUiResponsiveContentPadding">
+				<IconTabBar selectedKey="{= ${etaListModel>/TYPE} === 'ETA' ? 'NEW/ETA' : 'OPEN/HOTWORKS'}" expandable="false" id="idIconTabBar" select="onBtnPress" class="sapUiResponsiveContentPadding">
 					<items>
 						<IconTabFilter visible="{= ${etaListModel>/results/0/Status} ? true : false}" icon="sap-icon://request" iconColor="Positive" text="New"
 							key="{= ${etaListModel>/TYPE} === 'ETA' ? 'NEW/ETA' : 'OPEN/HOTWORKS'}"/>

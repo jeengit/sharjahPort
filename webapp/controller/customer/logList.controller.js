@@ -24,12 +24,11 @@ sap.ui.define([
 		onETADetailsPress: function (evt) {
 			sap.ui.core.BusyIndicator.show();
 			var sPath = evt.getSource().getBindingContext("etaListModel").getPath().split("/")[2];
-			var logId = evt.getSource().getBindingContext("etaListModel").getProperty().LogNumber;
-			var etaId = evt.getSource().getBindingContext("etaListModel").getProperty().ETAno;
+			var id = evt.getSource().getBindingContext("etaListModel").getProperty().LogNumber;
+			//var etaId = evt.getSource().getBindingContext("etaListModel").getProperty().ETAno;
 			this.getRouter().navTo("logDetails", {
 				sPath: encodeURIComponent(sPath),
-				logId: logId,
-				etaId: etaId
+				id: id
 			});
 		},
 		onAfterRendering: function () {

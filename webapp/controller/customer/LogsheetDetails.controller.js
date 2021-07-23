@@ -42,8 +42,8 @@ sap.ui.define([
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
 			var that = this;
-			var etaId = oEvent.getParameter("arguments").etaId;
-			oModel.read("/LogSheetDetailsSet('" + oEvent.getParameter("arguments").logId + "')", {
+			//var etaId = oEvent.getParameter("arguments").etaId;
+			oModel.read("/LogSheetDetailsSet('" + oEvent.getParameter("arguments").id + "')", {
 				urlParameters: {
 					"$expand": "LogsheetToShifting"
 				},

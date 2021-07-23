@@ -50,7 +50,18 @@
 					</HBox>
 						<HBox width="20%" class="tileLayout">
 						<GenericTile class="sapUiSmallMarginBottom" width="100%" press="handleListPress" ariaLabel="AGENT/AGENTMANIFEST" header="Manifest">
-							<TileContent unit="" footer="{DashboardCountModel>/0/GatePassOpen}"></TileContent>
+						
+								<TileContent>
+									<content>
+										<mi:ComparisonMicroChart minValue="0" maxValue="50">
+											<mi:data>
+												<mi:ComparisonMicroChartData title="Open" value="{DashboardCountModel>/0/AgManifestOpen}" color="#f5c11a"/>
+												<mi:ComparisonMicroChartData title="Approved" value="{DashboardCountModel>/0/AgManifestApproved}" color="Good"/>
+												<mi:ComparisonMicroChartData title="Rejected" value="{DashboardCountModel>/0/AgManifestRejected}" color="Error"/>
+											</mi:data>
+										</mi:ComparisonMicroChart>
+									</content>
+								</TileContent>
 						</GenericTile>
 					</HBox>
 				</FlexBox>

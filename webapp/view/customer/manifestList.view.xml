@@ -10,7 +10,7 @@
 				<FlexBox alignItems="Center" justifyContent="SpaceBetween">
 					<Breadcrumbs
 						currentLocationText="{= ${manifestListModel>/0/ManifestStatus} === 'MAN_CREATED' || ${manifestListModel>/0/ManifestStatus} === 'OPEN' ? 'Manifest' : ${consigneeListModel>/length} > 0 ? 'Consignee' : 'Delivery'}">
-						<Link href="#dashboardManifest" text="Home"/>
+						<Link href="{= ${agentListModel>/length} > 0 ? '#dashboardAgent' : '#dashboardManifest' }" text="Home"/>
 					</Breadcrumbs>
 					<ComboBox class="inputClass" visible="{= ${consigneeListModel>/length} > 0 ? true : false}" width="100%" selectedKey="2021">
 						<core:Item key="2021" text="2021"/>

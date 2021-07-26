@@ -314,7 +314,7 @@
 				},
 				"agentManifest": {
 					"viewType": "XML",
-					"viewName": "agentManifest"
+					"viewName": "customerAgentManifest"
 				}
 			}
 		}

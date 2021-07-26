@@ -9,7 +9,7 @@ sap.ui.define([
 ], function(Device, BaseController, Controller, Filter, FilterOperator, Fragment, JSONModel) {
 	"use strict";
 
-	return BaseController.extend("com.demo.sharjahPort.controller.customer.agentManifest", {
+	return BaseController.extend("com.demo.sharjahPort.controller.customer.customerAgentManifest", {
 
 		onInit: function() {
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);

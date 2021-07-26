@@ -3,7 +3,7 @@
 		<subHeader>
 			<Bar>
 				<contentLeft>
-					<Text text="Hot Works ({= ${hotWorksModel>/CallSign} ? ${hotWorksModel>/LogSheetNo} : 'New'})"/>
+					<Text text="Hot Works - {= ${hotWorksModel>/STATUS} === 'NEW' ? 'New' : ${hotWorksModel>/LogSheetNo}}"/>
 				</contentLeft>
 				<contentRight>
 					<core:Icon src="sap-icon://decline" press="closeHotWorkPopup"/>

@@ -36,7 +36,7 @@ sap.ui.define([
 				this.getView().setModel(new JSONModel(null), "agentListModel");
 				this.getView().setModel(new JSONModel(null), "GatePassListModel");
 			}
-			if (type === "gatePassList") {
+			if (type === "GATEPASS") {
 				this.callOdata("GatePassSet", "GatePassListModel");
 				this.getView().setModel(new JSONModel(null), "manifestListModel");
 				this.getView().setModel(new JSONModel(null), "deliveryListModel");

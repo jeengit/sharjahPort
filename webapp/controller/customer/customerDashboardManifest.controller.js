@@ -35,6 +35,7 @@ sap.ui.define([
 			}, 2000);
 		},
 		handleListPress: function (oEvent) {
+			this.fnGetCount(oEvent);
 			sap.ui.core.BusyIndicator.show();
 			var status = oEvent.getSource().getAriaLabel().split("/")[0];
 			var type = oEvent.getSource().getAriaLabel().split("/")[1];
@@ -43,6 +44,16 @@ sap.ui.define([
 				sPath: status,
 				type: type
 			});
+		},
+		fnGetCount : function(obj){
+			var count = [];
+			for (var i of obj.getSource().getTileContent()[0].getContent().getData()) {
+				count.push({
+					"text": i.getTitle(),
+					"count": i.getValue()
+				});
+			}
+			sap.ui.getCore().setModel(new JSONModel(count), "countModel");
 		},
 		getCalenderData: function() {
 			var oModel = this.getOwnerComponent().getModel("s4Model");

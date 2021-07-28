@@ -86,10 +86,10 @@ sap.ui.define([
 				});
 			}
 		},
-		onNavToPress: function(evt) {
-			var route = evt.getParameter("id").split("--")[1];
-			this.getRouter().navTo(route);
-		},
+		// onNavToPress: function(evt) {
+		// 	var route = evt.getParameter("id").split("--")[1];
+		// 	this.getRouter().navTo(route);
+		// },
 		onNavToHome: function() {
 			this.getRouter().navTo("dashboard");
 		},

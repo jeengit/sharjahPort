@@ -9,6 +9,9 @@ sap.ui.define([
 			oRouter.getRoute("etaList").attachPatternMatched(this._onObjectMatched, this);
 		},
 		_onObjectMatched: function(oEvent) {
+			var oCountData = sap.ui.getCore().getModel("countModel").getData();
+			this.getView().setModel(new JSONModel(oCountData), "countModel");
+			console.log(this.getView().getModel("countModel").getData());
 			this.callForHarbourNotification('');
 			this.getModel("CallSignSearchSet","callSignModel");
 			var status = oEvent.getParameter("arguments").sPath;

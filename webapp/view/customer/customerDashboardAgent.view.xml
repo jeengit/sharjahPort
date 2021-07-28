@@ -40,7 +40,19 @@
 					</HBox>
 					<HBox width="16.6%" class="tileLayout sapUiSmallMarginEnd">
 						<GenericTile ariaLabel="OPEN/HOTWORKS" press="onNavToPress" class="sapUiSmallMarginBottom" header="Service request" subheader="{i18n>subServ}">
-							<TileContent unit="" footer="{DashboardCountModel>/0/ServiceRequested}"></TileContent>
+							<tileContent>
+								<TileContent>
+									<content>
+										<mi:ComparisonMicroChart minValue="0" maxValue="50">
+											<mi:data>
+												<mi:ComparisonMicroChartData title="New" value="{DashboardCountModel>/0/ServiceRequested}" color="#f5c11a"/>
+												<mi:ComparisonMicroChartData title="Approved" value="{DashboardCountModel>/0/ServiceApproved}" color="Good"/>
+												<mi:ComparisonMicroChartData title="Rejected" value="{DashboardCountModel>/0/ServiceRejected}" color="Error"/>
+											</mi:data>
+										</mi:ComparisonMicroChart>
+									</content>
+								</TileContent>
+							</tileContent>
 						</GenericTile>
 					</HBox>
 				<HBox width="16.6%" class="tileLayout sapUiSmallMarginEnd">

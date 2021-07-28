@@ -13,11 +13,11 @@
 				</Breadcrumbs>
 				<IconTabBar expandable="false" id="idIconTabBar" select="onBtnPress" class="sapUiResponsiveContentPadding">
 					<items>
-						<IconTabFilter visible="{= ${etaListModel>/results/0/Status} ? true : false}" icon="sap-icon://request" iconColor="Positive" text="New"
+						<IconTabFilter count="{countModel>/0/count}" visible="{= ${etaListModel>/results/0/Status} ? true : false}" icon="sap-icon://request" iconColor="Positive" text="New"
 							key="{= ${etaListModel>/TYPE} === 'ETA' ? 'NEW/ETA' : 'OPEN/HOTWORKS'}"/>
-						<IconTabFilter visible="{= ${etaListModel>/results/0/Status} ? true : false}" icon="sap-icon://approvals" iconColor="Critical"
+						<IconTabFilter count="{countModel>/1/count}" visible="{= ${etaListModel>/results/0/Status} ? true : false}" icon="sap-icon://approvals" iconColor="Critical"
 							text="Approved" key="APPROVED/{= ${etaListModel>/TYPE} === 'ETA' ? 'ETA' : 'HOTWORKS'}"/>
-						<IconTabFilter icon="sap-icon://decline" iconColor="Negative"
+						<IconTabFilter count="{countModel>/2/count}" icon="sap-icon://decline" iconColor="Negative"
 							visible="{= ${loginModel>/uRole} === 'AGENT' ? true : ${loginModel>/uRole} === 'HARBOR_MASTER' &amp;&amp; ${etaListModel>/TYPE} === 'HOTWORKS' ? true : false}"
 							text="Rejected" key="REJECTED/{= ${etaListModel>/TYPE} === 'ETA' ? 'ETA' : 'HOTWORKS'}"/>
 					</items>
@@ -25,7 +25,7 @@
 				<t:Table id="etaTable" class="card tableCard no-margin" rows="{etaListModel>/results}" selectionMode="None" ariaLabelledBy="title">
 					<t:extension>
 						<OverflowToolbar style="Clear">
-							<Title id="title" text="{= ${etaListModel>/TYPE} === 'ETA' ? ${i18n>ETATable} : 'Service Request'} ({etaListModel>/results/length})"/>
+							<Title id="title" text="{= ${etaListModel>/TYPE} === 'ETA' ? ${i18n>ETATable} : 'Service Request'}"/>
 							<ToolbarSpacer/>
 							<SearchField class="search" liveChange="onSearch" width="250px"/>
 							<core:Icon src="sap-icon://sorting-ranking" tooltip="{i18n>sort}" press="sortCategoriesAndName"/>

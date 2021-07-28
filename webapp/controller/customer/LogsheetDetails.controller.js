@@ -79,7 +79,7 @@ sap.ui.define([
 		handleChangeSelect: function(evt) {
 			var preDate = this.getView().byId(evt.getSource().getName()).getDateValue();
 			var curDate = evt.getSource().getDateValue();
-			if (preDate >= curDate) {
+			if (preDate > curDate) {
 				evt.getSource().setValue(null);
 				sap.m.MessageToast.show("The date & Time must be greater than the Start/Arrival Date & Time");
 			}

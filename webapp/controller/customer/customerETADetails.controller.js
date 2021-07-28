@@ -160,9 +160,11 @@ sap.ui.define([
 			sap.ui.getCore().setModel(new JSONModel(odata), "etaIdModel");
 		},
 		handleChangeSelect: function(evt) {
-			var preDate = this.getView().byId(evt.getSource().getName()).getDateValue();
-			var curDate = evt.getSource().getDateValue();
-			if (preDate >= curDate) {
+			var preDate = this.getView().byId(evt.getSource().getName()).getValue();
+			var curDate = evt.getSource().getValue();
+			console.log(preDate);
+			console.log(curDate);
+			if (preDate > curDate) {
 				evt.getSource().setValue(null);
 				sap.m.MessageToast.show("The input must be greater than Start/Arrival Date or Time");
 			}

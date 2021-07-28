@@ -16,15 +16,18 @@
 						<core:Item key="2021" text="2021"/>
 					</ComboBox>
 				</FlexBox>
-				<IconTabBar visible="{= ${GatePassListModel>/length} > 0 ? false : true}" expandable="false" select="onBtnPress" class="sapUiResponsiveContentPadding">
+				<IconTabBar expandable="false" select="onBtnPress"
+					class="sapUiResponsiveContentPadding">
 					<items>
-						<IconTabFilter count="{countModel>/0/count}" visible="{= ${manifestListModel>/length} > 0 ? true : false}" icon="sap-icon://excel-attachment" iconColor="Positive"
-							text="Import" key="CUSTOMS/MANIFEST/I"/>
-						<IconTabFilter count="{countModel>/1/count}" visible="{= ${manifestListModel>/length} > 0 ? true : false}" icon="sap-icon://excel-attachment" iconColor="Positive"
-							text="Export" key="CUSTOMS/MANIFEST/E"/>
-						<IconTabFilter count="{= ${manifestListModel>/length} > 0 ? ${countModel>/2/count} : ${countModel>/0/count}}" icon="sap-icon://approvals" iconColor="Critical" text="{= ${consigneeListModel>/length} > 0 ? 'Pending':'Open'}"
+						<IconTabFilter count="{countModel>/0/count}" visible="{= ${manifestListModel>/length} > 0 ? true : false}"
+							icon="sap-icon://excel-attachment" iconColor="Positive" text="Import" key="CUSTOMS/MANIFEST/I"/>
+						<IconTabFilter count="{countModel>/1/count}" visible="{= ${manifestListModel>/length} > 0 ? true : false}"
+							icon="sap-icon://excel-attachment" iconColor="Positive" text="Export" key="CUSTOMS/MANIFEST/E"/>
+						<IconTabFilter count="{= ${manifestListModel>/length} > 0 ? ${countModel>/2/count} : ${countModel>/0/count}}" icon="sap-icon://approvals"
+							iconColor="Critical" text="{= ${consigneeListModel>/length} > 0 ? 'Pending':'Open'}"
 							key="{= ${manifestListModel>/length} > 0 ? 'OPEN/MANIFEST/' : ${deliveryListModel>/length} > 0 ? 'OPEN/DELIVERY/' : ${consigneeListModel>/length} > 0 ? 'NA/CONSIGNEE/PENDING' : ''}"/>
-						<IconTabFilter count="{= ${manifestListModel>/length} > 0 ? ${countModel>/3/count} : ${countModel>/1/count}}" icon="sap-icon://decline" iconColor="Negative" text="{= ${consigneeListModel>/length} > 0 ? 'Completed':'Closed'}"
+						<IconTabFilter count="{= ${manifestListModel>/length} > 0 ? ${countModel>/3/count} : ${countModel>/1/count}}" icon="sap-icon://decline"
+							iconColor="Negative" text="{= ${consigneeListModel>/length} > 0 ? 'Completed':'Closed'}"
 							key="{= ${manifestListModel>/length} > 0 ? 'CLOSED/MANIFEST/' : ${deliveryListModel>/length} > 0 ? 'CLOSED/DELIVERY/' : ${consigneeListModel>/length} > 0 ? 'NA/CONSIGNEE/COMPLETED' : ''}"/>
 					</items>
 				</IconTabBar>
@@ -88,7 +91,7 @@
 					selectionMode="None" ariaLabelledBy="title">
 					<t:extension>
 						<OverflowToolbar style="Clear">
-							<Title text="Delivery ({deliveryListModel>/length})"/>
+							<Title text="Delivery"/>
 							<ToolbarSpacer/>
 							<SearchField class="search" liveChange="onSearch" width="250px"/>
 							<core:Icon src="sap-icon://sorting-ranking" tooltip="{i18n>sort}" press="sortCategoriesAndName"/>
@@ -140,7 +143,7 @@
 					selectionMode="None" ariaLabelledBy="title">
 					<t:extension>
 						<OverflowToolbar style="Clear">
-							<Title text="Manifest ({agentListModel>/length})"/>
+							<Title text="Manifest"/>
 							<ToolbarSpacer/>
 							<SearchField class="search" liveChange="onSearch" width="250px"/>
 							<core:Icon src="sap-icon://sorting-ranking" tooltip="{i18n>sort}" press="sortCategoriesAndName"/>
@@ -162,7 +165,7 @@
 							<Label text="Agent ID"/>
 							<t:template>
 								<HBox>
-									<Text  text="{agentListModel>AgentID}"/>
+									<Text text="{agentListModel>AgentID}"/>
 									<!--<Text visible="{= ${manifestListModel>ManifestNo} === '' ? false : true}" text="{manifestListModel>AgentName}"/>-->
 								</HBox>
 							</t:template>
@@ -184,7 +187,7 @@
 							<Label text="call Sign"/>
 							<t:template>
 								<Text text="{agentListModel>CallSign}"/>
-								</t:template>
+							</t:template>
 						</t:Column>
 					</t:columns>
 				</t:Table>
@@ -192,7 +195,7 @@
 					selectionMode="None" ariaLabelledBy="title">
 					<t:extension>
 						<OverflowToolbar style="Clear">
-							<Title text="Consignee Payment ({consigneeListModel>/length})"/>
+							<Title text="Consignee Payment"/>
 							<ToolbarSpacer/>
 							<SearchField class="search" liveChange="onSearch" width="250px"/>
 							<core:Icon src="sap-icon://sorting-ranking" tooltip="{i18n>sort}" press="sortCategoriesAndName"/>
@@ -238,12 +241,11 @@
 						</t:Column>
 					</t:columns>
 				</t:Table>
-			
-						<t:Table visible="{= ${GatePassListModel>/length} > 0 ? true : false}" rows="{GatePassListModel>/}" class="card tableCard no-margin"
+				<t:Table visible="{= ${GatePassListModel>/length} > 0 ? true : false}" rows="{GatePassListModel>/}" class="card tableCard no-margin"
 					selectionMode="None" ariaLabelledBy="title">
 					<t:extension>
 						<OverflowToolbar style="Clear">
-							<Title text="GatePass List ({GatePassListModel>/length})"/>
+							<Title text="GatePass"/>
 							<ToolbarSpacer/>
 							<SearchField class="search" liveChange="onSearch" width="250px"/>
 							<core:Icon src="sap-icon://sorting-ranking" tooltip="{i18n>sort}" press="sortCategoriesAndName"/>
@@ -252,7 +254,7 @@
 						</OverflowToolbar>
 					</t:extension>
 					<t:columns>
-							<t:Column sortProperty="ConsigneeCode">
+						<t:Column sortProperty="ConsigneeCode">
 							<Label text="Company Name"/>
 							<t:template>
 								<Text text="{GatePassListModel>Company_Name}"/>
@@ -274,7 +276,7 @@
 								</HBox>
 							</t:template>
 						</t:Column>
-							<t:Column sortProperty="ConsigneeCode">
+						<t:Column sortProperty="ConsigneeCode">
 							<Label text="Purpose"/>
 							<t:template>
 								<Text text="{GatePassListModel>Purpose}"/>
@@ -287,36 +289,34 @@
 									colorScheme="{= ${GatePassListModel>Status} === 'PENDING' ? 3 : 5 }"/>
 							</t:template>
 						</t:Column>
-						
 					</t:columns>
 				</t:Table>
-					<!--<VBox width="100%" visible="{= ${GatePassListModel>/length} > 0 ? true : false}">-->
-						<!--<List class="tableCard card" mode="SingleSelect" noDataText="{i18n>emptyNodata}" headerText="Delivery"-->
-						<!--	items="{ path: 'GatePassListModel>/',templateShareable:true}" id="list4">-->
-						<!--	<CustomListItem type="Active" fieldGroupIds="Delivery" press="handelgateDetailPress">-->
-						<!--		<FlexBox justifyContent="SpaceBetween" alignItems="Start">-->
-						<!--			<HBox>-->
-						<!--				<core:Icon class="sapUiTinyMarginEnd" src="sap-icon://activities" size="1rem" color="#CEA95B"/>-->
-						<!--				<Text text="{GatePassListModel>Port} - {GatePassListModel>Company_Name}"/>-->
-						<!--			</HBox>-->
-						<!--			<tnt:InfoLabel text="{= ${GatePassListModel>Status} === 'OPEN' ? 'Open' : 'Closed' }"-->
-						<!--				visible="{= ${GatePassListModel>Status} === '' ? false : true}"-->
-						<!--				colorScheme="{= ${GatePassListModel>Status} === 'OPEN' ? 3 : ${GatePassListModel>Status} === 'CLOSED' ? 8 : 5 }" displayOnly="true"/>-->
-						<!--		</FlexBox>-->
-						<!--		<FlexBox justifyContent="SpaceBetween" alignItems="Start">-->
-						<!--			<Text class="desc" text="{GatePassListModel>Name}"/>-->
-						<!--			<Text class="desc sapMLnk"-->
-						<!--				text="{ path: 'GatePassListModel>Date', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}} }" wrapping="false"/>-->
-						<!--		</FlexBox>-->
-						<!--	</CustomListItem>-->
-						<!--	<headerToolbar>-->
-						<!--		<Toolbar>-->
-						<!--			<Title text="Gate Pass" level="H1"/>-->
-						<!--		</Toolbar>-->
-						<!--	</headerToolbar>-->
-						<!--</List>-->
-					<!--</VBox>-->
-			
+				<!--<VBox width="100%" visible="{= ${GatePassListModel>/length} > 0 ? true : false}">-->
+				<!--<List class="tableCard card" mode="SingleSelect" noDataText="{i18n>emptyNodata}" headerText="Delivery"-->
+				<!--	items="{ path: 'GatePassListModel>/',templateShareable:true}" id="list4">-->
+				<!--	<CustomListItem type="Active" fieldGroupIds="Delivery" press="handelgateDetailPress">-->
+				<!--		<FlexBox justifyContent="SpaceBetween" alignItems="Start">-->
+				<!--			<HBox>-->
+				<!--				<core:Icon class="sapUiTinyMarginEnd" src="sap-icon://activities" size="1rem" color="#CEA95B"/>-->
+				<!--				<Text text="{GatePassListModel>Port} - {GatePassListModel>Company_Name}"/>-->
+				<!--			</HBox>-->
+				<!--			<tnt:InfoLabel text="{= ${GatePassListModel>Status} === 'OPEN' ? 'Open' : 'Closed' }"-->
+				<!--				visible="{= ${GatePassListModel>Status} === '' ? false : true}"-->
+				<!--				colorScheme="{= ${GatePassListModel>Status} === 'OPEN' ? 3 : ${GatePassListModel>Status} === 'CLOSED' ? 8 : 5 }" displayOnly="true"/>-->
+				<!--		</FlexBox>-->
+				<!--		<FlexBox justifyContent="SpaceBetween" alignItems="Start">-->
+				<!--			<Text class="desc" text="{GatePassListModel>Name}"/>-->
+				<!--			<Text class="desc sapMLnk"-->
+				<!--				text="{ path: 'GatePassListModel>Date', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}} }" wrapping="false"/>-->
+				<!--		</FlexBox>-->
+				<!--	</CustomListItem>-->
+				<!--	<headerToolbar>-->
+				<!--		<Toolbar>-->
+				<!--			<Title text="Gate Pass" level="H1"/>-->
+				<!--		</Toolbar>-->
+				<!--	</headerToolbar>-->
+				<!--</List>-->
+				<!--</VBox>-->
 			</VBox>
 		</content>
 	</Page>

@@ -244,7 +244,7 @@
 												<m:Label text="{i18n>ExpectedArrival}"/>
 											</m:HBox>
 											<m:HBox width="50%">
-												<m:DatePicker id="depDateArrival" value="{etaDetailsModel>/ExpArrivalDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+												<m:DatePicker name="depDateDepart" change="handleChangeSelect" id="depDateArrival" value="{etaDetailsModel>/ExpArrivalDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
 											</m:HBox>
 										</m:HBox>
 										<m:HBox alignItems="Center">
@@ -252,7 +252,7 @@
 												<m:Label text="{i18n>ExpectedDeparture}"/>
 											</m:HBox>
 											<m:HBox width="50%">
-												<m:DatePicker name="depDateArrival" change="handleChangeSelect" editable="true" value="{etaDetailsModel>/ExpDepartureDate}"
+												<m:DatePicker id="depDateDepart" name="depDateArrival" change="handleChangeSelect" editable="true" value="{etaDetailsModel>/ExpDepartureDate}"
 													valueFormat="yyyyMMdd" displayFormat="long"/>
 											</m:HBox>
 										</m:HBox>

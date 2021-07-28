@@ -45,7 +45,7 @@ sap.ui.define([
 		handleChangeSelect: function(evt) {
 			var preDate = this.getView().byId(evt.getSource().getName()).getDateValue();
 			var curDate = evt.getSource().getDateValue();
-			if (preDate >= curDate) {
+			if (preDate > curDate) {
 				evt.getSource().setValue(null);
 				sap.m.MessageToast.show("The input must be greater than Start/Arrival Date or Time");
 			}

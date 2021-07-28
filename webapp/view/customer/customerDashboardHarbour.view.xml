@@ -11,7 +11,7 @@
 			<VBox class="section">
 				<Title text="{i18n>dashboard}" class="heading"/>
 				<FlexBox width="100%" class="sapUiSmallMarginTopBottom custTile">
-					<HBox width="20%" class="tileLayout">
+					<HBox width="20%" class="tileLayout sapUiSmallMarginEnd">
 						<GenericTile ariaLabel="NEW/ETA" press="handleListPress" header="{i18n>etaReq}" subheader="{i18n>subReq}">
 							<tileContent>
 								<TileContent>
@@ -27,7 +27,7 @@
 							</tileContent>
 						</GenericTile>
 					</HBox>
-					<HBox width="20%" class="tileLayout">
+					<HBox width="20%" class="tileLayout sapUiSmallMarginEnd">
 						<GenericTile ariaLabel="PENDING/LOG" press="handleListPress" header="Log Sheet Request" subheader="{i18n>subInProg}">
 							<tileContent>
 								<TileContent>
@@ -43,7 +43,7 @@
 							</tileContent>
 						</GenericTile>
 					</HBox>
-					<HBox width="20%" class="tileLayout">
+					<HBox width="20%" class="tileLayout sapUiSmallMarginEnd">
 						<GenericTile ariaLabel="OPEN/HOTWORKS" press="handleListPress" header="{i18n>serReq}" subheader="{i18n>subServ}">
 							<tileContent>
 								<TileContent>

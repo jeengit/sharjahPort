@@ -11,7 +11,7 @@
 			<VBox class="section">
 				<Title text="Dashboard" class="heading"/>
 				<FlexBox width="100%" class="sapUiSmallMarginTopBottom custTile">
-					<HBox width="20%" class="tileLayout">
+					<HBox width="20%" class="tileLayout sapUiSmallMarginEnd">
 						<GenericTile ariaLabel="CUSTOMS/MANIFEST/I" press="handleListPress" header="Manifest" subheader="Manifest">
 							<tileContent>
 								<TileContent>
@@ -28,7 +28,7 @@
 							</tileContent>
 						</GenericTile>
 					</HBox>
-					<HBox width="20%" class="tileLayout">
+					<HBox width="20%" class="tileLayout sapUiSmallMarginEnd">
 						<GenericTile ariaLabel="OPEN/BOE" header="Bill of Entry" subheader="Bill of Entry">
 							<tileContent>
 								<TileContent>
@@ -44,7 +44,7 @@
 							</tileContent>
 						</GenericTile>
 					</HBox>
-					<HBox width="20%" class="tileLayout">
+					<HBox width="20%" class="tileLayout sapUiSmallMarginEnd">
 						<GenericTile ariaLabel="OPEN/DELIVERY" press="handleListPress" header="Delivery" subheader="Delivery">
 							<tileContent>
 								<TileContent>
@@ -60,7 +60,7 @@
 							</tileContent>
 						</GenericTile>
 					</HBox>
-					<HBox width="20%" class="tileLayout">
+					<HBox width="20%" class="tileLayout sapUiSmallMarginEnd">
 						<GenericTile ariaLabel="CLOSED/DELIVERY" header="Request From Consignee" subheader="Delivery for Bill of Entry">
 							<TileContent unit="" footer="5">
 								<!--<ImageContent src="sap-icon://complete" />-->
@@ -83,28 +83,52 @@
 							</tileContent>
 						</GenericTile>
 					</HBox>
-					</FlexBox>
-					<FlexBox>
-						<HBox width="40%" class="chart">
-							<viz:Popover id="idPopOver"></viz:Popover>
-							<viz:VizFrame class="box-shadow bg-light sapUiSmallMarginEnd sapUiSmallMarginTop" vizProperties="{ title: {text : 'Manifest Summary', visible : true},plotArea:{ dataLabel:{visible: true,type:'value'} }}"
-								id="idVizFrame" uiConfig="{applicationSet:'fiori'}" height="300px" width="100%" vizType='donut'>
-								<viz:dataset>
-									<viz.data:FlattenedDataset data="{pieChartModel>/results}">
-										<viz.data:dimensions>
-											<viz.data:DimensionDefinition name="Status" value="{pieChartModel>status}"/>
-										</viz.data:dimensions>
-										<viz.data:measures>
-											<viz.data:MeasureDefinition name="Count" value="{pieChartModel>count}"/>
-										</viz.data:measures>
-									</viz.data:FlattenedDataset>
-								</viz:dataset>
-								<viz:feeds>
-									<viz.feeds:FeedItem uid="size" type="Measure" values="Count"/>
-									<viz.feeds:FeedItem uid="color" type="Dimension" values="Status"/>
-								</viz:feeds>
-							</viz:VizFrame>
-						</HBox>
+				</FlexBox>
+				<FlexBox>
+					<HBox width="20%" class="chart">
+						<viz:Popover id="idPopOver"></viz:Popover>
+						<viz:VizFrame class="box-shadow bg-light sapUiSmallMarginEnd sapUiSmallMarginTop"
+							vizProperties="{ title: {text : 'Manifest Summary', visible : true},plotArea:{ dataLabel:{visible: true,type:'value'} }}" id="idVizFrame"
+							uiConfig="{applicationSet:'fiori'}" height="300px" width="100%" vizType='donut'>
+							<viz:dataset>
+								<viz.data:FlattenedDataset data="{pieChartModel>/results}">
+									<viz.data:dimensions>
+										<viz.data:DimensionDefinition name="Status" value="{pieChartModel>status}"/>
+									</viz.data:dimensions>
+									<viz.data:measures>
+										<viz.data:MeasureDefinition name="Count" value="{pieChartModel>count}"/>
+									</viz.data:measures>
+								</viz.data:FlattenedDataset>
+							</viz:dataset>
+							<viz:feeds>
+								<viz.feeds:FeedItem uid="size" type="Measure" values="Count"/>
+								<viz.feeds:FeedItem uid="color" type="Dimension" values="Status"/>
+							</viz:feeds>
+						</viz:VizFrame>
+					</HBox>
+					<HBox width="80%" class="tileLayout sapUiSmallMarginTop">
+						<!--<FlexBox width="100%" justifyContent="End">-->
+						<!--	<core:Icon src="sap-icon://circle-task-2"/>-->
+						<!--</FlexBox>-->
+						<FlexBox alignContent="Center" class="box-shadow">
+							<PlanningCalendar id="PC1" startDate="{path: 'calenderSetModel>/startDate'}" rows="{path: 'calenderSetModel>/people'}"
+								appointmentsVisualization="Filled" appointmentSelect="handleAppointmentSelect" showEmptyIntervalHeaders="false" stickyHeader="true"
+								showWeekNumbers="true">
+								<toolbarContent>
+									<Title text="Planning Calender" titleStyle="H4"/>
+								</toolbarContent>
+								<rows>
+									<PlanningCalendarRow title="Callsign - {calenderSetModel>name}"
+										appointments="{path : 'calenderSetModel>appointments', templateShareable: false}">
+										<appointments>
+											<unified:CalendarAppointment type="Type04" startDate="{calenderSetModel>start}" endDate="{calenderSetModel>end}"
+												text="{calenderSetModel>title}"></unified:CalendarAppointment>
+										</appointments>
+									</PlanningCalendarRow>
+								</rows>
+							</PlanningCalendar>
+						</FlexBox>
+					</HBox>
 				</FlexBox>
 			</VBox>
 		</content>

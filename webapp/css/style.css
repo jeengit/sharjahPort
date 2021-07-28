@@ -691,7 +691,7 @@ html.sap-desktop .sapMBtn:focus>.sapMFocusable {
 	box-shadow: 5px 5px 10px rgb(0 0 0 / 50%);
 }
 .custTile .sapMFlexItem {
-    width: calc(100% - 1rem);
+    width: calc(100% - 0rem);
 }
 .custTile .sapSuiteCpMC{
 	width:100%!important;

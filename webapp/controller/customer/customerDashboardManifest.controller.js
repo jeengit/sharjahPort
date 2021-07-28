@@ -12,6 +12,7 @@ sap.ui.define([
 			oPopOver.connect(oVizFrame.getVizUid());
 		},
 		_onObjectMatched: function () {
+			this.getCalenderData();
 			this.getUserName();
 			this.getModel("ManifestDashboardSet","DashboardCountModel");
 			sap.ui.getCore().getModel("rememberSelectionModel") ? sap.ui.getCore().setModel(new JSONModel(null),"rememberSelectionModel") : '';
@@ -41,6 +42,46 @@ sap.ui.define([
 			this.getRouter().navTo("manifest", {
 				sPath: status,
 				type: type
+			});
+		},
+		getCalenderData: function() {
+			var oModel = this.getOwnerComponent().getModel("s4Model");
+			oModel.setUseBatch(false);
+			var that = this;
+			that.getView().byId("PC1").setViewKey("Month");
+			oModel.read("/CalendarDateSet('')", {
+				urlParameters: {
+					"$expand": "CalendarDetailsSet/CalendarSet"
+				},
+				success: function(data) {
+					var jsonCalendar = {
+						"people": [],
+						"startDate": new Date()
+					};
+					for (var i = 0; i < data.CalendarDetailsSet.results.length; i++) {
+						var appointments = [];
+						for (var k = 0; k < data.CalendarDetailsSet.results[i].CalendarSet.results.length; k++) {
+							var de = data.CalendarDetailsSet.results[i].CalendarSet.results[k].EstdDate;
+							var date = de.charAt(6) + de.charAt(7) - 1;
+							var month = de.charAt(4) + de.charAt(5);
+							var year = de.charAt(0) + de.charAt(1) + de.charAt(2) + de.charAt(3);
+							appointments.push({
+								"title": data.CalendarDetailsSet.results[i].CalendarSet.results[k].BerthNumber,
+								"start": new Date(year, month, date),
+								"end": new Date(year, month, date+30)
+							});
+						}
+						jsonCalendar.people.push({
+							"name": data.CalendarDetailsSet.results[i].CallSign,
+							"appointments": appointments
+						});
+					}
+					that.getView().setModel(new JSONModel(jsonCalendar), "calenderSetModel");
+				},
+				error: function(oResponse) {
+					sap.m.MessageToast.show(oResponse.statusText);
+					sap.ui.core.BusyIndicator.hide();
+				}
 			});
 		}
 	});

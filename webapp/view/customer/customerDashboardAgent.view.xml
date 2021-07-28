@@ -11,7 +11,7 @@
 			<VBox class="section">
 				<Title text="Dashboard" class="heading"/>
 				<FlexBox width="100%" class="sapUiSmallMarginTopBottom custTile">
-					<HBox width="20%" class="tileLayout">
+					<HBox width="16.6%" class="tileLayout sapUiSmallMarginEnd">
 						<GenericTile ariaLabel="NEW/ETA" press="onNavToPress" header="{i18n>etaReq}" subheader="{i18n>subReq}">
 							<tileContent>
 								<TileContent>
@@ -28,29 +28,28 @@
 							</tileContent>
 						</GenericTile>
 					</HBox>
-					<HBox width="20%" class="tileLayout">
+					<HBox width="16.6%" class="tileLayout sapUiSmallMarginEnd">
 						<GenericTile class="sapUiSmallMarginBottom" header="{i18n>PortClearance}" subheader="{i18n>subPcReq}">
 							<TileContent unit="" footer="{DashboardCountModel>/0/PortCApproved}"></TileContent>
 						</GenericTile>
 					</HBox>
-					<HBox width="20%" class="tileLayout">
+					<HBox width="16.6%" class="tileLayout sapUiSmallMarginEnd">
 						<GenericTile class="" header="{i18n>PaymentList}">
 							<TileContent unit="" footer="5"></TileContent>
 						</GenericTile>
 					</HBox>
-					<HBox width="20%" class="tileLayout">
+					<HBox width="16.6%" class="tileLayout sapUiSmallMarginEnd">
 						<GenericTile ariaLabel="OPEN/HOTWORKS" press="onNavToPress" class="sapUiSmallMarginBottom" header="Service request" subheader="{i18n>subServ}">
 							<TileContent unit="" footer="{DashboardCountModel>/0/ServiceRequested}"></TileContent>
 						</GenericTile>
 					</HBox>
-				<HBox width="20%" class="tileLayout">
+				<HBox width="16.6%" class="tileLayout sapUiSmallMarginEnd">
 						<GenericTile class="sapUiSmallMarginBottom" width="100%" press="handleListPress" ariaLabel="list/GATEPASS" header="Gate Pass">
 							<TileContent unit="" footer="{DashboardCountModel>/0/GatePassOpen}"></TileContent>
 						</GenericTile>
 					</HBox>
-						<HBox width="20%" class="tileLayout">
+						<HBox width="16.6%" class="tileLayout sapUiSmallMarginEnd">
 						<GenericTile class="sapUiSmallMarginBottom" width="100%" press="handleListPress" ariaLabel="AGENT/AGENTMANIFEST" header="Manifest">
-						
 								<TileContent>
 									<content>
 										<mi:ComparisonMicroChart minValue="0" maxValue="50">
@@ -66,7 +65,7 @@
 					</HBox>
 				</FlexBox>
 				<FlexBox width="100%">
-					<HBox width="40%" class="chart">
+					<HBox width="33.3%" class="chart">
 						<viz:Popover id="idPopOver"></viz:Popover>
 						<viz:VizFrame vizProperties="{ title: {text : 'ETA Summary', visible : true},plotArea:{ dataLabel:{visible: true,type:'value'} }}"
 							id="idVizFrame" uiConfig="{applicationSet:'fiori'}" vizType='donut' width="100%" height="300px" class="box-shadow bg-light sapUiSmallMarginEnd">

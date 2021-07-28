@@ -18,13 +18,13 @@
 				</FlexBox>
 				<IconTabBar visible="{= ${GatePassListModel>/length} > 0 ? false : true}" expandable="false" select="onBtnPress" class="sapUiResponsiveContentPadding">
 					<items>
-						<IconTabFilter visible="{= ${manifestListModel>/length} > 0 ? true : false}" icon="sap-icon://excel-attachment" iconColor="Positive"
+						<IconTabFilter count="{countModel>/0/count}" visible="{= ${manifestListModel>/length} > 0 ? true : false}" icon="sap-icon://excel-attachment" iconColor="Positive"
 							text="Import" key="CUSTOMS/MANIFEST/I"/>
-						<IconTabFilter visible="{= ${manifestListModel>/length} > 0 ? true : false}" icon="sap-icon://excel-attachment" iconColor="Positive"
+						<IconTabFilter count="{countModel>/1/count}" visible="{= ${manifestListModel>/length} > 0 ? true : false}" icon="sap-icon://excel-attachment" iconColor="Positive"
 							text="Export" key="CUSTOMS/MANIFEST/E"/>
-						<IconTabFilter icon="sap-icon://approvals" iconColor="Critical" text="{= ${consigneeListModel>/length} > 0 ? 'Pending':'Open'}"
+						<IconTabFilter count="{= ${manifestListModel>/length} > 0 ? ${countModel>/2/count} : ${countModel>/0/count}}" icon="sap-icon://approvals" iconColor="Critical" text="{= ${consigneeListModel>/length} > 0 ? 'Pending':'Open'}"
 							key="{= ${manifestListModel>/length} > 0 ? 'OPEN/MANIFEST/' : ${deliveryListModel>/length} > 0 ? 'OPEN/DELIVERY/' : ${consigneeListModel>/length} > 0 ? 'NA/CONSIGNEE/PENDING' : ''}"/>
-						<IconTabFilter icon="sap-icon://decline" iconColor="Negative" text="{= ${consigneeListModel>/length} > 0 ? 'Completed':'Closed'}"
+						<IconTabFilter count="{= ${manifestListModel>/length} > 0 ? ${countModel>/3/count} : ${countModel>/1/count}}" icon="sap-icon://decline" iconColor="Negative" text="{= ${consigneeListModel>/length} > 0 ? 'Completed':'Closed'}"
 							key="{= ${manifestListModel>/length} > 0 ? 'CLOSED/MANIFEST/' : ${deliveryListModel>/length} > 0 ? 'CLOSED/DELIVERY/' : ${consigneeListModel>/length} > 0 ? 'NA/CONSIGNEE/COMPLETED' : ''}"/>
 					</items>
 				</IconTabBar>
@@ -32,7 +32,7 @@
 					selectionMode="None" ariaLabelledBy="title">
 					<t:extension>
 						<OverflowToolbar style="Clear">
-							<Title text="Manifest ({manifestListModel>/length})"/>
+							<Title text="Manifest"/>
 							<ToolbarSpacer/>
 							<SearchField class="search" liveChange="onSearch" width="250px"/>
 							<core:Icon src="sap-icon://sorting-ranking" tooltip="{i18n>sort}" press="sortCategoriesAndName"/>

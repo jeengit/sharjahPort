@@ -30,7 +30,19 @@
 					</HBox>
 					<HBox width="16.6%" class="tileLayout sapUiSmallMarginEnd">
 						<GenericTile class="sapUiSmallMarginBottom" header="{i18n>PortClearance}" subheader="{i18n>subPcReq}">
-							<TileContent unit="" footer="{DashboardCountModel>/0/PortCApproved}"></TileContent>
+							<tileContent>
+								<TileContent>
+									<content>
+										<mi:ComparisonMicroChart minValue="0" maxValue="50">
+											<mi:data>
+												<mi:ComparisonMicroChartData title="New" value="{DashboardCountModel>/0/PortCRequested}" color="#f5c11a"/>
+												<mi:ComparisonMicroChartData title="Approved" value="{DashboardCountModel>/0/PortCApproved}" color="Good"/>
+												<mi:ComparisonMicroChartData title="Rejected" value="{DashboardCountModel>/0/PortCRejected}" color="Error"/>
+											</mi:data>
+										</mi:ComparisonMicroChart>
+									</content>
+								</TileContent>
+							</tileContent>
 						</GenericTile>
 					</HBox>
 					<HBox width="16.6%" class="tileLayout sapUiSmallMarginEnd">
@@ -57,7 +69,17 @@
 					</HBox>
 				<HBox width="16.6%" class="tileLayout sapUiSmallMarginEnd">
 						<GenericTile class="sapUiSmallMarginBottom" width="100%" press="handleListPress" ariaLabel="list/GATEPASS" header="Gate Pass">
-							<TileContent unit="" footer="{DashboardCountModel>/0/GatePassOpen}"></TileContent>
+							<tileContent>
+								<TileContent>
+									<content>
+										<mi:ComparisonMicroChart minValue="0" maxValue="50">
+											<mi:data>
+												<mi:ComparisonMicroChartData title="New" value="{DashboardCountModel>/0/GatePassOpen}" color="#f5c11a"/>
+											</mi:data>
+										</mi:ComparisonMicroChart>
+									</content>
+								</TileContent>
+							</tileContent>
 						</GenericTile>
 					</HBox>
 						<HBox width="16.6%" class="tileLayout sapUiSmallMarginEnd">
@@ -66,7 +88,7 @@
 									<content>
 										<mi:ComparisonMicroChart minValue="0" maxValue="50">
 											<mi:data>
-												<mi:ComparisonMicroChartData title="Open" value="{DashboardCountModel>/0/AgManifestOpen}" color="#f5c11a"/>
+												<mi:ComparisonMicroChartData title="New" value="{DashboardCountModel>/0/AgManifestOpen}" color="#f5c11a"/>
 												<mi:ComparisonMicroChartData title="Approved" value="{DashboardCountModel>/0/AgManifestApproved}" color="Good"/>
 												<mi:ComparisonMicroChartData title="Rejected" value="{DashboardCountModel>/0/AgManifestRejected}" color="Error"/>
 											</mi:data>

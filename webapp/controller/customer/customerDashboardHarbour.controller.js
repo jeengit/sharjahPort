@@ -194,63 +194,34 @@ sap.ui.define([
 			});
 		},
 		getCalenderData: function() {
-			// var data = {
-			// 	startDate: new Date("2015", "11", "15"),
-			// 	people: [{
-			// 		appointments: [{
-			// 			start: new Date("2015", "11", "15"),
-			// 			end: new Date("2015", "11", "15"),
-			// 			title: "Team meeting"
-			// 		}, {
-			// 			start: new Date("2015", "11", "16"),
-			// 			end: new Date("2015", "11", "16"),
-			// 			title: "Vacation"
-			// 		}]
-			// 	}, {
-			// 		appointments: [{
-			// 			start: new Date("2015", "11", "15"),
-			// 			end: new Date("2015", "11", "15"),
-			// 			title: "Meeting"
-			// 		}, {
-			// 			start: new Date("2015", "11", "15"),
-			// 			end: new Date("2015", "11", "15"),
-			// 			title: "Team meeting"
-			// 		}, {
-			// 			start: new Date("2015", "11", "15"),
-			// 			end: new Date("2015", "11", "15"),
-			// 			title: "Lunch"
-			// 		}]
-			// 	}]
-			// };
-			// console.log(data);
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
 			var that = this;
 			that.getView().byId("PC1").setViewKey("Month");
 			oModel.read("/CalendarDateSet('')", {
 				urlParameters: {
-					"$expand": "CalendarDetailsSet/CalendarSet"
+					"$expand": "CalendarBirthNoSet/CalendarBirthDetailsSet"
 				},
 				success: function(data) {
 					var jsonCalendar = {
 						"people": [],
 						"startDate": new Date()
 					};
-					for (var i = 0; i < data.CalendarDetailsSet.results.length; i++) {
+					for (var i = 0; i < data.CalendarBirthNoSet.results.length; i++) {
 						var appointments = [];
-						for (var k = 0; k < data.CalendarDetailsSet.results[i].CalendarSet.results.length; k++) {
-							var de = data.CalendarDetailsSet.results[i].CalendarSet.results[k].EstdDate;
+						for (var k = 0; k < data.CalendarBirthNoSet.results[i].CalendarBirthDetailsSet.results.length; k++) {
+							var de = data.CalendarBirthNoSet.results[i].CalendarBirthDetailsSet.results[k].EstdDate;
 							var date = de.charAt(6) + de.charAt(7) - 1;
 							var month = de.charAt(4) + de.charAt(5);
 							var year = de.charAt(0) + de.charAt(1) + de.charAt(2) + de.charAt(3);
 							appointments.push({
-								"title": data.CalendarDetailsSet.results[i].CalendarSet.results[k].BerthNumber,
+								"title": data.CalendarBirthNoSet.results[i].CalendarBirthDetailsSet.results[k].CallSign,
 								"start": new Date(year, month, date),
 								"end": new Date(year, month, date+30)
 							});
 						}
 						jsonCalendar.people.push({
-							"name": data.CalendarDetailsSet.results[i].CallSign,
+							"name": data.CalendarBirthNoSet.results[i].BirthNo,
 							"appointments": appointments
 						});
 					}

@@ -118,7 +118,7 @@
 									<Title text="Planning Calender" titleStyle="H4"/>
 								</toolbarContent>
 								<rows>
-									<PlanningCalendarRow title="Callsign - {calenderSetModel>name}"
+									<PlanningCalendarRow title="{calenderSetModel>name}"
 										appointments="{path : 'calenderSetModel>appointments', templateShareable: false}">
 										<appointments>
 											<unified:CalendarAppointment type="Type04" startDate="{calenderSetModel>start}" endDate="{calenderSetModel>end}"

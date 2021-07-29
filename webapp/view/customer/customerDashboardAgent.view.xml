@@ -16,7 +16,9 @@
 							<tileContent>
 								<TileContent>
 									<content>
-										<mi:ComparisonMicroChart minValue="0" maxValue="50">
+										<mi:ComparisonMicroChart minValue="0" maxValue="{= ${DashboardCountModel>/0/EtaRequested} > ${DashboardCountModel>/0/EtaApproved} &amp;&amp; ${DashboardCountModel>/0/EtaRejected} ? 
+										${DashboardCountModel>/0/EtaRequested} : ${DashboardCountModel>/0/EtaApproved} > ${DashboardCountModel>/0/EtaRequested} &amp;&amp; ${DashboardCountModel>/0/EtaRejected} ? 
+										${DashboardCountModel>/0/EtaApproved} : ${DashboardCountModel>/0/EtaRejected}}">
 											<mi:data>
 												<mi:ComparisonMicroChartData title="New" value="{DashboardCountModel>/0/EtaRequested}" color="#f5c11a"/>
 												<mi:ComparisonMicroChartData title="Approved" value="{DashboardCountModel>/0/EtaApproved}" color="Good"/>
@@ -33,7 +35,9 @@
 							<tileContent>
 								<TileContent>
 									<content>
-										<mi:ComparisonMicroChart minValue="0" maxValue="50">
+										<mi:ComparisonMicroChart minValue="0" maxValue="{= ${DashboardCountModel>/0/PortCRequested} > ${DashboardCountModel>/0/PortCApproved} &amp;&amp; ${DashboardCountModel>/0/PortCRejected} ? 
+										${DashboardCountModel>/0/PortCRequested} : ${DashboardCountModel>/0/PortCApproved} > ${DashboardCountModel>/0/PortCRequested} &amp;&amp; ${DashboardCountModel>/0/PortCRejected} ? 
+										${DashboardCountModel>/0/PortCApproved} : ${DashboardCountModel>/0/PortCRejected}}">
 											<mi:data>
 												<mi:ComparisonMicroChartData title="New" value="{DashboardCountModel>/0/PortCRequested}" color="#f5c11a"/>
 												<mi:ComparisonMicroChartData title="Approved" value="{DashboardCountModel>/0/PortCApproved}" color="Good"/>
@@ -55,7 +59,9 @@
 							<tileContent>
 								<TileContent>
 									<content>
-										<mi:ComparisonMicroChart minValue="0" maxValue="50">
+										<mi:ComparisonMicroChart minValue="0" maxValue="{= ${DashboardCountModel>/0/ServiceRequested} > ${DashboardCountModel>/0/ServiceApproved} &amp;&amp; ${DashboardCountModel>/0/ServiceRejected} ? 
+										${DashboardCountModel>/0/ServiceRequested} : ${DashboardCountModel>/0/ServiceApproved} > ${DashboardCountModel>/0/ServiceRequested} &amp;&amp; ${DashboardCountModel>/0/ServiceRejected} ? 
+										${DashboardCountModel>/0/ServiceApproved} : ${DashboardCountModel>/0/ServiceRejected}}">
 											<mi:data>
 												<mi:ComparisonMicroChartData title="New" value="{DashboardCountModel>/0/ServiceRequested}" color="#f5c11a"/>
 												<mi:ComparisonMicroChartData title="Approved" value="{DashboardCountModel>/0/ServiceApproved}" color="Good"/>
@@ -72,7 +78,7 @@
 							<tileContent>
 								<TileContent>
 									<content>
-										<mi:ComparisonMicroChart minValue="0" maxValue="50">
+										<mi:ComparisonMicroChart minValue="0" maxValue="{DashboardCountModel>/0/GatePassOpen}">
 											<mi:data>
 												<mi:ComparisonMicroChartData title="New" value="{DashboardCountModel>/0/GatePassOpen}" color="#f5c11a"/>
 											</mi:data>
@@ -86,7 +92,9 @@
 						<GenericTile class="sapUiSmallMarginBottom" width="100%" press="handleListPress" ariaLabel="AGENT/AGENTMANIFEST" header="Manifest">
 								<TileContent>
 									<content>
-										<mi:ComparisonMicroChart minValue="0" maxValue="50">
+										<mi:ComparisonMicroChart minValue="0" maxValue="{= ${DashboardCountModel>/0/AgManifestOpen} > ${DashboardCountModel>/0/AgManifestApproved} &amp;&amp; ${DashboardCountModel>/0/AgManifestRejected} ? 
+										${DashboardCountModel>/0/AgManifestOpen} : ${DashboardCountModel>/0/AgManifestApproved} > ${DashboardCountModel>/0/AgManifestOpen} &amp;&amp; ${DashboardCountModel>/0/AgManifestRejected} ? 
+										${DashboardCountModel>/0/AgManifestApproved} : ${DashboardCountModel>/0/AgManifestRejected}}">
 											<mi:data>
 												<mi:ComparisonMicroChartData title="New" value="{DashboardCountModel>/0/AgManifestOpen}" color="#f5c11a"/>
 												<mi:ComparisonMicroChartData title="Approved" value="{DashboardCountModel>/0/AgManifestApproved}" color="Good"/>

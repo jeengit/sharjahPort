@@ -24,12 +24,12 @@
 						<IconTabFilter count="{countModel>/1/count}" visible="{= ${manifestListModel>/length} > 0 ? true : false}"
 							icon="sap-icon://excel-attachment" iconColor="Positive" text="Export" key="CUSTOMS/MANIFEST/E"/>
 						<IconTabFilter count="{= ${manifestListModel>/length} > 0 ? ${countModel>/2/count} : ${countModel>/0/count}}" icon="sap-icon://approvals"
-							iconColor="Critical" text="{= ${consigneeListModel>/length} > 0 ? 'Pending':'Open'}"
+							iconColor="Critical" text="{= ${consigneeListModel>/length} > 0 ? 'Pending':'New'}"
 							visible="{= ${agentListModel>/length} > 0 ? false : true}"
 							key="{= ${manifestListModel>/length} > 0 ? 'OPEN/MANIFEST/' : ${deliveryListModel>/length} > 0 ? 'OPEN/DELIVERY/' : ${consigneeListModel>/length} > 0 ? 'NA/CONSIGNEE/PENDING' : ''}"/>
 						<IconTabFilter count="{= ${manifestListModel>/length} > 0 ? ${countModel>/3/count} : ${countModel>/1/count}}" icon="sap-icon://decline"
 							iconColor="Negative" text="{= ${consigneeListModel>/length} > 0 ? 'Completed':'Closed'}"
-							visible="{= ${agentListModel>/length} > 0 ? false : true}"
+							visible="{= ${agentListModel>/length} > 0 ||  ${GatePassListModel>/length} > 0 ? false : true}"
 							key="{= ${manifestListModel>/length} > 0 ? 'CLOSED/MANIFEST/' : ${deliveryListModel>/length} > 0 ? 'CLOSED/DELIVERY/' : ${consigneeListModel>/length} > 0 ? 'NA/CONSIGNEE/COMPLETED' : ''}"/>
 						<IconTabFilter count="{countModel>/0/count}" visible="{= ${agentListModel>/length} > 0 ? true : false}" icon="sap-icon://request"
 							iconColor="Positive" text="New" key="{= ${agentListModel>/TYPE} === 'ETA' ? 'NEW/ETA' : 'OPEN/HOTWORKS'}"/>
@@ -263,13 +263,14 @@
 						</OverflowToolbar>
 					</t:extension>
 					<t:columns>
-						<t:Column sortProperty="ConsigneeCode">
-							<Label text="Company Name"/>
+							<t:Column sortProperty="Guid">
+							<Label text="Guid"/>
 							<t:template>
-								<Text text="{GatePassListModel>Company_Name}"/>
+								<Link text="{GatePassListModel>Guid}" press="handelgateDetailPress"/>
 							</t:template>
 						</t:Column>
-						<t:Column sortProperty="DocNo">
+					
+						<t:Column sortProperty="AgentCode">
 							<Label text="Agent Code"/>
 							<t:template>
 								<HBox>
@@ -283,6 +284,12 @@
 								<HBox>
 									<Text text="{GatePassListModel>Port}"/>
 								</HBox>
+							</t:template>
+						</t:Column>
+							<t:Column sortProperty="Company_Name">
+							<Label text="Company Name"/>
+							<t:template>
+								<Text text="{GatePassListModel>Company_Name}"/>
 							</t:template>
 						</t:Column>
 						<t:Column sortProperty="ConsigneeCode">

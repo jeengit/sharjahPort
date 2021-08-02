@@ -22,7 +22,7 @@
 					class="card tableCard no-margin">
 					<t:extension>
 						<OverflowToolbar style="Clear">
-							<Title id="title" text="{i18n>LogSheet} ({etaListModel>/results/length})"/>
+							<Title id="title" text="{i18n>LogSheet}"/>
 							<ToolbarSpacer/>
 							<core:Icon src="sap-icon://sorting-ranking" tooltip="{i18n>sort}" press="sortCategoriesAndName"/>
 							<core:Icon src="sap-icon://sort" tooltip="{i18n>SortCategories}" press="sortCategories"/>

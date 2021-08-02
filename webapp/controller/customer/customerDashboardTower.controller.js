@@ -10,6 +10,7 @@ sap.ui.define([
 			oRouter.getRoute("dashboard").attachPatternMatched(this._onObjectMatched, this);
 		},
 		_onObjectMatched: function () {
+			sap.ui.getCore().setModel(new JSONModel({}), "countModel");
 		//	this.selectCallSign();
 			this.getBerthStatus();
 			this.getUserName();
@@ -220,6 +221,7 @@ sap.ui.define([
 		},
 		handleListPress: function (oEvent) {
 			sap.ui.core.BusyIndicator.show();
+			oEvent.getSource().getTileContent()[0].getContent() ? this.fnGetCount(oEvent) : '';
 			var status = oEvent.getSource().getAriaLabel().split("/")[0];
 			var type = oEvent.getSource().getAriaLabel().split("/")[1];
 			var route = type === "ETA" ? "etaList" : "logList";
@@ -227,6 +229,16 @@ sap.ui.define([
 				sPath: status,
 				type: type
 			});
+		},
+		fnGetCount : function(obj){
+			var count = [];
+			for (var i of obj.getSource().getTileContent()[0].getContent().getData()) {
+				count.push({
+					"text": i.getTitle(),
+					"count": i.getValue()
+				});
+			}
+			sap.ui.getCore().setModel(new JSONModel(count), "countModel");
 		},
 		handleTabPress: function (evt) {
 			if (evt.getSource().getSelectedKey() === "map") {

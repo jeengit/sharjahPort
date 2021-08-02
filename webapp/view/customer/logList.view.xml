@@ -12,9 +12,9 @@
 				</Breadcrumbs>
 				<IconTabBar expandable="false" select="onBtnPress" class="sapUiResponsiveContentPadding">
 					<items>
-						<IconTabFilter icon="sap-icon://request" iconColor="Positive" text="Pending"
+						<IconTabFilter count="{countModel>/0/count}" icon="sap-icon://request" iconColor="Positive" text="Pending"
 							key="PENDING/LOG"/>
-						<IconTabFilter icon="sap-icon://approvals" iconColor="Critical"
+						<IconTabFilter count="{countModel>/1/count}" icon="sap-icon://approvals" iconColor="Critical"
 							text="Closed" key="CLOSED/LOG"/>
 					</items>
 				</IconTabBar>

@@ -36,8 +36,13 @@ sap.ui.define([
 					},
 					success: function(data) {
 						var res = flag ? data.results.filter(res => res.Import_Export === flag) : data.results;
+						var importCount = data.results.filter(obj => obj.Import_Export === "I");
+						var exportCount = data.results.filter(obj => obj.Import_Export === "E");
+						res["countI"] = importCount.length;
+						res["countE"] = exportCount.length;
 						that.getView().setModel(new JSONModel(res), modelName);
 						setTimeout(function() {
+						console.log(that.getView().getModel(modelName).getData());
 							sap.m.MessageToast.show("Items loaded succesfully with status - " + status);
 							sap.ui.getCore().setModel(new JSONModel(that.getView().getModel(modelName).getData()), modelName);
 							sap.ui.core.BusyIndicator.hide();

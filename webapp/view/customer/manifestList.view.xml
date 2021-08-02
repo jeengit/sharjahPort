@@ -19,15 +19,15 @@
 				</FlexBox>
 				<IconTabBar expandable="false" select="onBtnPress" class="sapUiResponsiveContentPadding">
 					<items>
-						<IconTabFilter count="{countModel>/0/count}" visible="{= ${manifestListModel>/length} > 0 ? true : false}"
+						<IconTabFilter count="{= ${manifestListModel>/countI} !== '' ? ${manifestListModel>/countI} : ${countModel>/0/count}}" visible="{= ${manifestListModel>/length} > 0 ? true : false}"
 							icon="sap-icon://excel-attachment" iconColor="Positive" text="Import" key="CUSTOMS/MANIFEST/I"/>
-						<IconTabFilter count="{countModel>/1/count}" visible="{= ${manifestListModel>/length} > 0 ? true : false}"
+						<IconTabFilter count="{= ${manifestListModel>/countE} !== '' ? ${manifestListModel>/countE} : ${countModel>/1/count}}" visible="{= ${manifestListModel>/length} > 0 ? true : false}"
 							icon="sap-icon://excel-attachment" iconColor="Positive" text="Export" key="CUSTOMS/MANIFEST/E"/>
-						<IconTabFilter count="{= ${manifestListModel>/length} > 0 ? ${countModel>/2/count} : ${countModel>/0/count}}" icon="sap-icon://approvals"
+						<IconTabFilter count="{= ${manifestListModel>/length} > 0 ? ${countModel>/1/count} : ${countModel>/0/count}}" icon="sap-icon://approvals"
 							iconColor="Critical" text="{= ${consigneeListModel>/length} > 0 ? 'Pending':'New'}"
 							visible="{= ${agentListModel>/length} > 0 ? false : true}"
 							key="{= ${manifestListModel>/length} > 0 ? 'OPEN/MANIFEST/' : ${deliveryListModel>/length} > 0 ? 'OPEN/DELIVERY/' : ${consigneeListModel>/length} > 0 ? 'NA/CONSIGNEE/PENDING' : ''}"/>
-						<IconTabFilter count="{= ${manifestListModel>/length} > 0 ? ${countModel>/3/count} : ${countModel>/1/count}}" icon="sap-icon://decline"
+						<IconTabFilter count="{= ${manifestListModel>/length} > 0 ? ${countModel>/2/count} : ${countModel>/1/count}}" icon="sap-icon://decline"
 							iconColor="Negative" text="{= ${consigneeListModel>/length} > 0 ? 'Completed':'Closed'}"
 							visible="{= ${agentListModel>/length} > 0 ||  ${GatePassListModel>/length} > 0 ? false : true}"
 							key="{= ${manifestListModel>/length} > 0 ? 'CLOSED/MANIFEST/' : ${deliveryListModel>/length} > 0 ? 'CLOSED/DELIVERY/' : ${consigneeListModel>/length} > 0 ? 'NA/CONSIGNEE/COMPLETED' : ''}"/>

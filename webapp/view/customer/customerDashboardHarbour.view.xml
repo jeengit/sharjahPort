@@ -16,7 +16,8 @@
 							<tileContent>
 								<TileContent>
 									<content>
-										<mi:ComparisonMicroChart minValue="0" maxValue="50">
+										<mi:ComparisonMicroChart minValue="0" maxValue="{= ${DashboardCountModel>/0/EtaRequest} > ${DashboardCountModel>/0/EtaApproved} ? 
+										${DashboardCountModel>/0/EtaRequest} : ${DashboardCountModel>/0/EtaApproved}}">
 											<mi:data>
 												<mi:ComparisonMicroChartData title="New" value="{DashboardCountModel>/0/EtaRequest}" color="#f5c11a"/>
 												<mi:ComparisonMicroChartData title="Approved" value="{DashboardCountModel>/0/EtaApproved}" color="Good"/>
@@ -32,10 +33,11 @@
 							<tileContent>
 								<TileContent>
 									<content>
-										<mi:ComparisonMicroChart minValue="0" maxValue="50">
+										<mi:ComparisonMicroChart minValue="0" maxValue="{= ${DashboardCountModel>/0/LogsheetPending} > ${DashboardCountModel>/0/LogsheetClosed} ? 
+										${DashboardCountModel>/0/LogsheetPending} : ${DashboardCountModel>/0/LogsheetClosed}}">
 											<mi:data>
 												<mi:ComparisonMicroChartData title="Pending" value="{DashboardCountModel>/0/LogsheetPending}" color="#f5c11a"/>
-												<mi:ComparisonMicroChartData title="Closed" value="{DashboardCountModel>/0/LogsheetClosed}" color="Good"/>
+												<mi:ComparisonMicroChartData title="Closed" value="{DashboardCountModel>/0/LogsheetClosed}" color="Error"/>
 											</mi:data>
 										</mi:ComparisonMicroChart>
 									</content>
@@ -48,7 +50,8 @@
 							<tileContent>
 								<TileContent>
 									<content>
-										<mi:ComparisonMicroChart minValue="0" maxValue="50">
+										<mi:ComparisonMicroChart minValue="0" maxValue="{= ${DashboardCountModel>/0/OpenBOE} > ${DashboardCountModel>/0/ClosedBOE} ? 
+										${DashboardCountModel>/0/OpenBOE} : ${DashboardCountModel>/0/ClosedBOE}}">
 											<mi:data>
 												<mi:ComparisonMicroChartData title="New" value="{DashboardCountModel>/0/ServiceRequest}" color="#f5c11a"/>
 												<mi:ComparisonMicroChartData title="Approved" value="{DashboardCountModel>/0/ServiceApproved}" color="Good"/>

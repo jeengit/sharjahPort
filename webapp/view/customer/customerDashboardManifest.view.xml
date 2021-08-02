@@ -16,7 +16,9 @@
 							<tileContent>
 								<TileContent>
 									<content>
-										<mi:ComparisonMicroChart minValue="0" maxValue="100">
+										<mi:ComparisonMicroChart minValue="0" maxValue="{= ${DashboardCountModel>/0/Manifest} > ${DashboardCountModel>/0/OpenManifest} &amp;&amp; ${DashboardCountModel>/0/ClosedManifest} ? 
+										${DashboardCountModel>/0/Manifest} : ${DashboardCountModel>/0/OpenManifest} > ${DashboardCountModel>/0/Manifest} &amp;&amp; ${DashboardCountModel>/0/ClosedManifest} ? 
+										${DashboardCountModel>/0/OpenManifest} : ${DashboardCountModel>/0/ClosedManifest}}">
 											<mi:data>
 												<mi:ComparisonMicroChartData title="Custom" value="{DashboardCountModel>/0/Manifest}" color="#f5c11a"/>
 												<mi:ComparisonMicroChartData title="Open" value="{DashboardCountModel>/0/OpenManifest}" color="Good"/>
@@ -33,7 +35,8 @@
 							<tileContent>
 								<TileContent>
 									<content>
-										<mi:ComparisonMicroChart minValue="0" maxValue="100">
+										<mi:ComparisonMicroChart minValue="0" maxValue="{= ${DashboardCountModel>/0/OpenBOE} > ${DashboardCountModel>/0/ClosedBOE} ? 
+										${DashboardCountModel>/0/OpenBOE} : ${DashboardCountModel>/0/ClosedBOE}}">
 											<mi:data>
 												<mi:ComparisonMicroChartData title="New" value="{DashboardCountModel>/0/OpenBOE}" color="Good"/>
 												<mi:ComparisonMicroChartData title="Rejected" value="{DashboardCountModel>/0/ClosedBOE}" color="Error"/>
@@ -49,7 +52,8 @@
 							<tileContent>
 								<TileContent>
 									<content>
-										<mi:ComparisonMicroChart minValue="0" maxValue="100">
+										<mi:ComparisonMicroChart minValue="0" maxValue="{= ${DashboardCountModel>/0/OpenDelivery} > ${DashboardCountModel>/0/ClosedDelivery} ? 
+										${DashboardCountModel>/0/OpenDelivery} : ${DashboardCountModel>/0/ClosedDelivery}}">
 											<mi:data>
 												<mi:ComparisonMicroChartData title="Open" value="{DashboardCountModel>/0/OpenDelivery}" color="Good"/>
 												<mi:ComparisonMicroChartData title="Closed" value="{DashboardCountModel>/0/ClosedDelivery}" color="Error"/>

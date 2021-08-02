@@ -10,6 +10,8 @@ sap.ui.define([
 			oRouter.getRoute("logList").attachPatternMatched(this._onObjectMatched, this);
 		},
 		_onObjectMatched: function (oEvent) {
+			var oCountData = sap.ui.getCore().getModel("countModel").getData();
+			this.getView().setModel(new JSONModel(oCountData), "countModel");
 			this.callForHarbourNotification('');
 			var status = oEvent.getParameter("arguments").sPath;
 			var type = oEvent.getParameter("arguments").type;

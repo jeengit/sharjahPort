@@ -42,7 +42,6 @@ sap.ui.define([
 						res["countE"] = exportCount.length;
 						that.getView().setModel(new JSONModel(res), modelName);
 						setTimeout(function() {
-						console.log(that.getView().getModel(modelName).getData());
 							sap.m.MessageToast.show("Items loaded succesfully with status - " + status);
 							sap.ui.getCore().setModel(new JSONModel(that.getView().getModel(modelName).getData()), modelName);
 							sap.ui.core.BusyIndicator.hide();

@@ -44,7 +44,7 @@
 					selectionMode="None" ariaLabelledBy="title">
 					<t:extension>
 						<OverflowToolbar style="Clear">
-							<Title text="Manifest"/>
+							<Title text="Manifestss"/>
 							<ToolbarSpacer/>
 							<SearchField class="search" liveChange="onSearch" width="250px"/>
 							<core:Icon src="sap-icon://sorting-ranking" tooltip="{i18n>sort}" press="sortCategoriesAndName"/>
@@ -54,7 +54,7 @@
 					</t:extension>
 					<t:columns>
 						<t:Column sortProperty="EtaNo">
-							<Label text="Agent ID"/>
+							<Label text="Manifest Number"/>
 							<t:template>
 								<HBox>
 									<Link fieldGroupIds="manifest" press="handelDetailPress" visible="{= ${manifestListModel>ManifestNo} === '' ? true : false}"
@@ -62,6 +62,12 @@
 									<Link fieldGroupIds="manifest" press="handelDetailPress" visible="{= ${manifestListModel>ManifestNo} === '' ? false : true}"
 										text="{manifestListModel>ManifestNo}"/>
 								</HBox>
+							</t:template>
+						</t:Column>
+						<t:Column visible="{= ${manifestListModel>AgentID} !== '' ? true : false}" sortProperty="VesselName">
+							<Label text="Agent ID"/>
+							<t:template>
+								<Text text="{manifestListModel>AgentID}"/>
 							</t:template>
 						</t:Column>
 						<t:Column sortProperty="EtaNo">

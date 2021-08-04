@@ -17,7 +17,8 @@ sap.ui.define([
 			oRouter.getRoute("deliveryDetails").attachPatternMatched(this._onObjectMatched, this);
 		},
 		_onObjectMatched: function(oEvent) {
-			this.getView().setModel(new JSONModel(sap.ui.getCore().getModel("navModel").getData()),"navModel");
+			this.getView().setModel(new JSONModel(sap.ui.getCore().getModel("navModel").getData()), "navModel");
+			console.log(sap.ui.getCore().getModel("navModel"));
 			this.getUserName();
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
@@ -32,7 +33,7 @@ sap.ui.define([
 					that.getView().byId("apprvBtn").setVisible(false);
 					that.getView().byId("editBtn").setVisible(false);
 					that.getView().byId("saveBtn").setVisible(false);
-				//	that.getView().byId("createbillBtn").setVisible(true);
+					//	that.getView().byId("createbillBtn").setVisible(true);
 					that.getView().byId("crtBtn").setVisible(true);
 					this.getView().byId("cancelBtn").setVisible(false);
 				}
@@ -47,15 +48,27 @@ sap.ui.define([
 					success: function(data) {
 						that.getView().setModel(new JSONModel(data), "delvryDetailsModel");
 						that.generateTableForCharges(data);
-						that.getView().byId(pageId + "--delDisp").setVisible(false);
-						that.getView().byId(pageId + "--delSave").setVisible(false);
-						that.getView().byId(pageId + "--delDetails").setVisible(true);
-						that.getView().byId("apprvBtn").setVisible(true);
-						that.getView().byId("editBtn").setVisible(true);
-						that.getView().byId("saveBtn").setVisible(false);
-						that.getView().byId("createbillBtn").setVisible(false);
-						that.getView().byId("crtBtn").setVisible(false);
-						that.getView().byId("cancelBtn").setVisible(false);
+						if (data.Status === "OPEN") {
+							that.getView().byId(pageId + "--delDisp").setVisible(false);
+							that.getView().byId(pageId + "--delSave").setVisible(false);
+							that.getView().byId(pageId + "--delDetails").setVisible(true);
+							that.getView().byId("apprvBtn").setVisible(true);
+							that.getView().byId("editBtn").setVisible(true);
+							that.getView().byId("saveBtn").setVisible(false);
+							that.getView().byId("createbillBtn").setVisible(false);
+							that.getView().byId("crtBtn").setVisible(false);
+							that.getView().byId("cancelBtn").setVisible(false);
+						} else {
+							that.getView().byId(pageId + "--delDisp").setVisible(false);
+							that.getView().byId(pageId + "--delSave").setVisible(false);
+							that.getView().byId(pageId + "--delDetails").setVisible(true);
+							that.getView().byId("apprvBtn").setVisible(false);
+							that.getView().byId("editBtn").setVisible(false);
+							that.getView().byId("saveBtn").setVisible(false);
+							that.getView().byId("createbillBtn").setVisible(false);
+							that.getView().byId("crtBtn").setVisible(false);
+							that.getView().byId("cancelBtn").setVisible(false);
+						}
 					},
 					error: function(oResponse) {
 						sap.m.MessageToast.show(oResponse.statusText);
@@ -74,8 +87,9 @@ sap.ui.define([
 			oModel.setUseBatch(false);
 			oModel.create("/DeliveryDetailsSet", oEntry, {
 				success: function(data) {
-					if(data && data.BillNo !== 'Not Created' && data.SalesOrderNumber !== 'Not Created') {
-							sap.m.MessageToast.show("Delivery No - " + oEntry.DeliveryName + " has been approved with bill no " + data.BillNo + " and sales order no " + data.SalesOrderNumber);
+					if (data && data.BillNo !== 'Not Created' && data.SalesOrderNumber !== 'Not Created') {
+						sap.m.MessageToast.show("Delivery No - " + oEntry.DeliveryName + " has been approved with bill no " + data.BillNo +
+							" and sales order no " + data.SalesOrderNumber);
 					} else {
 						sap.m.MessageToast.show("Delivery is not approved");
 					}
@@ -121,8 +135,10 @@ sap.ui.define([
 			oModel.setUseBatch(false);
 			// var that = this;
 			var delChargeData = this.getView().getModel("deliverChargeEditModel").getData();
-			if(delChargeData && delChargeData.items && delChargeData.items.length > 0) {
-				delChargeData.items.forEach(function(v){ delete v.selectedCharge });
+			if (delChargeData && delChargeData.items && delChargeData.items.length > 0) {
+				delChargeData.items.forEach(function(v) {
+					delete v.selectedCharge
+				});
 				oEntry['DeliveryDetailsToDeliverCharge'] = delChargeData.items;
 			} else {
 				oEntry['DeliveryDetailsToDeliverCharge'] = [];
@@ -206,7 +222,7 @@ sap.ui.define([
 			oModel.setUseBatch(false);
 			var oEntry = this.getView().getModel("delCrtModel").getData();
 			var delChargeData = this.getView().getModel("deliverChargeModel").getData();
-			if(delChargeData && delChargeData.items && delChargeData.items.length > 0) {
+			if (delChargeData && delChargeData.items && delChargeData.items.length > 0) {
 				oEntry['DeliveryDetailsToDeliverCharge'] = delChargeData.items;
 			} else {
 				oEntry['DeliveryDetailsToDeliverCharge'] = [];
@@ -214,12 +230,12 @@ sap.ui.define([
 			var that = this;
 			oModel.create("/DeliveryDetailsSet", oEntry, {
 				success: function(data) {
-					sap.m.MessageToast.show("Delivery Created Successfully with delivery no " + + data.DeliveryName);
-					setTimeout(function(){
+					sap.m.MessageToast.show("Delivery Created Successfully with delivery no " + +data.DeliveryName);
+					setTimeout(function() {
 						sap.ui.core.BusyIndicator.hide();
 						that.getRouter().navTo("dashboardManifest");
 					}, 3000);
-					
+
 				},
 				error: function(oResponse) {
 					sap.m.MessageToast.show(oResponse.statusText);
@@ -228,109 +244,101 @@ sap.ui.define([
 			});
 		},
 		initChargeModel: function() {
-			var cArray = [
-				{
-					"id": 0,
-					"Charges": "",
-					"Description": "",
-					"Rate": 0
-				},
-				{
-					"id": 1,
-					"Charges": "FL001",
-					"Description": "FLT (5T)",
-					"Rate": 100
-				},
-				{
-					"id": 2,
-					"Charges": "GA001",
-					"Description": "GANG-OVERTIME",
-					"Rate": 200
-				},
-				{
-					"id": 3,
-					"Charges": "SC001",
-					"Description": "GANG ENGAGED-COLLECT/DISCH DONNAGES",
-					"Rate": 400
-				},
-				{
-					"id": 4,
-					"Charges": "GS001",
-					"Description": "Wire sling 6.2 T 25 FT",
-					"Rate": 150
-				},
-				{
-					"id": 5,
-					"Charges": "GS002",
-					"Description": "2 Leg stell chain sling 9.5 T 16FT",
-					"Rate": 120
-				},
-				{
-					"id": 6,
-					"Charges": "GS003",
-					"Description": "Wire sling 3.3T 25 FT",
-					"Rate": 300
-				},
-				{
-					"id": 7,
-					"Charges": "CR001",
-					"Description": "Crane (12t)",
-					"Rate": 500
-				},
-				{
-					"id": 8,
-					"Charges": "MS001",
-					"Description": "Labour Charge",
-					"Rate": 100
-				}
-				];
-				this.getView().setModel(new JSONModel({items: cArray}), "chargeDiscModel");
+			var cArray = [{
+				"id": 0,
+				"Charges": "",
+				"Description": "",
+				"Rate": 0
+			}, {
+				"id": 1,
+				"Charges": "FL001",
+				"Description": "FLT (5T)",
+				"Rate": 100
+			}, {
+				"id": 2,
+				"Charges": "GA001",
+				"Description": "GANG-OVERTIME",
+				"Rate": 200
+			}, {
+				"id": 3,
+				"Charges": "SC001",
+				"Description": "GANG ENGAGED-COLLECT/DISCH DONNAGES",
+				"Rate": 400
+			}, {
+				"id": 4,
+				"Charges": "GS001",
+				"Description": "Wire sling 6.2 T 25 FT",
+				"Rate": 150
+			}, {
+				"id": 5,
+				"Charges": "GS002",
+				"Description": "2 Leg stell chain sling 9.5 T 16FT",
+				"Rate": 120
+			}, {
+				"id": 6,
+				"Charges": "GS003",
+				"Description": "Wire sling 3.3T 25 FT",
+				"Rate": 300
+			}, {
+				"id": 7,
+				"Charges": "CR001",
+				"Description": "Crane (12t)",
+				"Rate": 500
+			}, {
+				"id": 8,
+				"Charges": "MS001",
+				"Description": "Labour Charge",
+				"Rate": 100
+			}];
+			this.getView().setModel(new JSONModel({
+				items: cArray
+			}), "chargeDiscModel");
 		},
 		addNextRowForDeliveryCharge: function() {
 			this.addDeliverChargeModel(false);
 		},
 		addNextRowForDeliveryChargeEdit: function() {
-				var delObj = {
-					"DeliveryNo": "",
-					"ItemNo": "",
-					"Charges": "",
-					"Description": "",
-					"Rate": " ",
-					"Quantity": "",
-					"Amount": ""
-				};
-				var dData = this.getView().getModel("deliverChargeEditModel").getData();
-				dData.items.push(delObj);
-				this.getView().setModel(new JSONModel(dData), "deliverChargeEditModel");
+			var delObj = {
+				"DeliveryNo": "",
+				"ItemNo": "",
+				"Charges": "",
+				"Description": "",
+				"Rate": " ",
+				"Quantity": "",
+				"Amount": ""
+			};
+			var dData = this.getView().getModel("deliverChargeEditModel").getData();
+			dData.items.push(delObj);
+			this.getView().setModel(new JSONModel(dData), "deliverChargeEditModel");
 		},
 		deleteThisItem: function(oEvent) {
 			var oRow = oEvent.getSource().getParent(); //Get Row
-            var iRowIndex = oRow.getIndex();
-            var edData = this.getView().getModel("deliverChargeModel").getData();
-            edData['items'].splice(iRowIndex, 1);
-            this.getView().setModel(new JSONModel(edData), "deliverChargeModel");
+			var iRowIndex = oRow.getIndex();
+			var edData = this.getView().getModel("deliverChargeModel").getData();
+			edData['items'].splice(iRowIndex, 1);
+			this.getView().setModel(new JSONModel(edData), "deliverChargeModel");
 		},
 		deleteThisItemEdit: function(oEvent) {
 			var oRow = oEvent.getSource().getParent(); //Get Row
-            var iRowIndex = oRow.getIndex();
-            var edData = this.getView().getModel("deliverChargeEditModel").getData();
-            edData['items'].splice(iRowIndex, 1);
-            this.getView().setModel(new JSONModel(edData), "deliverChargeEditModel");
+			var iRowIndex = oRow.getIndex();
+			var edData = this.getView().getModel("deliverChargeEditModel").getData();
+			edData['items'].splice(iRowIndex, 1);
+			this.getView().setModel(new JSONModel(edData), "deliverChargeEditModel");
 		},
 		addDeliverChargeModel: function(isFirst) {
 			var delObj = {
-					"DeliveryNo": "",
-					"ItemNo": "",
-					"Charges": "",
-					"Description": "",
-					"Rate": " ",
-					"Quantity": "",
-					"Amount": ""
-				};
-			
-			if(isFirst) {
+				"DeliveryNo": "",
+				"ItemNo": "",
+				"Charges": "",
+				"Description": "",
+				"Rate": " ",
+				"Quantity": "",
+				"Amount": ""
+			};
+
+			if (isFirst) {
 				var delModel = {
-				items: [delObj]
+					items: [delObj]
 				};
 				this.getView().setModel(new JSONModel(delModel), "deliverChargeModel");
 			} else {
@@ -338,13 +346,13 @@ sap.ui.define([
 				dData.items.push(delObj);
 				this.getView().setModel(new JSONModel(dData), "deliverChargeModel");
 			}
-			
+
 		},
 		fnSelectChargeRow: function(oEvent) {
 			var oRow = oEvent.getSource().getParent(); //Get Row
-            var iRowIndex = oRow.getIndex();
-  			var selectedKeyItem = oEvent.getSource().getSelectedKey();
-			if(selectedKeyItem !== 0) {
+			var iRowIndex = oRow.getIndex();
+			var selectedKeyItem = oEvent.getSource().getSelectedKey();
+			if (selectedKeyItem !== 0) {
 				var chargeDiscMain = this.getView().getModel("chargeDiscModel").getData();
 				var delData = JSON.parse(JSON.stringify(this.getView().getModel("deliverChargeModel").getData()));
 				let mainInx = chargeDiscMain.items.findIndex(mItem => Number(mItem.id) == Number(selectedKeyItem));
@@ -358,9 +366,9 @@ sap.ui.define([
 		},
 		fnSelectChargeRowEdit: function(oEvent) {
 			var oRow = oEvent.getSource().getParent(); //Get Row
-            var iRowIndex = oRow.getIndex();
-  			var selectedKeyItem = oEvent.getSource().getSelectedKey();
-			if(selectedKeyItem !== 0) {
+			var iRowIndex = oRow.getIndex();
+			var selectedKeyItem = oEvent.getSource().getSelectedKey();
+			if (selectedKeyItem !== 0) {
 				var chargeDiscMain = this.getView().getModel("chargeDiscModel").getData();
 				var delData = JSON.parse(JSON.stringify(this.getView().getModel("deliverChargeEditModel").getData()));
 				let mainInx = chargeDiscMain.items.findIndex(mItem => Number(mItem.id) == Number(selectedKeyItem));
@@ -374,37 +382,38 @@ sap.ui.define([
 		},
 		chageQuantityEvent: function(oEvent) {
 			var oRow = oEvent.getSource().getParent(); //Get Row
-            var iRowIndex = oRow.getIndex();
-            var newQuantity = oEvent.getSource().getValue();
-				var delData = JSON.parse(JSON.stringify(this.getView().getModel("deliverChargeModel").getData()));
-				delData.items[iRowIndex]['Quantity'] = newQuantity;
-				delData.items[iRowIndex]['Amount'] = (Number(delData.items[iRowIndex]['Rate']) * Number(newQuantity)).toString();
-				this.getView().setModel(new JSONModel(delData), "deliverChargeModel");
+			var iRowIndex = oRow.getIndex();
+			var newQuantity = oEvent.getSource().getValue();
+			var delData = JSON.parse(JSON.stringify(this.getView().getModel("deliverChargeModel").getData()));
+			delData.items[iRowIndex]['Quantity'] = newQuantity;
+			delData.items[iRowIndex]['Amount'] = (Number(delData.items[iRowIndex]['Rate']) * Number(newQuantity)).toString();
+			this.getView().setModel(new JSONModel(delData), "deliverChargeModel");
 		},
 		chageQuantityEventEdit: function(oEvent) {
 			var oRow = oEvent.getSource().getParent(); //Get Row
-            var iRowIndex = oRow.getIndex();
-            var newQuantity = oEvent.getSource().getValue();
-				var delData = JSON.parse(JSON.stringify(this.getView().getModel("deliverChargeEditModel").getData()));
-				delData.items[iRowIndex]['Quantity'] = newQuantity;
-				delData.items[iRowIndex]['Amount'] = (Number(delData.items[iRowIndex]['Rate']) * Number(newQuantity)).toString();
-				this.getView().setModel(new JSONModel(delData), "deliverChargeEditModel");
+			var iRowIndex = oRow.getIndex();
+			var newQuantity = oEvent.getSource().getValue();
+			var delData = JSON.parse(JSON.stringify(this.getView().getModel("deliverChargeEditModel").getData()));
+			delData.items[iRowIndex]['Quantity'] = newQuantity;
+			delData.items[iRowIndex]['Amount'] = (Number(delData.items[iRowIndex]['Rate']) * Number(newQuantity)).toString();
+			this.getView().setModel(new JSONModel(delData), "deliverChargeEditModel");
 		},
 		generateTableForCharges: function(data) {
-			if(data && data.DeliveryDetailsToDeliverCharge && data.DeliveryDetailsToDeliverCharge.results && data.DeliveryDetailsToDeliverCharge.results.length > 0) {
+			if (data && data.DeliveryDetailsToDeliverCharge && data.DeliveryDetailsToDeliverCharge.results && data.DeliveryDetailsToDeliverCharge
+				.results.length > 0) {
 				var delArr = {
 					items: []
-				  };
-				for(var dc of data.DeliveryDetailsToDeliverCharge.results) {
+				};
+				for (var dc of data.DeliveryDetailsToDeliverCharge.results) {
 					var delObj = {
-					"DeliveryNo": dc.DeliveryNo,
-					"ItemNo": dc.ItemNo,
-					"Charges": dc.Charges,
-					"Description": dc.Description,
-					"Rate": dc.Rate,
-					"Quantity": dc.Quantity,
-					"Amount": dc.Amount,
-					"selectedCharge": this.getSelectedKeyOfCharges(dc.Charges)
+						"DeliveryNo": dc.DeliveryNo,
+						"ItemNo": dc.ItemNo,
+						"Charges": dc.Charges,
+						"Description": dc.Description,
+						"Rate": dc.Rate,
+						"Quantity": dc.Quantity,
+						"Amount": dc.Amount,
+						"selectedCharge": this.getSelectedKeyOfCharges(dc.Charges)
 					};
 					delArr.items.push(delObj)
 				}

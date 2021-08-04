@@ -171,7 +171,7 @@
 									<m:VBox>
 										<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 											<m:HBox width="50%">
-												<m:Label text="{i18n>ExpectedArrivalDate}"/>
+												<m:Label text="{i18n>ArrivalDate}"/>
 											</m:HBox>
 											<m:HBox width="50%">
 												<m:DatePicker id="depDateArrival" value="{vesMovModel>/ExpectedArrivalDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
@@ -179,7 +179,7 @@
 										</m:HBox>
 										<m:HBox alignItems="Center">
 											<m:HBox width="50%">
-												<m:Label text="{i18n>ExpectedDepartureDate}"/>
+												<m:Label text="{i18n>DepartureDate}"/>
 											</m:HBox>
 											<m:HBox width="50%">
 												<m:DatePicker name="depDateArrival" change="handleChangeSelect" value="{vesMovModel>/ExpectedDepartureDate}" valueFormat="yyyyMMdd"
@@ -192,20 +192,20 @@
 									<m:VBox>
 										<m:HBox class=" sapUiTinyMarginBottom" alignItems="Center">
 											<m:HBox width="50%">
-												<m:Label text="{i18n>ExpectedArrivalTime}"/>
+												<m:Label text="Arrival Time"/>
 											</m:HBox>
 											<m:HBox width="50%">
 												<m:TimePicker id="depTimeArrival" value="{vesMovModel>/ExpectedArrivalTime}" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss"
-													placeholder="{i18n>ExpectedArrivalTime}"/>
+													placeholder="Arrival Time"/>
 											</m:HBox>
 										</m:HBox>
 										<m:HBox alignItems="Center">
 											<m:HBox width="50%">
-												<m:Label text="{i18n>ExpectedDepartureTime}"/>
+												<m:Label text="Departure Time"/>
 											</m:HBox>
 											<m:HBox width="50%">
 												<m:TimePicker name="depTimeArrival" change="handleChangeSelect" value="{vesMovModel>/ExpectedDepartureTime}" valueFormat="HH:mm:ss"
-													displayFormat="HH:mm:ss" placeholder="{i18n>ExpectedDepartureTime}"/>
+													displayFormat="HH:mm:ss" placeholder="Departure Time"/>
 											</m:HBox>
 										</m:HBox>
 									</m:VBox>

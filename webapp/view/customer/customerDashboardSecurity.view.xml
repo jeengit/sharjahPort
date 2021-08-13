@@ -1,0 +1,34 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="com.demo.sharjahPort.controller.customer.customerDashboardSecurity" xmlns:unified="sap.ui.unified" xmlns:mi="sap.suite.ui.microchart" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page showHeader="true" class="sapUiResponsiveContentPadding">
+		<customHeader>
+			<core:Fragment fragmentName="com.demo.sharjahPort.view.fragments.TopNav" type="XML"/>
+		</customHeader>
+		<content>
+			<VBox class="section">
+				<Title text="Dashboard" class="heading"/>
+				<FlexBox width="100%" class="sapUiSmallMarginTopBottom custTile">
+					<HBox width="16.6%" class="tileLayout sapUiSmallMarginEnd">
+						<GenericTile ariaLabel="OPEN/SECURITY" press="onNavToPress" header="Gate Pass" subheader="Gate Pass List">
+							<tileContent>
+								<TileContent>
+									<content>
+										<mi:ComparisonMicroChart minValue="0" maxValue="{= ${DashboardCountModel>/0/GatepassNew} > ${DashboardCountModel>/0/GatepassApproved} &amp;&amp; ${DashboardCountModel>/0/GatepassRejected} ? 
+										${DashboardCountModel>/0/GatepassNew} : ${DashboardCountModel>/0/GatepassApproved} > ${DashboardCountModel>/0/GatepassNew} &amp;&amp; ${DashboardCountModel>/0/GatepassRejected} ? 
+										${DashboardCountModel>/0/GatepassApproved} : ${DashboardCountModel>/0/GatepassRejected}}">
+											<mi:data>
+												<mi:ComparisonMicroChartData title="New" value="{DashboardCountModel>/0/GatepassNew}" color="#f5c11a"/>
+												<mi:ComparisonMicroChartData title="Approved" value="{DashboardCountModel>/0/GatepassApproved}" color="Good"/>
+												<mi:ComparisonMicroChartData title="Rejected" value="{DashboardCountModel>/0/GatepassRejected}" color="Error"/>
+											</mi:data>
+										</mi:ComparisonMicroChart>
+									</content>
+								</TileContent>
+							</tileContent>
+						</GenericTile>
+					</HBox>
+				</FlexBox>
+			</VBox>
+		</content>
+	</Page>
+</mvc:View>

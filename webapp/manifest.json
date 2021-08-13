@@ -171,6 +171,14 @@
 					]
 				},
 				{
+					"name": "dashboardSecurity",
+					"pattern": "dashboardSecurity",
+					"target": [
+						"home",
+						"dashboardSecurity"
+					]
+				},
+				{
 					"name": "manifest",
 					"pattern": "manifest={sPath}&type='{type}'",
 					"target": [
@@ -258,6 +266,10 @@
 				"dashboardManifest": {
 					"viewType": "XML",
 					"viewName": "customerDashboardManifest"
+				},
+				"dashboardSecurity": {
+					"viewType": "XML",
+					"viewName": "customerDashboardSecurity"
 				},
 				"etaList": {
 					"viewType": "XML",

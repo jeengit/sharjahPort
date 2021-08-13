@@ -3,7 +3,7 @@
 		<subHeader>
 			<Bar>
 				<contentLeft>
-					<Text text="Hot Works - {= ${hotWorksModel>/STATUS} === 'NEW' ? 'New' : ${hotWorksModel>/LogSheetNo}}"/>
+					<Text text="{= ${hotWorksModel>/Company_Name} ? 'Security' : 'Hot Works'} - {hotWorksModel>/STATUS}"/>
 				</contentLeft>
 				<contentRight>
 					<core:Icon src="sap-icon://decline" press="closeHotWorkPopup"/>
@@ -12,7 +12,7 @@
 		</subHeader>
 		<content>
 			<FlexBox class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop" direction="Column">
-				<HBox width="100%" alignItems="Center" class="sapUiTinyMarginEnd">
+				<HBox visible="{= ${hotWorksModel>/CallSign} ? true : false}" width="100%" alignItems="Center" class="sapUiTinyMarginEnd">
 					<HBox width="40%">
 						<Label text="{i18n>CallSign}" class="sapUiTinyMarginEnd"/>
 					</HBox>
@@ -35,13 +35,13 @@
 			<FlexBox class="sapUiSmallMarginBeginEnd" direction="Column">
 				<HBox width="100%" alignItems="Center" class="sapUiTinyMarginEnd">
 					<HBox width="40%">
-						<Label text="{i18n>VesselName}" class="sapUiTinyMarginEnd"/>
+						<Label text="{= ${hotWorksModel>/VesselName} ? ${i18n>VesselName} : 'Company Name'}" class="sapUiTinyMarginEnd"/>
 					</HBox>
 					<HBox width="60%">
-						<Input enabled="false" value="{hotWorksModel>/VesselName}"/>
+						<Input enabled="false" value="{= ${hotWorksModel>/VesselName} ? ${hotWorksModel>/VesselName} : ${hotWorksModel>/Company_Name}}"/>
 					</HBox>
 				</HBox>
-				<HBox width="100%" alignItems="Center" class="sapUiTinyMarginEnd">
+				<HBox visible="{= ${hotWorksModel>/CallSign} ? true : false}" width="100%" alignItems="Center" class="sapUiTinyMarginEnd">
 					<HBox width="40%">
 						<Label text="IMO Number" class="sapUiTinyMarginEnd"/>
 					</HBox>
@@ -51,7 +51,7 @@
 				</HBox>
 			</FlexBox>
 			<FlexBox class="sapUiSmallMarginBeginEnd" direction="Column">
-				<HBox width="100%" alignItems="Center" class="sapUiTinyMarginEnd">
+				<HBox visible="{= ${hotWorksModel>/CallSign} ? true : false}" width="100%" alignItems="Center" class="sapUiTinyMarginEnd">
 					<HBox width="40%">
 						<Label text="ETA Number" class="sapUiTinyMarginEnd"/>
 					</HBox>
@@ -64,7 +64,7 @@
 						<Label text="Agent Name" class="sapUiTinyMarginEnd"/>
 					</HBox>
 					<HBox width="60%">
-						<Input enabled="false" value="{hotWorksModel>/AgentName}"/>
+						<Input enabled="false" value="{= ${hotWorksModel>/AgentName} ? ${hotWorksModel>/AgentName} : ${hotWorksModel>/Name}}"/>
 					</HBox>
 				</HBox>
 			</FlexBox>
@@ -89,10 +89,10 @@
 		</content>
 		<buttons>
 			<Button
-				visible="{= ${loginModel>/uRole} === 'HARBOR_MASTER' &amp;&amp; ${hotWorksModel>/STATUS} === 'OPEN' ? true : ${loginModel>/uRole} === 'AGENT' ? false : false}"
+				visible="{= ${loginModel>/uRole} === 'SECURITY' &amp;&amp; ${hotWorksModel>/STATUS} === 'OPEN' ? true : ${loginModel>/uRole} === 'HARBOR_MASTER' &amp;&amp; ${hotWorksModel>/STATUS} === 'OPEN' ? true : ${loginModel>/uRole} === 'AGENT' ? false : false}"
 				tooltip="REJECTED" class="btn-sm btn-primary text-light" type="Error" text="Reject" press="handleCreateHotWorks"/>
 			<Button
-				visible="{= ${loginModel>/uRole} === 'HARBOR_MASTER' &amp;&amp; ${hotWorksModel>/STATUS} === 'OPEN' ? true : ${loginModel>/uRole} === 'AGENT' ? false : false}"
+				visible="{= ${loginModel>/uRole} === 'SECURITY' &amp;&amp; ${hotWorksModel>/STATUS} === 'OPEN' ? true : ${loginModel>/uRole} === 'HARBOR_MASTER' &amp;&amp; ${hotWorksModel>/STATUS} === 'OPEN' ? true : ${loginModel>/uRole} === 'AGENT' ? false : false}"
 				tooltip="APPROVE" class="btn-sm btn-secondary text-light" type="Emphasized" text="Approve" press="handleCreateHotWorks"/>
 			<Button visible="{= ${loginModel>/uRole} === 'AGENT' &amp;&amp; ${hotWorksModel>/STATUS} === 'NEW' ? true: false}" tooltip="CREATE"
 				class="btn-sm btn-primary text-light" type="Emphasized" text="Create" press="handleCreateHotWorks"/>

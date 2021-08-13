@@ -33,6 +33,9 @@ sap.ui.define([
 					if (data.Role === "TALLYCLERK") {
 						that.getRouter().navTo("tallySheetClerkList");
 					}
+					if (data.Role === "SECURITY") {
+						that.getRouter().navTo("dashboardSecurity");
+					}
 					var oStore = jQuery.sap.storage(jQuery.sap.storage.Type.local);
 					oStore.put("user", data.Name);
 					oStore.put("role", data.Role);

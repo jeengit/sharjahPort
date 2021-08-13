@@ -166,7 +166,9 @@ sap.ui.define([
 						oView.addDependent(this.dialogHWA);
 					}
 					this.dialogHWA.open();
-					this.getView().setModel(new JSONModel({"STATUS":"NEW"}), "hotWorksModel");
+					this.getView().setModel(new JSONModel({
+						"STATUS": "NEW"
+					}), "hotWorksModel");
 				}
 			}
 			sap.ui.getCore().setModel(new JSONModel({}), "navModel");
@@ -336,30 +338,54 @@ sap.ui.define([
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
 			var data = this.getView().getModel("hotWorksModel").getData();
-			var oEntry = {
-					"LogSheetNo": data.LogSheetNo,
-					"EtaNo": data.EtaNo,
-					"Port": data.Port,
-					"VesselName": data.VesselName,
-					"Purpose": data.Purpose,
-					"ImoNo": data.ImoNo,
-					"CallSign": data.CallSign,
-					"AgentName": data.AgentName,
-					"AgentCode": data.AgentCode,
-					"Flag": evt.getSource().getTooltip()
+			var oEntryHotWorks = {
+				"LogSheetNo": data.LogSheetNo,
+				"EtaNo": data.EtaNo,
+				"Port": data.Port,
+				"VesselName": data.VesselName,
+				"Purpose": data.Purpose,
+				"ImoNo": data.ImoNo,
+				"CallSign": data.CallSign,
+				"AgentName": data.AgentName,
+				"AgentCode": data.AgentCode,
+				"Flag": evt.getSource().getTooltip()
+			};
+			var oEntrySecurity = {
+				"ImFlag": evt.getSource().getTooltip() === 'REJECTED' ? 'REJECT' : evt.getSource().getTooltip(),
+				"Guid": data.Guid,
+				"Status": data.Status
+			};
+			var role = sap.ui.getCore().getModel("loginModel").getData().Role;
+			var oEntry = role === 'SECURITY' ? oEntrySecurity : oEntryHotWorks;
+			var that = this;
+			oModel.create(role === 'SECURITY' ? "/GatePassApproveRejectSet" : "/HotWorksSet", oEntry, {
+				success: function(data) {
+					that.dialogHWA.close();
+					role === 'SECURITY' ? sap.m.MessageToast.show(oEntry['ImFlag'] === 'APPROVE' ?
+							'Gate Pass Approved Successfully!..' : 'Gate Pass Rejected Successfully!..') :
+						sap.m.MessageToast.show(oEntry['Flag'] === 'CREATE' ? 'Created Successfully!..' : oEntry['Flag'] === 'APPROVE' ?
+							'Hotwork Approved Successfully!..' : 'Hotwork Rejected Successfully!..');
+					if (role === "SECURITY") {
+						oModel.read("/GatePassListSet", {
+							urlParameters: {
+								"$filter": "ImStatus eq '" + status + "'"
+							},
+							success: function(data) {
+								that.getView().setModel(new JSONModel(data), "etaListModel");
+							},
+							error: function(oResponse) {
+								sap.m.MessageToast.show(oResponse.statusText);
+								sap.ui.core.BusyIndicator.hide();
+							}
+						});
+					}
+					sap.ui.core.BusyIndicator.hide();
+				},
+				error: function(oResponse) {
+					sap.m.MessageToast.show(oResponse.statusText);
+					sap.ui.core.BusyIndicator.hide();
 				}
-				var that = this;
-				oModel.create("/HotWorksSet", oEntry,{
-						success: function(data) {
-							that.dialogHWA.close();
-							sap.m.MessageToast.show(oEntry['Flag'] === 'CREATE' ? 'Created Successfully!..' : oEntry['Flag'] === 'APPROVE' ? 'Hotwork Approved Successfully!..' : 'Hotwork Rejected Successfully!..');
-							sap.ui.core.BusyIndicator.hide();
-						},
-						error: function(oResponse) {
-							sap.m.MessageToast.show(oResponse.statusText);
-							sap.ui.core.BusyIndicator.hide();
-						}
-					});
+			});
 		}
 	});
 });

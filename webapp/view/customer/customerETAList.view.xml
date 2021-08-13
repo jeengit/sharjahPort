@@ -6,26 +6,26 @@
 		</customHeader>
 		<content>
 			<VBox class="sapUiContentPadding tabfilter">
-				<Breadcrumbs currentLocationText="{= ${etaListModel>/TYPE} === 'ETA' ? 'ETA' : 'Hot Works'}">
+				<Breadcrumbs currentLocationText="{= ${etaListModel>/TYPE} === 'ETA' ? 'ETA' : ${etaListModel>/TYPE} === 'SECURITY' ? 'SECURITY' : 'Hot Works'}">
 					<Link
-						href="#{= ${loginModel>/uRole} === 'HARBOR_MASTER' ? 'dashboardHarbour' : ${loginModel>/uRole} === 'CONTROL_ROOM' ? 'dashboard' : ${loginModel>/uRole} === 'CARGO' ? 'dashboardManifest' : ${loginModel>/uRole} === 'AGENT' ? 'dashboardAgent':''}"
+						href="#{= ${loginModel>/uRole} === 'HARBOR_MASTER' ? 'dashboardHarbour' : ${loginModel>/uRole} === 'CONTROL_ROOM' ? 'dashboard' : ${loginModel>/uRole} === 'CARGO' ? 'dashboardManifest' : ${loginModel>/uRole} === 'AGENT' ? 'dashboardAgent' : ${loginModel>/uRole} === 'SECURITY' ? 'dashboardSecurity':''}"
 						text="Home"/>
 				</Breadcrumbs>
 				<IconTabBar expandable="false" id="idIconTabBar" select="onBtnPress" class="sapUiResponsiveContentPadding">
 					<items>
-						<IconTabFilter count="{countModel>/0/count}" visible="{= ${etaListModel>/results/0/Status} ? true : false}" icon="sap-icon://request" iconColor="Positive" text="New"
-							key="{= ${etaListModel>/TYPE} === 'ETA' ? 'NEW/ETA' : 'OPEN/HOTWORKS'}"/>
-						<IconTabFilter count="{countModel>/1/count}" visible="{= ${etaListModel>/results/0/Status} ? true : false}" icon="sap-icon://approvals" iconColor="Critical"
-							text="Approved" key="APPROVED/{= ${etaListModel>/TYPE} === 'ETA' ? 'ETA' : 'HOTWORKS'}"/>
+						<IconTabFilter count="{countModel>/0/count}" visible="{= ${etaListModel>/results/0/Status} ? true : ${etaListModel>/TYPE} === 'SECURITY' ? true : false}" icon="sap-icon://request" iconColor="Positive" text="New"
+							key="{= ${etaListModel>/TYPE} === 'ETA' ? 'NEW/ETA' : ${etaListModel>/TYPE} === 'SECURITY' ? 'OPEN/SECURITY' : 'OPEN/HOTWORKS'}"/>
+						<IconTabFilter count="{countModel>/1/count}" visible="{= ${etaListModel>/results/0/Status} ? true : ${etaListModel>/TYPE} === 'SECURITY' ? true : false}" icon="sap-icon://approvals" iconColor="Critical"
+							text="Approved" key="APPROVED/{= ${etaListModel>/TYPE} === 'ETA' ? 'ETA': ${etaListModel>/TYPE} === 'SECURITY' ? 'SECURITY' : 'HOTWORKS'}"/>
 						<IconTabFilter count="{countModel>/2/count}" icon="sap-icon://decline" iconColor="Negative"
-							visible="{= ${loginModel>/uRole} === 'AGENT' ? true : ${loginModel>/uRole} === 'HARBOR_MASTER' &amp;&amp; ${etaListModel>/TYPE} === 'HOTWORKS' ? true : false}"
-							text="Rejected" key="REJECTED/{= ${etaListModel>/TYPE} === 'ETA' ? 'ETA' : 'HOTWORKS'}"/>
+							visible="{= ${loginModel>/uRole} === 'AGENT' ? true : ${loginModel>/uRole} === 'HARBOR_MASTER' &amp;&amp; ${etaListModel>/TYPE} === 'HOTWORKS' ? true : ${etaListModel>/TYPE} === 'SECURITY' ? true: false}"
+							text="Rejected" key="REJECTED/{= ${etaListModel>/TYPE} === 'ETA' ? 'ETA' : ${etaListModel>/TYPE} === 'SECURITY' ? 'SECURITY' : 'HOTWORKS'}"/>
 					</items>
 				</IconTabBar>
 				<t:Table id="etaTable" class="card tableCard no-margin" rows="{etaListModel>/results}" selectionMode="None" ariaLabelledBy="title">
 					<t:extension>
 						<OverflowToolbar style="Clear">
-							<Title id="title" text="{= ${etaListModel>/TYPE} === 'ETA' ? ${i18n>ETATable} : 'Service Request'}"/>
+							<Title id="title" text="{= ${etaListModel>/TYPE} === 'ETA' ? ${i18n>ETATable} : ${etaListModel>/TYPE} === 'SECURITY' ? 'Security' : 'Service Request'}"/>
 							<ToolbarSpacer/>
 							<SearchField class="search" liveChange="onSearch" width="250px"/>
 							<core:Icon src="sap-icon://sorting-ranking" tooltip="{i18n>sort}" press="sortCategoriesAndName"/>
@@ -34,13 +34,19 @@
 						</OverflowToolbar>
 					</t:extension>
 					<t:columns>
-						<t:Column sortProperty="EtaNo">
+						<t:Column visible="{= ${etaListModel>/TYPE} === 'SECURITY' ? false : true}" sortProperty="EtaNo">
 							<Label text="{= ${etaListModel>ETANo} ? ${i18n>ETANumber} : 'LogSheetNo'}"/>
 							<t:template>
 								<Link press="onETADetailsPress" text="{= ${etaListModel>ETANo} ? ${etaListModel>ETANo} : ${etaListModel>LogSheetNo}}" wrapping="false"/>
 							</t:template>
 						</t:Column>
-						<t:Column sortProperty="CallSign">
+						<t:Column visible="{= ${etaListModel>/TYPE} === 'SECURITY' ? true : false}">
+							<Label text="Company Name"/>
+							<t:template>
+								<Link press="onETADetailsPress" text="{etaListModel>Company_Name}" wrapping="false"/>
+							</t:template>
+						</t:Column>
+						<t:Column visible="{= ${etaListModel>/TYPE} === 'SECURITY' ? false : true}" sortProperty="CallSign">
 							<Label text="{i18n>CallSign}"/>
 							<t:template>
 								<Text text="{etaListModel>CallSign}"/>
@@ -52,28 +58,40 @@
 								<Text text="{= ${etaListModel>PortName} ? ${etaListModel>PortName} : ${etaListModel>Port}}"/>
 							</t:template>
 						</t:Column>
-						<t:Column>
+						<t:Column visible="{= ${etaListModel>AgentCode} ? true : false}">
 							<Label text="{i18n>AgentID}"/>
 							<t:template>
 								<Text text="{etaListModel>AgentCode}" wrapping="false"/>
 							</t:template>
 						</t:Column>
-						<t:Column>
+						<t:Column visible="{= ${etaListModel>/TYPE} === 'SECURITY' ? false : true}">
 							<Label text="{i18n>AgentName}"/>
 							<t:template>
 								<Text text="{etaListModel>AgentName}" wrapping="false"/>
 							</t:template>
 						</t:Column>
-						<t:Column>
+						<t:Column visible="{= ${etaListModel>/TYPE} === 'SECURITY' ? false : true}">
 							<Label text="{i18n>VesselName}"/>
 							<t:template>
 								<Text text="{etaListModel>VesselName}" wrapping="false"/>
 							</t:template>
 						</t:Column>
-						<t:Column>
+						<t:Column visible="{= ${etaListModel>/TYPE} === 'SECURITY' ? false : true}">
 							<Label text="{i18n>CustomsRefNo}"/>
 							<t:template>
 								<Text text="{= ${etaListModel>IMONumber} ? ${etaListModel>IMONumber} : ${etaListModel>ImoNo}}" wrapping="false"/>
+							</t:template>
+						</t:Column>
+						<t:Column visible="{= ${etaListModel>/TYPE} === 'SECURITY' ? true : false}">
+							<Label text="Name"/>
+							<t:template>
+								<Text text="{etaListModel>Name}" wrapping="false"/>
+							</t:template>
+						</t:Column>
+						<t:Column visible="{= ${etaListModel>/TYPE} === 'SECURITY' ? true : false}">
+							<Label text="{i18n>Purpose}"/>
+							<t:template>
+								<Text text="{etaListModel>Purpose}" wrapping="false"/>
 							</t:template>
 						</t:Column>
 						<t:Column>

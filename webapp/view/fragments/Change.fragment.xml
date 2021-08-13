@@ -244,7 +244,7 @@
 												<m:Label text="{i18n>ExpectedArrival}"/>
 											</m:HBox>
 											<m:HBox width="50%">
-												<m:DatePicker id="depDateArrival" value="{etaDetailsModel>/ExpArrivalDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
+												<m:DatePicker id="arrivalDate" change="handleChangeSelect" value="{etaDetailsModel>/ExpArrivalDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
 											</m:HBox>
 										</m:HBox>
 										<m:HBox alignItems="Center">
@@ -252,7 +252,7 @@
 												<m:Label text="{i18n>ExpectedDeparture}"/>
 											</m:HBox>
 											<m:HBox width="50%">
-												<m:DatePicker name="depDateArrival" change="handleChangeSelect" editable="true" value="{etaDetailsModel>/ExpDepartureDate}"
+												<m:DatePicker id="departureDate" change="handleChangeSelect" editable="true" value="{etaDetailsModel>/ExpDepartureDate}"
 													valueFormat="yyyyMMdd" displayFormat="long"/>
 											</m:HBox>
 										</m:HBox>
@@ -279,7 +279,7 @@
 												<m:Label text="Expected Arrival Time"/>
 											</m:HBox>
 											<m:HBox width="50%">
-												<m:TimePicker id="depTimeArrival"  editable="true" value="{etaDetailsModel>/ExpArrivalTime}"
+												<m:TimePicker id="arrivalTime" change="handleChangeSelect" editable="true" value="{etaDetailsModel>/ExpArrivalTime}"
 													valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" placeholder="Expected Arrival Date"/>
 											</m:HBox>
 										</m:HBox>
@@ -288,7 +288,7 @@
 												<m:Label text="{i18n>ExpectedDepartureTime}"/>
 											</m:HBox>
 											<m:HBox width="50%">
-												<m:TimePicker name="depTimeArrival" change="handleChangeSelect" editable="true" value="{etaDetailsModel>/ExpDepartureTime}"
+												<m:TimePicker id="departureTime" change="handleChangeSelect" editable="true" value="{etaDetailsModel>/ExpDepartureTime}"
 													valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" placeholder="{i18n>ExpectedDepartureTime}"/>
 											</m:HBox>
 										</m:HBox>

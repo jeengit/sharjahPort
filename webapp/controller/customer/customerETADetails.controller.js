@@ -160,11 +160,21 @@ sap.ui.define([
 			sap.ui.getCore().setModel(new JSONModel(odata), "etaIdModel");
 		},
 		handleChangeSelect: function(evt) {
-			var preDate = this.getView().byId(evt.getSource().getName()).getValue();
-			var curDate = evt.getSource().getValue();
-			console.log(preDate);
-			console.log(curDate);
-			if (preDate > curDate) {
+			var arrivalDate = this.getView().byId("arrivalDate").getValue();
+			var departureDate = this.getView().byId("departureDate").getValue();
+			var arrivalTime = this.getView().byId("arrivalTime").getValue();
+			var departureTime = this.getView().byId("departureTime").getValue();
+			this.fnToValidate(arrivalDate, departureDate, arrivalTime, departureTime, evt);
+		},
+		fnToValidate: function(aDate, dDate, aTime, dTime, evt) {
+			if (aDate <= dDate || dDate === '') {
+				if (dDate && aDate !== '' && aDate === dDate) {
+					if (aTime && dTime && aTime > dTime) {
+						evt.getSource().setValue(null);
+						sap.m.MessageToast.show("The input must be greater than Start/Arrival Date or Time");
+					}
+				}
+			} else {
 				evt.getSource().setValue(null);
 				sap.m.MessageToast.show("The input must be greater than Start/Arrival Date or Time");
 			}

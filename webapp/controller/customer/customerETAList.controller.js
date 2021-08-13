@@ -11,9 +11,8 @@ sap.ui.define([
 		_onObjectMatched: function(oEvent) {
 			var oCountData = sap.ui.getCore().getModel("countModel").getData();
 			this.getView().setModel(new JSONModel(oCountData), "countModel");
-			console.log(this.getView().getModel("countModel").getData());
 			this.callForHarbourNotification('');
-			this.getModel("CallSignSearchSet","callSignModel");
+			this.getModel("CallSignSearchSet", "callSignModel");
 			var status = oEvent.getParameter("arguments").sPath;
 			var type = oEvent.getParameter("arguments").type;
 			this.getEtaList(status, type);
@@ -26,27 +25,27 @@ sap.ui.define([
 		},
 		onETADetailsPress: function(evt) {
 			var sPath = evt.getSource().getBindingContext("etaListModel").getPath().split("/")[2];
-			var status = evt.getSource().getBindingContext("etaListModel").getProperty().Status;
-			var id = evt.getSource().getBindingContext("etaListModel").getProperty().ETANo ? evt.getSource().getBindingContext("etaListModel").getProperty()
-				.ETANo : evt.getSource().getBindingContext("etaListModel").getProperty().LogSheetNo;
-			evt.getSource().getBindingContext("etaListModel").getProperty().LogSheetNo ? this.openHotWorkDialog(id,status) :
+			var oProperty = evt.getSource().getBindingContext("etaListModel").getProperty();
+			var status = oProperty.Status;
+			var id = oProperty.ETANo ? oProperty.ETANo : oProperty.Guid ? oProperty.Guid : oProperty.LogSheetNo;
+			oProperty.LogSheetNo ? this.openHotWorkDialog(id, status, "FLAG") : oProperty.Company_Name ? this.openHotWorkDialog(id, status, "SECURITY") :
 				this.getRouter().navTo("etaDetails", {
 					sPath: encodeURIComponent(sPath),
 					id: id
 				});
 		},
-		openHotWorkDialog: function(id,status) {
+		openHotWorkDialog: function(id, status, flag) {
 			var oView = this.getView();
 			if (!this.dialogHWA) {
 				this.dialogHWA = sap.ui.xmlfragment("com.demo.sharjahPort.view.fragments.hotWorksAgentCreate", this);
 				oView.addDependent(this.dialogHWA);
 			}
 			this.dialogHWA.open();
-			this.getModel("CallSignSearchSet", "callSignModel");
+			flag === "FLAG" ? this.getModel("CallSignSearchSet", "callSignModel") : '';
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
 			var that = this;
-			oModel.read("/HotWorksSet('" + id + "')", {
+			oModel.read(flag === "FLAG" ? '/HotWorksSet' : '/GatePassListSet' + "('" + id + "')", {
 				success: function(data) {
 					data['STATUS'] = status;
 					that.getView().setModel(new JSONModel(data), "hotWorksModel");
@@ -75,15 +74,15 @@ sap.ui.define([
 		onBtnPress: function(evt) {
 			//sap.ui.core.BusyIndicator.show();
 			var splitVal = evt.getSource().getSelectedKey().split("/");
-			this.getEtaList(splitVal[0],splitVal[1]);
+			this.getEtaList(splitVal[0], splitVal[1]);
 		},
 		getEtaList: function(status, type) {
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
 			var that = this;
-			oModel.read(type === 'HOTWORKS' ? "/HotWorksSet" : "/EtaListSet", {
-				urlParameters:  {
-					"$filter": "Status eq '" + status + "'"
+			oModel.read(type === 'HOTWORKS' ? "/HotWorksSet" : type === 'SECURITY' ? "/GatePassListSet" : "/EtaListSet", {
+				urlParameters: {
+					"$filter": type === 'SECURITY' ? "ImStatus eq '" + status + "'" : "Status eq '" + status + "'"
 				},
 				success: function(data) {
 					data['TYPE'] = type;

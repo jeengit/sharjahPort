@@ -368,7 +368,7 @@ sap.ui.define([
 					if (role === "SECURITY") {
 						oModel.read("/GatePassListSet", {
 							urlParameters: {
-								"$filter": "ImStatus eq '" + status + "'"
+								"$filter": "ImStatus eq '" + oEntrySecurity['Status'] + "'"
 							},
 							success: function(data) {
 								that.getView().setModel(new JSONModel(data), "etaListModel");

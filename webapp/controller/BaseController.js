@@ -246,7 +246,7 @@ sap.ui.define([
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			notModel['HarbourStatus'] = 'NOTIFIED';
 			delete notModel['__metadata'];
-			console.log(notModel);
+			delete notModel['timeAgo'];
 			oModel.create("/HarbourMasterStatusSet", notModel, {
 				success: function(data) {
 					thisObj.getAllNotifications();

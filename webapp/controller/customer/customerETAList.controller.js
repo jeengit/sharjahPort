@@ -15,7 +15,7 @@ sap.ui.define([
 			this.getModel("CallSignSearchSet", "callSignModel");
 			var status = oEvent.getParameter("arguments").sPath;
 			var type = oEvent.getParameter("arguments").type;
-			this.getEtaList(status, type);
+			this.getEtaList(status, type, "");
 			this.getUserName();
 			this.adjustTableRowsCount();
 			sap.ui.getCore().setModel(new JSONModel({
@@ -74,13 +74,16 @@ sap.ui.define([
 		onBtnPress: function(evt) {
 			//sap.ui.core.BusyIndicator.show();
 			var splitVal = evt.getSource().getSelectedKey().split("/");
-			this.getEtaList(splitVal[0], splitVal[1]);
+			this.getEtaList(splitVal[0], splitVal[1], "Press");
 		},
 		getEtaList: function(status, type) {
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
 			var selKey = type === 'HOTWORKS' ? "OPEN/HOTWORKS" : type === 'SECURITY' ? "OPEN/SECURITY" : "NEW/ETA";
 			var that = this;
+			if (!action) {
+				var selKey = type === 'HOTWORKS' ? "OPEN/HOTWORKS" : type === 'SECURITY' ? "OPEN/SECURITY" : "NEW/ETA";
+			}
 			oModel.read(type === 'HOTWORKS' ? "/HotWorksSet" : type === 'SECURITY' ? "/GatePassListSet" : "/EtaListSet", {
 				urlParameters: {
 					"$filter": type === 'SECURITY' ? "ImStatus eq '" + status + "'" : "Status eq '" + status + "'"
@@ -88,6 +91,9 @@ sap.ui.define([
 				success: function(data) {
 					data['TYPE'] = type;
 					that.getView().setModel(new JSONModel(data), "etaListModel");
+					if (!action) {
+						that.getView().byId("etaList").setSelectedKey(selKey);
+					}
 					that.getView().byId("etaList").setSelectedKey(selKey);
 					sap.m.MessageToast.show("Items loaded succesfully with status - " + status);
 					sap.ui.core.BusyIndicator.hide();

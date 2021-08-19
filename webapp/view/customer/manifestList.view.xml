@@ -17,7 +17,7 @@
 						<core:Item key="2021" text="2021"/>
 					</ComboBox>
 				</FlexBox>
-				<IconTabBar expandable="false" select="onBtnPress" class="sapUiResponsiveContentPadding">
+				<IconTabBar expandable="false" id="manifestList" select="onBtnPress" class="sapUiResponsiveContentPadding">
 					<items>
 						<IconTabFilter count="{= ${manifestListModel>/countI} !== '' ? ${manifestListModel>/countI} : ${countModel>/0/count}}" visible="{= ${manifestListModel>/length} > 0 ? true : false}"
 							icon="sap-icon://excel-attachment" iconColor="Positive" text="Import" key="CUSTOMS/MANIFEST/I"/>

@@ -78,9 +78,13 @@
 							<tileContent>
 								<TileContent>
 									<content>
-										<mi:ComparisonMicroChart minValue="0" maxValue="{DashboardCountModel>/0/GatePassOpen}">
+										<mi:ComparisonMicroChart minValue="0" maxValue="{= ${DashboardCountModel>/0/GatePassOpen} > ${DashboardCountModel>/0/GatePassApproved} &amp;&amp; ${DashboardCountModel>/0/GatePassRejected} ? 
+										${DashboardCountModel>/0/GatePassOpen} : ${DashboardCountModel>/0/GatePassApproved} > ${DashboardCountModel>/0/GatePassOpen} &amp;&amp; ${DashboardCountModel>/0/GatePassRejected} ? 
+										${DashboardCountModel>/0/GatePassApproved} : ${DashboardCountModel>/0/GatePassRejected}}">
 											<mi:data>
 												<mi:ComparisonMicroChartData title="New" value="{DashboardCountModel>/0/GatePassOpen}" color="#f5c11a"/>
+												<mi:ComparisonMicroChartData title="Approved" value="{DashboardCountModel>/0/GatePassApproved}" color="Good"/>
+												<mi:ComparisonMicroChartData title="Rejected" value="{DashboardCountModel>/0/GatePassRejected}" color="Error"/>
 											</mi:data>
 										</mi:ComparisonMicroChart>
 									</content>

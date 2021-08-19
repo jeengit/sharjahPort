@@ -79,6 +79,7 @@ sap.ui.define([
 		getEtaList: function(status, type) {
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
+			var selKey = type === 'HOTWORKS' ? "OPEN/HOTWORKS" : type === 'SECURITY' ? "OPEN/SECURITY" : "NEW/ETA";
 			var that = this;
 			oModel.read(type === 'HOTWORKS' ? "/HotWorksSet" : type === 'SECURITY' ? "/GatePassListSet" : "/EtaListSet", {
 				urlParameters: {
@@ -87,6 +88,7 @@ sap.ui.define([
 				success: function(data) {
 					data['TYPE'] = type;
 					that.getView().setModel(new JSONModel(data), "etaListModel");
+					that.getView().byId("etaList").setSelectedKey(selKey);
 					sap.m.MessageToast.show("Items loaded succesfully with status - " + status);
 					sap.ui.core.BusyIndicator.hide();
 				},

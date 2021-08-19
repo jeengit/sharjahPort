@@ -12,12 +12,12 @@
 		</subHeader>
 		<content>
 			<FlexBox class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop" direction="Column">
-				<HBox visible="{= ${hotWorksModel>/CallSign} ? true : false}" width="100%" alignItems="Center" class="sapUiTinyMarginEnd">
+				<HBox visible="{= ${hotWorksModel>/Company_Name} ? false : true}" width="100%" alignItems="Center" class="sapUiTinyMarginEnd">
 					<HBox width="40%">
 						<Label text="{i18n>CallSign}" class="sapUiTinyMarginEnd"/>
 					</HBox>
 					<HBox width="60%">
-						<ComboBox enabled="{= ${hotWorksModel>/CallSign} ? false : true}" change="handleCallSignHotWorks" selectedKey="{hotWorksModel>/CallSign}"
+						<ComboBox enabled="{= ${hotWorksModel>/STATUS} === 'NEW' ? true : false}" change="handleCallSignHotWorks" selectedKey="{hotWorksModel>/CallSign}"
 							value="{hotWorksModel>/CallSign}" placeholder="Call Sign" width="100%" items="{callSignModel>/}">
 							<core:Item key="{callSignModel>CallSign}" text="{callSignModel>CallSign}"/>
 						</ComboBox>
@@ -41,7 +41,7 @@
 						<Input enabled="false" value="{= ${hotWorksModel>/VesselName} ? ${hotWorksModel>/VesselName} : ${hotWorksModel>/Company_Name}}"/>
 					</HBox>
 				</HBox>
-				<HBox visible="{= ${hotWorksModel>/CallSign} ? true : false}" width="100%" alignItems="Center" class="sapUiTinyMarginEnd">
+				<HBox visible="{= ${hotWorksModel>/Company_Name} ? false : true}" width="100%" alignItems="Center" class="sapUiTinyMarginEnd">
 					<HBox width="40%">
 						<Label text="IMO Number" class="sapUiTinyMarginEnd"/>
 					</HBox>
@@ -51,7 +51,7 @@
 				</HBox>
 			</FlexBox>
 			<FlexBox class="sapUiSmallMarginBeginEnd" direction="Column">
-				<HBox visible="{= ${hotWorksModel>/CallSign} ? true : false}" width="100%" alignItems="Center" class="sapUiTinyMarginEnd">
+				<HBox visible="{= ${hotWorksModel>/Company_Name} ? false : true}" width="100%" alignItems="Center" class="sapUiTinyMarginEnd">
 					<HBox width="40%">
 						<Label text="ETA Number" class="sapUiTinyMarginEnd"/>
 					</HBox>

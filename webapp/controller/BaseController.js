@@ -366,18 +366,7 @@ sap.ui.define([
 						sap.m.MessageToast.show(oEntry['Flag'] === 'CREATE' ? 'Created Successfully!..' : oEntry['Flag'] === 'APPROVE' ?
 							'Hotwork Approved Successfully!..' : 'Hotwork Rejected Successfully!..');
 					if (role === "SECURITY") {
-						oModel.read("/GatePassListSet", {
-							urlParameters: {
-								"$filter": "ImStatus eq '" + oEntrySecurity['Status'] + "'"
-							},
-							success: function(data) {
-								that.getView().setModel(new JSONModel(data), "etaListModel");
-							},
-							error: function(oResponse) {
-								sap.m.MessageToast.show(oResponse.statusText);
-								sap.ui.core.BusyIndicator.hide();
-							}
-						});
+						that.getRouter().navTo("dashboardSecurity");
 					}
 					sap.ui.core.BusyIndicator.hide();
 				},

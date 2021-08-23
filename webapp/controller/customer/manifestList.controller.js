@@ -21,7 +21,7 @@ sap.ui.define([
 				this.getView().setModel(new JSONModel(null), "consigneeListModel");
 				this.getView().setModel(new JSONModel(null), "GatePassListModel");
 				this.getView().setModel(new JSONModel(null), "agentListModel");
-				this.getModel("ManifestListSet", "manifestListModel", status, "I");
+				this.getManifestList(status,type);
 				this.getView().byId("manifestList").setSelectedKey("CUSTOMS/MANIFEST/I");
 			}
 			if (type === "DELIVERY") {
@@ -140,7 +140,7 @@ sap.ui.define([
 				this.getView().setModel(new JSONModel(null), "deliveryListModel");
 				this.getView().setModel(new JSONModel(null), "consigneeListModel");
 				this.getView().setModel(new JSONModel(null), "GatePassListModel");
-				this.getModel("ManifestListSet", "manifestListModel", status , flag);
+				this.getManifestListData(status,type);
 			}
 			if (type === "DELIVERY") {
 				this.callOdata("DeliveryListSet", "deliveryListModel", "Status", status);
@@ -160,6 +160,28 @@ sap.ui.define([
 				this.getView().setModel(new JSONModel(null), "consigneeListModel");
 			}
 			sap.ui.core.BusyIndicator.hide();
+		},
+		getManifestListData: function(status,type) {
+			var oModel = this.getOwnerComponent().getModel("s4Model");
+			oModel.setUseBatch(false);
+			var that = this;
+			oModel.read("/AgentManifestListSet" , {
+				urlParameters: {
+					"$filter": "ImStatus eq '" + status + "'"
+				},
+				success: function(data) {
+					data['TYPE'] = type;
+					that.getView().setModel(new JSONModel(data), "manifestListModel");
+					setTimeout(function() {
+						sap.m.MessageToast.show("Items loaded succesfully with status - " + status);
+						sap.ui.core.BusyIndicator.hide();
+					}, 2000);
+				},
+				error: function(oResponse) {
+					sap.m.MessageToast.show(oResponse.statusText);
+					sap.ui.core.BusyIndicator.hide();
+				}
+			});
 		}
 	});
 });

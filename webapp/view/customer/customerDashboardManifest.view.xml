@@ -16,13 +16,13 @@
 							<tileContent>
 								<TileContent>
 									<content>
-										<mi:ComparisonMicroChart minValue="0" maxValue="{= ${DashboardCountModel>/0/Manifest} > ${DashboardCountModel>/0/OpenManifest} &amp;&amp; ${DashboardCountModel>/0/ClosedManifest} ? 
-										${DashboardCountModel>/0/Manifest} : ${DashboardCountModel>/0/OpenManifest} > ${DashboardCountModel>/0/Manifest} &amp;&amp; ${DashboardCountModel>/0/ClosedManifest} ? 
-										${DashboardCountModel>/0/OpenManifest} : ${DashboardCountModel>/0/ClosedManifest}}">
+										<mi:ComparisonMicroChart minValue="0" maxValue="{= ${DashboardCountModel>/0/ManifestRequest_OPEN} > ${DashboardCountModel>/0/ManifestRequest_APPROVED} &amp;&amp; ${DashboardCountModel>/0/ManifestRequest_REJECTED} ? 
+										${DashboardCountModel>/0/ManifestRequest_OPEN} : ${DashboardCountModel>/0/ManifestRequest_APPROVED} > ${DashboardCountModel>/0/ManifestRequest_OPEN} &amp;&amp; ${DashboardCountModel>/0/ManifestRequest_REJECTED} ? 
+										${DashboardCountModel>/0/ManifestRequest_APPROVED} : ${DashboardCountModel>/0/ManifestRequest_REJECTED}}">
 											<mi:data>
-												<mi:ComparisonMicroChartData title="Open" value="{DashboardCountModel>/0/Manifest}" color="#f5c11a"/>
-												<mi:ComparisonMicroChartData title="Approved" value="{DashboardCountModel>/0/OpenManifest}" color="Good"/>
-												<mi:ComparisonMicroChartData title="Rejected" value="{DashboardCountModel>/0/ClosedManifest}" color="Error"/>
+												<mi:ComparisonMicroChartData title="Open" value="{DashboardCountModel>/0/ManifestRequest_OPEN}" color="#f5c11a"/>
+												<mi:ComparisonMicroChartData title="Approved" value="{DashboardCountModel>/0/ManifestRequest_APPROVED}" color="Good"/>
+												<mi:ComparisonMicroChartData title="Rejected" value="{DashboardCountModel>/0/ManifestRequest_REJECTED}" color="Error"/>
 											</mi:data>
 										</mi:ComparisonMicroChart>
 									</content>

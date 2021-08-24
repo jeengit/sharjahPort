@@ -79,7 +79,7 @@ sap.ui.define([
 			// }), "rememberSelectionModel");
 			var property = evt.getSource().getBindingContext(model).getProperty();
 			var id = evt.getSource().getFieldGroupIds()[0] === "manifest" && property.ManifestNo === '' ? property.CustomsRefManifestNo :
-				evt.getSource().getFieldGroupIds()[0] === "manifest" && property.ManifestNo !== '' ? property.ManifestNo : property.DeliveryNo;
+				evt.getSource().getFieldGroupIds()[0] === "manifest" && property.AgentManifestNo !== '' ? property.AgentManifestNo :evt.getSource().getFieldGroupIds()[0] === "manifest" && property.ManifestNo !== '' ? property.ManifestNo : property.DeliveryNo;
 			var status = evt.getSource().getFieldGroupIds()[0] === "manifest" ? property.ManifestStatus : property.Status;
 			this.getRouter().navTo(evt.getSource().getFieldGroupIds()[0] === "manifest" ? "manifestDetails" : "deliveryDetails", {
 				sPath: encodeURIComponent(sPath),

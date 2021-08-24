@@ -142,7 +142,7 @@ sap.ui.define([
 						password: "dummy",
 						statusCode: {
 							200: function() {
-								window.location.replace("/sap/bc/ui5_ui5/sap/zsharjahport/index.html");
+								window.location.replace("/sap/bc/ui5_ui5/sap/ZTESTSHARJA/index.html");
 							}
 						},
 						error: function() {
@@ -329,7 +329,8 @@ sap.ui.define([
 					sap.ui.core.BusyIndicator.hide();
 				},
 				error: function(oResponse) {
-					sap.m.MessageToast.show(oResponse.statusText);
+					that.getView().setModel(new JSONModel({"STATUS": "NEW"}), "hotWorksModel");
+					sap.m.MessageToast.show(oResponse.statusText === "Bad Request" ? "No Approved ETA" : "");
 					sap.ui.core.BusyIndicator.hide();
 				}
 			});

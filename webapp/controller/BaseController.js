@@ -324,6 +324,7 @@ sap.ui.define([
 					"$filter": "CallSign eq '" + evt.getSource().getSelectedKey() + "'"
 				},
 				success: function(data) {
+					data.results[0]['STATUS'] = "NEW";
 					that.getView().setModel(new JSONModel(data.results[0]), "hotWorksModel");
 					sap.ui.core.BusyIndicator.hide();
 				},

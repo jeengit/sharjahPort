@@ -45,7 +45,7 @@ sap.ui.define([
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
 			var that = this;
-			oModel.read(flag === "FLAG" ? '/HotWorksSet' : '/GatePassListSet' + "('" + id + "')", {
+			oModel.read(flag === "FLAG" ? '/HotWorksSet' + "('" + id + "')" : '/GatePassListSet' + "('" + id + "')", {
 				success: function(data) {
 					data['STATUS'] = status;
 					that.getView().setModel(new JSONModel(data), "hotWorksModel");
@@ -76,12 +76,11 @@ sap.ui.define([
 			var splitVal = evt.getSource().getSelectedKey().split("/");
 			this.getEtaList(splitVal[0], splitVal[1], "Press");
 		},
-		getEtaList: function(status, type) {
+		getEtaList: function(status, type,action) {
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
-			var selKey = type === 'HOTWORKS' ? "OPEN/HOTWORKS" : type === 'SECURITY' ? "OPEN/SECURITY" : "NEW/ETA";
 			var that = this;
-			if (!action) {
+			if (action === "") {
 				var selKey = type === 'HOTWORKS' ? "OPEN/HOTWORKS" : type === 'SECURITY' ? "OPEN/SECURITY" : "NEW/ETA";
 			}
 			oModel.read(type === 'HOTWORKS' ? "/HotWorksSet" : type === 'SECURITY' ? "/GatePassListSet" : "/EtaListSet", {
@@ -91,10 +90,9 @@ sap.ui.define([
 				success: function(data) {
 					data['TYPE'] = type;
 					that.getView().setModel(new JSONModel(data), "etaListModel");
-					if (!action) {
+					if (action === "") {
 						that.getView().byId("etaList").setSelectedKey(selKey);
 					}
-					that.getView().byId("etaList").setSelectedKey(selKey);
 					sap.m.MessageToast.show("Items loaded succesfully with status - " + status);
 					sap.ui.core.BusyIndicator.hide();
 				},

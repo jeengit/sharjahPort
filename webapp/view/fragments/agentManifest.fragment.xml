@@ -1,11 +1,11 @@
 <core:FragmentDefinition xmlns:t="sap.ui.table" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core"
 	xmlns:tnt="sap.tnt">
-	<ObjectPageLayout upperCaseAnchorBar="false" id="manifestChangeId" class="objLayoutClass editMode">
+		<ObjectPageLayout upperCaseAnchorBar="false" id="manifestagentId" class="objLayoutClass editMode">
 		<headerTitle>
 			<ObjectPageDynamicHeaderTitle>
 				<breadcrumbs>
-					<m:Breadcrumbs currentLocationText="{ManDetailsModel>/ManifestNo}">
-						<m:Link href="#dashboardManifest" text="Home"/>
+					<m:Breadcrumbs currentLocationText="Create Manifest">
+						<m:Link href="#dashboardAgent" text="Home"/>
 						<!--<m:Link href="#manifest={navModel>/status}&amp;type='{navModel>/type}'" text="Manifest List"/>-->
 					</m:Breadcrumbs>
 				</breadcrumbs>
@@ -49,7 +49,7 @@
 								<m:Label text="{i18n>manNo}" class="sapUiSmallMarginEnd"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input value="{ManDetailsModel>/ManifestNo}" editable="false"/>
+								<m:Input value="{ManDetModel>/AGENT_MANIFEST_NO}" editable="false"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -57,7 +57,12 @@
 								<m:Label text="To Port" class="sapUiSmallMarginEnd"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input value="{ManDetailsModel>/ToPort}"/>
+								<m:ComboBox placeholder="{i18n>select}" selectedKey="{inCreateModel>/ToPort}" width="100%" items="">
+									<core:Item key="DUBAI" text="DUBAI"/>
+									<core:Item key="MUMBAI" text="MUMBAI"/>
+									<core:Item key="SHANGHAI" text="SHANGHAI"/>
+									<core:Item key="SINGAPORE" text="SINGAPORE"/>
+								</m:ComboBox>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -65,7 +70,23 @@
 								<m:Label text="From Port" class="sapUiSmallMarginEnd"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input value="{ManDetailsModel>/FromPort}"/>
+								<m:ComboBox placeholder="{i18n>select}" selectedKey="{inCreateModel>/FromPort}" width="100%" items="">
+									<core:Item key="DUBAI" text="DUBAI"/>
+									<core:Item key="MUMBAI" text="MUMBAI"/>
+									<core:Item key="SHANGHAI" text="SHANGHAI"/>
+									<core:Item key="SINGAPORE" text="SINGAPORE"/>
+								</m:ComboBox>
+							</m:HBox>
+						</m:HBox>
+						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+							<m:HBox width="40%">
+								<m:Label text="Type" class="sapUiSmallMarginEnd"/>
+							</m:HBox>
+							<m:HBox width="60%">
+								<m:ComboBox placeholder="{i18n>select}" selectedKey="{inCreateModel>/ManifestType}" width="100%" items="">
+									<core:Item key="I" text="Import"/>
+									<core:Item key="E" text="Export"/>
+								</m:ComboBox>
 							</m:HBox>
 						</m:HBox>
 					</m:VBox>
@@ -78,7 +99,7 @@
 							</m:HBox>
 							<m:HBox width="60%">
 								<!--<m:Input value="{ManDetailsModel>/Callsign}"/>-->
-								<m:Input class="" value="{ManDetailsModel>/Callsign}" id="callSignInputId" showSuggestion="true" suggestionItemSelected="selectCallSign"
+								<m:Input class="" value="{inCreateModel>/Callsign}" id="callSignInputId" showSuggestion="true" suggestionItemSelected="selectCallSign"
 									suggest="searchCallSignData" autocomplete="false" suggestionItems="{callsignModel>/results}">
 									<m:suggestionItems>
 										<core:Item key="{callsignModel>CallSign}" text="{callsignModel>CallSign}"/>
@@ -91,7 +112,7 @@
 								<m:Label text="{i18n>ArrivalDate}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:DatePicker value="{ManDetailsModel>/ArrivalDate}" valueFormat="yyyyMMdd" displayFormat="long" editable="false"/>
+								<m:DatePicker value="{inCreateModel>/ArrivalDate}" valueFormat="yyyyMMdd" displayFormat="long"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -119,7 +140,11 @@
 								<m:Label text="{i18n>PortName}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input value="{ManDetailsModel>/PortName}" wrapping="false"/>
+								<m:ComboBox placeholder="{i18n>select}" selectedKey="{inCreateModel>/PortName}" width="100%" items="">
+									<core:Item key="HAMRIYA" text="HAMRIYA"/>
+									<core:Item key="KHORFAKKAN" text="KHORFAKKAN"/>
+									<core:Item key="MENAKALID" text="MENAKALID"/>
+								</m:ComboBox>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -127,7 +152,7 @@
 								<m:Label text="{i18n>voyNo}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input value="{ManDetailsModel>/VoyageNumber}"/>
+								<m:Input value="{inCreateModel>/VoyageNumber}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -157,21 +182,22 @@
 						<blocks>
 							<m:FlexBox width="100%" class="manifestListClass boeDetailsClass">
 								<m:HBox width="30%" class="boeMaster">
-									<m:List id="changeList" class="tableCard card" items="{path : 'ManDetModel>/BillOfEntrySet/results'}"  headerText="Manifest - Import"
+									<m:List id="changeAgntList" class="tableCard card" items="{path : 'ManDetModel>/BillOfEntrySet/results'}" headerText="Manifest - Import"
 										noDataText="{i18n>emptyNodata}">
 										<m:CustomListItem type="Active" press="handelListPress">
 											<m:FlexBox alignItems="Start" justifyContent="SpaceBetween">
 												<m:HBox><core:Icon color="#CEA95B" class="sapUiTinyMarginEnd" size="1rem" src="sap-icon://activities"/>
-													<m:Text text="{ManDetModel>BENo} - {ManDetModel>ConsigneeCode}"/>
+													<m:Text text="{ManDetModel>BENo} - {ManDetModel>BLNo}"/>
 												</m:HBox>
 												<!--	<tnt:InfoLabel visible="{= ${BOEDetailsModel>Status} === '' ? false : true}" text="{BOEDetailsModel>Status}" displayOnly="true"-->
 												<!--		colorScheme="{= ${BOEDetailsModel>Status} === 'OPEN' ? 8 : ${BOEDetailsModel>Status} === 'IN PROGRESS' ? 3 : 5 }"/>-->
 											</m:FlexBox>
 											<m:FlexBox alignItems="Start" justifyContent="SpaceBetween">
-												<m:Text class="desc" text="{ManDetailsModel>CargoCategory}"/>
-												<m:Text class="desc sapMLnk"
-													text="{ path: 'ManDetailsModel>ArrivalDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}} }"
+												
+												<m:Text class=""
+													text="{ path: 'ManDetModel>/ArrivalDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}} }"
 													wrapping="false"/>
+													<m:Text class="desc" text="{ManDetailsModel>CargoCategory}"/>
 											</m:FlexBox>
 										</m:CustomListItem>
 										<m:headerToolbar>
@@ -186,7 +212,7 @@
 								</m:HBox>
 								<m:HBox width="70%" class="boeDetails">
 									<m:FlexBox wrap="Wrap" width="100%">
-										<m:List id="changeDetails" class="tableCard card" items="">
+										<m:List id="changeAgntDetails" class="tableCard card" items="">
 											<m:items>
 												<m:CustomListItem class="sapUiSmallMarginTop">
 													<m:content>
@@ -194,19 +220,36 @@
 															<m:VBox class="sapUiSmallMarginBottom sapUiSmallMarginEnd">
 																<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Bill of Lading" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{ManDetailsModel>/BillOfLading}"/>
+																	<m:Input id="billadId" value="{inCreateModel>/BillOfLading}"/>
 																</m:HBox>
 																<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Consignee Code" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{ManDetailsModel>/ConsigneeCode}"/>
+																	<m:Input value="{inCreateModel>/ConsigneeCode}"/>
 																</m:HBox>
 																<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Bill of Entry" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{ManDetailsModel>/BillOfEntry}" editable="false"/>
+																	<m:Input value="{inCreateModel>/BillOfEntry}" editable="false"/>
 																</m:HBox>
 																<m:HBox class="sapUiTinyMarginBottom">
-																	<m:Label text="Contry of origin" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{ManDetailsModel>/CountryOfOrigin}"/>
+																		<m:HBox width="40%">
+																	<m:Label text="Country of origin" class="sapUiSmallMarginEnd"/>
+																		</m:HBox>
+																		<m:HBox width="60%">
+																	<m:ComboBox selectedKey="{inCreateModel>/CountryOfOrigin}"  placeholder="{i18n>select}">
+																		<core:Item key="India" text="India"/>
+																		<core:Item key="Russia" text="Russia"/>
+																		<core:Item key="China" text="China"/>
+																		<core:Item key="Singapore" text="Singapore"/>
+																		<core:Item key="Pakisthan" text="Pakisthan"/>
+																		<core:Item key="Dubai" text="Dubai"/>
+																		<core:Item key="Japan" text="Japan"/>
+																		<core:Item key="Unites States of America" text="Unites States of America"/>
+																		<core:Item key="Germany" text="Germany"/>
+																		<core:Item key="Turkey" text="Turkey"/>
+																		<core:Item key="South Korea" text="South Korea"/>
+																		<core:Item key="Iran" text="Iran"/>
+																	</m:ComboBox>
+																		</m:HBox>
 																</m:HBox>
 															</m:VBox>
 														</layout:VerticalLayout>
@@ -214,82 +257,112 @@
 															<m:VBox class="sapUiSmallMarginBottom sapUiSmallMarginEnd">
 																<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Consignee" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{ManDetailsModel>/Consignee}"/>
+																	<m:Input value="{inCreateModel>/Consignee}"/>
 																</m:HBox>
 																<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Creation Date" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{ManDetailsModel>/CreationDate}" editable="false"/>
+																	<!--<m:Input value="{ path: 'inCreateModel>/CreationDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}, style: 'long'} }" editable="false"/>-->
+															<m:DatePicker value="{ManDetailsModel>/CreationDate}" id="crtDateId" editable="false" valueFormat="yyyyMMdd" displayFormat="long"/>
 																</m:HBox>
-																<m:VBox class="sapUiSmallMarginBottom">
+															
 																	<m:HBox class="sapUiTinyMarginBottom">
 																		<m:Label text="Cargo category" class="sapUiSmallMarginEnd"/>
-																		<m:Input value="{ManDetailsModel>/CargoCategory}"/>
+																		<m:ComboBox selectedKey="{inCreateModel>/CargoCategory}"  items="" placeholder="{i18n>select}">
+																			<core:Item key="Ro-ro" text="Ro-ro"/>
+																			<core:Item key="Breakbulk" text="Breakbulk"/>
+																			<core:Item key="Dry bulk" text="Dry bulk"/>
+																			<core:Item key="Liquid bulk" text="Liquid bulk"/>
+																			<core:Item key="Container" text="Container"/>
+																		</m:ComboBox>
 																	</m:HBox>
-																</m:VBox>
+																
 															</m:VBox>
 														</layout:VerticalLayout>
 														<!--<layout:VerticalLayout>-->
 														<!--</layout:VerticalLayout>-->
-														<t:Table visibleRowCount="6" rows="{ManDetailsModel>/AgentCommoditiesSet}" selectionMode="None" ariaLabelledBy="title">
+														<t:Table visibleRowCount="6" rows="{inCreateModel>/AgentCommoditiesSet}" id="idworkOrderTable1" selectionMode="None" ariaLabelledBy="title">
+															<t:extension>
+																<m:Toolbar class="sapUiSmallMarginTop">
+																	<m:ToolbarSpacer/>
+																	<m:Button icon="sap-icon://add" id="materialAdd" tooltip="Add" press="onMatAddRow"/>
+																</m:Toolbar>
+															</t:extension>
 															<t:columns>
 																<t:Column width="130px" sortProperty="ManifestNo">
 																	<m:Label wrapping="false" text="Commodities"/>
 																	<t:template>
-																		<m:Text text="{ManDetailsModel>Commodities}"/>
+																		<m:ComboBox placeholder="{i18n>select}" selectedKey="{inCreateModel>Commodities}" width="100%" items="">
+																			<core:Item key="CO001" text="CO001"/>
+																			<core:Item key="CO002" text="CO002"/>
+																			<core:Item key="CO003" text="CO003"/>
+																			<core:Item key="CO004" text="CO004"/>
+																			<core:Item key="CO005" text="CO005"/>
+																			<core:Item key="CO006" text="CO006"/>
+																			<core:Item key="CO007" text="CO007"/>
+																			<core:Item key="CO008" text="CO008"/>
+																			<core:Item key="CO009" text="CO009"/>
+																			<core:Item key="CO010" text="CO010"/>
+																		</m:ComboBox>
 																	</t:template>
 																</t:Column>
 																<t:Column>
 																	<m:Label text="Mark &amp; No"/>
 																	<t:template>
-																		<m:Text text="{ManDetailsModel>MarkAndNumbers} - {BOEDetailsModel>NoOfPackages}"/>
+																		<m:Input value="{inCreateModel>MarksAndNos}"/>
 																	</t:template>
 																</t:Column>
 																<t:Column>
 																	<m:Label text="UOM"/>
 																	<t:template>
-																		<m:Text text="{ManDetailsModel>UOM}"/>
+																		<m:Input value="{inCreateModel>UOM}"/>
 																	</t:template>
 																</t:Column>
 																<t:Column>
 																	<m:Label text="No.of packages"/>
 																	<t:template>
-																		<m:Text text="{ManDetailsModel>NoOfPackages}"/>
+																		<m:Input value="{inCreateModel>NoOfPackages}"/>
 																	</t:template>
 																</t:Column>
 																<t:Column>
 																	<m:Label text="Pakage Type"/>
 																	<t:template>
-																		<m:Text text="{ManDetailsModel>PackageType}"/>
+																		<m:Input value="{inCreateModel>PackageType}"/>
 																	</t:template>
 																</t:Column>
 																<t:Column>
 																	<m:Label text="Sub Type"/>
 																	<t:template>
-																		<m:Text text="{ManDetailsModel>SubType}"/>
+																		<m:Input value="{inCreateModel>SubType}"/>
 																	</t:template>
 																</t:Column>
 																<t:Column>
 																	<m:Label text="GrossWt"/>
 																	<t:template>
-																		<m:Text text="{ManDetailsModel>GrowsWt}"/>
+																		<m:Input value="{inCreateModel>GrowsWt}"/>
 																	</t:template>
 																</t:Column>
 																<t:Column>
 																	<m:Label text="CBM"/>
 																	<t:template>
-																		<m:Text text="{ManDetailsModel>CBM}"/>
+																		<m:Input value="{inCreateModel>CBM}"/>
 																	</t:template>
 																</t:Column>
 																<t:Column>
 																	<m:Label text="Charge / Ton"/>
 																	<t:template>
-																		<m:Text text="{ManDetailsModel>ChargeTon}"/>
+																		<m:Input value="{inCreateModel>ChargeTon}"/>
 																	</t:template>
 																</t:Column>
 																<t:Column>
 																	<m:Label text="Net Weight"/>
 																	<t:template>
-																		<m:Text text="{ManDetailsModel>NetWt}"/>
+																		<m:Input value="{inCreateModel>NetWt}"/>
+																	</t:template>
+																</t:Column>
+																<t:Column>
+																	<m:Label text="Action"/>
+																	<t:template>
+																		<m:Button icon="sap-icon://delete" press="deleteThisItem"/>
 																	</t:template>
 																</t:Column>
 															</t:columns>
@@ -300,6 +373,8 @@
 											<m:headerToolbar>
 												<m:Toolbar>
 													<m:Title text="Bill of Lading" level="H1"/>
+													<m:ToolbarSpacer/>
+													<m:Button class="btn-sm" type="Accept" text="Add New" press="bilPressEvnt"/>
 												</m:Toolbar>
 											</m:headerToolbar>
 											<m:layoutData>

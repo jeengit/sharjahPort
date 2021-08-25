@@ -41,8 +41,8 @@ sap.ui.define([
 				this.getView().setModel(new JSONModel(null), "GatePassListModel");
 				this.getView().byId("manifestList").setSelectedKey("NA/CONSIGNEE/PENDING");
 			}
-			if (type === "GATEPASS") {
-				this.callOdata("GatePassSet", "GatePassListModel");
+				if (type === "GATEPASS") {
+				this.callOdata("GatePassListSet", "GatePassListModel","ImStatus",status);
 				this.getView().setModel(new JSONModel(null), "manifestListModel");
 				this.getView().setModel(new JSONModel(null), "deliveryListModel");
 				this.getView().setModel(new JSONModel(null), "consigneeListModel");
@@ -51,7 +51,7 @@ sap.ui.define([
 			}
 			if (type === "AGENTMANIFEST") {
 
-				this.callOdata("AgentManifestListSet", "agentListModel");
+				this.callOdata("AgentManifestListSet", "agentListModel","ImStatus",status);
 				this.getView().setModel(new JSONModel(null), "manifestListModel");
 				this.getView().setModel(new JSONModel(null), "GatePassListModel");
 				this.getView().setModel(new JSONModel(null), "deliveryListModel");
@@ -153,11 +153,22 @@ sap.ui.define([
 				this.getView().setModel(new JSONModel(null), "manifestListModel");
 				this.getView().setModel(new JSONModel(null), "deliveryListModel");
 			}
-			if (type === "gatePassList") {
-				this.callOdata("GatePassSet", "GatePassListModel");
+				if (type === "GATEPASS") {
+				this.callOdata("GatePassListSet", "GatePassListModel","ImStatus",status);
 				this.getView().setModel(new JSONModel(null), "manifestListModel");
 				this.getView().setModel(new JSONModel(null), "deliveryListModel");
 				this.getView().setModel(new JSONModel(null), "consigneeListModel");
+				this.getView().setModel(new JSONModel(null), "agentListModel");
+				this.getView().byId("manifestList").setSelectedKey("OPEN/DELIVERY/");
+			}
+			if (type === "AGENTMANIFEST") {
+
+				this.callOdata("AgentManifestListSet", "agentListModel","ImStatus",status);
+				this.getView().setModel(new JSONModel(null), "manifestListModel");
+				this.getView().setModel(new JSONModel(null), "GatePassListModel");
+				this.getView().setModel(new JSONModel(null), "deliveryListModel");
+				this.getView().setModel(new JSONModel(null), "consigneeListModel");
+				this.getView().byId("manifestList").setSelectedKey("NEW/ETA");
 			}
 			sap.ui.core.BusyIndicator.hide();
 		},

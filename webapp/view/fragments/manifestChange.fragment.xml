@@ -1,6 +1,6 @@
 <core:FragmentDefinition xmlns:t="sap.ui.table" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core"
 	xmlns:tnt="sap.tnt">
-	<ObjectPageLayout upperCaseAnchorBar="false" id="manifestChangeId" class="objLayoutClass editMode">
+		<ObjectPageLayout upperCaseAnchorBar="false" id="manifestChangeId" class="objLayoutClass editMode">
 		<headerTitle>
 			<ObjectPageDynamicHeaderTitle>
 				<breadcrumbs>
@@ -68,6 +68,14 @@
 								<m:Input value="{ManDetModel>/FROM_PORT}" editable="false"/>
 							</m:HBox>
 						</m:HBox>
+							<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+							<m:HBox width="40%">
+								<m:Label text="Type" class="sapUiSmallMarginEnd"/>
+							</m:HBox>
+							<m:HBox width="60%">
+								<m:Input value="{ManDetModel>/ManifestType}"/>
+							</m:HBox>
+						</m:HBox>
 					</m:VBox>
 				</layout:VerticalLayout>
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
@@ -112,6 +120,7 @@
 								<m:Input value="{ManDetModel>/AgentCode}" editable="false" wrapping="false"/>
 							</m:HBox>
 						</m:HBox>
+					
 					</m:VBox>
 				</layout:VerticalLayout>
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
@@ -169,7 +178,7 @@
 													</m:FlexBox>
 											<m:FlexBox alignItems="Start" justifyContent="SpaceBetween">
 												<m:Text class="desc" text="{ManDetModel>CargoCategory}"/>
-												<m:Text class="desc sapMLnk"
+												<m:Text 
 													text="{ path: 'ManDetModel>ArrivalDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}} }"
 													wrapping="false"/>
 											</m:FlexBox>
@@ -186,7 +195,7 @@
 								</m:HBox>
 								<m:HBox width="70%" class="boeDetails">
 									<m:FlexBox wrap="Wrap" width="100%">
-										<m:List id="changeDetails" class="tableCard card" items="">
+										<m:List id="changeDetails" class="tableCard card" items="{path : 'ManDetModel>/BillOfEntrySet/results'}">
 											<m:items>
 												<m:CustomListItem class="sapUiSmallMarginTop">
 													<m:content>
@@ -194,19 +203,19 @@
 															<m:VBox class="sapUiSmallMarginBottom sapUiSmallMarginEnd">
 																<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Bill of Lading" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{ManDetModel>/BillOfLading}"/>
+																	<m:Input value="{ManDetModel>BLNo}"/>
 																</m:HBox>
 																<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Consignee Code" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{ManDetModel>/ConsigneeCode}" />
+																	<m:Input value="{ManDetModel>ConsigneeCode}" />
 																</m:HBox>
 																<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Bill of Entry" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{ManDetModel>/BillOfEntry}" editable="false"/>
+																	<m:Input value="{ManDetModel>BENo}" editable="false"/>
 																</m:HBox>
 																	<m:HBox class="sapUiTinyMarginBottom">
-																	<m:Label text="Contry of origin" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{ManDetModel>/CountryOfOrigin}"/>
+																	<m:Label text="Country of origin" class="sapUiSmallMarginEnd"/>
+																	<m:Input value="{ManDetModel>CountryofOrigin}"/>
 																</m:HBox>
 															</m:VBox>
 														</layout:VerticalLayout>
@@ -214,16 +223,16 @@
 															<m:VBox class="sapUiSmallMarginBottom sapUiSmallMarginEnd">
 																<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Consignee" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{ManDetModel>/Consignee}" />
+																	<m:Input value="{ManDetModel>Consignee}" />
 																</m:HBox>
 																<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Creation Date" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{ManDetModel>/CreationDate}" editable="false"/>
+																	<m:Input value="{ path: 'ManDetModel>CreationDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}} }" editable="false"/>
 																</m:HBox>
 																<m:VBox class="sapUiSmallMarginBottom">
 																	<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Cargo category" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{ManDetModel>/CargoCategory}"/>
+																	<m:Input value="{ManDetModel>CargoCategory}"/>
 																</m:HBox>
 															
 															</m:VBox>
@@ -233,67 +242,67 @@
 														
 														<!--</layout:VerticalLayout>-->
 														<t:Table  visibleRowCount="6"
-															rows="{ManDetModel>/BillOfEntrySet/results}" selectionMode="None" ariaLabelledBy="title">
+															rows="{ManDetModel>CommoditiesInDetailsSet/results}" selectionMode="None" ariaLabelledBy="title">
 															<t:columns>
 																<t:Column  width="130px" sortProperty="ManifestNo">
 																	<m:Label wrapping="false" text="Commodities"/>
 																	<t:template>
-																		<m:Text text="{ManDetModel>CommoditiesInDetailsSet/results/0/Commodities}"/>
+																		<m:Text text="{ManDetModel>Commodities}"/>
 																	</t:template>
 																</t:Column>
 																<t:Column>
 																	<m:Label text="Mark &amp; No"/>
 																	<t:template>
-																		<m:Text text="{ManDetModel>CommoditiesInDetailsSet/results/0/MarkAndNumbers}"/>
+																		<m:Text text="{ManDetModel>MarkAndNumbers}"/>
 																	</t:template>
 																</t:Column>
 																	<t:Column>
 																	<m:Label text="UOM"/>
 																	<t:template>
-																		<m:Text text="{ManDetModel>CommoditiesInDetailsSet/results/0/UOM}"/>
+																		<m:Text text="{ManDetModel>UOM}"/>
 																	</t:template>
 																</t:Column>
 																<t:Column>
 																	<m:Label text="No.of packages"/>
 																	<t:template>
-																		<m:Text text="{ManDetModel>CommoditiesInDetailsSet/results/0/NoOfPackages}"/>
+																		<m:Text text="{ManDetModel>NoOfPackages}"/>
 																	</t:template>
 																</t:Column>
 																	<t:Column>
 																	<m:Label text="Pakage Type"/>
 																	<t:template>
-																		<m:Text text="{ManDetModel>CommoditiesInDetailsSet/results/0/PackageType}"/>
+																		<m:Text text="{ManDetModel>PackageType}"/>
 																	</t:template>
 																</t:Column>
 																	<t:Column>
 																	<m:Label text="Sub Type"/>
 																	<t:template>
-																		<m:Text text="{ManDetModel>CommoditiesInDetailsSet/results/0/SubType}"/>
+																		<m:Text text="{ManDetModel>SubType}"/>
 																	</t:template>
 																</t:Column>
 																<t:Column>
 																	<m:Label text="GrossWt"/>
 																	<t:template>
-																		<m:Text text="{ManDetModel>CommoditiesInDetailsSet/results/0/GrowsWt}"/>
+																		<m:Text text="{ManDetModel>GrowsWt}"/>
 																	</t:template>
 																</t:Column>
 															
 																<t:Column>
 																	<m:Label text="CBM"/>
 																	<t:template>
-																		<m:Text text="{ManDetModel>CommoditiesInDetailsSet/results/0/CBM}"/>
+																		<m:Text text="{ManDetModel>CBM}"/>
 																	</t:template>
 																</t:Column>
 																<t:Column>
 																	<m:Label text="Charge / Ton"/>
 																	<t:template>
-																		<m:Text text="{ManDetModel>CommoditiesInDetailsSet/results/0/ChargeTon}"/>
+																		<m:Text text="{ManDetModel>ChargeTon}"/>
 																	</t:template>
 																</t:Column>
 																<t:Column>
 																	<m:Label text="Net Weight"/>
 																	<t:template>
-																		<m:Text text="{ManDetModel>CommoditiesInDetailsSet/results/0/NetWt}"/>
+																		<m:Text text="{ManDetModel>NetWt}"/>
 																	</t:template>
 																</t:Column>
 															</t:columns>

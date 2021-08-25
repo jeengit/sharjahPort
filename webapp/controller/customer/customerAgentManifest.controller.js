@@ -83,6 +83,7 @@ sap.ui.define([
 			var odata = {
 				"ManifestExt": "",
 				"ManifestNo": "",
+				"ManifestType": "",
 				"ActionFlag": "",
 				"ToPort": "",
 				"FromPort": "",
@@ -101,24 +102,41 @@ sap.ui.define([
 				"BoeCreationDate": "",
 				"CargoCategory": "",
 				"CountryOfOrigin": "",
-				"AgentCommoditiesSet": [{
-
-					"ManifestNo": "",
-					"Commodities": "",
-					"MarksAndNos": "",
-					"UOM": "",
-					"NoOfPackages": "",
-					"PackageType": "",
-					"SubType": "",
-					"GrowsWt": "",
-					"CBM": "",
-					"ChargeTon": "",
-					"NetWt": ""
-				}]
+				"AgentCommoditiesSet": []
 			};
 			this.getView().setModel(new JSONModel(odata), "inCreateModel");
 			sap.ui.core.BusyIndicator.hide();
 
+		},
+		onMatAddRow: function(oEvent) {
+			var oTable = this.getView().byId("idworkOrderTable1");
+			var matrTableRows = oTable.getRows();
+			// for (var rowLength in matrTableRows) {
+			// 	oTable.getRows()[rowLength].getCells()[0].setEditable(true);
+			// }
+			var oModel = oTable.getModel("inCreateModel");
+			var oData = oModel.getData();
+
+			oData.AgentCommoditiesSet.push({
+
+				"ManifestNo": "",
+				"Commodities": "",
+				"MarksAndNos": "",
+				"UOM": "",
+				"NoOfPackages": "",
+				"PackageType": "",
+				"SubType": "",
+				"GrowsWt": "",
+				"CBM": "",
+				"ChargeTon": "",
+				"NetWt": ""
+			});
+			oModel.setData(oData);
+			// var items1 = this.getView().byId("--idworkOrderTable1");
+			// var itemsLength1 = items1.getRows().length;
+			// for (var j = 0; j < itemsLength1; j++) {
+			// 	items1.getRows()[j].getCells()[0].setEditable(true);
+			// }
 		},
 		createMan: function() {
 
@@ -137,27 +155,14 @@ sap.ui.define([
 				"VoyageNumber": mandatory.VoyegeNo,
 				"VesselName": mandatory.VesselName,
 				"Caption": mandatory.Caption,
-				"BillOfLading": mandatory.FROM_PORT,
+				"BillOfLading": "",
 				"ConsigneeCode": mandatory.BillOfEntrySet.results[0].ConsigneeCode,
-				"BillOfEntry": mandatory.BillOfEntrySet.results[0].BENo,
+				"BillOfEntry": "",
 				"Consignee": mandatory.BillOfEntrySet.results[0].ConsigneeName,
 				"BoeCreationDate": mandatory.BillOfEntrySet.results[0].BEDate,
 				"CargoCategory": mandatory.BillOfEntrySet.results[0].CargoCategory,
 				"CountryOfOrigin": mandatory.BillOfEntrySet.results[0].CountryofOrigin,
-				"AgentCommoditiesSet": [{
-
-					"ManifestNo": mandatory.BillOfEntrySet.results[0].CommoditiesInDetailsSet.results[0].ManifestNo,
-					"Commodities": mandatory.BillOfEntrySet.results[0].CommoditiesInDetailsSet.results[0].Commodities,
-					"MarksAndNos": mandatory.BillOfEntrySet.results[0].CommoditiesInDetailsSet.results[0].MarkAndNumbers,
-					"UOM": mandatory.BillOfEntrySet.results[0].CommoditiesInDetailsSet.results[0].UOM,
-					"NoOfPackages": mandatory.BillOfEntrySet.results[0].CommoditiesInDetailsSet.results[0].NoOfPackages,
-					"PackageType": mandatory.BillOfEntrySet.results[0].CommoditiesInDetailsSet.results[0].PackageType,
-					"SubType": mandatory.BillOfEntrySet.results[0].CommoditiesInDetailsSet.results[0].SubType,
-					"GrowsWt": mandatory.BillOfEntrySet.results[0].CommoditiesInDetailsSet.results[0].GrossWt,
-					"CBM": mandatory.BillOfEntrySet.results[0].CommoditiesInDetailsSet.results[0].CBM,
-					"ChargeTon": mandatory.BillOfEntrySet.results[0].CommoditiesInDetailsSet.results[0].ChargePerTon,
-					"NetWt": mandatory.BillOfEntrySet.results[0].CommoditiesInDetailsSet.results[0].NetWt
-				}]
+				"AgentCommoditiesSet": []
 			};
 			this.getView().setModel(new JSONModel(odata), "ManDetailsModel");
 			sap.ui.core.BusyIndicator.hide();
@@ -172,10 +177,11 @@ sap.ui.define([
 			oModel.setUseBatch(false);
 			var that = this;
 			if (dataVal) {
-				
-                 var oData = this.getView().getModel("ManDetailsModel").getData();
-                 oData['ActionFlag'] = "ADD_BOE";
-				oModel.create("/AgentManifestSet", oData, {
+
+				var oData = this.getView().getModel("ManDetModel").getData();
+				oEntry['ActionFlag'] = "ADD_BOE";
+				oEntry['ManifestNo'] = oData.AGENT_MANIFEST_NO;
+				oModel.create("/AgentManifestSet", oEntry, {
 					success: function(data, oResponse) {
 						// sap.m.MessageToast.show("" + data.ManifestNo + "Created Successfully..");
 						sap.m.MessageToast.show("Manifest No - " + data.ManifestNo + " Created Successfully", {
@@ -223,7 +229,7 @@ sap.ui.define([
 								},
 								success: function(data1) {
 									that.getView().byId(pageId + "--callSignInputId").setEditable(false);
-									
+
 									that.getView().setModel(new JSONModel(data1.results['0']), "ManDetModel");
 									that.createMan();
 									that.getView().byId(pageId + "--changeList").setVisible(true);
@@ -242,18 +248,36 @@ sap.ui.define([
 				}
 			}
 		},
+		deleteThisItem: function(oEvent) {
+			var oRow = oEvent.getSource().getParent(); //Get Row
+			var iRowIndex = oRow.getIndex();
+			var edData = this.getView().getModel("inCreateModel").getData();
+			console.log(edData);
+			edData['AgentCommoditiesSet'].splice(iRowIndex, 1);
+			this.getView().setModel(new JSONModel(edData), "inCreateModel");
 
+		},
+		bilPressEvnt: function(evt) {
+			this.getView().byId("billadId").setValue("");
+			this.getView().byId("crtDateId").setValue("");
+			// var oTable = this.getView().byId("idworkOrderTable1");
+			// var tableData =	oTable.getModel("inCreateModel").getData("");
+			// oTable.getModel().setData("");
+			//  oTable.getModel().setData(tableData);
+			//this.getView().byId("idworkOrderTable1").getModel().refresh(true);
+
+		},
 		handleCallPress: function(oEvent) {
 			var model = oEvent.getSource().getModel("callsigndetModel");
-			console.log(model);
+
 			var oItem = oEvent.getSource().getSelectedItem();
-			console.log(oItem);
+
 			if (oItem) {
 				var oContext = oItem.getBindingContext("callsigndetModel");
-				console.log(oContext);
+
 				var oPath = oContext.getPath();
 				var obj = model.getProperty(oPath);
-				console.log(obj);
+
 				this.getView().byId("lineId").setValue(obj.LineCode);
 				this.getView().byId("vesselId").setValue(obj.VesselName);
 				this.getView().byId("imoId").setValue(obj.ImoNumber);

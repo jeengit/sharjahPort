@@ -17,24 +17,24 @@
 						<core:Item key="2021" text="2021"/>
 					</ComboBox>
 				</FlexBox>
-				<IconTabBar id="manifestList" expandable="false" select="onBtnPress" class="sapUiResponsiveContentPadding">
+					<IconTabBar id="manifestList" expandable="false" select="onBtnPress" class="sapUiResponsiveContentPadding">
 					<items>
 						<IconTabFilter count="{= ${manifestListModel>/length} > 0 ? ${countModel>/1/count} : ${countModel>/0/count}}" icon="sap-icon://approvals"
 							iconColor="Critical" text="{= ${consigneeListModel>/length} > 0 ? 'Pending':'New'}"
-							visible="{= ${agentListModel>/length} > 0 || ${manifestListModel>/results/length} > 0 ? false : true}"
+							visible="{= ${agentListModel>/length} > 0 || ${manifestListModel>/results/length} > 0 || ${GatePassListModel>/length} > 0  ? false : true}"
 							key="{= ${manifestListModel>/length} > 0 ? 'OPEN/MANIFEST/' : ${deliveryListModel>/length} > 0 ? 'OPEN/DELIVERY/' : ${consigneeListModel>/length} > 0 ? 'NA/CONSIGNEE/PENDING' : ''}"/>
 						<IconTabFilter count="{= ${manifestListModel>/length} > 0 ? ${countModel>/2/count} : ${countModel>/1/count}}" icon="sap-icon://decline"
 							iconColor="Negative" text="{= ${consigneeListModel>/length} > 0 ? 'Completed':'Closed'}"
 							visible="{= ${agentListModel>/length} > 0 ||  ${GatePassListModel>/length} > 0  || ${manifestListModel>/results/length} > 0 ? false : true}"
 							key="{= ${manifestListModel>/length} > 0 ? 'CLOSED/MANIFEST/' : ${deliveryListModel>/length} > 0 ? 'CLOSED/DELIVERY/' : ${consigneeListModel>/length} > 0 ? 'NA/CONSIGNEE/COMPLETED' : ''}"/>
-						<IconTabFilter count="{countModel>/0/count}" visible="{= ${agentListModel>/length} > 0 || ${manifestListModel>/results/length} > 0 ? true :false}" icon="sap-icon://request"
-							iconColor="Positive" text="New" key="{= ${agentListModel>/TYPE} === 'ETA' ? 'NEW/ETA' : ${manifestListModel>/TYPE} === 'MANIFEST' ? 'OPEN/MANIFEST' : 'OPEN/HOTWORKS'}"/>
-						<IconTabFilter count="{countModel>/1/count}" visible="{= ${agentListModel>/length} > 0 || ${manifestListModel>/results/length} > 0 ? true : false}" icon="sap-icon://approvals"
-							iconColor="Critical" text="Approved" key="APPROVED/{= ${agentListModel>/TYPE} === 'ETA' ? 'ETA' : ${manifestListModel>/TYPE} === 'MANIFEST' ? 'MANIFEST' : 'HOTWORKS'}"/>
+						<IconTabFilter count="{countModel>/0/count}" visible="{= ${agentListModel>/length} > 0 || ${manifestListModel>/results/length} > 0 || ${GatePassListModel>/length} > 0  ? true :false}" icon="sap-icon://request"
+							iconColor="Positive" text="New" key="{= ${agentListModel>/length} > 0 ?'OPEN/AGENTMANIFEST/' : ${manifestListModel>/results/length} > 0  ? 'OPEN/MANIFEST' : ${GatePassListModel>/length} > 0 ? 'OPEN/GATEPASS/' : 'OPEN/HOTWORKS'}"/>
+						<IconTabFilter count="{countModel>/1/count}" visible="{= ${agentListModel>/length} > 0 || ${manifestListModel>/results/length} || ${GatePassListModel>/length} > 0  > 0 ? true : false}" icon="sap-icon://approvals"
+							iconColor="Critical" text="Approved" key="{= ${agentListModel>/length} > 0 ? 'APPROVED/AGENTMANIFEST/' : ${manifestListModel>/results/length} > 0 ? 'APPROVED/MANIFEST/' : ${GatePassListModel>/length} > 0 ?'APPROVED/GATEPASS/': 'HOTWORKS' }"/>
 						<IconTabFilter count="{countModel>/2/count}" icon="sap-icon://decline" iconColor="Negative"
-							visible="{= ${agentListModel>/length} > 0 || ${manifestListModel>/results/length} > 0  ? true : false}" text="Rejected"
-							key="REJECTED/{= ${agentListModel>/TYPE} === 'ETA' ? 'ETA' : ${manifestListModel>/TYPE} === 'MANIFEST' ? 'MANIFEST' : 'HOTWORKS'}"/>
-					</items>
+							visible="{= ${agentListModel>/length} > 0 || ${manifestListModel>/results/length} > 0 || ${GatePassListModel>/length} > 0  ? true : false}" text="Rejected"
+							key="{= ${agentListModel>/length} > 0 ? 'REJECTED/AGENTMANIFEST/' : ${manifestListModel>/results/length} > 0 ? 'REJECTED/MANIFEST/' : ${GatePassListModel>/length} > 0 ?'REJECTED/GATEPASS/': 'HOTWORKS' }"/>
+				 	</items>
 				</IconTabBar>
 				<t:Table visible="{= ${manifestListModel>/results/length} > 0 ? true : false}" rows="{manifestListModel>/results}" class="card tableCard no-margin"
 					selectionMode="None" ariaLabelledBy="title">

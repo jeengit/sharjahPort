@@ -47,7 +47,7 @@ sap.ui.define([
 				this.getView().setModel(new JSONModel(null), "deliveryListModel");
 				this.getView().setModel(new JSONModel(null), "consigneeListModel");
 				this.getView().setModel(new JSONModel(null), "agentListModel");
-				this.getView().byId("manifestList").setSelectedKey("OPEN/DELIVERY/");
+				this.getView().byId("manifestList").setSelectedKey("OPEN/GATEPASS/");
 			}
 			if (type === "AGENTMANIFEST") {
 
@@ -56,7 +56,7 @@ sap.ui.define([
 				this.getView().setModel(new JSONModel(null), "GatePassListModel");
 				this.getView().setModel(new JSONModel(null), "deliveryListModel");
 				this.getView().setModel(new JSONModel(null), "consigneeListModel");
-				this.getView().byId("manifestList").setSelectedKey("NEW/ETA");
+				this.getView().byId("manifestList").setSelectedKey("OPEN/AGENTMANIFEST/");
 			}
 			var that = this;
 			setTimeout(function() {
@@ -159,7 +159,7 @@ sap.ui.define([
 				this.getView().setModel(new JSONModel(null), "deliveryListModel");
 				this.getView().setModel(new JSONModel(null), "consigneeListModel");
 				this.getView().setModel(new JSONModel(null), "agentListModel");
-				this.getView().byId("manifestList").setSelectedKey("OPEN/DELIVERY/");
+				
 			}
 			if (type === "AGENTMANIFEST") {
 
@@ -168,7 +168,7 @@ sap.ui.define([
 				this.getView().setModel(new JSONModel(null), "GatePassListModel");
 				this.getView().setModel(new JSONModel(null), "deliveryListModel");
 				this.getView().setModel(new JSONModel(null), "consigneeListModel");
-				this.getView().byId("manifestList").setSelectedKey("NEW/ETA");
+				
 			}
 			sap.ui.core.BusyIndicator.hide();
 		},

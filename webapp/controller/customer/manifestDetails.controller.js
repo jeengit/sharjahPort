@@ -49,14 +49,18 @@ sap.ui.define([
 			} else {
 				oModel.read("/ManifestDetailsSet", {
 					urlParameters: {
-						"$filter": status === "OPEN" ? "ManifestNo eq '" + oEvent.getParameter("arguments").id + "'" : "ManifestNo eq '" + oEvent.getParameter(
-							"arguments").id + "' and ImFlag eq 'CUSTOMS'",
+						"$filter": "ManifestNo eq '" + id + "' and ImFlag eq 'AGENT'",
 						"$expand": "BillOfEntrySet/CommoditiesInDetailsSet"
+						// "$filter": status === "OPEN" ? "ManifestNo eq '" + oEvent.getParameter("arguments").id + "'" : "ManifestNo eq '" + oEvent.getParameter(
+						// 	"arguments").id + "' and ImFlag eq 'CUSTOMS'",
+						// "$expand": "BillOfEntrySet/CommoditiesInDetailsSet"
 					},
 					success: function(data) {
 						that.getView().setModel(new JSONModel(data.results['0']), "BOEDetailsModel");
 						that.getView().byId(pageId + "--manifestChangeId").setVisible(false);
 						that.getView().byId(pageId + "--manifestDispId").setVisible(true);
+				
+						// data.results.Status === "OPEN" ? that.getView().byId("rejBtn").setVisible(true) : that.getView().byId("rejBtn").setVisible(false) ;
 						for (var j in that.getView().byId("dispDetails").getItems()) {
 							that.getView().byId("dispDetails").getItems()[j].setVisible(false);
 						}
@@ -236,7 +240,7 @@ sap.ui.define([
 			sap.ui.core.BusyIndicator.show();
 			var oEntry = {
 
-				"ManifestNo": this.getView().getModel("ManDetModel").getData().AGENT_MANIFEST_NO,
+				"ManifestNo": this.getView().getModel("BOEDetailsModel").getData().AGENT_MANIFEST_NO,
 				"Status": evt.getSource().getType() === "Accept" ? "APPROVE" : "REJECT",
 				"RejectRemark": ""
 			};
@@ -248,7 +252,7 @@ sap.ui.define([
 					sap.m.MessageToast.show("Manifest " + oEntry.Status + "ED Successfully", {
 						closeOnBrowserNavigation: false
 					});
-				that.getRouter().navTo("dashboardAgent");
+				that.getRouter().navTo("dashboardManifest");
 					sap.ui.core.BusyIndicator.hide();
 				},
 				error: function(oResponse) {

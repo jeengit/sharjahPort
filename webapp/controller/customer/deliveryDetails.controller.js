@@ -162,7 +162,7 @@ sap.ui.define([
 			var odata = {
 				"DeliveryName": "",
 				"PortName": mandatory.PortName,
-				"ManifestNo": mandatory.ManifestNo,
+				"ManifestNo": mandatory.AGENT_MANIFEST_NO,
 				"ConsigneeCode": mandatory.ConsigneeCode,
 				"PortOfShipment": mandatory.PortOfOrigin,
 				"BLno": mandatory.BLNo,

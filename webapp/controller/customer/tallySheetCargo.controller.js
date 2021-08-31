@@ -81,8 +81,8 @@ sap.ui.define([
 			var oData = {
 
 				"TallySheetCode": modData.TlyShtCode,
-				"PortName": modData.PortCode,
-				"ManifestNo": modData.ManifestNo,
+				"PortName": modData.PortName,
+				"ManifestNo": modData.AGENT_MANIFEST_NO,
 				"ConsigneeCode": "",
 				"PortOfShipment": "",
 				"BLNo": "",

@@ -266,7 +266,7 @@ sap.ui.define([
 			var tallyHeaderData = evt.getSource().getModel("BOEDetailsModel").getData();
 			sap.ui.getCore().setModel(new JSONModel(tallyHeaderData), "ManifModel");
 			var tallycode = evt.getSource().getModel("BOEDetailsModel").getData().TlyShtCode;
-			var mafstNo = evt.getSource().getModel("BOEDetailsModel").getData().ManifestNo;
+			var mafstNo = evt.getSource().getModel("BOEDetailsModel").getData().AGENT_MANIFEST_NO;
 			var id = evt.getSource().getId().split("--")[1] === "tallyBtn" ? tallycode : mafstNo;
 			var status = evt.getSource().getId().split("--")[1] === "tallyBtn" ? "Details" : "create";
 			tallyHeaderData.ActionFlag === "No items to consolidate" ? sap.m.MessageToast.show(tallyHeaderData.ActionFlag) : this.getRouter().navTo(

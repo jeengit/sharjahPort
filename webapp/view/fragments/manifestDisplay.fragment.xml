@@ -41,7 +41,7 @@
 								<m:Label text="{i18n>PortName}" class="sapUiSmallMarginEnd"/>
 							</m:HBox>
 							<m:HBox width="10rem">
-								<m:Text text="{BOEDetailsModel>/PortCode}"/>
+								<m:Text text="{BOEDetailsModel>/PortName}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -49,7 +49,7 @@
 								<m:Label text="{i18n>manNo}" class="sapUiSmallMarginEnd"/>
 							</m:HBox>
 							<m:HBox width="10rem">
-								<m:Text text="{BOEDetailsModel>/ManifestNo}"/>
+								<m:Text text="{BOEDetailsModel>/AGENT_MANIFEST_NO}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">

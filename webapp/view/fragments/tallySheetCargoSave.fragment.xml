@@ -32,7 +32,7 @@
 		<headerContent>
 			<m:FlexBox wrap="Wrap">
 				<m:Avatar class="sapUiSmallMarginEnd" backgroundColor="Accent9" src="images/cargo-ship.png" displaySize="L"/>
-				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+				<layout:VerticalLayout >
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
@@ -87,7 +87,7 @@
 						</m:HBox>
 					</m:VBox>
 				</layout:VerticalLayout>
-				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+				<layout:VerticalLayout>
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">
@@ -140,7 +140,7 @@
 						</m:HBox>
 					</m:VBox>
 				</layout:VerticalLayout>
-				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+				<layout:VerticalLayout>
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 							<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 							<m:HBox width="40%">

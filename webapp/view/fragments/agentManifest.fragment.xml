@@ -232,11 +232,11 @@
 																</m:HBox>
 																	<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 																	<m:Label text="Consignee Name" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{inCreateModel>ConsigneeName}" wrapping="false"/>
+																	<m:Input value="{inCreateModel>/ConsigneeName}" wrapping="false"/>
 																</m:HBox>
 																<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Consignee Phone" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{inCreateModel>ConsigneePhone}"/>
+																	<m:Input value="{inCreateModel>/ConsigneePhone}"/>
 																</m:HBox>
 																<m:HBox class="sapUiTinyMarginBottom">
 																		<m:HBox width="40%">
@@ -266,11 +266,11 @@
 															<m:VBox class="sapUiSmallMarginBottom sapUiSmallMarginEnd">
 																		<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Notifier Phone" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{inCreateModel>NotifierPhone}"/>
+																	<m:Input value="{inCreateModel>/NotifierPhone}"/>
 																</m:HBox>
 																<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Shipper Phone" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{inCreateModel>ShipperPhone}"/>
+																	<m:Input value="{inCreateModel>/ShipperPhone}"/>
 																</m:HBox>
 																<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Consignee" class="sapUiSmallMarginEnd"/>

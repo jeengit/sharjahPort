@@ -217,14 +217,7 @@
 																	<m:Label text="Country of origin" class="sapUiSmallMarginEnd"/>
 																	<m:Text text="{ManDetModel>CountryofOrigin}"/>
 																</m:HBox>
-																	<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-																				<m:Label text="Shipper Phone" class="sapUiSmallMarginEnd"/>
-																				<m:Text text="{ManDetModel>ShipperPhone}"/>
-																			</m:HBox>
-																				<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-																				<m:Label text="Consignee Name" class="sapUiSmallMarginEnd"/>
-																				<m:Text text="{ManDetModel>ConsigneeName}" wrapping="false"/>
-																				</m:HBox>
+																	
 															</m:VBox>
 														</layout:VerticalLayout>
 														<layout:VerticalLayout>
@@ -245,6 +238,25 @@
 																	<m:Label text="Creation Date" class="sapUiSmallMarginEnd"/>
 																	<m:Text text="{ path: 'ManDetModel>CreationDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}} }" editable="false"/>
 																</m:HBox>
+																<m:VBox class="sapUiSmallMarginBottom">
+																	<m:HBox class="sapUiTinyMarginBottom">
+																	<m:Label text="Cargo category" class="sapUiSmallMarginEnd"/>
+																	<m:Text text="{ManDetModel>CargoCategory}"/>
+																</m:HBox>
+															
+															</m:VBox>
+															</m:VBox>
+														</layout:VerticalLayout>
+														<layout:VerticalLayout>
+															<m:VBox class="sapUiSmallMarginBottom sapUiSmallMarginEnd">
+																<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+																				<m:Label text="Shipper Phone" class="sapUiSmallMarginEnd"/>
+																				<m:Text text="{ManDetModel>ShipperPhone}"/>
+																			</m:HBox>
+																				<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+																				<m:Label text="Consignee Name" class="sapUiSmallMarginEnd"/>
+																				<m:Text text="{ManDetModel>ConsigneeName}" wrapping="false"/>
+																				</m:HBox>
 																<m:VBox class="sapUiSmallMarginBottom">
 																	<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Cargo category" class="sapUiSmallMarginEnd"/>

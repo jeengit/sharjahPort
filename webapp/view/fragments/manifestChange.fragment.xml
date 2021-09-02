@@ -248,7 +248,7 @@
 																<m:VBox class="sapUiSmallMarginBottom">
 																	<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Cargo category" class="sapUiSmallMarginEnd"/>
-																	<m:IText text="{ManDetModel>CargoCategory}"/>
+																	<m:Text text="{ManDetModel>CargoCategory}"/>
 																</m:HBox>
 															
 															</m:VBox>

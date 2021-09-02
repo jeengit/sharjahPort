@@ -179,14 +179,7 @@
 																<m:content>
 																	<layout:VerticalLayout>
 																		<m:VBox class="sapUiSmallMarginBottom sapUiSmallMarginEnd">
-																			<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-																				<m:HBox>
-																				<m:Label text="{i18n>cusManfNo}" class="sapUiSmallMarginEnd"/>
-																				</m:HBox>
-																				<m:HBox>
-																				<m:Text text="{BOEDetailsModel>ManifestNo}" wrapping="false"/>
-																				</m:HBox>
-																			</m:HBox>
+																			
 																			<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 																				<m:HBox>
 																				<m:Label text="Bill" class="sapUiSmallMarginEnd"/>

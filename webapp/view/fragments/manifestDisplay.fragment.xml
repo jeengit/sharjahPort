@@ -110,12 +110,12 @@
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
 					<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox width="8rem">
+<!-- 							<m:HBox width="8rem">
 								<m:Label text="{i18n>cusManfNo}" class="sapUiSmallMarginEnd"/>
 								</m:HBox>
 								<m:HBox width="10rem">
 								<m:Text text="{BOEDetailsModel>/CustRefManifestNo}" wrapping="false"/>
-							</m:HBox>
+							</m:HBox> -->
 							</m:HBox>
 							<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
 								<m:HBox width="8rem">

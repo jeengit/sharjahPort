@@ -217,10 +217,42 @@
 																	<m:Label text="Country of origin" class="sapUiSmallMarginEnd"/>
 																	<m:Input value="{ManDetModel>CountryofOrigin}"/>
 																</m:HBox>
+																	<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+																				<m:HBox>
+																				<m:Label text="Shipper Phone" class="sapUiSmallMarginEnd"/>
+																				</m:HBox>
+																				<m:HBox>
+																				<m:Text text="{ManDetModel>ShipperPhone}"/>
+																				</m:HBox>
+																			</m:HBox>
+																				<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+																				<m:HBox>
+																				<m:Label text="Consignee Name" class="sapUiSmallMarginEnd"/>
+																				</m:HBox>
+																				<m:HBox>
+																				<m:Text text="{ManDetModel>ConsigneeName}" wrapping="false"/>
+																				</m:HBox>
+																			</m:HBox>
 															</m:VBox>
 														</layout:VerticalLayout>
 														<layout:VerticalLayout>
 															<m:VBox class="sapUiSmallMarginBottom sapUiSmallMarginEnd">
+																<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+																				<m:HBox>
+																				<m:Label text="Consignee Phone" class="sapUiSmallMarginEnd"/>
+																				</m:HBox>
+																				<m:HBox>
+																				<m:Text text="{ManDetModel>ConsigneePhone}"/>
+																				</m:HBox>
+																			</m:HBox>
+																			<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+																				<m:HBox>
+																				<m:Label text="Notifier Phone" class="sapUiSmallMarginEnd"/>
+																				</m:HBox>
+																				<m:HBox>
+																				<m:Text text="{ManDetModel>NotifierPhone}"/>
+																				</m:HBox>
+																			</m:HBox>
 																<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Consignee" class="sapUiSmallMarginEnd"/>
 																	<m:Input value="{ManDetModel>Consignee}" />

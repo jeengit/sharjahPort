@@ -230,9 +230,9 @@
 																	<m:Label text="Bill of Entry" class="sapUiSmallMarginEnd"/>
 																	<m:Input value="{inCreateModel>/BillOfEntry}" editable="false"/>
 																</m:HBox>
-																	<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+																	<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Consignee Name" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{inCreateModel>/ConsigneeName}" wrapping="false"/>
+																	<m:Input value="{inCreateModel>/ConsigneeName}" />
 																</m:HBox>
 																<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Consignee Phone" class="sapUiSmallMarginEnd"/>

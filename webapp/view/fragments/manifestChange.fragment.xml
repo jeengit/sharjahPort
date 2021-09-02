@@ -203,68 +203,52 @@
 															<m:VBox class="sapUiSmallMarginBottom sapUiSmallMarginEnd">
 																<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Bill of Lading" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{ManDetModel>BLNo}"/>
+																	<m:Text text="{ManDetModel>BLNo}"/>
 																</m:HBox>
 																<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Consignee Code" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{ManDetModel>ConsigneeCode}" />
+																	<m:Text text="{ManDetModel>ConsigneeCode}" />
 																</m:HBox>
 																<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Bill of Entry" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{ManDetModel>BENo}" editable="false"/>
+																	<m:Text text="{ManDetModel>BENo}" editable="false"/>
 																</m:HBox>
 																	<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Country of origin" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{ManDetModel>CountryofOrigin}"/>
+																	<m:Text text="{ManDetModel>CountryofOrigin}"/>
 																</m:HBox>
 																	<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-																				<m:HBox>
 																				<m:Label text="Shipper Phone" class="sapUiSmallMarginEnd"/>
-																				</m:HBox>
-																				<m:HBox>
 																				<m:Text text="{ManDetModel>ShipperPhone}"/>
-																				</m:HBox>
 																			</m:HBox>
 																				<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-																				<m:HBox>
 																				<m:Label text="Consignee Name" class="sapUiSmallMarginEnd"/>
-																				</m:HBox>
-																				<m:HBox>
 																				<m:Text text="{ManDetModel>ConsigneeName}" wrapping="false"/>
 																				</m:HBox>
-																			</m:HBox>
 															</m:VBox>
 														</layout:VerticalLayout>
 														<layout:VerticalLayout>
 															<m:VBox class="sapUiSmallMarginBottom sapUiSmallMarginEnd">
 																<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-																				<m:HBox>
 																				<m:Label text="Consignee Phone" class="sapUiSmallMarginEnd"/>
-																				</m:HBox>
-																				<m:HBox>
 																				<m:Text text="{ManDetModel>ConsigneePhone}"/>
-																				</m:HBox>
 																			</m:HBox>
 																			<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-																				<m:HBox>
 																				<m:Label text="Notifier Phone" class="sapUiSmallMarginEnd"/>
-																				</m:HBox>
-																				<m:HBox>
 																				<m:Text text="{ManDetModel>NotifierPhone}"/>
-																				</m:HBox>
 																			</m:HBox>
 																<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Consignee" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{ManDetModel>Consignee}" />
+																	<m:Text text="{ManDetModel>Consignee}" />
 																</m:HBox>
 																<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Creation Date" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{ path: 'ManDetModel>CreationDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}} }" editable="false"/>
+																	<m:Text text="{ path: 'ManDetModel>CreationDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'dd/MM/yyyy'}} }" editable="false"/>
 																</m:HBox>
 																<m:VBox class="sapUiSmallMarginBottom">
 																	<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Cargo category" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{ManDetModel>CargoCategory}"/>
+																	<m:IText text="{ManDetModel>CargoCategory}"/>
 																</m:HBox>
 															
 															</m:VBox>

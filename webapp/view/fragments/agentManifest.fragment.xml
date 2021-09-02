@@ -230,6 +230,14 @@
 																	<m:Label text="Bill of Entry" class="sapUiSmallMarginEnd"/>
 																	<m:Input value="{inCreateModel>/BillOfEntry}" editable="false"/>
 																</m:HBox>
+																	<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
+																	<m:Label text="Consignee Name" class="sapUiSmallMarginEnd"/>
+																	<m:Input value="{inCreateModel>ConsigneeName}" wrapping="false"/>
+																</m:HBox>
+																<m:HBox class="sapUiTinyMarginBottom">
+																	<m:Label text="Consignee Phone" class="sapUiSmallMarginEnd"/>
+																	<m:Input value="{inCreateModel>ConsigneePhone}"/>
+																</m:HBox>
 																<m:HBox class="sapUiTinyMarginBottom">
 																		<m:HBox width="40%">
 																	<m:Label text="Country of origin" class="sapUiSmallMarginEnd"/>
@@ -251,42 +259,19 @@
 																	</m:ComboBox>
 																		</m:HBox>
 																</m:HBox>
-																	<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-																				<m:HBox>
-																				<m:Label text="Consignee Name" class="sapUiSmallMarginEnd"/>
-																				</m:HBox>
-																				<m:HBox>
-																				<m:Text text="{inCreateModel>ConsigneeName}" wrapping="false"/>
-																				</m:HBox>
-																			</m:HBox>
-																			<m:HBox class="sapUiTinyMarginBottom">
-																				<m:HBox>
-																				<m:Label text="Consignee Phone" class="sapUiSmallMarginEnd"/>
-																				</m:HBox>
-																				<m:HBox>
-																				<m:Input value="{inCreateModel>ConsigneePhone}"/>
-																				</m:HBox>
-																			</m:HBox>
+																	
 															</m:VBox>
 														</layout:VerticalLayout>
 														<layout:VerticalLayout>
 															<m:VBox class="sapUiSmallMarginBottom sapUiSmallMarginEnd">
-																	<m:HBox class="sapUiTinyMarginBottom">
-																				<m:HBox>
-																				<m:Label text="Notifier Phone" class="sapUiSmallMarginEnd"/>
-																				</m:HBox>
-																				<m:HBox>
-																				<m:Input value="{inCreateModel>NotifierPhone}"/>
-																				</m:HBox>
-																			</m:HBox>
-																	<m:HBox class="sapUiTinyMarginBottom">
-																				<m:HBox>
-																				<m:Label text="Shipper Phone" class="sapUiSmallMarginEnd"/>
-																				</m:HBox>
-																				<m:HBox>
-																				<m:Input value="{inCreateModel>ShipperPhone}"/>
-																				</m:HBox>
-																			</m:HBox>
+																		<m:HBox class="sapUiTinyMarginBottom">
+																	<m:Label text="Notifier Phone" class="sapUiSmallMarginEnd"/>
+																	<m:Input value="{inCreateModel>NotifierPhone}"/>
+																</m:HBox>
+																<m:HBox class="sapUiTinyMarginBottom">
+																	<m:Label text="Shipper Phone" class="sapUiSmallMarginEnd"/>
+																	<m:Input value="{inCreateModel>ShipperPhone}"/>
+																</m:HBox>
 																<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Consignee" class="sapUiSmallMarginEnd"/>
 																	<m:Input value="{inCreateModel>/Consignee}"/>

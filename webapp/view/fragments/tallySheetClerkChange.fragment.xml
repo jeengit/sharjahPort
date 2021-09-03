@@ -105,7 +105,7 @@
 							<m:HBox width="60%">
 								<m:ComboBox selectedKey="{tSClerkDetailModel>/ManifestNo}" id="manifestSel" placeholder="{i18n>select}" width="100%"
 									items="{manifestFilterListModel>/}" change="handleMDetailsPress">
-									<core:Item key="{manifestFilterListModel>ManifestNo}" text="{manifestFilterListModel>ManifestNo}"/>
+									<core:Item key="{manifestFilterListModel>AgentManifestNo}" text="{manifestFilterListModel>AgentManifestNo}"/>
 								</m:ComboBox>
 							</m:HBox>
 						</m:HBox>

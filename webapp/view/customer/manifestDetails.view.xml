@@ -18,8 +18,8 @@
 					press="handleTallySheetPress"/>
 				<Button id="tallyCrtBtn" visible="{= ${BOEDetailsModel>/TlyShtCode} === '' ? true: false}" type="Emphasized" text="Create Tally Sheet"
 					press="handleTallySheetPress"/>
-				<Button type="Accept" text="Approve" visible="{= ${loginModel>/uRole} === 'CARGO' ? true : false }" press="handlePress"/>
-				<Button type="Reject" text="Reject" visible="{= ${loginModel>/uRole} === 'CARGO' ? true : false }" press="handlePress"/>
+				<Button type="Accept" text="Approve" id="appvBtn" visible="false" press="handlePress"/>
+				<Button type="Reject" text="Reject" id="rejBtn" visible="false"  press="handlePress"/>
 			</OverflowToolbar>
 		</footer>
 	</Page>

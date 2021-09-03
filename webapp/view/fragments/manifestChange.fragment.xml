@@ -240,7 +240,7 @@
 																</m:HBox>
 																
 															
-															</m:VBox>
+															
 															</m:VBox>
 														</layout:VerticalLayout>
 														<layout:VerticalLayout>
@@ -259,7 +259,7 @@
 																	<m:Text text="{ManDetModel>CargoCategory}"/>
 																</m:HBox>
 															
-															</m:VBox>
+															
 															</m:VBox>
 														</layout:VerticalLayout>
 														<!--<layout:VerticalLayout>-->

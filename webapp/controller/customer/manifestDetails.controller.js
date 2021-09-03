@@ -59,8 +59,13 @@ sap.ui.define([
 						that.getView().setModel(new JSONModel(data.results['0']), "BOEDetailsModel");
 						that.getView().byId(pageId + "--manifestChangeId").setVisible(false);
 						that.getView().byId(pageId + "--manifestDispId").setVisible(true);
-				
-						// data.results.Status === "OPEN" ? that.getView().byId("rejBtn").setVisible(true) : that.getView().byId("rejBtn").setVisible(false) ;
+				                if(data.results[0].Status === "OPEN"){
+							that.getView().byId("appvBtn").setVisible(true);
+							that.getView().byId("rejBtn").setVisible(true);
+						}else{
+							that.getView().byId("appvBtn").setVisible(false);
+							that.getView().byId("rejBtn").setVisible(false);
+						}
 						for (var j in that.getView().byId("dispDetails").getItems()) {
 							that.getView().byId("dispDetails").getItems()[j].setVisible(false);
 						}
@@ -151,8 +156,8 @@ sap.ui.define([
 
 		},
 
-		deliveryCreatePress: function(evt) {
-			sap.ui.core.BusyIndicator.show();
+			deliveryCreatePress: function(evt) {
+			// sap.ui.core.BusyIndicator.show();
 			// this.getRouter().navTo("deliveryDetails");
 			var selectId = this.getView().byId("dispList").getSelectedItem().getBindingContext("BOEDetailsModel");
 			var sPath = selectId.getPath();
@@ -160,7 +165,7 @@ sap.ui.define([
 			var obj = model.getProperty(sPath);
 			console.log(obj);
 			sap.ui.getCore().setModel(new JSONModel(obj), "ManifBOEModel");
-			this.getRouter().navTo("deliveryDetails", {
+		obj.Status === 'DVLY_CRTD'? sap.m.MessageToast.show("Delivery already Created") :	this.getRouter().navTo("deliveryDetails", {
 				sPath: encodeURIComponent(sPath),
 				id: "create",
 				status: status

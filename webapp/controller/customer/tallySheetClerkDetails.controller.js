@@ -77,8 +77,8 @@ sap.ui.define([
 			oModel.setUseBatch(false);
 			var that = this;
 			oModel.read("/ManifestListSet", {
-				urlParameters: {
-					"$filter": "ImStatus eq 'OPEN' and CallSign eq '" + key + "'"
+					urlParameters: {
+					"$filter": "ImStatus eq 'OPEN' and CallSign eq '" + key + "' and ImFlag eq 'AGENT'"
 				},
 				success: function(data) {
 					that.getView().setModel(new JSONModel(data.results), "manifestFilterListModel");

@@ -43,7 +43,7 @@
 							<m:HBox width="10rem">
 								<m:ComboBox enabled="false" visible="{= ${tSClerkDetailModel>/ManifestNo} === '' ? false: true}" selectedKey="{tSClerkDetailModel>/ManifestNo}" width="100%"
 									items="{manifestFilterListModel>/}">
-									<core:Item key="{manifestFilterListModel>ManifestNo}" text="{manifestFilterListModel>ManifestNo}"/>
+									<core:Item key="{manifestFilterListModel>AgentManifestNo}" text="{manifestFilterListModel>AgentManifestNo}"/>
 								</m:ComboBox>
 							</m:HBox>
 						</m:HBox>

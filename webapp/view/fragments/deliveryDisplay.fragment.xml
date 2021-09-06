@@ -126,14 +126,14 @@
 							<m:Text text="{delCrtModel>/VoyageNo}" wrapping="false"/>
 						</m:HBox>
 							</m:HBox>
-						<m:HBox class="sapUiTinyMarginBottom">
-								<m:HBox width="8rem">
-							<m:Label text="{i18n>VesselName}" class="sapUiSmallMarginEnd"/>
-								</m:HBox>
-							<m:HBox width="8rem">
-							<m:Text text="{delCrtModel>/vesselName}"/>
-						</m:HBox>
-							</m:HBox>
+						<!--<m:HBox class="sapUiTinyMarginBottom">-->
+						<!--		<m:HBox width="8rem">-->
+						<!--	<m:Label text="{i18n>VesselName}" class="sapUiSmallMarginEnd"/>-->
+						<!--		</m:HBox>-->
+						<!--	<m:HBox width="8rem">-->
+						<!--	<m:Text text="{delCrtModel>/vesselName}"/>-->
+						<!--</m:HBox>-->
+						<!--	</m:HBox>-->
 						<m:HBox class="sapUiTinyMarginBottom">
 								<m:HBox width="8rem">
 							<m:Label text="{i18n>delDoc}" class="sapUiSmallMarginEnd"/>

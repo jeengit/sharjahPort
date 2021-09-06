@@ -74,7 +74,7 @@
 						</GenericTile>
 					</HBox>
 				<HBox width="16.6%" class="tileLayout sapUiSmallMarginEnd">
-						<GenericTile class="sapUiSmallMarginBottom" width="100%" press="handleListPress" ariaLabel="list/GATEPASS" header="Gate Pass">
+						<GenericTile class="sapUiSmallMarginBottom" width="100%" press="handleListPress" ariaLabel="OPEN/GATEPASS" header="Gate Pass">
 							<tileContent>
 								<TileContent>
 									<content>
@@ -93,7 +93,7 @@
 						</GenericTile>
 					</HBox>
 						<HBox width="16.6%" class="tileLayout sapUiSmallMarginEnd">
-						<GenericTile class="sapUiSmallMarginBottom" width="100%" press="handleListPress" ariaLabel="AGENT/AGENTMANIFEST" header="Manifest">
+						<GenericTile class="sapUiSmallMarginBottom" width="100%" press="handleListPress" ariaLabel="OPEN/AGENTMANIFEST" header="Manifest">
 								<TileContent>
 									<content>
 										<mi:ComparisonMicroChart minValue="0" maxValue="{= ${DashboardCountModel>/0/AgManifestOpen} > ${DashboardCountModel>/0/AgManifestApproved} &amp;&amp; ${DashboardCountModel>/0/AgManifestRejected} ? 

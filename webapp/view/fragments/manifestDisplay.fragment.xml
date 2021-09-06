@@ -60,14 +60,14 @@
 								<m:Text text="{BOEDetailsModel>/Caption}"/>
 							</m:HBox>
 						</m:HBox>
-						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-							<m:HBox width="8rem">
-								<m:Label text="{i18n>disComDate}" class="sapUiSmallMarginEnd"/>
-							</m:HBox>
-							<m:HBox width="10rem">
-								<m:Text text="{BOEDetailsModel>/DischargeCommencedDate}"/>
-							</m:HBox>
-						</m:HBox>
+						<!--<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">-->
+						<!--	<m:HBox width="8rem">-->
+						<!--		<m:Label text="{i18n>disComDate}" class="sapUiSmallMarginEnd"/>-->
+						<!--	</m:HBox>-->
+						<!--	<m:HBox width="10rem">-->
+						<!--		<m:Text text="{BOEDetailsModel>/DischargeCommencedDate}"/>-->
+						<!--	</m:HBox>-->
+						<!--</m:HBox>-->
 					</m:VBox>
 				</layout:VerticalLayout>
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">

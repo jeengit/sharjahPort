@@ -28,7 +28,7 @@ sap.ui.define([
 			var oProperty = evt.getSource().getBindingContext("etaListModel").getProperty();
 			var status = oProperty.Status;
 			var id = oProperty.ETANo ? oProperty.ETANo : oProperty.Guid ? oProperty.Guid : oProperty.LogSheetNo;
-			oProperty.LogSheetNo ? this.openHotWorkDialog(id, status, "FLAG") : oProperty.Company_Name ? this.openHotWorkDialog(id, status, "SECURITY") :
+			oProperty.LogSheetNo || oProperty.Guid ? this.openHotWorkDialog(id, status, "FLAG") : oProperty.Company_Name ? this.openHotWorkDialog(id, status, "SECURITY") :
 				this.getRouter().navTo("etaDetails", {
 					sPath: encodeURIComponent(sPath),
 					id: id

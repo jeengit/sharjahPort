@@ -336,7 +336,7 @@ sap.ui.define([
 			});
 		},
 		handleCreateHotWorks: function(evt) {
-			//sap.ui.core.BusyIndicator.show();
+			sap.ui.core.BusyIndicator.show();
 			var oModel = this.getOwnerComponent().getModel("s4Model");
 			oModel.setUseBatch(false);
 			var data = this.getView().getModel("hotWorksModel").getData();
@@ -365,7 +365,7 @@ sap.ui.define([
 					that.dialogHWA.close();
 					role === 'SECURITY' ? sap.m.MessageToast.show(oEntry['ImFlag'] === 'APPROVE' ?
 							'Gate Pass Approved Successfully!..' : 'Gate Pass Rejected Successfully!..') :
-						sap.m.MessageToast.show(oEntry['Flag'] === 'CREATE' ? 'Created Successfully!..' : oEntry['Flag'] === 'APPROVE' ?
+						sap.m.MessageToast.show(oEntry['Flag'] === 'CREATE' ? 'New Guid - ' + data.Guid + ' Created Successfully!..' : oEntry['Flag'] === 'APPROVE' ?
 							'Hotwork Approved Successfully!..' : 'Hotwork Rejected Successfully!..');
 					if (role === "SECURITY") {
 						that.getRouter().navTo("dashboardSecurity");

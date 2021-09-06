@@ -1,6 +1,6 @@
 <core:FragmentDefinition xmlns:t="sap.ui.table" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core"
 	xmlns:tnt="sap.tnt">
-		<ObjectPageLayout upperCaseAnchorBar="false" id="manifestChangeId" class="objLayoutClass editMode">
+	<ObjectPageLayout upperCaseAnchorBar="false" id="manifestChangeId" class="objLayoutClass editMode">
 		<headerTitle>
 			<ObjectPageDynamicHeaderTitle>
 				<breadcrumbs>
@@ -249,10 +249,10 @@
 																				<m:Label text="Shipper Phone" class="sapUiSmallMarginEnd"/>
 																				<m:Text text="{ManDetModel>ShipperPhone}"/>
 																			</m:HBox>
-																				<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
-																				<m:Label text="Consignee Name" class="sapUiSmallMarginEnd"/>
-																				<m:Text text="{ManDetModel>ConsigneeName}" wrapping="false"/>
-																				</m:HBox>
+																				<!--<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">-->
+																				<!--<m:Label text="Consignee Name" class="sapUiSmallMarginEnd"/>-->
+																				<!--<m:Text text="{ManDetModel>ConsigneeName}" wrapping="false"/>-->
+																				<!--</m:HBox>-->
 																
 																	<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Cargo category" class="sapUiSmallMarginEnd"/>

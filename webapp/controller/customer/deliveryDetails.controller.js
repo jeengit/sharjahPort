@@ -169,7 +169,7 @@ sap.ui.define([
 				"ArrivalDate": mandatory.ArrivalDate,
 				"CaretedDate": mandatory.CreationDate,
 				"AgentCode": mandatory.AgentCode,
-				"PortOfDischarge": mandatory.PortName,
+				"PortOfDischarge": mandatory.DestinationPort,
 				"BLDate": mandatory.BLDate,
 				"VoyageNo": mandatory.VoyegeNo,
 				"DocNo": "",

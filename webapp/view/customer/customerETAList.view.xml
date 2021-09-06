@@ -40,6 +40,12 @@
 								<Link press="onETADetailsPress" text="{= ${etaListModel>ETANo} ? ${etaListModel>ETANo} : ${etaListModel>LogSheetNo}}" wrapping="false"/>
 							</t:template>
 						</t:Column>
+						<t:Column visible="{= ${etaListModel>/TYPE} === 'SECURITY' ? false : true}">
+							<Label text="Guid"/>
+							<t:template>
+								<Link press="onETADetailsPress" text="{etaListModel>Guid}" wrapping="false"/>
+							</t:template>
+						</t:Column>
 						<t:Column visible="{= ${etaListModel>/TYPE} === 'SECURITY' ? true : false}">
 							<Label text="Company Name"/>
 							<t:template>

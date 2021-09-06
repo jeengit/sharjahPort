@@ -133,14 +133,14 @@
 							<m:Text text="{delvryDetailsModel>/VoyageNo}" wrapping="false"/>
 						</m:HBox>
 							</m:HBox>
-						<m:HBox class="sapUiSmallMarginBottom">
-								<m:HBox width="8rem">
-							<m:Label text="{i18n>VesselName}" class="sapUiSmallMarginEnd"/>
-							</m:HBox>
-							<m:HBox width="8rem">
-							<m:Text text="{delvryDetailsModel>/vesselName}"/>
-						</m:HBox>
-							</m:HBox>
+						<!--<m:HBox class="sapUiSmallMarginBottom">-->
+						<!--		<m:HBox width="8rem">-->
+						<!--	<m:Label text="{i18n>VesselName}" class="sapUiSmallMarginEnd"/>-->
+						<!--	</m:HBox>-->
+						<!--	<m:HBox width="8rem">-->
+						<!--	<m:Text text="{delvryDetailsModel>/vesselName}"/>-->
+						<!--</m:HBox>-->
+						<!--	</m:HBox>-->
 						<m:HBox class="sapUiSmallMarginBottom">
 								<m:HBox width="8rem">
 							<m:Label text="{i18n>delDoc}" class="sapUiSmallMarginEnd"/>
@@ -198,7 +198,7 @@
 								<m:Label text="{i18n>portDis}"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input value="{delvryDetailsModel>/PortOfDischarge}"/>
+								<m:Input value="{delvryDetailsModel>/DestinationPort}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">

@@ -1,6 +1,6 @@
 <core:FragmentDefinition xmlns:t="sap.ui.table" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core"
 	xmlns:tnt="sap.tnt">
-		<ObjectPageLayout upperCaseAnchorBar="false" id="manifestagentId" class="objLayoutClass editMode">
+	<ObjectPageLayout upperCaseAnchorBar="false" id="manifestagentId" class="objLayoutClass editMode">
 		<headerTitle>
 			<ObjectPageDynamicHeaderTitle>
 				<breadcrumbs>
@@ -160,7 +160,7 @@
 								<m:Label text="{i18n>Captain}" class="sapUiSmallMarginEnd"/>
 							</m:HBox>
 							<m:HBox width="60%">
-								<m:Input value="{ManDetailsModel>/Caption}"/>
+								<m:Input value="{inCreateModel>/Caption}"/>
 							</m:HBox>
 						</m:HBox>
 						<m:HBox class="sapUiTinyMarginBottom" alignItems="Center">
@@ -230,10 +230,10 @@
 																	<m:Label text="Bill of Entry" class="sapUiSmallMarginEnd"/>
 																	<m:Input value="{inCreateModel>/BillOfEntry}" editable="false"/>
 																</m:HBox>
-																	<m:HBox class="sapUiTinyMarginBottom">
-																	<m:Label text="Consignee Name" class="sapUiSmallMarginEnd"/>
-																	<m:Input value="{inCreateModel>/ConsigneeName}" />
-																</m:HBox>
+																<!--	<m:HBox class="sapUiTinyMarginBottom">-->
+																<!--	<m:Label text="Consignee Name" class="sapUiSmallMarginEnd"/>-->
+																<!--	<m:Input value="{inCreateModel>/ConsigneeName}" />-->
+																<!--</m:HBox>-->
 																<m:HBox class="sapUiTinyMarginBottom">
 																	<m:Label text="Consignee Phone" class="sapUiSmallMarginEnd"/>
 																	<m:Input value="{inCreateModel>/ConsigneePhone}"/>
